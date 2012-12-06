@@ -4,7 +4,7 @@
 
 using namespace std;
 
-networkControler::networkControler(){
+networkControler::networkControler(string *ip, port, string *apn, string *user, string *password){
 	
 	
 }
@@ -27,7 +27,7 @@ void networkControler::gprsInit(){
 
 int networkControler::ethCon(){
 	// tworze plik konfiguracyjny !
-	ofstream file("fconf.txt", ios_base::app);
+	ofstream file("config.txt", ios_base::app);
 	
 	// konfiguracja socketa !! 
 	int sockfd;
@@ -39,10 +39,11 @@ int networkControler::ethCon(){
 		perror("socket"); // ogowanie do pliku !! 
 		exit(1);
 	}
-	
+	int ports;
+	atoi(port.c_str());
 	dest_addr.sin_family = AF_INET;
-	dest_addr.sin_port = htons(DEST_PORT); // wstawic port 
-	dest_addr.sin_addr.s_addr = inet_addr(DEST_IP ); // wstawic ip
+	dest_addr.sin_port = htons(ports); // wstawic port 
+	dest_addr.sin_addr.s_addr = inet_addr(ip.c_str()); // wstawic ip
 	memset(&(dest_addr.sin_zero), '\0', 8);
 
 	if(connect(sockfd, (struct sockaddr *) &dest_addr, sizeof(struct sockaddr)) == -1){
@@ -186,7 +187,7 @@ void networkControler::Tokenize(const string& str, vector<string>& tokens, const
 	    pos = str.find_first_of(delimiters, lastPos);
 	}
 
-	};
+}
 	
 	
 	

@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <fstream>
 
 class configControler{ 
 	int configGenerator();
@@ -16,7 +17,7 @@ class configControler{
 	//koniec ekranow
 
 	//zmienne glopbalne obieku (dostepne tylko dla obieku !)
-	string ip, port, apn, user, passrod;
+	string ip, port, apn, user, password;
 
 	
 	public: 

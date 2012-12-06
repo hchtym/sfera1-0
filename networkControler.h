@@ -44,7 +44,7 @@ class networkControler{
 	
 	
 public:
-	networkControler();
+	networkControler(string *ip, string *port, string *apn, string *user, string *password);
 	~networkControler();
 	int startConf(int type);
 	int sendTransaction();
