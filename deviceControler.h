@@ -15,7 +15,7 @@ extern "C"{
 
 using namespace std;
 
-class configControler{
+class deviceControler{
 private:
 	
 	

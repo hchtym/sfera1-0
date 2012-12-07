@@ -15,7 +15,7 @@ extern "C"{
 
 using namespace std;
 
-class configControler{
+class masterControler{
 private:
 	int dispMenu2(); // drugie menu do wyswietlania serwisow i innych bajerow  
 	int dispCPartFile(); // wyswietlanie pliku konfiguracyjnego
