@@ -136,9 +136,9 @@ int configControler::miniScreen(string *title, int size, bool opt){
 			for(int i= 0; i < size ; i++){
 				string str = confOptions[i];
 				if(marked == 0){
-					Lcd_Printxy(0, (i*8)+8, 1, const_cast<char *>(str.c_str()));
+					Lcd_Printxy(0, (i*8)+8, 1, const_cast<char *>(str.c_str()) );
 				}else{
-					Lcd_Printxy(0, (i**)+8, 0, const_cast<char *>(str.c_str()));
+					Lcd_Printxy(0, (i**)+8, 0, const_cast<char *>(str.c_str()) );
 				}
 			}
 			while(1){
@@ -198,7 +198,7 @@ int configControler::miniScreen(string *title, int size, bool opt){
 	
 }
 
-int configControler::miniInput(string title){
+int configControler::miniInput(){
 	
 	
 	
