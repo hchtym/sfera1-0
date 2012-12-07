@@ -1,5 +1,5 @@
 #include "configControler.h"
-#include "networkControler.h";
+#include "networkControler.h"
 
 //definicje guzikow klawiatury
 
