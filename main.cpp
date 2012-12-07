@@ -6,7 +6,7 @@
 using namespace std;
 
 int main(){
-//	configControler* config = new configControler();
+	configControler* config = new configControler();
 //	networkControler* network = new networkControler();
 //	deviceControler* device = new deviceControler()
 
