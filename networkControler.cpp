@@ -125,7 +125,7 @@ int networkControler::ethCon(){
 		int licz=0;
 		file << "[" << configs[1][i] << "]" << endl;
         for(j=tokens.begin(); j<tokens.end(); ++j){
-			if(config[1][i]== "ok"){
+			if(configs[1][i]== "ok"){
 				file << *j;
 				file << endl;
 			}else{
