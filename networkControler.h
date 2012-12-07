@@ -19,6 +19,10 @@
 #include <fstream>
 #include <unistd.h>
 
+extern "C"{
+#include "all_headers.h"	
+}
+
 using namespace stad;
 
 

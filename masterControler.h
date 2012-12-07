@@ -7,6 +7,10 @@
 #include <string>
 #include <sstream>
 
+extern "C"{
+#include "all_headers.h"	
+}
+
 using namespace std;
 
 class configControler{

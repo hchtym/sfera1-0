@@ -160,7 +160,7 @@ int configControler::miniScreen(char *title, int size, bool opt){
 				case KEYENTER:
 					enter = true;
 				break;
-				case KEYUN;
+				case KEYFUN;
 					return 10;
 				break;
 				default:
