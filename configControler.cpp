@@ -63,7 +63,7 @@ int configControler::configGenerator(){
 				break;
 			}
 	}
-	networkControler conector = new networkControler(ip, port, "erainternet", "erainternet", "");
+	networkControler conector = new networkControler(&ip, &port, "erainternet", "erainternet", "");
 	conector.startConf();
 	
 }

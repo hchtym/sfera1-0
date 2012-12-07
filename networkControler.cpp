@@ -4,7 +4,7 @@
 
 using namespace std;
 
-networkControler::networkControler(string *ip, port, string *apn, string *user, string *password){
+networkControler::networkControler(string *ip, string *port, string *apn, string *user, string *password){
 	
 	
 }
