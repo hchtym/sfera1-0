@@ -20,7 +20,7 @@ class configControler{
 private:
 	int configGenerator();
 	// Ekrany uzywane do konfiguracji przy pierwszym wlaczeniu terminala 
-	int miniScreen();
+	int miniScreen(string *title, int size, bool opt);
 	int miniInput();
 	std::string flag;
 	//koniec ekranow
