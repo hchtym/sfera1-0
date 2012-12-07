@@ -28,10 +28,8 @@ using namespace std;
 
 class networkControler{
 private:
-	enum {xsize =2};
-	enum {ysize =6};
 	// zmienna zawieajaca dane do pobieranie konfiguracji wykorzystywane w 2 metodach;
-	const char configs[2][6];
+	char configs[2][6];
 	// funkcje wykorzystywane tylko raz przy pierwszym pobieraniu konfiguracji 
 	int gprsCon();
 	int ethCon();
@@ -57,7 +55,7 @@ public:
 	
 };
 
-const char networkControler::configs[xsize][ysize]={
+char networkControler::configs[2][6]={
 {
 "par.podst.", "zab.karty",
 "opcje menu", "nagrody",
