@@ -4,7 +4,7 @@
 #include "ConfigFile.h"
 #include "Chameleon.h"
 #include <iostream>
-#include <stdlib>
+#include <stdlib.h>
 #include <vector>
 #include <string>
 #include <sstream>
@@ -22,7 +22,7 @@ private:
 	// Ekrany uzywane do konfiguracji przy pierwszym wlaczeniu terminala 
 	int miniScreen();
 	int miniInput();
-	string flag;
+	std::string flag;
 	//koniec ekranow
 
 	//zmienne glopbalne obieku (dostepne tylko dla obieku !)

@@ -23,13 +23,13 @@ extern "C"{
 #include "all_headers.h"	
 }
 
-using namespace stad;
+using namespace std;
 
 
 class networkControler{
 private:
 	// zmienna zawieajaca dane do pobieranie konfiguracji wykorzystywane w 2 metodach;
-	char * config[2][6]={
+	char * configs[2][6]= {
 	{
 	"par.podst.", "zab.karty",
 	"opcje menu", "nagrody",

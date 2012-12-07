@@ -63,9 +63,8 @@ int networkControler::ethCon(){
 	if((bytes_sent = send(sockfd, msg2.c_str(), len, 0)) == -1){
 		perror("send"); // logowanie do pliku !
 		exit(1);
-	}e
+	}
 	
-	cout << "Otrzymuje dane: ";
 	if((bytes_recv = recv(sockfd, pCAPData,(buffer* buffer) -1, 0)) == -1){
 		perror("recive"); // logowanie do pliku !!
 		exit(1);
@@ -80,9 +79,9 @@ int networkControler::ethCon(){
 		sleep(1);
 	    char str[40];
 	    int dataLen;
-	    sprintf(str, "%s" ,config[1][i]);
+	    sprintf(str, "%s" ,configs[1][i]);
 	    char msg3[50];
-	    strcpy(msg3, config[0][i]);
+	    strcpy(msg3, configs[0][i]);
 	    len = msg2.size();
 	    if((bytes_sent = send(sockfd, str, strlen(str), 0)) == -1 ){
 		    perror("send"); // logowanie do pliku !
