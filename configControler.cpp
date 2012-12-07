@@ -70,7 +70,7 @@ int configControler::configGenetaror(){
 int configControler::miniScreen(char *title, int size, bool opt){
 	int	marked =0;
 	BYTE key;
-	it(opt == true){
+	if(opt == true){
 		while(1){
 			key = NOKEY;
 			Lcd_Cls();
@@ -117,8 +117,7 @@ int configControler::miniScreen(char *title, int size, bool opt){
 				break;
 			}
 		}
-	}
-	else{
+	}else{
 	bool enter = false;		
 		while(1){
 			key = NOKEY;
