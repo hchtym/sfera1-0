@@ -10,8 +10,6 @@
 #define NOKEY 0xFE
 #define KEYFUN 0x12
 
-typedef unsigned char BYTE;
-
 using namespace std;
 
 configControler::configControler(){
@@ -160,7 +158,7 @@ int configControler::miniScreen(char *title, int size, bool opt){
 				case KEYENTER:
 					enter = true;
 				break;
-				case KEYFUN;
+				case KEYFUN:
 					return 10;
 				break;
 				default:
