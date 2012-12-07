@@ -187,3 +187,15 @@ void networkControler::Tokenize(const string& str, vector<string>& tokens, const
 	}
 
 }
+
+const char* const networkControler::configs[][]={
+{
+"par.podst.", "zab.karty",
+"opcje menu", "nagrody",
+"sprzedawcy", "obliczenia"
+},{
+"ok", "lc",
+"menu", "prize",
+"seller", "comp"
+}
+}
