@@ -48,15 +48,15 @@ int configControler::configGenerator(){
 	int ret;
 	while(1){
 		if(ret == 10) break;
-			item = miniScreen(title, 2, true);
+			item = miniScreen(&title, 2, true);
 			switch(item){
 				case 0:
 				flag = "eth";
-				ret = miniScreen(title, 2, false);
+				ret = miniScreen(&title, 2, false);
 				break;
 				case 1:
 				flag = "gprs";
-				ret = miniScreen(title, 5, false);
+				ret = miniScreen(&title, 5, false);
 				break;
 			}
 	}
@@ -77,14 +77,14 @@ int configControler::configGenerator(){
 	
 }
 
-int configControler::miniScreen(const string& title, int size, bool opt){
+int configControler::miniScreen(const *string title, int size, bool opt){
 	int	marked =0;
 	BYTE key;
 	if(opt == true){
 		while(1){
 			key = NOKEY;
 			Lcd_Cls();
-			Lcd_Printxy(0, 0, 1, const_cast<char *>(title.c_str())); //tytul
+			Lcd_Printxy(0, 0, 1, const_cast<char *>(title->c_str())); //tytul
 			// wyswietlanie menu
 			for(int i=0; i < size; i++){
 				string str = options[i];
@@ -132,7 +132,7 @@ int configControler::miniScreen(const string& title, int size, bool opt){
 		while(1){
 			key = NOKEY;
 			Lcd_Cls();
-			Lcd_Printxy(0, 0, 1, const_cast<char *>(title.c_str())); //tytul
+			Lcd_Printxy(0, 0, 1, const_cast<char *>(title->c_str())); //tytul
 			// wyswietlanie menu
 			for(int i= 0; i < size ; i++){
 				string str = confOptions[i];
