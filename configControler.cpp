@@ -66,8 +66,16 @@ int configControler::configGenerator(){
 	string userc = "erainternet";
 	string passwordc = "";
 	networkControler* conector = new networkControler(&ip, &port, &apnc, &userc, &passwordc);
-
-	conector.startConf();
+	switch(flag){
+		case "eth":
+			conector.startConf(0);
+		break;
+		case "gprs":
+			conetor.startConf(1);
+		break;
+		default:
+		break;
+	}
 	
 }
 
