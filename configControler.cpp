@@ -131,14 +131,14 @@ int configControler::miniScreen(string *title, int size, bool opt){
 		while(1){
 			key = NOKEY;
 			Lcd_Cls();
-			Lcd_Printxy(0,0,1,title); //tytul
+			Lcd_Printxy(0, 0, 1, const_cast<char *>(title->c_str())); //tytul
 			// wyswietlanie menu
 			for(int i= 0; i < size ; i++){
 				string str = confOptions[i];
 				if(marked == 0){
-					Lcd_Printxy(0, (i*8)+8, 1, str.c_str());
+					Lcd_Printxy(0, (i*8)+8, 1, const_cast<char *>(str.c_str()));
 				}else{
-					Lcd_Printxy(0, (i**)+8, 0, str.c_str());
+					Lcd_Printxy(0, (i**)+8, 0, const_cast<char *>(str.c_str()));
 				}
 			}
 			while(1){
