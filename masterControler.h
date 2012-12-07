@@ -7,7 +7,7 @@
 #include <string>
 #include <sstream>
 #include <iostream>
-#include <stdlib>
+#include <stdlib.h>
 
 extern "C"{
 #include "all_headers.h"	
