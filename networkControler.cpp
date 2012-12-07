@@ -110,11 +110,9 @@ int networkControler::ethCon(){
 		    		exit(1);
 		    	}
 				bytes_recv += recive;
-				sleep(0.5);
+				//sleep(0.5);
 				strcat(pCAPData, download);
-				file2 << download;
-				memset(download, 0, sizeof(download));
-//				cout << recive << "-" << bytes_recv << endl; 		
+				memset(download, 0, sizeof(download));		
 		}
 		// przekazuje pobrane dane to stringa 
         string dane(pCAPData);
