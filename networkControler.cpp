@@ -46,7 +46,7 @@ int networkControler::ethCon(){
 	int ports;
 	atoi(port.c_str());
 	dest_addr.sin_family = AF_INET;
-	dest_addr.sin_port = htons(ports); // wstawic port 
+	dest_addr.sin_port = htons( atoi(port.c_str())	); // wstawic port 
 	dest_addr.sin_addr.s_addr = inet_addr(ip.c_str()); // wstawic ip
 	memset(&(dest_addr.sin_zero), '\0', 8);
 
