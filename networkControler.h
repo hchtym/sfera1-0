@@ -29,7 +29,7 @@ using namespace std;
 class networkControler{
 private:
 	// zmienna zawieajaca dane do pobieranie konfiguracji wykorzystywane w 2 metodach;
-	char * configs[2][6]= {
+	char * configs[][]={
 	{
 	"par.podst.", "zab.karty",
 	"opcje menu", "nagrody",
