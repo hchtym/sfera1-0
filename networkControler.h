@@ -27,6 +27,7 @@ using namespace stad;
 
 
 class networkControler{
+private:
 	// zmienna zawieajaca dane do pobieranie konfiguracji wykorzystywane w 2 metodach;
 	char * config[2][6]={
 	{

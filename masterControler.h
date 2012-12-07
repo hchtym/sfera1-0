@@ -14,6 +14,7 @@ extern "C"{
 using namespace std;
 
 class configControler{
+private:
 	int dispMenu2(); // drugie menu do wyswietlania serwisow i innych bajerow  
 	int dispCPartFile(); // wyswietlanie pliku konfiguracyjnego
 	int screenSaver(); // wygaszacz ekranu

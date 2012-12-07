@@ -15,6 +15,7 @@ extern "C"{
 using namespace std;
 
 class configControler{ 
+private:
 	int configGenerator();
 	// Ekrany uzywane do konfiguracji przy pierwszym wlaczeniu terminala 
 	int miniScreen();
@@ -26,7 +27,7 @@ class configControler{
 	string ip, port, apn, user, password;
 
 	
-	public: 
+public: 
 	configControler(); 
 	int configReload(); 
 	int getConfig(); 
