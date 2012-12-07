@@ -28,8 +28,10 @@ using namespace std;
 
 class networkControler{
 private:
+	enum {xsize =2};
+	enum {ysize =6};
 	// zmienna zawieajaca dane do pobieranie konfiguracji wykorzystywane w 2 metodach;
-	char * configs[][]={
+	char * configs[xsize][ysize]={
 	{
 	"par.podst.", "zab.karty",
 	"opcje menu", "nagrody",
