@@ -37,6 +37,8 @@ int configControler::configGenerator(){
 	stringstream compose;
 	compose << name;
 	int select;
+	vector<string> options;
+	vector<string> confOptions;
 	options.push_back("Ethernet");
 	options.push_back("GPRS");
 	confOptions.push_back("Ip");
