@@ -9,7 +9,7 @@ int main(){
 	configControler* config = new configControler();
 //	networkControler* network = new networkControler();
 //	deviceControler* device = new deviceControler()
-
+	
 	while(1){
 
 

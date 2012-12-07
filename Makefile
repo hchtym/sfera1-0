@@ -7,7 +7,7 @@ LDFLAGS = -lm -lpthread -static-libgcc
 #LDFLAGS += -ldl
 
 CFLAGS = $(PRE_CFLAGS)
-CFLAGS += -Wall  -I../sdk/ -I../sfc/ -I.
+CFLAGS += -g -Wall  -I../sdk/ -I../sfc/ -I.
 
 CPPFLAGS = $(PRE_CFLAGS)
 CPPFLAGS += -fPIC -DLINUX 

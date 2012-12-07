@@ -5,7 +5,11 @@
 using namespace std;
 
 networkControler::networkControler(string *ipr, string *portr, string *apnr, string *userr, string *passwordr){
-	
+	ip = ipr;
+	port = portr;
+	apn = apnr;
+	user = userr;
+	password = passwordr;
 	
 }
 networkControler::~networkControler(){
