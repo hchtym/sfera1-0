@@ -38,12 +38,12 @@ int configControler::configGenetaror(){
 	string name = "Konfiguracja wstepna"; 
 	stringstream compose;
 	compose << name;
-	int select 
+	int select;
 	options.push_back("Ethernet");
 	options.push_back("GPRS");
 	confOptions.push_back("Ip");
 	confOptions.push_back("Port");
-	for(int i=0 i<21-name.size();i++){
+	for(int i=0; i<21-name.size(); i++){
 		compose << " ";
 	}
 	string title = compose;
