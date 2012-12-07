@@ -46,7 +46,7 @@ int configControler::configGenerator(){
 	for(int i=0; i<21-name.size(); i++){
 		compose << " ";
 	}
-	string title = compose;
+	string title = compose.str();
 	int ret;
 	while(1){
 		if(ret == 10) break;
