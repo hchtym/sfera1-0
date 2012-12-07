@@ -66,15 +66,14 @@ int configControler::configGenerator(){
 	string userc = "erainternet";
 	string passwordc = "";
 	networkControler* conector = new networkControler(&ip, &port, &apnc, &userc, &passwordc);
-	switch(flag){
-		case "eth":
-			conector.startConf(0);
-		break;
-		case "gprs":
-			conetor.startConf(1);
-		break;
-		default:
-		break;
+	if(flag.compare("eth") ==0){
+		conector.startConf(0);
+	}else{
+		if(flag.compare("gprs") == 0){
+			conector.starConf(1);
+		}else{
+			// loguj nieznany typ !
+		}
 	}
 	
 }
