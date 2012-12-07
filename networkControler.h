@@ -37,7 +37,7 @@ private:
 	void gprsInit();
 	
 	//Funkcja parsujaca pobrany config ! 
-	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters = " ");
+	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
 	
 	//
 	string ip, port, apn, user, password;
