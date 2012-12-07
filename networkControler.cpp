@@ -123,7 +123,7 @@ int networkControler::ethCon(){
 		// iteruje vector i wrzucam dane do pliku !!
         std::vector<string>::iterator j;
 		int licz=0;
-		file << "[" << config[1][i] << "]" << endl;
+		file << "[" << configs[1][i] << "]" << endl;
         for(j=tokens.begin(); j<tokens.end(); ++j){
 			if(config[1][i]== "ok"){
 				file << *j;
@@ -196,4 +196,4 @@ const char* const networkControler::configs[2][6]={
 "menu", "prize",
 "seller", "comp"
 }
-}
+};
