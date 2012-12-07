@@ -1,22 +1,13 @@
-#ifndef _DEVICE_CONTROLER_H
-#define _DEVICE_CONTROLER_H
+#include "deviceControler.h"
 
-#include "ConfigFile.h"
-#include "Chameleon.h"
-#include <vector>
-#include <string>
-#include <sstream>
+using namespace std;
 
-class deviceControler{
+deviceControler::deviceControler(){
 	
 	
 public:
 	deviceControler();
 	
 	
-	}
+};
 
-
-
-
-#endif
