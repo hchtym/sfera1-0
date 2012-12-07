@@ -66,8 +66,8 @@ int configControler::configGenerator(){
 	string apnc = "erainternet";
 	string userc = "erainternet";
 	string passwordc = "";
-	networkControler conector = new networkControler(&ip, &port, &apnc, &userc, &passwordc);
-	conector.startConf();
+	conector = new networkControler(&ip, &port, &apnc, &userc, &passwordc);
+	//conector.startConf();
 	
 }
 
