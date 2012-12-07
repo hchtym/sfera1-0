@@ -43,7 +43,7 @@ int configControler::configGenerator(){
 	options.push_back("GPRS");
 	confOptions.push_back("Ip");
 	confOptions.push_back("Port");
-	for(int i=0; i<21-name.size(); i++){
+	for(int i=0; i<21-(int *)name.size(); i++){
 		compose << " ";
 	}
 	string title = compose.str();
@@ -62,7 +62,7 @@ int configControler::configGenerator(){
 				break;
 			}
 	}
-	conector = new networkControler(ip, port, "erainternet", "erainternet", "");
+	networkControler conector = new networkControler(ip, port, "erainternet", "erainternet", "");
 	conector.startConf();
 	
 }
