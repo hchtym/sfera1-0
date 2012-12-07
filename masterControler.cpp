@@ -1,4 +1,4 @@
-#include "mesterControler.h"
+#include "masterControler.h"
 
 using namespace std;
 
