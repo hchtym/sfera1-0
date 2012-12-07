@@ -70,7 +70,7 @@ int configControler::configGenerator(){
 		conector.startConf(0);
 	}else{
 		if(flag.compare("gprs") == 0){
-			conector.starConf(1);
+			conector.startConf(1);
 		}else{
 			// loguj nieznany typ !
 		}

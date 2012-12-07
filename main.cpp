@@ -6,9 +6,9 @@
 using namespace std;
 
 int main(){
-	config = new configControler();
-	network = new networkControler();
-	device = new deviceControler()
+//	configControler* config = new configControler();
+//	networkControler* network = new networkControler();
+//	deviceControler* device = new deviceControler()
 
 	while(1){
 
