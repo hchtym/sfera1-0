@@ -39,9 +39,12 @@ private:
 	//Funkcja parsujaca pobrany config ! 
 	void Tokenize();
 	
+	//
+	string ip, port, apn, user, password;
+	
 	
 public:
-	networkControler(string *ip, string *port, string *apn, string *user, string *password);
+	networkControler(string *ipr, string *portr, string *apnr, string *userr, string *passwordr);
 	~networkControler();
 	int startConf(int type);
 	int sendTransaction();
