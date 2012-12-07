@@ -3,11 +3,6 @@
 using namespace std;
 
 deviceControler::deviceControler(){
-	
-	
-public:
-	deviceControler();
-	
-	
+
 };
 
