@@ -29,7 +29,7 @@ using namespace std;
 class networkControler{
 private:
 	// zmienna zawieajaca dane do pobieranie konfiguracji wykorzystywane w 2 metodach;
-	static char *configs[2][6];
+	static const char *configs[2][6];
 	// funkcje wykorzystywane tylko raz przy pierwszym pobieraniu konfiguracji 
 	int gprsCon();
 	int ethCon();
@@ -55,7 +55,7 @@ public:
 	
 };
 
-static char networkControler::configs[2][6]={
+const char networkControler::configs[2][6]={
 {
 "par.podst.", "zab.karty",
 "opcje menu", "nagrody",
