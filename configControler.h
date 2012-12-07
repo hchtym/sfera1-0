@@ -23,6 +23,8 @@ private:
 	int miniScreen(string *title, int size, bool opt);
 	int miniInput();
 	string flag;
+	vector<string> options;
+	vector<string> confOptions;
 	//koniec ekranow
 
 	//zmienne glopbalne obieku (dostepne tylko dla obieku !)
