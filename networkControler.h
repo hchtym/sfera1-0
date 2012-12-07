@@ -3,7 +3,7 @@
 
 #include <sstream>
 #include <iostream>
-#include <stdlib.>
+#include <stdlib.h>
 #include <errno.h>
 #include <unistd.h>
 #include <string.h>
@@ -17,7 +17,7 @@
 #include <algorithm>
 #include <iterator>
 #include <fstream>
-#include <unistd>
+#include <unistd.h>
 
 extern "C"{
 #include "all_headers.h"	
