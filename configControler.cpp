@@ -50,7 +50,7 @@ int configControler::configGenerator(){
 	int ret;
 	while(1){
 		if(ret == 10) break;
-			item = miniScreen(title.c_str(), 2, true);
+			item = configControler::miniScreen(title.c_str(), 2, true);
 			switch(item){
 				case 0:
 				
