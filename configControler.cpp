@@ -43,7 +43,8 @@ int configControler::configGenerator(){
 	options.push_back("GPRS");
 	confOptions.push_back("Ip");
 	confOptions.push_back("Port");
-	for(int i=0; i<21-(int *)name.size(); i++){
+	int len = name.size();
+	for(int i=0; i<21-len; i++){
 		compose << " ";
 	}
 	string title = compose.str();
