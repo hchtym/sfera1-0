@@ -77,7 +77,7 @@ int configControler::configGenerator(){
 	
 }
 
-int configControler::miniScreen(string *title, int size, bool opt){
+int configControler::miniScreen(string &title, int size, bool opt){
 	int	marked =0;
 	BYTE key;
 	if(opt == true){
