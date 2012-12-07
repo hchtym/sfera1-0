@@ -31,7 +31,7 @@ configControler::configControler(){
 	
 }
 
-int configControler::configGenetaror(){
+int configControler::configGenerator(){
 	int item;
 	string name = "Konfiguracja wstepna"; 
 	stringstream compose;
