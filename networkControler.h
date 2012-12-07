@@ -19,6 +19,8 @@
 #include <fstream>
 #include <unistd.h>
 
+using namespace stad;
+
 
 class networkControler{
 	// zmienna zawieajaca dane do pobieranie konfiguracji wykorzystywane w 2 metodach;

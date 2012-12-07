@@ -8,6 +8,8 @@
 #include <sstream>
 #include <fstream>
 
+using namespace std;
+
 class configControler{ 
 	int configGenerator();
 	// Ekrany uzywane do konfiguracji przy pierwszym wlaczeniu terminala 

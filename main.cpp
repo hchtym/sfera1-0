@@ -3,6 +3,8 @@
 #include "networkControler.h"
 #include "configControler.h"
 
+using namespace std;
+
 int main(){
 	config = new configControler();
 	network = new networkControler();

@@ -7,14 +7,14 @@
 #include <string>
 #include <sstream>
 
-class configControler{
+class deviceControler{
 	
 	
 public:
 	configControler();
 	
 	
-}
+	}
 
 
 

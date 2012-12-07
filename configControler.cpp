@@ -12,6 +12,8 @@
 
 typedef unsigned char BYTE;
 
+using namespace std;
+
 configControler::configControler(){
 	ifstream file("config.txt");
 	if(file)
@@ -188,7 +190,7 @@ int configControler::miniScreen(char *title, int size, bool opt){
 	
 }
 
-int configControler::miniInput(){
+int configControler::miniInput(string title){
 	
 	
 	
