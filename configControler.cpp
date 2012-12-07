@@ -36,7 +36,6 @@ int configControler::configGenerator(){
 	string name = "Konfiguracja wstepna"; 
 	stringstream compose;
 	compose << name;
-	int select;
 	vector<string> options;
 	vector<string> confOptions;
 	options.push_back("Ethernet");
@@ -54,11 +53,11 @@ int configControler::configGenerator(){
 			item = miniScreen(&title, 2, true);
 			switch(item){
 				case 0:
-				
+				flag = "eth";
 				ret = miniScreen(&title, 2, false);
 				break;
 				case 1:
-				
+				flag = "gprs";
 				ret = miniScreen(&title, 5, false);
 				break;
 			}
@@ -67,7 +66,8 @@ int configControler::configGenerator(){
 	string userc = "erainternet";
 	string passwordc = "";
 	networkControler* conector = new networkControler(&ip, &port, &apnc, &userc, &passwordc);
-	//conector.startConf();
+
+	conector.startConf();
 	
 }
 
@@ -178,7 +178,7 @@ int configControler::miniScreen(string *title, int size, bool opt){
 					break;
 					case 1:
 						miniInput();
-						break;
+					break;
 					default:
 					break;
 				}

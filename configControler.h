@@ -22,7 +22,7 @@ private:
 	// Ekrany uzywane do konfiguracji przy pierwszym wlaczeniu terminala 
 	int miniScreen(string *title, int size, bool opt);
 	int miniInput();
-	std::string flag;
+	string flag;
 	//koniec ekranow
 
 	//zmienne glopbalne obieku (dostepne tylko dla obieku !)
