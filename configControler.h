@@ -3,6 +3,8 @@
 
 #include "ConfigFile.h"
 #include "Chameleon.h"
+#include <iostream>
+#include <stdlib>
 #include <vector>
 #include <string>
 #include <sstream>

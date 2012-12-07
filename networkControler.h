@@ -2,8 +2,8 @@
 #define _NETWORK_CONTROLER_H
 
 #include <sstream>
-#include <iostream.h>
-#include <stdlib.h>
+#include <iostream>
+#include <stdlib>
 #include <errno.h>
 #include <unistd.h>
 #include <string.h>
@@ -17,7 +17,7 @@
 #include <algorithm>
 #include <iterator>
 #include <fstream>
-#include <unistd.h>
+#include <unistd>
 
 extern "C"{
 #include "all_headers.h"	

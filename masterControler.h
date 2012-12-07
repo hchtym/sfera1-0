@@ -6,6 +6,8 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <iostream>
+#include <stdlib>
 
 extern "C"{
 #include "all_headers.h"	
