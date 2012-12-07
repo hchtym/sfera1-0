@@ -28,7 +28,7 @@ public:
 	masterControler();
 	int dispMenu();
 	
-}
+};
 
 
 

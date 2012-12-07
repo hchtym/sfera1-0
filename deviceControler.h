@@ -28,7 +28,7 @@ public:
 	int ertErrDevLogs();
 	int magCardScan();
 	
-}
+};
 
 
 

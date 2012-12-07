@@ -43,7 +43,7 @@ public:
 	int returnTime(); 
 	int returnVersion(); 
 	int returnServiceCode();   
-}
+};
 
 
 

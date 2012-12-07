@@ -31,17 +31,7 @@ private:
 	enum {xsize =2};
 	enum {ysize =6};
 	// zmienna zawieajaca dane do pobieranie konfiguracji wykorzystywane w 2 metodach;
-	char * configs[xsize][ysize]={
-	{
-	"par.podst.", "zab.karty",
-	"opcje menu", "nagrody",
-	"sprzedawcy", "obliczenia"
-	},{
-	"ok", "lc",
-	"menu", "prize",
-	"seller", "comp"
-	}
-	};
+	const char configs[2][6];
 	// funkcje wykorzystywane tylko raz przy pierwszym pobieraniu konfiguracji 
 	int gprsCon();
 	int ethCon();
@@ -65,7 +55,20 @@ public:
 	int checkSignalStr();
 	int checkTotalPoints();
 	
+};
+
+const char networkControler::configs[xsize][ysize]={
+{
+"par.podst.", "zab.karty",
+"opcje menu", "nagrody",
+"sprzedawcy", "obliczenia"
+},{
+"ok", "lc",
+"menu", "prize",
+"seller", "comp"
 }
+};
+
 
 
 
