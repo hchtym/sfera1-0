@@ -48,15 +48,15 @@ int configControler::configGenerator(){
 	int ret;
 	while(1){
 		if(ret == 10) break;
-			item = miniScreen(&title, 2, true);
+			//item = miniScreen(&title, 2, true);
 			switch(item){
 				case 0:
 				flag = "eth";
-				ret = miniScreen(&title, 2, false);
+			//	ret = miniScreen(&title, 2, false);
 				break;
 				case 1:
 				flag = "gprs";
-				ret = miniScreen(&title, 5, false);
+			//	ret = miniScreen(&title, 5, false);
 				break;
 			}
 	}

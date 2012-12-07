@@ -9,9 +9,9 @@
 #include <iostream>
 #include <stdlib.h>
 
-extern "C"{
+//extern "C"{
 #include "all_headers.h"	
-}
+//}
 
 using namespace std;
 

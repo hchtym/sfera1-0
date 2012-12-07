@@ -43,7 +43,7 @@ int networkControler::ethCon(){
 		perror("socket"); // ogowanie do pliku !! 
 		exit(1);
 	}
-	int ports;
+	//int ports;
 	atoi(port.c_str());
 	dest_addr.sin_family = AF_INET;
 	dest_addr.sin_port = htons( atoi(port.c_str())	); // wstawic port 

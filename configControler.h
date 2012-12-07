@@ -10,9 +10,9 @@
 #include <sstream>
 #include <fstream>
 
-extern "C"{
+//extern "C"{
 #include "all_headers.h"	
-}
+//}
 
 using namespace std;
 

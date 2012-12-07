@@ -19,9 +19,9 @@
 #include <fstream>
 #include <unistd.h>
 
-extern "C"{
+//extern "C"{
 #include "all_headers.h"	
-}
+//}
 
 using namespace std;
 
