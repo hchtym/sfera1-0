@@ -245,6 +245,7 @@ int configControler::miniInput(string& title, string& variable){
 	}
 	string str = compo.str();
 	string str2;
+	str2.clear();
 	Lcd_Cls();
 	Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_str()) );
 	compo.str("");
