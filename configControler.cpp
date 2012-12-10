@@ -304,7 +304,7 @@ int configControler::miniInput(string& title, string& variable){
 				compo.seekg(0, ios::end);
 				int len = compo.tellg();
 				temp = compo.str();
-				temp[len -1] = "\0"
+				temp = temp.remove(temp.lenght() -1);
 					compo.str("");
 					compo.clean();
 					compo << temp;
