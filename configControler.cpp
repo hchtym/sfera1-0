@@ -252,8 +252,8 @@ int configControler::miniInput(string& title, string& variable){
 	compo.str("");
 	compo.clear();
 	if(title.compare("Ip") == 0)compo << "Ip:" << ip;
-	if(title.compare("Port") == 0)compo << "Port:" << ip;
-	if(title.compare("Seriall Number") == 0)compo << "SN:" << ip;
+	if(title.compare("Port") == 0)compo << "Port:" << port;
+	if(title.compare("Seriall Number") == 0)compo << "SN:" << seriallnumber;
 	str3 = compo.str();
 	compo.str("");
 	compo.clear();
