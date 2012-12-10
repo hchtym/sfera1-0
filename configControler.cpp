@@ -358,11 +358,12 @@ int configControler::miniInput(string& title, string& variable){
 //			Lcd_Printxy(1, 55, 0, "AlPha = .");
 		}
 	}else{
-		Kb_GetStr(0, 20, input, 4, 12, 0, 60);
+		Lcd_Printxy(1, 11, 0, const_cast<char *>(str3.c_str()) );
+		Kb_GetStr(0, 24, input, 4, 12, 0, 60);
 	}
 	string conv = (char *)input;
 
-		if(title.compare("Ip") == 0) ip = conv; //const_cast<char *>(input);
+		if(title.compare("Ip") == 0) ip = str2; //const_cast<char *>(input);
 	
 		if(title.compare("Port") == 0) port = conv; //const_cast<char *>(input);
 	
