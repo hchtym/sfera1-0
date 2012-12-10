@@ -38,6 +38,7 @@ int configControler::configGenerator(){
 	compose << name;
 	options.push_back("Ethernet");
 	options.push_back("GPRS");
+	options.push_back("Seriall Number");
 	confOptions.push_back("Ip");
 	confOptions.push_back("Port");
 	int len = name.size();
@@ -79,6 +80,7 @@ int configControler::configGenerator(){
 
 int configControler::miniScreen(string &title, int size, bool opt){
 	int	marked =0;
+	stringstream compose;
 	BYTE key;
 	if(opt == true){
 		while(1){
@@ -87,7 +89,13 @@ int configControler::miniScreen(string &title, int size, bool opt){
 			Lcd_Printxy(0, 0, 1, const_cast<char *>(title.c_str())); //tytul
 			// wyswietlanie menu
 			for(int i=0; i < size; i++){
-				string str = options[i];
+				compose << options[i];
+				compose.seekg(0, ios::end);
+				int len = compose.tellg();
+				for(int i=0; i<21-len; i++){
+					compose << " ";
+				}
+				string str = compose.str();				
 				if(marked == 0){
 					Lcd_Printxy(0, (i*8)+8, 1,const_cast<char *>(str.c_str()));
 				}else{
