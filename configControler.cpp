@@ -49,6 +49,7 @@ int configControler::configGenerator(){
 	int ret;
 	while(1){
 		if(ret == 10) break;
+		if(item == 10) break;
 			item = miniScreen(title, 3, true);
 			switch(item){
 				case 0:
@@ -60,6 +61,7 @@ int configControler::configGenerator(){
 				ret = miniScreen(title, 2, false);
 				break;
 				case 2:
+					miniInput(options[2],seriallnumber);
 				break;
 				default:
 				break;
@@ -136,6 +138,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 				case KEYENTER:
 					return marked;
 				break;
+				break 
 				default:
 					key=NOKEY;
 				break;
@@ -207,13 +210,10 @@ int configControler::miniScreen(string &title, int size, bool opt){
 			if(enter == true){
 				switch(marked){
 					case 0:
-					//	miniInput();
+						miniInput(confOptions[0], ip);
 					break;
 					case 1:
-					//	miniInput();
-					break;
-					case 2:
-					//  miniInput();
+						miniInput(confOptions[1], port);
 					break;
 					default:
 					break;
@@ -229,8 +229,32 @@ int configControler::miniScreen(string &title, int size, bool opt){
 	
 }
 
-int configControler::miniInput(){
+int configControler::miniInput(string& title, string& variable){
+	stringstream compo;
+	char *input;
+	compo << options[i];
+	compo.seekg(0, ios::end);
+	int len = compo.tellg();
+	for(int i=0; i<21-len; i++){
+		compo << " ";
+	}
+	string str = compo.str();
 	
+	Lcd_Cls();
+	Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_ctr()) );
+	if(title.compare("Ip") == 0){
+		Lcd_Printxy(1, 11, 0 "Podawaj same cyfry.");
+		Kb_GetStr(0, 20, input, 4, 12, 0, 60);
+	
+	}else{
+		Kb_GetStr(0, 20, input, 4, 12, 0, 60);
+	}
+	
+	if(title.compare("Ip") == 0) ip = input;
+	
+		if(title.compare("Port") == 0) port = input;
+	
+	if(title.compare("Seriall Number") == 0) seriallnumber = input;
 	
 	
 }

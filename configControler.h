@@ -28,7 +28,7 @@ private:
 	//koniec ekranow
 
 	//zmienne glopbalne obieku (dostepne tylko dla obieku !)
-	string ip, port, apn, user, password;
+	string ip, port, apn, user, password, seriallnumber;
 
 	
 public: 
