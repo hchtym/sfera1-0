@@ -244,17 +244,24 @@ int configControler::miniInput(string& title, string& variable){
 		compo << " ";
 	}
 	string str = compo.str();
-	string str2;
+	string str2, str3;
 	str2.clear();
+	str3.clear();
 	Lcd_Cls();
 	Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_str()) );
+	compo.str("");
+	compo.clear();
+	if(title.compare("Ip") == 0)compo << "Ip:" << ip;
+	if(title.compare("Port") == 0)compo << "Port:" << ip;
+	if(title.compare("Seriall Number") == 0)compo << "SN:" << ip;
+	str3 = compo.str();
 	compo.str("");
 	compo.clear();
 	if(title.compare("Ip") == 0){
 		while(1){
 			Lcd_Cls();
 			Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_str()) );
-			//Lcd_Printxy(1, 11, 0, "Podawaj same cyfry.");
+			Lcd_Printxy(1, 11, 0, const_cast<char *>(str3.c_str()) );
 			Lcd_Printxy(0, 24, 0, const_cast<char *>(str2.c_str()) );
 			Lcd_Printxy(1, 55, 0, "AlPha = .");
 			while(1){
@@ -326,6 +333,8 @@ int configControler::miniInput(string& title, string& variable){
 				break;
 				case KEYALPHA:
 					compo << ".";
+					str2.clear();
+					str2 = compo.str();
 				break;
 				case KEYBACKSPACE:
 //				compo.seekg(0, ios::end);
