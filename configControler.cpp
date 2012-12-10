@@ -369,9 +369,9 @@ int configControler::miniInput(string& title, string& variable){
 
 		if(title.compare("Ip") == 0) ip = str2; //const_cast<char *>(input);
 	
-		if(title.compare("Port") == 0) port = conv; //const_cast<char *>(input);
+		if(title.compare("Port") == 0) port = str2; //const_cast<char *>(input);
 	
-		if(title.compare("Seriall Number") == 0) seriallnumber = conv; //const_cast<char *>(input);
+		if(title.compare("Seriall Number") == 0) seriallnumber = str2; //const_cast<char *>(input);
 	
 	
 }
