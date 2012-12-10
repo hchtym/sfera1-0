@@ -117,15 +117,15 @@ int configControler::miniScreen(string &title, int size, bool opt){
 			}
 			switch(key){
 				case KEYDOWN:
-					if(marked > 0) {
+					if(marked < size -1) {
 						marked++;
-						if(marked > 1) marked =0;
+						if(marked > size-1) marked =0;
 					}else{
 						marked = 0;
 					}
 				break;
 				case KEYUP:
-					if(marked <1 ){
+					if(marked <size -1 ){
 						marked--;
 						if(marked < 0) marked =1;
 					}else{
