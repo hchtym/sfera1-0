@@ -144,16 +144,16 @@ int configControler::miniScreen(string &title, int size, bool opt){
 	bool enter = false;		
 		while(1){
 			key = NOKEY;
-		//	Lcd_Cls();
-		//	Lcd_Printxy(0, 0, 1, const_cast<char *>(title.c_str())); //tytul
-		
+			Lcd_Cls();
+			Lcd_Printxy(0, 0, 1, const_cast<char *>(title.c_str())); //tytul
+			Lcd_Printxy(0, 8, 0, "---------------------");
 			// wyswietlanie menu
 			for(int i= 0; i < size ; i++){
 				string str = confOptions[i];
 				if(marked == 0){
-			//		Lcd_Printxy(0, (i*8)+16, 1, const_cast<char *>(str.c_str()) );
+					Lcd_Printxy(0, (i*8)+16, 1, const_cast<char *>(str.c_str()) );
 				}else{
-			//		Lcd_Printxy(0, (i*8)+16, 0, const_cast<char *>(str.c_str()) );
+					Lcd_Printxy(0, (i*8)+16, 0, const_cast<char *>(str.c_str()) );
 				}
 			}
 			while(1){
@@ -166,7 +166,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 			}
 			switch(key){
 				case KEYDOWN:
-					if(marked > 0) {
+					if(marked < size -1) {
 						marked++;
 						if(marked > size-1) marked =0;
 					}else{
@@ -174,11 +174,11 @@ int configControler::miniScreen(string &title, int size, bool opt){
 					}
 				break;
 				case KEYUP:
-					if(marked < size ){
+					if(marked > 0 ){
 						marked--;
 						if(marked < 0) marked =size -1;
 					}else{
-						marked--;
+						marked = size -1;
 					}
 				break;
 				case KEYENTER:
