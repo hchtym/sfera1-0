@@ -232,7 +232,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 int configControler::miniInput(string& title, string& variable){
 	stringstream compo;
 	char *input;
-	compo << options[i];
+	compo << title;
 	compo.seekg(0, ios::end);
 	int len = compo.tellg();
 	for(int i=0; i<21-len; i++){
@@ -241,9 +241,9 @@ int configControler::miniInput(string& title, string& variable){
 	string str = compo.str();
 	
 	Lcd_Cls();
-	Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_ctr()) );
+	Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_str()) );
 	if(title.compare("Ip") == 0){
-		Lcd_Printxy(1, 11, 0 "Podawaj same cyfry.");
+		Lcd_Printxy(1, 11, 0, "Podawaj same cyfry.");
 		Kb_GetStr(0, 20, input, 4, 12, 0, 60);
 	
 	}else{
