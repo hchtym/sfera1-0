@@ -156,7 +156,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 			// wyswietlanie menu
 			for(int i= 0; i < size ; i++){
 				stringstream compo;
-				compo << options[i];
+				compo << confOptions[i];
 				compo.seekg(0, ios::end);
 				int len = compo.tellg();
 				for(int i=0; i<21-len; i++){
