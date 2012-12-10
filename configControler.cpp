@@ -90,7 +90,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 			key = NOKEY;
 			Lcd_Cls();
 			Lcd_Printxy(0, 0, 1, const_cast<char *>(title.c_str())); //tytul
-			Lcd_Printxy(0, 0, 0, "---------------------");
+			Lcd_Printxy(0, 8, 0, "---------------------");
 			// wyswietlanie menu
 			for(int i=0; i < size; i++){
 				stringstream compo;
