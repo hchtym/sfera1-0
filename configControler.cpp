@@ -325,7 +325,8 @@ int configControler::miniInput(string& title, string& variable){
 				temp.clear();
 				temp = compo.str();
 //				temp[temp.size()-1] = "\0";
-				temp = temp.erase(temp.size() -1, temp.end());
+				int len = temp.size();
+				temp = temp.erase(len-1);
 					compo.str("");
 					compo.clear();
 					compo << temp;
