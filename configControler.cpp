@@ -231,7 +231,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 
 int configControler::miniInput(string& title, string& variable){
 	stringstream compo;
-	char *input;
+	unsigned char *input;
 	compo << title;
 	compo.seekg(0, ios::end);
 	int len = compo.tellg();
