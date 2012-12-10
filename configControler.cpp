@@ -266,33 +266,53 @@ int configControler::miniInput(string& title, string& variable){
 			switch(key){
 				case KEY0:
 					compo << "0";
+					str2.clear();
+					str2 = compo;
 				break;
 				case KEY1:
 					compo << "1";
+					str2.clear();
+					str2 = compo;
 				break;
 				case KEY2:
 					compo << "2";
+					str2.clear();
+					str2 = compo;
 				break;
 				case KEY3:
 					compo << "3";
+					str2.clear();
+					str2 = compo;
 				break;
 				case KEY4:
 					compo << "4";
+					str2.clear();
+					str2 = compo;
 				break;
 				case KEY5:
 					compo << "5";
+					str2.clear();
+					str2 = compo;
 				break;
 				case KEY6:
 					compo << "6";
+					str2.clear();
+					str2 = compo;
 				break;
 				case KEY7:
 					compo << "7";
+					str2.clear();
+					str2 = compo;
 				break;
 				case KEY8:
 					compo << "8";
+					str2.clear();
+					str2 = compo;
 				break;
 				case KEY9:
-					compo << "0";
+					compo << "9";
+					str2.clear();
+					str2 = compo;
 				break;
 				case KEYENTER:
 					return 0;
@@ -301,10 +321,10 @@ int configControler::miniInput(string& title, string& variable){
 					compo << ".";
 				break;
 				case KEYBACKSPACE:
-				compo.seekg(0, ios::end);
+//				compo.seekg(0, ios::end);
 				temp.clear();
 				temp = compo.str();
-				temp = temp.erase(temp.length() -1, temp.length()-1);
+				temp = temp.erase(temp.length() -1, temp.end());
 					compo.str("");
 					compo.clear();
 					compo << temp;
@@ -314,6 +334,7 @@ int configControler::miniInput(string& title, string& variable){
 				default:
 				break;
 			}
+			
 			Lcd_Printxy(0, 20, 0, const_cast<char *>(str2.c_str()) );
 //		Kb_GetStr(0, 20, input, 4, 12, 0, 60);
 			Lcd_Printxy(1, 55, 0, "AlPha = .");
