@@ -254,8 +254,8 @@ int configControler::miniInput(string& title, string& variable){
 		while(1){
 			Lcd_Cls();
 			Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_str()) );
-			Lcd_Printxy(1, 11, 0, "Podawaj same cyfry.");
-			Lcd_Printxy(0, 20, 0, const_cast<char *>(str2.c_str()) );
+			//Lcd_Printxy(1, 11, 0, "Podawaj same cyfry.");
+			Lcd_Printxy(0, 24, 0, const_cast<char *>(str2.c_str()) );
 			Lcd_Printxy(1, 55, 0, "AlPha = .");
 			while(1){
 				if(Kb_Hit){
@@ -317,12 +317,12 @@ int configControler::miniInput(string& title, string& variable){
 					str2 = compo.str();
 				break;
 				case KEYENTER:
-					int dl = str2.size();
-					if(dl < 15){
+					//int dl = str2.size();
+					//if(dl < 15){
 					return 0;
-					}else{
+					//}else{
 						Lcd_Printxy(0, 47, 0, "Za dlugi IP");	
-					}
+					//}
 				break;
 				case KEYALPHA:
 					compo << ".";
