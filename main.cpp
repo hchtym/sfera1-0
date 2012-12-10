@@ -6,6 +6,11 @@
 using namespace std;
 
 int main(){
+	SystemInit();
+	Prn_Init();
+	Lcd_Cls();
+	Lcd_SetGray(50);
+	Lcd_SetFont(1,0,0);
 	configControler* config = new configControler();
 //	networkControler* network = new networkControler();
 //	deviceControler* device = new deviceControler()
