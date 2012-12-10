@@ -317,7 +317,12 @@ int configControler::miniInput(string& title, string& variable){
 					str2 = compo.str();
 				break;
 				case KEYENTER:
+					int dl = str2.size();
+					if(dl < 15){
 					return 0;
+					}else{
+						Lcd_Printxy(0, 47, 0, "Za dlugi IP");	
+					}
 				break;
 				case KEYALPHA:
 					compo << ".";
