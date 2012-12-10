@@ -302,12 +302,11 @@ int configControler::miniInput(string& title, string& variable){
 				break;
 				case KEYBACKSPACE:
 				compo.seekg(0, ios::end);
-				int len = compo.tellg();
 				temp.clear();
 				temp = compo.str();
-				temp = temp.erase(temp.length() -1, tems.length()-1);
+				temp = temp.erase(temp.length() -1, temp.length()-1);
 					compo.str("");
-					compo.clean();
+					compo.clear();
 					compo << temp;
 				str2.clear();
 				str2 = temp;
