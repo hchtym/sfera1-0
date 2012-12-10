@@ -258,9 +258,9 @@ int configControler::miniInput(string& title, string& variable){
 			while(1){
 				if(Kb_Hit){
 					key = Kb_GetKey();
-					if(key != NOKEY){
+					//if(key != NOKEY){
 						break;
-					}
+					//}
 				}
 			}
 			switch(key){
