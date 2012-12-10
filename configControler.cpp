@@ -248,8 +248,8 @@ int configControler::miniInput(string& title, string& variable){
 	string str2, str3;
 	str2.clear();
 	str3.clear();
-	Lcd_Cls();
-	Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_str()) );
+//	Lcd_Cls();
+//	Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_str()) );
 	compo.str("");
 	compo.clear();
 	if(title.compare("Ip") == 0)compo << "Ip:" << ip;
@@ -258,7 +258,7 @@ int configControler::miniInput(string& title, string& variable){
 	str3 = compo.str();
 	compo.str("");
 	compo.clear();
-	if(title.compare("Ip") == 0){
+//	if(title.compare("Ip") == 0){
 		while(arg){
 			Lcd_Cls();
 			Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_str()) );
@@ -361,10 +361,10 @@ int configControler::miniInput(string& title, string& variable){
 //		Kb_GetStr(0, 20, input, 4, 12, 0, 60);
 //			Lcd_Printxy(1, 55, 0, "AlPha = .");
 		}
-	}else{
-		Lcd_Printxy(1, 11, 0, const_cast<char *>(str3.c_str()) );
-		Kb_GetStr(0, 24, input, 4, 12, 0, 60);
-	}
+//	}else{
+//		Lcd_Printxy(1, 11, 0, const_cast<char *>(str3.c_str()) );
+//		Kb_GetStr(0, 24, input, 4, 12, 0, 60);
+//	}
 	string conv = (char *)input;
 
 		if(title.compare("Ip") == 0) ip = str2; //const_cast<char *>(input);
