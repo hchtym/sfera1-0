@@ -236,7 +236,7 @@ int configControler::miniInput(string& title, string& variable){
 	BYTE key = NOKEY;
 	bool arg  =true;
 	string temp;
-	unsigned char *input;
+	unsigned char input[20];
 	memset(input, 0, sizeof(input));
 	compo << title;
 	compo.seekg(0, ios::end);
@@ -363,10 +363,11 @@ int configControler::miniInput(string& title, string& variable){
 		}
 	}else{
 		Lcd_Printxy(1, 11, 0, const_cast<char *>(str3.c_str()) );
-		Kb_GetStr(0, 24, input, 4, 16, 0, 120);
+		Kb_GetStr(0, 24, input, 4, 19, 0, 120);
 	}
-
-		if(title.compare("Ip") == 0) ip = str2; //const_cast<char *>(input);
+		if(str2.size() != 0){
+			if(title.compare("Ip") == 0) ip = str2; //const_cast<char *>(input);
+		}
 		
 		string conv = (char *)input;
 		if(conv.size() != 0){
