@@ -190,7 +190,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 				case KEYCANCEL:
 				case KEYBACKSPACE:
 					enter = false;
-				break
+				break;
 				default:
 					key=NOKEY;
 				break;
