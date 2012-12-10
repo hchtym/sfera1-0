@@ -100,7 +100,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 					compose << " ";
 				}
 				string str = compose.str();				
-				if(marked == 0){
+				if(marked == i){
 					Lcd_Printxy(0, (i*8)+8, 1,const_cast<char *>(str.c_str()));
 				}else{
 					Lcd_Printxy(0, (i*8)+8, 0, const_cast<char *>(str.c_str()));
