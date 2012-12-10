@@ -336,6 +336,9 @@ int configControler::miniInput(string& title, string& variable){
 					str2.clear();
 					str2 = compo.str();
 				break;
+				case KEYCANCEL:
+				return 0;
+				break;
 				case KEYBACKSPACE:
 //				compo.seekg(0, ios::end);
 				temp.clear();
