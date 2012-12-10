@@ -234,6 +234,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 int configControler::miniInput(string& title, string& variable){
 	stringstream compo;
 	BYTE key = NOKEY;
+	string temp;
 	unsigned char *input;
 	memset(input, 0, sizeof(input));
 	compo << title;
@@ -301,9 +302,13 @@ int configControler::miniInput(string& title, string& variable){
 				break;
 				case KEYBACKSPACE:
 				int len = strlen(compo.str());
-				compo.str()[len -1] = "\0";
+				temp = compo.str()[len -1] = "\0";
+				temp[len -1] = "\0"
+					compo.str("");
+					compo.clean();
+					compo << temp;
 				str2.clear();
-				str2 = compo.str();
+				str2 = temp;
 				break;
 				default:
 				break;
