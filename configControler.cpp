@@ -254,7 +254,8 @@ int configControler::miniInput(string& title, string& variable){
 			Lcd_Cls();
 			Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_str()) );
 			Lcd_Printxy(1, 11, 0, "Podawaj same cyfry.");
-			//Lcd_Printxy(1, 55, 0, "AlPha = .");
+			Lcd_Printxy(0, 20, 0, const_cast<char *>(str2.c_str()) );
+			Lcd_Printxy(1, 55, 0, "AlPha = .");
 			while(1){
 				if(Kb_Hit){
 					key = Kb_GetKey();
@@ -337,9 +338,9 @@ int configControler::miniInput(string& title, string& variable){
 				break;
 			}
 			
-			Lcd_Printxy(0, 20, 0, const_cast<char *>(str2.c_str()) );
+		
 //		Kb_GetStr(0, 20, input, 4, 12, 0, 60);
-			Lcd_Printxy(1, 55, 0, "AlPha = .");
+//			Lcd_Printxy(1, 55, 0, "AlPha = .");
 		}
 	}else{
 		Kb_GetStr(0, 20, input, 4, 12, 0, 60);
