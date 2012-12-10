@@ -125,7 +125,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 					}
 				break;
 				case KEYUP:
-					if(marked <size -1 ){
+					if(marked > 0 ){
 						marked--;
 						if(marked < 0) marked =size -1;
 					}else{
