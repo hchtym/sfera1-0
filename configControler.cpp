@@ -3,12 +3,12 @@
 
 //definicje guzikow klawiatury
 
-#define KEYCANCEL  0x1B
-#define KEYENTER  0x0D 
-#define KEYUP  0x3C 
-#define KEYDOWN  0x3E
-#define NOKEY 0xFE
-#define KEYFUN 0x12
+//#define KEYCANCEL  0x1B
+//#define KEYENTER  0x0D 
+//#define KEYUP  0x3C 
+//#define KEYDOWN  0x3E
+//#define NOKEY 0xFE
+//#define KEYFUN 0x12
 
 using namespace std;
 
@@ -150,7 +150,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 			// wyswietlanie menu
 			for(int i= 0; i < size ; i++){
 				string str = confOptions[i];
-				if(marked == 0){
+				if(marked == i){
 					Lcd_Printxy(0, (i*8)+16, 1, const_cast<char *>(str.c_str()) );
 				}else{
 					Lcd_Printxy(0, (i*8)+16, 0, const_cast<char *>(str.c_str()) );
@@ -187,6 +187,10 @@ int configControler::miniScreen(string &title, int size, bool opt){
 				case KEYFUN:
 					return 10;
 				break;
+				case KEYCANCEL:
+				case KEYBACKSPACE:
+					enter = false;
+				break
 				default:
 					key=NOKEY;
 				break;
