@@ -21,7 +21,7 @@ private:
 	int configGenerator();
 	// Ekrany uzywane do konfiguracji przy pierwszym wlaczeniu terminala 
 	int miniScreen(string &title, int size, bool opt);
-	int miniInput();
+	int miniInput(string& title, stinr& variable);
 	string flag;
 	vector<string> options;
 	vector<string> confOptions;
