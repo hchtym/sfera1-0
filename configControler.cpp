@@ -85,6 +85,7 @@ int configControler::configGenerator(){
 int configControler::miniScreen(string &title, int size, bool opt){
 	int	marked =0;
 	BYTE key;
+	bool ends;
 	if(opt == true){
 		while(1){
 			key = NOKEY;
@@ -196,6 +197,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 				break;
 				case KEYCANCEL:
 				case KEYBACKSPACE:
+					ends = true;
 					enter = false;
 				break;
 				default:
@@ -218,7 +220,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 				}
 			}
 			enter = false;
-			
+			if(ends == true) break;
 		}		
 	
 	
