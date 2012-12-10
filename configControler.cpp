@@ -49,7 +49,7 @@ int configControler::configGenerator(){
 	int ret;
 	while(1){
 		if(ret == 10) break;
-			item = miniScreen(title, 2, true);
+			item = miniScreen(title, 3, true);
 			switch(item){
 				case 0:
 				flag = "eth";
@@ -57,7 +57,11 @@ int configControler::configGenerator(){
 				break;
 				case 1:
 				flag = "gprs";
-				ret = miniScreen(title, 5, false);
+				ret = miniScreen(title, 2, false);
+				break;
+				case 2:
+				break;
+				default:
 				break;
 			}
 	}
@@ -85,8 +89,6 @@ int configControler::miniScreen(string &title, int size, bool opt){
 	if(opt == true){
 		while(1){
 			key = NOKEY;
-			Lcd_Cls();
-			Lcd_Printxy(0, 0, 1, const_cast<char *>(title.c_str())); //tytul
 			// wyswietlanie menu
 			for(int i=0; i < size; i++){
 				compose << options[i];
@@ -116,7 +118,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 						marked++;
 						if(marked > 1) marked =0;
 					}else{
-						marked++;
+						marked = 0;
 					}
 				break;
 				case KEYUP:
@@ -124,7 +126,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 						marked--;
 						if(marked < 0) marked =1;
 					}else{
-						marked--;
+						marked = size -1;
 					}
 				break;
 				case KEYENTER:
