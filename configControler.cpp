@@ -249,12 +249,12 @@ int configControler::miniInput(string& title, string& variable){
 	}else{
 		Kb_GetStr(0, 20, input, 4, 12, 0, 60);
 	}
+	string conv = (char *)input
+		if(title.compare("Ip") == 0) ip = conv; //const_cast<char *>(input);
 	
-	if(title.compare("Ip") == 0) ip = const_cast<char *>(input);
+		if(title.compare("Port") == 0) port = conv; //const_cast<char *>(input);
 	
-		if(title.compare("Port") == 0) port = const_cast<char *>(input);
-	
-	if(title.compare("Seriall Number") == 0) seriallnumber = const_cast<char *>(input);
+		if(title.compare("Seriall Number") == 0) seriallnumber = conv; //const_cast<char *>(input);
 	
 	
 }
