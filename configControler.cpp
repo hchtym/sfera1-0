@@ -248,8 +248,8 @@ int configControler::miniInput(string& title, string& variable){
 	string str2, str3;
 	str2.clear();
 	str3.clear();
-//	Lcd_Cls();
-//	Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_str()) );
+	Lcd_Cls();
+	Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_str()) );
 	compo.str("");
 	compo.clear();
 	if(title.compare("Ip") == 0)compo << "Ip:" << ip;
