@@ -267,52 +267,52 @@ int configControler::miniInput(string& title, string& variable){
 				case KEY0:
 					compo << "0";
 					str2.clear();
-					str2 = compo;
+					str2 = compo.str();
 				break;
 				case KEY1:
 					compo << "1";
 					str2.clear();
-					str2 = compo;
+					str2 = compo.str();
 				break;
 				case KEY2:
 					compo << "2";
 					str2.clear();
-					str2 = compo;
+					str2 = compo.str();
 				break;
 				case KEY3:
 					compo << "3";
 					str2.clear();
-					str2 = compo;
+					str2 = compo.str();
 				break;
 				case KEY4:
 					compo << "4";
 					str2.clear();
-					str2 = compo;
+					str2 = compo.str();
 				break;
 				case KEY5:
 					compo << "5";
 					str2.clear();
-					str2 = compo;
+					str2 = compo.str();
 				break;
 				case KEY6:
 					compo << "6";
 					str2.clear();
-					str2 = compo;
+					str2 = compo.str();
 				break;
 				case KEY7:
 					compo << "7";
 					str2.clear();
-					str2 = compo;
+					str2 = compo.str();
 				break;
 				case KEY8:
 					compo << "8";
 					str2.clear();
-					str2 = compo;
+					str2 = compo.str();
 				break;
 				case KEY9:
 					compo << "9";
 					str2.clear();
-					str2 = compo;
+					str2 = compo.str();
 				break;
 				case KEYENTER:
 					return 0;
