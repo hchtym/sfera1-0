@@ -138,7 +138,9 @@ int configControler::miniScreen(string &title, int size, bool opt){
 				case KEYENTER:
 					return marked;
 				break;
-				break 
+				case KEYFUN:
+				return 10;
+				break; 
 				default:
 					key=NOKEY;
 				break;
