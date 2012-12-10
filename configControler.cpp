@@ -233,6 +233,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 
 int configControler::miniInput(string& title, string& variable){
 	stringstream compo;
+	BYTE key = NOKEY;
 	unsigned char *input;
 	memset(input, 0, sizeof(input));
 	compo << title;
@@ -242,17 +243,80 @@ int configControler::miniInput(string& title, string& variable){
 		compo << " ";
 	}
 	string str = compo.str();
-	
+	string str2;
 	Lcd_Cls();
 	Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_str()) );
+	compo.str("");
+	compo.clear();
 	if(title.compare("Ip") == 0){
-		Lcd_Printxy(1, 11, 0, "Podawaj same cyfry.");
-		Kb_GetStr(0, 20, input, 4, 12, 0, 60);
-	
+		while(1){
+			Lcd_Cls();
+			Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_str()) );
+			Lcd_Printxy(1, 11, 0, "Podawaj same cyfry.");
+			Lcd_Printxy(1, 55, 0, "AlPha = .");
+			while(1){
+				if(Kb_Hit){
+					key = Kb_GetKey();
+					if(key != NOKEY){
+						break;
+					}
+				}
+			}
+			switch(key){
+				case KEY0:
+					compo << "0";
+				break;
+				case KEY1:
+					compo << "1";
+				break;
+				case KEY2:
+					compo << "2";
+				break;
+				case KEY3:
+					compo << "3";
+				break;
+				case KEY4:
+					compo << "4";
+				break;
+				case KEY5:
+					compo << "5";
+				break;
+				case KEY6:
+					compo << "6";
+				break;
+				case KEY7:
+					compo << "7";
+				break;
+				case KEY8:
+					compo << "8";
+				break;
+				case KEY9:
+					compo << "0";
+				break;
+				case KEYENTER:
+					return 0;
+				break;
+				case KEYALPHA:
+					compo << ".";
+				break;
+				case KEYBACKSPACE:
+				int len = strlen(compo.str());
+				compo.str()[len -1] = "\0";
+				str2.clear();
+				str2 = compo.str();
+				break;
+				default:
+				break;
+			}
+			Lcd_Printxy(0, 20, 0, const_cast<char *>(str2.c_str()) );
+//		Kb_GetStr(0, 20, input, 4, 12, 0, 60);
+
+		}
 	}else{
 		Kb_GetStr(0, 20, input, 4, 12, 0, 60);
 	}
 	string conv = (char *)input;
+
 		if(title.compare("Ip") == 0) ip = conv; //const_cast<char *>(input);
 	
 		if(title.compare("Port") == 0) port = conv; //const_cast<char *>(input);
