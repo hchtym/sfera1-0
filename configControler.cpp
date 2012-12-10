@@ -234,6 +234,7 @@ int configControler::miniScreen(string &title, int size, bool opt){
 int configControler::miniInput(string& title, string& variable){
 	stringstream compo;
 	BYTE key = NOKEY;
+	bool arg  =true;
 	string temp;
 	unsigned char *input;
 	memset(input, 0, sizeof(input));
@@ -258,7 +259,7 @@ int configControler::miniInput(string& title, string& variable){
 	compo.str("");
 	compo.clear();
 	if(title.compare("Ip") == 0){
-		while(1){
+		while(arg){
 			Lcd_Cls();
 			Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_str()) );
 			Lcd_Printxy(1, 11, 0, const_cast<char *>(str3.c_str()) );
@@ -326,7 +327,7 @@ int configControler::miniInput(string& title, string& variable){
 				case KEYENTER:
 					//int dl = str2.size();
 					//if(dl < 15){
-					return 0;
+					arg = false;
 					//}else{
 						Lcd_Printxy(0, 47, 0, "Za dlugi IP");	
 					//}
