@@ -89,6 +89,8 @@ int configControler::miniScreen(string &title, int size, bool opt){
 	if(opt == true){
 		while(1){
 			key = NOKEY;
+			Lcd_Cls();
+			Lcd_Printxy(0, 0, 1, const_cast<char *>(title.c_str())); //tytul
 			// wyswietlanie menu
 			for(int i=0; i < size; i++){
 				compose << options[i];
