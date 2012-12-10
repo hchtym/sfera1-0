@@ -149,7 +149,14 @@ int configControler::miniScreen(string &title, int size, bool opt){
 			Lcd_Printxy(0, 8, 0, "---------------------");
 			// wyswietlanie menu
 			for(int i= 0; i < size ; i++){
-				string str = confOptions[i];
+				stringstream compo;
+				compo << options[i];
+				compo.seekg(0, ios::end);
+				int len = compo.tellg();
+				for(int i=0; i<21-len; i++){
+					compo << " ";
+				}
+				string str = compo.str();
 				if(marked == i){
 					Lcd_Printxy(0, (i*8)+16, 1, const_cast<char *>(str.c_str()) );
 				}else{
@@ -202,6 +209,9 @@ int configControler::miniScreen(string &title, int size, bool opt){
 					break;
 					case 1:
 					//	miniInput();
+					break;
+					case 2:
+					//  miniInput();
 					break;
 					default:
 					break;
