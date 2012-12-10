@@ -363,7 +363,7 @@ int configControler::miniInput(string& title, string& variable){
 		}
 	}else{
 		Lcd_Printxy(1, 11, 0, const_cast<char *>(str3.c_str()) );
-	Kb_GetStr(0, 24, input, 4, 12, 0, 60);
+		Kb_GetStr(0, 24, input, 4, 16, 0, 60);
 	}
 
 		if(title.compare("Ip") == 0) ip = str2; //const_cast<char *>(input);
