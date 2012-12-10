@@ -258,7 +258,7 @@ int configControler::miniInput(string& title, string& variable){
 	str3 = compo.str();
 	compo.str("");
 	compo.clear();
-//	if(title.compare("Ip") == 0){
+	if(title.compare("Ip") == 0){
 		while(arg){
 			Lcd_Cls();
 			Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_str()) );
@@ -268,9 +268,9 @@ int configControler::miniInput(string& title, string& variable){
 			while(1){
 				if(Kb_Hit){
 					key = Kb_GetKey();
-					//if(key != NOKEY){
+					if(key != NOKEY){
 						break;
-					//}
+					}
 				}
 			}
 			switch(key){
@@ -361,18 +361,20 @@ int configControler::miniInput(string& title, string& variable){
 //		Kb_GetStr(0, 20, input, 4, 12, 0, 60);
 //			Lcd_Printxy(1, 55, 0, "AlPha = .");
 		}
-//	}else{
-//		Lcd_Printxy(1, 11, 0, const_cast<char *>(str3.c_str()) );
-//		Kb_GetStr(0, 24, input, 4, 12, 0, 60);
-//	}
-	string conv = (char *)input;
+	}else{
+		Lcd_Printxy(1, 11, 0, const_cast<char *>(str3.c_str()) );
+	Kb_GetStr(0, 24, input, 4, 12, 0, 60);
+	}
 
 		if(title.compare("Ip") == 0) ip = str2; //const_cast<char *>(input);
+		
+		string conv = (char *)input;
+		if(conv.size() != 0){
 	
-		if(title.compare("Port") == 0) port = str2; //const_cast<char *>(input);
+			if(title.compare("Port") == 0) port = conv; //const_cast<char *>(input);
 	
-		if(title.compare("Seriall Number") == 0) seriallnumber = str2; //const_cast<char *>(input);
-	
+			if(title.compare("Seriall Number") == 0) seriallnumber = conv; //const_cast<char *>(input);
+		}
 	
 }
 
