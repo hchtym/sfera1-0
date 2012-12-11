@@ -182,7 +182,8 @@ int networkControler::ethCon(){
 	
 }
 
-int networkControler::startConf(int type){
+int networkControler::startConf(int *type){
+	cout << "startConf pizda" << endl;
 	switch(type){
 		case 0:
 			gprsInit();
