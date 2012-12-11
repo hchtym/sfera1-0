@@ -44,14 +44,14 @@ int networkControler::ethConf(){
 	loger << "start ethCon" << endl;
 	// konfiguracja socketa !! 
 	int sockfd;
-	char pCAPData[buffer*buffer];
-	char download[buffer* buffer];
+	char pCAPData[buffer];
+	char download[buffer];
 	struct sockaddr_in dest_addr;
 	
 	loger << "tworze socket" << endl;
 	if((sockfd = socket (AF_INET, SOCK_STREAM, 0)) == -1){
-		perror("socket"); // ogowanie do pliku !! 
-		exit(1);
+		//perror("socket"); // ogowanie do pliku !! 
+		//exit(1);
 	}
 		loger << "utworzylam socket" << endl;
 	//int ports;
@@ -67,8 +67,8 @@ int networkControler::ethConf(){
 
 	loger << "lacze sie z serwerm" << endl;
 	if(connect(sockfd, (struct sockaddr *) &dest_addr, sizeof(struct sockaddr)) == -1){
-		perror("connect"); // zamienic na logowanie do pliku !
-		exit(1);
+		//perror("connect"); // zamienic na logowanie do pliku !
+		//exit(1);
 	}
 	loger << "otwarlem socket i polaczylem sie" << endl;
 	
@@ -78,25 +78,25 @@ int networkControler::ethConf(){
 	string msg = compose.str();
 	len = msg.size();
 	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
-		perror("send"); // logowanie do pliku !
-		exit(1);
+		//perror("send"); // logowanie do pliku !
+		//exit(1);
 	}
 	sleep(1);
 	string msg2 = "conf;000001030100397;2009-06-02 00:00\0";
 	len = msg2.size();
 	if((bytes_sent = send(sockfd, msg2.c_str(), len, 0)) == -1){
-		perror("send"); // logowanie do pliku !
-		exit(1);
+		//perror("send"); // logowanie do pliku !
+		//exit(1);
 	}
 	
 	if((bytes_recv = recv(sockfd, pCAPData,(buffer* buffer) -1, 0)) == -1){
-		perror("recive"); // logowanie do pliku !!
-		exit(1);
+		//perror("recive"); // logowanie do pliku !!
+		//exit(1);
 	}
 
 	if(strcmp((char*)pCAPData, "ok") != 0){
-		perror("nieudane polaczenie"); // logowanie do pliku !!
-		exit(1);
+		//perror("nieudane polaczenie"); // logowanie do pliku !!
+		//exit(1);
 	}
 
 	for(int i =0; i<6; i++){
@@ -113,15 +113,15 @@ int networkControler::ethConf(){
     	}
     	memset(pCAPData, 0, sizeof(pCAPData));
     	if((bytes_recv = recv(sockfd, pCAPData, (buffer*buffer)-1, 0))== -1){
-    		perror("reciv"); // logowanie do pliku !!
-    		exit(1);
+    	//	perror("reciv"); // logowanie do pliku !!
+    	//	exit(1);
     	}
         dataLen = atoi(pCAPData);
-		cout << dataLen << endl;
-    	cout << "Wysylam potwierdzenie." << endl;
+		//cout << dataLen << endl;
+    	//cout << "Wysylam potwierdzenie." << endl;
     	if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))== -1){
-    		perror("send"); // logowanie do pliku !!
-    		exit(1);
+    	//	perror("send"); // logowanie do pliku !!
+    	//	exit(1);
     	}
     	memset(pCAPData, 0, sizeof(pCAPData));
 		memset(download, 0, sizeof(download));
@@ -130,8 +130,8 @@ int networkControler::ethConf(){
 		while(bytes_recv < dataLen){
 			int recive = 0;
 				if((recive = recv(sockfd, download, dataLen, 0))== -1){
-		    		perror("Reciv"); // logowanie do pliku !!
-		    		exit(1);
+		  //  		perror("Reciv"); // logowanie do pliku !!
+		    //		exit(1);
 		    	}
 				bytes_recv += recive;
 				//sleep(0.5);
@@ -158,20 +158,20 @@ int networkControler::ethConf(){
 			}
         }
 		file << endl;
-        cout << endl;
+       // cout << endl;
 		memset(pCAPData, 0, sizeof(pCAPData));
 	}
 	// potwierdzam zakonczenie pobierania danych !!
 	sleep(1);
     if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))==-1){
-        perror("send");
-        exit(1);
+        ///perror("send");
+        //exit(1);
     }
 	// koncze polaczenie z serwerem !! 
 	sleep(1);
     if((bytes_sent = send(sockfd, "bye", 3, 0))== -1){
-        perror("send");
-        exit(1);
+        //perror("send");
+        //exit(1);
     }
 	// zamykam plik konfiguracyjny !
     file.close();
