@@ -84,6 +84,8 @@ int configControler::configGenerator(){
 			// loguj nieznany typ !
 		}
 	}
+	Lcd_Cls();
+	Lcd_Printxy(0,0,0, "Udalo sie ! chyba ?");
 	delete conector;
 	
 }
