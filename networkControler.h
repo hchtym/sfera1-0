@@ -32,7 +32,7 @@ private:
 	static const char* const configs[2][6];
 	// funkcje wykorzystywane tylko raz przy pierwszym pobieraniu konfiguracji 
 	int gprsCon();
-	int ethCon();
+	void ethCon();
 	// inicjator karty sim, oraz kanalu
 	void gprsInit();
 	

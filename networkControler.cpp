@@ -36,7 +36,7 @@ void networkControler::gprsInit(){
 	
 }
 
-int networkControler::ethCon(){
+void networkControler::ethCon(){
 	cout << "ehtCon pizda od srodka" << endl;
 	// tworze plik konfiguracyjny !
 	ofstream file("config.txt", ios_base::app);
