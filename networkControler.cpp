@@ -4,12 +4,12 @@
 
 using namespace std;
 
-networkControler::networkControler(string *ipr, string *portr, string *apnr, string *userr, string *passwordr){
-	ip = ipr->c_str();
-	port = portr->c_str();
-	apn = apnr->c_str();
-	user = userr->c_str();
-	password = passwordr->c_str();
+networkControler::networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr){
+	ip = ipr.c_str();
+	port = portr.c_str();
+	apn = apnr.c_str();
+	user = userr.c_str();
+	password = passwordr.c_str();
 	
 }
 networkControler::~networkControler(){

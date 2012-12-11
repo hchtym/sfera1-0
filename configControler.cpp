@@ -70,7 +70,7 @@ int configControler::configGenerator(){
 	string apnc = "erainternet";
 	string userc = "erainternet";
 	string passwordc = "";
-	networkControler* conector = new networkControler(&ip, &port, &apnc, &userc, &passwordc);
+	networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc);
 	if(flag.compare("eth") ==0){
 		conector->startConf(0);
 	}else{

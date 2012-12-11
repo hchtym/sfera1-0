@@ -44,7 +44,7 @@ private:
 	
 	
 public:
-	networkControler(string *ipr, string *portr, string *apnr, string *userr, string *passwordr);
+	networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr);
 	~networkControler();
 	int startConf(int type);
 	int sendTransaction();
