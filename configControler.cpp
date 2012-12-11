@@ -70,15 +70,22 @@ int configControler::configGenerator(){
 	string apnc = "erainternet";
 	string userc = "erainternet";
 	string passwordc = "";
+	ofstream loger("log.txt");
+	loger << "Tworze plik seriall.txt" << endl;
+	
 	ofstream file("seriall.txt");
 	file << "[seriall]" << endl;
 	file << "SN = " << seriallnumber.c_str() << endl;
 	file.close();
+	loger << "Stworzylem plik tworze obiekt!" << endl;
 	networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
+	loger << "sprawdzam  flage" << endl;
 	if(flag.compare("eth") ==0){
-		conector.startConf(1);
+		loger << "sprawdzilem flage i odpalam eth !)" << endl;
+		conector->startConf(1);
 	}else{
 		if(flag.compare("gprs") == 0){
+			loger << "sprawdzialem flage i odpalam gprs" << endl;
 			conector->startConf(0);
 		}else{
 			// loguj nieznany typ !
