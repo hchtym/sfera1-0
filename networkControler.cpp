@@ -82,23 +82,27 @@ int networkControler::ethConf(){
 		//exit(1);
 	}
 	sleep(1);
+	loger << "przedstawiam sie serwerowi" << endl;
 	string msg2 = "conf;000001030100397;2009-06-02 00:00\0";
 	len = msg2.size();
 	if((bytes_sent = send(sockfd, msg2.c_str(), len, 0)) == -1){
+		loger << "essor send przedstawienie" << endl;
 		//perror("send"); // logowanie do pliku !
 		//exit(1);
 	}
 	
 	if((bytes_recv = recv(sockfd, pCAPData,(buffer* buffer) -1, 0)) == -1){
+		loger << "recive error" << endl;
 		//perror("recive"); // logowanie do pliku !!
 		//exit(1);
 	}
-
+	loger << "ok sendign" << endl;
 	if(strcmp((char*)pCAPData, "ok") != 0){
+		loger << "send ok error" << endl;
 		//perror("nieudane polaczenie"); // logowanie do pliku !!
 		//exit(1);
 	}
-
+	loger << "entering for !" << endl;
 	for(int i =0; i<6; i++){
 		sleep(1);
 	    char str[40];
@@ -108,6 +112,7 @@ int networkControler::ethConf(){
 	    strcpy(msg3, configs[0][i]);
 	    len = msg2.size();
 	    if((bytes_sent = send(sockfd, str, strlen(str), 0)) == -1 ){
+			loger << "sending problem !" << endl;
 		 //   perror("send"); // logowanie do pliku !
 		 //   exit(1);
     	}
