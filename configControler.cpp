@@ -85,8 +85,9 @@ int configControler::configGenerator(){
 		loger << "sprawdzilem flage i odpalam eth !)" << endl;
 		cout << "pizda" << endl;
 		conector->dummy();
+		int type = 1;
 		//sleep(1000);
-		conector->startConf(1);
+		conector->startConf(type);
 		cout << "pizda3" << endl;
 
 	}else{
