@@ -4,13 +4,14 @@
 
 using namespace std;
 
-networkControler::networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr, string serialNr){
-	ip = ipr.c_str();
-	port = portr.c_str();
-	apn = apnr.c_str();
-	user = userr.c_str();
-	password = passwordr.c_str();
-	serialN = serialNr.c_str();
+networkControler::networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr, string &serialNr){
+	cout << "pizda2" << endl;
+	ip = ipr;
+	port = portr;
+	apn = apnr;
+	user = userr;
+	password = passwordr;
+	serialN = serialNr;
 	
 }
 networkControler::~networkControler(){
@@ -31,7 +32,6 @@ void networkControler::gprsInit(){
 }
 
 int networkControler::ethCon(){
-	cout << "pizda";
 	// tworze plik konfiguracyjny !
 	ofstream file("config.txt", ios_base::app);
 	ofstream loger("logs.txt", ios_base::app);
