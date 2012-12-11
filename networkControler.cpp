@@ -24,14 +24,13 @@ int networkControler::dummy(){
 	Lcd_Printxy(0,0,0,"doszlo tutaj !");
 }
 
-int networkControler::gprsCon(){
+void networkControler::gprsInit(){
+	
 	
 	
 }
 
-
-void networkControler::gprsInit(){
-	
+int networkControler::gprsCon(){
 	
 	
 }
@@ -184,6 +183,7 @@ int networkControler::ethConf(){
 }
 
 int networkControler::startConf(int type){
+	int conf;
 	cout << "startConf pizda" << endl;
 	switch(type){
 		case 0:
@@ -192,7 +192,7 @@ int networkControler::startConf(int type){
 		break;
 		case 1:
 			cout << "ethCon pizdacz !" << endl;
-			ethConf();
+			conf = ethConf();
 		break;
 		default:
 		return 0;
@@ -200,6 +200,11 @@ int networkControler::startConf(int type){
 		break;
 	}
 	
+/*	if(type == 1){
+		cout << "pizda z ifa" << endl;
+		int t= ethConf();
+	}*/
+
 }
 
 void networkControler::Tokenize(const string& str, vector<string>& tokens, const string& delimiters = " "){
