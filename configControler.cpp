@@ -87,7 +87,7 @@ int configControler::configGenerator(){
 		conector->dummy();
 		int type = 1;
 		//sleep(1000);
-		conector->startConf(type);
+		conector->startConf(*type);
 		cout << "pizda3" << endl;
 
 	}else{
