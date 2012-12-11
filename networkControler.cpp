@@ -108,8 +108,8 @@ int networkControler::ethConf(){
 	    strcpy(msg3, configs[0][i]);
 	    len = msg2.size();
 	    if((bytes_sent = send(sockfd, str, strlen(str), 0)) == -1 ){
-		    perror("send"); // logowanie do pliku !
-		    exit(1);
+		 //   perror("send"); // logowanie do pliku !
+		 //   exit(1);
     	}
     	memset(pCAPData, 0, sizeof(pCAPData));
     	if((bytes_recv = recv(sockfd, pCAPData, (buffer*buffer)-1, 0))== -1){
