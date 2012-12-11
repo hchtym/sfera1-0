@@ -83,7 +83,7 @@ int configControler::configGenerator(){
 	loger << "sprawdzam  flage" << endl;
 	if(flag.compare("eth") ==0){
 		loger << "sprawdzilem flage i odpalam eth !)" << endl;
-		connector->dummy();
+		conector->dummy();
 		//conector->startConf(1);
 
 	}else{
