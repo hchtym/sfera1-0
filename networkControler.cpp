@@ -4,12 +4,13 @@
 
 using namespace std;
 
-networkControler::networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr){
+networkControler::networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr, string serialNr){
 	ip = ipr.c_str();
 	port = portr.c_str();
 	apn = apnr.c_str();
 	user = userr.c_str();
 	password = passwordr.c_str();
+	serialN = serialNr.c_str();
 	
 }
 networkControler::~networkControler(){
@@ -55,7 +56,9 @@ int networkControler::ethCon(){
 		exit(1);
 	}
 	int len,bytes_sent,bytes_recv;
-	string msg = "nr;000001030100397";
+	stringstream compose;
+	compose << "nr;" << serialN.c_str() << endl; 
+	string msg = compose.str();
 	len = msg.size();
 	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
 		perror("send"); // logowanie do pliku !

@@ -70,7 +70,11 @@ int configControler::configGenerator(){
 	string apnc = "erainternet";
 	string userc = "erainternet";
 	string passwordc = "";
-	networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc);
+	ofstream file("seriall.txt");
+	file << "[seriall]" << endl;
+	file << "SN = " << seriallnumber.c_str() << endl;
+	file.close();
+	networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
 	if(flag.compare("eth") ==0){
 		conector->startConf(0);
 	}else{

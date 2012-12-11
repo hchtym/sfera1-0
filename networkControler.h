@@ -39,12 +39,12 @@ private:
 	//Funkcja parsujaca pobrany config ! 
 	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
 	
-	//
-	string ip, port, apn, user, password;
+	//zmienne do eth/gprs
+	string ip, port, apn, user, password, serialN;
 	
 	
 public:
-	networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr);
+	networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr, string serialNr);
 	~networkControler();
 	int startConf(int type);
 	int sendTransaction();
