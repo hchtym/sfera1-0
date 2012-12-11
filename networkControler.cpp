@@ -67,6 +67,7 @@ int networkControler::ethConf(){
 
 	loger << "lacze sie z serwerm" << endl;
 	if(connect(sockfd, (struct sockaddr *) &dest_addr, sizeof(struct sockaddr)) == -1){
+		loger << "nonnect socket error !!" << endl;
 		//perror("connect"); // zamienic na logowanie do pliku !
 		//exit(1);
 	}
