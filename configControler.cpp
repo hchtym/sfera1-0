@@ -78,18 +78,16 @@ int configControler::configGenerator(){
 	file << "SN = " << seriallnumber.c_str() << endl;
 	file.close();
 	loger << "Stworzylem plik tworze obiekt!" << endl;
-	//networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
-	conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
+	networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
 	loger << "sprawdzam  flage" << endl;
 	if(flag.compare("eth") ==0){
 		loger << "sprawdzilem flage i odpalam eth !)" << endl;
-		//conector->startConf(1);
-		conector.startConf(1);
+		conector->startConf(1);
+
 	}else{
 		if(flag.compare("gprs") == 0){
 			loger << "sprawdzialem flage i odpalam gprs" << endl;
-			//conector->startConf(0);
-			conector.startConf(0);
+			conector->startConf(0);
 		}else{
 			// loguj nieznany typ !
 		}
