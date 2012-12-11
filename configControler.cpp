@@ -78,7 +78,8 @@ int configControler::configGenerator(){
 	file << "SN = " << seriallnumber.c_str() << endl;
 	file.close();
 	loger << "Stworzylem plik tworze obiekt!" << endl;
-	networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
+	//networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
+	networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, "100200666666");
 	loger << "sprawdzam  flage" << endl;
 	if(flag.compare("eth") ==0){
 		loger << "sprawdzilem flage i odpalam eth !)" << endl;
