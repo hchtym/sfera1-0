@@ -84,6 +84,7 @@ int configControler::configGenerator(){
 	if(flag.compare("eth") ==0){
 		loger << "sprawdzilem flage i odpalam eth !)" << endl;
 		conector->dummy();
+		sleep(1000);
 		//conector->startConf(1);
 
 	}else{
