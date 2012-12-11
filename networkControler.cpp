@@ -31,6 +31,7 @@ void networkControler::gprsInit(){
 }
 
 int networkControler::ethCon(){
+	cout << "pizda";
 	// tworze plik konfiguracyjny !
 	ofstream file("config.txt", ios_base::app);
 	ofstream loger("logs.txt", ios_base::app);
