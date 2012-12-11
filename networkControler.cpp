@@ -19,6 +19,11 @@ networkControler::~networkControler(){
 	
 }
 
+int networkControler::dummy(){
+	Lcd_Cls();
+	Lcd_Printxy(0,0,0,"doszlo tutaj !");
+}
+
 int networkControler::gprsCon(){
 	
 	

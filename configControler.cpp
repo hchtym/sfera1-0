@@ -79,11 +79,12 @@ int configControler::configGenerator(){
 	file.close();
 	loger << "Stworzylem plik tworze obiekt!" << endl;
 	//networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
-	networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, "100200666666");
+	networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
 	loger << "sprawdzam  flage" << endl;
 	if(flag.compare("eth") ==0){
 		loger << "sprawdzilem flage i odpalam eth !)" << endl;
-		conector->startConf(1);
+		connector->dummy();
+		//conector->startConf(1);
 
 	}else{
 		if(flag.compare("gprs") == 0){
