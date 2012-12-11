@@ -74,9 +74,9 @@ int configControler::configGenerator(){
 	file << "[seriall]" << endl;
 	file << "SN = " << seriallnumber.c_str() << endl;
 	file.close();
-	networkControler conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
+	networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
 	if(flag.compare("eth") ==0){
-		conector->startConf(1);
+		conector.startConf(1);
 	}else{
 		if(flag.compare("gprs") == 0){
 			conector->startConf(0);
