@@ -33,6 +33,7 @@ void networkControler::gprsInit(){
 int networkControler::ethCon(){
 	// tworze plik konfiguracyjny !
 	ofstream file("config.txt", ios_base::app);
+	ofstream loger("logs.txt", ios_base::app);
 	
 	// konfiguracja socketa !! 
 	int sockfd;
@@ -45,7 +46,7 @@ int networkControler::ethCon(){
 		exit(1);
 	}
 	//int ports;
-	atoi(port.c_str());
+	//atoi(port.c_str());
 	dest_addr.sin_family = AF_INET;
 	dest_addr.sin_port = htons( atoi(port.c_str())	); // wstawic port 
 	dest_addr.sin_addr.s_addr = inet_addr(ip.c_str()); // wstawic ip
