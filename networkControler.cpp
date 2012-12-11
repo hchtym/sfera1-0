@@ -187,6 +187,7 @@ int networkControler::startConf(int type){
 			ethCon();
 		break;
 		default:
+		return 0;
 			//zaloguj bledny typ;
 		break;
 	}
