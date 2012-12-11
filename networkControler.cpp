@@ -37,6 +37,7 @@ void networkControler::gprsInit(){
 }
 
 int networkControler::ethCon(){
+	cout << "ehtCon pizda od srodka" << endl;
 	// tworze plik konfiguracyjny !
 	ofstream file("config.txt", ios_base::app);
 	ofstream loger("logs.txt", ios_base::app);
@@ -190,6 +191,7 @@ int networkControler::startConf(int type){
 			gprsCon();
 		break;
 		case 1:
+			cout << "ethCon pizdacz !" << endl;
 			ethCon();
 		break;
 		default:
