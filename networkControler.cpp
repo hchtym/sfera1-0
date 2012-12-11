@@ -35,27 +35,37 @@ int networkControler::ethCon(){
 	ofstream file("config.txt", ios_base::app);
 	ofstream loger("logs.txt", ios_base::app);
 	
+	loger << "start ethCon" << endl;
 	// konfiguracja socketa !! 
 	int sockfd;
 	char pCAPData[buffer*buffer];
 	char download[buffer* buffer];
 	struct sockaddr_in dest_addr;
 	
+	loger << "tworze socket" << endl;
 	if((sockfd = socket (AF_INET, SOCK_STREAM, 0)) == -1){
 		perror("socket"); // ogowanie do pliku !! 
 		exit(1);
 	}
+		loger << "utworzylam socket" << endl;
 	//int ports;
 	//atoi(port.c_str());
 	dest_addr.sin_family = AF_INET;
+	loger << "konfiguruje port" << endl;
 	dest_addr.sin_port = htons( atoi(port.c_str())	); // wstawic port 
+	loger << "skonfigurowalem port" << endl;
+	loger << "konfiguruje ip" << endl;
 	dest_addr.sin_addr.s_addr = inet_addr(ip.c_str()); // wstawic ip
+	loger << "skonfigurowalem ip" << endl;
 	memset(&(dest_addr.sin_zero), '\0', 8);
 
+	loger << "lacze sie z serwerm" << endl;
 	if(connect(sockfd, (struct sockaddr *) &dest_addr, sizeof(struct sockaddr)) == -1){
 		perror("connect"); // zamienic na logowanie do pliku !
 		exit(1);
 	}
+	loger << "otwarlem socket i polaczylem sie" << endl;
+	
 	int len,bytes_sent,bytes_recv;
 	stringstream compose;
 	compose << "nr;" << serialN.c_str() << endl; 
