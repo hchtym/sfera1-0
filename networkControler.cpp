@@ -60,8 +60,8 @@ int networkControler::ethConf(){
 	loger << "tworze socket" << endl;
 	if((sockfd = socket (AF_INET, SOCK_STREAM, 0)) == -1){
 		loger << "socket erros" << endl;
-		//perror("socket"); // ogowanie do pliku !! 
-		exit(1);
+		perror("socket"); // ogowanie do pliku !! 
+		//exit(1);
 	}
 		loger << "utworzylam socket" << endl;
 	//int ports;
@@ -79,7 +79,7 @@ int networkControler::ethConf(){
 	if(connect(sockfd, (struct sockaddr *) &dest_addr, sizeof(struct sockaddr)) == -1){
 		loger << "connect socket error !!" << endl;
 		perror("connect"); // zamienic na logowanie do pliku !
-		exit(1);
+		//exit(1);
 	}
 	loger << "otwarlem socket i polaczylem sie" << endl;
 	
@@ -89,28 +89,29 @@ int networkControler::ethConf(){
 	string msg = compose.str();
 	len = msg.size();
 	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
-		//perror("send"); // logowanie do pliku !
+		loger << "send serial error" << endl;
+		perror("send"); // logowanie do pliku !
 		//exit(1);
 	}
 	sleep(1);
-	loger << "przedstawiam sie serwerowi" << endl;
+	loger << "przedstawilem sie serwerowi" << endl;
 	string msg2 = "conf;000001030100397;2009-06-02 00:00\0";
 	len = msg2.size();
 	if((bytes_sent = send(sockfd, msg2.c_str(), len, 0)) == -1){
-		loger << "essor send przedstawienie" << endl;
-		//perror("send"); // logowanie do pliku !
+		loger << "error send przedstawienie" << endl;
+		perror("send"); // logowanie do pliku !
 		//exit(1);
 	}
 	
 	if((bytes_recv = recv(sockfd, pCAPData,(buffer* buffer) -1, 0)) == -1){
 		loger << "recive error" << endl;
-		//perror("recive"); // logowanie do pliku !!
+		perror("recive"); // logowanie do pliku !!
 		//exit(1);
 	}
 	loger << "ok sendign" << endl;
 	if(strcmp((char*)pCAPData, "ok") != 0){
 		loger << "send ok error" << endl;
-		//perror("nieudane polaczenie"); // logowanie do pliku !!
+		perror("nieudane polaczenie"); // logowanie do pliku !!
 		//exit(1);
 	}
 	loger << "entering for !" << endl;
@@ -124,19 +125,24 @@ int networkControler::ethConf(){
 	    len = msg2.size();
 	    if((bytes_sent = send(sockfd, str, strlen(str), 0)) == -1 ){
 			loger << "sending problem !" << endl;
-		 //   perror("send"); // logowanie do pliku !
+		    perror("send"); // logowanie do pliku !
 		 //   exit(1);
-    	}
+    	}else{
+			loger << << "Sendet request for data "  << configs[1][i] << endl;
+		}
     	memset(pCAPData, 0, sizeof(pCAPData));
     	if((bytes_recv = recv(sockfd, pCAPData, (buffer*buffer)-1, 0))== -1){
-    	//	perror("reciv"); // logowanie do pliku !!
+			loger << "recive eror datalen" << endl;
+    		perror("reciv"); // logowanie do pliku !!
     	//	exit(1);
     	}
         dataLen = atoi(pCAPData);
 		//cout << dataLen << endl;
     	//cout << "Wysylam potwierdzenie." << endl;
+		loger << "wysylam potwierdzenie datalen" << endl;
     	if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))== -1){
-    	//	perror("send"); // logowanie do pliku !!
+			loger << "error sending ok for data len" << endl;
+    		perror("send"); // logowanie do pliku !!
     	//	exit(1);
     	}
     	memset(pCAPData, 0, sizeof(pCAPData));
@@ -146,7 +152,8 @@ int networkControler::ethConf(){
 		while(bytes_recv < dataLen){
 			int recive = 0;
 				if((recive = recv(sockfd, download, dataLen, 0))== -1){
-		  //  		perror("Reciv"); // logowanie do pliku !!
+					loger << "error reciving data for: " << configs[1][i] << endl;
+		    		perror("Reciv"); // logowanie do pliku !!
 		    //		exit(1);
 		    	}
 				bytes_recv += recive;
@@ -155,15 +162,20 @@ int networkControler::ethConf(){
 				memset(download, 0, sizeof(download));		
 		}
 		// przekazuje pobrane dane to stringa 
+		loger << "copying pCAPData to dane" << endl;
         string dane(pCAPData);
+		loger << "creatong vector for: " configs[1][i] << endl;
 		// tworze vector
         vector<string> tokens;
 		// prasuje ztringa i podaje go do vectora
+		loger << "tokenize data !" << endl;
         Tokenize(dane, tokens, ";");
 		// iteruje vector i wrzucam dane do pliku !!
+		loger << "creating iterator" << endl;
         std::vector<string>::iterator j;
 		int licz=0;
 		file << "[" << configs[1][i] << "]" << endl;
+		loger << "writing data to file" << endl;
         for(j=tokens.begin(); j<tokens.end(); ++j){
 			if(configs[1][i]== "ok"){
 				file << *j;
@@ -174,19 +186,22 @@ int networkControler::ethConf(){
 			}
         }
 		file << endl;
+		loger << "data writen" << endl;
        // cout << endl;
 		memset(pCAPData, 0, sizeof(pCAPData));
 	}
 	// potwierdzam zakonczenie pobierania danych !!
 	sleep(1);
+	loger << "sending ok that the data was reciver properly" << endl;
     if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))==-1){
-        ///perror("send");
+        perror("send");
         //exit(1);
     }
 	// koncze polaczenie z serwerem !! 
 	sleep(1);
+	loger << "sendin 'bye' and ending connection !" << endl;
     if((bytes_sent = send(sockfd, "bye", 3, 0))== -1){
-        //perror("send");
+        perror("send");
         //exit(1);
     }
 	// zamykam plik konfiguracyjny !
