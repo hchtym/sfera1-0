@@ -20,6 +20,7 @@ networkControler::networkControler(string &ipr, string &portr, string &apnr, str
 	cout << user << endl;
 	cout << password << endl;
 	cout << serialN << endl;
+	cout << "koniec konfiga" << endl;
 	
 }
 networkControler::~networkControler(){
