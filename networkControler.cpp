@@ -50,8 +50,9 @@ int networkControler::ethConf(){
 	
 	loger << "tworze socket" << endl;
 	if((sockfd = socket (AF_INET, SOCK_STREAM, 0)) == -1){
+		loger << "socket erros" << endl;
 		//perror("socket"); // ogowanie do pliku !! 
-		//exit(1);
+		exit(1);
 	}
 		loger << "utworzylam socket" << endl;
 	//int ports;
@@ -61,13 +62,13 @@ int networkControler::ethConf(){
 	dest_addr.sin_port = htons( atoi(port.c_str())	); // wstawic port 
 	loger << "skonfigurowalem port" << endl;
 	loger << "konfiguruje ip" << endl;
-	dest_addr.sin_addr.s_addr = inet_addr(ip.c_str()); // wstawic ip
+	dest_addr.sin_addr.s_addr = inet_addr(ip.c_str() ); // wstawic ip
 	loger << "skonfigurowalem ip" << endl;
 	memset(&(dest_addr.sin_zero), '\0', 8);
 
 	loger << "lacze sie z serwerm" << endl;
 	if(connect(sockfd, (struct sockaddr *) &dest_addr, sizeof(struct sockaddr)) == -1){
-		loger << "nonnect socket error !!" << endl;
+		loger << "connect socket error !!" << endl;
 		//perror("connect"); // zamienic na logowanie do pliku !
 		//exit(1);
 	}
