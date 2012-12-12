@@ -78,6 +78,8 @@ int configControler::configGenerator(){
 	file << "SN = " << seriallnumber.c_str() << endl;
 	file.close();
 	loger << "Stworzylem plik tworze obiekt!" << endl;
+	cout << "konfiguracja przed przekazaniem danych to konstruktora !" << endl;
+	cout << ip << endl << port << endl << apnc << endl << userc << endl << passwordc << endl << seriallnumber << endl;
 	//networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
 	networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
 	loger << "sprawdzam  flage" << endl;

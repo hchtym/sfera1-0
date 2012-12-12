@@ -6,17 +6,20 @@ using namespace std;
 
 networkControler::networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr, string &serialNr){
 	cout << "pizda2" << endl;
+	cout << "konfig z obiektu networkControler przed przekazaniem !!" << endl;
 	ip = ipr;
 	port = portr;
 	apn = apnr;
 	user = userr;
 	password = passwordr;
 	serialN = serialNr;
+	cout << "po przekazaniu jej miedzy tringami" << endl;
 	cout << ip << endl;
 	cout << port << endl;
 	cout << apn << endl;
 	cout << user << endl;
 	cout << password << endl;
+	cout << serialN << endl;
 	
 }
 networkControler::~networkControler(){
