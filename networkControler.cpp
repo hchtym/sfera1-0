@@ -12,6 +12,11 @@ networkControler::networkControler(string &ipr, string &portr, string &apnr, str
 	user = userr;
 	password = passwordr;
 	serialN = serialNr;
+	cout << ip << endl;
+	cout << port << endl;
+	cout << apn << endl;
+	cout << user << endl;
+	cout << password << endl;
 	
 }
 networkControler::~networkControler(){
