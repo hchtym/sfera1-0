@@ -119,13 +119,13 @@ int networkControler::gprsConnect(){
 			}
 			for(int i = 0; i <2; i++)
 			{
-				ret = Wls_Dial(apn.c_str());
+				ret = Wls_Dial(const_cast<char *>(apn.c_str()) );
 				if(ERR_OK == ret)
 				{
-					grps_apnConnected = true;
+					gprs_apnConnected = true;
 					break;
 				}
-				DalayMs(APN_CONNECT_TIMEOUT);		
+				DelayMs(APN_CONNECT_TIMEOUT);		
 			}
 			if(i>2)
 			{
@@ -165,7 +165,7 @@ int networkControler::gprsConnect(){
 			stringstream compose;
 			compose << "nr;" << serialN.c_str();
 			string str = compose.str();
-			send_buf = str.c_str();
+			send_buf =(uchar *)str.c_str();
 			ret = Wls_MTcpSend(socket0, send_buf, str.size());
 			if(ERR_OK != ret)
 			{
@@ -207,9 +207,9 @@ int networkControler::gprsCon(){
 	
 	bytes_sent = Wls_MTcpSend(socket0, (uchar *) msg2.c_str(), len);
 	if(ERR_OK != bytes_sent){
-		logger << "send problem" << endl;
+		loger << "send problem" << endl;
 		perror("send");
-		Wls_MTcpCose(socket0);
+		Wls_MTcpClose(socket0);
 	}
 		
 	
@@ -227,14 +227,14 @@ int networkControler::gprsCon(){
 	}
 	loger << "entering for !" << endl;
 	for(int i =0; i<6; i++){
-		sleep(1);
+		//sleep(1);
 	    char str[40];
 	    int dataLen;
 	    sprintf(str, "%s" ,configs[1][i]);
 	    char msg3[50];
 	    strcpy(msg3, configs[0][i]);
 	    len = msg2.size();
-		bytes_sent =  Wls_MTcpSend(socket0, (uchar *) str, strlen(str) )
+		bytes_sent =  Wls_MTcpSend(socket0, (uchar *) str, strlen(str) );
 		if(ERR_OK == bytes_sent){
 			loger << "sending problem !" << endl;
 		    perror("send"); // logowanie do pliku !
@@ -325,7 +325,7 @@ int networkControler::gprsCon(){
 	// zamykam plik konfiguracyjny !
     file.close();
 	// zamykam socket !
-	close(sockfd);
+	//close(sockfd);
 	
 	
 	

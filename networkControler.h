@@ -43,9 +43,10 @@ private:
 	string ip, port, apn, user, password, serialN;
 	//zmienna kanalu w jakim dziala gprs
 	static const int chanell = 115200;
-	
+	static const int socket0 = 0;
 	bool gprs_apnConnected;
 	bool gprs_serverConnected;
+	
 	
 	
 public:
