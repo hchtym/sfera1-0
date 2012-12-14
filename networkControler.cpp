@@ -136,7 +136,7 @@ int networkControler::gprsConnect(){
 			
 			for(int i = 0; i < 2; i++)
 			{
-				ret = Wls_MTcpConnect(socket0, ip.c_str(), port.c_str(), SERVER_CONNECT_TIMEOUT);
+				ret = Wls_MTcpConnect(socket0, const_cast<char *>(ip.c_str()), const_cast<char *>(port.c_str()), SERVER_CONNECT_TIMEOUT);
 				if(ERR_OK==ret)
 				{
 					gprs_serverConnected = true;
@@ -156,7 +156,7 @@ int networkControler::gprsConnect(){
 		}
 		
 		retry++;	
-	}while( (!gprs_apnConnected || !gprs_serverConnected) && (retry<2) )
+	}while( (!gprs_apnConnected || !gprs_serverConnected) && (retry<2) );
 
 
 		if(gprs_serverConnected)
@@ -187,7 +187,7 @@ int networkControler::gprsCon(){
 	// konfiguracja socketa !! 
 	char pCAPData[buffer];
 	char download[buffer];
-	struct sockaddr_in dest_addr;
+	//struct sockaddr_in dest_addr;
 
 	int len,bytes_sent,bytes_recv;
 	stringstream compose;
@@ -213,7 +213,7 @@ int networkControler::gprsCon(){
 	}
 		
 	
-	bytes_recv = Wls_MTcpRecv(socket0, pCAPData, buffer, buffer, 30*1000);
+	bytes_recv = Wls_MTcpRecv(socket0,(uchar *) pCAPData, buffer, buffer, 30*1000);
 	if(ERR_OK == bytes_recv){
 		loger << "recive error" << endl;
 		perror("recive"); // logowanie do pliku !!
@@ -243,7 +243,7 @@ int networkControler::gprsCon(){
 			loger << << "Sendet request for data "  << configs[1][i] << endl;
 		}
     	memset(pCAPData, 0, sizeof(pCAPData));
-		bytes_recv = Wls_MTcpRecv(socket0, pCAPData, buffer, buffer, 30*1000);
+		bytes_recv = Wls_MTcpRecv(socket0,(uchar *) pCAPData, buffer, buffer, 30*1000);
     	if(ERR_OK == bytes_recv ){
 			loger << "recive eror datalen" << endl;
     		perror("reciv"); // logowanie do pliku !!
@@ -266,7 +266,7 @@ int networkControler::gprsCon(){
 
 		while(bytes_recv < dataLen){
 			int recive = 0;
-				bytes_recv = Wls_MTcpRecv(socket0, download, buffer, dataLen, 30*1000);
+				bytes_recv = Wls_MTcpRecv(socket0,(uchar *) download, buffer, dataLen, 30*1000);
 				if(ERR_OK == bytes_recv){
 					loger << "error reciving data for: " << configs[1][i] << endl;
 		    		perror("Reciv"); // logowanie do pliku !!
