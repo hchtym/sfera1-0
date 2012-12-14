@@ -90,7 +90,7 @@ int networkControler::gprsConnect(){
 	gprs_apnConnected = false;
 	gprs_serverConnected = false;
 	int i,j,ret, signal;
-	unsigned char send_buf[buffer];
+	unsigned char *send_buf[buffer];
 	bool state;
 	int SERVER_CONNECT_TIMEOUT = 30000;
 	int APN_CONNECT_TIMEOUT = 20000;
