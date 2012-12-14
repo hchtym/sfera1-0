@@ -1,6 +1,7 @@
 #include "networkControler.h"
 
-#define buffer 1024
+#define buffer (2048)
+
 
 using namespace std;
 
@@ -28,18 +29,308 @@ networkControler::~networkControler(){
 	
 }
 
+int networkControler::checkSignalStr(){
+	int ret,signal;
+	signal = -1;
+	ret = Wls_CheckSignal(&signal);
+	switch(signal){
+		case NO_SIGNAL:
+		Lcd_Icon(1, ICON_ON, 1);
+		break;
+		case SIGNAL_VERY_WEAK:
+		Lcd_Icon(1, ICON_ON, 2);
+		break;
+		case SIGNAL_NORMAL:
+		Lcd_Icon(1, ICON_ON, 3);
+		break;
+		case SIGNAL_STRONG:
+		Lcd_Icon(1, ICON_ON, 4);
+		break;
+		case SIGNAL_VERY_STRONG:
+		Lcd_Icon(1, ICON_ON, 5);
+		break;
+		default:
+		Lcd_Icon(1, ICON_OFF, 1);
+		break;
+	}
+
+}
+
 int networkControler::dummy(){
 	Lcd_Cls();
 	Lcd_Printxy(0,0,0,"doszlo tutaj !");
 }
 
 void networkControler::gprsInit(){
-	
-	
+	int ret;
+	ret = Wls_SetBaudrate(chanell);
+	DelayMs(200);
+	if(ERR_OK != ret){
+		Lcd_Cls();
+		Lcd_Printxy(0,0,0, "Blad przy ustawianiu");
+	}
+	ret = Wls_Init();
+	DelayMs(200);
+	if(ERR_OK != ret){
+		Lcd_Printxy(0,8,0, "Błąd inicjalizaji modółu gprs");
+	}
+	Lcd_Printxy(0,16,0, "Sprawdzam obecnosc karty sim");
+	ret = Wls_CheckSim();
+	DelayMs(500);
+	if(ERR_OK == ret)
+	{
+		Lcd_Printxy(0,24, 0, "SIM = OK");
+	}else{
+		Lcd_Printxy(0,32, 0, "Brak karty SIM");
+	}
 	
 }
 
+int networkControler::gprsConnect(){
+	gprs_apnConnected = false;
+	gprs_serverConnected = false;
+	int i,j,ret, signal;
+	unsigned char send_buf[buffer];
+	bool state;
+	int SERVER_CONNECT_TIMEOUT = 30000;
+	int APN_CONNECT_TIMEOUT = 20000;
+	int retry =0;
+	// inicjalizacja danych do logowania !! 
+	Wls_InputUidPwd((BYTE *)user.c_str(), (BYTE *)password.c_str() );
+	
+	do {
+		if(!gprs_apnConnected)
+		{
+			for(int i = 0; i < 100; i++)
+			{
+				signal =1;
+				j = Wls_CheckSignal(&signal);
+				if(signal >= SIGNAL_WEAK && signal <= SIGNAL_VERY_STRONG)
+				{
+					break;
+				}
+				DelayMs(200);
+			}
+			if(i>100)
+			{
+				Lcd_Cls();
+				Lcd_Printxy(0,0,0, "Brak sygnalu");
+				DelayMs(30000);
+			}
+			for(int i = 0; i <2; i++)
+			{
+				ret = Wls_Dial(apn.c_str());
+				if(ERR_OK == ret)
+				{
+					grps_apnConnected = true;
+					break;
+				}
+				DalayMs(APN_CONNECT_TIMEOUT);		
+			}
+			if(i>2)
+			{
+				Lcd_Cls();
+				Lcd_Printxy(0,0,0,"Timeout polaczenia z APN");
+				return 0;
+			}
+			
+			for(int i = 0; i < 2; i++)
+			{
+				ret = Wls_MTcpConnect(socket0, ip.c_str(), port.c_str(), SERVER_CONNECT_TIMEOUT);
+				if(ERR_OK==ret)
+				{
+					gprs_serverConnected = true;
+					break;
+				}
+			}
+			if(i>2)
+			{
+				Lcd_Cls();
+				Lcd_Printxy(0,0,0,"Blad polaczenia z serwerem");
+				return 0;
+			}else{
+				Lcd_Cls();
+				Lcd_Printxy(0,0,0, "Polaczono z serwerem !");
+				
+			}
+		}
+		
+		retry++;	
+	}while( (!gprs_apnConnected || !gprs_serverConnected) && (retry<2) )
+
+
+		if(gprs_serverConnected)
+		{
+			int recv_len;
+			stringstream compose;
+			compose << "nr;" << serialN.c_str();
+			string str = compose.str();
+			send_buf = str.c_str();
+			ret = Wls_MTcpSend(socket0, send_buf, str.size());
+			if(ERR_OK != ret)
+			{
+				Lcd_Cls();
+				Lcd_Printxy(0,0,0,"Sending failed !");
+				Wls_MTcpClose(socket0);
+			}else{
+				Lcd_Cls();
+				Lcd_Printxy(0,0,0,"Sending done properly");
+			}
+		}	
+}
+
 int networkControler::gprsCon(){
+	ofstream file("config.txt", ios_base::app);
+	ofstream loger("logs.txt", ios_base::app);
+	
+	loger << "start gprsCon" << endl;
+	// konfiguracja socketa !! 
+	char pCAPData[buffer];
+	char download[buffer];
+	struct sockaddr_in dest_addr;
+
+	int len,bytes_sent,bytes_recv;
+	stringstream compose;
+	compose << "nr;" << serialN.c_str() << endl; 
+	string msg = compose.str();
+	len = msg.size();
+	bytes_sent = Wls_MTcpSend(socket0, (uchar *) msg.c_str(), len);
+	if(ERR_OK == bytes_sent){
+		loger << "send serial error" << endl;
+		perror("send"); // logowanie do pliku !
+		//exit(1);
+	}
+	sleep(1);
+	loger << "przedstawilem sie serwerowi" << endl;
+	string msg2 = "conf;000001030100397;2009-06-02 00:00\0";
+	len = msg2.size();
+	
+	bytes_sent = Wls_MTcpSend(socket0, (uchar *) msg2.c_str(), len);
+	if(ERR_OK != bytes_sent){
+		logger << "send problem" << endl;
+		perror("send");
+		Wls_MTcpCose(socket0);
+	}
+		
+	
+	bytes_recv = Wls_MTcpRecv(socket0, pCAPData, buffer, buffer, 30*1000);
+	if(ERR_OK == bytes_recv){
+		loger << "recive error" << endl;
+		perror("recive"); // logowanie do pliku !!
+		//exit(1);
+	}
+	loger << "ok sendign" << endl;
+	if(strcmp((char*)pCAPData, "ok") != 0){
+		loger << "send ok error" << endl;
+		perror("nieudane polaczenie"); // logowanie do pliku !!
+		//exit(1);
+	}
+	loger << "entering for !" << endl;
+	for(int i =0; i<6; i++){
+		sleep(1);
+	    char str[40];
+	    int dataLen;
+	    sprintf(str, "%s" ,configs[1][i]);
+	    char msg3[50];
+	    strcpy(msg3, configs[0][i]);
+	    len = msg2.size();
+		bytes_sent =  Wls_MTcpSend(socket0, (uchar *) str, strlen(str) )
+		if(ERR_OK == bytes_sent){
+			loger << "sending problem !" << endl;
+		    perror("send"); // logowanie do pliku !
+		 //   exit(1);
+    	}else{
+			loger << << "Sendet request for data "  << configs[1][i] << endl;
+		}
+    	memset(pCAPData, 0, sizeof(pCAPData));
+		bytes_recv = Wls_MTcpRecv(socket0, pCAPData, buffer, buffer, 30*1000);
+    	if(ERR_OK == bytes_recv ){
+			loger << "recive eror datalen" << endl;
+    		perror("reciv"); // logowanie do pliku !!
+    	//	exit(1);
+    	}
+        dataLen = atoi(pCAPData);
+		//cout << dataLen << endl;
+    	//cout << "Wysylam potwierdzenie." << endl;
+		loger << "wysylam potwierdzenie datalen" << endl;
+		
+		bytes_sent = Wls_MTcpSend(socket0, (uchar *) "ok", strlen("ok"));
+    	if(ERR_OK == bytes_sent){
+			loger << "error sending ok for data len" << endl;
+    		perror("send"); // logowanie do pliku !!
+    	//	exit(1);
+    	}
+    	memset(pCAPData, 0, sizeof(pCAPData));
+		memset(download, 0, sizeof(download));
+        bytes_recv = 0;
+
+		while(bytes_recv < dataLen){
+			int recive = 0;
+				bytes_recv = Wls_MTcpRecv(socket0, download, buffer, dataLen, 30*1000);
+				if(ERR_OK == bytes_recv){
+					loger << "error reciving data for: " << configs[1][i] << endl;
+		    		perror("Reciv"); // logowanie do pliku !!
+		    //		exit(1);
+		    	}
+				bytes_recv += recive;
+				//sleep(0.5);
+				strcat(pCAPData, download);
+				memset(download, 0, sizeof(download));		
+		}
+		// przekazuje pobrane dane to stringa 
+		loger << "copying pCAPData to dane" << endl;
+        string dane(pCAPData);
+		loger << "creatong vector for: " configs[1][i] << endl;
+		// tworze vector
+        vector<string> tokens;
+		// prasuje ztringa i podaje go do vectora
+		loger << "tokenize data !" << endl;
+        Tokenize(dane, tokens, ";");
+		// iteruje vector i wrzucam dane do pliku !!
+		loger << "creating iterator" << endl;
+        std::vector<string>::iterator j;
+		int licz=0;
+		file << "[" << configs[1][i] << "]" << endl;
+		loger << "writing data to file" << endl;
+        for(j=tokens.begin(); j<tokens.end(); ++j){
+			if(configs[1][i]== "ok"){
+				file << *j;
+				file << endl;
+			}else{
+				file << "No" << licz << " = " << *j << endl;
+				licz++;
+			}
+        }
+		file << endl;
+		loger << "data writen" << endl;
+       // cout << endl;
+		memset(pCAPData, 0, sizeof(pCAPData));
+	}
+	// potwierdzam zakonczenie pobierania danych !!
+	sleep(1);
+	loger << "sending ok that the data was reciver properly" << endl;
+	bytes_sent = Wls_MTcpSend(socket0, (uchar *)"ok", strlen("ok"));
+    if(ERR_OK == bytes_sent){
+        perror("send");
+        //exit(1);
+    }
+	// koncze polaczenie z serwerem !! 
+	sleep(1);
+	loger << "sendin 'bye' and ending connection !" << endl;
+	bytes_sent = Wls_MTcpSend(socket0, (uchar *) "bye", strlen("bye"));
+    if(ERR_OK == bytes_sent){
+        perror("send");
+        //exit(1);
+    }
+	// zamykam plik konfiguracyjny !
+    file.close();
+	// zamykam socket !
+	close(sockfd);
+	
+	
+	
+	
+	
 	
 	
 }
@@ -219,6 +510,8 @@ int networkControler::startConf(int type){
 	switch(type){
 		case 0:
 			gprsInit();
+			checkSignalStr();
+			gprsConnect();
 			gprsCon();
 		break;
 		case 1:

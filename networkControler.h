@@ -41,12 +41,18 @@ private:
 	
 	//zmienne do eth/gprs
 	string ip, port, apn, user, password, serialN;
+	//zmienna kanalu w jakim dziala gprs
+	static const int chanell = 115200;
+	
+	bool gprs_apnConnected;
+	bool gprs_serverConnected;
 	
 	
 public:
 	networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr, string &serialNr);
 	~networkControler();
 	int startConf(int type);
+	int gprsConnect();
 	int sendTransaction();
 	int updClk();
 	int updConf();
