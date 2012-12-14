@@ -213,7 +213,7 @@ int networkControler::gprsCon(){
 	}
 		
 	
-	bytes_recv = Wls_MTcpRecv(socket0,(uchar *) pCAPData, buffer, 2048, 30*1000);
+	bytes_recv = Wls_MTcpRecv(socket0,(uchar *) pCAPData, buffer, (int)2048, 30000);
 	if(ERR_OK == bytes_recv){
 		loger << "recive error" << endl;
 		perror("recive"); // logowanie do pliku !!
