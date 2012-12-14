@@ -240,10 +240,10 @@ int networkControler::gprsCon(){
 		    perror("send"); // logowanie do pliku !
 		 //   exit(1);
     	}else{
-			loger << << "Sendet request for data "  << configs[1][i] << endl;
+			loger << "Sendet request for data "  << configs[1][i] << endl;
 		}
     	memset(pCAPData, 0, sizeof(pCAPData));
-		bytes_recv = Wls_MTcpRecv(socket0,(uchar *) pCAPData, buffer, buffer, 30*1000);
+		bytes_recv = Wls_MTcpRecv(socket0,(uchar *) pCAPData, buffer, 0, 30*1000);
     	if(ERR_OK == bytes_recv ){
 			loger << "recive eror datalen" << endl;
     		perror("reciv"); // logowanie do pliku !!
@@ -266,7 +266,7 @@ int networkControler::gprsCon(){
 
 		while(bytes_recv < dataLen){
 			int recive = 0;
-				bytes_recv = Wls_MTcpRecv(socket0,(uchar *) download, buffer, dataLen, 30*1000);
+				bytes_recv = Wls_MTcpRecv(socket0,(uchar *) download, buffer, 0, 30*1000);
 				if(ERR_OK == bytes_recv){
 					loger << "error reciving data for: " << configs[1][i] << endl;
 		    		perror("Reciv"); // logowanie do pliku !!
@@ -280,7 +280,7 @@ int networkControler::gprsCon(){
 		// przekazuje pobrane dane to stringa 
 		loger << "copying pCAPData to dane" << endl;
         string dane(pCAPData);
-		loger << "creatong vector for: " configs[1][i] << endl;
+		loger << "creatong vector for: " << configs[1][i] << endl;
 		// tworze vector
         vector<string> tokens;
 		// prasuje ztringa i podaje go do vectora
