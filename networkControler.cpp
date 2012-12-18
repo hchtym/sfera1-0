@@ -42,9 +42,9 @@ int networkControler::confCounter(char *str){
 		getline(file,line);
 		if(line.compare(seek.c_str()) == 0){
 			break;
-		}else
+		}else{
 			pos++;
-			// teste shit 
+		}	// teste shit 
 	}
 	compose.str("");
 	compose << pos;
