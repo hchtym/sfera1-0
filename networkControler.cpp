@@ -43,6 +43,7 @@ int networkControler::confCounter(char *str){
 			break;
 		}else
 			pos++;
+			// teste shit 
 	}
 	
 	Lcd_Cls();
