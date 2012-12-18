@@ -456,7 +456,7 @@ int networkControler::ethConf(){
 		// przekazuje pobrane dane to stringa 
 		loger << "copying pCAPData to dane" << endl;
         string dane(pCAPData);
-		loger << "creatong vector for: " configs[1][i] << endl;
+		loger << "creatong vector for: " << configs[1][i] << endl;
 		// tworze vector
         vector<string> tokens;
 		// prasuje ztringa i podaje go do vectora
