@@ -166,7 +166,7 @@ int networkControler::gprsConnect(){
 			compose << "nr;" << serialN.c_str();
 			string str = compose.str();
 			char przeciep = str.c_str();
-			send_buf = przeciep;
+			send_buf = const_cast<char *>(przeciep);
 			ret = Wls_MTcpSend(socket0, send_buf, str.size());
 			if(ERR_OK != ret)
 			{
