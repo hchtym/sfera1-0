@@ -32,10 +32,10 @@ networkControler::~networkControler(){
 int networkControler::confCounter(char *str){
 	stringstream compose,compose1;
 	compose << "[" << str << "]" << '\n' << endl;
-	compos1 << "[/" << str << "]" << '\n' << endl;
+	compose1 << "[/" << str << "]" << '\n' << endl;
 	ifstream file("config.txt");
 	string seek, line;
-	seek << compose.str();
+	seek = compose.str();
 	do {
 		getline(file,line);
 	} while(!file.eof() && line != seek );
