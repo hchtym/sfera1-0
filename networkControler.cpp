@@ -302,6 +302,7 @@ int networkControler::gprsCon(){
 				licz++;
 			}
         }
+		file << "[/" << configs[1][i] << "]" << endl;
 		file << endl;
 		loger << "data writen" << endl;
        // cout << endl;
