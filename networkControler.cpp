@@ -428,7 +428,7 @@ int networkControler::ethConf(){
     		perror("reciv"); // logowanie do pliku !!
     	//	exit(1);
     	}else{
-			logger << "reciver dataLen: " << pCAPData << endl;
+			loger << "reciver dataLen: " << pCAPData << endl;
 		}
         dataLen = atoi(pCAPData);
 		//cout << dataLen << endl;
