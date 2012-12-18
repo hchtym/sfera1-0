@@ -90,7 +90,7 @@ int networkControler::gprsConnect(){
 	gprs_apnConnected = false;
 	gprs_serverConnected = false;
 	int i,j,ret, signal;
-	uchar send_buf[buffer];
+	uchar *send_buf;
 	bool state;
 	int SERVER_CONNECT_TIMEOUT = 30000;
 	int APN_CONNECT_TIMEOUT = 20000;
@@ -166,7 +166,7 @@ int networkControler::gprsConnect(){
 			compose << "nr;" << serialN.c_str();
 			string str = compose.str();
 			char przeciep = str.c_str();
-			send_buf = const_cast<char *>(przeciep);
+			send_buf = przeciep;
 			ret = Wls_MTcpSend(socket0, send_buf, str.size());
 			if(ERR_OK != ret)
 			{
