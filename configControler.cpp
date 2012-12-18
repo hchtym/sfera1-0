@@ -85,13 +85,8 @@ int configControler::configGenerator(){
 	loger << "sprawdzam  flage" << endl;
 	if(flag.compare("eth") ==0){
 		loger << "sprawdzilem flage i odpalam eth !)" << endl;
-		cout << "pizda" << endl;
-		conector->dummy();
 		int type = 1;
-		//sleep(1000);
 		conector->startConf(type);
-		cout << "pizda3" << endl;
-
 	}else{
 		if(flag.compare("gprs") == 0){
 			loger << "sprawdzialem flage i odpalam gprs" << endl;

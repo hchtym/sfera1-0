@@ -31,7 +31,7 @@ networkControler::~networkControler(){
 
 int networkControler::confCounter(char *str){
 	stringstream compose,compose1;
-	int pos;
+	int pos =0;
 	compose << "[" << str << "]" << endl;
 	compose1 << "[/" << str << "]" << endl;
 	ifstream file("config.txt");
@@ -39,9 +39,10 @@ int networkControler::confCounter(char *str){
 	seek = compose.str();
 	 while(!file.eof() ){
 		getline(file,line);
-		if((pos = line.find(seek, 0)) != string::npos){
+		if(line.compare(seek) == 0){
 			break;
-		}
+		}else
+			pos++;
 	}
 	
 	Lcd_Cls();
