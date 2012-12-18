@@ -41,7 +41,7 @@ int networkControler::confCounter(char *str){
 	} while(!file.eof() && line != seek );
 	
 	Lcd_Cls();
-	Lcd_Printxy(0,0,0,"line");
+	Lcd_Printxy(0,0,0, const_cast<char *>(line));
 	
 	file.close();
 }
