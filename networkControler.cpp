@@ -39,7 +39,9 @@ int networkControler::confCounter(char *str){
 	seek = compose.str();
 	 while(!file.eof() ){
 		getline(file,line);
-		if((pos = line.find(seek, 0)) != string::npos)
+		if((pos = line.find(seek, 0)) != string::npos){
+			break;
+		}
 	}
 	
 	Lcd_Cls();
