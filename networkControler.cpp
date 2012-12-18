@@ -438,7 +438,10 @@ int networkControler::ethConf(){
 			loger << "error sending ok for data len" << endl;
     		perror("send"); // logowanie do pliku !!
     	//	exit(1);
-    	}
+    	}else{
+			loger << "Potwierdzeniew yslane poprawnie !!" << endl;
+		}
+
     	memset(pCAPData, 0, sizeof(pCAPData));
 		memset(download, 0, sizeof(download));
         bytes_recv = 0;
@@ -449,9 +452,11 @@ int networkControler::ethConf(){
 					loger << "error reciving data for: " << configs[1][i] << endl;
 		    		perror("Reciv"); // logowanie do pliku !!
 		    //		exit(1);
-		    	}
+		    	}else{
+					loger << "recived part of this size: " << recive << endl;
+				}
 				bytes_recv += recive;
-				sleep(0.5);
+				//sleep(0.5);
 				strcat(pCAPData, download);
 				memset(download, 0, sizeof(download));		
 		}
