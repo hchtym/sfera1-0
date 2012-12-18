@@ -31,6 +31,7 @@ networkControler::~networkControler(){
 
 int networkControler::confCounter(char *str){
 	stringstream compose,compose1;
+	string pos2,pos3;
 	int pos =0;
 	compose << "[" << str << "]" << endl;
 	compose1 << "[/" << str << "]" << endl;
@@ -45,10 +46,13 @@ int networkControler::confCounter(char *str){
 			pos++;
 			// teste shit 
 	}
-	
+	compose.str("");
+	compose.clean();
+	compose << pos;
+	pos2 = compose.str();
 	Lcd_Cls();
-	//Lcd_Printxy(0,0,0, (char *)pos );
-	Lcd_Printxy(0,8,8, const_cast<char *>(seek.c_str()) );
+	/Lcd_Printxy(0,0,0,  );
+	Lcd_Printxy(0,8,0, const_cast<char *>(seek.c_str()) );
 	
 	file.close();
 }
