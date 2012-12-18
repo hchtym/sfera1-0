@@ -40,6 +40,9 @@ int networkControler::confCounter(char *str){
 	seek = compose.str();
 	 while(!file.eof() ){
 		getline(file,line);
+		Lcd_Cls();
+		Lcd_Printxy(0,0,0, const_cast<char *>(line.c_str()) );
+		sleep(5);
 		if(line.compare(seek.c_str()) == 0){
 			break;
 		}else{
