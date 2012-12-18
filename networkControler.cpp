@@ -395,7 +395,7 @@ int networkControler::ethConf(){
 		//exit(1);
 	}
 	
-	if((bytes_recv = recv(sockfd, pCAPData,(buffer* buffer) -1, 0)) == -1){
+	if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1){
 		loger << "recive error" << endl;
 		perror("recive"); // logowanie do pliku !!
 		//exit(1);
@@ -423,7 +423,7 @@ int networkControler::ethConf(){
 			loger << "Sendet request for data "  << configs[1][i] << endl;
 		}
     	memset(pCAPData, 0, sizeof(pCAPData));
-    	if((bytes_recv = recv(sockfd, pCAPData, (buffer*buffer)-1, 0))== -1){
+    	if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1){
 			loger << "recive eror datalen" << endl;
     		perror("reciv"); // logowanie do pliku !!
     	//	exit(1);
@@ -449,7 +449,7 @@ int networkControler::ethConf(){
 		    //		exit(1);
 		    	}
 				bytes_recv += recive;
-				//sleep(0.5);
+				sleep(0.5);
 				strcat(pCAPData, download);
 				memset(download, 0, sizeof(download));		
 		}
@@ -469,7 +469,7 @@ int networkControler::ethConf(){
 		file << "[" << configs[1][i] << "]" << endl;
 		loger << "writing data to file" << endl;
         for(j=tokens.begin(); j<tokens.end(); ++j){
-			if(configs[1][i]== "ok"){
+			if(configsonfigs[1][i]== "ok"){
 				file << *j;
 				file << endl;
 			}else{
