@@ -211,7 +211,6 @@ int networkControler::gprsCon(){
 		perror("send");
 		Wls_MTcpClose(socket0);
 	}
-	int a = 2048;	
 	
 	bytes_recv = Wls_MTcpRecv(socket0,(uchar *) pCAPData, buffer, 0, 30000);
 	if(ERR_OK == bytes_recv){
