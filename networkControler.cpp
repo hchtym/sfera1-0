@@ -33,8 +33,8 @@ int networkControler::confCounter(char *str){
 	stringstream compose,compose1;
 	string pos2,pos3;
 	int pos =0;
-	compose << "[" << str << "]" << endl;
-	compose1 << "[/" << str << "]" << endl;
+	compose << "[" << str << "]" << '\n' << endl;
+	compose1 << "[/" << str << "]" << '\n' << endl;
 	ifstream file("config.txt");
 	string seek, line;
 	seek = compose.str();
