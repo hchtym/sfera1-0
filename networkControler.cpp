@@ -420,7 +420,7 @@ int networkControler::ethConf(){
 		    perror("send"); // logowanie do pliku !
 		 //   exit(1);
     	}else{
-			loger << << "Sendet request for data "  << configs[1][i] << endl;
+			loger << "Sendet request for data "  << configs[1][i] << endl;
 		}
     	memset(pCAPData, 0, sizeof(pCAPData));
     	if((bytes_recv = recv(sockfd, pCAPData, (buffer*buffer)-1, 0))== -1){
