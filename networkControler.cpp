@@ -31,8 +31,8 @@ networkControler::~networkControler(){
 
 int networkControler::confCounter(char *str){
 	stringstream compose,compose1;
-	compose << "[" << str << "]" << '\n' << endl;
-	compose1 << "[/" << str << "]" << '\n' << endl;
+	compose << "[" << str << "]" << endl;
+	compose1 << "[/" << str << "]" << endl;
 	ifstream file("config.txt");
 	string seek, line;
 	seek = compose.str();
@@ -41,7 +41,8 @@ int networkControler::confCounter(char *str){
 	} while(!file.eof() && line != seek );
 	
 	Lcd_Cls();
-	Lcd_Printxy(0,0,0, const_cast<char *>(line.c_str()));
+	Lcd_Printxy(0,0,0, const_cast<char *>(line.c_str()) );
+	Lcd_Printxy(0,8,8, const_cast<char *>(seek.c_str()) );
 	
 	file.close();
 }
