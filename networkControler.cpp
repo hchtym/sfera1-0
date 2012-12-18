@@ -476,7 +476,7 @@ int networkControler::ethConf(){
 		file << "[" << configs[1][i] << "]" << endl;
 		loger << "writing data to file" << endl;
         for(j=tokens.begin(); j<tokens.end(); ++j){
-			if(configsonfigs[1][i]== "ok"){
+			if(configs[1][i]== "ok"){
 				file << *j;
 				file << endl;
 			}else{
