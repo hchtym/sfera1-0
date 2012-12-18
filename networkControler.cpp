@@ -29,6 +29,23 @@ networkControler::~networkControler(){
 	
 }
 
+int networkControler::confCounter(char *str){
+	stringstream compose,compose1;
+	compose << "[" << str << "]" << '\n' << endl;
+	compos1 << "[/" << str << "]" << '\n' << endl;
+	ifstream file("config.txt");
+	string seek, line;
+	seek << compose.str();
+	do {
+		getline(file,line);
+	} while(!file.eof() && line != seek );
+	
+	Lcd_Cls();
+	Lcd_Printxy(0,0,0,"line");
+	
+	file.close();
+}
+
 int networkControler::checkSignalStr(){
 	int ret,signal;
 	signal = -1;
@@ -524,8 +541,11 @@ int networkControler::startConf(int type){
 			gprsCon();
 		break;
 		case 1:
-			cout << "ethCon pizdacz !" << endl;
+			//cout << "ethCon pizdacz !" << endl;
 			conf = ethConf();
+			sleep(3);
+			confCounter("seller");
+			sleep(7);
 		break;
 		default:
 		return 0;

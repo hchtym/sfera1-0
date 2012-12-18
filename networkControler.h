@@ -46,6 +46,7 @@ private:
 	static const int socket0 = 0;
 	bool gprs_apnConnected;
 	bool gprs_serverConnected;
+	int confCounter(char *str);
 	
 	
 	
