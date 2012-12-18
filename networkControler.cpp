@@ -345,8 +345,8 @@ int networkControler::ethConf(){
 	loger << "start ethCon" << endl;
 	// konfiguracja socketa !! 
 	int sockfd;
-	char pCAPData[buffer];
-	char download[buffer];
+	char pCAPData[buffer*buffer];
+	char download[buffer*buffer];
 	struct sockaddr_in dest_addr;
 	
 	loger << "tworze socket" << endl;
