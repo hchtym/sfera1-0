@@ -58,7 +58,7 @@ int networkControler::confCounter(char *str){
 	compose.str("");
 	compose << seek.size();
 	pos2 = compose.str();
-	Lcd_Printxy(0,16,0, const_cast<char *>(pos2.c_str()) )
+	Lcd_Printxy(0,16,0, const_cast<char *>(pos2.c_str()) );
 	
 	file.close();
 }
