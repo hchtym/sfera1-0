@@ -30,7 +30,7 @@ private:
 	//zmienne glopbalne obieku (dostepne tylko dla obieku !)
 	string ip, port, apn, user, password, seriallnumber;
 	// 
-	string lcb; //locked card behaviour
+	/*string lcb; //locked card behaviour
 	string lcbmsg; // wiadomosc do zablokowanych kart
 	string screntimeout; //czas do wygaszacza
 	string logtime; // timeout na wylogowanie
@@ -48,7 +48,7 @@ private:
 	string schtxtimebeghr; // okno czasowe poczatek godzina wysylania tranzakcji
 	string schtxtimebegmin; // okno czasowe poczatek minuta wysylania tranzakcji
 	string schtxtimeendhr; // okno czasowe koniec godzina wysylania tranzakcji
-	string schtxtimeendmin; // okno czasowe koniec godzina wysylanie tranzakcji
+	string schtxtimeendmin; // okno czasowe koniec godzina wysylanie tranzakcji*/
 	
 public: 
 	configControler(); 
