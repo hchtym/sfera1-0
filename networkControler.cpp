@@ -51,10 +51,11 @@ int networkControler::confCounter(char *str){
 	seek = compose1.str();
 	 while(!file.eof() ){
 		getline(file,line);
+		++pos;
 		if( line.compare(0,seek.size(),seek) == 0){
 			break;
 		}
-			pos2++;
+//			pos2++;
 	}
 	file.close();
 	compose.str("");
