@@ -34,7 +34,7 @@ int networkControler::confCounter(char *str){
 	string pos3;
 	int pos2 =0;
 	int pos =0;
-	int itemss;
+	int itemss=0;
 	compose << "[" << str << "]";
 	compose1 << "[/" << str << "]";
 	ifstream file("config.txt");
@@ -47,7 +47,6 @@ int networkControler::confCounter(char *str){
 			break;
 		}
 	}
-	file.close();
 	file.clear();
 	seek = compose1.str();
 	 while(!file.eof() ){
@@ -58,8 +57,10 @@ int networkControler::confCounter(char *str){
 			pos2++;
 	}
 	file.close();
+	compose.str("");
 	itemss = pos2 - pos;
 	compose << itemss;
+	
 	pos3 = compose.str();
 	Lcd_Cls();
 	Lcd_Printxy(0,0,0, const_cast<char *>(pos3.c_str()) );
