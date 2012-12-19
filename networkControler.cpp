@@ -43,7 +43,7 @@ int networkControler::confCounter(char *str){
 		//Lcd_Cls();
 		//Lcd_Printxy(0,0,0, const_cast<char *>(line.c_str()) );
 		//sleep(2);
-		if( seek.compare(0,line.size(),line) == 0){
+		if( line.compare(0,seek.size(),seek) == 0){
 			break;
 		}else{
 			pos++;
