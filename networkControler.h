@@ -42,8 +42,8 @@ private:
 	//zmienne do eth/gprs
 	string ip, port, apn, user, password, serialN;
 	//zmienna kanalu w jakim dziala gprs
-	int chanell = 115200;
-	int socket0 = 0;
+	const int chanell = 115200;
+	const int socket0 = 0;
 	bool gprs_apnConnected;
 	bool gprs_serverConnected;
 	
