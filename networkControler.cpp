@@ -58,6 +58,7 @@ int networkControler::checkSignalStr(){
 }
 
 void networkControler::gprsInit(){
+	Lcd_Cls();
 	Wls_InputUidPwd((BYTE *)user.c_str(), (BYTE *)password.c_str() );
 	int ret;
 	ret = Wls_Init();
