@@ -31,6 +31,38 @@ configControler::configControler(){
 	
 }
 
+int configControler::confCounter(char *str){
+	stringstream compose,compose1;
+	string pos3;
+	int pos2 =0;
+	int pos =0;
+	int itemss=0;
+	compose << "[" << str << "]";
+	compose1 << "[/" << str << "]";
+	ifstream file("config.txt");
+	string seek, line;
+	seek = compose.str();
+	 while(!file.eof() ){
+		getline(file,line);
+		++pos;
+		if( line.compare(0,seek.size(),seek) == 0){
+			break;
+		}
+	}
+	file.clear();
+	seek = compose1.str();
+	 while(!file.eof() ){
+		getline(file,line);
+		if( line.compare(0,seek.size(),seek) == 0){
+			break;
+		}
+			pos2++;
+	}
+	file.close();
+
+	return pos2;
+}
+
 int configControler::configGenerator(){
 	int item;
 	string name = "Konfiguracja wstepna"; 
