@@ -49,11 +49,11 @@ configControler::configControler(){
 		ip = ipr;
 		port = portr;
 		apn = anpr;
-		user = user;
+		user = userr;
 		password = passwordr;
 		seriallnumber = seriallnumberr; 
 		lcb = lcbr; 
-		lcbmsg = lcbmsg;
+		lcbmsg = lcbmsgr;
 		screntimeout = screntimeoutr;
 		logtime = logtimer;
 		servcode = servcoder;
