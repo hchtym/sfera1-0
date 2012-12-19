@@ -42,7 +42,7 @@ int networkControler::confCounter(char *str){
 		getline(file,line);
 		Lcd_Cls();
 		Lcd_Printxy(0,0,0, const_cast<char *>(line.c_str()) );
-		sleep(5);
+		sleep(2);
 		if( seek.compare(line) == 0){
 			break;
 		}else{
