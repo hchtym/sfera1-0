@@ -55,6 +55,10 @@ int networkControler::confCounter(char *str){
 	Lcd_Cls();
 	Lcd_Printxy(0,0,0, const_cast<char *>(pos2.c_str()) );
 	Lcd_Printxy(0,8,0, const_cast<char *>(seek.c_str()) );
+	compose.str("");
+	compose << seek.size();
+	pos2 = compose.str();
+	Lcd_Printxy(0,16,0, const_cast<char *>(pos2.c_str()) )
 	
 	file.close();
 }
