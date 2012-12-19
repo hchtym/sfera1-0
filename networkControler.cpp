@@ -62,7 +62,7 @@ void networkControler::gprsInit(){
 	Wls_InputUidPwd((BYTE *)user.c_str(), (BYTE *)password.c_str() );
 	int ret;
 	ret = Wls_Init();
-	DelayMs(200); 
+	DelayMs(500); 
 	if(ret != ERR_OK){
 		Lcd_Printxy(0,8,0, "Blad modolu gprs");
 	}
