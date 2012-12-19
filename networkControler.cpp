@@ -31,10 +31,10 @@ networkControler::~networkControler(){
 
 
 int networkControler::checkSignalStr(){
-	int ret,signal;
-	signal = -1;
-	ret = Wls_CheckSignal(&signal);
-	switch(signal){
+	int ret,sig;
+	sig = -1;
+	ret = Wls_CheckSignal(&sig);
+	switch(sig){
 		case NO_SIGNAL:
 		Lcd_Icon(1, ICON_ON, 1);
 		break;
@@ -73,16 +73,16 @@ void networkControler::gprsInit(){
 	ret = Wls_Init();
 	DelayMs(200); 
 	if(ERR_OK != ret){
-		Lcd_Printxy(0,8,0, "Błąd inicjalizaji modółu gprs");
+		Lcd_Printxy(0,8,0, "Blad modolu gprs");
 	}
-	Lcd_Printxy(0,16,0, "Sprawdzam obecnosc karty sim");
+	Lcd_Printxy(0,16,0, "Spr obecnosc k.sim");
 	ret = Wls_CheckSim();
 	DelayMs(500);
 	if(ERR_OK == ret)
 	{
 		Lcd_Printxy(0,24, 0, "SIM = OK");
 	}else{
-		Lcd_Printxy(0,32, 0, "Brak karty SIM");
+		Lcd_Printxy(0,24, 0, "Brak karty SIM");
 	}
 	
 }
