@@ -58,13 +58,16 @@ int networkControler::confCounter(char *str){
 	}
 	file.close();
 	compose.str("");
-	itemss = pos2 - pos;
-	compose << itemss;
-	
+	//itemss = pos2 - pos;
+	//compose << itemss;
+	compose << pos2;
 	pos3 = compose.str();
 	Lcd_Cls();
 	Lcd_Printxy(0,0,0, const_cast<char *>(pos3.c_str()) );
-	
+	compose.str("");
+	compose << pos;
+	pos3 = compose.str();
+	Lcd_printxy(0,0,0, const_cast<char *>(pos3.c_str()) );
 }
 
 int networkControler::checkSignalStr(){
