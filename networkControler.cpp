@@ -31,6 +31,7 @@ networkControler::~networkControler(){
 
 int networkControler::confCounter(char *str){
 	stringstream compose,compose1;
+	string pose3;
 	int pos2 =0;
 	int pos =0;
 	int itemss;
@@ -47,7 +48,7 @@ int networkControler::confCounter(char *str){
 		}
 	}
 	file.close();
-	file.open();
+	file.clear();
 	seek = compose1.str();
 	 while(!file.eof() ){
 		getline(file,line);
@@ -59,9 +60,9 @@ int networkControler::confCounter(char *str){
 	file.close();
 	itemss = pos2 - pos;
 	compose << itemss;
-	pos2 = compose.str();
+	pos3 = compose.str();
 	Lcd_Cls();
-	Lcd_Printxy(0,0,0, const_cast<char *>(pos2.c_str()) );
+	Lcd_Printxy(0,0,0, const_cast<char *>(pos3.c_str()) );
 	
 }
 
