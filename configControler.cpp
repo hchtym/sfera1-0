@@ -48,7 +48,7 @@ configControler::configControler(){
 
 		ip = ipr;
 		port = portr;
-		apn = anpr;
+		apn = apnr;
 		user = userr;
 		password = passwordr;
 		seriallnumber = seriallnumberr; 
