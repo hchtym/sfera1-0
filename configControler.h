@@ -26,7 +26,7 @@ private:
 	vector<string> options;
 	vector<string> confOptions;
 	//koniec ekranow
-
+	int confCounter(char *str);
 	//zmienne glopbalne obieku (dostepne tylko dla obieku !)
 	string ip, port, apn, user, password, seriallnumber;
 
