@@ -18,34 +18,59 @@ configControler::configControler(){
 	{
 		file.close();
 		ConfigFile cf("config.txt");
-		ConfigFile sn("seriall.txt")
+		ConfigFile sn("seriall.txt");
 		// dalszy uber magick z parsowanie plikow
-			ip = cf.Value("ok","gprs.address");
-		port = cf.Value("ok","gprs.port");
-		apn = cf.Value("ok","gprs.apn");
-		user = cf.Value("pl", "gprs.login");
-		password = cf.Value("ok","gprs.password");
-		seriallnumber = cf.Value("seriall", "SN");
-		lcb = cf.Value("ok", "locked.card.behaviour");
-		lcbmsg = cf.Value("ok", "locked.card.message"); 
-		screntimeout = cf.Value("ok", "screensaver.timeout"); 
-		logtime = cf.Value("ok", "logout.timeout"); 
-		servcode = cf.Value("ok", "service.code");
-		versiondate = cf.Value("ok", "version.date=2012-11-12 10:52"); 
-		prntconf = cf.Value("ok", "print.confirmation"); 
-		schconffailint = cf.Value("ok", "schedule.config.fail.interval");
-		schconfsucint = cf.Value("ok", "schedule.config.success.interval"); 
-		schconftimebeghr = cf.Value("ok", "schedule.config.time.begin.hour"); 
-		schconftimebehmin = cf.Value("ok", "schedule.config.time.begin.min"); 
-		schconftimeendht = cf.Value("ok", "schedule.config.time.end.hour"); 
-		schconftimeendmin = cf.Value("ok", "schedule.config.time.end.min"); 
-		schtxfailint = cf.Value("ok", "schedule.tx.fail.interval"); 
-		schtxsucint = cf.Value("ok", "schedule.tx.success.interval"); 
-		schtxtimebeghr = cf.Value("ok", "schedule.tx.time.begin.hour"); 
-		schtxtimebegmin = cf.Value("ok", "schedule.tx.time.begin.min"); 
-		schtxtimeendhr = cf.Value("ok", "schedule.tx.time.end.hour");
-		schtxtimeendmin = cf.Value("ok", "schedule.tx.time.end.min");
-	
+		string ipr = cf.Value("ok","gprs.address");
+		string portr = cf.Value("ok","gprs.port");
+		string apnr = cf.Value("ok","gprs.apn");
+		string userr = cf.Value("pl", "gprs.login");
+		string passwordr = cf.Value("ok","gprs.password");
+		string seriallnumberr = cf.Value("seriall", "SN");
+		string lcbr = cf.Value("ok", "locked.card.behaviour");
+		string lcbmsgr = cf.Value("ok", "locked.card.message"); 
+		string screntimeoutr = cf.Value("ok", "screensaver.timeout"); 
+		string logtimer = cf.Value("ok", "logout.timeout"); 
+		string servcoder = cf.Value("ok", "service.code");
+		string versiondater = cf.Value("ok", "version.date=2012-11-12 10:52"); 
+		string prntconfr = cf.Value("ok", "print.confirmation"); 
+		string schconffailintr = cf.Value("ok", "schedule.config.fail.interval");
+		string schconfsucintr = cf.Value("ok", "schedule.config.success.interval"); 
+		string schconftimebeghrr = cf.Value("ok", "schedule.config.time.begin.hour"); 
+		string schconftimebehminr = cf.Value("ok", "schedule.config.time.begin.min"); 
+		string schconftimeendhtr = cf.Value("ok", "schedule.config.time.end.hour"); 
+		string schconftimeendminr = cf.Value("ok", "schedule.config.time.end.min"); 
+		string schtxfailintr = cf.Value("ok", "schedule.tx.fail.interval"); 
+		string schtxsucintr = cf.Value("ok", "schedule.tx.success.interval"); 
+		string schtxtimebeghrr = cf.Value("ok", "schedule.tx.time.begin.hour"); 
+		string schtxtimebegminr = cf.Value("ok", "schedule.tx.time.begin.min"); 
+		string schtxtimeendhrr = cf.Value("ok", "schedule.tx.time.end.hour");
+		string schtxtimeendminr = cf.Value("ok", "schedule.tx.time.end.min");
+
+		ip = ipr;
+		port = portr;
+		apn = anpr;
+		user = user;
+		password = passwordr;
+		seriallnumber = seriallnumberr; 
+		lcb = lcbr; 
+		lcbmsg = lcbmsg;
+		screntimeout = screntimeoutr;
+		logtime = logtimer;
+		servcode = servcoder;
+		versiondate = versiondater;
+		prntconf = prntconfr;
+		schconffailint = schconffailintr;
+		schconfsucint = schconfsucintr;
+		schconftimebeghr = schconftimebeghrr;
+		schconftimebehmin = schconftimebehminr;
+		schconftimeendht = schconftimeendhtr;
+		schconftimeendmin = schconftimeendminr;
+		schtxfailint = schtxfailintr;
+		schtxsucint = schtxsucintr;
+		schtxtimebeghr = schtxtimebeghrr;
+		schtxtimebegmin = schtxtimebegminr;
+		schtxtimeendhr = schtxtimeendhrr;
+		schtxtimeendmin = schtxtimeendminr; 
 	
 	
 	

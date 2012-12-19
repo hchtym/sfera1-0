@@ -39,16 +39,16 @@ private:
 	string prntconf; // drukowanie potweirdzenia
 	string schconffailint; // interwal failu
 	string schconfsucint; // interwal powodzenia
-	string schconftimebeghr;
-	string schconftimebehmin;
-	string schconftimeendht;
-	string schconftimeendmin;
-	string schtxfailint;
-	string schtxsucint;
-	string schtxtimebeghr;
-	string schtxtimebegmin;
-	string schtxtimeendhr;
-	string schtxtimeendmin;
+	string schconftimebeghr; // okno czasowe poczatek godzina spr soft i conf
+	string schconftimebehmin; // okno czasowe poczatek minuta spr soft i conf
+	string schconftimeendht; // okno czasowe koniec godzina spr soft i conf
+	string schconftimeendmin; // okno czasowe koniec minuta spr soft i conf
+	string schtxfailint; // interwal fail transmisjii tranzakcji
+	string schtxsucint; // interwal sukcesu transmisjii tranzakcji
+	string schtxtimebeghr; // okno czasowe poczatek godzina wysylania tranzakcji
+	string schtxtimebegmin; // okno czasowe poczatek minuta wysylania tranzakcji
+	string schtxtimeendhr; // okno czasowe koniec godzina wysylania tranzakcji
+	string schtxtimeendmin; // okno czasowe koniec godzina wysylanie tranzakcji
 	
 public: 
 	configControler(); 
