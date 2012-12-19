@@ -31,7 +31,7 @@ networkControler::~networkControler(){
 
 int networkControler::confCounter(char *str){
 	stringstream compose,compose1;
-	string pose3;
+	string pos3;
 	int pos2 =0;
 	int pos =0;
 	int itemss;
