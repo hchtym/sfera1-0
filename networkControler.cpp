@@ -45,13 +45,13 @@ int networkControler::confCounter(char *str){
 		compose.str("");
 		compose << line.size();
 		pos2 = compose.str();
+		++pos;
 		Lcd_Printxy(0,16,0, const_cast<char *>(pos2.c_str()) );
 		sleep(1);
 		if( line.compare(0,seek.size(),seek) == 0){
 			break;
-		}else{
-			pos++;
-		}	// teste shit 
+		}
+		//	pos++;
 	}
 	compose.str("");
 	compose << pos;
@@ -107,7 +107,7 @@ void networkControler::gprsInit(){
 		Lcd_Printxy(0,0,0, "Blad przy ustawianiu");
 	}
 	ret = Wls_Init();
-	DelayMs(200);
+	DelayMs(200); 
 	if(ERR_OK != ret){
 		Lcd_Printxy(0,8,0, "Błąd inicjalizaji modółu gprs");
 	}
