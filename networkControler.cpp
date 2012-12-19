@@ -64,16 +64,16 @@ int networkControler::dummy(){
 
 void networkControler::gprsInit(){
 	int ret;
+	ret = Wls_Init();
+	DelayMs(200); 
+	if(ERR_OK != ret){
+		Lcd_Printxy(0,8,0, "Blad modolu gprs");
+	}
 	ret = Wls_SetBaudrate(chanell);
 	DelayMs(200);
 	if(ERR_OK != ret){
 		Lcd_Cls();
 		Lcd_Printxy(0,0,0, "Blad przy ustawianiu");
-	}
-	ret = Wls_Init();
-	DelayMs(200); 
-	if(ERR_OK != ret){
-		Lcd_Printxy(0,8,0, "Blad modolu gprs");
 	}
 	Lcd_Printxy(0,16,0, "Spr obecnosc k.sim");
 	ret = Wls_CheckSim();
