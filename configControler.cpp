@@ -18,7 +18,33 @@ configControler::configControler(){
 	{
 		file.close();
 		ConfigFile cf("config.txt");
-		// dalszy uber magick z parsowanie plikow 
+		ConfigFile sn("seriall.txt")
+		// dalszy uber magick z parsowanie plikow
+			ip = cf.Value("ok","gprs.address");
+		port = cf.Value("ok","gprs.port");
+		apn = cf.Value("ok","gprs.apn");
+		user = cf.Value("pl", "gprs.login");
+		password = cf.Value("ok","gprs.password");
+		seriallnumber = cf.Value("seriall", "SN");
+		lcb = cf.Value("ok", "locked.card.behaviour");
+		lcbmsg = cf.Value("ok", "locked.card.message"); 
+		screntimeout = cf.Value("ok", "screensaver.timeout"); 
+		logtime = cf.Value("ok", "logout.timeout"); 
+		servcode = cf.Value("ok", "service.code");
+		versiondate = cf.Value("ok", "version.date=2012-11-12 10:52"); 
+		prntconf = cf.Value("ok", "print.confirmation"); 
+		schconffailint = cf.Value("ok", "schedule.config.fail.interval");
+		schconfsucint = cf.Value("ok", "schedule.config.success.interval"); 
+		schconftimebeghr = cf.Value("ok", "schedule.config.time.begin.hour"); 
+		schconftimebehmin = cf.Value("ok", "schedule.config.time.begin.min"); 
+		schconftimeendht = cf.Value("ok", "schedule.config.time.end.hour"); 
+		schconftimeendmin = cf.Value("ok", "schedule.config.time.end.min"); 
+		schtxfailint = cf.Value("ok", "schedule.tx.fail.interval"); 
+		schtxsucint = cf.Value("ok", "schedule.tx.success.interval"); 
+		schtxtimebeghr = cf.Value("ok", "schedule.tx.time.begin.hour"); 
+		schtxtimebegmin = cf.Value("ok", "schedule.tx.time.begin.min"); 
+		schtxtimeendhr = cf.Value("ok", "schedule.tx.time.end.hour");
+		schtxtimeendmin = cf.Value("ok", "schedule.tx.time.end.min");
 	
 	
 	

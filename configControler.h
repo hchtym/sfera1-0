@@ -29,7 +29,26 @@ private:
 	int confCounter(char *str);
 	//zmienne glopbalne obieku (dostepne tylko dla obieku !)
 	string ip, port, apn, user, password, seriallnumber;
-
+	// 
+	string lcb; //locked card behaviour
+	string lcbmsg; // wiadomosc do zablokowanych kart
+	string screntimeout; //czas do wygaszacza
+	string logtime; // timeout na wylogowanie
+	string servcode; //kod serwisowy
+	string versiondate; // data wersji configa
+	string prntconf; // drukowanie potweirdzenia
+	string schconffailint; // interwal failu
+	string schconfsucint; // interwal powodzenia
+	string schconftimebeghr;
+	string schconftimebehmin;
+	string schconftimeendht;
+	string schconftimeendmin;
+	string schtxfailint;
+	string schtxsucint;
+	string schtxtimebeghr;
+	string schtxtimebegmin;
+	string schtxtimeendhr;
+	string schtxtimeendmin;
 	
 public: 
 	configControler(); 
