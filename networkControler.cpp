@@ -65,7 +65,7 @@ void networkControler::gprsInit(){
 	if(ERR_OK != ret){
 		Lcd_Printxy(0,8,0, "Blad modolu gprs");
 	}
-	ret = Wls_SetBaudrate(chanell);
+	ret = Wls_SetBaudrate(115200);
 	DelayMs(200);
 	if(ERR_OK != ret){
 		Lcd_Cls();
