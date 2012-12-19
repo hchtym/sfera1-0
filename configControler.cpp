@@ -95,9 +95,9 @@ int configControler::configGenerator(){
 			// loguj nieznany typ !
 		}
 	}
-	Lcd_Cls();
-	Lcd_Printxy(0,0,0, "Udalo sie ! chyba ?");
-	cout << "cipa max pizda 56600" << endl;
+	//Lcd_Cls();
+	//Lcd_Printxy(0,0,0, "Udalo sie ! chyba ?");
+	//cout << "cipa max pizda 56600" << endl;
 	delete conector;
 	
 }
