@@ -33,17 +33,21 @@ int networkControler::confCounter(char *str){
 	stringstream compose,compose1;
 	string pos2,pos3;
 	int pos =0;
-	compose << "[" << str << "]" << endl;
-	compose1 << "[/" << str << "]" << endl;
+	compose << "[" << str << "]"endl;
+	compose1 << "[/" << str << "]";
 	ifstream file("config.txt");
 	string seek, line;
 	seek = compose.str();
 	 while(!file.eof() ){
 		getline(file,line);
-		//Lcd_Cls();
-		//Lcd_Printxy(0,0,0, const_cast<char *>(line.c_str()) );
-		//sleep(2);
-		if( line.compare(0,seek.size()-1,seek) == 0){
+		Lcd_Cls();
+		Lcd_Printxy(0,0,0, const_cast<char *>(line.c_str()) );
+		compose.str("");
+		compose << seek.size();
+		pos2 = compose.str();
+		Lcd_Printxy(0,16,0, const_cast<char *>(line.c_str()) );
+		sleep(1);
+		if( line.compare(0,seek.size(),seek) == 0){
 			break;
 		}else{
 			pos++;
@@ -52,9 +56,8 @@ int networkControler::confCounter(char *str){
 	compose.str("");
 	compose << pos;
 	pos2 = compose.str();
-	Lcd_Cls();
-	Lcd_Printxy(0,0,0, const_cast<char *>(pos2.c_str()) );
-	Lcd_Printxy(0,8,0, const_cast<char *>(seek.c_str()) );
+	Lcd_Printxy(0,24,0, const_cast<char *>(pos2.c_str()) );
+	Lcd_Printxy(0,32,0, const_cast<char *>(seek.c_str()) );
 	compose.str("");
 	compose << seek.size();
 	pos2 = compose.str();
