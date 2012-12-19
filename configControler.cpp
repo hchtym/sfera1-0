@@ -45,7 +45,7 @@ configControler::configControler(){
 		string schtxtimebegminr = cf.Value("ok", "schedule.tx.time.begin.min"); 
 		string schtxtimeendhrr = cf.Value("ok", "schedule.tx.time.end.hour");
 		string schtxtimeendminr = cf.Value("ok", "schedule.tx.time.end.min");
-
+		/*
 		ip = ipr;
 		port = portr;
 		apn = apnr;
@@ -70,7 +70,7 @@ configControler::configControler(){
 		schtxtimebeghr = schtxtimebeghrr;
 		schtxtimebegmin = schtxtimebegminr;
 		schtxtimeendhr = schtxtimeendhrr;
-		schtxtimeendmin = schtxtimeendminr; 
+		schtxtimeendmin = schtxtimeendminr; */
 	
 	
 	
