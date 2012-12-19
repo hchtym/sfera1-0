@@ -67,7 +67,7 @@ int networkControler::confCounter(char *str){
 	compose.str("");
 	compose << pos;
 	pos3 = compose.str();
-	Lcd_Printxy(0,0,0, const_cast<char *>(pos3.c_str()) );
+	Lcd_Printxy(0,8,0, const_cast<char *>(pos3.c_str()) );
 }
 
 int networkControler::checkSignalStr(){
