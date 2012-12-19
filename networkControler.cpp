@@ -528,9 +528,6 @@ int networkControler::startConf(int type){
 		case 1:
 			//cout << "ethCon pizdacz !" << endl;
 			conf = ethConf();
-			sleep(3);
-			confCounter("seller");
-			sleep(7);
 		break;
 		default:
 		return 0;
