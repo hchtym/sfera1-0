@@ -57,12 +57,8 @@ int networkControler::checkSignalStr(){
 
 }
 
-int networkControler::dummy(){
-	Lcd_Cls();
-	Lcd_Printxy(0,0,0,"doszlo tutaj !");
-}
-
 void networkControler::gprsInit(){
+	Wls_InputUidPwd((BYTE *)user.c_str(), (BYTE *)password.c_str() );
 	int ret;
 	ret = Wls_Init();
 	DelayMs(200); 
@@ -97,7 +93,6 @@ int networkControler::gprsConnect(){
 	int APN_CONNECT_TIMEOUT = 20000;
 	int retry =0;
 	// inicjalizacja danych do logowania !! 
-	Wls_InputUidPwd((BYTE *)user.c_str(), (BYTE *)password.c_str() );
 	
 	do {
 		if(!gprs_apnConnected)
