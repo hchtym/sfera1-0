@@ -42,7 +42,7 @@ int networkControler::confCounter(char *str){
 	seek = compose.str();
 	 while(!file.eof() ){
 		getline(file,line);
-		++pos;
+//		++pos;
 		if( line.compare(0,seek.size(),seek) == 0){
 			break;
 		}
@@ -58,16 +58,11 @@ int networkControler::confCounter(char *str){
 	}
 	file.close();
 	compose.str("");
-	//itemss = pos2 - pos;
-	//compose << itemss;
 	compose << pos2;
 	pos3 = compose.str();
 	Lcd_Cls();
-	Lcd_Printxy(0,0,0, const_cast<char *>(pos3.c_str()) );
-	compose.str("");
-	compose << pos;
-	pos3 = compose.str();
-	Lcd_Printxy(0,8,0, const_cast<char *>(pos3.c_str()) );
+	Lcd_Printxy(0,0,0, const_cast<char *>(pos3.c_str()));
+	
 }
 
 int networkControler::checkSignalStr(){
