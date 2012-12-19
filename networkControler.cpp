@@ -47,7 +47,7 @@ int networkControler::confCounter(char *str){
 		}
 	}
 	file.close();
-	ifstream file("config.txt");
+	file.open();
 	seek = compose1.str();
 	 while(!file.eof() ){
 		getline(file,line);
