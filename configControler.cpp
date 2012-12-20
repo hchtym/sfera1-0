@@ -72,6 +72,31 @@ configControler::configControler(){
 		schtxtimeendhr = schtxtimeendhrr;
 		schtxtimeendmin = schtxtimeendminr; //*/
 	
+		ipr = NULL;
+		portr = NULL;
+		aapnr NULL;
+		uuserr = NULL;
+		passwordr = NULL;
+		seriallnumberr = NULL; 
+		lcbr = NULL; 
+		lcbmsgr = NULL;
+		screntimeoutr = NULL;
+		logtimer = NULL;
+		servcoder = NULL;
+		versiondater = NULL;
+		prntconfr = NULL;
+		schconffailintr = NULL;
+		schconfsucintr = NULL;
+		schconftimebeghrr = NULL;
+		schconftimebehminr = NULL;
+		schconftimeendhtr = NULL;
+		schconftimeendminr = NULL;
+		schtxfailintr = NULL;
+		schtxsucintr = NULL;
+		schtxtimebeghrr = NULL;
+		schtxtimebegminr = NULL;
+		sschtxtimeendhrr = NULL;
+		schtxtimeendminr = NULL;
 	
 	
 	
@@ -484,4 +509,10 @@ int configControler::configReload(){
 
 	
 	
+}
+
+const char* const configControler::sections[6]{
+	"ok", "lc",
+	"menu", "prize",
+	"seller", "comp"
 }
