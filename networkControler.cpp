@@ -61,21 +61,25 @@ void networkControler::gprsInit(){
 	Lcd_Cls();
 	Wls_InputUidPwd((BYTE *)user.c_str(), (BYTE *)password.c_str() );
 	int ret;
+
 	ret = Wls_Init();
 	DelayMs(500); 
 	if(ret != ERR_OK){
 		Lcd_Printxy(0,8,0, "Blad modolu gprs");
 	}
+
+	DelayMs(500);
+	checkSignalStr();
+	DelayMs(200);
+	
 	ret = Wls_SetBaudrate(115200);
 	DelayMs(200);
 	if(ret != ERR_OK){
 		Lcd_Cls();
 		Lcd_Printxy(0,0,0, "Blad przy ustawianiu");
 	}
-	DelayMs(500);
-	checkSignalStr();
-	DelayMs(200);
 	Lcd_Printxy(0,16,0, "Spr obecnosc k.sim");
+
 	ret = Wls_CheckSim();
 	DelayMs(500);
 	if(ret == ERR_OK)
