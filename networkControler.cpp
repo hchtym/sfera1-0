@@ -68,7 +68,7 @@ void networkControler::gprsInit(){
 		Lcd_Printxy(0,8,0, "Blad modolu gprs");
 	}
 
-	DelayMs(500);
+	DelayMs(3000);
 	checkSignalStr();
 	DelayMs(200);
 	
