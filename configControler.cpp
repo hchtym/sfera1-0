@@ -81,6 +81,27 @@ configControler::configControler(){
 	
 }
 
+int configControler::confParse(vector<string> &vect, string section){
+	ConfigFile cf("config.txt");
+	stringstream compose;
+	string sect;
+	compose << "[" << section << "]";
+	scet = compose.str();
+	compose.str("");
+	int size = confCounter(section.c_str());
+	
+	for(int i = 0; i < size; i++)
+	{
+		compose << "No" << i;
+		string part = compose.str();
+		compose.str("");
+		string item	= cf.Value(sect,part);
+		vect.push_back(item);
+	}
+	
+}
+
+
 int configControler::confCounter(char *str){
 	stringstream compose,compose1;
 	string pos3;
@@ -484,16 +505,4 @@ int configControler::configReload(){
 	
 	
 }
-
-const char* const configControler::configs[2][6]={
-{
-"par.podst.", "zab.karty",
-"opcje menu", "nagrody",
-"sprzedawcy", "obliczenia"
-},{
-"ok", "lc",
-"menu", "prize",
-"seller", "comp"
-}
-};
 

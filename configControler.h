@@ -27,9 +27,11 @@ private:
 	vector<string> confOptions;
 	//koniec ekranow
 	int confCounter(char *str);
-	static const char* const configs[2][6];
 	//zmienne glopbalne obieku (dostepne tylko dla obieku !)
 	string ip, port, apn, user, password, seriallnumber;
+	///
+	int confParse(vector<string> &vect, string section);
+	
 	// 
 	string lcb; //locked card behaviour
 	string lcbmsg; // wiadomosc do zablokowanych kart
