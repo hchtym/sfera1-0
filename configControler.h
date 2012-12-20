@@ -30,7 +30,7 @@ private:
 	//zmienne glopbalne obieku (dostepne tylko dla obieku !)
 	string ip, port, apn, user, password, seriallnumber;
 	// 
-	/*string lcb; //locked card behaviour
+	string lcb; //locked card behaviour
 	string lcbmsg; // wiadomosc do zablokowanych kart
 	string screntimeout; //czas do wygaszacza
 	string logtime; // timeout na wylogowanie
