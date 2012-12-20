@@ -485,8 +485,8 @@ int configControler::configReload(){
 	
 }
 
-const char* const configControler::sections[6]{
+const char* const configControler::sections[6]{{
 	"ok", "lc",
 	"menu", "prize",
 	"seller", "comp"
-}
+}}
