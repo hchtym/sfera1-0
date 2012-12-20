@@ -8,7 +8,7 @@ using namespace std;
 int main(){
 	SystemInit();
 	Prn_Init();
-	Wls_Init();
+//	Wls_Init();
 	Lcd_Cls();
 	Lcd_SetGray(50);
 	Lcd_SetFont(1,0,0);
