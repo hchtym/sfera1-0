@@ -86,9 +86,9 @@ int configControler::confParse(vector<string> &vect, string section){
 	stringstream compose;
 	string sect;
 	compose << "[" << section << "]";
-	scet = compose.str();
+	sect = compose.str();
 	compose.str("");
-	int size = confCounter(section.c_str());
+	int size = confCounter(const_cast<char *>(section.c_str()));
 	
 	for(int i = 0; i < size; i++)
 	{
