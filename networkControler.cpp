@@ -69,8 +69,12 @@ void networkControler::gprsInit(){
 	//}
 
 //	DelayMs(3000);
+	for(int i = 0; i < 100; i++)
+	{
+	
 	checkSignalStr();
-//	DelayMs(200);
+	DelayMs(200);
+	}
 	
 	/*ret = Wls_SetBaudrate(115200);
 	DelayMs(200);
