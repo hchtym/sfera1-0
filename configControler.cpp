@@ -20,7 +20,7 @@ configControler::configControler(){
 		ConfigFile cf("config.txt");
 		ConfigFile sn("seriall.txt");
 		// dalszy uber magick z parsowanie plikow
-		/*string ipr = cf.Value("ok","gprs.address");
+		string ipr = cf.Value("ok","gprs.address");
 		string portr = cf.Value("ok","gprs.port");
 		string apnr = cf.Value("ok","gprs.apn");
 		string userr = cf.Value("pl", "gprs.login");
