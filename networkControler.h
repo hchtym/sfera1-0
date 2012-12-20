@@ -62,7 +62,7 @@ public:
 	int wrtConLogs();
 	int checkSignalStr();
 	int checkTotalPoints();
-
+”
 	
 };
 
