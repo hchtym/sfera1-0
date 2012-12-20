@@ -72,12 +72,12 @@ void networkControler::gprsInit(){
 	checkSignalStr();
 	DelayMs(200);
 	
-	ret = Wls_SetBaudrate(115200);
+	/*ret = Wls_SetBaudrate(115200);
 	DelayMs(200);
 	if(ret != ERR_OK){
 		Lcd_Cls();
 		Lcd_Printxy(0,0,0, "Blad przy ustawianiu");
-	}
+	}*/
 	Lcd_Printxy(0,16,0, "Spr obecnosc k.sim");
 
 	ret = Wls_CheckSim();
