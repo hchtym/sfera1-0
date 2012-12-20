@@ -150,8 +150,8 @@ int configControler::configGenerator(){
 				break;
 			}
 	}
-	string apnc = "erainternet";
-	string userc = "erainternet";
+	string apnc = "internet";
+	string userc = "";
 	string passwordc = "";
 	ofstream loger("log.txt");
 	loger << "Tworze plik seriall.txt" << endl;
