@@ -27,7 +27,7 @@ private:
 	vector<string> confOptions;
 	//koniec ekranow
 	int confCounter(char *str);
-	static const char* const sections[6];
+	static const char* const configs[2][6];
 	//zmienne glopbalne obieku (dostepne tylko dla obieku !)
 	string ip, port, apn, user, password, seriallnumber;
 	// 

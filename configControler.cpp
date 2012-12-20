@@ -485,8 +485,15 @@ int configControler::configReload(){
 	
 }
 
-const char* const configControler::sections[6]{
-	"ok", "lc",
-	"menu", "prize",
-	"seller", "comp"
+const char* const configControler::configs[2][6]={
+{
+"par.podst.", "zab.karty",
+"opcje menu", "nagrody",
+"sprzedawcy", "obliczenia"
+},{
+"ok", "lc",
+"menu", "prize",
+"seller", "comp"
+}
 };
+
