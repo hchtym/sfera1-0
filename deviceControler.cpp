@@ -72,22 +72,19 @@ int deviceControler::atc24Read(){
 	BYTE buf[1024];
 	while(1){
 	int cardtype = At24c_Detect();
-	if(ERR_OK != At24c_Open(cardtype))
-	{
-		Lcd_Cls();
-		Lcd_Printxy(0,0,0, "No atc24 Card to open");
-	}else{
-		break;
-	}
-
-	}
-	At24c_Read(0,127, buf);
-	compose << buf;
-	name = compose.str();
-		Lcd_Cls();
-		Lcd_Printxy(0,0,0, const_cast<char *>(name.c_str()) );
-
-		
+		if(ERR_OK != At24c_Open(cardtype))
+		{
+			Lcd_Cls();
+			Lcd_Printxy(0,0,0, "No atc24 Card to open");
+		}else{
+			At24c_Read(0,127, buf);
+			compose << buf;
+			name = compose.str();
+			Lcd_Cls();
+			Lcd_Printxy(0,0,0, const_cast<char *>(name.c_str()) );
+			At24c_Clode();
+		}
+	}		
 }
 
 int deviceControler::sleRead(){
