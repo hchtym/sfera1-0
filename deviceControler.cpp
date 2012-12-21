@@ -71,6 +71,7 @@ int deviceControler::atc24Read(){
 	string name;
 	BYTE buf[1024];
 	while(1){
+		memset(byf, 0, sizeof(buf));
 	int cardtype = At24c_Detect();
 		if(ERR_OK != At24c_Open(cardtype))
 		{
@@ -83,6 +84,7 @@ int deviceControler::atc24Read(){
 			Lcd_Cls();
 			Lcd_Printxy(0,0,0, const_cast<char *>(name.c_str()) );
 			At24c_Close();
+			compose.str("");
 			DelayMs(5000);
 		}
 	}		
