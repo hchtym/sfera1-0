@@ -20,8 +20,8 @@ int main(){
 	deviceControler* device = new deviceControler();
 //		device->rfidScan();
 //	device->atc24read();
-//	device->sleRead();
-	device->magCardScan();
+	device->sleRead();
+//	device->magCardScan();
 	while(1){
 
 
