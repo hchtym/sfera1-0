@@ -12,10 +12,11 @@ int main(){
 	Lcd_Cls();
 	Lcd_SetGray(50);
 	Lcd_SetFont(1,0,0);
-	configControler* config = new configControler();
+//	configControler* config = new configControler();
+
 //	networkControler* network = new networkControler();
-//	deviceControler* device = new deviceControler()
-	
+	deviceControler* device = new deviceControler()
+		device->rfidScan();
 	while(1){
 
 
