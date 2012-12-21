@@ -66,15 +66,15 @@ int deviceControler::rfidScan(){;
 	
 }*/
 
-int deviceControler::atc24read(){
-	stringstream compose;
+int deviceControler::atc24Read(){
+	stringstrea	m compose;
 	string name;
 	while(1){
 	int cardtype = At24c_Detect();
 	if(ERR_OK != At24c_Open(cardtype))
 	{
 		Lcd_Cls();
-		Lcd_Printxy(0,0,0, "No Card to open");
+		Lcd_Printxy(0,0,0, "No atc24 Card to open");
 	}else{
 		compose << cardtype << endl;
 		name = compose.str();
@@ -83,6 +83,27 @@ int deviceControler::atc24read(){
 	}
 }
 		
+}
+
+int deviceControler::sleRead(){
+	BYTE buf[50] = {0};
+	stringstream compose;
+	string name;
+	int ret;
+	while(1){
+	ret = SLE_Read(0,5,buf);
+		if(ret != ERR_OK){
+			Lcd_Cls();
+			Lcd_Printxy(0,0,0, "No sle Card to open");
+		}else{
+			compose << buf;
+			name = compose.c_str();
+			Lcd_Cls();
+			lcd_Printxy(0,0,0, const_cast<char *>(name.c_str()) );
+		}
+
+
+	}
 }
 
 void deviceControler::hexToString(char *str, BYTE* buf, int len){

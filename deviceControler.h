@@ -24,7 +24,8 @@ public:
 	int printRecipe();
 	int rfidScan();
 //	int rfidMemWrite();
-	int atc24read();
+	int atc24Read();
+	int sleRead();
 	int ertErrDevLogs();
 	int magCardScan();
 	
