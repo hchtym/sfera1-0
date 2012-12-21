@@ -61,9 +61,28 @@ int deviceControler::rfidScan(){;
 
 }
 
-int deviceControler::rfidMemWrite(){
+/*int deviceControler::rfidMemWrite(){
 	
 	
+}*/
+
+int deviceControler::atc24read(){
+	stringstrem compose;
+	string name;
+	while(1){
+	int cardtype = At24c_Detect();
+	if(ERR_OK != At24c_Open(cardtype))
+	{
+		Lcd_Cls();
+		Lcd_Printxy(0,0,0, "No Card to open");
+	}else{
+		compose << cardtype << endl;
+		name = compose.str();
+	Lcd_Cls();
+	Lcd_Printxy(0,0,0, const_cast<char *>(name.c_str()) );
+	}
+}
+		
 }
 
 void deviceControler::hexToString(char *str, BYTE* buf, int len){

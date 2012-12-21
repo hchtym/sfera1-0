@@ -23,7 +23,8 @@ public:
 	deviceControler();
 	int printRecipe();
 	int rfidScan();
-	int rfidMemWrite();
+//	int rfidMemWrite();
+	int atc24read();
 	int ertErrDevLogs();
 	int magCardScan();
 	

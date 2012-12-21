@@ -16,7 +16,8 @@ int main(){
 
 //	networkControler* network = new networkControler();
 	deviceControler* device = new deviceControler();
-		device->rfidScan();
+//		device->rfidScan();
+	device->atc24read();
 	while(1){
 
 
