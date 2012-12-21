@@ -82,7 +82,7 @@ int deviceControler::atc24Read(){
 			name = compose.str();
 			Lcd_Cls();
 			Lcd_Printxy(0,0,0, const_cast<char *>(name.c_str()) );
-			At24c_Clode();
+			At24c_Close();
 			DelayMs(5000);
 		}
 	}		
