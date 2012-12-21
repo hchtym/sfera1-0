@@ -49,7 +49,7 @@ int deviceControler::rfidScan(){;
                 //CBasicDialog::Show("nr karty", 0, 0 , str2);
     }else{
 		if(len <= 32){
-			Lcd_Printxy(0,0,0 str2);
+			Lcd_Printxy(0,0,0, str2);
                 //CBasicDialog::Show("nr karty", 0, str2, str2+16);
 		}else{
 	 		if(len <= 48){
