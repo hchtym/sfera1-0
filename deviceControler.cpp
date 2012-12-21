@@ -107,9 +107,9 @@ int deviceControler::sleRead(){
 }
 
 int deviceControler::magCardScan(){
-	char track1[];
-	char track2[];
-	char track3[];
+	char track1[20];
+	char track2[20];
+	char track3[20];
 	int ret;
 
 	Lcd_Cls();
@@ -144,7 +144,7 @@ while(1){
 	if(ret & 4){
 		Lcd_Cls();
 		Lcd_Printxy(0,0,0,"Track 2 is OK");
-		Lcd_Printxy(0,8,0, track3s);
+		Lcd_Printxy(0,8,0, track3);
 		break;
 	        //Track 3 is OK
 	}else{
