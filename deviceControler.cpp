@@ -106,6 +106,11 @@ int deviceControler::sleRead(){
 	}
 }
 
+int deviceControler::chipCardScan(){
+	
+	
+}
+
 int deviceControler::magCardScan(){
 	char track1[20];
 	char track2[20];

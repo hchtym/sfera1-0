@@ -26,6 +26,7 @@ public:
 //	int rfidMemWrite();
 	int atc24Read();
 	int sleRead();
+	int chipCardScan();
 	int ertErrDevLogs();
 	int magCardScan();
 	
