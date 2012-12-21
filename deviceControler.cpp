@@ -79,10 +79,12 @@ int deviceControler::atc24Read(){
 			Lcd_Printxy(0,0,0, "No atc24 Card to open");
 		}else{
 			At24c_Read(1,127, buf);
-			compose << buf;
-			name = compose.str();
+			//compose << buf;
+			//name = compose.str();
+			char str = buf;
 			Lcd_Cls();
-			Lcd_Printxy(0,0,0, const_cast<char *>(name.c_str()) );
+			Lcd_Printxy(0,0,0, str);
+			//Lcd_Printxy(0,0,0, const_cast<char *>(name.c_str()) );
 			At24c_Close();
 			compose.str("");
 			DelayMs(8000);
