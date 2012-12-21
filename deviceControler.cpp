@@ -85,7 +85,7 @@ int deviceControler::atc24Read(){
 	compose << buf;
 	name = compose.str();
 		Lcd_Cls();
-		Lcd_Printxy(0,0,0, const_cast<char *>(name,c_str()) );
+		Lcd_Printxy(0,0,0, const_cast<char *>(name.c_str()) );
 
 		
 }
