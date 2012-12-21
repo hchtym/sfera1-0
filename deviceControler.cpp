@@ -82,7 +82,7 @@ int deviceControler::atc24Read(){
 			//compose << buf;
 			//name = compose.str();
 			char str[1040];
-			sptintf(str, "%s", buf);
+			sprintf(str, "%s", buf);
 			Lcd_Cls();
 			Lcd_Printxy(0,0,0, str);
 			//Lcd_Printxy(0,0,0, const_cast<char *>(name.c_str()) );
