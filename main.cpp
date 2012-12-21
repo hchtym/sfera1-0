@@ -18,10 +18,10 @@ int main(){
 
 //	networkControler* network = new networkControler();
 	deviceControler* device = new deviceControler();
-		device->rfidScan();
+//		device->rfidScan();
 //	device->atc24Read();
 //	device->sleRead();
-//	device->magCardScan();
+	device->magCardScan();
 	while(1){
 
 
