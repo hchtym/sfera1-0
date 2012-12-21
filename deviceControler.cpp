@@ -71,7 +71,7 @@ int deviceControler::atc24Read(){
 	string name;
 	BYTE buf[1024];
 	while(1){
-		memset(byf, 0, sizeof(buf));
+		memset(buf, 0, sizeof(buf));
 	int cardtype = At24c_Detect();
 		if(ERR_OK != At24c_Open(cardtype))
 		{
