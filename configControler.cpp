@@ -24,7 +24,7 @@ configControler::configControler(){
 	
 }
 
-int configControler::returnMenu(){
+int configControler::returnMenu(vector<string> &vec){
 	
 }
 
