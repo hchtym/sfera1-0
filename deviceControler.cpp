@@ -115,7 +115,9 @@ int deviceControler::magCardScan(){
 	char track2[20];
 	char track3[20];
 	int ret;
-
+	memset(track1, 0, sizeof(track1));
+	memset(track1, 0, sizeof(track2));
+	memset(track1, 0, sizeof(track3));
 	Lcd_Cls();
 	Lcd_Printxy(0,0,0,"Test czytnik magnet");
 	
