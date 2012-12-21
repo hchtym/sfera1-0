@@ -106,6 +106,52 @@ int deviceControler::sleRead(){
 	}
 }
 
+int deviceControler::magCardScan(){
+	char track1[];
+	char track2[];
+	char track3[];
+	int ret;
+
+	Lcd_Cls();
+	Lcd_Printxy(0,0,0,"Test czytnik magnet");
+	
+	if(Mcr_Open()<0)
+	{
+		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
+	}
+while(1){	
+	ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
+	if (ret&0x80)
+	{//detected swiping
+	if(ret & 1){
+		Lcd_Cls();
+		Lcd_Printxy(0,0,0,"Track 1 is OK");
+		break;
+	        //Track 1 is OK
+	}else {
+	        //Track 1 is error
+	}
+	if(ret & 2){
+		Lcd_Cls();
+		Lcd_Printxy(0,0,0,"Track 2 is OK");
+		break;
+	        //Track 2 is OK
+	    }else{
+	        //Track 2 is e
+	}
+	if(ret & 4){
+		Lcd_Cls();
+		Lcd_Printxy(0,0,0,"Track 2 is OK");
+		break;
+	        //Track 3 is OK
+	}else{
+	        //Track 3 is error
+	    }
+	}
+}	
+	Mcr_Close();
+}
+
 void deviceControler::hexToString(char *str, BYTE* buf, int len){
 //	stringstream compose;
 	        int j = 0;
@@ -124,4 +170,4 @@ void deviceControler::hexToString(char *str, BYTE* buf, int len){
 	        }
 	        putchar('\n');
 	        str[j] = 0;
-	}
+}
