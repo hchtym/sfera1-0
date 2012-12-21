@@ -102,7 +102,7 @@ int deviceControler::sleRead(){
 			Lcd_Printxy(0,0,0, const_cast<char *>(name.c_str()) );
 		}
 
-
+		DelayMs(2000);
 	}
 }
 
