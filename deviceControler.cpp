@@ -78,7 +78,7 @@ int deviceControler::atc24Read(){
 			Lcd_Cls();
 			Lcd_Printxy(0,0,0, "No atc24 Card to open");
 		}else{
-			At24c_Read(1,127, buf);
+			At24c_Read(1,100, buf);
 			//compose << buf;
 			//name = compose.str();
 			char str[1040];
