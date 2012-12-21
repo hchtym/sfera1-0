@@ -123,7 +123,8 @@ int deviceControler::magCardScan(){
 	{
 		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
 	}
-while(1){	
+while(1){
+	DelayMs(50);	
 	ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
 	if (ret&0x80)
 	{//detected swiping
