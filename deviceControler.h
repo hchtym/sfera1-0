@@ -21,10 +21,9 @@ private:
 	
 public:
 	deviceControler();
-	void screenInit();
 	int printRecipe();
 	int rfidScan();
-	int rfidMemrite();
+	int rfidMemWrite();
 	int ertErrDevLogs();
 	int magCardScan();
 	
