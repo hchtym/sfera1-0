@@ -67,7 +67,7 @@ int deviceControler::rfidScan(){;
 }*/
 
 int deviceControler::atc24Read(){
-	stringstrea	m compose;
+	stringstream compose;
 	string name;
 	while(1){
 	int cardtype = At24c_Detect();
@@ -97,9 +97,9 @@ int deviceControler::sleRead(){
 			Lcd_Printxy(0,0,0, "No sle Card to open");
 		}else{
 			compose << buf;
-			name = compose.c_str();
+			name = compose.str();
 			Lcd_Cls();
-			lcd_Printxy(0,0,0, const_cast<char *>(name.c_str()) );
+			Lcd_Printxy(0,0,0, const_cast<char *>(name.c_str()) );
 		}
 
 
