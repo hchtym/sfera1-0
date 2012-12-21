@@ -15,7 +15,7 @@ int main(){
 //	configControler* config = new configControler();
 
 //	networkControler* network = new networkControler();
-	deviceControler* device = new deviceControler()
+	deviceControler* device = new deviceControler();
 		device->rfidScan();
 	while(1){
 
