@@ -67,7 +67,7 @@ int deviceControler::rfidMemWrite(){
 }
 
 void deviceControler::hexToString(char *str, BYTE* buf, int len){
-	stringstream compose;
+//	stringstream compose;
 	        int j = 0;
 	        for(int i = 0; i < len; i++){
 	                str[j] = (buf[i]/16);
