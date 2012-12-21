@@ -17,7 +17,7 @@ using namespace std;
 
 class deviceControler{
 private:
-	void hexToString();
+	void hexToString(char *str, BYTE* buf, int len);
 	
 public:
 	deviceControler();
