@@ -126,6 +126,7 @@ while(1){
 	if(ret & 1){
 		Lcd_Cls();
 		Lcd_Printxy(0,0,0,"Track 1 is OK");
+		Lcd_Printxy(0,8,0, track1);
 		break;
 	        //Track 1 is OK
 	}else {
@@ -134,6 +135,7 @@ while(1){
 	if(ret & 2){
 		Lcd_Cls();
 		Lcd_Printxy(0,0,0,"Track 2 is OK");
+		Lcd_Printxy(0,8,0, track2);
 		break;
 	        //Track 2 is OK
 	    }else{
@@ -142,6 +144,7 @@ while(1){
 	if(ret & 4){
 		Lcd_Cls();
 		Lcd_Printxy(0,0,0,"Track 2 is OK");
+		Lcd_Printxy(0,8,0, track3);
 		break;
 	        //Track 3 is OK
 	}else{
