@@ -17,76 +17,37 @@ configControler::configControler(){
 	if(file)
 	{
 		file.close();
-		ConfigFile cf("config.txt");
-		ConfigFile sn("seriall.txt");
-		// dalszy uber magick z parsowanie plikow
-		string ipr = cf.Value("ok","gprs.address");
-		string portr = cf.Value("ok","gprs.port");
-		string apnr = cf.Value("ok","gprs.apn");
-		string userr = cf.Value("pl", "gprs.login");
-		string passwordr = cf.Value("ok","gprs.password");
-		string seriallnumberr = cf.Value("seriall", "SN");
-		string lcbr = cf.Value("ok", "locked.card.behaviour");
-		string lcbmsgr = cf.Value("ok", "locked.card.message"); 
-		string screntimeoutr = cf.Value("ok", "screensaver.timeout"); 
-		string logtimer = cf.Value("ok", "logout.timeout"); 
-		string servcoder = cf.Value("ok", "service.code");
-		string versiondater = cf.Value("ok", "version.date=2012-11-12 10:52"); 
-		string prntconfr = cf.Value("ok", "print.confirmation"); 
-		string schconffailintr = cf.Value("ok", "schedule.config.fail.interval");
-		string schconfsucintr = cf.Value("ok", "schedule.config.success.interval"); 
-		string schconftimebeghrr = cf.Value("ok", "schedule.config.time.begin.hour"); 
-		string schconftimebehminr = cf.Value("ok", "schedule.config.time.begin.min"); 
-		string schconftimeendhtr = cf.Value("ok", "schedule.config.time.end.hour"); 
-		string schconftimeendminr = cf.Value("ok", "schedule.config.time.end.min"); 
-		string schtxfailintr = cf.Value("ok", "schedule.tx.fail.interval"); 
-		string schtxsucintr = cf.Value("ok", "schedule.tx.success.interval"); 
-		string schtxtimebeghrr = cf.Value("ok", "schedule.tx.time.begin.hour"); 
-		string schtxtimebegminr = cf.Value("ok", "schedule.tx.time.begin.min"); 
-		string schtxtimeendhrr = cf.Value("ok", "schedule.tx.time.end.hour");
-		string schtxtimeendminr = cf.Value("ok", "schedule.tx.time.end.min");
-		
-		ip = ipr;
-		port = portr;
-		apn = apnr;
-		user = userr;
-		password = passwordr;
-		seriallnumber = seriallnumberr; 
-		lcb = lcbr; 
-		lcbmsg = lcbmsgr;
-		screntimeout = screntimeoutr;
-		logtime = logtimer;
-		servcode = servcoder;
-		versiondate = versiondater;
-		prntconf = prntconfr;
-		schconffailint = schconffailintr;
-		schconfsucint = schconfsucintr;
-		schconftimebeghr = schconftimebeghrr;
-		schconftimebehmin = schconftimebehminr;
-		schconftimeendht = schconftimeendhtr;
-		schconftimeendmin = schconftimeendminr;
-		schtxfailint = schtxfailintr;
-		schtxsucint = schtxsucintr;
-		schtxtimebeghr = schtxtimebeghrr;
-		schtxtimebegmin = schtxtimebegminr;
-		schtxtimeendhr = schtxtimeendhrr;
-		schtxtimeendmin = schtxtimeendminr; //*/
-	
-	
-	
-	
+		configReload();	
 	}else{
 		configGenerator();
 	}
 	
 }
 
+int configControler::returnMenu(){
+	
+}
+
+int configControler::returnPrize(vector<string> &vec){
+	confParse(vec, "prize");
+}
+
+int configControler::returnSeller(vector<string> &vec){
+	confParse(vec, "prize");
+}
+
+int configControler::returnLCard(vector<string> &vec){
+	confParse(vec, "lc");
+}
+
+int configControler::returnCmputation(vector<string> &vec){
+	confParse(vec, "comp");
+}
+
+
 int configControler::confParse(vector<string> &vect, string section){
 	ConfigFile cf("config.txt");
 	stringstream compose;
-	string sect;
-	compose << "[" << section << "]";
-	sect = compose.str();
 	compose.str("");
 	int size = confCounter(const_cast<char *>(section.c_str()));
 	
@@ -95,7 +56,7 @@ int configControler::confParse(vector<string> &vect, string section){
 		compose << "No" << i;
 		string part = compose.str();
 		compose.str("");
-		string item	= cf.Value(sect,part);
+		string item	= cf.Value(section,part);
 		vect.push_back(item);
 	}
 	
@@ -502,6 +463,60 @@ int configControler::miniInput(string& title, string& variable){
 
 int configControler::configReload(){
 
+	ConfigFile cf("config.txt");
+	ConfigFile sn("seriall.txt");
+	// dalszy uber magick z parsowanie plikow
+	string ipr = cf.Value("ok","gprs.address");
+	string portr = cf.Value("ok","gprs.port");
+	string apnr = cf.Value("ok","gprs.apn");
+	string userr = cf.Value("pl", "gprs.login");
+	string passwordr = cf.Value("ok","gprs.password");
+	string seriallnumberr = cf.Value("seriall", "SN");
+	string lcbr = cf.Value("ok", "locked.card.behaviour");
+	string lcbmsgr = cf.Value("ok", "locked.card.message"); 
+	string screntimeoutr = cf.Value("ok", "screensaver.timeout"); 
+	string logtimer = cf.Value("ok", "logout.timeout"); 
+	string servcoder = cf.Value("ok", "service.code");
+	string versiondater = cf.Value("ok", "version.date=2012-11-12 10:52"); 
+	string prntconfr = cf.Value("ok", "print.confirmation"); 
+	string schconffailintr = cf.Value("ok", "schedule.config.fail.interval");
+	string schconfsucintr = cf.Value("ok", "schedule.config.success.interval"); 
+	string schconftimebeghrr = cf.Value("ok", "schedule.config.time.begin.hour"); 
+	string schconftimebehminr = cf.Value("ok", "schedule.config.time.begin.min"); 
+	string schconftimeendhtr = cf.Value("ok", "schedule.config.time.end.hour"); 
+	string schconftimeendminr = cf.Value("ok", "schedule.config.time.end.min"); 
+	string schtxfailintr = cf.Value("ok", "schedule.tx.fail.interval"); 
+	string schtxsucintr = cf.Value("ok", "schedule.tx.success.interval"); 
+	string schtxtimebeghrr = cf.Value("ok", "schedule.tx.time.begin.hour"); 
+	string schtxtimebegminr = cf.Value("ok", "schedule.tx.time.begin.min"); 
+	string schtxtimeendhrr = cf.Value("ok", "schedule.tx.time.end.hour");
+	string schtxtimeendminr = cf.Value("ok", "schedule.tx.time.end.min");
+	
+	ip = ipr;
+	port = portr;
+	apn = apnr;
+	user = userr;
+	password = passwordr;
+	seriallnumber = seriallnumberr; 
+	lcb = lcbr; 
+	lcbmsg = lcbmsgr;
+	screntimeout = screntimeoutr;
+	logtime = logtimer;
+	servcode = servcoder;
+	versiondate = versiondater;
+	prntconf = prntconfr;
+	schconffailint = schconffailintr;
+	schconfsucint = schconfsucintr;
+	schconftimebeghr = schconftimebeghrr;
+	schconftimebehmin = schconftimebehminr;
+	schconftimeendht = schconftimeendhtr;
+	schconftimeendmin = schconftimeendminr;
+	schtxfailint = schtxfailintr;
+	schtxsucint = schtxsucintr;
+	schtxtimebeghr = schtxtimebeghrr;
+	schtxtimebegmin = schtxtimebegminr;
+	schtxtimeendhr = schtxtimeendhrr;
+	schtxtimeendmin = schtxtimeendminr; //*/
 	
 	
 }

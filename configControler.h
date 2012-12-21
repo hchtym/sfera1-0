@@ -57,11 +57,11 @@ public:
 	configControler(); 
 	int configReload(); 
 	int getConfig(); 
-	int returnMenu(); 
-	int returnPrize(); 
-	int returnSeller(); 
-	int returnLCard(); 
-	int returnCmputation(); 
+	int returnMenu(vector<string> &vec); 
+	int returnPrize(vector<string> &vec); 
+	int returnSeller(vector<string> &vec); 
+	int returnLCard(vector<string> &vec); 
+	int returnCmputation(vector<string> &vec); 
 	int returnGPRSConf(); 
 	int returnSerwerConf(); 
 	int returnTime(); 
