@@ -144,7 +144,7 @@ while(1){
 	if(ret & 4){
 		Lcd_Cls();
 		Lcd_Printxy(0,0,0,"Track 2 is OK");
-		Lcd_Printxy(0,8,0, track3);
+		Lcd_Printxy(0,8,0, track3s);
 		break;
 	        //Track 3 is OK
 	}else{
