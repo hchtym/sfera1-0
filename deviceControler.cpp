@@ -108,7 +108,6 @@ int deviceControler::sleRead(){
 
 int deviceControler::chipCardScan(){
 	
-	
 }
 
 int deviceControler::magCardScan(){
