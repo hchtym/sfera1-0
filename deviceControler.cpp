@@ -42,7 +42,7 @@ int deviceControler::rfidScan(){;
 	}
 	RF_Close();
 	
-	int len = strlen(str1);
+	int len = strlen(str2);
 	Lcd_Cls();
 	if(len <= 16){
 		Lcd_Printxy(0,0,0, str2);
@@ -53,7 +53,7 @@ int deviceControler::rfidScan(){;
                 //CBasicDialog::Show("nr karty", 0, str2, str2+16);
 		}else{
 	 		if(len <= 48){
-				Lcd_Printxy(,0,0, str2);
+				Lcd_Printxy(0,0,0, str2);
                 //CBasicDialog::Show("nr karty", str2, str2+16, str2+32);
 			}
  		}
@@ -66,7 +66,7 @@ int deviceControler::rfidMemWrite(){
 	
 }
 
-void deviceControler:hexToString(char *str, BYTE* buf, int len){
+void deviceControler::hexToString(char *str, BYTE* buf, int len){
 	stringstream compose;
 	        int j = 0;
 	        for(int i = 0; i < len; i++){
