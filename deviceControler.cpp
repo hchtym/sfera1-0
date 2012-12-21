@@ -76,13 +76,17 @@ int deviceControler::atc24Read(){
 	{
 		Lcd_Cls();
 		Lcd_Printxy(0,0,0, "No atc24 Card to open");
+	}else{
+		break;
+	}
+
 	}
 	At24c_Read(0,127, buf);
 	compose << buf;
 	name = compose.str();
 		Lcd_Cls();
 		Lcd_Printxy(0,0,0, const_cast<char *>(name,c_str()) );
-}
+
 		
 }
 
