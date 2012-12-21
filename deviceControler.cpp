@@ -67,7 +67,7 @@ int deviceControler::rfidScan(){;
 }*/
 
 int deviceControler::atc24read(){
-	stringstrem compose;
+	stringstream compose;
 	string name;
 	while(1){
 	int cardtype = At24c_Detect();
