@@ -125,6 +125,7 @@ string deviceControler::magCardScan(){
 	char track1[11];
 	char track2[11];
 	char track3[11];
+	char strg[11];
 	int ret;
 	string id;
 	memset(track1, 0, sizeof(track1));
@@ -151,7 +152,6 @@ while(1){
 			cout << track1 << endl;
 			Lcd_Printxy(0,8,0, track1);
 			//track1[10] = 0;
-			char strg[11];
 			sprintf(strg, "%s", track1);
 			id = strg;
 			cout << strg << endl;
@@ -167,7 +167,6 @@ while(1){
 			cout << track2 << endl;
 			Lcd_Printxy(0,8,0, track2);
 			track2[10] = 0;
-			char strg[11];
 			sprintf(strg, "%s", track2);
 			id = strg;
 			//return 0;
@@ -181,7 +180,6 @@ while(1){
 			cout << track3 << endl;
 			Lcd_Printxy(0,8,0, track3);
 			track3[10] = 0;
-			char strg[11];
 			sprintf(strg, "%s", track3);
 			id = strg;
 			//return 0;
