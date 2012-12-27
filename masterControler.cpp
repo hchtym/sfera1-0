@@ -14,7 +14,7 @@ masterControler::masterControler(){
 };
 
 int masterControler::test(){
-	unsigned char input[31];
+	/*unsigned char input[31];
 	memset(input, 0 , sizeof(input));
 	stringstream compose;
 	string str,conv;
@@ -172,6 +172,6 @@ int masterControler::pointEqu(string &str){
 	}
 	
 	
-	
+	*/
 	
 }
