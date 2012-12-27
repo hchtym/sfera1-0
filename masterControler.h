@@ -9,7 +9,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include "configControler.h"
-#include "deviceControler"
+#include "deviceControler.h"
 
 extern "C"{
 #include "all_headers.h"	
