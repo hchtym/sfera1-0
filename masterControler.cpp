@@ -8,7 +8,7 @@ masterControler::masterControler(){
 	
 };
 
-masterControler::test(){
+int masterControler::test(){
 	BYTE input[31];
 	memset(input, 0 , siezefo(input));
 	stringstream compose;
@@ -39,8 +39,8 @@ masterControler::test(){
 	
 }
 
-masterControler::pointEqu(string &str){
-	
+int masterControler::pointEqu(string &str){
+	BYTE key = NOKEY;
 	stringstream compo;
 	string str2,temp;
 	while(1){
