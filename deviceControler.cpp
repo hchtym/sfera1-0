@@ -152,9 +152,9 @@ while(1){
 			cout << track1 << endl;
 			Lcd_Printxy(0,8,0, track1);
 			//track1[10] = 0;
-			sprintf(strg, "%s", track1);
-			id = strg;
-			cout << strg << endl;
+			//sprintf(strg, "%s", track1);
+			id = track1;
+			//cout << strg << endl;
 			cout << track1 << endl;
 			//return 0;
 			break;
@@ -167,8 +167,8 @@ while(1){
 			cout << track2 << endl;
 			Lcd_Printxy(0,8,0, track2);
 			track2[10] = 0;
-			sprintf(strg, "%s", track2);
-			id = strg;
+			//sprintf(strg, "%s", track2);
+			//id = track2;
 			//return 0;
 	        //Track 2 is OK
 			break;
