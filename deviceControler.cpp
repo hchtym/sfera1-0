@@ -168,7 +168,7 @@ while(1){
 			Lcd_Printxy(0,8,0, track2);
 			track2[10] = 0;
 			//sprintf(strg, "%s", track2);
-			//id = track2;
+			id = track2;
 			//return 0;
 	        //Track 2 is OK
 			break;
@@ -180,8 +180,8 @@ while(1){
 			cout << track3 << endl;
 			Lcd_Printxy(0,8,0, track3);
 			track3[10] = 0;
-			sprintf(strg, "%s", track3);
-			id = strg;
+			//sprintf(strg, "%s", track3);
+			id = track3;
 			//return 0;
 	        //Track 3 is OK
 			break;
@@ -192,7 +192,7 @@ while(1){
 cout << "jestem za while przed mcrclose" << endl;
 	Mcr_Close();
 	cout << "jestem ze mcrclose" << endl;
-	return strg;
+	return id;
 }
 
 void deviceControler::hexToString(char *str, BYTE* buf, int len){
