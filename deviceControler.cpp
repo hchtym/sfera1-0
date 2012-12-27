@@ -122,9 +122,9 @@ int deviceControler::chipCardScan(){
 }
 
 int deviceControler::magCardScan(stringstream &stream){
-	char track1[20];
-	char track2[20];
-	char track3[20];
+	char track1[50];
+	char track2[50];
+	char track3[50];
 	int ret;
 	memset(track1, 0, sizeof(track1));
 	memset(track1, 0, sizeof(track2));
