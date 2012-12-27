@@ -121,11 +121,12 @@ int deviceControler::chipCardScan(){
 	
 }
 
-void deviceControler::magCardScan(string &stream){
+string deviceControler::magCardScan(string &stream){
 	char track1[11];
 	char track2[11];
 	char track3[11];
 	int ret;
+	string id;
 	memset(track1, 0, sizeof(track1));
 	memset(track1, 0, sizeof(track2));
 	memset(track1, 0, sizeof(track3));
@@ -152,10 +153,9 @@ while(1){
 			//track1[10] = 0;
 			char strg[10];
 			sprintf(strg, "%s", track1);
-			stream = strg;
+			id = strg
 			cout << strg << endl;
 			cout << track1 << endl;
-			cout << stream << endl;
 			//return 0;
 			break;
 	        //Track 1 is OK
@@ -169,7 +169,7 @@ while(1){
 			track2[10] = 0;
 			char strg[10];
 			sprintf(strg, "%s", track2);
-			stream = strg;
+			id = strg;
 			//return 0;
 	        //Track 2 is OK
 			break;
@@ -183,7 +183,7 @@ while(1){
 			track3[10] = 0;
 			char strg[10];
 			sprintf(strg, "%s", track3);
-			stream = strg;
+			id = strg;
 			//return 0;
 	        //Track 3 is OK
 			break;
@@ -194,7 +194,7 @@ while(1){
 cout << "jestem za while przed mcrclose" << endl;
 	Mcr_Close();
 	cout << "jestem ze mcrclose" << endl;
-//	return 0;
+//	return ;
 }
 
 void deviceControler::hexToString(char *str, BYTE* buf, int len){
