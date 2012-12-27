@@ -17,7 +17,7 @@ int masterControler::test(){
 	BYTE input[31];
 	memset(input, 0 , sizeof(input));
 	stringstream compose;
-	string str;
+	string str,conv;
 	Lcd_Cls();
 	Lcd_Printxy(0,0,0, "Przeciagnij karte");	
 	while(1){
@@ -29,7 +29,7 @@ int masterControler::test(){
 			break;
 		}
 		Kb_GetStr(0, 24, input, 0, 30, 0, 120);
-		string conv = (char* )input;
+		conv = (char* )input;
 		if(conv.size()>6 && conv.size() < 30){
 			break;
 		}
