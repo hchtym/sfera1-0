@@ -189,8 +189,8 @@ while(1){
 	    }
 	}
 }	
-	Mcr_Close();
-	return 0;
+//	Mcr_Close();
+//	return 0;
 }
 
 void deviceControler::hexToString(char *str, BYTE* buf, int len){
