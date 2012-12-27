@@ -144,6 +144,7 @@ while(1){
 	if(ret & 1){
 		Lcd_Cls();
 		Lcd_Printxy(0,0,0,"Track 1 is OK");
+		track1[10] = 0;
 		cout << track1 << endl;
 		Lcd_Printxy(0,8,0, track1);
 			track1[10] = 0;
@@ -156,8 +157,6 @@ while(1){
 			//return 0;
 		break;
 	        //Track 1 is OK
-	}else {
-	        //Track 1 is error
 	}
 	if(ret & 2){
 		Lcd_Cls();
@@ -170,8 +169,6 @@ while(1){
 			stream = strg;
 			//return 0;
 	        //Track 2 is OK
-	    }else{
-	        //Track 2 is e
 	}
 	if(ret & 4){
 		Lcd_Cls();
@@ -184,9 +181,7 @@ while(1){
 			stream = strg;
 			//return 0;
 	        //Track 3 is OK
-	}else{
-	        //Track 3 is error
-	    }
+	}
 	}
 }	
 	Mcr_Close();
