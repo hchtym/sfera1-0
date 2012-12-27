@@ -147,7 +147,8 @@ while(1){
 		cout << track1 << endl;
 		Lcd_Printxy(0,8,0, track1);
 			track1[10] = 0;
-			char strg = (char *)(&track1);
+			char strg[10];
+			sprintf(strg, "%s", track1);
 			stream << strg;
 			cout << strg << endl;
 			cout << track1 << endl;
