@@ -165,7 +165,9 @@ while(1){
 		cout << track2 << endl;
 		Lcd_Printxy(0,8,0, track2);
 			track2[10] = 0;
-			stream << (char *)track2;
+			char strg[10];
+			sprintf(strg, "%s", track2);
+			stream << strg;
 			//return 0;
 	        //Track 2 is OK
 	    }else{
@@ -177,7 +179,9 @@ while(1){
 		cout << track3 << endl;
 		Lcd_Printxy(0,8,0, track3);
 			track3[10] = 0;
-			stream << (char *)track3;
+			char strg[10];
+			sprintf(strg, "%s", track3);
+			stream << strg;
 			//return 0;
 	        //Track 3 is OK
 	}else{
