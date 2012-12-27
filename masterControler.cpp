@@ -21,9 +21,11 @@ int masterControler::test(){
 	Lcd_Cls();
 	Lcd_Printxy(0,0,0, "Przeciagnij karte");	
 	while(1){
-
+		cout << "tu doszedlem " << endl;
 		device->magCardScan(compose);
+		cout << "su jestem trololololololololo" << endl << eompodse << endl;
 		str = compose.str();
+		cout << str << endl;
 		compose.str("");
 		if(str.size() > 0 ){
 			break;
