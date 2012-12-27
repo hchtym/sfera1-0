@@ -493,6 +493,7 @@ int configControler::configReload(){
 	string schtxtimeendminr = cf.Value("ok", "schedule.tx.time.end.min");
 	
 	ip = ipr;
+	delete ipr;
 	port = portr;
 	apn = apnr;
 	user = userr;
