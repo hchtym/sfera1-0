@@ -137,16 +137,18 @@ void deviceControler::magCardScan(string &stream){
 		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
 	}
 while(1){
+	
 	DelayMs(50);	
 	ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
 	if (ret&0x80)
 	{//detected swiping
-	if(ret & 1){
-		Lcd_Cls();
-		Lcd_Printxy(0,0,0,"Track 1 is OK");
-		track1[10] = 0;
-		cout << track1 << endl;
-		Lcd_Printxy(0,8,0, track1);
+		if(ret & 1){
+			cout << "track 1" << endl;
+			Lcd_Cls();
+			Lcd_Printxy(0,0,0,"Track 1 is OK");
+			track1[10] = 0;
+			cout << track1 << endl;
+			Lcd_Printxy(0,8,0, track1);
 			//track1[10] = 0;
 			char strg[10];
 			sprintf(strg, "%s", track1);
@@ -155,36 +157,43 @@ while(1){
 			cout << track1 << endl;
 			cout << stream << endl;
 			//return 0;
-		break;
+			break;
 	        //Track 1 is OK
-	}
-	if(ret & 2){
-		Lcd_Cls();
-		Lcd_Printxy(0,0,0,"Track 2 is OK");
-		cout << track2 << endl;
-		Lcd_Printxy(0,8,0, track2);
+		}
+		if(ret & 2){
+			cout << "track 2" << endl;
+			Lcd_Cls();
+			Lcd_Printxy(0,0,0,"Track 2 is OK");
+			cout << track2 << endl;
+			Lcd_Printxy(0,8,0, track2);
 			track2[10] = 0;
 			char strg[10];
 			sprintf(strg, "%s", track2);
 			stream = strg;
 			//return 0;
 	        //Track 2 is OK
-	}
-	if(ret & 4){
-		Lcd_Cls();
-		Lcd_Printxy(0,0,0,"Track 3 is OK");
-		cout << track3 << endl;
-		Lcd_Printxy(0,8,0, track3);
+			break;
+		}
+		if(ret & 4){
+			cout << "track 3" << endl;
+			Lcd_Cls();
+			Lcd_Printxy(0,0,0,"Track 3 is OK");
+			cout << track3 << endl;
+			Lcd_Printxy(0,8,0, track3);
 			track3[10] = 0;
 			char strg[10];
 			sprintf(strg, "%s", track3);
 			stream = strg;
 			//return 0;
 	        //Track 3 is OK
+			break;
+		}
 	}
-	}
+	
 }	
+cout << "jestem za while przed mcrclose" << endl;
 	Mcr_Close();
+	cout << "jestem ze mcrclose" << endl;
 //	return 0;
 }
 
