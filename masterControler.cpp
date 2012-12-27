@@ -15,7 +15,7 @@ masterControler::masterControler(){
 
 int masterControler::test(){
 	unsigned char input[40];
-	string id
+	string id;
 	memset(input, 0 , sizeof(input));
 	stringstream compose;
 	string str,conv;
