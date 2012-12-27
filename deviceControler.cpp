@@ -148,7 +148,7 @@ while(1){
 		Lcd_Printxy(0,8,0, track1);
 			track1[10] = 0;
 			stream << (char *)track1;
-			return 0;
+			//return 0;
 		break;
 	        //Track 1 is OK
 	}else {
@@ -161,7 +161,7 @@ while(1){
 		Lcd_Printxy(0,8,0, track2);
 			track2[10] = 0;
 			stream << (char *)track2;
-			return 0;
+			//return 0;
 	        //Track 2 is OK
 	    }else{
 	        //Track 2 is e
@@ -173,7 +173,7 @@ while(1){
 		Lcd_Printxy(0,8,0, track3);
 			track3[10] = 0;
 			stream << (char *)track3;
-			return 0;
+			//return 0;
 	        //Track 3 is OK
 	}else{
 	        //Track 3 is error
