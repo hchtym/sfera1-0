@@ -152,7 +152,7 @@ while(1){
 			stream << strg;
 			cout << strg << endl;
 			cout << track1 << endl;
-			cout << stream << endl;
+			cout << stream.str() << endl;
 			//return 0;
 		break;
 	        //Track 1 is OK
