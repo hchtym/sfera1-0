@@ -5,9 +5,11 @@
 
 using namespace std;
 
+
+
 masterControler::masterControler(){
-	configControler* config = new configControler();
-	deviceControler* device = new deviceControler();
+	config = new configControler();
+	device = new deviceControler();
 	
 };
 

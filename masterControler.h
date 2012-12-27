@@ -24,6 +24,9 @@ private:
 	void wrtErrLogs(); // zapisywanie logow 
 	int loginWindow(); // okno logowania 
 	int PointEqu(string &str);
+	configControler* config;
+	masterControler* device;
+	
 public:
 	masterControler();
 	int dispMenu();
