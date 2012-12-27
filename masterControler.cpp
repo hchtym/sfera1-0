@@ -1,4 +1,6 @@
 #include "masterControler.h"
+#include "configControler.h"
+#include "deviceControler.h"
 
 using namespace std;
 
@@ -10,7 +12,7 @@ masterControler::masterControler(){
 
 int masterControler::test(){
 	BYTE input[31];
-	memset(input, 0 , siezefo(input));
+	memset(input, 0 , sizeof(input));
 	stringstream compose;
 	string str;
 	Lcd_Cls();
