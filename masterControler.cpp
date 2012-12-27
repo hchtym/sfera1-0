@@ -8,7 +8,7 @@ using namespace std;
 
 
 masterControler::masterControler(){
-	//config = new configControler();
+	config = new configControler();
 	device = new deviceControler();
 	
 };
