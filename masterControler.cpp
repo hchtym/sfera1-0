@@ -30,6 +30,8 @@ int masterControler::test(){
 		}
 		Kb_GetStr(0, 24, input, 0, 30, 0, 120);
 		//conv = (char* )input;
+		char strg = (char *)input;
+		conv = strg;
 		if(conv.size()>6 && conv.size() < 30){
 			break;
 		}
