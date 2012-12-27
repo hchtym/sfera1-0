@@ -1,6 +1,7 @@
 #include "masterControler.h"
 #include "configControler.h"
 #include "deviceControler.h"
+#include <string>
 
 using namespace std;
 
