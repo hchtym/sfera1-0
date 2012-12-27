@@ -8,6 +8,8 @@
 #include <sstream>
 #include <iostream>
 #include <stdlib.h>
+#include "configControler.h"
+#include "deviceControler"
 
 extern "C"{
 #include "all_headers.h"	
