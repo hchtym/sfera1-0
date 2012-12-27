@@ -23,7 +23,7 @@ int masterControler::test(){
 	while(1){
 		cout << "tu doszedlem " << endl;
 		device->magCardScan(compose);
-		cout << "su jestem trololololololololo" << endl << compodse << endl;
+		cout << "su jestem trololololololololo" << endl << compose << endl;
 		str = compose.str();
 		cout << str << endl;
 		compose.str("");
