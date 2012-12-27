@@ -15,6 +15,7 @@ masterControler::masterControler(){
 
 int masterControler::test(){
 	unsigned char input[40];
+	string id
 	memset(input, 0 , sizeof(input));
 	stringstream compose;
 	string str,conv;
@@ -22,7 +23,8 @@ int masterControler::test(){
 	Lcd_Printxy(0,0,0, "Przeciagnij karte");	
 	while(1){
 		cout << "tu doszedlem " << endl;
-		device->magCardScan(compose);
+		device->magCardScan(id);
+		compose << id; 
 		cout << "su jestem trololololololololo" << endl << compose << endl;
 		str = compose.str();
 		cout << str << endl;
