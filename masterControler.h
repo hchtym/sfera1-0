@@ -25,7 +25,7 @@ private:
 	int loginWindow(); // okno logowania 
 	int PointEqu(string &str);
 	configControler* config;
-	masterControler* device;
+	deviceControler* device;
 	
 public:
 	masterControler();
