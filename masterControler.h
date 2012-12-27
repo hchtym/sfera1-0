@@ -23,10 +23,11 @@ private:
 	int dispInfo(); // wyswietlanie informacji
 	void wrtErrLogs(); // zapisywanie logow 
 	int loginWindow(); // okno logowania 
-	
+	int PointEqu(string &str):
 public:
 	masterControler();
 	int dispMenu();
+	int test();
 	
 };
 

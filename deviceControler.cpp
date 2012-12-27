@@ -122,15 +122,15 @@ int deviceControler::chipCardScan(){
 }
 
 int deviceControler::magCardScan(){
-	char track1[100];
-	char track2[100];
-	char track3[100];
+	char track1[11];
+	char track2[11];
+	char track3[11];
 	int ret;
 	memset(track1, 0, sizeof(track1));
 	memset(track1, 0, sizeof(track2));
 	memset(track1, 0, sizeof(track3));
-	Lcd_Cls();
-	Lcd_Printxy(0,0,0,"Test czytnik magnet");
+//	Lcd_Cls();
+//	Lcd_Printxy(0,0,0,"Test czytnik magnet");
 	
 	if(Mcr_Open()<0)
 	{
@@ -142,31 +142,35 @@ while(1){
 	if (ret&0x80)
 	{//detected swiping
 	if(ret & 1){
-		Lcd_Cls();
+		/*Lcd_Cls();
 		Lcd_Printxy(0,0,0,"Track 1 is OK");
 		cout << track1 << endl;
-		Lcd_Printxy(0,8,0, track1);
+		Lcd_Printxy(0,8,0, track1);*/
+			track1[10] = 0;
+			return track1;
 		break;
 	        //Track 1 is OK
 	}else {
 	        //Track 1 is error
 	}
 	if(ret & 2){
-		Lcd_Cls();
+/*		Lcd_Cls();
 		Lcd_Printxy(0,0,0,"Track 2 is OK");
 		cout << track2 << endl;
-		Lcd_Printxy(0,8,0, track2);
-		break;
+		Lcd_Printxy(0,8,0, track2);*/
+			track2[10] = 0;
+			return track2;
 	        //Track 2 is OK
 	    }else{
 	        //Track 2 is e
 	}
 	if(ret & 4){
-		Lcd_Cls();
-		Lcd_Printxy(0,0,0,"Track 2 is OK");
+		/*Lcd_Cls();
+		Lcd_Printxy(0,0,0,"Track 3 is OK");
 		cout << track3 << endl;
-		Lcd_Printxy(0,8,0, track3);
-		break;
+		Lcd_Printxy(0,8,0, track3);*/
+			track3[10] = 0;
+			return track3;
 	        //Track 3 is OK
 	}else{
 	        //Track 3 is error

@@ -15,13 +15,15 @@ int main(){
 	Lcd_SetGray(50);
 	Lcd_SetFont(1,0,0);
 //	configControler* config = new configControler();
+	masterControler* master = new masterControler();
+	master->test();
 
 //	networkControler* network = new networkControler();
 	deviceControler* device = new deviceControler();
 //	device->rfidScan();
 //	device->atc24Read();
 //	device->sleRead();
-	device->magCardScan();
+//	device->magCardScan();
 	while(1){
 
 
