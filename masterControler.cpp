@@ -14,7 +14,7 @@ masterControler::masterControler(){
 };
 
 int masterControler::test(){
-	/*unsigned char input[31];
+	unsigned char input[31];
 	memset(input, 0 , sizeof(input));
 	stringstream compose;
 	string str,conv;
@@ -111,7 +111,9 @@ int masterControler::pointEqu(string &str){
 				str2 = compo.str();
 			break;
 			case KEYENTER:
-
+			if(str2.size() > 0){
+			return 0;
+			}
 			break;
 			case KEYCANCEL:
 			return 0;
@@ -172,6 +174,6 @@ int masterControler::pointEqu(string &str){
 	}
 	
 	
-	*/
+	
 	
 }
