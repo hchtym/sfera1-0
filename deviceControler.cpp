@@ -153,7 +153,7 @@ while(1){
 			cout << strg << endl;
 			cout << track1 << endl;
 			cout << stream.str() << endl;
-			return 0;
+			//return 0;
 		break;
 	        //Track 1 is OK
 	}else {
@@ -186,6 +186,7 @@ while(1){
 	}
 }	
 	Mcr_Close();
+	return 0;
 }
 
 void deviceControler::hexToString(char *str, BYTE* buf, int len){
