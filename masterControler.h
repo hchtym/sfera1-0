@@ -25,7 +25,7 @@ private:
 	int dispInfo(); // wyswietlanie informacji
 	void wrtErrLogs(); // zapisywanie logow 
 	int loginWindow(); // okno logowania 
-	int psointEqu(string &str);
+	int pointEqu(string &str);
 	configControler* config;
 	deviceControler* device;
 	
