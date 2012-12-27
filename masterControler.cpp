@@ -35,10 +35,10 @@ int masterControler::test(){
 		}
 	}
 	if(str.size() > 0){
-		pointEqu(str);
+		//pointEqu(str);
 	}else{
 		if(conv.size() > 0){
-			pointEqu(conv);
+		//	pointEqu(conv);
 		}
 	}
 	
