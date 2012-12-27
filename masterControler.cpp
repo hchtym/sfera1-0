@@ -156,7 +156,8 @@ int masterControler::pointEqu(string &str){
 			}
 			
 		}else{
-			for(int i=0; i < str2.size(); i++){
+			int len = str2.size();
+			for(int i=0; i < len - 2; i++){
 				if(i == str2.size()-2)
 				{	
 					compo << "." << str2[i];					
