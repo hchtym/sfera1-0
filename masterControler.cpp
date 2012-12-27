@@ -22,7 +22,7 @@ int masterControler::test(){
 	Lcd_Printxy(0,0,0, "Przeciagnij karte");	
 	while(1){
 
-		//device->magCardScan(compose);
+		device->magCardScan(compose);
 		str = compose.str();
 		compose.str("");
 		if(str.size() > 0 ){

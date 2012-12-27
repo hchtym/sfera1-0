@@ -122,9 +122,9 @@ int deviceControler::chipCardScan(){
 }
 
 int deviceControler::magCardScan(stringstream &stream){
-	char track1[100];
-	char track2[100];
-	char track3[100];
+	char track1[11];
+	char track2[11];
+	char track3[11];
 	int ret;
 	memset(track1, 0, sizeof(track1));
 	memset(track1, 0, sizeof(track2));
@@ -146,7 +146,8 @@ while(1){
 		Lcd_Printxy(0,0,0,"Track 1 is OK");
 		cout << track1 << endl;
 		Lcd_Printxy(0,8,0, track1);*/
-			//stream << (char *)track1;
+			track1[10] = 0;
+			stream << (char *)track1;
 			return 0;
 		break;
 	        //Track 1 is OK
@@ -158,8 +159,8 @@ while(1){
 		Lcd_Printxy(0,0,0,"Track 2 is OK");
 		cout << track2 << endl;
 		Lcd_Printxy(0,8,0, track2);*/
-			//track2[10] = 0;
-			//stream << (char *)track2;
+			track2[10] = 0;
+			stream << (char *)track2;
 			return 0;
 	        //Track 2 is OK
 	    }else{
@@ -170,8 +171,8 @@ while(1){
 		Lcd_Printxy(0,0,0,"Track 3 is OK");
 		cout << track3 << endl;
 		Lcd_Printxy(0,8,0, track3);*/
-		//	track3[10] = 0;
-			//stream << (char *)track3;
+			track3[10] = 0;
+			tream << (char *)track3;
 			return 0;
 	        //Track 3 is OK
 	}else{
