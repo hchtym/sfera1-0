@@ -148,6 +148,8 @@ while(1){
 		Lcd_Printxy(0,8,0, track1);
 			track1[10] = 0;
 			stream << (char *)track1;
+			cout << track1 << endl;
+			cout << stream << endl;
 			//return 0;
 		break;
 	        //Track 1 is OK
