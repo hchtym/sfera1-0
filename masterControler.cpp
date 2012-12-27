@@ -14,7 +14,7 @@ masterControler::masterControler(){
 };
 
 int masterControler::test(){
-	BYTE input[31];
+	unsigned char input[31];
 	memset(input, 0 , sizeof(input));
 	stringstream compose;
 	string str,conv;
