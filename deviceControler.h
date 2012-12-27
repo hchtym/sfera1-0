@@ -28,7 +28,7 @@ public:
 	int sleRead();
 	int chipCardScan();
 	int ertErrDevLogs();
-	int magCardScan(string &stream);
+	void magCardScan(string &stream);
 	
 };
 

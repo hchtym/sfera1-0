@@ -121,7 +121,7 @@ int deviceControler::chipCardScan(){
 	
 }
 
-int deviceControler::magCardScan(string &stream){
+void deviceControler::magCardScan(string &stream){
 	char track1[11];
 	char track2[11];
 	char track3[11];
@@ -189,7 +189,7 @@ while(1){
 	    }
 	}
 }	
-//	Mcr_Close();
+	Mcr_Close();
 //	return 0;
 }
 
