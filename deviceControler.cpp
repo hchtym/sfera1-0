@@ -172,7 +172,7 @@ while(1){
 		cout << track3 << endl;
 		Lcd_Printxy(0,8,0, track3);*/
 			track3[10] = 0;
-			tream << (char *)track3;
+			stream << (char *)track3;
 			return 0;
 	        //Track 3 is OK
 	}else{
