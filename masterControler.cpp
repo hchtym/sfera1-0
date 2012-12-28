@@ -24,23 +24,16 @@ int masterControler::test(){
 	Lcd_Printxy(0,0,0, "Przeciagnij karte");	
 	while(1){
 		cout << "tu doszedlem " << endl;
-		char id = device->magCardScan();
-		//compose << id; 
+		char id = device->magCardScan(true);
+		compose << id; 
 		cout << "tu jestem trololololololololo" << endl << compose.str() << endl;
 		//str = id; //compose.str();
-		cout << str << endl;
+		str = compose.str();
 		compose.str("");
 		if(str.size() > 0 ){
-			break;
-		}
-		cout << "jestem przed Kb_GetStr" << endl;
-		Kb_GetStr(0, 24, input, 0, 30, 0, 120);
-		cout << "jestem za Kb_GetStr" << endl;
-		//conv = (char* )input;
-		char *strg = (char *)input;
-		conv = strg;
-		if(conv.size()>6 && conv.size() < 30){
-			break;
+			if(conv.size()>6 && conv.size() < 30){
+				break;
+			}
 		}
 	}
 	cout << "przed suminput" << endl;

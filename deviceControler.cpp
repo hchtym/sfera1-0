@@ -121,13 +121,15 @@ int deviceControler::chipCardScan(){
 	
 }
 
-char deviceControler::magCardScan(){
+char deviceControler::magCardScan(bool kbd){
 	char track1[100];
 	char track2[100];
 	char track3[100];
 	char trck[10];
+	string str2;
+	stringstream compo;
+	string temp;
 	int ret;
-	string id;
 	memset(track1, 0, sizeof(track1));
 	memset(track1, 0, sizeof(track2));
 	memset(track1, 0, sizeof(track3));
@@ -139,51 +141,139 @@ char deviceControler::magCardScan(){
 		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
 	}
 while(1){
-	
+	if(kbd){
+
+					if(Kb_Hit){
+						key = Kb_GetKey();
+						if(key != NOKEY){
+							break;
+						}
+					}
+				cout << "jestem przed switchem klawiszy" << endl;
+				switch(key){
+					case KEY0:
+						compo << "0";
+						str2.clear();
+						str2 = compo.str();
+					break;
+					case KEY1:
+						compo << "1";
+						str2.clear();
+						str2 = compo.str();
+					break;
+					case KEY2:
+						compo << "2";
+						str2.clear();
+						str2 = compo.str();
+					break;
+					case KEY3:
+						compo << "3";
+						str2.clear();
+						str2 = compo.str();
+					break;
+					case KEY4:
+						compo << "4";
+						str2.clear();
+						str2 = compo.str();
+					break;
+					case KEY5:
+						compo << "5";
+						str2.clear();
+						str2 = compo.str();
+					break;
+					case KEY6:
+						compo << "6";
+						str2.clear();
+						str2 = compo.str();
+					break;
+					case KEY7:
+						compo << "7";
+						str2.clear();
+						str2 = compo.str();
+					break;
+					case KEY8:
+						compo << "8";
+						str2.clear();
+						str2 = compo.str();
+					break;
+						case KEY9:
+						compo << "9";
+						str2.clear();
+						str2 = compo.str();
+					break;
+					case KEYENTER:
+					cout << "nacisnalem enterem" << endl;
+					if(str2.size() > 0){
+						cout << "str2 jest wieksze od sera i przepisuje jego wartosc do sum !" << endl;
+					sum = str2;
+						cout << " przechodze do returna !!!! wowwwwww" << endl;
+					return 0;
+					}
+					break;
+					case KEYCANCEL:
+					return 0;
+					break;
+					case KEYBACKSPACE:
+					temp.clear();
+					temp = compo.str();
+		//				temp[temp.size()-1] = "\0";
+					int len = temp.size();
+					if(len == 0){
+						str2.clear();
+					//string ma dlugosc 0 i dupa ! 
+						break;
+					}else{
+					temp = temp.erase(len-1);
+					compo.str("");
+					compo.clear();
+					compo << temp;
+					str2.clear();
+					str2 = temp;
+					}
+					break;
+					default:
+					break;
+				}
+
+		
+	}
 	DelayMs(50);	
 	ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
 	if (ret&0x80)
 	{//detected swiping
 		if(ret & 1){
 			cout << "track 1" << endl;
-			Lcd_Cls();
-			Lcd_Printxy(0,0,0,"Track 1 is OK");
 			cout << track1 << endl;
-			Lcd_Printxy(0,8,0, track1);
 			//track1[10] = 0;
 			for(int i = 0; i < sizeof(trck); i++)
 			{
 				trck[i]=track1[i];
 			}
-			//cout << strg << endl;
+			cout << trck << endl;
 			//return 0;
 			break;
 	        //Track 1 is OK
 		}
 		if(ret & 2){
 			cout << "track 2" << endl;
-			Lcd_Cls();
-			Lcd_Printxy(0,0,0,"Track 2 is OK");
 			cout << track2 << endl;
-			Lcd_Printxy(0,8,0, track2);
 			for(int i = 0; i < sizeof(trck); i++)
 			{
 				trck[i]=track2[i];
 			}
+			cout << trck << endl;
 			//return 0;
 	        //Track 2 is OK
 			break;
 		}
 		if(ret & 4){
 			cout << "track 3" << endl;
-			Lcd_Cls();
-			Lcd_Printxy(0,0,0,"Track 3 is OK");
 			cout << track3 << endl;
-			Lcd_Printxy(0,8,0, track3);
 			for(int i = 0; i < sizeof(trck); i++)
 			{
 				trck[i]=track3[i];
 			}
+			cout << trck << endl;
 			//return 0;
 	        //Track 3 is OK
 			break;
