@@ -149,7 +149,7 @@ int masterControler::pointEqu(string &str){
 		}
 		cout << str2 << endl;
 		cout << "jestem za switchem sprawdzam dlugosc !" << endl;
-		if(str2.size() < 2){
+		if(str2.size() <= 2){
 			switch(str2.size()){
 				case 1:
 				compo1.str("");
