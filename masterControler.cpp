@@ -24,7 +24,7 @@ int masterControler::test(){
 	Lcd_Printxy(0,0,0, "Przeciagnij karte");	
 	while(1){
 		cout << "tu doszedlem " << endl;
-		//id = device->magCardScan();
+		device->magCardScan();
 		//compose << id; 
 		cout << "tu jestem trololololololololo" << endl << compose.str() << endl;
 		//str = id; //compose.str();
@@ -318,7 +318,6 @@ int masterControler::pointComp(){
 		
 		}
 	}else{
-	
 		//tu bedzie automatyczne liczenie pkt na podstawie zakresu zumy albo cos takiego sie jeszcze zobaczy 
 	}
 
