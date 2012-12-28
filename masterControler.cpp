@@ -54,7 +54,7 @@ int masterControler::test(){
 
 int masterControler::pointEqu(string &str){
 	BYTE key = NOKEY;
-	stringstream compo;
+	stringstream compo,compo1;
 	string str2,temp;
 	while(1){
 		Lcd_Cls();
@@ -145,44 +145,38 @@ int masterControler::pointEqu(string &str){
 		
 		if(str2.size() < 2){
 			switch(str2.size()){
-				case 0:
-				compo.str("");
-				compo << "0.00";
-				str2.clear();
-				str2 = compo.str();
-				break;
 				case 1:
-				compo.str("");
-				compo << "0.0" << str2;
+				compo1.str("");
+				compo1 << "0.0" << str2;
 				str2.clear();
-				str2 = compo.str();
+				str2 = compo1.str();
 				break;
-				
 				case 2:
-				compo.str("");
-				compo << "0." << str2;
+				compo1.str("");
+				compo1 << "0." << str2;
 				str2.clear();
-				str2 = compo.str();
+				str2 = compo1.str();
 				break;
 				default:
-				compo.str("");
-				compo << "0.00";
+				compo1.str("");
+				compo1 << "0.00";
 				str2.clear();
-				str2 = compo.str();
+				str2 = compo1.str();
 				break;
 			}
 			
 		}else{
+			compo1.srt("");
 			int len = str2.size();
 			for(int i=0; i < len; i++){
 				if(i == len-2)
 				{	
-					compo << "." << str2[i];					
+					compo1 << "." << str2[i];					
 				}else{
-					compo << str2[i];
+					compo1 << str2[i];
 				}	
 			}
-			
+			str2 = compo1.str();
 		}
 		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
 
