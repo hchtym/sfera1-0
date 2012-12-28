@@ -19,7 +19,7 @@ int masterControler::test(){
 	memset(input, 0 , sizeof(input));
 	stringstream compose;
 	string str,conv;
-while(1){	
+	
 	Lcd_Cls();
 	Lcd_Printxy(0,0,0, "Przeciagnij karte");	
 	while(1){
@@ -48,7 +48,7 @@ while(1){
 		pointEqu(conv);
 		}
 	}
-}
+
 	
 }
 
