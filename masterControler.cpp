@@ -59,7 +59,7 @@ int masterControler::pointEqu(string &str){
 	string str2 = "0.00";
 	cout << "wszedlem do pointEqu" << endl;
 	while(1){
-		int x = (21 - str2.size())*7;
+		int x = (21 - str2.size())*6.04;
 		if(x<0)x=0;
 		Lcd_Cls();
 		Lcd_Printxy(0,0,0, "Podaj wartosc zakupu:");
