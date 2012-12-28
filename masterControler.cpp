@@ -198,6 +198,7 @@ int masterControler::sumInput(){
 }
 
 int masterControler::pointComp(){
+	BYTE key = NOKEY;
 	string flag = config->pointComp(); 
 	string str2 = "0";
 	string pointsExtra;
