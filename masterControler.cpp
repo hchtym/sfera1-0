@@ -59,9 +59,10 @@ int masterControler::pointEqu(string &str){
 	string str2 = "0.00";
 	cout << "wszedlem do pointEqu" << endl;
 	while(1){
+		int x = (21 - str2.size())*6;
 		Lcd_Cls();
 		Lcd_Printxy(0,0,0, "Podaj wartosc zakupu:");
-		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
+		Lcd_Printxy(x,32,0, const_cast<char *>(str2.c_str()) );
 		cout << "sprawdzam klawisz ktory wcisnalem" << endl;
 		while(1){
 			if(Kb_Hit){
