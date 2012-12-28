@@ -33,25 +33,6 @@ private:
 	int confParse(vector<string> &vect, string section);
 	
 	// 
-	string lcb; //locked card behaviour
-	string lcbmsg; // wiadomosc do zablokowanych kart
-	string screntimeout; //czas do wygaszacza
-	string logtime; // timeout na wylogowanie
-	string servcode; //kod serwisowy
-	string versiondate; // data wersji configa
-	string prntconf; // drukowanie potweirdzenia
-	string schconffailint; // interwal failu
-	string schconfsucint; // interwal powodzenia
-	string schconftimebeghr; // okno czasowe poczatek godzina spr soft i conf
-	string schconftimebehmin; // okno czasowe poczatek minuta spr soft i conf
-	string schconftimeendht; // okno czasowe koniec godzina spr soft i conf
-	string schconftimeendmin; // okno czasowe koniec minuta spr soft i conf
-	string schtxfailint; // interwal fail transmisjii tranzakcji
-	string schtxsucint; // interwal sukcesu transmisjii tranzakcji
-	string schtxtimebeghr; // okno czasowe poczatek godzina wysylania tranzakcji
-	string schtxtimebegmin; // okno czasowe poczatek minuta wysylania tranzakcji
-	string schtxtimeendhr; // okno czasowe koniec godzina wysylania tranzakcji
-	string schtxtimeendmin; // okno czasowe koniec godzina wysylanie tranzakcji*/
 	
 public: 
 	configControler(); 
@@ -66,7 +47,8 @@ public:
 	int returnSerwerConf(); 
 	int returnTime(); 
 	int returnVersion(); 
-	int returnServiceCode();   
+	int returnServiceCode();
+	string pointComp();
 };
 
 

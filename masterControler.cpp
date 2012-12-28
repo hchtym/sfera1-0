@@ -8,7 +8,7 @@ using namespace std;
 
 
 masterControler::masterControler(){
-	//config = new configControler();
+	config = new configControler();
 	device = new deviceControler();
 	
 };
@@ -41,18 +41,13 @@ int masterControler::test(){
 			break;
 		}
 	}
-	if(str.size() > 0){
-		pointEqu(str);
-	}else{
-		if(conv.size() > 0){
-		pointEqu(conv);
-		}
-	}
+	sumInput();
+	pointComp();
 
 	
 }
 
-int masterControler::pointEqu(string &str){
+int masterControler::sumInput(){
 	BYTE key = NOKEY;
 	stringstream compo,compo1;
 	string temp;
@@ -133,6 +128,7 @@ int masterControler::pointEqu(string &str){
 			break;
 			case KEYENTER:
 			if(str2.size() > 0){
+				sum = str2;
 			return 0;
 			}
 			break;
@@ -183,7 +179,6 @@ int masterControler::pointEqu(string &str){
 				str2 = compo1.str();
 				break;
 			}
-			
 		}else{
 			cout << "iteruje zapodane dane !" << endl;
 			compo1.str("");
@@ -199,12 +194,120 @@ int masterControler::pointEqu(string &str){
 			cout << compo1.str();
 			str2 = compo1.str();
 		}
-		cout << "wyswietlam na ekranie cus !" << endl;
-		
+	}	
+}
 
+int masterControler::pointComp(){
+	string flag = config->pointComp(); 
+	string str2 = "0";
+	string pointsExtra;
+	string pointsTotal;
+	if(flag.compare("off")){
+		//reczne podawanie pkt !! 
+		while(1){
+			compo1.str("");
+			for(int i = 0; i < (21 - str2.size()); i++)
+			{
+				compo1 << " ";
+			}
+			compo1 << str2;
+			str2.clear();
+			str2 = compo1.str();
+			Lcd_Cls();
+			Lcd_Printxy(0,0,0, "Podaj punkty extra");
+			Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
+			cout << "sprawdzam klawisz ktory wcisnalem" << endl;
+			while(1){
+				if(Kb_Hit){
+					key = Kb_GetKey();
+					if(key != NOKEY){
+						break;
+					}
+				}
+			}
+			cout << "jestem przed switchem klawiszy" << endl;
+			switch(key){
+				case KEY0:
+					compo << "0";
+					str2.clear();
+					str2 = compo.str();
+				break;
+				case KEY1:
+					compo << "1";
+					str2.clear();
+					str2 = compo.str();
+				break;
+				case KEY2:
+					compo << "2";
+					str2.clear();
+					str2 = compo.str();
+				break;
+				case KEY3:
+					compo << "3";
+					str2.clear();
+					str2 = compo.str();
+				break;
+				case KEY4:
+					compo << "4";
+					str2.clear();
+					str2 = compo.str();
+				break;
+				case KEY5:
+					compo << "5";
+					str2.clear();
+					str2 = compo.str();
+				break;
+				case KEY6:
+					compo << "6";
+					str2.clear();
+					str2 = compo.str();
+				break;
+				case KEY7:
+					compo << "7";
+					str2.clear();
+					str2 = compo.str();
+				break;
+				case KEY8:
+					compo << "8";
+					str2.clear();
+					str2 = compo.str();
+				break;
+					case KEY9:
+					compo << "9";
+					str2.clear();
+					str2 = compo.str();
+				break;
+				case KEYENTER:
+				if(str2.size() > 0){
+					pointsExtra = str2;
+				}
+				break;
+				case KEYCANCEL:
+				return 0;
+				break;
+				case KEYBACKSPACE:
+				temp.clear();
+				temp = compo.str();
+				int len = temp.size();
+				if(len == 0){
+					str2 = "0";
+					break;
+				}else{
+				temp = temp.erase(len-1);
+				compo.str("");
+				compo.clear();
+				compo << temp;
+				str2.clear();
+				str2 = temp;
+				}
+				break;
+				default:
+				break;
+			}
+		
+		}
+	}else{
+		//tu bedzie automatyczne liczenie pkt na podstawie zakresu zumy albo cos takiego sie jeszcze zobaczy 
 	}
-	
-	
-	
 	
 }

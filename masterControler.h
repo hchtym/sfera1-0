@@ -25,7 +25,10 @@ private:
 	int dispInfo(); // wyswietlanie informacji
 	void wrtErrLogs(); // zapisywanie logow 
 	int loginWindow(); // okno logowania 
-	int pointEqu(string &str);
+	int sumInput();
+	int pointComp();
+	string sum; // suma zakupow
+	string points; // suma pkt za zakupy up 
 	configControler* config;
 	deviceControler* device;
 	
