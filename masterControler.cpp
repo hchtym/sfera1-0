@@ -8,7 +8,7 @@ using namespace std;
 
 
 masterControler::masterControler(){
-	config = new configControler();
+//	config = new configControler();
 	device = new deviceControler();
 	
 };
@@ -43,7 +43,9 @@ int masterControler::test(){
 	}
 	sumInput();
 //	pointComp();
-
+	delete compose;
+	delete &str;
+	delete &conv;
 	
 }
 
@@ -319,4 +321,11 @@ int masterControler::pointComp(){
 		//tu bedzie automatyczne liczenie pkt na podstawie zakresu zumy albo cos takiego sie jeszcze zobaczy 
 	}
 	
+	delete compo;
+	delete compo1;
+	delete &temp;
+	delete &str2;
+	delete &pointsExtra;
+	delete &pointsTotal;
+	delete &flag;
 }
