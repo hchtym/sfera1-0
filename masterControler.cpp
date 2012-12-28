@@ -33,7 +33,9 @@ int masterControler::test(){
 		if(str.size() > 0 ){
 			break;
 		}
+		cout << "jestem przed Kb_GetStr" << endl;
 		Kb_GetStr(0, 24, input, 0, 30, 0, 120);
+		cout << "jestem za Kb_GetStr" << endl;
 		//conv = (char* )input;
 		char *strg = (char *)input;
 		conv = strg;
