@@ -122,6 +122,7 @@ int deviceControler::chipCardScan(){
 }
 
 char deviceControler::magCardScan(bool kbd){
+	BYTE key = NOKEY;
 	char track1[100];
 	char track2[100];
 	char track3[100];
