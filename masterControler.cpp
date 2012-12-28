@@ -197,8 +197,8 @@ int masterControler::sumInput(){
 	}	
 	delete compo;
 	delete compo1;
-	delete temp;
-	delete str2;
+	delete *temp;
+	delete *str2;
 
 }
 
