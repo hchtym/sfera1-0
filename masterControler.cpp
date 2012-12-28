@@ -195,6 +195,11 @@ int masterControler::sumInput(){
 			str2 = compo1.str();
 		}
 	}	
+	delete compo;
+	delete compo1;
+	delete temp;
+	delete str2;
+
 }
 
 int masterControler::pointComp(){
