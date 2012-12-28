@@ -318,7 +318,7 @@ int masterControler::pointComp(){
 		
 		}
 	}else{
-		cout << 
+	
 		//tu bedzie automatyczne liczenie pkt na podstawie zakresu zumy albo cos takiego sie jeszcze zobaczy 
 	}
 
