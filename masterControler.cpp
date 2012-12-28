@@ -55,10 +55,14 @@ int masterControler::test(){
 int masterControler::pointEqu(string &str){
 	BYTE key = NOKEY;
 	stringstream compo,compo1;
-	string str2,temp;
+	string temp;
+	string str2 = "0.00";
+	cout << "wszedlem do pointEqu" << endl;
 	while(1){
 		Lcd_Cls();
 		Lcd_Printxy(0,0,0, "Podaj wartosc zakupu:");
+		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
+		cout << "sprawdzam klawisz ktory wcisnalem" << endl;
 		while(1){
 			if(Kb_Hit){
 				key = Kb_GetKey();
@@ -67,6 +71,7 @@ int masterControler::pointEqu(string &str){
 				}
 			}
 		}
+		cout << "jestem przed switchem klawiszy" << endl;
 		switch(key){
 			case KEY0:
 				compo << "0";
@@ -142,7 +147,8 @@ int masterControler::pointEqu(string &str){
 			default:
 			break;
 		}
-		
+		cout << str2 << endl;
+		cout << "jestem za switchem sprawdzam dlugosc !" << endl;
 		if(str2.size() < 2){
 			switch(str2.size()){
 				case 1:
@@ -166,6 +172,7 @@ int masterControler::pointEqu(string &str){
 			}
 			
 		}else{
+			cout << "iteruje zapodane dane !" << endl;
 			compo1.str("");
 			int len = str2.size();
 			for(int i=0; i < len; i++){
@@ -176,9 +183,11 @@ int masterControler::pointEqu(string &str){
 					compo1 << str2[i];
 				}	
 			}
+			cout << compo1.str();
 			str2 = compo1.str();
 		}
-		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
+		cout << "wyswietlam na ekranie cus !" << endl;
+		
 
 	}
 	
