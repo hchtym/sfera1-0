@@ -42,7 +42,7 @@ int masterControler::test(){
 		}
 	}
 	sumInput();
-	pointComp();
+//	pointComp();
 
 	
 }
