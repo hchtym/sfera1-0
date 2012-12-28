@@ -46,6 +46,7 @@ int masterControler::test(){
 	delete compose;
 	delete &str;
 	delete &conv;
+	delete &id;
 	
 }
 
