@@ -142,8 +142,15 @@ int masterControler::pointEqu(string &str){
 			default:
 			break;
 		}
+		
 		if(str2.size() < 2){
 			switch(str2.size()){
+				case 0:
+				compo.str("");
+				compo << "0.00";
+				str2.clear();
+				str2 = compo.str();
+				break;
 				case 1:
 				compo.str("");
 				compo << "0.0" << str2;
