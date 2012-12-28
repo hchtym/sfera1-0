@@ -139,7 +139,7 @@ int masterControler::pointEqu(string &str){
 			if(len == 0){
 			//string ma dlugosc 0 i dupa ! 
 				break;
-			}else{}
+			}else{
 			temp = temp.erase(len-1);
 			compo.str("");
 			compo.clear();
