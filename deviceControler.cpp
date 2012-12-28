@@ -121,11 +121,11 @@ int deviceControler::chipCardScan(){
 	
 }
 
-string deviceControler::magCardScan(){
+char deviceControler::magCardScan(){
 	char track1[11];
 	char track2[11];
 	char track3[11];
-	char strg[11];
+	int trck;
 	int ret;
 	string id;
 	memset(track1, 0, sizeof(track1));
@@ -145,43 +145,39 @@ while(1){
 	if (ret&0x80)
 	{//detected swiping
 		if(ret & 1){
+			track1[10] = 0;
 			cout << "track 1" << endl;
 			Lcd_Cls();
 			Lcd_Printxy(0,0,0,"Track 1 is OK");
-			track1[10] = 0;
 			cout << track1 << endl;
 			Lcd_Printxy(0,8,0, track1);
 			//track1[10] = 0;
 			//sprintf(strg, "%s", track1);
-			id = track1;
 			//cout << strg << endl;
-			cout << track1 << endl;
 			//return 0;
 			break;
 	        //Track 1 is OK
 		}
 		if(ret & 2){
+			track2[10] = 0;
 			cout << "track 2" << endl;
 			Lcd_Cls();
 			Lcd_Printxy(0,0,0,"Track 2 is OK");
 			cout << track2 << endl;
 			Lcd_Printxy(0,8,0, track2);
-			track2[10] = 0;
 			//sprintf(strg, "%s", track2);
-			id = track2;
 			//return 0;
 	        //Track 2 is OK
 			break;
 		}
 		if(ret & 4){
+			track3[10] = 0;
 			cout << "track 3" << endl;
 			Lcd_Cls();
 			Lcd_Printxy(0,0,0,"Track 3 is OK");
 			cout << track3 << endl;
 			Lcd_Printxy(0,8,0, track3);
-			track3[10] = 0;
 			//sprintf(strg, "%s", track3);
-			id = track3;
 			//return 0;
 	        //Track 3 is OK
 			break;
@@ -192,7 +188,20 @@ while(1){
 cout << "jestem za while przed mcrclose" << endl;
 	Mcr_Close();
 	cout << "jestem ze mcrclose" << endl;
-	return id;
+	switch(trck){
+		case 1:
+		return track1;
+		break;
+		case 2:
+		return track2;
+		break;
+		case 3:
+		return track3;
+		break;
+		default:
+		return 0;
+		break;
+	}
 }
 
 void deviceControler::hexToString(char *str, BYTE* buf, int len){
