@@ -190,13 +190,13 @@ cout << "jestem za while przed mcrclose" << endl;
 	cout << "jestem ze mcrclose" << endl;
 	switch(trck){
 		case 1:
-		return track1;
+		return (char *)track1;
 		break;
 		case 2:
-		return track2;
+		return (char *)track2;
 		break;
 		case 3:
-		return track3;
+		return (char *)track3;
 		break;
 		default:
 		return 0;
