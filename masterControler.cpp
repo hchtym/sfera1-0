@@ -26,8 +26,8 @@ int masterControler::test(){
 		cout << "tu doszedlem " << endl;
 		//id = device->magCardScan();
 		//compose << id; 
-		cout << "tu jestem trololololololololo" << endl << compose << endl;
-		str = id; //compose.str();
+		cout << "tu jestem trololololololololo" << endl << compose.str(); << endl;
+		//str = id; //compose.str();
 		cout << str << endl;
 		compose.str("");
 		if(str.size() > 0 ){
@@ -41,6 +41,7 @@ int masterControler::test(){
 			break;
 		}
 	}
+	cout << "przed suminput" << endl;
 	sumInput();
 //	pointComp();
 	delete compose;
