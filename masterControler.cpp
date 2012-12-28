@@ -130,8 +130,11 @@ int masterControler::sumInput(){
 				str2 = compo.str();
 			break;
 			case KEYENTER:
+			cout << "nacisnalem enterem" << endl;
 			if(str2.size() > 0){
-				sum = str2;
+				cout << "str2 jest wieksze od sera i przepisuje jego wartosc do sum !" << endl;
+			sum = str2;
+				cout << " przechodze do returna !!!! wowwwwww" << endl;
 			return 0;
 			}
 			break;
@@ -210,7 +213,7 @@ int masterControler::pointComp(){
 	string temp;
 	string pointsExtra;
 	string pointsTotal;
-	if(flag.compare("off")){
+	if((flag.compare("off")) == 0){
 		//reczne podawanie pkt !! 
 		while(1){
 			compo1.str("");
@@ -315,6 +318,7 @@ int masterControler::pointComp(){
 		
 		}
 	}else{
+		cout << 
 		//tu bedzie automatyczne liczenie pkt na podstawie zakresu zumy albo cos takiego sie jeszcze zobaczy 
 	}
 
