@@ -125,8 +125,8 @@ char deviceControler::magCardScan(){
 	char track1[11];
 	char track2[11];
 	char track3[11];
-	char trck[11];
-
+	char *trck[11];
+	int ret;
 	string id;
 	memset(track1, 0, sizeof(track1));
 	memset(track1, 0, sizeof(track2));
