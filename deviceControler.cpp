@@ -122,10 +122,10 @@ int deviceControler::chipCardScan(){
 }
 
 char deviceControler::magCardScan(){
-	char track1[11];
-	char track2[11];
-	char track3[11];
-	char *trck;
+	char track1[100];
+	char track2[100];
+	char track3[100];
+	char trck[10];
 	int ret;
 	string id;
 	memset(track1, 0, sizeof(track1));
@@ -145,39 +145,45 @@ while(1){
 	if (ret&0x80)
 	{//detected swiping
 		if(ret & 1){
-			track1[10] = 0;
 			cout << "track 1" << endl;
 			Lcd_Cls();
 			Lcd_Printxy(0,0,0,"Track 1 is OK");
 			cout << track1 << endl;
 			Lcd_Printxy(0,8,0, track1);
 			//track1[10] = 0;
-			sprintf(trck, "%s", track1);
+			for(int i = 0; i < sizeof(trck); i++)
+			{
+				trck[i]=track1[i];
+			}
 			//cout << strg << endl;
 			//return 0;
 			break;
 	        //Track 1 is OK
 		}
 		if(ret & 2){
-			track2[10] = 0;
 			cout << "track 2" << endl;
 			Lcd_Cls();
 			Lcd_Printxy(0,0,0,"Track 2 is OK");
 			cout << track2 << endl;
 			Lcd_Printxy(0,8,0, track2);
-			sprintf(trck, "%s", track2);
+			for(int i = 0; i < sizeof(trck); i++)
+			{
+				trck[i]=track2[i];
+			}
 			//return 0;
 	        //Track 2 is OK
 			break;
 		}
 		if(ret & 4){
-			track3[10] = 0;
 			cout << "track 3" << endl;
 			Lcd_Cls();
 			Lcd_Printxy(0,0,0,"Track 3 is OK");
 			cout << track3 << endl;
 			Lcd_Printxy(0,8,0, track3);
-			sprintf(trck, "%s", track3);
+			for(int i = 0; i < sizeof(trck); i++)
+			{
+				trck[i]=track3[i];
+			}
 			//return 0;
 	        //Track 3 is OK
 			break;
