@@ -125,8 +125,8 @@ char deviceControler::magCardScan(){
 	char track1[11];
 	char track2[11];
 	char track3[11];
-	int trck;
-	int ret;
+	char trck[11];
+
 	string id;
 	memset(track1, 0, sizeof(track1));
 	memset(track1, 0, sizeof(track2));
@@ -152,7 +152,7 @@ while(1){
 			cout << track1 << endl;
 			Lcd_Printxy(0,8,0, track1);
 			//track1[10] = 0;
-			//sprintf(strg, "%s", track1);
+			sprintf(trck, "%s", track1);
 			//cout << strg << endl;
 			//return 0;
 			break;
@@ -165,7 +165,7 @@ while(1){
 			Lcd_Printxy(0,0,0,"Track 2 is OK");
 			cout << track2 << endl;
 			Lcd_Printxy(0,8,0, track2);
-			//sprintf(strg, "%s", track2);
+			sprintf(trck, "%s", track2);
 			//return 0;
 	        //Track 2 is OK
 			break;
@@ -177,7 +177,7 @@ while(1){
 			Lcd_Printxy(0,0,0,"Track 3 is OK");
 			cout << track3 << endl;
 			Lcd_Printxy(0,8,0, track3);
-			//sprintf(strg, "%s", track3);
+			sprintf(trck, "%s", track3);
 			//return 0;
 	        //Track 3 is OK
 			break;
@@ -188,20 +188,7 @@ while(1){
 cout << "jestem za while przed mcrclose" << endl;
 	Mcr_Close();
 	cout << "jestem ze mcrclose" << endl;
-	switch(trck){
-		case 1:
-		return (char *)track1;
-		break;
-		case 2:
-		return (char *)track2;
-		break;
-		case 3:
-		return (char *)track3;
-		break;
-		default:
-		return 0;
-		break;
-	}
+	return trck;
 }
 
 void deviceControler::hexToString(char *str, BYTE* buf, int len){
