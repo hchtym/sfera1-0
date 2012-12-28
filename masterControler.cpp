@@ -45,10 +45,8 @@ int masterControler::test(){
 	}
 	cout << "przed suminput" << endl;
 	sumInput();
-//	pointComp();
-	delete compose;
-	delete &str;
-	delete &conv;
+	pointComp();
+
 	
 }
 
@@ -200,10 +198,6 @@ int masterControler::sumInput(){
 			str2 = compo1.str();
 		}
 	}	
-	delete compo;
-	delete compo1;
-	delete &temp;
-	delete &str2;
 
 }
 
@@ -323,12 +317,5 @@ int masterControler::pointComp(){
 	}else{
 		//tu bedzie automatyczne liczenie pkt na podstawie zakresu zumy albo cos takiego sie jeszcze zobaczy 
 	}
-	
-	delete compo;
-	delete compo1;
-	delete &temp;
-	delete &str2;
-	delete &pointsExtra;
-	delete &pointsTotal;
-	delete &flag;
+
 }
