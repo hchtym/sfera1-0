@@ -48,7 +48,6 @@ public:
 	int returnTime(); 
 	int returnVersion(); 
 	int returnServiceCode();
-	string pointComp();
 };
 
 

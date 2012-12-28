@@ -200,7 +200,8 @@ int masterControler::sumInput(){
 int masterControler::pointComp(){
 	BYTE key = NOKEY;
 	stringstream compo, compo1;
-	string flag = config->pointComp(); 
+	//string flag = config->pointComp(); 
+	string flag = "off";
 	string str2 = "0";
 	string temp;
 	string pointsExtra;
