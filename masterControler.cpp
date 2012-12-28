@@ -132,17 +132,21 @@ int masterControler::pointEqu(string &str){
 			return 0;
 			break;
 			case KEYBACKSPACE:
-//				compo.seekg(0, ios::end);
 			temp.clear();
 			temp = compo.str();
 //				temp[temp.size()-1] = "\0";
 			int len = temp.size();
+			if(len == 0){
+			//string ma dlugosc 0 i dupa ! 
+				break;
+			}else{}
 			temp = temp.erase(len-1);
 			compo.str("");
 			compo.clear();
 			compo << temp;
 			str2.clear();
 			str2 = temp;
+			}
 			break;
 			default:
 			break;
