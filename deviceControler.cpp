@@ -264,7 +264,7 @@ while(1){
 			track1[10] = 0;
 			for(int i = 0; i < 10; i++)
 			{
-				trck[i]=(char *)track1[i];
+				trck[i]=track1[i];
 			}
 			//Mcr_Close();
 			cout << "dane z track1 w trck: " << trck << endl;
