@@ -150,6 +150,8 @@ while(1){
 		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
 					if(Kb_Hit){
 						key = Kb_GetKey();
+					}else{
+						key = NOKEY;
 					}
 				cout << "jestem przed switchem klawiszy" << endl;
 				int k =0;
@@ -208,7 +210,7 @@ while(1){
 					cout << "nacisnalem enterem" << endl;
 					str2.clear();
 					str2 = compo.str();
-					if(str2.size() > 0 && str2.size()<30){
+					if(str2.size() >= 6 && str2.size()<30){
 						cout << "wyciepuje wartosc z klawci" << endl;
 					return *str2.c_str();
 					}else{
