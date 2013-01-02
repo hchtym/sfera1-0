@@ -15,6 +15,7 @@ masterControler::masterControler(){
 
 int masterControler::test(){
 	unsigned char input[40];
+	string payment;
 	//string id;
 	memset(input, 0 , sizeof(input));
 	stringstream compose;
@@ -42,13 +43,13 @@ int masterControler::test(){
 		}
 	}
 	cout << "przed suminput" << endl;
-	sumInput();
-	pointComp(str);
+	sumInput(payment);
+	pointComp(str, payment);
 
 	
 }
 
-int masterControler::sumInput(){
+int masterControler::sumInput(string &payment){
 	BYTE key = NOKEY;
 	stringstream compo,compo1;
 	string temp;
@@ -131,8 +132,7 @@ int masterControler::sumInput(){
 			cout << "nacisnalem enterem" << endl;
 			if(str2.size() > 0){
 				cout << "str2 jest wieksze od sera i przepisuje jego wartosc do sum !" << endl;
-				sum.clear();
-				strcpy(sum, str2);
+				payment = str2;
 				cout << " przechodze do returna !!!! wowwwwww" << endl;
 			return 0;
 			}
