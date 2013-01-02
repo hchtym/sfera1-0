@@ -204,6 +204,7 @@ int masterControler::sumInput(string &payment){
 }
 
 int masterControler::pointComp(string &id, string &payment){
+	cout << "jestem w pointComp, oto id karty !: " << id << endl;
 	int sumapkt;
 	BYTE key = NOKEY;
 	stringstream compo, compo1;
@@ -341,6 +342,7 @@ int masterControler::pointComp(string &id, string &payment){
 					compo1 << id[i];
 					type = compo1.str();
 				}
+				cout << "typ karty: " << type << endl;
 				string opt = vect[0];
 				cout << "opcja do porownania ! : " << opt << endl;
 				if((type.compare(opt))==0){
