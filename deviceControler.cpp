@@ -133,6 +133,7 @@ char deviceControler::magCardScan(bool kbd){
 	stringstream compo;
 	string temp;
 	int ret;
+	bool presed = false;
 	memset(track1, 0, sizeof(track1));
 	memset(track1, 0, sizeof(track2));
 	memset(track1, 0, sizeof(track3));
@@ -150,82 +151,87 @@ while(1){
 		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
 					if(Kb_Hit){
 						key = Kb_GetKey();
-					}else{
-						key = NOKEY;
+						if(key != NOKEY){
+							presed = true;
+						}else{
+							presed = false;
+							key = NOKEY;
+						}
 					}
 				cout << "jestem przed switchem klawiszy" << endl;
 				int k =0;
-				switch(key){
-					case KEY0:
-						compo << "0";
+				if(presed){
+					switch(key){
+						case KEY0:
+							compo << "0";
+							str2.clear();
+							str2 = compo.str();
+						break;
+						case KEY1:
+							compo << "1";
+							str2.clear();
+							str2 = compo.str();
+						break;
+						case KEY2:
+							compo << "2";
+							str2.clear();
+							str2 = compo.str();
+						break;
+						case KEY3:
+							compo << "3";
+							str2.clear();
+							str2 = compo.str();
+						break;
+						case KEY4:
+							compo << "4";
+							str2.clear();
+							str2 = compo.str();
+						break;
+						case KEY5:
+							compo << "5";
+							str2.clear();
+							str2 = compo.str();
+						break;
+						case KEY6:
+							compo << "6";
+							str2.clear();
+							str2 = compo.str();
+						break;
+						case KEY7:
+							compo << "7";
+							str2.clear();
+							str2 = compo.str();
+						break;
+						case KEY8:
+							compo << "8";
+							str2.clear();
+							str2 = compo.str();
+						break;
+							case KEY9:
+							compo << "9";
+							str2.clear();
+							str2 = compo.str();
+						break;
+						case KEYENTER:
+						cout << "nacisnalem enterem" << endl;
 						str2.clear();
 						str2 = compo.str();
-					break;
-					case KEY1:
-						compo << "1";
-						str2.clear();
-						str2 = compo.str();
-					break;
-					case KEY2:
-						compo << "2";
-						str2.clear();
-						str2 = compo.str();
-					break;
-					case KEY3:
-						compo << "3";
-						str2.clear();
-						str2 = compo.str();
-					break;
-					case KEY4:
-						compo << "4";
-						str2.clear();
-						str2 = compo.str();
-					break;
-					case KEY5:
-						compo << "5";
-						str2.clear();
-						str2 = compo.str();
-					break;
-					case KEY6:
-						compo << "6";
-						str2.clear();
-						str2 = compo.str();
-					break;
-					case KEY7:
-						compo << "7";
-						str2.clear();
-						str2 = compo.str();
-					break;
-					case KEY8:
-						compo << "8";
-						str2.clear();
-						str2 = compo.str();
-					break;
-						case KEY9:
-						compo << "9";
-						str2.clear();
-						str2 = compo.str();
-					break;
-					case KEYENTER:
-					cout << "nacisnalem enterem" << endl;
-					str2.clear();
-					str2 = compo.str();
-					if(str2.size() >= 6 && str2.size()<30){
-						cout << "wyciepuje wartosc z klawci" << endl;
-					return *str2.c_str();
-					}else{
-						Lcd_Printxy(0,0,0, "Podales zakrotki badz zadlugi numer.");
-					}
-					break;
-					case KEYCANCEL:
-					return 0;
-					break;
-					case KEYBACKSPACE:
-					temp.clear();
-					temp = compo.str();
+						if(str2.size() >= 6 && str2.size()<30){
+							cout << "wyciepuje wartosc z klawci" << endl;
+						return *str2.c_str();
+						}else{
+							Lcd_Printxy(0,0,0, "Podales zakrotki badz zadlugi numer.");
+						}
+						break;
+						case KEYCANCEL:
+						return 0;
+						break;
+						case KEYBACKSPACE:
+						temp.clear();
+						temp = compo.str();
 		//				temp[temp.size()-1] = "\0";
-					int len = temp.size();
-					if(len == 0){
+						int len = temp.size();
+						if(len == 0){
 						str2.clear();
 					//string ma dlugosc 0 i dupa ! 
 						break;
@@ -237,9 +243,10 @@ while(1){
 					str2.clear();
 					str2 = temp;
 					}
-					break;
-					default:
-					break;
+						break;
+						default:
+						break;
+					}
 				}
 
 		
