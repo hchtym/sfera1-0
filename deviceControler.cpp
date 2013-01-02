@@ -268,9 +268,9 @@ while(1){
 			{
 				trck[i]=track1[i];
 			}
-			Mcr_Close();
+			//Mcr_Close();
 			cout << "dane z track1 w trck: " << trck << endl;
-			return *trck;
+			//return *trck;
 			break;
 		}
 		if(ret & 2){
@@ -280,9 +280,9 @@ while(1){
 			{
 				trck[i]=track2[i];	
 			}
-			Mcr_Close();
+			//Mcr_Close();
 			cout << "dane z track2 w trck: " << trck;
-			return *trck;
+			//return *trck;
 			break;
 		}
 		if(ret & 4){
@@ -293,16 +293,17 @@ while(1){
 				trck[i]=track3[i];
 			}
 
-			Mcr_Close();
+			//Mcr_Close();
 			cout << "dane z track3 w trck: " << trck << endl;
-			return *trck;
+			//return *trck;
 			break;
 		}
 	}
 	
 }	
 cout << "jestem za while przed mcrclose" << endl;
-//	Mcr_Close();
+	Mcr_Close();
+	return *trck;
 }
 
 void deviceControler::hexToString(char *str, BYTE* buf, int len){
