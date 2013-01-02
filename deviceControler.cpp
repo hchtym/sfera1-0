@@ -277,7 +277,7 @@ while(1){
 			{
 				trck[i]=track2[i];	
 			}
-			track[10] = 0;
+			trck[10] = 0;
 			//Mcr_Close();
 			cout << "dane z track2 w trck: " << trck << endl;
 			//return *trck;
@@ -285,12 +285,11 @@ while(1){
 		}
 		if(ret & 4){
 			cout << "track 3" << endl;
-			track3[10] = 0;
 			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track3[i];
 			}
-			rack3[10] = 0;
+			trck[10] = 0;
 			//Mcr_Close();
 			cout << "dane z track3 w trck: " << trck << endl;
 			//return *trck;
