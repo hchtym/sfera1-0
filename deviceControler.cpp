@@ -206,24 +206,13 @@ while(1){
 					break;
 					case KEYENTER:
 					cout << "nacisnalem enterem" << endl;
-					compo << "\n";
 					str2.clear();
 					str2 = compo.str();
-					if(str2.size() > 0){
-						cout << "str2 jest wieksze od zera i przepisuje jego wartosc do sum !" << endl;
-						for(int i = 0; i < str2.size(); i++)
-						{
-							if(str2[i]=='\n'){
-								k = i;
-								break;
-							}
-						}
-						for(int i = 0; i < k; i++)
-						{
-							btrck[i]=str2[i];
-						}
-						cout << " przechodze do returna !!!! wowwwwww" << endl;
-					return *btrck;
+					if(str2.size() > 0 && str2.size()<30){
+						cout << "wyciepuje wartosc z klawci" << endl;
+					return *str2.c_str();
+					}else{
+						Lcd_Printxy(0,0,0, "Podales zakrotki badz zadlugi numer.");
 					}
 					break;
 					case KEYCANCEL:
