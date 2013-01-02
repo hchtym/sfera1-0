@@ -335,7 +335,7 @@ int masterControler::pointComp(string &id){
 				}
 				if((type.compare(vect[0]))==0){
 					//karta jest taka sama jak ta w konfiguracji basta ! 
-					if((sum.size()-2 > 1){
+					if((sum.size()-2) > 1){
 						string interval = vect[3];
 						interval.erase(interval.size()-1);
 						interval.erase(interval.size()-2);
@@ -351,7 +351,7 @@ int masterControler::pointComp(string &id){
 						int inter = atoi(interval);
 						int min = atoi(minimum);
 						string option = vect[4];
-						if((option.compare("1")==0){
+						if((option.compare("1"))==0){
 							sumapkt = (equation/inter)*mult;
 						}else{
 							sumapkt = ( (equation - min) /inter)*mult;
