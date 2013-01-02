@@ -25,10 +25,10 @@ int masterControler::test(){
 		char id = device->magCardScan(true);
 		cout << id << endl;
 		compose << "takie jest id: " << id << endl; 
-		cout << "tu jestem trololololololololo " << compose.str() << endl;
 		//str = id; //compose.str();
 		str = compose.str();
 		compose.str("");
+		cout << "tu jestem trololololololololo " << compose.str() << endl;
 		if(str.size() > 0 ){
 			if(str.size()>6 && str.size() < 30){
 				break;
