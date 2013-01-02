@@ -26,7 +26,7 @@ int masterControler::test(){
 		//str = device->magCardScan(true);
 		//cout << id << endl;
 		//compose << id; 
-		compose << device->magCardScan(true);
+		compose << device->magCardScan(false);
 		//str = id; //compose.str();
 		str = compose.str();
 		compose.str("");
