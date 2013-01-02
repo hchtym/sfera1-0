@@ -144,13 +144,13 @@ char deviceControler::magCardScan(bool kbd){
 	{
 		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
 	}
+	Kb_Flush();
 while(1){
 	key = NOKEY;
 	Lcd_Cls();
 	Lcd_Printxy(0,0,0, "Przeciagnij karte");
 	if(kbd){
 		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
-		Kb_Flush();
 					if(!Kb_Hit()){
 						key = Kb_GetKey();
 						if(key != NOKEY){
