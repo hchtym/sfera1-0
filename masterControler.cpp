@@ -359,6 +359,7 @@ int masterControler::pointComp(string &id){
 					}
 					compo1.str("");
 					compo1 << sumapkt;
+					cout << sumaptk;
 					points.clear();
 					points = compo1.str();	
 				}
