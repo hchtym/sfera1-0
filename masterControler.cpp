@@ -333,25 +333,25 @@ int masterControler::pointComp(string &id, string &payment){
 			config->Tokenize(part, compos, ":");
 			compo1.str("");
 			cout << "rozmiar kodu zczytanego z karty !: " <<  id.size() << endl;
-			if(id.size() == 10)
+			// sprawdz pierwsze 3 cyfry i porownaj je z konfiguracja....
+			string type;
+			for(int i = 0; i < 3; i++)
 			{
-				// sprawdz pierwsze 3 cyfry i porownaj je z konfiguracja....
-				string type;
-				for(int i = 0; i < 3; i++)
-				{
-					compo1 << id[i];
-					type = compo1.str();
-				}
+				compo1 << id[i];
+				type = compo1.str();
+			}
+			if(id.size() == 10)
+			{	
 				cout << "typ karty: " << type << endl;
-				string opt = vect[0];
+				string opt = compos[0];
 				cout << "opcja do porownania ! : " << opt << endl;
 				if((type.compare(opt))==0){
 					//karta jest taka sama jak ta w konfiguracji basta ! 
 					if((sum.size()-2) > 1){
-						string interval = vect[3];
+						string interval = compos[3];
 						interval.erase(interval.size()-1);
 						interval.erase(interval.size()-2);
-						string minimum = vect[1];
+						string minimum = compos[1];
 						minimum.erase(minimum.size()-1);
 						minimum.erase(minimum.size()-2);
 						string sumary = payment;
@@ -359,7 +359,7 @@ int masterControler::pointComp(string &id, string &payment){
 						sumary.erase(sumary.size()-2);
 						int equation = atoi(sumary.c_str());
 						cout << "equation: " << equation << endl;
-						string multip = vect[2];
+						string multip = compos[2];
 						int mult = atoi(multip.c_str());
 						cout << "multip: " << mult << endl;
 						int inter = atoi(interval.c_str());
@@ -367,7 +367,7 @@ int masterControler::pointComp(string &id, string &payment){
 						int min = atoi(minimum.c_str());
 						cout << "min: " << min << endl;
 						int extra = atoi(str2.c_str());
-						string option = vect[4];
+						string option = compos[4];
 						cout << "option: " << option << endl;
 						if((type.compare(opt))==0){
 							if((option.compare("1"))==0){
