@@ -266,7 +266,6 @@ while(1){
 			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track1[i];
-				
 			}
 			Mcr_Close();
 			cout << "dane z track1 w trck: " << trck << endl;
@@ -278,9 +277,7 @@ while(1){
 			track2[10] = 0;
 			for(int i = 0; i < 10; i++)
 			{
-				trck[i]=track2[i];
-			
-				
+				trck[i]=track2[i];	
 			}
 			Mcr_Close();
 			cout << "dane z track2 w trck: " << trck;
@@ -303,7 +300,7 @@ while(1){
 	}
 	
 }	
-//cout << "jestem za while przed mcrclose" << endl;
+cout << "jestem za while przed mcrclose" << endl;
 //	Mcr_Close();
 }
 
