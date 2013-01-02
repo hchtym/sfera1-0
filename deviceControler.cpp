@@ -216,8 +216,8 @@ while(1){
 						break;
 						case KEYENTER:
 						cout << "nacisnalem enterem" << endl;
-						str2.clear();
-						str2 = compo.str();
+						//str2.clear();
+						//str2 = compo.str();
 						if(str2.size() >= 6 && str2.size()<30){
 							cout << "wyciepuje wartosc z klawci" << endl;
 						return *str2.c_str();
