@@ -248,9 +248,9 @@ while(1){
 					str2.clear();
 					str2 = temp;
 					}
-						break;
-						default:
-						break;
+					break;
+					default:
+					break;
 					}
 				}
 
