@@ -152,6 +152,7 @@ while(1){
 						}
 					}
 				cout << "jestem przed switchem klawiszy" << endl;
+				int k =0;
 				switch(key){
 					case KEY0:
 						compo << "0";
@@ -204,7 +205,6 @@ while(1){
 						str2 = compo.str();
 					break;
 					case KEYENTER:
-					int k =0;
 					cout << "nacisnalem enterem" << endl;
 					if(str2.size() > 0){
 						cout << "str2 jest wieksze od sera i przepisuje jego wartosc do sum !" << endl;
