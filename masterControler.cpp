@@ -351,7 +351,7 @@ int masterControler::pointComp(string &id){
 						int inter = atoi(interval);
 						int min = atoi(minimum);
 						string option = vect[4];
-						if((option.compare("1"))==0){
+						if((option.compare("1")==0){
 							sumapkt = (equation/inter)*mult;
 						}else{
 							sumapkt = ( (equation - min) /inter)*mult;
