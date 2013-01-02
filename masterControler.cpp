@@ -334,7 +334,7 @@ int masterControler::pointComp(string &id){
 					type = compo1.str();
 				}
 				string opt = vect[0];
-				cout << "opcja do porownania ! : " << opt endl;
+				cout << "opcja do porownania ! : " << opt << endl;
 				if((type.compare(opt))==0){
 					//karta jest taka sama jak ta w konfiguracji basta ! 
 					if((sum.size()-2) > 1){
