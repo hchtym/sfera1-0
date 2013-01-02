@@ -137,6 +137,7 @@ char deviceControler::magCardScan(bool kbd){
 	memset(track1, 0, sizeof(track1));
 	memset(track1, 0, sizeof(track2));
 	memset(track1, 0, sizeof(track3));
+	memset(trck, 0, sizeof(trck));
 //	Lcd_Cls();
 //	Lcd_Printxy(0,0,0,"Test czytnik magnet");
 	
