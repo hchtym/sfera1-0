@@ -129,6 +129,7 @@ char deviceControler::magCardScan(bool kbd){
 	char *btrck;
 	char trck[10];
 	string str2;
+	str2.clear();
 	stringstream compo;
 	string temp;
 	int ret;
@@ -143,6 +144,9 @@ char deviceControler::magCardScan(bool kbd){
 		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
 	}
 while(1){
+	Lcd_Cls();
+	Lcd_Printxy(0,0,0, "Przeciagnij karte");
+	Lcd_Printxy(0,40,0, const_cast<char *>(str2.c_str()) );
 	if(kbd){
 
 					if(Kb_Hit){
@@ -261,6 +265,8 @@ while(1){
 			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track1[i];
+				Mcr_Close();
+				return *trck;
 			}
 			cout << trck << endl;
 			//return 0;
@@ -273,6 +279,8 @@ while(1){
 			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track2[i];
+				Mcr_Close();
+				return *trck;
 			}
 			cout << trck << endl;
 			//return 0;
@@ -285,6 +293,8 @@ while(1){
 			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track3[i];
+				Mcr_Close();
+				return *trck;
 			}
 			cout << trck << endl;
 			//return 0;
@@ -294,10 +304,10 @@ while(1){
 	}
 	
 }	
-cout << "jestem za while przed mcrclose" << endl;
-	Mcr_Close();
+//cout << "jestem za while przed mcrclose" << endl;
+//	Mcr_Close();
 	cout << "jestem ze mcrclose" << endl;
-	return *trck;
+//	return *trck;
 }
 
 void deviceControler::hexToString(char *str, BYTE* buf, int len){

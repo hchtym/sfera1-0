@@ -19,9 +19,7 @@ int masterControler::test(){
 	memset(input, 0 , sizeof(input));
 	stringstream compose;
 	string str,conv;
-	
-	Lcd_Cls();
-	Lcd_Printxy(0,0,0, "Przeciagnij karte");	
+		
 	while(1){
 		cout << "tu doszedlem " << endl;
 		char id = device->magCardScan(true);
