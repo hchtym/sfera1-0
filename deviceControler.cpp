@@ -127,6 +127,7 @@ char deviceControler::magCardScan(bool kbd){
 	char track2[100];
 	char track3[100];
 	char trck[11];
+	char btrck[11];
 	string str2;
 	str2.clear();
 	stringstream compo;
@@ -300,7 +301,8 @@ while(1){
 }	
 cout << "jestem za while przed mcrclose" << endl;
 	Mcr_Close();
-	return *trck;
+	strcpy(btrck, trck);
+	return *btrck;
 }
 
 void deviceControler::hexToString(char *str, BYTE* buf, int len){
