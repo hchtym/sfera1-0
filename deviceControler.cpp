@@ -160,7 +160,7 @@ while(1){
 							key = NOKEY;
 						}
 					}
-				cout << "jestem przed switchem klawiszy" << endl;
+				//cout << "jestem przed switchem klawiszy" << endl;
 				int k =0;
 				if(presed){
 					switch(key){
@@ -222,7 +222,10 @@ while(1){
 							cout << "wyciepuje wartosc z klawci" << endl;
 						return *str2.c_str();
 						}else{
-							Lcd_Printxy(0,0,0, "Podales zakrotki badz zadlugi numer.");
+							Lcd_Clr();
+							Lcd_Printxy(0,0,0,"Informacja")
+							Lcd_Printxy(0,32,0, "Podales zakrotki badz zadlugi numer.");
+							DelayMs(5000);
 						}
 						break;
 						case KEYCANCEL:

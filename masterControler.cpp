@@ -205,7 +205,8 @@ int masterControler::pointComp(string &id){
 	string temp;
 	string pointsExtra;
 	string pointsTotal;
-	if((flag.compare("off")) == 0){
+	Kb_Flush();
+		if((flag.compare("off")) == 0){
 		//reczne podawanie pkt !! 
 		while(1){
 			compo1.str("");
