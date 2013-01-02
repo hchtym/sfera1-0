@@ -150,7 +150,7 @@ while(1){
 	Lcd_Printxy(0,0,0, "Przeciagnij karte");
 	if(kbd){
 		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
-					if(Kb_Hit){
+					if(!Kb_Hit()){
 						key = Kb_GetKey();
 						if(key != NOKEY){
 							presed = true;
