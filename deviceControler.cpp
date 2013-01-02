@@ -275,7 +275,7 @@ while(1){
 		if(ret & 2){
 			cout << "track 2: " << endl;
 			track2[10] = 0;
-			for(int i = 0; i < 10; i++)
+			for(int i = 0; i < 9; i++)
 			{
 				trck[i]=track2[i];	
 			}
@@ -286,7 +286,7 @@ while(1){
 		}
 		if(ret & 4){
 			cout << "track 3" << endl;
-			track1[10] = 0;
+			track3[10] = 0;
 			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track3[i];
