@@ -324,6 +324,7 @@ int masterControler::pointComp(string &id){
 			cout << part << endl;
 			config->Tokenize(part, compos, ":");
 			compo1.str("");
+			cout << "rozmiar kodu zczytanego z karty !: " <<  id.size() << endl;
 			if(id.size() == 10)
 			{
 				// sprawdz pierwsze 3 cyfry i porownaj je z konfiguracja....
