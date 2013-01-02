@@ -204,18 +204,18 @@ while(1){
 						str2 = compo.str();
 					break;
 					case KEYENTER:
-					int j =0;
+					int k =0;
 					cout << "nacisnalem enterem" << endl;
 					if(str2.size() > 0){
 						cout << "str2 jest wieksze od sera i przepisuje jego wartosc do sum !" << endl;
 						for(int i = 0; i < str2.size(); i++)
 						{
 							if(str2[i]==0){
-								j = i;
+								k = i;
 								break;
 							}
 						}
-						for(int i = 0; i < j; i++)
+						for(int i = 0; i < k; i++)
 						{
 							btrck[i]=str2[i];
 						}
