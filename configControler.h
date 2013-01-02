@@ -30,9 +30,6 @@ private:
 	//zmienne glopbalne obieku (dostepne tylko dla obieku !)
 	string ip, port, apn, user, password, seriallnumber;
 	///
-	int confParse(vector<string> &vect, string section);
-	// 
-	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
 	
 public: 
 	configControler(); 
@@ -48,6 +45,9 @@ public:
 	int returnTime(); 
 	int returnVersion(); 
 	int returnServiceCode();
+	int confParse(vector<string> &vect, string section);
+	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
+	
 };
 
 
