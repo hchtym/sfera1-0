@@ -126,8 +126,7 @@ char deviceControler::magCardScan(bool kbd){
 	char track1[100];
 	char track2[100];
 	char track3[100];
-	char *btrck;
-	char trck[10];
+	char trck[11];
 	string str2;
 	str2.clear();
 	stringstream compo;
@@ -162,7 +161,6 @@ while(1){
 						}
 					}
 				//cout << "jestem przed switchem klawiszy" << endl;
-				int k =0;
 				if(presed){
 					switch(key){
 						case KEY0:
@@ -263,7 +261,7 @@ while(1){
 	{//detected swiping
 		if(ret & 1){
 			cout << "track 1" << endl;
-			//track1[10] = 0;
+			track1[10] = 0;
 			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=(char *)track1[i];
@@ -275,7 +273,7 @@ while(1){
 		}
 		if(ret & 2){
 			cout << "track 2: " << endl;
-			//track2[10] = 0;
+			track2[10] = 0;
 			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track2[i];	
@@ -287,7 +285,7 @@ while(1){
 		}
 		if(ret & 4){
 			cout << "track 3" << endl;
-			//track3[10] = 0;
+			track3[10] = 0;
 			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track3[i];
