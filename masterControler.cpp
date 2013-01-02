@@ -317,8 +317,9 @@ int masterControler::pointComp(){
 		vector<string> vect;
 		config->confParse(vect, "comp");
 		for(int i = 0; i < vect.size(); i++){
-			vector<string> comp;
-			config->Tokenize(vect[i], comp, ":");
+			vector<string> compos;
+			string part = vect[i];
+			config->Tokenize(part, compos, ":");
 	
 		}
 		
