@@ -146,7 +146,7 @@ char deviceControler::magCardScan(bool kbd){
 while(1){
 	Lcd_Cls();
 	Lcd_Printxy(0,0,0, "Przeciagnij karte");
-	Lcd_Printxy(0,40,0, const_cast<char *>(str2.c_str()) );
+	Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
 	if(kbd){
 
 					if(Kb_Hit){
