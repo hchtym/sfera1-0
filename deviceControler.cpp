@@ -217,7 +217,7 @@ while(1){
 						cout << "str2 jest wieksze od zera i przepisuje jego wartosc do sum !" << endl;
 						for(int i = 0; i < str2.size(); i++)
 						{
-							if(str2[i]=="\n"){
+							if(str2[i]=='\n'){
 								k = i;
 								break;
 							}
