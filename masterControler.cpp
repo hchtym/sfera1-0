@@ -26,7 +26,7 @@ int masterControler::test(){
 		//char id = device->magCardScan(true);
 		//str = device->magCardScan(true);
 		char *id;
-		device->magCardScan(false, id); 
+		device->magCardScan(true, id); 
 		//cout << device->magCardScan(false) << endl;
 		cout << "Co miesci sie w id: " << id << endl;
 		compose << id; 
