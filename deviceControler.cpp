@@ -210,11 +210,14 @@ while(1){
 					break;
 					case KEYENTER:
 					cout << "nacisnalem enterem" << endl;
+					compo << "\n";
+					str2.clear();
+					str2 = compo.str();
 					if(str2.size() > 0){
 						cout << "str2 jest wieksze od zera i przepisuje jego wartosc do sum !" << endl;
 						for(int i = 0; i < str2.size(); i++)
 						{
-							if(str2[i]==0){
+							if(str2[i]=="\n"){
 								k = i;
 								break;
 							}
