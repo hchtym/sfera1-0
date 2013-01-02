@@ -197,6 +197,7 @@ int masterControler::sumInput(){
 }
 
 int masterControler::pointComp(string &id){
+	int sumapkt;
 	BYTE key = NOKEY;
 	stringstream compo, compo1;
 	//string flag = config->pointComp(); 
@@ -334,6 +335,32 @@ int masterControler::pointComp(string &id){
 				}
 				if((type.compare(vect[0]))==0){
 					//karta jest taka sama jak ta w konfiguracji basta ! 
+					if((sum.size()-2 > 1){
+						string interval = vect[3];
+						interval.erase(interval.size()-1);
+						interval.erase(interval.size()-2);
+						string minimum = vect[1];
+						minimum.erase(min.size()-1);
+						minimum.erase(min.size()-2);
+						string sumary = sum;
+						sumary.erase(sum.size()-1);
+						sumary.erase(sum.size()-2);
+						int equation = atoi(sumary);
+						string multip = vect[2];
+						int mult = atoi(multip);
+						int inter = atoi(interval);
+						int min = atoi(minimum);
+						string option = vect[4];
+						if((option.compare("1"))==0){
+							sumapkt = (equation/inter)*mult;
+						}else{
+							sumapkt = ( (equation - min) /inter)*mult;
+						}
+					}
+					compo1.str("");
+					compo1 << sumapkt;
+					points.clear();
+					points = compo1.str();	
 				}
 			}else{
 				// tutaj bedzie bezposredni zapis tranzakcji do pliku i tyle !!
