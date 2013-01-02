@@ -37,7 +37,7 @@ int masterControler::test(){
 	}
 	cout << "przed suminput" << endl;
 	sumInput();
-	pointComp();
+	pointComp(id);
 
 	
 }
