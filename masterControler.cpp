@@ -321,6 +321,22 @@ int masterControler::pointComp(string &id){
 			string part = vect[i];
 			cout << part << endl;
 			config->Tokenize(part, compos, ":");
+			compo1.str("");
+			if(id.size() == 10)
+			{
+				// sprawdz pierwsze 3 cyfry i porownaj je z konfiguracja....
+				string type;
+				for(int i = 0; i < 3; i++)
+				{
+					compo1 << id[i];
+					type = compo1.str();
+				}
+				if((type.compaer(vect[0]))==0){
+					//karta jest taka sama jak ta w konfiguracji basta ! 
+				}
+			}else{
+				// tutaj bedzie bezposredni zapis tranzakcji do pliku i tyle !!
+			}
 	
 		}
 		
