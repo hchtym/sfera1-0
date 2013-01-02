@@ -351,13 +351,13 @@ int masterControler::pointComp(string &id, string &payment){
 					if((payment.size()-2) > 1){
 						string interval = compos[3];
 						interval.erase(interval.size()-1);
-						interval.erase(interval.size()-2);
+						interval.erase(interval.size()-1);
 						string minimum = compos[1];
 						minimum.erase(minimum.size()-1);
-						minimum.erase(minimum.size()-2);
+						minimum.erase(minimum.size()-1);
 						string sumary = payment;
 						sumary.erase(sumary.size()-1);
-						sumary.erase(sumary.size()-2);
+						sumary.erase(sumary.size()-1);
 						int equation = atoi(sumary.c_str());
 						cout << "equation: " << equation << endl;
 						string multip = compos[2];
@@ -373,7 +373,7 @@ int masterControler::pointComp(string &id, string &payment){
 						if((type.compare(opt))==0){
 							if((option.compare("1"))==0){
 								sumapkt = ((equation/inter)*mult)+extra;
-								cout << "sumapkt: option 1:" << sumapkt << endl; 
+								cout << "sumapkt, option 1: " << sumapkt << endl; 
 							}else{
 								sumapkt = (( (equation - min) /inter)*mult)+extra;
 								cout << "sumapkt, option 0: " << sumapkt << endl;
