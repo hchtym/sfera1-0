@@ -24,7 +24,7 @@ int masterControler::test(){
 		cout << "tu doszedlem " << endl;
 		char id = device->magCardScan(true);
 		cout << id << endl;
-		compose << "takie jest id: " << id << endl; 
+		compose << id << endl; 
 		//str = id; //compose.str();
 		str = compose.str();
 		compose.str("");

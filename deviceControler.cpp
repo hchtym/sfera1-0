@@ -267,7 +267,9 @@ while(1){
 			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track1[i];
+				cout << "dane track1: " << track1 << endl;
 				Mcr_Close();
+				cout << "trck: " << trck;
 				return *trck;
 			}
 			cout << trck << endl;
@@ -278,10 +280,13 @@ while(1){
 		if(ret & 2){
 			cout << "track 2" << endl;
 			cout << track2 << endl;
+			cout << "dane track2: " << track1 << endl;
 			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track2[i];
 				Mcr_Close();
+				cout << trck << endl;
+				cout << "trck " << trck
 				return *trck;
 			}
 			cout << trck << endl;
@@ -295,7 +300,9 @@ while(1){
 			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track3[i];
+				cout << "dane track3: " << track3 << endl;
 				Mcr_Close();
+				cout << "trck: " << trck << endl;
 				return *trck;
 			}
 			cout << trck << endl;
