@@ -8,7 +8,7 @@ using namespace std;
 
 
 masterControler::masterControler(){
-//	config = new configControler();
+	config = new configControler();
 	device = new deviceControler();
 	
 };
@@ -31,7 +31,7 @@ int masterControler::test(){
 		str = compose.str();
 		compose.str("");
 		if(str.size() > 0 ){
-			if(conv.size()>6 && conv.size() < 30){
+			if(str.size()>6 && str.size() < 30){
 				break;
 			}
 		}
@@ -284,6 +284,9 @@ int masterControler::pointComp(){
 				case KEYENTER:
 				if(str2.size() > 0){
 					pointsExtra = str2;
+					goto obliczenia;
+				}else{
+					return 0;
 				}
 				break;
 				case KEYCANCEL:
@@ -310,8 +313,18 @@ int masterControler::pointComp(){
 			}
 		
 		}
+		obliczenia:
+		vector<string> vect;
+		config->confParse(vect, "comp");
+		for(int i = 0; i < vect.size(); i++){
+			vector<string> comp;
+			config->Tokenize(vect[i], comp, ":");
+	
+		}
+		
+
 	}else{
-		//tu bedzie automatyczne liczenie pkt na podstawie zakresu zumy albo cos takiego sie jeszcze zobaczy 
+		//tu bedzie automatyczne liczenie pkt na podstawie zakresu sumy albo cos takiego sie jeszcze zobaczy 
 	}
 
 }

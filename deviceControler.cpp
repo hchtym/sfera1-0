@@ -126,6 +126,7 @@ char deviceControler::magCardScan(bool kbd){
 	char track1[100];
 	char track2[100];
 	char track3[100];
+	char *btrck;
 	char trck[10];
 	string str2;
 	stringstream compo;
@@ -203,12 +204,23 @@ while(1){
 						str2 = compo.str();
 					break;
 					case KEYENTER:
+					int j =0;
 					cout << "nacisnalem enterem" << endl;
 					if(str2.size() > 0){
 						cout << "str2 jest wieksze od sera i przepisuje jego wartosc do sum !" << endl;
-					sum = str2;
+						for(int i = 0; i < str2.size(); i++)
+						{
+							if(str2[i]==0){
+								j = i;
+								break;
+							}
+						}
+						for(int i = 0; i < j; i++)
+						{
+							btrck[i]=str2[i];
+						}
 						cout << " przechodze do returna !!!! wowwwwww" << endl;
-					return 0;
+					return *btrck;
 					}
 					break;
 					case KEYCANCEL:
@@ -246,7 +258,7 @@ while(1){
 			cout << "track 1" << endl;
 			cout << track1 << endl;
 			//track1[10] = 0;
-			for(int i = 0; i < sizeof(trck); i++)
+			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track1[i];
 			}
@@ -258,7 +270,7 @@ while(1){
 		if(ret & 2){
 			cout << "track 2" << endl;
 			cout << track2 << endl;
-			for(int i = 0; i < sizeof(trck); i++)
+			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track2[i];
 			}
@@ -270,7 +282,7 @@ while(1){
 		if(ret & 4){
 			cout << "track 3" << endl;
 			cout << track3 << endl;
-			for(int i = 0; i < sizeof(trck); i++)
+			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track3[i];
 			}
