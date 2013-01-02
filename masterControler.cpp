@@ -331,7 +331,7 @@ int masterControler::pointComp(string &id){
 					compo1 << id[i];
 					type = compo1.str();
 				}
-				if((type.compaer(vect[0]))==0){
+				if((type.compare(vect[0]))==0){
 					//karta jest taka sama jak ta w konfiguracji basta ! 
 				}
 			}else{
