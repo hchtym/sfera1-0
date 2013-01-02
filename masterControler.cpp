@@ -340,11 +340,11 @@ int masterControler::pointComp(string &id){
 						interval.erase(interval.size()-1);
 						interval.erase(interval.size()-2);
 						string minimum = vect[1];
-						minimum.erase(min.size()-1);
-						minimum.erase(min.size()-2);
+						minimum.erase(minimum.size()-1);
+						minimum.erase(minimum.size()-2);
 						string sumary = sum;
-						sumary.erase(sum.size()-1);
-						sumary.erase(sum.size()-2);
+						sumary.erase(sumary.size()-1);
+						sumary.erase(sumary.size()-2);
 						int equation = atoi(sumary);
 						string multip = vect[2];
 						int mult = atoi(multip);
