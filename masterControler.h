@@ -25,7 +25,7 @@ private:
 	int dispInfo(); // wyswietlanie informacji
 	void wrtErrLogs(); // zapisywanie logow 
 	int loginWindow(); // okno logowania 
-	int sumInput();
+	int sumInput(string &payment);
 	int pointComp(string &id, string &payment);
 	string sum; // suma zakupow
 	string points; // suma pkt za zakupy up 
