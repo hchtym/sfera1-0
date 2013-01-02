@@ -369,10 +369,10 @@ int masterControler::pointComp(string &id, string &payment){
 						cout << "option: " << option << endl;
 						if((type.compare(opt))==0){
 							if((option.compare("1"))==0){
-								sumapkt = ((equation/inter)*mult)+;
+								sumapkt = ((equation/inter)*mult)+extra;
 								cout << "sumapkt: option 1:" << sumapkt << endl; 
 							}else{
-								sumapkt = (( (equation - min) /inter)*mult)+;
+								sumapkt = (( (equation - min) /inter)*mult)+extra;
 								cout << "sumapkt, option 0: " << sumapkt << endl;
 							}
 							break;
