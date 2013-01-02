@@ -22,7 +22,7 @@ int masterControler::test(){
 		
 	while(1){
 		cout << "tu doszedlem " << endl;
-		char id = device->magCardScan(true);
+		char id = device->magCardScan(false);
 		cout << id << endl;
 		compose << id; 
 		cout << "tu jestem trololololololololo" << endl << compose.str() << endl;
