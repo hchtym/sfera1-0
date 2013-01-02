@@ -203,7 +203,7 @@ int masterControler::sumInput(string &payment){
 
 }
 
-int masterControler::pointComp(string &id){
+int masterControler::pointComp(string &id, string &payment){
 	int sumapkt;
 	BYTE key = NOKEY;
 	stringstream compo, compo1;
@@ -352,7 +352,7 @@ int masterControler::pointComp(string &id){
 						string minimum = vect[1];
 						minimum.erase(minimum.size()-1);
 						minimum.erase(minimum.size()-2);
-						string sumary = sum;
+						string sumary = payment;
 						sumary.erase(sumary.size()-1);
 						sumary.erase(sumary.size()-2);
 						int equation = atoi(sumary.c_str());
