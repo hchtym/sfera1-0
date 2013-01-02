@@ -286,7 +286,7 @@ while(1){
 				trck[i]=track2[i];
 				Mcr_Close();
 				cout << trck << endl;
-				cout << "trck " << trck
+				cout << "trck " << trck;
 				return *trck;
 			}
 			cout << trck << endl;
