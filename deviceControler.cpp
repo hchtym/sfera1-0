@@ -222,7 +222,7 @@ while(1){
 							cout << "wyciepuje wartosc z klawci" << endl;
 						return *str2.c_str();
 						}else{
-							Lcd_Clr();
+							Lcd_Cls();
 							Lcd_Printxy(0,0,0,"Informacja")
 							Lcd_Printxy(0,32,0, "Podales zakrotki badz zadlugi numer.");
 							DelayMs(5000);
