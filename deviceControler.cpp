@@ -279,7 +279,7 @@ while(1){
 				trck[i]=track2[i];	
 			}
 			//Mcr_Close();
-			cout << "dane z track2 w trck: " << trck;
+			cout << "dane z track2 w trck: " << trck << endl;
 			//return *trck;
 			break;
 		}
