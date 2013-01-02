@@ -262,7 +262,7 @@ while(1){
 	{//detected swiping
 		if(ret & 1){
 			cout << "track 1" << endl;
-			track1[10] = 0;
+			//track1[10] = 0;
 			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track1[i];
@@ -274,8 +274,8 @@ while(1){
 		}
 		if(ret & 2){
 			cout << "track 2: " << endl;
-			track2[10] = 0;
-			for(int i = 0; i < 9; i++)
+			//track2[10] = 0;
+			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track2[i];	
 			}
@@ -286,7 +286,7 @@ while(1){
 		}
 		if(ret & 4){
 			cout << "track 3" << endl;
-			track3[10] = 0;
+			//track3[10] = 0;
 			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track3[i];
