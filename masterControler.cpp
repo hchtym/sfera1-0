@@ -345,11 +345,11 @@ int masterControler::pointComp(string &id){
 						string sumary = sum;
 						sumary.erase(sumary.size()-1);
 						sumary.erase(sumary.size()-2);
-						int equation = atoi(sumary);
+						int equation = atoi(sumary.c_str());
 						string multip = vect[2];
-						int mult = atoi(multip);
-						int inter = atoi(interval);
-						int min = atoi(minimum);
+						int mult = atoi(multip.c_str());
+						int inter = atoi(interval.c_str());
+						int min = atoi(minimum.c_str());
 						string option = vect[4];
 						if((option.compare("1"))==0){
 							sumapkt = (equation/inter)*mult;
