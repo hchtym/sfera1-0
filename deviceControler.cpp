@@ -301,7 +301,7 @@ while(1){
 }	
 cout << "jestem za while przed mcrclose" << endl;
 	Mcr_Close();
-	return trck;
+	return *trck;
 }
 
 void deviceControler::hexToString(char *str, BYTE* buf, int len){
