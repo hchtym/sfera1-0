@@ -26,7 +26,7 @@ private:
 	void wrtErrLogs(); // zapisywanie logow 
 	int loginWindow(); // okno logowania 
 	int sumInput();
-	int pointComp();
+	int pointComp(string &id);
 	string sum; // suma zakupow
 	string points; // suma pkt za zakupy up 
 	configControler* config;

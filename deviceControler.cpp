@@ -150,11 +150,6 @@ while(1){
 		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
 					if(Kb_Hit){
 						key = Kb_GetKey();
-						if(key != NOKEY){
-							break;
-						}else{
-							break;
-						}
 					}
 				cout << "jestem przed switchem klawiszy" << endl;
 				int k =0;

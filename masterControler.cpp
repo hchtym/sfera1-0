@@ -196,7 +196,7 @@ int masterControler::sumInput(){
 
 }
 
-int masterControler::pointComp(){
+int masterControler::pointComp(string &id){
 	BYTE key = NOKEY;
 	stringstream compo, compo1;
 	//string flag = config->pointComp(); 
@@ -319,6 +319,7 @@ int masterControler::pointComp(){
 		for(int i = 0; i < vect.size(); i++){
 			vector<string> compos;
 			string part = vect[i];
+			cout << part << endl;
 			config->Tokenize(part, compos, ":");
 	
 		}
