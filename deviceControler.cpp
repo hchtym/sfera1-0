@@ -261,11 +261,11 @@ while(1){
 	{//detected swiping
 		if(ret & 1){
 			cout << "track 1" << endl;
-			track1[10] = 0;
 			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track1[i];
 			}
+			trck[10] = 0;
 			//Mcr_Close();
 			cout << "dane z track1 w trck: " << trck << endl;
 			//return *trck;
@@ -273,11 +273,11 @@ while(1){
 		}
 		if(ret & 2){
 			cout << "track 2: " << endl;
-			track2[10] = 0;
 			for(int i = 0; i < 10; i++)
 			{
 				trck[i]=track2[i];	
 			}
+			track[10] = 0;
 			//Mcr_Close();
 			cout << "dane z track2 w trck: " << trck << endl;
 			//return *trck;
@@ -290,7 +290,7 @@ while(1){
 			{
 				trck[i]=track3[i];
 			}
-
+			rack3[10] = 0;
 			//Mcr_Close();
 			cout << "dane z track3 w trck: " << trck << endl;
 			//return *trck;
