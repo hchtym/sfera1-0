@@ -153,9 +153,9 @@ while(1){
 						key = Kb_GetKey();
 						if(key != NOKEY){
 							break;
+						}else{
+							break;
 						}
-					}else{
-						break;
 					}
 				}
 				cout << "jestem przed switchem klawiszy" << endl;
