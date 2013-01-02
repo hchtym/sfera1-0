@@ -313,6 +313,7 @@ int masterControler::pointComp(){
 		
 		}
 		obliczenia:
+		cout << "jestem sobie w obliczeniach muahahahah" << endl;
 		vector<string> vect;
 		config->confParse(vect, "comp");
 		for(int i = 0; i < vect.size(); i++){
