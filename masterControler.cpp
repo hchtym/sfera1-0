@@ -132,7 +132,7 @@ int masterControler::sumInput(){
 			if(str2.size() > 0){
 				cout << "str2 jest wieksze od sera i przepisuje jego wartosc do sum !" << endl;
 				sum.clear();
-			sum = str2;
+				strcpy(sum, str2);
 				cout << " przechodze do returna !!!! wowwwwww" << endl;
 			return 0;
 			}
