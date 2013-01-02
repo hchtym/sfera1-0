@@ -346,8 +346,9 @@ int masterControler::pointComp(string &id, string &payment){
 				string opt = compos[0];
 				cout << "opcja do porownania ! : " << opt << endl;
 				if((type.compare(opt))==0){
+					cout << "karta zgodna z opcja konfiguracji! " << endl;
 					//karta jest taka sama jak ta w konfiguracji basta ! 
-					if((sum.size()-2) > 1){
+					if((payment.size()-2) > 1){
 						string interval = compos[3];
 						interval.erase(interval.size()-1);
 						interval.erase(interval.size()-2);
