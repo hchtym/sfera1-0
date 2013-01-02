@@ -307,6 +307,7 @@ cout << "jestem za while przed mcrclose" << endl;
 	{
 		btrck[i]=trck[i];
 	}
+	btrck[11]=0;
 	return btrck;
 }
 
