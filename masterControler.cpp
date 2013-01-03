@@ -101,7 +101,7 @@ int masterControler::selling(){
 		//char id = device->magCardScan(true);
 		cout << "to jest id tuz za magCardScan: " << str8 << endl; 
 		//cout << device->magCardScan(false) << endl;
-		cout << "Co miesci sie w id: " << id << endl;
+		cout << "Co miesci sie w id: " << str8 << endl;
 		compose << str8; 
 		//compose << device->magCardScan(false);
 		//str = id; //compose.str();
