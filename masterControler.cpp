@@ -118,14 +118,14 @@ int masterControler::selling(){
 	}
 	cout << "przed suminput" << endl;
 	sumInput(payment);
-	cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
+//	cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
 	pointComp(str, payment, point, extra);
-	date = "2013:01:03:12:14:25";
-	cout << numerser << endl;
-	cout << seller << endl;
-	cout << payment << endl;
-	cout << point << endl;
-	cout << extra << endl;
+	date = "data :2013:01:03:12:14:25";
+	cout << "numer seryjny terminala: " << numerser << endl;
+	cout << "sprzedawca: " << seller << endl;
+	cout << "Zaplata: " << payment << endl;
+	cout << "punkty: " << point << endl;
+	cout << "extra pkt: " << extra << endl;
 	cout << date << endl;
 	
 	//fileSave(sn, seller, str, payment, point, extra, 0, date);
