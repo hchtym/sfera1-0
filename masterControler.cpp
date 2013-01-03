@@ -117,7 +117,7 @@ int masterControler::selling(){
 	}
 	cout << "przed suminput" << endl;
 	sumInput(payment);
-//	cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
+	cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
 	pointComp(str, payment, point, extra);
 	seller = "00033";
 	date = "data :2013:01:03:12:14:25";
