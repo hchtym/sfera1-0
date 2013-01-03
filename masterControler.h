@@ -36,8 +36,8 @@ private:
 	int fileSave();
 	void title(string str);
 	void clear();
-	int infoMSG();
-	void msg();
+	int infoMSG(string &msg);
+	void msg(int x, int y, string &str);
 	
 public:
 	masterControler();
