@@ -37,7 +37,7 @@ private:
 	int title(string str);
 	int clear();
 	int infoMSG(string &msg);
-	int messge(int x, int y, string &str);
+	int message(int x, int y, string &str);
 	
 public:
 	masterControler();
