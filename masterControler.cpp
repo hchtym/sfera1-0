@@ -122,6 +122,13 @@ int masterControler::selling(){
 	string sn = config->returnSeriall();
 	cout << "pobrałem: " << sn << endl << "przechodze do file save" << endl; 
 	seller = "00033";
+	date = "2013:01:03:12:14:25";
+	cout << sn << endl;
+	cout << seller << endl;
+	cout << payment << endl;
+	cout << point << endl;
+	cout << extra << endl;
+	cout << date << endl;
 	fileSave(sn, seller, str, payment, point, extra, 0, date);
 	
 }
