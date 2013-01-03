@@ -118,7 +118,7 @@ int masterControler::selling(){
 	cout << "przed suminput" << endl;
 	sumInput(payment);
 	pointComp(str, payment, point, extra);
-	cout << "pobieram seriall numer :P" << endl;
+	//cout << "pobieram seriall numer :P" << endl;
 	//string sn = config->returnSeriall();
 	//cout << "pobrałem: " << sn << endl << "przechodze do file save" << endl; 
 	// cos sie tu pieroli ale nie wiem o co biega :/ to jest bez sensu jak logata albo super proent u huberta
