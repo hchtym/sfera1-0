@@ -472,25 +472,25 @@ string configControler::returnSerwerIp(){
 	return ip;
 }
 
-string confgControler::returnSerwerPort(){
+string configControler::returnSerwerPort(){
 	ConfigFile sn("seriall.txt");
 	string port = sn.Value("ok", "gprs.port");
 	return port;
 }
 
-string confgControler::returnGprsApn(){
+string configControler::returnGprsApn(){
 	ConfigFile sn("seriall.txt");
 	string apn = sn.Value("ok", "gprs.apn");
 	return apn;
 }
 
-string confgControler::returnGprsUser(){
+string configControler::returnGprsUser(){
 	ConfigFile sn("seriall.txt");
 	string user = sn.Value("ok", "gprs.login");
 	return user;
 }
 
-string confgControler::returnGprsPaswd(){
+string configControler::returnGprsPaswd(){
 	ConfigFile sn("seriall.txt");
 	string paswd = sn.Value("ok", "gprs.password");
 	return paswd;
