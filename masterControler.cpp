@@ -124,7 +124,7 @@ int masterControler::selling(){
 	// cos sie tu pieroli ale nie wiem o co biega :/ to jest bez sensu jak logata albo super proent u huberta
 	seller = "00033";
 	date = "2013:01:03:12:14:25";
-	cout << sn << endl;
+	//cout << sn << endl;
 	cout << seller << endl;
 	cout << payment << endl;
 	cout << point << endl;
