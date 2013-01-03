@@ -13,7 +13,7 @@ masterControler::masterControler(){
 	
 	seller.clear();
 	loginFlag = false;
-	numerser = config->returnSeller();
+	numerser = config->returnSerial();
 	//vheiu
 };
 
