@@ -481,23 +481,33 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 						if((type.compare(opt))==0){
 							if((option.compare("1"))==0){
 								sumapkt = ((equation/inter)*mult)+extra;
-								cout << "sumapkt, option 1: " << sumapkt << endl; 
+								cout << "sumapkt, option 1: " << sumapkt << endl;
+								compo1.str("");
+								compo1 << sumapkt;
+								cout << sumapkt;
+								points.clear();
+								points = compo1.str();
+								ext = str2;;
+								compo1.str("");
+								compo1 << sumapkt;
+								pnt = compo1.str();
+								break;
 							}else{
 								sumapkt = (( (equation - min) /inter)*mult)+extra;
 								cout << "sumapkt, option 0: " << sumapkt << endl;
+								compo1.str("");
+								compo1 << sumapkt;
+								cout << sumapkt;
+								points.clear();
+								points = compo1.str();
+								ext = str2;;
+								compo1.str("");
+								compo1 << sumapkt;
+								pnt = compo1.str();
+								break;
 							}
-							break;
 						}
 					}
-					compo1.str("");
-					compo1 << sumapkt;
-					cout << sumapkt;
-					points.clear();
-					points = compo1.str();
-					ext = str2;;
-					compo1.str("");
-					compo1 << sumapkt;
-					pnt = compo1.str();	
 				}
 			}else{
 				// tutaj bedzie bezposredni zapis tranzakcji do pliku i tyle !!
