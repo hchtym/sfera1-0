@@ -34,10 +34,10 @@ private:
 	deviceControler* device;
 	bool loginFlag;
 	int fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, int type,string &date);
-	void title(string str);
-	void clear();
+	int title(string str);
+	int clear();
 	int infoMSG(string &msg);
-	void msg(int x, int y, string &str);
+	int msg(int x, int y, string &str);
 	
 public:
 	masterControler();

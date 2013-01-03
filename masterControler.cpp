@@ -60,11 +60,11 @@ int masterControler::infoMSG(string &msg){
 	msg(0,32, msg2);
 }
 
-void masterControler::msg(int x, int y, string &str){
+int masterControler::msg(int x, int y, string &str){
 	Lcd_Printxy(x, y, 0, const_cast<char *>(str.c_str()));
 }
 
-void masterControler::title(string str){
+int masterControler::title(string str){
 	int len = (21 - str.size());
 	stringstream compose;
 	compose.str("");
@@ -79,7 +79,7 @@ void masterControler::title(string str){
 	
 }
 
-void masterControler::clear(){
+int masterControler::clear(){
 	Lcd_Cls();
 }
 
