@@ -137,6 +137,8 @@ int masterControler::sumInput(string &payment){
 	stringstream compo,compo1;
 	string temp;
 	string str2 = "0.00";
+	string str3;
+	str3.clear();
 	cout << "wszedlem do pointEqu" << endl;
 	while(1){
 		compo1.str("");
@@ -165,26 +167,36 @@ int masterControler::sumInput(string &payment){
 				compo << "0";
 				str2.clear();
 				str2 = compo.str();
+				str3.clear();
+				str3 = compo.str();
 			break;
 			case KEY1:
 				compo << "1";
 				str2.clear();
 				str2 = compo.str();
+				str3.clear();
+				str3 = compo.str();
 			break;
 			case KEY2:
 				compo << "2";
 				str2.clear();
 				str2 = compo.str();
+				str3.clear();
+				str3 = compo.str();
 			break;
 			case KEY3:
 				compo << "3";
 				str2.clear();
 				str2 = compo.str();
+				str3.clear();
+				str3 = compo.str();
 			break;
 			case KEY4:
 				compo << "4";
 				str2.clear();
 				str2 = compo.str();
+				str3.clear();
+				str3 = compo.str();
 			break;
 			case KEY5:
 				compo << "5";
@@ -195,27 +207,35 @@ int masterControler::sumInput(string &payment){
 				compo << "6";
 				str2.clear();
 				str2 = compo.str();
+				str3.clear();
+				str3 = compo.str();
 			break;
 			case KEY7:
 				compo << "7";
 				str2.clear();
 				str2 = compo.str();
+				str3.clear();
+				str3 = compo.str();
 			break;
 			case KEY8:
 				compo << "8";
 				str2.clear();
 				str2 = compo.str();
+				str3.clear();
+				str3 = compo.str();
 			break;
 				case KEY9:
 				compo << "9";
 				str2.clear();
 				str2 = compo.str();
+				str3.clear();
+				str3 = compo.str();
 			break;
 			case KEYENTER:
 			cout << "nacisnalem enterem" << endl;
 			if(str2.size() > 0){
 				cout << "str2 jest wieksze od sera i przepisuje jego wartosc do sum !" << endl;
-				payment = str2;
+				payment = str3;
 				cout << " przechodze do returna !!!! wowwwwww" << endl;
 			return 0;
 			}
