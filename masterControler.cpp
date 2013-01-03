@@ -398,8 +398,6 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 					compo << "6";
 					str2.clear();
 					str2 = compo.str();
-					str3.clear();
-					str3 = compo.str();
 				break;
 				case KEY7:
 					compo << "7";
@@ -492,7 +490,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 						cout << "inter: " << inter << endl;
 						int min = atoi(minimum.c_str());
 						cout << "min: " << min << endl;
-						int extra = atoi(str3.c_str());
+						int extra = atoi(str2.c_str());
 						string option = compos[4];
 						cout << "option: " << option << endl;
 						if((type.compare(opt))==0){
