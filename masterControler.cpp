@@ -59,10 +59,10 @@ int masterControler::infoMSG(string &msg){
 	int x =0;
 	int y =32;
 	title("Inrofmacja");
-	msg(x, y, msg2);
+	message(x, y, msg2);
 }
 
-int masterControler::msg(int x, int y, string &str){
+int masterControler::message(int x, int y, string &str){
 	Lcd_Printxy(x, y, 0, const_cast<char *>(str.c_str()));
 }
 
