@@ -60,7 +60,7 @@ int masterControler::infoMSG(string &msg){
 }
 
 void masterControler::msg(int x, int y, string &str){
-	Lcd_Printxy(x, y, 0, const_cast<char*>(str.c_str()));
+	Lcd_Printxy(x, y, 0, const_cast<char *>(str.c_str()));
 }
 
 void masterControler::title(string str){
