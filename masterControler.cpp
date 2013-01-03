@@ -498,21 +498,19 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 								cout << "sumapkt, option 1: " << sumapkt << endl;
 								compo1.str("");
 								compo1 << sumapkt;
-								cout << sumapkt;
 								pnt = compo1.str();
+								return 0;
 								break;
 							}else{
 								sumapkt = (( (equation - min) /inter)*mult)+extra;
 								cout << "sumapkt, option 0: " << sumapkt << endl;
 								compo1.str("");
 								compo1 << sumapkt;
-								cout << sumapkt;
-								points.clear();
-								points = compo1.str();
 								ext = str2;;
 								compo1.str("");
 								compo1 << sumapkt;
 								pnt = compo1.str();
+								return 0;
 								break;
 							}
 						}
