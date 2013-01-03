@@ -44,7 +44,8 @@ int masterControler::loginScr(){
 				seller = logon;
 				return 0;
 			}else{
-				infoMSG('Niepoprawny login');
+				string str = "Niepoprawny login";
+				infoMSG(str);
 				return 0;
 			}
 		
