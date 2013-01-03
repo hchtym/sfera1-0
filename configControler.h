@@ -40,8 +40,11 @@ public:
 	int returnSeller(vector<string> &vec); 
 	int returnLCard(vector<string> &vec); 
 	int returnCmputation(vector<string> &vec); 
-	int returnGPRSConf(); 
-	int returnSerwerConf(); 
+	string returnGprgApn(); 
+	string returnGprsUser();
+	string returnGprsPaswd();
+	string returnSerwerIp();
+	string returnSeewerPort(); 
 	int returnTime(); 
 	int returnVersion(); 
 	int returnServiceCode();

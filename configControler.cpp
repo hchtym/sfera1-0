@@ -464,8 +464,38 @@ string configControler::returnSeriall(){
 	ConfigFile sn("seriall.txt");
 	string seriall = sn.Value("seriall","SN");
 	return seriall;
+	delete(sn);
 }
 
+string configControler::returnSerwerIp(){
+	ConfigFile sn("seriall.txt");
+	string ip = sn.Value("ok", "gprs.address");
+	return ip
+}
+
+string confgiControler::returnSerwerPort(){
+	ConfigFile sn("seriall.txt");
+	string port = sn.Value("ok", "gprs.port");
+	return port;
+}
+
+string confgiControler::returnGprsApn(){
+	ConfigFile sn("seriall.txt");
+	string apn = sn.Value("ok", "gprs.apn");
+	return apn;
+}
+
+string confgiControler::returnGprsUser(){
+	ConfigFile sn("seriall.txt");
+	string user = sn.Value("ok", "gprs.login");
+	return user;
+}
+
+string confgiControler::returnGprsPaswd(){
+	ConfigFile sn("seriall.txt");
+	string paswd = sn.Value("ok", "gprs.password");
+	return paswd;
+}
 
 void configControler::Tokenize(const string& str, vector<string>& tokens, const string& delimiters = " "){
 	string::size_type lastPos = str.find_first_not_of(delimiters, 0);
