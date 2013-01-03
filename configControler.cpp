@@ -468,32 +468,32 @@ string configControler::returnSeriall(){
 
 string configControler::returnSerwerIp(){
 	ConfigFile sn("seriall.txt");
-	string ip = sn.Value("ok", "gprs.address");
-	return ip;
+	string adr = sn.Value("ok", "gprs.address");
+	return adr;
 }
 
 string configControler::returnSerwerPort(){
 	ConfigFile sn("seriall.txt");
-	string port = sn.Value("ok", "gprs.port");
-	return port;
+	string prt = sn.Value("ok", "gprs.port");
+	return prt;
 }
 
 string configControler::returnGprsApn(){
 	ConfigFile sn("seriall.txt");
-	string apn = sn.Value("ok", "gprs.apn");
-	return apn;
+	string gapn = sn.Value("ok", "gprs.apn");
+	return gapn;
 }
 
 string configControler::returnGprsUser(){
 	ConfigFile sn("seriall.txt");
-	string user = sn.Value("ok", "gprs.login");
-	return user;
+	string guser = sn.Value("ok", "gprs.login");
+	return guser;
 }
 
 string configControler::returnGprsPaswd(){
 	ConfigFile sn("seriall.txt");
-	string paswd = sn.Value("ok", "gprs.password");
-	return paswd;
+	string gpaswd = sn.Value("ok", "gprs.password");
+	return gpaswd;
 }
 
 void configControler::Tokenize(const string& str, vector<string>& tokens, const string& delimiters = " "){
