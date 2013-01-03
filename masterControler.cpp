@@ -114,7 +114,7 @@ int masterControler::selling(){
 	cout << "przed suminput" << endl;
 	sumInput(payment);
 	pointComp(str, payment, point, extra);
-	string **sn = config->returnSeriall();
+	string sn = config->returnSeriall();
 	fileSave(sn, seller, str, payment, point, extra, 0, date);
 	
 }
