@@ -121,7 +121,7 @@ int masterControler::selling(){
 	cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
 	pointComp(str, payment, point, extra);
 	seller = "00033";
-	date = "data :2013:01:03:12:14:25";
+	date = "2013:01:03:12:14:25";
 	//string sernum = config->returnSeriall();
 	cout << "numer seryjny terminala: " << numerser << endl;
 	cout << "sprzedawca: " << seller << endl;
@@ -499,6 +499,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 								cout << "sumapkt, option 1: " << sumapkt << endl;
 								stringstream temp;
 								temp << sumapkt;
+								ext = str2;
 								pnt = temp.str();
 								return 0;
 								break;
