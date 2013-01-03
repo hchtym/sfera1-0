@@ -15,7 +15,8 @@ masterControler::masterControler(){
 	loginFlag = false;
 	string sn = config->returnSeriall();
 	cout << "numer seryjny!: " << sn << endl;
-	sn.copy(numerser, 13,0);
+	char przeciep = sn.c_str();
+	numerser = char przeciep;
 	cout << "numerseryjny z numerser: " << numerser << endl;
 	
 };
