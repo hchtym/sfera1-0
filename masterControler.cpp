@@ -320,8 +320,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 	string flag = "off";
 	string str2 = "0";
 	string temp;
-	string pointsExtra;
-	string pointsTotal;
+f
 	Kb_Flush();
 		if((flag.compare("off")) == 0){
 		//reczne podawanie pkt !! 
@@ -485,11 +484,6 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 								compo1.str("");
 								compo1 << sumapkt;
 								cout << sumapkt;
-								points.clear();
-								points = compo1.str();
-								ext = str2;;
-								compo1.str("");
-								compo1 << sumapkt;
 								pnt = compo1.str();
 								break;
 							}else{
