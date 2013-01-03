@@ -28,7 +28,7 @@ public:
 	int sleRead();
 	int chipCardScan();
 	int ertErrDevLogs();
-	char magCardScan(bool kbd);
+	string magCardScan(bool kbd);
 	
 };
 
