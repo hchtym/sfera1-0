@@ -14,14 +14,6 @@ networkControler::networkControler(string &ipr, string &portr, string &apnr, str
 	user = userr;
 	password = passwordr;
 	serialN = serialNr;
-	cout << "po przekazaniu jej miedzy tringami" << endl;
-	cout << ip << endl;
-	cout << port << endl;
-	cout << apn << endl;
-	cout << user << endl;
-	cout << password << endl;
-	cout << serialN << endl;
-	cout << "koniec konfiga" << endl;
 	
 }
 networkControler::~networkControler(){

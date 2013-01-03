@@ -16,7 +16,7 @@ masterControler::masterControler(){
 	string user = config->returnGprsUser(); 
 	string paswd = config->returnGprsPaswd(); 
 	string serial = config->returnSeriall();
-	network = new networkControler(ip, port, apn, user, paswd, serial);
+	//network = new networkControler(ip, port, apn, user, paswd, serial);
 	
 	seller.clear();
 	loginFlag = false;
