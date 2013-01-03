@@ -125,8 +125,8 @@ int masterControler::selling(){
 	//string numer = "010020086567";
 	seller = "00033";
 	date = "2013:01:03:12:14:25";
-	cout << numer << endl;
-	//cout << seller << endl;
+	//cout << numer << endl;
+	cout << seller << endl;
 	cout << payment << endl;
 	cout << point << endl;
 	cout << extra << endl;
