@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include "configControler.h"
 #include "deviceControler.h"
+#include "networkControler.h"
 
 extern "C"{
 #include "all_headers.h"	
