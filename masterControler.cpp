@@ -123,7 +123,7 @@ int masterControler::selling(){
 	seller = "00033";
 	date = "data :2013:01:03:12:14:25";
 	//string sernum = config->returnSeriall();
-	cout << "numer seryjny terminala: " << sernum << endl;
+	cout << "numer seryjny terminala: " << numerser << endl;
 	cout << "sprzedawca: " << seller << endl;
 	cout << "Zaplata: " << payment << endl;
 	cout << "punkty: " << point << endl;
