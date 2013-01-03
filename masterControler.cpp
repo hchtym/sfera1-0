@@ -468,9 +468,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 					cout << sumapkt;
 					points.clear();
 					points = compo1.str();
-					compo1.str("");
-					compo1 << extra;
-					ext = compo1.str();
+					ext = str2;;
 					compo1.str("");
 					compo1 << sumapkt;
 					pnt = compo1.str();	
