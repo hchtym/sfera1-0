@@ -119,8 +119,8 @@ int masterControler::selling(){
 	sumInput(payment);
 	pointComp(str, payment, point, extra);
 	cout << "pobieram seriall numer :P" << endl;
-	string sn = config->returnSeriall();
-	cout << "pobrałem: " << sn << endl << "przechodze do file save" << endl; 
+	//string sn = config->returnSeriall();
+	//cout << "pobrałem: " << sn << endl << "przechodze do file save" << endl; 
 	// cos sie tu pieroli ale nie wiem o co biega :/ to jest bez sensu jak logata albo super proent u huberta
 	seller = "00033";
 	date = "2013:01:03:12:14:25";
