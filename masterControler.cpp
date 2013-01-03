@@ -121,6 +121,7 @@ int masterControler::selling(){
 	cout << "pobieram seriall numer :P" << endl;
 	string sn = config->returnSeriall();
 	cout << "pobrałem: " << sn << endl << "przechodze do file save" << endl; 
+	seller = "00033";
 	fileSave(sn, seller, str, payment, point, extra, 0, date);
 	
 }
