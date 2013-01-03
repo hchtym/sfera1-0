@@ -34,7 +34,12 @@ private:
 	configControler* config;
 	deviceControler* device;
 	networkControler* network;
-	string numerser, ip, port, apn, user, paswd;
+	string numerser;
+	string ip;
+	string port;
+	string apn;
+	string user;
+	string paswd;
 	bool loginFlag;
 	int fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, int type,string &date);
 	int title(string str);
