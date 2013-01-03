@@ -463,7 +463,7 @@ int configControler::miniInput(string& title, string& variable){
 string configControler::returnSeriall(){
 	ConfigFile sn("seriall.txt");
 	string seriall = sn.Value("seriall","SN");
-	return *seriall;
+	return seriall;
 }
 
 
