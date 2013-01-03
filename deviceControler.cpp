@@ -301,7 +301,7 @@ while(1){
 }	
 cout << "jestem za while przed mcrclose" << endl;
 	Mcr_Close();
-	strcpy(btrck, trck);
+	strcpy(const_cast<char *>((char *)btrck), trck);
 //	return *btrck;
 }
 
