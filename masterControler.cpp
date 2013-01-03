@@ -398,7 +398,6 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 				break;
 				case KEYENTER:
 				if(str2.size() > 0){
-					pointsExtra = str2;
 					goto obliczenia;
 				}else{
 					return 0;
