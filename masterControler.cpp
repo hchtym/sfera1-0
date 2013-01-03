@@ -118,7 +118,9 @@ int masterControler::selling(){
 	cout << "przed suminput" << endl;
 	sumInput(payment);
 	pointComp(str, payment, point, extra);
+	cout << "pobieram seriall numer :P" << endl;
 	string sn = config->returnSeriall();
+	cout << "pobrałem: " << sn << endl << "przechodze do file save" << endl; 
 	fileSave(sn, seller, str, payment, point, extra, 0, date);
 	
 }
@@ -278,15 +280,24 @@ int masterControler::sumInput(string &payment){
 }
 
 int masterControler::fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, int type, string &date){
+	cout << "otwiram file stream" << endl;
 	ofstream trx("trx.txt", ios_base::app);
+	cout << "tworze string stream compose)" << endl;
 	stringstream compose;
+	cout << "tworze stringacza" << endl;
 	string total;
+	cout << "czyszcze string strema" << endl; 
 	compose.str("");
+	cout << "wypelniam string tym: " << endl << sn << ";" << seler << ";" << client << ";" << pay << ";" << point << ";" << extrapoint << ";" << type << ";" << date << endl;
 	compose << sn << ";" << seler << ";" << client << ";" << pay << ";" << point << ";" << extrapoint << ";" << type << ";" << date << endl;
 	total = compose.str();
+	cout << "wciepnujs to szystko do pliku" << endl;
 	trx << total;
+	cout << "camykom plik " << endl;
 	trx.close();
+	cout << "zamknal zech plik ciupia dalej" << endl;
 	
+	return 0;
 }
 
 int masterControler::pointComp(string &id, string &payment, string &pnt, string &ext){
