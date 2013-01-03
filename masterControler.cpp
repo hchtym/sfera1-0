@@ -10,9 +10,9 @@ using namespace std;
 masterControler::masterControler(){
 	config = new configControler();
 	device = new deviceControler();
-	///ip = config->returnSerwerIp(); 
+	ip = config->returnSerwerIp(); 
 	//port = config->returnSerwerPort(); 
-	apn = config->returnGprsApn();
+	//apn = config->returnGprsApn();
 	//user = config->returnGprsUser(); 
 	//paswd = config->returnGprsPaswd(); 
 	//numerser = config->returnSeriall();
