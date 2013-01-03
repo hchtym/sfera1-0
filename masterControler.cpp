@@ -54,9 +54,10 @@ int masterControler::loginScr(){
 }
 
 int masterControler::infoMSG(string &msg){
+	string msg2 = msg;
 	clear();
 	title("Inrofmacja");
-	msg(0,32, msg);
+	msg(0,32, msg2);
 }
 
 void masterControler::msg(int x, int y, string &str){
