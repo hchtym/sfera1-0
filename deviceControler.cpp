@@ -124,7 +124,7 @@ int deviceControler::chipCardScan(){
 string deviceControler::magCardScan(bool kbd){
 	BYTE key = NOKEY;
 	string wyciep;
-	stringstream temp;
+	stringstream tempsremp;
 	char track1[100];
 	char track2[100];
 	char track3[100];
@@ -303,8 +303,8 @@ while(1){
 }	
 cout << "jestem za while przed mcrclose" << endl;
 	Mcr_Close();
-	temp << trck;
-	wyciep = temp.str();
+	tempsremp << trck;
+	wyciep = tempsremp.str();
 	//strcpy(const_cast<char *>((char *)btrck), trck);
 	return wyciep;
 }
