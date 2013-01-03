@@ -14,6 +14,7 @@ masterControler::masterControler(){
 	seller.clear();
 	loginFlag = false;
 	string sn = config->returnSeriall();
+	cout << "numer seryjny!: " << sn;
 	numerser = sn;
 };
 
@@ -120,6 +121,7 @@ int masterControler::selling(){
 	sumInput(payment);
 //	cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
 	pointComp(str, payment, point, extra);
+	seller = "00033";
 	date = "data :2013:01:03:12:14:25";
 	cout << "numer seryjny terminala: " << numerser << endl;
 	cout << "sprzedawca: " << seller << endl;
