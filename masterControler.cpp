@@ -12,10 +12,10 @@ masterControler::masterControler(){
 	device = new deviceControler();
 	///ip = config->returnSerwerIp(); 
 	//port = config->returnSerwerPort(); 
-	//apn = config->returnGprsApn();
+	apn = config->returnGprsApn();
 	//user = config->returnGprsUser(); 
-	paswd = config->returnGprsPaswd(); 
-	numerser = config->returnSeriall();
+	//paswd = config->returnGprsPaswd(); 
+	//numerser = config->returnSeriall();
 	//network = new networkControler(ip, port, apn, user, paswd, numerser);
 	
 	seller.clear();
