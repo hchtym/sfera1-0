@@ -130,8 +130,8 @@ int masterControler::selling(){
 	cout << "extra pkt: " << extra << endl;
 	cout << date << endl;
 	
-	//fileSave(sn, seller, str, payment, point, extra, 0, date);
-	//return 0;
+	fileSave(sn, seller, str, payment, point, extra, 0, date);
+	return 0;
 }
 
 int masterControler::sumInput(string &payment){

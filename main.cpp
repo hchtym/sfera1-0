@@ -16,7 +16,7 @@ int main(){
 	Lcd_SetFont(1,0,0);
 //	configControler* config = new configControler();
 	masterControler* master = new masterControler();
-	master->selling();
+	//master->selling();
 
 //	networkControler* network = new networkControler();
 //	deviceControler* device = new deviceControler();
@@ -25,7 +25,7 @@ int main(){
 //	device->sleRead();
 //	device->magCardScan();
 	while(1){
-
+		master->selling();
 
 		
 	}
