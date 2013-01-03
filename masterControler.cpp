@@ -71,7 +71,7 @@ void masterControler::title(string str){
 	{
 		compose << " ";
 	}
-	str.clear()
+	str.clear();
 	str = compose.str();
 	Lcd_Printxy(0,0,1, const_cast<char *>(str.c_str()));
 	
@@ -84,6 +84,7 @@ void masterControler::clear(){
 int masterControler::selling(){
 	unsigned char input[40];
 	string payment, point, extra, seler;
+	string date;
 	//string id;
 	memset(input, 0 , sizeof(input));
 	stringstream compose;
@@ -114,7 +115,7 @@ int masterControler::selling(){
 	sumInput(payment);
 	pointComp(str, payment, point, extra);
 	string **sn = config->returnSeriall();
-	filesSave(sn, seller, id, payment, point, extra, 0, data);
+	fileSave(sn, seller, str, payment, point, extra, 0, date);
 	
 }
 
@@ -272,12 +273,12 @@ int masterControler::sumInput(string &payment){
 
 }
 
-int masterControler::fileSave(string sn, string seller, string client, string pay, string point, string extrapoint, int type, string date){
+int masterControler::fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, int type, string &date){
 	ofstream trx("trx.txt", ios_base::app);
 	stringstream compose;
 	string total;
 	compose.str("");
-	compose << sn << ";" << seller << ";" << client << ";" << pay << ";" << point << ";" << extrapoint << ";" << type << ";" << data << endl;
+	compose << sn << ";" << seler << ";" << client << ";" << pay << ";" << point << ";" << extrapoint << ";" << type << ";" << data << endl;
 	total = compose.str();
 	trx << total;
 	trx.close();

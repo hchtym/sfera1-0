@@ -33,7 +33,7 @@ private:
 	configControler* config;
 	deviceControler* device;
 	bool loginFlag;
-	int fileSave();
+	int fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, int type,string &date);
 	void title(string str);
 	void clear();
 	int infoMSG(string &msg);
