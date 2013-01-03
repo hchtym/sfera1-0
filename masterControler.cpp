@@ -10,7 +10,13 @@ using namespace std;
 masterControler::masterControler(){
 	config = new configControler();
 	device = new deviceControler();
-	network = new networkControler(config->returnSerwerIp(), config->returnSerwerPort(), config->returnGprsApn(), config->returnGprsUser(), config->returnGprsPaswd(), config->returnSeriall());
+	string ip = config->returnSerwerIp(); 
+	string port = config->returnSerwerPort(); 
+	string apn = config->returnGprsApn();
+	string user = config->returnGprsUser(); 
+	string paswd = config->returnGprsPaswd(); 
+	string serial = config->returnSeriall();
+	network = new networkControler(ip, port, apn, user, paswd, serial);
 	
 	seller.clear();
 	loginFlag = false;
