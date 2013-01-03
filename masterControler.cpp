@@ -52,7 +52,7 @@ int masterControler::loginScr(){
 	}
 }
 
-void masterControler::infoMSG(string &msg){
+int masterControler::infoMSG(string &msg){
 	clear();
 	title("Inrofmacja");
 	msg(0,32, msg);

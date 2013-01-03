@@ -36,7 +36,7 @@ private:
 	int fileSave();
 	void title(string str);
 	void clear();
-	void infoMSG();
+	int infoMSG();
 	void msg();
 	
 public:
