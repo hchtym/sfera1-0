@@ -220,7 +220,7 @@ while(1){
 						if(str2.size() >= 6 && str2.size()<30){
 							cout << "wyciepuje wartosc z klawci" << endl;
 							//strcpy(const_cast<char*>((char*)btrck), str2);
-							strcpy(const_cast<char*>((char*)btrck), str2.c_str());
+							return *str2.c_str();
 						}else{
 							Lcd_Cls();
 							Lcd_Printxy(0,0,0,"Informacja");
