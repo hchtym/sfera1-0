@@ -464,7 +464,7 @@ string configControler::returnSeriall(){
 	ConfigFile sn("seriall.txt");
 	string seriall = sn.Value("seriall","SN");
 	return seriall;
-	delete(sn);
+	delete( *sn);
 }
 
 string configControler::returnSerwerIp(){
