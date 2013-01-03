@@ -464,34 +464,33 @@ string configControler::returnSeriall(){
 	ConfigFile sn("seriall.txt");
 	string seriall = sn.Value("seriall","SN");
 	return seriall;
-	delete( *sn);
 }
 
 string configControler::returnSerwerIp(){
 	ConfigFile sn("seriall.txt");
 	string ip = sn.Value("ok", "gprs.address");
-	return ip
+	return ip;
 }
 
-string confgiControler::returnSerwerPort(){
+string confgControler::returnSerwerPort(){
 	ConfigFile sn("seriall.txt");
 	string port = sn.Value("ok", "gprs.port");
 	return port;
 }
 
-string confgiControler::returnGprsApn(){
+string confgControler::returnGprsApn(){
 	ConfigFile sn("seriall.txt");
 	string apn = sn.Value("ok", "gprs.apn");
 	return apn;
 }
 
-string confgiControler::returnGprsUser(){
+string confgControler::returnGprsUser(){
 	ConfigFile sn("seriall.txt");
 	string user = sn.Value("ok", "gprs.login");
 	return user;
 }
 
-string confgiControler::returnGprsPaswd(){
+string confgControler::returnGprsPaswd(){
 	ConfigFile sn("seriall.txt");
 	string paswd = sn.Value("ok", "gprs.password");
 	return paswd;
