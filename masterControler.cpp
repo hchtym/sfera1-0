@@ -278,7 +278,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	stringstream compose;
 	string total;
 	compose.str("");
-	compose << sn << ";" << seler << ";" << client << ";" << pay << ";" << point << ";" << extrapoint << ";" << type << ";" << data << endl;
+	compose << sn << ";" << seler << ";" << client << ";" << pay << ";" << point << ";" << extrapoint << ";" << type << ";" << date << endl;
 	total = compose.str();
 	trx << total;
 	trx.close();
