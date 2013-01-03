@@ -32,6 +32,7 @@ private:
 	string points; // suma pkt za zakupy up 
 	configControler* config;
 	deviceControler* device;
+	networkControler* network;
 	string numerser;
 	bool loginFlag;
 	int fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, int type,string &date);
