@@ -11,11 +11,79 @@ masterControler::masterControler(){
 	config = new configControler();
 	device = new deviceControler();
 	
+	seller.clear();
+	loginFlag = false;
+	
 };
 
-int masterControler::test(){
+int masterControler::dispMenu(){
+	// to tutaj bedzie odpowiedzialne za wyswietlenie menu z logowaniem sie i innymi gownami ! 
+}
+
+int masterControler::loginScr(){
+	claer();s
+	title("Prosze zaloguj sie");
+	BYTE login;	
+	string logon;
+	Lcd_Printxy(0, 32, 0, "Login:");
+	Kb_GetStr(0, 40, login, 5, 5, 0, 300);
+	stringstream compose;
+	compose << login;
+	logon = compose.str();
+	vector<string> vect;
+	config->confParse(vect, "seller");
+	int len = vect.size();
+	if(sizeof(login)==0){
+		return 0;
+	}else{
+		for(int i = 0; i < len; i++)
+		{
+			string nick = vect[i];
+			nick.erase(nick.size()-1);
+			if((nick.compare(logon))==0){
+				seller = logon;
+				return 0;
+			}else{
+				infoMSG("Niepoprawny login");
+				return 0;
+			}
+		
+		}
+	}
+}
+
+void masterControler::infoMSG(string &msg){
+	clear();
+	title("Inrofmacja");
+	msg(0,32, msg);
+}
+
+void masterControler::msg(int x, int y, string &str){
+	Lcd_Printxy(x, y, 0, const_cast<char*>(str.c_str()));
+}
+
+void masterControler::title(string str){
+	int len = (21 - str.size());
+	stringstream compose;
+	compose.str("");
+	compose << str;
+	for(int i = 0; i < len; i++)
+	{
+		compose << " ";
+	}
+	str.clear()
+	str = compose.str();
+	Lcd_Printxy(0,0,1, const_cast<char *>(str.c_str()));
+	
+}
+
+void masterControler::clear(){
+	Lcd_Cls();
+}
+
+int masterControler::selling(){
 	unsigned char input[40];
-	string payment;
+	string payment, point, extra, seler;
 	//string id;
 	memset(input, 0 , sizeof(input));
 	stringstream compose;
@@ -44,8 +112,9 @@ int masterControler::test(){
 	}
 	cout << "przed suminput" << endl;
 	sumInput(payment);
-	pointComp(str, payment);
-
+	pointComp(str, payment, point, extra);
+	string **sn = config->returnSeriall();
+	filesSave(sn, seller, id, payment, point, extra, 0, data);
 	
 }
 
@@ -203,7 +272,19 @@ int masterControler::sumInput(string &payment){
 
 }
 
-int masterControler::pointComp(string &id, string &payment){
+int masterControler::fileSave(string sn, string seller, string client, string pay, string point, string extrapoint, int type, string date){
+	ofstream trx("trx.txt", ios_base::app);
+	stringstream compose;
+	string total;
+	compose.str("");
+	compose << sn << ";" << seller << ";" << client << ";" << pay << ";" << point << ";" << extrapoint << ";" << type << ";" << data << endl;
+	total = compose.str();
+	trx << total;
+	trx.close();
+	
+}
+
+int masterControler::pointComp(string &id, string &payment, string &pnt, string &ext){
 	cout << "jestem w pointComp, oto id karty !: " << id << endl;
 	int sumapkt;
 	BYTE key = NOKEY;
@@ -385,7 +466,13 @@ int masterControler::pointComp(string &id, string &payment){
 					compo1 << sumapkt;
 					cout << sumapkt;
 					points.clear();
-					points = compo1.str();	
+					points = compo1.str();
+					compo1.str("");
+					compo1 << extra;
+					ext = compo1.str();
+					compo1.str("");
+					compo1 << sumapkt;
+					pnt = compo1.str();	
 				}
 			}else{
 				// tutaj bedzie bezposredni zapis tranzakcji do pliku i tyle !!

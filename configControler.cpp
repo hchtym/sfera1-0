@@ -460,6 +460,13 @@ int configControler::miniInput(string& title, string& variable){
 	
 }
 
+string configControler::returenSeriall(){
+	ConfigFile sn("seriall.txt");
+	string seriall = sn.Value("seriall","SN");
+	return *seriall;
+}
+
+
 void configControler::Tokenize(const string& str, vector<string>& tokens, const string& delimiters = " "){
 	string::size_type lastPos = str.find_first_not_of(delimiters, 0);
 	string::size_type pos = str.find_first_of(delimiters, lastPos);

@@ -45,6 +45,7 @@ public:
 	int returnTime(); 
 	int returnVersion(); 
 	int returnServiceCode();
+	string returnSeriall();
 	int confParse(vector<string> &vect, string section);
 	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
 	

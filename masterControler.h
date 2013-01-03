@@ -19,6 +19,7 @@ using namespace std;
 
 class masterControler{
 private:
+	strint seller; // id sprzedawcy ustawiane przy zalogowaniu sie sprzedawcy do terminala
 	int dispMenu2(); // drugie menu do wyswietlania serwisow i innych bajerow  
 	int dispCPartFile(); // wyswietlanie pliku konfiguracyjnego
 	int screenSaver(); // wygaszacz ekranu
@@ -26,16 +27,23 @@ private:
 	void wrtErrLogs(); // zapisywanie logow 
 	int loginWindow(); // okno logowania 
 	int sumInput(string &payment);
-	int pointComp(string &id, string &payment);
+	int pointComp(string &id, string &payment, string &pnt, string &ext);
 	string sum; // suma zakupow
 	string points; // suma pkt za zakupy up 
 	configControler* config;
 	deviceControler* device;
+	bool loginFlag;
+	int fileSave();
+	void title(string str);
+	void clear();
+	void infoMSG();
+	void msg();
 	
 public:
 	masterControler();
 	int dispMenu();
-	int test();
+	int loginScr();
+	int selling();
 	
 };
 
