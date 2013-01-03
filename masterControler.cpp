@@ -121,7 +121,8 @@ int masterControler::selling(){
 	pointComp(str, payment, point, extra);
 	seller = "00033";
 	date = "data :2013:01:03:12:14:25";
-	cout << "numer seryjny terminala: " << config->returnSeriall() << endl;
+	string sernum = config->returnSeriall();
+	cout << "numer seryjny terminala: " << sernum << endl;
 	cout << "sprzedawca: " << seller << endl;
 	cout << "Zaplata: " << payment << endl;
 	cout << "punkty: " << point << endl;
