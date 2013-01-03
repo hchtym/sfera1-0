@@ -14,8 +14,10 @@ masterControler::masterControler(){
 	seller.clear();
 	loginFlag = false;
 	string sn = config->returnSeriall();
-	cout << "numer seryjny!: " << sn;
-	strcpy(numerser,sn);
+	cout << "numer seryjny!: " << sn << endl;
+	sn.copy(numerser, sn.size(),0);
+	cout << "numerseryjny z numerser: " << numerser << endl;
+	
 };
 
 int masterControler::dispMenu(){
