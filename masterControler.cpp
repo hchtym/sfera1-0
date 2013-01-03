@@ -21,9 +21,9 @@ int masterControler::dispMenu(){
 }
 
 int masterControler::loginScr(){
-	claer();s
+	clear();
 	title("Prosze zaloguj sie");
-	BYTE login;	
+	BYTE login[6];	
 	string logon;
 	Lcd_Printxy(0, 32, 0, "Login:");
 	Kb_GetStr(0, 40, login, 5, 5, 0, 300);
