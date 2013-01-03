@@ -13,11 +13,8 @@ masterControler::masterControler(){
 	
 	seller.clear();
 	loginFlag = false;
-	string sn = config->returnSeriall();
-	cout << "numer seryjny!: " << sn << endl;
-	char przeciep = const_cast<char*>(sn.c_str());
-	numerser = przeciep;
-	cout << "numerseryjny z numerser: " << numerser << endl;
+	numerser = config->returnSeriall();
+	cout << "Numer seryjny z numerser: " << numerser << endl;
 	
 };
 
