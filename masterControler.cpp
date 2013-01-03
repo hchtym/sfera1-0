@@ -337,6 +337,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 	//string flag = config->pointComp(); 
 	string flag = "off";
 	string str2 = "0";
+	string str3;
 	string temp;
 	Kb_Flush();
 		if((flag.compare("off")) == 0){
@@ -368,51 +369,71 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 					compo << "0";
 					str2.clear();
 					str2 = compo.str();
+					str3.clear();
+					str3 = compo.str();
 				break;
 				case KEY1:
 					compo << "1";
 					str2.clear();
 					str2 = compo.str();
+					str3.clear();
+					str3 = compo.str();
 				break;
 				case KEY2:
 					compo << "2";
 					str2.clear();
 					str2 = compo.str();
+					str3.clear();
+					str3 = compo.str();
 				break;
 				case KEY3:
 					compo << "3";
 					str2.clear();
 					str2 = compo.str();
+					str3.clear();
+					str3 = compo.str();
 				break;
 				case KEY4:
 					compo << "4";
 					str2.clear();
 					str2 = compo.str();
+					str3.clear();
+					str3 = compo.str();
 				break;
 				case KEY5:
 					compo << "5";
 					str2.clear();
 					str2 = compo.str();
+					str3.clear();
+					str3 = compo.str();
 				break;
 				case KEY6:
 					compo << "6";
 					str2.clear();
 					str2 = compo.str();
+					str3.clear();
+					str3 = compo.str();
 				break;
 				case KEY7:
 					compo << "7";
 					str2.clear();
 					str2 = compo.str();
+					str3.clear();
+					str3 = compo.str();
 				break;
 				case KEY8:
 					compo << "8";
 					str2.clear();
 					str2 = compo.str();
+					str3.clear();
+					str3 = compo.str();
 				break;
 					case KEY9:
 					compo << "9";
 					str2.clear();
 					str2 = compo.str();
+					str3.clear();
+					str3 = compo.str();
 				break;
 				case KEYENTER:
 				if(str2.size() > 0){
@@ -490,7 +511,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 						cout << "inter: " << inter << endl;
 						int min = atoi(minimum.c_str());
 						cout << "min: " << min << endl;
-						int extra = atoi(str2.c_str());
+						int extra = atoi(str3.c_str());
 						string option = compos[4];
 						cout << "option: " << option << endl;
 						if((type.compare(opt))==0){
@@ -499,7 +520,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 								cout << "sumapkt, option 1: " << sumapkt << endl;
 								stringstream temp;
 								temp << sumapkt;
-								ext = str2;
+								ext = str3;
 								pnt = temp.str();
 								return 0;
 								break;
@@ -508,7 +529,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 								cout << "sumapkt, option 0: " << sumapkt << endl;
 								stringstream temp;
 								temp << sumapkt;
-								ext = str2;
+								ext = str3;
 								pnt = temp.str();
 								return 0;
 								break;
