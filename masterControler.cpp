@@ -14,6 +14,7 @@ masterControler::masterControler(){
 	seller.clear();
 	loginFlag = false;
 	numerser = config->returnSeller();
+	//vheiu
 };
 
 int masterControler::dispMenu(){
