@@ -130,8 +130,8 @@ int masterControler::selling(){
 	cout << point << endl;
 	cout << extra << endl;
 	cout << date << endl;
-	fileSave(sn, seller, str, payment, point, extra, 0, date);
-	return 0;
+	//fileSave(sn, seller, str, payment, point, extra, 0, date);
+	//return 0;
 }
 
 int masterControler::sumInput(string &payment){
@@ -507,5 +507,5 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 	}else{
 		//tu bedzie automatyczne liczenie pkt na podstawie zakresu sumy albo cos takiego sie jeszcze zobaczy 
 	}
-
+	return 0;
 }
