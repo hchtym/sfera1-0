@@ -463,37 +463,43 @@ int configControler::miniInput(string& title, string& variable){
 string configControler::returnSeriall(){
 	ConfigFile sn("seriall.txt");
 	string seriall = sn.Value("seriall","SN");
-	return seriall;
+	string copy = seriall;
+	return copy;
 }
 
 string configControler::returnSerwerIp(){
 	ConfigFile sn("seriall.txt");
 	string adr = sn.Value("ok", "gprs.address");
-	return adr;
+	string copy = adr;
+	return copy;
 }
 
 string configControler::returnSerwerPort(){
 	ConfigFile sn("seriall.txt");
 	string prt = sn.Value("ok", "gprs.port");
-	return prt;
+	string copy = prt;
+	return copy;
 }
 
 string configControler::returnGprsApn(){
 	ConfigFile sn("seriall.txt");
 	string gapn = sn.Value("ok", "gprs.apn");
-	return gapn;
+	string copy = gapn;
+	return copy;
 }
 
 string configControler::returnGprsUser(){
 	ConfigFile sn("seriall.txt");
 	string guser = sn.Value("ok", "gprs.login");
-	return guser;
+	string copy = guser;
+	return copy;
 }
 
 string configControler::returnGprsPaswd(){
 	ConfigFile sn("seriall.txt");
 	string gpaswd = sn.Value("ok", "gprs.password");
-	return gpaswd;
+	string copy = gpaswd;
+	return copy;
 }
 
 void configControler::Tokenize(const string& str, vector<string>& tokens, const string& delimiters = " "){
