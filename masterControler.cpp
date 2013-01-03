@@ -98,7 +98,7 @@ int masterControler::selling(){
 		cout << "tu doszedlem " << endl;
 		//char id = device->magCardScan(true);
 		//str = device->magCardScan(true);
-		char *id;
+		char id[11];
 		device->magCardScan(true, id); 
 		//cout << device->magCardScan(false) << endl;
 		cout << "Co miesci sie w id: " << id << endl;
