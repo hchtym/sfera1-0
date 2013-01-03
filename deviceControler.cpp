@@ -121,7 +121,7 @@ int deviceControler::chipCardScan(){
 	
 }
 
-char deviceControler::magCardScan(bool kbd, char &btrck[11]){
+char deviceControler::magCardScan(bool kbd){
 	BYTE key = NOKEY;
 	char track1[100];
 	char track2[100];
@@ -301,8 +301,8 @@ while(1){
 }	
 cout << "jestem za while przed mcrclose" << endl;
 	Mcr_Close();
-	strcpy(const_cast<char *>((char *)btrck), trck);
-//	return *btrck;
+	//strcpy(const_cast<char *>((char *)btrck), trck);
+	return *trck;
 }
 
 void deviceControler::hexToString(char *str, BYTE* buf, int len){
