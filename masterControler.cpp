@@ -122,11 +122,11 @@ int masterControler::selling(){
 	//string sn = config->returnSeriall();
 	//cout << "pobrałem: " << sn << endl << "przechodze do file save" << endl; 
 	// cos sie tu pieroli ale nie wiem o co biega :/ to jest bez sensu jak logata albo super proent u huberta
-	string numer = "010020086567";
+	//string numer = "010020086567";
 	seller = "00033";
 	date = "2013:01:03:12:14:25";
 	cout << numer << endl;
-	cout << seller << endl;
+	//cout << seller << endl;
 	cout << payment << endl;
 	cout << point << endl;
 	cout << extra << endl;
