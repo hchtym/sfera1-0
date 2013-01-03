@@ -14,7 +14,7 @@ masterControler::masterControler(){
 	//port = config->returnSerwerPort(); 
 	//apn = config->returnGprsApn();
 	//user = config->returnGprsUser(); 
-	//paswd = config->returnGprsPaswd(); 
+	paswd = config->returnGprsPaswd(); 
 	numerser = config->returnSeriall();
 	//network = new networkControler(ip, port, apn, user, paswd, numerser);
 	
