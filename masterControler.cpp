@@ -337,7 +337,6 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 	//string flag = config->pointComp(); 
 	string flag = "off";
 	string str2 = "0";
-	string str3;
 	string temp;
 	Kb_Flush();
 		if((flag.compare("off")) == 0){
@@ -351,8 +350,8 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 			compo1 << str2;
 			str2.clear();
 			str2 = compo1.str();
-			Lcd_Cls();
-			Lcd_Printxy(0,0,0, "Podaj punkty extra");
+			clear();
+			title("Podaj punkty extra");
 			Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
 			cout << "sprawdzam klawisz ktory wcisnalem" << endl;
 			while(1){
@@ -369,43 +368,31 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 					compo << "0";
 					str2.clear();
 					str2 = compo.str();
-					str3.clear();
-					str3 = compo.str();
 				break;
 				case KEY1:
 					compo << "1";
 					str2.clear();
 					str2 = compo.str();
-					str3.clear();
-					str3 = compo.str();
 				break;
 				case KEY2:
 					compo << "2";
 					str2.clear();
 					str2 = compo.str();
-					str3.clear();
-					str3 = compo.str();
 				break;
 				case KEY3:
 					compo << "3";
 					str2.clear();
 					str2 = compo.str();
-					str3.clear();
-					str3 = compo.str();
 				break;
 				case KEY4:
 					compo << "4";
 					str2.clear();
 					str2 = compo.str();
-					str3.clear();
-					str3 = compo.str();
 				break;
 				case KEY5:
 					compo << "5";
 					str2.clear();
 					str2 = compo.str();
-					str3.clear();
-					str3 = compo.str();
 				break;
 				case KEY6:
 					compo << "6";
@@ -418,22 +405,16 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 					compo << "7";
 					str2.clear();
 					str2 = compo.str();
-					str3.clear();
-					str3 = compo.str();
 				break;
 				case KEY8:
 					compo << "8";
 					str2.clear();
 					str2 = compo.str();
-					str3.clear();
-					str3 = compo.str();
 				break;
 					case KEY9:
 					compo << "9";
 					str2.clear();
 					str2 = compo.str();
-					str3.clear();
-					str3 = compo.str();
 				break;
 				case KEYENTER:
 				if(str2.size() > 0){
@@ -520,8 +501,10 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 								cout << "sumapkt, option 1: " << sumapkt << endl;
 								stringstream temp;
 								temp << sumapkt;
-								ext = str3;
 								pnt = temp.str();
+								temp.str("");
+								temp << extra;
+								ext = temp.str();
 								return 0;
 								break;
 							}else{
@@ -529,8 +512,10 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 								cout << "sumapkt, option 0: " << sumapkt << endl;
 								stringstream temp;
 								temp << sumapkt;
-								ext = str3;
 								pnt = temp.str();
+								temp.str("");
+								temp << extra;
+								ext = temp.str();
 								return 0;
 								break;
 							}
