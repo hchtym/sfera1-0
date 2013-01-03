@@ -13,8 +13,6 @@ masterControler::masterControler(){
 	
 	seller.clear();
 	loginFlag = false;
-	numerser = config->returnSeriall();
-	cout << "Numer seryjny z numerser: " << numerser << endl;
 	
 };
 
@@ -123,7 +121,7 @@ int masterControler::selling(){
 	pointComp(str, payment, point, extra);
 	seller = "00033";
 	date = "data :2013:01:03:12:14:25";
-	cout << "numer seryjny terminala: " << numerser << endl;
+	cout << "numer seryjny terminala: " << config->returnSeriall() << endl;
 	cout << "sprzedawca: " << seller << endl;
 	cout << "Zaplata: " << payment << endl;
 	cout << "punkty: " << point << endl;
