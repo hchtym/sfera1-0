@@ -13,7 +13,8 @@ masterControler::masterControler(){
 	
 	seller.clear();
 	loginFlag = false;
-	
+	string sn = config->returnSeriall();
+	numerser = sn;
 };
 
 int masterControler::dispMenu(){
@@ -117,15 +118,10 @@ int masterControler::selling(){
 	}
 	cout << "przed suminput" << endl;
 	sumInput(payment);
+	cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
 	pointComp(str, payment, point, extra);
-	//cout << "pobieram seriall numer :P" << endl;
-	//string sn = config->returnSeriall();
-	//cout << "pobrałem: " << sn << endl << "przechodze do file save" << endl; 
-	// cos sie tu pieroli ale nie wiem o co biega :/ to jest bez sensu jak logata albo super proent u huberta
-	//string numer = "010020086567";
-	seller = "00033";
 	date = "2013:01:03:12:14:25";
-	//cout << numer << endl;
+	cout << numerser << endl;
 	cout << seller << endl;
 	cout << payment << endl;
 	cout << point << endl;
