@@ -333,7 +333,9 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	acttime.Hour = 12;
 	acttime.Minute = 05;
 	acttime.Second = 55;
-	tx.factorySN = (BYTE *)sn.c_str();
+	unsigned char factory[20];
+	strcpy(factory, sn.c_str());
+	tx.factorySN = factory;
 	tx.sellerLogin = (BYTE *)seler.c_str();
 	tx.cid = (BYTE *)client.c_str();
 	tx.amount = atoi(pay);
