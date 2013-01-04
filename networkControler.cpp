@@ -21,7 +21,7 @@ networkControler::~networkControler(){
 	
 }
 
-int networkControler::connectAllquiet(){
+int networkControler::connectAllQuiet(){
 	ofstream loger("logs.txt", ios_base::app);
 	char pCAPData[buffer];
 	char download[buffer];
