@@ -127,7 +127,7 @@ int masterControler::selling(){
 	cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
 	pointComp(str, payment, point, extra);
 	seller = "00033";
-	date = "2013:01:03:12:14:25";
+	date = "13:01:03:12:14:25";
 	//string sernum = config->returnSeriall();
 	cout << "numer seryjny terminala: " << numerser << endl;
 	cout << "sprzedawca: " << seller << endl;
@@ -136,7 +136,7 @@ int masterControler::selling(){
 	cout << "extra pkt: " << extra << endl;
 	cout << date << endl;
 	
-	fileSave(numerser, seller, str, payment, point, extra, 0, date);
+	fileSave(numerser, seller, str, payment, point, extra, "0", date);
 	return 0;
 }
 
@@ -314,7 +314,7 @@ int masterControler::sumInput(string &payment){
 
 }
 
-int masterControler::fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, int type, string &date){
+int masterControler::fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char type, string &date){
 	cout << "otwiram file stream" << endl;
 	ofstream trx("trx.txt", ios_base::app);
 	cout << "tworze string stream compose)" << endl;
