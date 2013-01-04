@@ -40,6 +40,27 @@ private:
 	string apn;
 	string user;
 	string paswd;
+	
+	struct Transaction {
+	    BYTE factorySN[20]; //15 znakow i 0
+	    BYTE sellerLogin[6];  // 5 znakow i 0
+	    BYTE cid[25];
+	    unsigned long amount; // 4
+	    long points; // 4
+	    unsigned long extra; // 4
+	    Date datetime; // 7
+	    BYTE type; // 0 - BUY, 1 - RETURN
+	};
+	
+	struct Date {
+			long Year;
+			long Month;
+			long Day;
+			long Hour;
+			long Minute;
+			long Second;
+	};
+	
 	bool loginFlag;
 	int fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char type,string &date);
 	int title(string str);

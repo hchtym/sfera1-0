@@ -317,6 +317,7 @@ int masterControler::sumInput(string &payment){
 int masterControler::fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char type, string &date){
 	cout << "otwiram file stream" << endl;
 	ofstream trx("trx.txt", ios_base::app);
+	ofstream outbin("tranz.bin", ios::binary);
 	cout << "tworze string stream compose)" << endl;
 	stringstream compose;
 	cout << "tworze stringacza" << endl;
@@ -325,11 +326,27 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	compose.str("");
 	cout << "wypelniam string tym: " << endl << sn << ";" << seler << ";" << client << ";" << pay << ";" << point << ";" << extrapoint << ";" << type << ";" << date << endl;
 	compose << sn << ";" << seler << ";" << client << ";" << pay << ";" << point << ";" << extrapoint << ";" << type << ";" << date << endl;
+	acttime.Year = 13;
+	acttime.Month = 01;
+	acttime.Day = 04;
+	acttime.Hour = 12;
+	acttime.Minute = 05;
+	acttime.Second = 55;
+	tx.factorySN = sn.c_str();
+	tx.sellerLogin = seler.c_str();
+	tx.cid = client.c_str();
+	tx.amount = atoi(pay);
+	tx.points = atoi(point);
+	tx.extra = atoi(extrapoint);
+	tx.date = acttime;
+	tx.type = type;
 	total = compose.str();
+	outbin.write( tx, sizeof(struct Tranzaction));
 	cout << "wciepnujs to szystko do pliku" << endl;
 	trx << total;
 	cout << "camykom plik " << endl;
 	trx.close();
+	outbin.close();
 	cout << "zamknal zech plik ciupia dalej" << endl;
 	
 	return 0;

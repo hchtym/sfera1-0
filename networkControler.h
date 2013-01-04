@@ -68,7 +68,8 @@ private:
 	    Date datetime; // 7
 	    BYTE type; // 0 - BUY, 1 - RETURN
 	};
-	
+	Date acttime;
+	Transaction tx;
 	
 public:
 	networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr, string &serialNr);
