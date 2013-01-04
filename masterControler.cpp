@@ -338,9 +338,9 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	tx.factorySN = factory;
 	tx.sellerLogin = (BYTE *)seler.c_str();
 	tx.cid = (BYTE *)client.c_str();
-	tx.amount = atoi(pay);
-	tx.points = atoi(point);
-	tx.extra = atoi(extrapoint);
+	tx.amount = atoi(pay.c_str());
+	tx.points = atoi(point.c_str());
+	tx.extra = atoi(extrapoint.c_str());
 	tx.datetime = acttime;
 	tx.type = type;
 	total = compose.str();
