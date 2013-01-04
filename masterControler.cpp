@@ -342,7 +342,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	tx.datetime = acttime;
 	tx.type = type;
 	total = compose.str();
-	outbin.write( tx, sizeof(struct Tranzaction));
+	outbin.write( tx, sizeof(struct Transaction));
 	cout << "wciepnujs to szystko do pliku" << endl;
 	trx << total;
 	cout << "camykom plik " << endl;
