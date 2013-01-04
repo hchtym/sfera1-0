@@ -74,7 +74,7 @@ int networkControler::fileSize(){
 	int size;
 
 	FILE *pFile = NULL;
-	fopen_s( &pFile, "trx.txt", "rb" );
+	pfilr = fopen("trx.txt", "rb" );
 	fseek( pFile, 0, SEEK_END );
 	int size = ftell( pFile );
 	fclose( pFile );
