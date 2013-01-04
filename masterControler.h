@@ -61,6 +61,9 @@ private:
 			long Second;
 	};
 	
+	Date acttime;
+	Transaction tx;
+	
 	bool loginFlag;
 	int fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char type,string &date);
 	int title(string str);
