@@ -21,6 +21,29 @@ networkControler::~networkControler(){
 	
 }
 
+int networkControler::connectAllquiet(){
+	char pCAPData[buffer];
+	char download[buffer];
+	//struct sockaddr_in dest_addr;
+
+	int len,bytes_sent,bytes_recv;
+	stringstream compose;
+	compose << "nr;" << serialN << endl; 
+	string msg = compose.str();
+	len = msg.size();
+	bytes_sent = Wls_MTcpSend(socket0, (uchar *) msg.c_str(), len);
+	if(ERR_OK == bytes_sent){
+		loger << "send serial error" << endl;
+		perror("send"); // logowanie do pliku !
+		//exit(1);
+	}
+	sleep(1);
+	return 0;
+}
+
+int networkControler::sendTrx(){
+	
+}
 
 int networkControler::checkSignalStr(){
 	int ret,sig;

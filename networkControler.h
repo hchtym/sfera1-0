@@ -35,7 +35,7 @@ private:
 	int ethConf();
 	// inicjator karty sim, oraz kanalu
 	void gprsInit();
-	
+	int connectAllQuiet();
 	//Funkcja parsujaca pobrany config ! 
 	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
 	
@@ -54,6 +54,7 @@ public:
 	~networkControler();
 	int startConf(int type);
 	int gprsConnect();
+	int sendTrx();
 	int sendTransaction();
 	int updClk();
 	int updConf();
