@@ -104,7 +104,7 @@ int networkControler::fileSize(){
 }
 
 int networkControler::sendTrx(){
-	ofstream loger("logs.txt", ios_base::app);
+/*	ofstream loger("logs.txt", ios_base::app);
 	//wysylam informacje filetx o wysylaniu pliku z tranzakcjami
 	char pCAPData[buffer*10];
 //	char temp[730];
@@ -215,7 +215,7 @@ repete:
 	
 
 	loger.close();
-}
+}*/
 
 int networkControler::checkSignalStr(){
 	int ret,sig;
