@@ -334,7 +334,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	acttime.Minute = 05;
 	acttime.Second = 55;
 	unsigned char factory[20];
-	strcpy(factory, sn.c_str());
+	strcpy(factory, const_cast<char*>((char*)sn.c_str()));
 	tx.factorySN = factory;
 	tx.sellerLogin = (BYTE *)seler.c_str();
 	tx.cid = (BYTE *)client.c_str();
