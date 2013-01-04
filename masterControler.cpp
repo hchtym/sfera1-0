@@ -135,8 +135,9 @@ int masterControler::selling(){
 	cout << "punkty: " << point << endl;
 	cout << "extra pkt: " << extra << endl;
 	cout << date << endl;
+	char type = "0";
 	
-	fileSave(numerser, seller, str, payment, point, extra, "0", date);
+	fileSave(numerser, seller, str, payment, point, extra, type, date);
 	return 0;
 }
 
