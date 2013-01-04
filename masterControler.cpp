@@ -337,7 +337,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	strncpy( (char *)factory, sn.c_str(), sizeof(factory) );
 	tx.factorySN = factory;
 	unsigned char selery[6];
-	strncpy( (char *)selery, seles.c_str(), sizeof(selery) );
+	strncpy( (char *)selery, seler.c_str(), sizeof(selery) );
 	tx.sellerLogin = selery;
 	unsigned char cliente[25];
 	strncpy( (char *)cliente, client.c_str(), sizeof(cliente) );
