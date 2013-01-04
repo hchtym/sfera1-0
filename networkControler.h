@@ -25,6 +25,26 @@ extern "C"{
 
 using namespace std;
 
+struct Date {
+		long Year;
+		long Month;
+		long Day;
+		long Hour;
+		long Minute;
+		long Second;
+};
+
+struct Transaction {
+    BYTE factorySN[20]; //15 znakow i 0
+    BYTE sellerLogin[6];  // 5 znakow i 0
+    BYTE cid[25];
+    unsigned long amount; // 4
+    long points; // 4
+    unsigned long extra; // 4
+    Date datetime; // 7
+    BYTE type; // 0 - BUY, 1 - RETURN
+};
+
 
 class networkControler{
 private:
@@ -48,26 +68,7 @@ private:
 	static const int socket0 = 0;
 	bool gprs_apnConnected;
 	bool gprs_serverConnected;
-
-	struct Date {
-			long Year;
-			long Month;
-			long Day;
-			long Hour;
-			long Minute;
-			long Second;
-	};
 	
-	struct Transaction {
-	    BYTE factorySN[20]; //15 znakow i 0
-	    BYTE sellerLogin[6];  // 5 znakow i 0
-	    BYTE cid[25];
-	    unsigned long amount; // 4
-	    long points; // 4
-	    unsigned long extra; // 4
-	    Date datetime; // 7
-	    BYTE type; // 0 - BUY, 1 - RETURN
-	};
 	Date acttime;
 	Transaction tx;
 	
