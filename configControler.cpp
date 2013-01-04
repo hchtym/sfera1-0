@@ -17,6 +17,8 @@ configControler::configControler(){
 	if(file)
 	{
 		file.close();
+		cf = new ConfigFile("config.txt");
+		sn = new ConfigFile("config.txt");
 	}else{
 		configGenerator();
 	}
@@ -45,7 +47,6 @@ int configControler::returnCmputation(vector<string> &vec){
 
 
 int configControler::confParse(vector<string> &vect, string section){
-	ConfigFile cf("config.txt");
 	stringstream compose;
 	compose.str("");
 	int size = confCounter(const_cast<char *>(section.c_str()));
@@ -55,7 +56,7 @@ int configControler::confParse(vector<string> &vect, string section){
 		compose << "No" << i;
 		string part = compose.str();
 		compose.str("");
-		string item	= cf.Value(section,part);
+		string item	= cf->Value(section,part);
 		vect.push_back(item);
 	}
 	
@@ -461,38 +462,32 @@ int configControler::miniInput(string& title, string& variable){
 }
 
 string configControler::returnSeriall(){
-	ConfigFile sn("seriall.txt");
-	string seriall = sn.Value("seriall","SN");
+	string seriall = sn->Value("seriall","SN");
 	return seriall;
 }
 
 string configControler::returnSerwerIp(){
-	ConfigFile sn("seriall.txt");
-	string adr = sn.Value("ok", "gprs.address");
+	string adr = cf->Value("ok", "gprs.address");
 	return adr;
 }
 
 string configControler::returnSerwerPort(){
-	ConfigFile sn("seriall.txt");
-	string prt = sn.Value("ok", "gprs.port");
+	string prt = cf->Value("ok", "gprs.port");
 	return prt;
 }
 
 string configControler::returnGprsApn(){
-	ConfigFile sn("seriall.txt");
-	string gapn = sn.Value("ok", "gprs.apn");
+	string gapn = cf->Value("ok", "gprs.apn");
 	return gapn;
 }
 
 string configControler::returnGprsUser(){
-	ConfigFile sn("seriall.txt");
-	string guser = sn.Value("ok", "gprs.login");
+	string guser = cf->Value("ok", "gprs.login");
 	return guser;
 }
 
 string configControler::returnGprsPaswd(){
-	ConfigFile sn("seriall.txt");
-	string gpaswd = sn.Value("ok", "gprs.password");
+	string gpaswd = cf->Value("ok", "gprs.password");
 	return gpaswd;
 }
 

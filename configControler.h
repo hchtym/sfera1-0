@@ -22,6 +22,8 @@ private:
 	// Ekrany uzywane do konfiguracji przy pierwszym wlaczeniu terminala 
 	int miniScreen(string &title, int size, bool opt);
 	int miniInput(string &title, string &variable);
+	ConfigFile *cf;
+	ConfigFile *sn;
 	string flag;
 	vector<string> options;
 	vector<string> confOptions;
