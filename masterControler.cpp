@@ -336,7 +336,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	unsigned char factory[20];
 	for(int i = 0; i < sn.size(); i++)
 	{
-		factory[i]=sn[i];
+		factory[i]=(char *)sn[i];
 	}
 	tx.factorySN = factory;
 	tx.sellerLogin = (BYTE *)seler.c_str();
