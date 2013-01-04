@@ -348,7 +348,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	tx.amount = atoi(pay.c_str());
 	tx.points = atoi(point.c_str());
 	tx.extra = atoi(extrapoint.c_str());
-	tx.datetime = acttime;
+	memcpy(tx.datetime, acttime, siezeof(acttime));
 	tx.type = type;
 	total = compose.str();
 	outbin.write( tx, sizeof(struct Transaction));
