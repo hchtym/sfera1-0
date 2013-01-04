@@ -344,7 +344,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	unsigned char cliente[25];
 	memset( cliente, 0, sizeof(cliente));
 	strncpy( (char *)cliente, client.c_str(), sizeof(cliente) );
-	memset(tx.cid, cliente, sizeof(slinte));
+	memset(tx.cid, cliente, sizeof(clinte));
 	tx.amount = atoi(pay.c_str());
 	tx.points = atoi(point.c_str());
 	tx.extra = atoi(extrapoint.c_str());
