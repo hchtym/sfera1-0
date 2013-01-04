@@ -334,7 +334,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	acttime.Minute = 05;
 	acttime.Second = 55;
 	unsigned char factory[20];
-	strcpy( static_cast<char *>(factory ), sn.c_str() );
+	strncpy( factory, sn.c_str(), sizeof(factory) );
 	//for(int i = 0; i < sn.size(); i++)
 	//{
 	//	factory[i]=(unsigned char )sn[i];
