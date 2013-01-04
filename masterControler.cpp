@@ -335,13 +335,13 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	acttime.Second = 55;
 	unsigned char factory[20];
 	strncpy( (char *)factory, sn.c_str(), sizeof(factory) );
-	//for(int i = 0; i < sn.size(); i++)
-	//{
-	//	factory[i]=(unsigned char )sn[i];
-	//}
 	tx.factorySN = factory;
-	tx.sellerLogin = (BYTE *)seler.c_str();
-	tx.cid = (BYTE *)client.c_str();
+	unsigned char selery[6];
+	strncpy( (char *)selery, seles.c_str(), sizeof(selery) );
+	tx.sellerLogin = selery;
+	unsigned char cliente[25];
+	strncpy( (char *)cliente, client.c_str(), sizeof(cliente) );
+	tx.cid = cliente;
 	tx.amount = atoi(pay.c_str());
 	tx.points = atoi(point.c_str());
 	tx.extra = atoi(extrapoint.c_str());
