@@ -22,6 +22,7 @@ networkControler::~networkControler(){
 }
 
 int networkControler::connectAllquiet(){
+	ofstream loger("logs.txt", ios_base::app);
 	char pCAPData[buffer];
 	char download[buffer];
 	//struct sockaddr_in dest_addr;
