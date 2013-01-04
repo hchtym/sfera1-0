@@ -18,7 +18,7 @@ configControler::configControler(){
 	{
 		file.close();
 		cf = new ConfigFile("config.txt");
-		sn = new ConfigFile("config.txt");
+		sn = new ConfigFile("seriall.txt");
 	}else{
 		configGenerator();
 	}
