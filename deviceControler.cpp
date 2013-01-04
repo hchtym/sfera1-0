@@ -219,7 +219,7 @@ while(1){
 						cout << "nacisnalem enterem" << endl;
 						//str2.clear();
 						//str2 = compo.str();
-						if(str2.size() >= 6 && str2.size()<30){
+						if(str2.size() > 5 && str2.size()<30){
 							cout << "wyciepuje wartosc z klawci" << endl;
 							//strcpy(const_cast<char*>((char*)btrck), str2);
 							return str2;

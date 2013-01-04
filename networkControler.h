@@ -33,9 +33,11 @@ private:
 	// funkcje wykorzystywane tylko raz przy pierwszym pobieraniu konfiguracji 
 	int gprsCon();
 	int ethConf();
+	int sockfd;
 	// inicjator karty sim, oraz kanalu
 	void gprsInit();
 	int connectAllQuiet();
+	int fileSize();
 	//Funkcja parsujaca pobrany config ! 
 	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
 	
@@ -46,6 +48,8 @@ private:
 	static const int socket0 = 0;
 	bool gprs_apnConnected;
 	bool gprs_serverConnected;
+	struct Transaction;
+	struct Date;
 	
 	
 	

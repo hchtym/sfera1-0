@@ -21,29 +21,200 @@ networkControler::~networkControler(){
 	
 }
 
+struct networkControler::Date{
+		long Year;
+		long Month;
+		long Day;
+		long Hour;
+		long Minute;
+		long Second;
+};
+
+struct networkController::Transaction{
+    BYTE factorySN[20]; //15 znakow i 0
+    BYTE sellerLogin[6];  // 5 znakow i 0
+    BYTE cid[25];
+    unsigned long amount; // 4
+    long points; // 4
+    unsigned long extra; // 4
+    Date datetime; // 7
+    BYTE type; // 0 - BUY, 1 - RETURN
+};
+
+
 int networkControler::connectAllQuiet(){
 	ofstream loger("logs.txt", ios_base::app);
-	char pCAPData[buffer];
-	char download[buffer];
-	//struct sockaddr_in dest_addr;
+	loger << "start ethCon" << endl;
+	// konfiguracja socketa !! 
+	char pCAPData[buffer*10];
+	char download[buffer*10];
+	struct sockaddr_in dest_addr;
+	
+	loger << "tworze socket" << endl;
+	if((sockfd = socket (AF_INET, SOCK_STREAM, 0)) == -1){
+		loger << "socket erros" << endl;
+		perror("socket"); // ogowanie do pliku !! 
+		//exit(1);
+	}
+		loger << "utworzylam socket" << endl;
+	//int ports;
+	//atoi(port.c_str());
+	dest_addr.sin_family = AF_INET;
+	loger << "konfiguruje port" << endl;
+	dest_addr.sin_port = htons( atoi(port.c_str())	); // wstawic port 
+	loger << "skonfigurowalem port" << endl;
+	loger << "konfiguruje ip" << endl;
+	dest_addr.sin_addr.s_addr = inet_addr(ip.c_str() ); // wstawic ip
+	loger << "skonfigurowalem ip" << endl;
+	memset(&(dest_addr.sin_zero), '\0', 8);
 
+	loger << "lacze sie z serwerm" << endl;
+	if(connect(sockfd, (struct sockaddr *) &dest_addr, sizeof(struct sockaddr)) == -1){
+		loger << "connect socket error !!" << endl;
+		perror("connect"); // zamienic na logowanie do pliku !
+		//exit(1);
+	}
+	loger << "otwarlem socket i polaczylem sie" << endl;
+	
 	int len,bytes_sent,bytes_recv;
 	stringstream compose;
 	compose << "nr;" << serialN << endl; 
 	string msg = compose.str();
 	len = msg.size();
-	bytes_sent = Wls_MTcpSend(socket0, (uchar *) msg.c_str(), len);
-	if(ERR_OK == bytes_sent){
+	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
 		loger << "send serial error" << endl;
 		perror("send"); // logowanie do pliku !
 		//exit(1);
 	}
 	sleep(1);
-	return 0;
+	loger << "otworzylem polaczenie sieciowe !!" << endl;
+	loger.close();
+}
+
+int networkControler::fileSize(){
+	int size;
+
+	FILE *pFile = NULL;
+	fopen_s( &pFile, "trx.txt", "rb" );
+	fseek( pFile, 0, SEEK_END );
+	int size = ftell( pFile );
+	fclose( pFile );
+	
+	return size;
 }
 
 int networkControler::sendTrx(){
+	ofstream loger("logs.txt", ios_base::app);
+	//wysylam informacje filetx o wysylaniu pliku z tranzakcjami
+	char pCAPData[buffer*10];
+//	char temp[730];
+	int ulLen;
+	int ulHandle =0;
+	memset(pCAPData, 0, sizeof(pCAPData));
+	stringstream compose; 
+	string msg;
+	string info;
+	int x;
+	compose.str("");
+	compose << "filetx;" << endl;
+	msg = compose.str();
+	int len,bytes_sent,bytes_recv;
+	int resend;
 	
+	if((bytes_sent = send(sockfd, msg, len, 0)) == -1){
+		loger << "send filetx; error" << endl;
+		perror("send"); // logowanie do pliku !
+		//exit(1);
+	}
+	
+	len = msg.size();
+
+	int size = fileSize();
+	if(size > 0)
+	{
+		compose.str("");
+		compose << size << ";" << << ";" << endl;
+		msg.clear();
+		msg = compose.str();
+		// send file to the serwer
+		if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
+			loger << "send filetx; error" << endl;
+			perror("send"); // logowanie do pliku !
+			//exit(1);
+		}
+		// przechodze do przesylania pliku 
+		FILE *pFile = NULL;
+		pFile = fopen("trx.txt", "r" );
+		compose.str("");
+		for(int i = 0; i < size; i+=720)
+		{
+			fseek(pFile, ulHandle, SEEK_SET);
+			ulLen = size -1;
+			if(ulLen > 720) ulLen = 720;
+			int j =0
+			while(x != EOF)
+			{
+				if(j > ulLen) break;
+			
+			x = fgetc(pFile);
+			compose << x;
+			j++;
+			}
+			ulHandle += 720;
+			msg.clear();
+			msg = compose.str();
+			len = msg.size();
+			if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
+				loger << "send filetx; error" << endl;
+				perror("send"); // logowanie do pliku !
+				//exit(1);
+			}
+
+		}
+		
+		
+		
+		
+		
+		fclose( pFile );
+	}else{
+		//send 0;0;
+		compose.str();
+		compose << "0;0;" << endl;
+		msg.clear();
+		msg = compose.str();
+		len = msg.size();
+repete:		
+		if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
+			loger << "send filetx; error" << endl;
+			perror("send"); // logowanie do pliku !
+			//exit(1);
+		}
+		// czekamy na ok
+		if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1){
+			loger << "recive error" << endl;
+			perror("recive"); // logowanie do pliku !!
+			//exit(1);
+		}
+		compose.str("");
+		compose << pCAPData;
+		info = compose.str();
+		if((info.compare("ok")) == 0s)
+		{
+			logger << "serwer recived msg properly" << endl;
+		}
+		else
+		{
+			logger << "serwer didn't recive message" << endl;
+			if(resend > 3) return 0;
+			resend++;
+			goto repete;
+		}
+		
+	}
+	
+
+	loger.close();
 }
 
 int networkControler::checkSignalStr(){
@@ -350,6 +521,7 @@ int networkControler::gprsCon(){
     }
 	// zamykam plik konfiguracyjny !
     file.close();
+	loger.close();
 	// zamykam socket !
 	//close(sockfd);
 	
@@ -369,7 +541,6 @@ int networkControler::ethConf(){
 	
 	loger << "start ethCon" << endl;
 	// konfiguracja socketa !! 
-	int sockfd;
 	char pCAPData[buffer*10];
 	char download[buffer*10];
 	struct sockaddr_in dest_addr;
