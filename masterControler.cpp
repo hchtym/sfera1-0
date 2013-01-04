@@ -117,7 +117,7 @@ int masterControler::selling(){
 		//cout << "tu jestem trololololololololo " << compose.str() << endl;
 		cout << "tu jestem trololololololololo " << str << " : " << str.size() << endl;
 		if(str.size() > 0 ){
-			if(str.size()>6 && str.size() < 30){
+			if(str.size() > 5 && str.size() < 30){
 				break;
 			}
 		}
