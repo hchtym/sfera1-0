@@ -339,7 +339,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	tx.amount = atoi(pay);
 	tx.points = atoi(point);
 	tx.extra = atoi(extrapoint);
-	tx.date = acttime;
+	tx.datetime = acttime;
 	tx.type = type;
 	total = compose.str();
 	outbin.write( tx, sizeof(struct Tranzaction));
