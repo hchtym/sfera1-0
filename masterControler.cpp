@@ -27,6 +27,7 @@ masterControler::masterControler(){
 
 int masterControler::dispMenu(){
 	// to tutaj bedzie odpowiedzialne za wyswietlenie menu z logowaniem sie i innymi gownami ! 
+	int i,j;
 	string menu1 = "LOGIN;SHOP;PRIZE;CHECKPOINT;TRANSACTIONS_SEND;SERVICE;;Logowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
 	string menu2 = "LOGOUT;SHOP;PRIZE;CHECKTPOIN;TRANSACTIONS_SEND;SERVICE;;Wylogowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
 	vector<string> items;
@@ -39,10 +40,10 @@ int masterControler::dispMenu(){
 	vector<string> displayMenuOn;
 	vector<string> displayMenuOff;
 // parsowanie menu bez usera
-	for(int i = 0; i < 6; i++)
+	for(i = 0; i < 6; i++)
 	{
 		string comp = items2[i];
-		for(int j = 0; j < menuOptions.size(); j++)
+		for(j = 0; j < menuOptions.size(); j++)
 		{
 			string opose = menuOptions[j];
 			if( (comp.compare(opose)) == 0 ){
@@ -54,10 +55,10 @@ int masterControler::dispMenu(){
 		}
 	}
 // parsowanie menu z userem
-	for(int i = 0; i < 6; i++)
+	for(i = 0; i < 6; i++)
 	{
 		string comp = items[i];
-		for(int j = 0; j < menuOptions.size(); j++)
+		for(j = 0; j < menuOptions.size(); j++)
 		{
 			string opose = menuOptions[j];
 			if( (comp.compare(opose)) == 0 ){
