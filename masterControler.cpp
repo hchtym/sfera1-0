@@ -105,7 +105,7 @@ int masterControler::dispMenu(){
 					if(ret == 1){
 						loginFlag = true;
 					}else{
-						loginFlag = false
+						loginFlag = false;
 					}
 				}else{
 					loginFlag = false;
@@ -117,7 +117,7 @@ int masterControler::dispMenu(){
 				if(ret == 1){
 					loginFlag = true;
 				}else{
-					loginFlag = false
+					loginFlag = false;
 				}
 			}else{
 				// tu bedzie przejscie do sklepu in the future :D jeeeeeee
