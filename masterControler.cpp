@@ -249,7 +249,8 @@ drawMenu:
 int masterControler::loginScr(){
 	clear();
 	title("Prosze zaloguj sie");
-	BYTE login[6];	
+	BYTE login[6];
+	memset(login, 0, sizeof(login));	
 	string logon;
 	Lcd_Printxy(0, 32, 0, "Login:");
 	Kb_GetStr(0, 40, login, 5, 5, 0, 300);
