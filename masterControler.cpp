@@ -81,7 +81,7 @@ int masterControler::dispMenu(){
 	cout << "wchodze do while !!" << endl;
 	while(1){
 
-		usItem = menuScr(title, displayMenuOff, 6, usItem);
+		usItem = menuScr(title, displayMenuOff, displayMenuOff.size(), usItem);
 //		switch(usItem){
 			
 //		}
