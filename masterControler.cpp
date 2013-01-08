@@ -170,9 +170,7 @@ drawMenu:
 		        break;
 		}
 		
-
-
-
+	}
 	
 }
 
