@@ -318,7 +318,7 @@ int masterControler::sumInput(string &payment){
 int masterControler::fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char *type, string &date){
 	cout << "otwiram file stream" << endl;
 	char typecpy;
-	strncpy(typecpy, type, sizeof(typecpy));
+	strncpy((char *)typecpy, type, sizeof(typecpy));
 	ofstream trx("trx.txt", ios_base::app);
 	ofstream outbin("tranz.bin", ios::binary);
 	cout << "tworze string stream compose)" << endl;
