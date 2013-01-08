@@ -25,6 +25,42 @@ masterControler::masterControler(){
 
 int masterControler::dispMenu(){
 	// to tutaj bedzie odpowiedzialne za wyswietlenie menu z logowaniem sie i innymi gownami ! 
+	string menu1 = "LOGIN;SHOP;PRIZE;CHECKPOINT;TRANSACTIONS_SEND;SERVICE;;Logowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
+	string menu2 = "LOGOUT;SHOP;PRIZE;CHECKTPOIN;TRANSACTIONS_SEND;SERVICE;Wylogowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
+	vector<string> items;
+	vector<string> items2;
+	Tokenize(menu1,items, ";");
+	Tokenize(menu2,items2, ";");
+	
+	vector<string> menuOptions;
+	config->returnMenu(menuOptions);
+	vector<string> displayMenu;
+
+	for(int i = 0; i < 6; i++)
+	{
+		string comp = items2[i]
+		for(int j = 0; j < menuOptions.size(); j++)
+		{
+			string opose = menuOptions[j];
+			if( (comp.compare(opose)) == 0 ){
+				diaplayMenu.push_back(items[i+6]);
+			}
+		}
+	}
+
+	for(int i = 0; i < 6; i++)
+	{
+		string comp = items[i]
+		for(int j = 0; j < menuOptions.size(); j++)
+		{
+			string opose = menuOptions[j];
+			if( (comp.compare(opose)) == 0 ){
+				diaplayMenu.push_back(items[i+6]);
+			}
+		}
+	}
+		
+	
 }
 
 int masterControler::loginScr(){
