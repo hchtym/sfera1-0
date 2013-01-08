@@ -55,10 +55,10 @@ int masterControler::dispMenu(){
 		{
 			string opose = menuOptions[j];
 			if( (comp.compare(opose)) == 0 ){
-				displayMenuOff.push_back(items2[i+6]);
+				displayMenuOn.push_back(items2[i+6]);
 			}
 			if( (comp.compare("")) == 0 ){
-				displayMenuOff.push_back(items2[i+6]);
+				displayMenuOn.push_back(items2[i+6]);
 			}
 		}
 	}
@@ -70,10 +70,10 @@ int masterControler::dispMenu(){
 		{
 			string opose = menuOptions[j];
 			if( (comp.compare(opose)) == 0 ){
-				displayMenuOn.push_back(items[i+6]);
+				displayMenuOff.push_back(items[i+6]);
 			}
 			if( (comp.compare("")) == 0 ){
-				displayMenuOn.push_back(items[i+6]);
+				displayMenuOff.push_back(items[i+6]);
 			}
 		}
 	}
