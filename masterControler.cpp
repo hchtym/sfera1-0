@@ -135,9 +135,9 @@ int masterControler::selling(){
 	cout << "punkty: " << point << endl;
 	cout << "extra pkt: " << extra << endl;
 	cout << date << endl;
-	char *type = "0";
+	char type = "0";
 	
-	fileSave(numerser, seller, str, payment, point, extra, type, date);
+	fileSave(numerser, seller, str, payment, point, extra, &type, date);
 	return 0;
 }
 
@@ -317,7 +317,7 @@ int masterControler::sumInput(string &payment){
 
 int masterControler::fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char *type, string &date){
 	cout << "otwiram file stream" << endl;
-	char typecpy = &type;
+	//char typecpy = type;
 	strncpy((char *)typecpy, type, sizeof(typecpy));
 	cout << "otwieram trx.txt" << endl;
 	ofstream trx("trx.txt", ios_base::app);
@@ -354,7 +354,8 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	tx.extra = atoi(extrapoint.c_str());
 	memcpy(&tx.datetime, &acttime, sizeof(tx.datetime));
 	//memcpy((void *)tx.type, (void *)typecpy, sizeof(tx.type));
-	tx.type = typecpy;
+	//tx.type = typecpy;
+	tx.type = type;
 	total = compose.str();
 	outbin.write( (char *)&tx, sizeof(struct Transaction));
 	cout << "wciepnujs to szystko do pliku" << endl;
