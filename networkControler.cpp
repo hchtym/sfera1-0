@@ -81,11 +81,10 @@ int networkControler::fileSize(){
 	return size;
 }
 
-/*int networkControler::sendTrx(){
+int networkControler::sendTrx(){
 	ofstream loger("logs.txt", ios_base::app);
-	//wysylam informacje filetx o wysylaniu pliku z tranzakcjami
 	char pCAPData[buffer*10];
-//	char temp[730];
+	char temp[730];
 	int ulLen;
 	int ulHandle =0;
 	memset(pCAPData, 0, sizeof(pCAPData));
@@ -111,7 +110,7 @@ int networkControler::fileSize(){
 	if(size > 0)
 	{
 		compose.str("");
-		compose << size << ";" << << ";" << endl;
+		compose << size << ";" << sizeof(struct Transaction) << ";" << endl;
 		msg.clear();
 		msg = compose.str();
 		// send file to the serwer
@@ -126,7 +125,7 @@ int networkControler::fileSize(){
 		compose.str("");
 		for(int i = 0; i < size; i+=720)
 		{
-			fseek(pFile, ulHandle, SEEK_SET);
+			fseek(pFile, ulHandle, SEEK_CUR);
 			ulLen = size -1;
 			if(ulLen > 720) ulLen = 720;
 			int j =0
@@ -134,24 +133,47 @@ int networkControler::fileSize(){
 			{
 				if(j > ulLen) break;
 			
-			x = fgetc(pFile);
-			compose << x;
-			j++;
+				x = fgetc(pFile);
+				compose << x;
+				j++;
 			}
 			ulHandle += 720;
 			msg.clear();
 			msg = compose.str();
 			len = msg.size();
-			if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
-				loger << "send filetx; error" << endl;
-				perror("send"); // logowanie do pliku !
-				//exit(1);
+			while(bytes_sent != len){
+				if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
+					loger << "send filetx; error" << endl;
+					perror("send"); // logowanie do pliku !
+					//exit(1);
+				}
 			}
 
 		}
 		
-		
-		
+		if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1){
+			loger << "recive error" << endl;
+			perror("recive"); // logowanie do pliku !!
+			//exit(1);
+		}
+		compose.str("");
+		compose << pCAPData;
+		info = compose.str();
+		if((info.compare("ok")) == 0s)
+		{
+			logger << "serwer recived msg properly" << endl;
+		}
+		else
+		{
+			logger << "serwer didn't recive message" << endl;
+			if(resend > 3)
+			{
+				logger.close(); 
+				return 0;
+			}
+			resend++;
+			goto repete;
+		}	
 		
 		
 		fclose( pFile );
@@ -184,7 +206,11 @@ repete:
 		else
 		{
 			logger << "serwer didn't recive message" << endl;
-			if(resend > 3) return 0;
+			if(resend > 3)
+			{
+				logger.close(); 
+				return 0;
+			}
 			resend++;
 			goto repete;
 		}
@@ -193,7 +219,8 @@ repete:
 	
 
 	loger.close();
-}*/
+	return 0;
+}
 
 int networkControler::checkSignalStr(){
 	int ret,sig;
