@@ -71,7 +71,7 @@ int networkControler::connectAllQuiet(){
 }
 
 int networkControler::disconnectAllQuiet(){
-	ofstram loger("logs.txt", ios_base::app);
+	ofstream loger("logs.txt", ios_base::app);
 	int bytes_sent;
 	sleep(1);
 	loger << "sendin 'bye' and ending connection !" << endl;
