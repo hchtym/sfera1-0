@@ -354,7 +354,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	//memcpy((void *)tx.type, (void *)typecpy, sizeof(tx.type));
 	tx.type = typecpy;
 	total = compose.str();
-	outbin.write( tx, sizeof(struct Transaction));
+	outbin.write( tx, sizeof(Transaction));
 	cout << "wciepnujs to szystko do pliku" << endl;
 	trx << total;
 	cout << "camykom plik " << endl;
