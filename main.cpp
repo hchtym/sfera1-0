@@ -25,7 +25,7 @@ int main(){
 //	device->sleRead();
 //	device->magCardScan();
 	while(1){
-		master->dispMenu();
+			master->dispMenu();
 
 		
 	}
