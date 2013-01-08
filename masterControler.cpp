@@ -319,7 +319,8 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	cout << "otwiram file stream" << endl;
 	char typecpy;
 	//strncpy((char *)typecpy, type, sizeof(typecpy));
-	typecpy = (char)type;
+//	typecpy = (char)type;
+	typecpy = const_cast<char>(type);
 	cout << "otwieram trx.txt" << endl;
 	ofstream trx("trx.txt", ios_base::app);
 	cout << "otwieram tranz.bin" << endl;
