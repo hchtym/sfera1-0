@@ -57,6 +57,7 @@ private:
 	// inicjator karty sim, oraz kanalu
 	void gprsInit();
 	int connectAllQuiet();
+	int disconnectAllQuiet();
 	int fileSize();
 	//Funkcja parsujaca pobrany config ! 
 	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);

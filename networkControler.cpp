@@ -166,13 +166,6 @@ int networkControler::sendTrx(){
 		else
 		{
 			logger << "serwer didn't recive message" << endl;
-			if(resend > 3)
-			{
-				logger.close(); 
-				return 0;
-			}
-			resend++;
-			goto repete;
 		}	
 		
 		
