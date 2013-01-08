@@ -134,7 +134,7 @@ int masterControler::dispMenu(){
 			break;
 			case 5:
 				// tu bedzie serwis !!
-			break:
+			break;
 			default:
 			break;
 		}
