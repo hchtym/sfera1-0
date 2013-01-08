@@ -33,7 +33,7 @@ int masterControler::dispMenu(){
 	int menuIdOff[6];
 	memset(menuIdOff, 0, sizeof(menuIdOff));
 	int i,j,k;
-	int ret;
+	int ret,ret1;
 	cout << "tworze 2 stringi login i logout" << endl;
 	string menu1 = "LOGIN;SHOP;PRIZE;CHECKPOINT;TRANSACTIONS_SEND;SERVICE;;Wylogowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
 	string menu2 = "LOGOUT;SHOP;PRIZE;CHECKTPOIN;TRANSACTIONS_SEND;SERVICE;;Logowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
@@ -151,15 +151,14 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
     int i, j, view =0;
 	int ret;
     BYTE key;
-    //char *str[40];
-    //char str2[40];
-    //int rtn;
-    //int usTk1len, usTk2len, usTk3len;
-    //BYTE baTk1Buf[BUFSIZE], baTk2Buf[BUFSIZE], baTk3Buf[BUFSIZE]; //Track 1,2,3 data buffer //
-    //BYTE baTk1Err, baTk2Err, baTk3Err; //Track 1,2,3 individual status //
-    //vector<string> items2[20]; // tablica nowych elementow menu
-    //int idx[20]; // tablica indeksow ze starej listy elementow
-    int index2 = 0; // indeks elementu z listy items2       
+	char track1[100];
+	char track2[100];
+	char track3[100];
+    memset(track1, 0, sizeof(track1));
+	memset(track1, 0, sizeof(track2));
+	memset(track1, 0, sizeof(track3));
+	
+    int index2 = 0;      
     int tick = 0;
 	if(Mcr_Open()<0)
 	{
@@ -211,10 +210,11 @@ drawMenu:
 	    		key = NOKEY;
 	    		break;
 	    	}
+			ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
 			if (ret&0x80){
 					if(!loginFlag){
-						ret = loginScr();
-						if(ret == 1){
+						ret1 = loginScr();
+						if(ret1 == 1){
 							loginFlag = true;
 						}else{
 							loginFlag = false;
