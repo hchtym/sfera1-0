@@ -351,7 +351,8 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	tx.points = atoi(point.c_str());
 	tx.extra = atoi(extrapoint.c_str());
 	memcpy(tx.datetime, acttime, sizeof(tx.datetime));
-	memcpy((void *)tx.type, (void *)typecpy, sizeof(tx.type));
+	//memcpy((void *)tx.type, (void *)typecpy, sizeof(tx.type));
+	tx.type = typecpy;
 	total = compose.str();
 	outbin.write( tx, sizeof(struct Transaction));
 	cout << "wciepnujs to szystko do pliku" << endl;
