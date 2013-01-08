@@ -136,7 +136,7 @@ int masterControler::dispMenu(){
 	}
 }
 
-int masterControler::menuScr(const string &menuname,vector<string> &vect, int size, int index, int menuid){
+int masterControler::menuScr(const string &menuname,vector<string> &vect, int size, int index, int *menuid){
 	cout << "jestem w mnue scr" << endl;
 	const int visible = 6;
     int i, j, view =0;
