@@ -142,7 +142,7 @@ drawMenu:
         }
 		switch(key){
 			case NOKEY:
-		    	creenBlank();
+		 //   	creenBlank();
 				goto drawMenu;
 		    break;
 		    case KEYCANCEL:
