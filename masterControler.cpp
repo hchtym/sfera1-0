@@ -37,13 +37,14 @@ int masterControler::dispMenu(){
 	
 	vector<string> menuOptions;
 	config->returnMenu(menuOptions);
+	int len = menuOptions.size();
 	vector<string> displayMenuOn;
 	vector<string> displayMenuOff;
 // parsowanie menu bez usera
 	for(i = 0; i < 6; i++)
 	{
 		string comp = items2[i];
-		for(j = 0; j < menuOptions.size(); j++)
+		for(j = 0; j < len; j++)
 		{
 			string opose = menuOptions[j];
 			if( (comp.compare(opose)) == 0 ){
@@ -58,7 +59,7 @@ int masterControler::dispMenu(){
 	for(i = 0; i < 6; i++)
 	{
 		string comp = items[i];
-		for(j = 0; j < menuOptions.size(); j++)
+		for(j = 0; j < len; j++)
 		{
 			string opose = menuOptions[j];
 			if( (comp.compare(opose)) == 0 ){
