@@ -27,20 +27,27 @@ masterControler::masterControler(){
 
 int masterControler::dispMenu(){
 	// to tutaj bedzie odpowiedzialne za wyswietlenie menu z logowaniem sie i innymi gownami ! 
+	cout << "Jestem w menu disp !" << endl;
 	int i,j;
+	cout << "tworze 2 stringi login i logout" << endl;
 	string menu1 = "LOGIN;SHOP;PRIZE;CHECKPOINT;TRANSACTIONS_SEND;SERVICE;;Logowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
 	string menu2 = "LOGOUT;SHOP;PRIZE;CHECKTPOIN;TRANSACTIONS_SEND;SERVICE;;Wylogowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
+	cout << "tworze 2 vectory to przechowywania pozycji menu" << endl;
 	vector<string> items;
 	vector<string> items2;
+	cout << "tokenizuje" << endl;
 	Tokenize(menu1,items, ";");
 	Tokenize(menu2,items2, ";");
 	string title = "Menu";
+	cout << "tworze vector menuoptions i wypelniam go opcjami z configa" << endl;
 	vector<string> menuOptions;
 	config->returnMenu(menuOptions);
 	int len = menuOptions.size();
+	cout << "tworze vectory dusplay menu on/off" << endl;
 	vector<string> displayMenuOn;
 	vector<string> displayMenuOff;
 // parsowanie menu bez usera
+	cout << "passuje pliki opcji i pliki pozycji menu dla zalogowania i niezalogowania" << endl;
 	for(i = 0; i < 6; i++)
 	{
 		string comp = items2[i];
@@ -71,7 +78,9 @@ int masterControler::dispMenu(){
 		}
 	}
 	int usItem;
+	cout << "wchodze do while !!" << endl;
 	while(1){
+
 		usItem = menuScr(title, displayMenuOff, 6, usItem);
 //		switch(usItem){
 			
