@@ -136,6 +136,7 @@ drawMenu:
 		}
 	    SetTimer(0, 3000);
 	    int left = -1;
+		cout << "wchodze do while odpowiedzialnego za wykrywanie guzikow timeout i inne" << endl;
 	    while(1){
 	    	if(Kb_Hit){
 	    		key = Kb_GetKey();
