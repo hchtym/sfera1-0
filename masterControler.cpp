@@ -34,7 +34,7 @@ int masterControler::dispMenu(){
 	vector<string> items2;
 	Tokenize(menu1,items, ";");
 	Tokenize(menu2,items2, ";");
-	
+	string title = "Menu";
 	vector<string> menuOptions;
 	config->returnMenu(menuOptions);
 	int len = menuOptions.size();
