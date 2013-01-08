@@ -112,7 +112,6 @@ drawMenu:
 	if(index2 > visible -1 ) view = index2 - visible +1;
 	cout << "wchodze do while w menuscr" << endl;
 	while(1){
-		cout << 
 		clear();
 	    title(menuname);
 
