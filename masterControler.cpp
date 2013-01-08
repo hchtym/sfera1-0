@@ -319,7 +319,9 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	cout << "otwiram file stream" << endl;
 	char typecpy;
 	strncpy((char *)typecpy, type, sizeof(typecpy));
+	cout << "otwieram trx.txt" << endl;
 	ofstream trx("trx.txt", ios_base::app);
+	cout << "otwieram tranz.bin" << endl;
 	ofstream outbin("tranz.bin", ofstream::binary);
 	cout << "tworze string stream compose)" << endl;
 	stringstream compose;
