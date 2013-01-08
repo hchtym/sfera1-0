@@ -149,6 +149,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	cout << "jestem w mnue scr" << endl;
 	const int visible = 6;
     int i, j, view =0;
+	int ret;
     BYTE key;
     //char *str[40];
     //char str2[40];
