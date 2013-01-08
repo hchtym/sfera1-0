@@ -114,9 +114,9 @@ drawMenu:
 	            	str += " ";
 	            }
 				if(index2 == view +i){
-					Lcd_Printxy(1,16+(i*8),1,str.c_str());
+					Lcd_Printxy(1,16+(i*8),1,const_cast<char *>(str.c_str()) );
 	        	}else{
-	        		Lcd_Printxy(1,16+(i*8),0,str.c_str());
+	        		Lcd_Printxy(1,16+(i*8),0,const_cast<char *>(str.c_str()) );
 	        	}
 	        }else{
 	//                      Lcd_Printxy(1, i+3, 0, "                 ");
