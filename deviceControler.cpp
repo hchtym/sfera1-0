@@ -132,16 +132,22 @@ string deviceControler::magCardScan(bool kbd){
 	string str2;
 	str2.clear();
 	stringstream compo;
+	stringstram compo1;
+	compo1.str("");
 	string temp;
 	int ret;
 	bool presed = false;
 	memset(track1, 0, sizeof(track1));
 	memset(track1, 0, sizeof(track2));
 	memset(track1, 0, sizeof(track3));
-	memset(trck, 0, sizeof(trck));
-//	Lcd_Cls();
-//	Lcd_Printxy(0,0,0,"Test czytnik magnet");
-	
+	string title = "Przeciagnij karte";
+	compo1 << title;
+	for(int i = 0; i < 21- title.size(); i++)
+	{
+		compo1 << " ";
+	}
+	string.clear();
+	string = compo1.str();
 	if(Mcr_Open()<0)
 	{
 		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
@@ -150,7 +156,9 @@ string deviceControler::magCardScan(bool kbd){
 while(1){
 	key = NOKEY;
 	Lcd_Cls();
-	Lcd_Printxy(0,0,0, "Przeciagnij karte");
+	
+	
+	Lcd_Printxy(0,0,1, "Przeciagnij karte");
 	if(kbd){
 		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
 					if(!Kb_Hit()){

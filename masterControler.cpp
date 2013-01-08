@@ -158,8 +158,8 @@ int masterControler::sumInput(string &payment){
 		compo1 << str2;
 		str2.clear();
 		str2 = compo1.str();
-		Lcd_Cls();
-		Lcd_Printxy(0,0,0, "Podaj wartosc zakupu:");
+		clear();
+		title("Podaj wartosc zakupu:");
 		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
 		cout << "sprawdzam klawisz ktory wcisnalem" << endl;
 		while(1){
