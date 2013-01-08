@@ -320,7 +320,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	char typecpy;
 	strncpy((char *)typecpy, type, sizeof(typecpy));
 	ofstream trx("trx.txt", ios_base::app);
-	ostream outbin("tranz.bin", ofstream::binary);
+	ofstream outbin("tranz.bin", ofstream::binary);
 	cout << "tworze string stream compose)" << endl;
 	stringstream compose;
 	cout << "tworze stringacza" << endl;
