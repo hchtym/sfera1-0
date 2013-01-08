@@ -211,7 +211,16 @@ drawMenu:
 	    		break;
 	    	}
 			if (ret&0x80){
-				selling();
+					if(!loginFlag){
+						ret = loginScr();
+						if(ret == 1){
+							loginFlag = true;
+						}else{
+							loginFlag = false;
+						}
+					}else{
+						selling();
+					}
 			}
         }
 		switch(key){
