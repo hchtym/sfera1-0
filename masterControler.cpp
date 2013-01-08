@@ -317,7 +317,7 @@ int masterControler::sumInput(string &payment){
 
 int masterControler::fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char *type, string &date){
 	cout << "otwiram file stream" << endl;
-	char typecpy = type;
+	char typecpy = (char *)type;
 	strncpy((char *)typecpy, type, sizeof(typecpy));
 	cout << "otwieram trx.txt" << endl;
 	ofstream trx("trx.txt", ios_base::app);
