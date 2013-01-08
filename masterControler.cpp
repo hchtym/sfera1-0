@@ -86,7 +86,7 @@ int masterControler::dispMenu(){
 			if( (comp.compare("")) == 0 ){
 				displayMenuOn.push_back(items[i+6]);
 				menuIdOn[k]=i;
-				k++
+				k++;
 			}
 		}
 	}
