@@ -128,7 +128,7 @@ int networkControler::sendTrx(){
 			fseek(pFile, ulHandle, SEEK_CUR);
 			ulLen = size -1;
 			if(ulLen > 720) ulLen = 720;
-			int j =0
+			int j =0;
 			while(x != EOF)
 			{
 				if(j > ulLen) break;
