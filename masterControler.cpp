@@ -160,7 +160,10 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
     //int idx[20]; // tablica indeksow ze starej listy elementow
     int index2 = 0; // indeks elementu z listy items2       
     int tick = 0;
-
+	if(Mcr_Open()<0)
+	{
+		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
+	}
     key=NOKEY;
 	cout << "jestem przed draw menu !" << endl;
 drawMenu:
@@ -207,6 +210,9 @@ drawMenu:
 	    		key = NOKEY;
 	    		break;
 	    	}
+			if (ret&0x80){
+				selling();
+			}
         }
 		switch(key){
 			case NOKEY:
