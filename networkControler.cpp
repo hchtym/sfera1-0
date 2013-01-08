@@ -98,7 +98,7 @@ int networkControler::sendTrx(){
 	int len,bytes_sent,bytes_recv;
 	int resend;
 	
-	if((bytes_sent = send(sockfd, msg, len, 0)) == -1){
+	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
 		loger << "send filetx; error" << endl;
 		perror("send"); // logowanie do pliku !
 		//exit(1);
@@ -159,7 +159,7 @@ int networkControler::sendTrx(){
 		compose.str("");
 		compose << pCAPData;
 		info = compose.str();
-		if((info.compare("ok")) == 0s)
+		if((info.compare("ok")) == 0)
 		{
 			loger << "serwer recived msg properly" << endl;
 		}
@@ -192,7 +192,7 @@ repete:
 		compose.str("");
 		compose << pCAPData;
 		info = compose.str();
-		if((info.compare("ok")) == 0s)
+		if((info.compare("ok")) == 0)
 		{
 			loger << "serwer recived msg properly" << endl;
 		}
@@ -201,7 +201,7 @@ repete:
 			loger << "serwer didn't recive message" << endl;
 			if(resend > 3)
 			{
-				logger.close(); 
+				loger.close(); 
 				return 0;
 			}
 			resend++;
