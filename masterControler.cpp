@@ -124,13 +124,19 @@ int masterControler::dispMenu(){
 			}
 			break;
 			case 2:
-				network->sendTransaction();
+				// tu bede nagrody
 			break;
 			case 3:
-			
+				//tu bedzie spr pkt
 			break;
-
-			
+			case 4:
+				network->sendTransaction();
+			break;
+			case 5:
+				// tu bedzie serwis !!
+			break:
+			default:
+			break;
 		}
 		
 	}
@@ -148,7 +154,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
     //BYTE baTk1Buf[BUFSIZE], baTk2Buf[BUFSIZE], baTk3Buf[BUFSIZE]; //Track 1,2,3 data buffer //
     //BYTE baTk1Err, baTk2Err, baTk3Err; //Track 1,2,3 individual status //
     //vector<string> items2[20]; // tablica nowych elementow menu
-    int idx[20]; // tablica indeksow ze starej listy elementow
+    //int idx[20]; // tablica indeksow ze starej listy elementow
     int index2 = 0; // indeks elementu z listy items2       
     int tick = 0;
 
@@ -207,8 +213,10 @@ drawMenu:
 		    case KEYCANCEL:
 		    case KEYBACKSPACE:
 		        return KEYCANCEL;
-		    case KEYENTER: return idx[index2];
-
+			break;
+		    case KEYENTER: 
+				return menuid[index2];
+			break;
 		    case KEYDOWN:
 		        if(index2 < size -1){
 		        	index2++;
