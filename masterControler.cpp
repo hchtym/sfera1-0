@@ -320,6 +320,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	ofstream trx("trx.txt", ios_base::app);
 	cout << "otwieram tranz.bin" << endl;
 	ofstream outbin("tranz.bin", ofstream::binary);
+	ofstream test("tranzakcje.txt", ios_base::app);
 	cout << "tworze string stream compose)" << endl;
 	stringstream compose;
 	cout << "tworze stringacza" << endl;
@@ -355,6 +356,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	tx.type = type;
 	total = compose.str();
 	outbin.write( (char *)&tx, sizeof(struct Transaction));
+	test.write( (char *)&tx, sizeof(struct Transaction));
 	cout << "wciepnujs to szystko do pliku" << endl;
 	trx << total;
 	cout << "camykom plik " << endl;
