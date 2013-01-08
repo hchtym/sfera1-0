@@ -76,7 +76,7 @@ int masterControler::dispMenu(){
 	}
 }
 
-int mesterControler::menuScr(&title, &vect, int size, int index){
+int masterControler::menuScr(&title, &vect, int size, int index){
 	
 	const int visible = 6;
     int i, j, view =0;
