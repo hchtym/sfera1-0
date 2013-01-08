@@ -132,7 +132,7 @@ string deviceControler::magCardScan(bool kbd){
 	string str2;
 	str2.clear();
 	stringstream compo;
-	stringstrwam compo1;
+	stringstream compo1;
 	compo1.str("");
 	string temp;
 	int ret;
@@ -146,8 +146,8 @@ string deviceControler::magCardScan(bool kbd){
 	{
 		compo1 << " ";
 	}
-	string.clear();
-	string = compo1.str();
+	title.clear();
+	title = compo1.str();
 	if(Mcr_Open()<0)
 	{
 		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
