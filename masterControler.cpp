@@ -29,7 +29,9 @@ int masterControler::dispMenu(){
 	// to tutaj bedzie odpowiedzialne za wyswietlenie menu z logowaniem sie i innymi gownami ! 
 	cout << "Jestem w menu disp !" << endl;
 	int menuIdOn[6];
+	memset(menuIdOn, 0, sizeof(menuIdOn));
 	int menuIdOff[6];
+	memset(menuIdOff, 0, sizeof(menuIdOff));
 	int i,j,k;
 	int ret;
 	cout << "tworze 2 stringi login i logout" << endl;
@@ -94,9 +96,9 @@ int masterControler::dispMenu(){
 	cout << "wchodze do while !!" << endl;
 	while(1){
 		if(!loginFlag){
-			usItem = menuScr(title, displayMenuOff, displayMenuOff.size(), usItem, &menuIdOff);
+			usItem = menuScr(title, displayMenuOff, displayMenuOff.size(), usItem, menuIdOff);
 		}else{
-			usItem = menuScr(title, displayMenuOn, displayMenuOff.size(), usItem, &menuIdOn);
+			usItem = menuScr(title, displayMenuOn, displayMenuOff.size(), usItem, menuIdOn);
 		}
 		cout << usItem << endl;
 		switch(usItem){
