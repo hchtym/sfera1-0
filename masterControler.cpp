@@ -211,12 +211,14 @@ drawMenu:
 	    		key = NOKEY;
 	    		break;
 	    	}
+			DelayMs(50);
 			ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
 			if (ret&0x80){
 					if(!loginFlag){
 						ret1 = loginScr();
 						if(ret1 == 1){
 							loginFlag = true;
+							selling();
 						}else{
 							loginFlag = false;
 						}
