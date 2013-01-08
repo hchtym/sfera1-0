@@ -161,11 +161,11 @@ int networkControler::sendTrx(){
 		info = compose.str();
 		if((info.compare("ok")) == 0s)
 		{
-			logger << "serwer recived msg properly" << endl;
+			loger << "serwer recived msg properly" << endl;
 		}
 		else
 		{
-			logger << "serwer didn't recive message" << endl;
+			loger << "serwer didn't recive message" << endl;
 		}	
 		
 		
@@ -194,11 +194,11 @@ repete:
 		info = compose.str();
 		if((info.compare("ok")) == 0s)
 		{
-			logger << "serwer recived msg properly" << endl;
+			loger << "serwer recived msg properly" << endl;
 		}
 		else
 		{
-			logger << "serwer didn't recive message" << endl;
+			loger << "serwer didn't recive message" << endl;
 			if(resend > 3)
 			{
 				logger.close(); 
