@@ -26,7 +26,7 @@ masterControler::masterControler(){
 int masterControler::dispMenu(){
 	// to tutaj bedzie odpowiedzialne za wyswietlenie menu z logowaniem sie i innymi gownami ! 
 	string menu1 = "LOGIN;SHOP;PRIZE;CHECKPOINT;TRANSACTIONS_SEND;SERVICE;;Logowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
-	string menu2 = "LOGOUT;SHOP;PRIZE;CHECKTPOIN;TRANSACTIONS_SEND;SERVICE;Wylogowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
+	string menu2 = "LOGOUT;SHOP;PRIZE;CHECKTPOIN;TRANSACTIONS_SEND;SERVICE;;Wylogowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
 	vector<string> items;
 	vector<string> items2;
 	Tokenize(menu1,items, ";");
@@ -34,8 +34,9 @@ int masterControler::dispMenu(){
 	
 	vector<string> menuOptions;
 	config->returnMenu(menuOptions);
-	vector<string> displayMenu;
-
+	vector<string> displayMenuOn;
+	vector<string> displayMenuOff;
+// parsowanie menu bez usera
 	for(int i = 0; i < 6; i++)
 	{
 		string comp = items2[i]
@@ -43,11 +44,14 @@ int masterControler::dispMenu(){
 		{
 			string opose = menuOptions[j];
 			if( (comp.compare(opose)) == 0 ){
-				diaplayMenu.push_back(items[i+6]);
+				diaplayMenuOff.push_back(items2[i+6]);
+			}
+			if( (comp.compare("")) == 0 ){
+				diaplayMenuOff.push_back(items2[i+6]);
 			}
 		}
 	}
-
+// parsowanie menu z userem
 	for(int i = 0; i < 6; i++)
 	{
 		string comp = items[i]
@@ -55,11 +59,120 @@ int masterControler::dispMenu(){
 		{
 			string opose = menuOptions[j];
 			if( (comp.compare(opose)) == 0 ){
-				diaplayMenu.push_back(items[i+6]);
+				diaplayMenuOn.push_back(items[i+6]);
+			}
+			if( (comp.compare("")) == 0 ){
+				diaplayMenuOn.push_back(items[i+6]);
 			}
 		}
 	}
+	int usItem;
+	while(1){
+		usItem = menuScr(title, displayMenuOff, 6, usItem);
+//		switch(usItem){
+			
+//		}
 		
+	}
+}
+
+int mesterControler::menuScr(&title, &vect, int size, int index){
+	
+	const int visible = 6;
+    int i, j, view =0;
+    BYTE key;
+    char *str[40];
+    char str2[40];
+    int rtn;
+    int usTk1len, usTk2len, usTk3len;
+    BYTE baTk1Buf[BUFSIZE], baTk2Buf[BUFSIZE], baTk3Buf[BUFSIZE]; //Track 1,2,3 data buffer //
+    BYTE baTk1Err, baTk2Err, baTk3Err; //Track 1,2,3 individual status //
+    vector<string> items2[20]; // tablica nowych elementow menu
+    int idx[20]; // tablica indeksow ze starej listy elementow
+    int index2 = 0; // indeks elementu z listy items2       
+    int tick = 0;
+
+    key=NOKEY;
+    
+drawMenu:
+	if(index2 < 0 || index2 > size -1) index2 =0;
+	if(index2 > visible -1 ) view = index2 - visible +1;
+
+	while(1){
+		clear();
+	    title(title);
+
+		for(i=0; i < visible; i++){
+
+			if(view +i < size){
+				string str = items2[view +i];
+				int k,j=21;
+	            int len = str.size();
+	            for(k=0; k < k-len; k++){
+	            	str += " ";
+	            }
+				if(index2 == view +i){
+					Lcd_Printxy(1,16+(i*8),1,str.c_str());
+	        	}else{
+	        		Lcd_Printxy(1,16+(i*8),0,str.c_str());
+	        	}
+	        }else{
+	//                      Lcd_Printxy(1, i+3, 0, "                 ");
+	        }
+		}
+	    SetTimer(0, 3000);
+	    int left = -1;
+	    while(1){
+	    	if(Kb_Hit){
+	    		key = Kb_GetKey();
+	    		if(key !=NOKEY){
+	    			break;
+	    		}else{
+	    			key = NOKEY;
+	    		}
+
+	    	}
+	    	left = CheckTimer(0);
+	    	if(0 == left){
+	    		key = NOKEY;
+	    		break;
+	    	}
+        }
+		switch(key){
+			case NOKEY:
+		    	creenBlank();
+				goto drawMenu;
+		    break;
+		    case KEYCANCEL:
+		    case KEYBACKSPACE:
+		        return KEYCANCEL;
+		    case KEYENTER: return idx[index2];
+
+		    case KEYDOWN:
+		        if(index2 < size -1){
+		        	index2++;
+		            if(index2 >= view + visible)view++;
+		        }else{
+		            index2 =0;
+		            view = 0;
+		        }
+		     break;
+		     case KEYUP:
+		     	if(index2 >0){
+		        	index2--;
+		            if(index2 < view) view--;
+		        }else{
+		            index2 = size -1;
+		                        //      view = size -1;
+		        	if(index2 >= view + visible) view = index2 -  visible +1;
+		        }
+		//      goto drawMenu;
+		        break;
+		}
+		
+
+
+
 	
 }
 
