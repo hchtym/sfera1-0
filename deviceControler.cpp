@@ -142,7 +142,8 @@ string deviceControler::magCardScan(bool kbd){
 	memset(track1, 0, sizeof(track3));
 	string title = "Przeciagnij karte";
 	compo1 << title;
-	for(int i = 0; i < 21- title.size(); i++)
+	int len = title.size();
+	for(int i = 0; i < 21 - len;  i++)
 	{
 		compo1 << " ";
 	}
