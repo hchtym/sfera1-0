@@ -70,6 +70,27 @@ int networkControler::connectAllQuiet(){
 	loger.close();
 }
 
+int networkControler::disconnectAllQuiet(){
+	
+	sleep(1);
+	loger << "sendin 'bye' and ending connection !" << endl;
+    if((bytes_sent = send(sockfd, "bye", 3, 0))== -1){
+        perror("send");
+        //exit(1);
+    }
+	// zamykam plik konfiguracyjny !
+	// zamykam socket !
+	close(sockfd);
+	
+	
+}
+
+int networkControler::sendTransaction(){
+	connectAllQuiet();
+	sendTrx();
+	disconnectAllQuiet();
+}
+
 int networkControler::fileSize(){
 	int size;
 	FILE *pFile = NULL;
