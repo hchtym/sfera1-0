@@ -54,7 +54,7 @@ int masterControler::dispMenu(){
 // parsowanie menu z userem
 	for(int i = 0; i < 6; i++)
 	{
-		string comp = items[i]
+		string comp = items[i];
 		for(int j = 0; j < menuOptions.size(); j++)
 		{
 			string opose = menuOptions[j];
