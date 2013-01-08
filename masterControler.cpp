@@ -80,11 +80,26 @@ int masterControler::dispMenu(){
 	int usItem;
 	cout << "wchodze do while !!" << endl;
 	while(1){
+		if(!loginFlag){
+			usItem = menuScr(title, displayMenuOff, displayMenuOff.size(), usItem);
+		}else{
+			usItem = menuScr(title, displayMenuOn, displayMenuOff.size(), usItem);
+		}
+		switch(usItem){
+			case 0:
+				if(!loginFlag){
+					loginScr();
+					loginFlag = true;
+				}else{
+					loginFlag = false;
+				}
+			break;
 
-		usItem = menuScr(title, displayMenuOff, displayMenuOff.size(), usItem);
-//		switch(usItem){
+
+
+
 			
-//		}
+		}
 		
 	}
 }
@@ -210,7 +225,7 @@ int masterControler::loginScr(){
 			nick.erase(nick.size()-1);
 			if((nick.compare(logon))==0){
 				seller = logon;
-				return 0;
+				return 1;
 			}else{
 				string str = "Niepoprawny login";
 				infoMSG(str);
@@ -228,6 +243,7 @@ int masterControler::infoMSG(string &msg){
 	int y =32;
 	title("Inrofmacja");
 	message(x, y, msg2);
+	MsDelay(5000);
 }
 
 int masterControler::message(int x, int y, string &str){
