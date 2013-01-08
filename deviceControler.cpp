@@ -132,7 +132,7 @@ string deviceControler::magCardScan(bool kbd){
 	string str2;
 	str2.clear();
 	stringstream compo;
-	stringstram compo1;
+	stringstrwam compo1;
 	compo1.str("");
 	string temp;
 	int ret;
