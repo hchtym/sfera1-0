@@ -30,8 +30,8 @@ int masterControler::dispMenu(){
 	cout << "Jestem w menu disp !" << endl;
 	int i,j;
 	cout << "tworze 2 stringi login i logout" << endl;
-	string menu1 = "LOGIN;SHOP;PRIZE;CHECKPOINT;TRANSACTIONS_SEND;SERVICE;;Logowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
-	string menu2 = "LOGOUT;SHOP;PRIZE;CHECKTPOIN;TRANSACTIONS_SEND;SERVICE;;Wylogowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
+	string menu1 = "LOGIN;SHOP;PRIZE;CHECKPOINT;TRANSACTIONS_SEND;SERVICE;;Wylogowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
+	string menu2 = "LOGOUT;SHOP;PRIZE;CHECKTPOIN;TRANSACTIONS_SEND;SERVICE;;Logowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
 	cout << "tworze 2 vectory to przechowywania pozycji menu" << endl;
 	vector<string> items;
 	vector<string> items2;
@@ -55,10 +55,10 @@ int masterControler::dispMenu(){
 		{
 			string opose = menuOptions[j];
 			if( (comp.compare(opose)) == 0 ){
-				displayMenuOn.push_back(items2[i+6]);
+				displayMenuOff.push_back(items2[i+6]);
 			}
 			if( (comp.compare("")) == 0 ){
-				displayMenuOn.push_back(items2[i+6]);
+				displayMenuOff.push_back(items2[i+6]);
 			}
 		}
 	}
@@ -70,10 +70,10 @@ int masterControler::dispMenu(){
 		{
 			string opose = menuOptions[j];
 			if( (comp.compare(opose)) == 0 ){
-				displayMenuOff.push_back(items[i+6]);
+				displayMenuOn.push_back(items[i+6]);
 			}
 			if( (comp.compare("")) == 0 ){
-				displayMenuOff.push_back(items[i+6]);
+				displayMenuOn.push_back(items[i+6]);
 			}
 		}
 	}
