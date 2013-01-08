@@ -41,7 +41,7 @@ private:
 	string user;
 	string paswd;
 	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
-	int menuScr(const string &title,vector<string> &vect, int size, int index);
+	int menuScr(const string &title,vector<string> &vect, int size, int index, int menuid);
 	
 	struct Transaction {
 	    BYTE factorySN[20]; //15 znakow i 0

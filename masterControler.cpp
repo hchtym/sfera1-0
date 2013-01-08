@@ -28,7 +28,10 @@ masterControler::masterControler(){
 int masterControler::dispMenu(){
 	// to tutaj bedzie odpowiedzialne za wyswietlenie menu z logowaniem sie i innymi gownami ! 
 	cout << "Jestem w menu disp !" << endl;
-	int i,j;
+	int menuIdOn[6];
+	int menuIdOff[6];
+	int i,j,k;
+	int ret;
 	cout << "tworze 2 stringi login i logout" << endl;
 	string menu1 = "LOGIN;SHOP;PRIZE;CHECKPOINT;TRANSACTIONS_SEND;SERVICE;;Wylogowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
 	string menu2 = "LOGOUT;SHOP;PRIZE;CHECKTPOIN;TRANSACTIONS_SEND;SERVICE;;Logowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
@@ -48,6 +51,7 @@ int masterControler::dispMenu(){
 	vector<string> displayMenuOff;
 // parsowanie menu bez usera
 	cout << "passuje pliki opcji i pliki pozycji menu dla zalogowania i niezalogowania" << endl;
+	k =0;
 	for(i = 0; i < 6; i++)
 	{
 		string comp = items2[i];
@@ -56,13 +60,18 @@ int masterControler::dispMenu(){
 			string opose = menuOptions[j];
 			if( (comp.compare(opose)) == 0 ){
 				displayMenuOff.push_back(items2[i+6]);
+				menuIdOn[k]=i;
+				k++;
 			}
 			if( (comp.compare("")) == 0 ){
 				displayMenuOff.push_back(items2[i+6]);
+				menuIdOn[k]=i;
+				k++;
 			}
 		}
 	}
 // parsowanie menu z userem
+	k =0;
 	for(i = 0; i < 6; i++)
 	{
 		string comp = items[i];
@@ -71,9 +80,13 @@ int masterControler::dispMenu(){
 			string opose = menuOptions[j];
 			if( (comp.compare(opose)) == 0 ){
 				displayMenuOn.push_back(items[i+6]);
+				menuIdOn[k]=i;
+				k++;
 			}
 			if( (comp.compare("")) == 0 ){
 				displayMenuOn.push_back(items[i+6]);
+				menuIdOn[k]=i;
+				k++
 			}
 		}
 	}
@@ -81,22 +94,41 @@ int masterControler::dispMenu(){
 	cout << "wchodze do while !!" << endl;
 	while(1){
 		if(!loginFlag){
-			usItem = menuScr(title, displayMenuOff, displayMenuOff.size(), usItem);
+			usItem = menuScr(title, displayMenuOff, displayMenuOff.size(), usItem, menuIdOff);
 		}else{
-			usItem = menuScr(title, displayMenuOn, displayMenuOff.size(), usItem);
+			usItem = menuScr(title, displayMenuOn, displayMenuOff.size(), usItem, menuIdOn);
 		}
 		switch(usItem){
 			case 0:
 				if(!loginFlag){
-					loginScr();
-					loginFlag = true;
+					ret = loginScr();
+					if(ret == 1){
+						loginFlag = true;
+					}else{
+						loginFlag = false
+					}
 				}else{
 					loginFlag = false;
 				}
 			break;
-
-
-
+			case 1:
+			if(!loginFlag){
+				ret = loginScr();
+				if(ret == 1){
+					loginFlag = true;
+				}else{
+					loginFlag = false
+				}
+			}else{
+				// tu bedzie przejscie do sklepu in the future :D jeeeeeee
+			}
+			break;
+			case 2:
+				network->sendTransaction();
+			break;
+			case 3:
+			
+			break;
 
 			
 		}
@@ -104,7 +136,7 @@ int masterControler::dispMenu(){
 	}
 }
 
-int masterControler::menuScr(const string &menuname,vector<string> &vect, int size, int index){
+int masterControler::menuScr(const string &menuname,vector<string> &vect, int size, int index, int menuid){
 	cout << "jestem w mnue scr" << endl;
 	const int visible = 6;
     int i, j, view =0;
