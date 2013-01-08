@@ -80,7 +80,7 @@ int masterControler::dispMenu(){
 	}
 }
 
-int masterControler::menuScr(const string &str,vector<string> &vect, int size, int index){
+int masterControler::menuScr(const string &menuname,vector<string> &vect, int size, int index){
 	
 	const int visible = 6;
     int i, j, view =0;
@@ -104,7 +104,7 @@ drawMenu:
 
 	while(1){
 		clear();
-	    title(str);
+	    title(menuname);
 
 		for(i=0; i < visible; i++){
 
