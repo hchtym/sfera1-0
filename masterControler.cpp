@@ -94,9 +94,9 @@ int masterControler::dispMenu(){
 	cout << "wchodze do while !!" << endl;
 	while(1){
 		if(!loginFlag){
-			usItem = menuScr(title, displayMenuOff, displayMenuOff.size(), usItem, menuIdOff);
+			usItem = menuScr(title, displayMenuOff, displayMenuOff.size(), usItem, &menuIdOff);
 		}else{
-			usItem = menuScr(title, displayMenuOn, displayMenuOff.size(), usItem, menuIdOn);
+			usItem = menuScr(title, displayMenuOn, displayMenuOff.size(), usItem, &menuIdOn);
 		}
 		cout << usItem << endl;
 		switch(usItem){
