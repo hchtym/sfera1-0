@@ -275,7 +275,7 @@ int masterControler::infoMSG(string &msg){
 	int y =32;
 	title("Inrofmacja");
 	message(x, y, msg2);
-	MsDelay(5000);
+	DelayMs(5000);
 }
 
 int masterControler::message(int x, int y, string &str){
