@@ -85,13 +85,13 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	const int visible = 6;
     int i, j, view =0;
     BYTE key;
-    char *str[40];
-    char str2[40];
-    int rtn;
-    int usTk1len, usTk2len, usTk3len;
-    BYTE baTk1Buf[BUFSIZE], baTk2Buf[BUFSIZE], baTk3Buf[BUFSIZE]; //Track 1,2,3 data buffer //
-    BYTE baTk1Err, baTk2Err, baTk3Err; //Track 1,2,3 individual status //
-    vector<string> items2[20]; // tablica nowych elementow menu
+    //char *str[40];
+    //char str2[40];
+    //int rtn;
+    //int usTk1len, usTk2len, usTk3len;
+    //BYTE baTk1Buf[BUFSIZE], baTk2Buf[BUFSIZE], baTk3Buf[BUFSIZE]; //Track 1,2,3 data buffer //
+    //BYTE baTk1Err, baTk2Err, baTk3Err; //Track 1,2,3 individual status //
+    //vector<string> items2[20]; // tablica nowych elementow menu
     int idx[20]; // tablica indeksow ze starej listy elementow
     int index2 = 0; // indeks elementu z listy items2       
     int tick = 0;
@@ -109,7 +109,7 @@ drawMenu:
 		for(i=0; i < visible; i++){
 
 			if(view +i < size){
-				string str = items2[view +i];
+				string str = vect[view +i];
 				int k,j=21;
 	            int len = str.size();
 	            for(k=0; k < k-len; k++){
