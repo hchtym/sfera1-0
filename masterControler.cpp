@@ -350,7 +350,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	tx.amount = atoi(pay.c_str());
 	tx.points = atoi(point.c_str());
 	tx.extra = atoi(extrapoint.c_str());
-	memcpy(tx.datetime, acttime, sizeof(tx.datetime));
+	memcpy(&tx.datetime, &acttime, sizeof(tx.datetime));
 	//memcpy((void *)tx.type, (void *)typecpy, sizeof(tx.type));
 	tx.type = typecpy;
 	total = compose.str();
