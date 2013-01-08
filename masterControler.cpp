@@ -33,7 +33,7 @@ int masterControler::dispMenu(){
 	int menuIdOff[6];
 	memset(menuIdOff, 0, sizeof(menuIdOff));
 	int i,j,k;
-	int ret,ret1;
+	int ret;
 	cout << "tworze 2 stringi login i logout" << endl;
 	string menu1 = "LOGIN;SHOP;PRIZE;CHECKPOINT;TRANSACTIONS_SEND;SERVICE;;Wylogowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
 	string menu2 = "LOGOUT;SHOP;PRIZE;CHECKTPOIN;TRANSACTIONS_SEND;SERVICE;;Logowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
@@ -150,6 +150,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	const int visible = 6;
     int i, j, view =0;
 	int ret;
+	int ret1;
     BYTE key;
 	char track1[100];
 	char track2[100];
