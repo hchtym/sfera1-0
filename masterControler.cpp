@@ -62,12 +62,12 @@ int masterControler::dispMenu(){
 			string opose = menuOptions[j];
 			if( (comp.compare(opose)) == 0 ){
 				displayMenuOff.push_back(items2[i+6]);
-				menuIdOn[k]=i;
+				menuIdOff[k]=i;
 				k++;
 			}
 			if( (comp.compare("")) == 0 ){
 				displayMenuOff.push_back(items2[i+6]);
-				menuIdOn[k]=i;
+				menuIdOff[k]=i;
 				k++;
 			}
 		}
