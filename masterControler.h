@@ -40,6 +40,8 @@ private:
 	string apn;
 	string user;
 	string paswd;
+	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
+	
 	
 	struct Transaction {
 	    BYTE factorySN[20]; //15 znakow i 0
