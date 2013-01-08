@@ -94,7 +94,6 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	const int visible = 6;
     int i, j, view =0;
     BYTE key;
-	stringstream compo;
     //char *str[40];
     //char str2[40];
     //int rtn;
@@ -113,7 +112,7 @@ drawMenu:
 	if(index2 > visible -1 ) view = index2 - visible +1;
 	cout << "wchodze do while w menuscr" << endl;
 	while(1){
-		cout << "czyszcze ekran i ustawiam tytul menu !!" << endl;
+		cout << 
 		clear();
 	    title(menuname);
 
@@ -123,13 +122,9 @@ drawMenu:
 				string str = vect[view +i];
 				int k,j=21;
 	            int len = str.size();
-				compo.str("");
-				compo << str;
 	            for(k=0; k < j-len; k++){
-					compo << " ";
+	            	str += " ";
 	            }
-				str.clear();
-				str = compo.str();
 				if(index2 == view +i){
 					Lcd_Printxy(1,16+(i*8),1,const_cast<char *>(str.c_str()) );
 	        	}else{
