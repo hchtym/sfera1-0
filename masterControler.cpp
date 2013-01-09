@@ -201,16 +201,21 @@ drawMenu:
 			DelayMs(50);
 			ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
 			if (ret&0x80){
+				cout << "wykrylem swipe w menu" << endl;
 				if(!loginFlag){
+					cout << "niezalogowany !" << endl;
 					ret1 = loginScr();
 					if(ret1 == 1){
 						loginFlag = true;
 						selling();
 					}else{
-						loginFlag = false;							}
-					}else{
-						selling();
+						loginFlag = false;
 					}
+				}else{
+					cout << "zalogowany sprawdzam pkt !!" << endl;	
+					selling();
+				}
+
 			}
 		
 		
@@ -223,6 +228,7 @@ drawMenu:
 	    		}
 
 	    	}
+
 	    	left = CheckTimer(0);
 	    	if(0 == left){
 	    		key = NOKEY;
