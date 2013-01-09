@@ -372,9 +372,7 @@ drawMenu:
 	
 }
 
-void masterControler::screnSaver(){
-
-
+void masterControler::screenSaver(){
 	
 }
 
