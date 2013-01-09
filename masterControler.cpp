@@ -165,7 +165,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	{
 		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
 	}
-    key=NOKEY;
+    //key=NOKEY;
 	cout << "jestem przed draw menu !" << endl;
 drawMenu:
 	if(index2 < 0 || index2 > size -1) index2 =0;
