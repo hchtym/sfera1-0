@@ -197,6 +197,23 @@ drawMenu:
 	    int left = -1;
 		cout << "wchodze do while odpowiedzialnego za wykrywanie guzikow timeout i inne" << endl;
 	    while(1){
+		
+			DelayMs(50);
+			ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
+			if (ret&0x80){
+				if(!loginFlag){
+					ret1 = loginScr();
+					if(ret1 == 1){
+						loginFlag = true;
+						selling();
+					}else{
+						loginFlag = false;							}
+					}else{
+						selling();
+					}
+			}
+		
+		
 	    	if(Kb_Hit){
 	    		key = Kb_GetKey();
 	    		if(key !=NOKEY){
@@ -211,21 +228,6 @@ drawMenu:
 	    		key = NOKEY;
 	    		break;
 	    	}
-			DelayMs(50);
-			ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
-			if (ret&0x80){
-					if(!loginFlag){
-						ret1 = loginScr();
-						if(ret1 == 1){
-							loginFlag = true;
-							selling();
-						}else{
-							loginFlag = false;
-						}
-					}else{
-						selling();
-					}
-			}
         }
 		switch(key){
 			case NOKEY:
