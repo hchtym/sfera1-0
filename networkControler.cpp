@@ -141,6 +141,7 @@ int networkControler::sendTrx(){
 			perror("send"); // logowanie do pliku !
 			//exit(1);
 		}
+	sleep(1);
 		// przechodze do przesylania pliku 
 		FILE *pFile = NULL;
 		pFile = fopen("tranzakcje.txt", "r" );

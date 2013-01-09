@@ -273,6 +273,111 @@ drawMenu:
 	
 }
 
+int masterControler::menuScrOther(const string &menuname,vector<string> &vect, int size, int index, int *menuid){
+	cout << "jestem w mnue scr" << endl;
+	const int visible = 6;
+    int i, j, view =0;
+	int ret;
+	int ret1;
+    BYTE key;
+    int index2 = 0;      
+    int tick = 0;
+	if(Mcr_Open()<0)
+	{
+		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
+	}
+    //key=NOKEY;
+	cout << "jestem przed draw menu !" << endl;
+drawMenu:
+	if(index2 < 0 || index2 > size -1) index2 =0;
+	if(index2 > visible -1 ) view = index2 - visible +1;
+	cout << "wchodze do while w menuscr" << endl;
+	while(1){
+		clear();
+	    title(menuname);
+
+		for(i=0; i < visible; i++){
+
+			if(view +i < size){
+				string str = vect[view +i];
+				int k,j=21;
+	            int len = str.size();
+	            for(k=0; k < j-len; k++){
+	            	str += " ";
+	            }
+				if(index2 == view +i){
+					Lcd_Printxy(1,16+(i*8),1,const_cast<char *>(str.c_str()) );
+	        	}else{
+	        		Lcd_Printxy(1,16+(i*8),0,const_cast<char *>(str.c_str()) );
+	        	}
+	        }else{
+	//                      Lcd_Printxy(1, i+3, 0, "                 ");
+	        }
+		}
+	    SetTimer(0, 30000);
+	    int left = -1;
+		cout << "wchodze do while odpowiedzialnego za wykrywanie guzikow timeout i inne" << endl;
+		Kb_Flush();
+	    while(1){
+
+	    	if(!Kb_Hit()){
+	    		key = Kb_GetKey();
+	    		if(key !=NOKEY){
+	    			break;
+	    		}
+
+	    	}
+
+	    	left = CheckTimer(0);
+	    	if(0 == left){
+	    		key = NOKEY;
+	    		break;
+	    	}
+        }
+		switch(key){
+			case NOKEY:
+		 //   	creenBlank();
+				goto drawMenu;
+		    break;
+		    case KEYCANCEL:
+		    case KEYBACKSPACE:
+		        return KEYCANCEL;
+			break;
+		    case KEYENTER: 
+				return menuid[index2];
+			break;
+		    case KEYDOWN:
+		        if(index2 < size -1){
+		        	index2++;
+		            if(index2 >= view + visible)view++;
+		        }else{
+		            index2 =0;
+		            view = 0;
+		        }
+		     break;
+		     case KEYUP:
+		     	if(index2 >0){
+		        	index2--;
+		            if(index2 < view) view--;
+		        }else{
+		            index2 = size -1;
+		                        //      view = size -1;
+		        	if(index2 >= view + visible) view = index2 -  visible +1;
+		        }
+		//      goto drawMenu;
+		        break;
+		}
+		
+	}
+	
+}
+
+void masterControler::screnSaver(){
+
+
+	
+}
+
 int masterControler::loginScr(){
 	clear();
 	title("Prosze zaloguj sie");
