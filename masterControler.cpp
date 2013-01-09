@@ -223,8 +223,6 @@ drawMenu:
 	    		key = Kb_GetKey();
 	    		if(key !=NOKEY){
 	    			break;
-	    		}else{
-	    			key = NOKEY;
 	    		}
 
 	    	}
