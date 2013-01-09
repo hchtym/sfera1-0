@@ -143,7 +143,7 @@ int networkControler::sendTrx(){
 		}
 		// przechodze do przesylania pliku 
 		FILE *pFile = NULL;
-		pFile = fopen("trx.txt", "r" );
+		pFile = fopen("tranzakcje.txt", "r" );
 		compose.str("");
 		for(int i = 0; i < size; i+=720)
 		{
