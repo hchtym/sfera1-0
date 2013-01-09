@@ -372,9 +372,9 @@ drawMenu:
 	
 }
 
-//void masterControler::screenSaver(){
+void masterControler::screenSaver(){
 	
-//}
+}
 
 int masterControler::loginScr(){
 	clear();
