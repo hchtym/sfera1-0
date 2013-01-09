@@ -23,7 +23,7 @@ private:
 	string seller; // id sprzedawcy ustawiane przy zalogowaniu sie sprzedawcy do terminala
 	int dispMenu2(); // drugie menu do wyswietlania serwisow i innych bajerow  
 	int dispCPartFile(); // wyswietlanie pliku konfiguracyjnego
-	int screenSaver(); // wygaszacz ekranu
+	void screenSaver(); // wygaszacz ekranu
 	int dispInfo(); // wyswietlanie informacji
 	void wrtErrLogs(); // zapisywanie logow 
 	int loginWindow(); // okno logowania 
@@ -43,7 +43,6 @@ private:
 	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
 	int menuScr(const string &title,vector<string> &vect, int size, int index, int *menuid);
 	int menuScrOther(string &title);vector<string> &vect, int size, int index, int *menuid);
-	void screenSaver();
 	
 	struct Transaction {
 	    BYTE factorySN[20]; //15 znakow i 0
