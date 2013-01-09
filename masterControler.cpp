@@ -193,7 +193,7 @@ drawMenu:
 	//                      Lcd_Printxy(1, i+3, 0, "                 ");
 	        }
 		}
-	    SetTimer(0, 3000);
+	    SetTimer(0, 30000);
 	    int left = -1;
 		cout << "wchodze do while odpowiedzialnego za wykrywanie guzikow timeout i inne" << endl;
 	    while(1){
