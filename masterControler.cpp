@@ -219,7 +219,7 @@ drawMenu:
 			}
 		
 		
-	    	if(Kb_Hit){
+	    	if(!Kb_Hit){
 	    		key = Kb_GetKey();
 	    		if(key !=NOKEY){
 	    			break;
