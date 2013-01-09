@@ -27,6 +27,8 @@ int networkControler::connectAllQuiet(){
 	// konfiguracja socketa !! 
 	char pCAPData[buffer*10];
 	char download[buffer*10];
+	memset(pCAPData, 0, sizeof(pCAPData));
+	memset(download, 0, sizeof(download));
 	struct sockaddr_in dest_addr;
 	
 	loger << "tworze socket" << endl;
@@ -107,7 +109,8 @@ int networkControler::sendTrx(){
 	ofstream loger("logs.txt", ios_base::app);
 	char pCAPData[buffer*10];
 	char temp[730];
-	int ulLen;
+	memset(temp, 0, sizeof(temp));
+	int ulLen =0;
 	int ulHandle =0;
 	memset(pCAPData, 0, sizeof(pCAPData));
 	stringstream compose; 
@@ -118,8 +121,10 @@ int networkControler::sendTrx(){
 	compose << "filetx;" << endl;
 	msg = compose.str();
 	int len,bytes_sent,bytes_recv;
-	int resend;
-	
+	int resend = 0;
+	len = 0;
+	bytes_sent = 0;
+	bytes_recv = 0;
 	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
 		loger << "send filetx; error" << endl;
 		perror("send"); // logowanie do pliku !
@@ -164,16 +169,18 @@ int networkControler::sendTrx(){
 			msg.clear();
 			msg = compose.str();
 			len = msg.size();
-			while(bytes_sent != len){
+			int sended = 0;
+			while(sended != len){
 				if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
 					loger << "send filetx; error" << endl;
 					perror("send"); // logowanie do pliku !
 					//exit(1);
 				}
+				sended += bytes_sent;
 			}
 
 		}
-		
+		memset(pCAPData, 0, sizeof(pCAPData));
 		if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1){
 			loger << "recive error" << endl;
 			perror("recive"); // logowanie do pliku !!
