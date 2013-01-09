@@ -208,12 +208,14 @@ drawMenu:
 					if(ret1 == 1){
 						loginFlag = true;
 						selling();
+						break;
 					}else{
 						loginFlag = false;
 					}
 				}else{
 					cout << "zalogowany sprawdzam pkt !!" << endl;	
 					selling();
+					break;
 				}
 
 			}
@@ -227,11 +229,11 @@ drawMenu:
 
 	    	}
 
-	    	left = CheckTimer(0);
-	    	if(0 == left){
-	    		key = NOKEY;
-	    		break;
-	    	}
+	    	//left = CheckTimer(0);
+	    	//if(0 == left){
+	    	//	key = NOKEY;
+	    	//	break;
+	    	//}
         }
 		switch(key){
 			case NOKEY:
