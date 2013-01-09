@@ -220,7 +220,7 @@ drawMenu:
 
 			}
 		
-		
+			cout << "sprawdzam klawisz" << endl;
 	    	if(!Kb_Hit){
 	    		key = Kb_GetKey();
 	    		if(key !=NOKEY){
