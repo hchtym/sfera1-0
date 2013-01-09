@@ -196,6 +196,7 @@ drawMenu:
 	    SetTimer(0, 30000);
 	    int left = -1;
 		cout << "wchodze do while odpowiedzialnego za wykrywanie guzikow timeout i inne" << endl;
+		Kb_Flush();
 	    while(1){
 		
 			DelayMs(50);
