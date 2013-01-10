@@ -28,6 +28,9 @@ class masterControler{
 	int loginWindow(); // okno logowania 
 	int sumInput(string &payment);
 	int pointComp(string &id, string &payment, string &pnt, string &ext);
+	void recipePrint(bool recipeCopy);
+	void menuOnOff();
+	void menuShop();
 	string sum; // suma zakupow
 	string points; // suma pkt za zakupy up 
 	configControler* config;

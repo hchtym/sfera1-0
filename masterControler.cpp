@@ -25,6 +25,20 @@ masterControler::masterControler(){
 	//vheiu
 };
 
+void masterControler::menuShop(){
+	string items = "Sprzedaz;Zwrot";
+	vector<string> vect;
+	Tokenize(items, vect, ";");
+	int menuId[2] = {1,2};
+}
+
+void masterControler::menuOnOff(){
+	string items = "Online;Ofline";
+	vector<string> vect;
+	Tokenize(items, vect, ";");
+	int menuId[2] = {1,2};
+}
+
 int masterControler::dispMenu(){
 	// to tutaj bedzie odpowiedzialne za wyswietlenie menu z logowaniem sie i innymi gownami ! 
 	cout << "Jestem w menu disp !" << endl;
@@ -280,7 +294,7 @@ int masterControler::menuScrOther(const string &menuname,vector<string> &vect, i
 	int ret;
 	int ret1;
     BYTE key;
-    int index2 = 0;      
+    int index2 = 0;
     int tick = 0;
 	if(Mcr_Open()<0)
 	{
@@ -469,26 +483,25 @@ int masterControler::selling(){
 		cout << "tu jestem trololololololololo " << str << " : " << str.size() << endl;
 		if(str.size() > 0 ){
 			if(str.size() > 5 && str.size() < 30){
-				break;
+				cout << "przed suminput" << endl;
+				sumInput(payment);
+				//cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
+				pointComp(str, payment, point, extra);
 			}
 		}
 	}
-	cout << "przed suminput" << endl;
-	sumInput(payment);
-	cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
-	pointComp(str, payment, point, extra);
-	seller = "00033";
-	date = "13:01:03:12:14:25";
+	//seller = "00033";
+	//date = "13:01:03:12:14:25";
 	//string sernum = config->returnSeriall();
-	cout << "numer seryjny terminala: " << numerser << endl;
-	cout << "sprzedawca: " << seller << endl;
-	cout << "Zaplata: " << payment << endl;
-	cout << "punkty: " << point << endl;
-	cout << "extra pkt: " << extra << endl;
-	cout << date << endl;
-	char type = '0';
+	//cout << "numer seryjny terminala: " << numerser << endl;
+	//cout << "sprzedawca: " << seller << endl;
+	//cout << "Zaplata: " << payment << endl;
+	//cout << "punkty: " << point << endl;
+	//cout << "extra pkt: " << extra << endl;
+	//cout << date << endl;
+	//char type = '0';
 	
-	fileSave(numerser, seller, str, payment, point, extra, type, date);
+	//fileSave(numerser, seller, str, payment, point, extra, type, date);
 	return 0;
 }
 
@@ -935,7 +948,9 @@ void masterControler::Tokenize(const string& str, vector<string>& tokens, const 
 
 }
 
-
+void masterControler::recipePrint(bool recipeCopy){
+	
+}
 
 
 

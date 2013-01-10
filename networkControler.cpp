@@ -16,6 +16,7 @@ networkControler::networkControler(string &ipr, string &portr, string &apnr, str
 	serialN = serialNr;
 	
 }
+
 networkControler::~networkControler(){
 	
 	
@@ -240,7 +241,6 @@ repete:
 		
 	}
 	
-
 	loger.close();
 	return 0;
 }
