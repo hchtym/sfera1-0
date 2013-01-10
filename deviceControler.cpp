@@ -155,9 +155,27 @@ string deviceControler::magCardScan(bool kbd){
 	}
 	Kb_Flush();
 while(1){
-	key = NOKEY;
+//	key = NOKEY;
 	Lcd_Cls();
 	Lcd_Printxy(0,0,1, const_cast<char *>(title.c_str()) );
+	if(!Kb_Hit()){
+		key = Kb_GetKey();
+		if(key != NOKEY){
+			presed = true;
+		}else{
+			presed = false;
+			key = NOKEY;
+		}
+	}
+	
+	switch(key){
+		case KEYCANCEL:
+		return 0;
+		break;
+		default:
+		break;
+	}
+	
 	if(kbd){
 		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
 					if(!Kb_Hit()){
