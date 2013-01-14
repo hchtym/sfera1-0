@@ -171,7 +171,8 @@ while(1){
 	
 	switch(key){
 		case KEYCANCEL:
-		return 0;
+		string strend = "end";
+		return strend;
 		break;
 		default:
 		break;

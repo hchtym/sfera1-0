@@ -470,6 +470,7 @@ int masterControler::selling(){
 		cout << "tu doszedlem " << endl;
 		//char id = device->magCardScan(true);
 		string str8 = device->magCardScan(true);
+		if((str8.compare("end")) == 0) break;
 		//char id = device->magCardScan(true);
 		cout << "to jest id tuz za magCardScan: " << str8 << endl; 
 		//cout << device->magCardScan(false) << endl;
@@ -485,8 +486,10 @@ int masterControler::selling(){
 			if(str.size() > 5 && str.size() < 30){
 				cout << "przed suminput" << endl;
 				sumInput(payment);
+				char type = '0';
 				//cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
 				pointComp(str, payment, point, extra);
+				fileSave(numerser, seller, str, payment, point, extra, type, date);
 			}
 		}
 	}
@@ -498,11 +501,12 @@ int masterControler::selling(){
 	//cout << "Zaplata: " << payment << endl;
 	//cout << "punkty: " << point << endl;
 	//cout << "extra pkt: " << extra << endl;
-	//cout << date << endl;
-	char type = '0';
-	cout << "jestem przes zapisam do pliku rekordu !!" << endl;
-	fileSave(numerser, seller, str, payment, point, extra, type, date);
-	cout << "zapisalem plik !"c<< endl;
+	//cout:w
+	//:out << date << endl;
+	//char type = '0';
+	//cout << "jestem przes zapisam do pliku rekordu !!" << endl;
+	//fileSave(numerser, seller, str, payment, point, extra, type, date);
+	//cout << "zapisalem plik !"c<< endl;
 	return 0;
 }
 
