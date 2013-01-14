@@ -163,7 +163,7 @@ int networkControler::sendTrx(){
 				if(j > ulLen) break;
 			
 				x = fgetc(pFile);
-				//if(x == EOF) break;
+				if(x == EOF) break;
 				temp[j]= x;
 				j++;
 			}
