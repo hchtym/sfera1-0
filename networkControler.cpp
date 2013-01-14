@@ -167,10 +167,8 @@ int networkControler::sendTrx(){
 				temp[j]= x;
 				j++;
 			}
-			compose.str("");
-			compose << temp;
 			msg.clear();
-			msg = compose.str();
+			msg = temp;
 			len = msg.size();
 			//int sended = 0;
 			//while(sended != len){
