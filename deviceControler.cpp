@@ -169,7 +169,7 @@ while(1){
 	}
 	
 	if(kbd){
-		cout << "klawcia jest na chodzie wyswietlam to co wpisalem" << ende;
+		cout << "klawcia jest na chodzie wyswietlam to co wpisalem" << endl;
 		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
 					if(!Kb_Hit()){
 						key = Kb_GetKey();
