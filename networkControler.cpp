@@ -169,6 +169,8 @@ int networkControler::sendTrx(){
 			}
 			msg.clear();
 			msg = temp;
+			cout << msg << endl;
+			cout << temp << endl;
 			len = msg.size();
 			//int sended = 0;
 			//while(sended != len){
