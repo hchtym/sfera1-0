@@ -501,7 +501,7 @@ int masterControler::selling(){
 	//cout << date << endl;
 	//char type = '0';
 	
-	//fileSave(numerser, seller, str, payment, point, extra, type, date);
+	fileSave(numerser, seller, str, payment, point, extra, type, date);
 	return 0;
 }
 
