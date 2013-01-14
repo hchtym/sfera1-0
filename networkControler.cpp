@@ -154,7 +154,7 @@ int networkControler::sendTrx(){
 		compose.str("");
 		for(int i = 0; i < size; i+=720)
 		{
-			fseek(pFile, ulHandle, SEEK_CUR);
+			//fseek(pFile, ulHandle, SEEK_CUR);
 			ulLen = size -1;
 			if(ulLen > 720) ulLen = 720;
 			int j =0;
