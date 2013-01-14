@@ -90,8 +90,11 @@ int networkControler::disconnectAllQuiet(){
 }
 
 int networkControler::sendTransaction(){
+	cout << "jestem w send trx" << endl;
 	connectAllQuiet();
+	cout << "wchodze do sendtrx" << endl;
 	sendTrx();
+	cout << "rozlaczam sie" << endl;
 	disconnectAllQuiet();
 }
 

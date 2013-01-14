@@ -147,6 +147,7 @@ int masterControler::dispMenu(){
 				//tu bedzie spr pkt
 			break;
 			case 4:
+				cout << "sendTranaction" << endl;
 				network->sendTransaction();
 			break;
 			case 5:
