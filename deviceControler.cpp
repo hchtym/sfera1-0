@@ -163,10 +163,13 @@ while(1){
 	if(!Kb_Hit()){
 		key = Kb_GetKey();
 	}
-	if( key == KEYCANCEL) return send;
-
+	if( key == KEYCANCEL){
+		cout << "Wychwycilem KEYCANCEL !!  zwracam return sedn" << endl;
+		return send;
+	}
 	
 	if(kbd){
+		cout << "klawcia jest na chodzie wyswietlam to co wpisalem" << elnd;
 		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
 					if(!Kb_Hit()){
 						key = Kb_GetKey();
