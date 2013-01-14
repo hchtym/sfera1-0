@@ -119,7 +119,7 @@ int networkControler::sendTrx(){
 	string info;
 	int x;
 	compose.str("");
-	compose << "filetx;" << endl;
+	compose << "filetx;;" << endl;
 	msg = compose.str();
 	int len,bytes_sent,bytes_recv;
 	int resend = 0;
