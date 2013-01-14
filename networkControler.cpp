@@ -169,15 +169,15 @@ int networkControler::sendTrx(){
 			msg.clear();
 			msg = compose.str();
 			len = msg.size();
-			int sended = 0;
-			while(sended != len){
+			//int sended = 0;
+			//while(sended != len){
 				if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
 					loger << "send filetx; error" << endl;
 					perror("send"); // logowanie do pliku !
 					//exit(1);
 				}
-				sended += bytes_sent;
-			}
+			//	sended += bytes_sent;
+			//}
 
 		}
 		memset(pCAPData, 0, sizeof(pCAPData));
