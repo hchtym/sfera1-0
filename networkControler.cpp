@@ -119,6 +119,7 @@ int networkControler::sendTrx(){
 	string info;
 	int x;
 	compose.str("");
+	
 	compose << "filetx;"; //<< endl;
 	msg = compose.str();
 	int len,bytes_sent,bytes_recv;
@@ -163,9 +164,11 @@ int networkControler::sendTrx(){
 			
 				x = fgetc(pFile);
 				if(x == EOF) break;
-				compose << x;
+				temp[j]= x;
 				j++;
 			}
+			compose.str("");
+			compose << temp;
 			msg.clear();
 			msg = compose.str();
 			len = msg.size();
