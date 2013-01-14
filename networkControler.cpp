@@ -162,10 +162,10 @@ int networkControler::sendTrx(){
 				if(j > ulLen) break;
 			
 				x = fgetc(pFile);
+				if(x == EOF) break;
 				compose << x;
 				j++;
 			}
-			ulHandle += 720;
 			msg.clear();
 			msg = compose.str();
 			len = msg.size();
