@@ -686,6 +686,7 @@ int masterControler::sumInput(string &payment){
 
 int masterControler::fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char type, string &date){
 	cout << "otwieram trx.txt" << endl;
+	ofstream out("test.dat");
 	ofstream trx("trx.txt", ios_base::app);
 	cout << "otwieram tranz.bin" << endl;
 	ofstream outbin("tranz.bin", ofstream::binary);
@@ -725,7 +726,9 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	tx.type = type;
 	total = compose.str();
 	outbin.write( (char *)&tx, sizeof(struct Transaction));
+	out.write(reinterpret_cast<char *>(&tx), sizeof(ts));
 	test.write( (char *)&tx, sizeof(struct Transaction));
+	
 	cout << sizeof(struct Transaction) << endl;
 	cout << "wciepnujs to szystko do pliku" << endl;
 	trx << total;
