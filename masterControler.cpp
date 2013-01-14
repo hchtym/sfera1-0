@@ -729,7 +729,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	out.write(reinterpret_cast<char *>(&tx), sizeof(tx));
 	test.write( reinterpret_cast<char *>(&tx), sizeof(struct Transaction));
 	
-	cout << sizeof(struct Transaction) << endl;i
+	cout << sizeof(struct Transaction) << endl;
 	cout << "wciepnujs to szystko do pliku" << endl;
 	trx << total;
 	cout << "camykom plik " << endl;
