@@ -139,7 +139,7 @@ int networkControler::sendTrx(){
 	sleep(1);*/
 		cout << "sprawdzam rozmiar" << endl;
 	int size = fileSize();
-	cout << rozmir << " oto rozmiar" << endl;
+	cout << size << " oto rozmiar" << endl;
 	if(size > 0)
 	{
 		//compose.str("");
@@ -170,7 +170,7 @@ int networkControler::sendTrx(){
 			while(x != EOF)
 			{
 				if(j > ulLen) break;
-				cout << j " znaczek numer" << endl;
+				cout << j << " znaczek numer" << endl;
 				x = fgetc(pFile);
 				if(x == EOF) break;
 				temp[j]= x;
