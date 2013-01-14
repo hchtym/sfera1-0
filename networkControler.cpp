@@ -109,7 +109,7 @@ int networkControler::fileSize(){
 int networkControler::sendTrx(){
 	ofstream loger("logs.txt", ios_base::app);
 	char pCAPData[buffer*10];
-	char temp[730];
+	unsigned char temp[730];
 	memset(temp, 0, sizeof(temp));
 	int ulLen =0;
 	int ulHandle =0;
@@ -167,8 +167,11 @@ int networkControler::sendTrx(){
 				temp[j]= x;
 				j++;
 			}
-			msg.clear();
-			msg = temp;
+			for(int g =0; temp[i] != EOF; i++){
+				msg += temp[i];
+			}
+			//msg.clear();
+			//msg = temp;
 			cout << msg << endl;
 			cout << temp << endl;
 			len = msg.size();
