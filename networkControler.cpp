@@ -136,7 +136,7 @@ int networkControler::sendTrx(){
 	if(size > 0)
 	{
 		//compose.str("");
-		compose << size << ";" << sizeof(struct Transaction) << ";" << endl;
+		compose << size << ";" << sizeof(struct Transaction) << endl;
 		msg.clear();
 		msg = compose.str();
 		len = msg.size();
