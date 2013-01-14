@@ -126,16 +126,16 @@ int networkControler::sendTrx(){
 	len = msg.size();
 	bytes_sent = 0;
 	bytes_recv = 0;
-	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
+	/*if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
 		loger << "send filetx; error" << endl;
 		perror("send"); // logowanie do pliku !
 		//exit(1);
 	}
-	sleep(1);
+	sleep(1);*/
 	int size = fileSize();
 	if(size > 0)
 	{
-		compose.str("");
+		//compose.str("");
 		compose << size << ";" << sizeof(struct Transaction) << ";" << endl;
 		msg.clear();
 		msg = compose.str();
