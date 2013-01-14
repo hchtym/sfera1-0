@@ -268,12 +268,12 @@ while(1){
 						if(len == 0){
 						str2.clear();
 					//string ma dlugosc 0 i dupa ! 
-						break;
-					}else{
-					temp = temp.erase(len-1);
-					compo.str("");
-					compo.clear();
-					compo << temp;
+							break;
+						}else{
+							temp = temp.erase(len-1);
+							compo.str("");
+							compo.clear();
+							compo << temp;
 					str2.clear();
 					str2 = temp;
 					}
