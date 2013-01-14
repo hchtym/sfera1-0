@@ -726,7 +726,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	tx.type = type;
 	total = compose.str();
 	outbin.write( (char *)&tx, sizeof(struct Transaction));
-	out.write(reinterpret_cast<char *>(&tx), sizeof(ts));
+	out.write(reinterpret_cast<char *>(&tx), sizeof(tx));
 	test.write( (char *)&tx, sizeof(struct Transaction));
 	
 	cout << sizeof(struct Transaction) << endl;
