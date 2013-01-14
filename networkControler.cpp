@@ -119,7 +119,7 @@ int networkControler::sendTrx(){
 	string info;
 	int x;
 	compose.str("");
-	compose << "filetx;;" << endl;
+	compose << "filetx;"; //<< endl;
 	msg = compose.str();
 	int len,bytes_sent,bytes_recv;
 	int resend = 0;
@@ -139,6 +139,7 @@ int networkControler::sendTrx(){
 		compose << size << ";" << sizeof(struct Transaction) << ";" << endl;
 		msg.clear();
 		msg = compose.str();
+		len = msg.size();
 		// send file to the serwer
 		if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
 			loger << "send filetx; error" << endl;
