@@ -110,6 +110,7 @@ int networkControler::fileSize(){
 }
 
 int networkControler::sendTrx(){
+	cout << "jestem w send trx" << endl;
 	ofstream loger("logs.txt", ios_base::app);
 	char pCAPData[buffer*10];
 	unsigned char temp[730];
@@ -136,7 +137,9 @@ int networkControler::sendTrx(){
 		//exit(1);
 	}
 	sleep(1);*/
+		cout << "sprawdzam rozmiar" << endl;
 	int size = fileSize();
+	cout << rozmir << " oto rozmiar" << endl;
 	if(size > 0)
 	{
 		//compose.str("");
@@ -145,6 +148,7 @@ int networkControler::sendTrx(){
 		msg = compose.str();
 		len = msg.size();
 		// send file to the serwer
+		cout << "wysylam zapytanie" << endl;
 		if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
 			loger << "send filetx; error" << endl;
 			perror("send"); // logowanie do pliku !
@@ -152,29 +156,31 @@ int networkControler::sendTrx(){
 		}
 	sleep(1);
 		// przechodze do przesylania pliku 
+		cout << "otwieram plik" << endl;
 		FILE *pFile = NULL;
 		pFile = fopen("tranzakcje.txt", "r" );
 		compose.str("");
 		for(int i = 0; i < size; i+=720)
 		{
 			//fseek(pFile, ulHandle, SEEK_CUR);
+			cout << i << " iteracja nr" << endl;
 			ulLen = size -1;
 			if(ulLen > 720) ulLen = 720;
 			int j =0;
 			while(x != EOF)
 			{
 				if(j > ulLen) break;
-			
+				cout << j " znaczek numer" << endl;
 				x = fgetc(pFile);
 				if(x == EOF) break;
 				temp[j]= x;
 				j++;
 			}
-			for(int g =0; temp[i] != EOF; i++){
+			/*for(int g =0; temp[i] != EOF; i++){
 				msg += temp[i];
-			}
-			//msg.clear();
-			//msg = temp;
+			}*/
+			msg.clear();
+			msg = temp;
 			cout << msg << endl;
 			cout << temp << endl;
 			len = msg.size();
