@@ -123,7 +123,7 @@ int networkControler::sendTrx(){
 	msg = compose.str();
 	int len,bytes_sent,bytes_recv;
 	int resend = 0;
-	len = 0;
+	len = msg.size();
 	bytes_sent = 0;
 	bytes_recv = 0;
 	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
@@ -131,8 +131,6 @@ int networkControler::sendTrx(){
 		perror("send"); // logowanie do pliku !
 		//exit(1);
 	}
-	
-	len = msg.size();
 
 	int size = fileSize();
 	if(size > 0)
