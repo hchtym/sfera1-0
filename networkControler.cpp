@@ -131,7 +131,7 @@ int networkControler::sendTrx(){
 		perror("send"); // logowanie do pliku !
 		//exit(1);
 	}
-
+	sleep(1);
 	int size = fileSize();
 	if(size > 0)
 	{
