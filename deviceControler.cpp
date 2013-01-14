@@ -131,6 +131,7 @@ string deviceControler::magCardScan(bool kbd){
 	char trck[11];
 	string str2;
 	str2.clear();
+	string send = "end";
 	stringstream compo;
 	stringstream compo1;
 	compo1.str("");
@@ -171,7 +172,6 @@ while(1){
 	
 	switch(key){
 		case KEYCANCEL:
-		string send = "end";
 		return send;
 		break;
 		default:
