@@ -719,8 +719,8 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	//tx.type = typecpy;
 	tx.type = type;
 	total = compose.str();
-	outbin.write( (char *)&tx, sizeof(struct Transaction));
-	test.write( (char *)&tx, sizeof(struct Transaction));
+	outbin.write( (char *)tx, sizeof(struct Transaction));
+	test.write( (char *)tx, sizeof(struct Transaction));
 	cout << sizeof(struct Transaction) << endl;
 	cout << "wciepnujs to szystko do pliku" << endl;
 	trx << total;
