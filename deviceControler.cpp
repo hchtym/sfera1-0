@@ -180,7 +180,7 @@ while(1){
 	
 	if(kbd){
 		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
-					if(!Kb_Hit()){
+					/*if(!Kb_Hit()){
 						key = Kb_GetKey();
 						if(key != NOKEY){
 							presed = true;
@@ -188,7 +188,7 @@ while(1){
 							presed = false;
 							key = NOKEY;
 						}
-					}
+					}*/
 				//cout << "jestem przed switchem klawiszy" << endl;
 				if(presed){
 					switch(key){
@@ -258,7 +258,7 @@ while(1){
 						}
 						break;
 						case KEYCANCEL:
-						return 0;
+						return send;
 						break;
 						case KEYBACKSPACE:
 						temp.clear();
