@@ -727,7 +727,6 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	cout << "camykom plik " << endl;
 	trx.close();
 	outbin.close();
-	loger.clode();
 	cout << "zamknal zech plik ciupia dalej" << endl;
 	
 	return 0;
