@@ -162,25 +162,13 @@ while(1){
 	Lcd_Printxy(0,0,1, const_cast<char *>(title.c_str()) );
 	if(!Kb_Hit()){
 		key = Kb_GetKey();
-		if(key != NOKEY){
-			presed = true;
-		}else{
-			presed = false;
-			key = NOKEY;
-		}
 	}
-	
-	switch(key){
-		case KEYCANCEL:
-		return send;
-		break;
-		default:
-		break;
-	}
+	if( key == KEYCANCEL) return send;
+
 	
 	if(kbd){
 		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
-					/*if(!Kb_Hit()){
+					if(!Kb_Hit()){
 						key = Kb_GetKey();
 						if(key != NOKEY){
 							presed = true;
@@ -188,7 +176,7 @@ while(1){
 							presed = false;
 							key = NOKEY;
 						}
-					}*/
+					}
 				//cout << "jestem przed switchem klawiszy" << endl;
 				if(presed){
 					switch(key){
