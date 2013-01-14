@@ -500,8 +500,9 @@ int masterControler::selling(){
 	//cout << "extra pkt: " << extra << endl;
 	//cout << date << endl;
 	char type = '0';
-	
+	cout << "jestem przes zapisam do pliku rekordu !!" << endl;
 	fileSave(numerser, seller, str, payment, point, extra, type, date);
+	cout << "zapisalem plik !"c<< endl;
 	return 0;
 }
 
