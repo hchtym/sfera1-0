@@ -723,6 +723,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	tx.points = atoi(point.c_str());
 	tx.extra = atoi(extrapoint.c_str());
 	memcpy(&tx.datetime, &acttime, sizeof(tx.datetime));
+	cout << tx.datetime.Year << end; << tx.datetime.Month << endl << tx.datetime.Day << endl << tx.datetime.Hour << endl tx.datetime.Minute << endl << tx.datetime.Second << endl;
 	//memcpy((void *)tx.type, (void *)typecpy, sizeof(tx.type));
 	//tx.type = typecpy;
 	tx.type = type;
