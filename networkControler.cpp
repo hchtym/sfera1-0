@@ -236,7 +236,7 @@ int networkControler::sendTrx(){
 		}	
 		
 		
-		fclose( pFile );
+		//fclose( pFile );
 	}else{
 		//send 0;0;
 		compose.str();
