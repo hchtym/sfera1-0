@@ -714,7 +714,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	acttime.Second = 55;
 	cout << acttime.Second << endl;
 	acttime.GTM = 1;
-	cout << acttime.GTM << end;
+	cout << acttime.GTM << endl;
 	
 	unsigned char factory[20];
 	memset(factory, 0, sizeof(factory));
@@ -733,7 +733,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	tx.extra = atoi(extrapoint.c_str());
 	memcpy(&tx.datetime, &acttime, sizeof(tx.datetime));
 	cout << "Czas z srodka tx" << endl;
-	cout << tx.datetime.Year << endl << tx.datetime.Month << endl << tx.datetime.Day << endl << tx.datetime.Hour << endl tx.datetime.Minute << endl << tx.datetime.Second << endl << tx.datetime.GTM << endl;
+	cout << tx.datetime.Year << endl << tx.datetime.Month << endl << tx.datetime.Day << endl << tx.datetime.Hour << endl << tx.datetime.Minute << endl << tx.datetime.Second << endl << tx.datetime.GTM << endl;
 	//memcpy((void *)tx.type, (void *)typecpy, sizeof(tx.type));
 	//tx.type = typecpy;
 	tx.type = type;
