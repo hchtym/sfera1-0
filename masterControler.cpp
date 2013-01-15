@@ -700,13 +700,22 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	compose.str("");
 	cout << "wypelniam string tym: " << endl << sn << ";" << seler << ";" << client << ";" << pay << ";" << point << ";" << extrapoint << ";" << type << ";" << date << endl;
 	compose << sn << ";" << seler << ";" << client << ";" << pay << ";" << point << ";" << extrapoint << ";" << type << ";" << date << endl;
+	cout << "Cas z struktury acttime" << endl;
 	acttime.Year = 13;
+	cout << acttime.Year << endl;
 	acttime.Month = 01;
+	cout << acttime.Month << endl;
 	acttime.Day = 04;
+	cout << acttime.Day << endl;
 	acttime.Hour = 12;
+	cout << acttime.Hour << endl;
 	acttime.Minute = 05;
+	cout << acttime.Minute << endl;
 	acttime.Second = 55;
+	cout << acttime.Second << endl;
 	acttime.GTM = 1;
+	cout << acttime.GTM << end;
+	
 	unsigned char factory[20];
 	memset(factory, 0, sizeof(factory));
 	strncpy( (char *)factory, sn.c_str(), sizeof(factory) );
@@ -723,7 +732,8 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	tx.points = atoi(point.c_str());
 	tx.extra = atoi(extrapoint.c_str());
 	memcpy(&tx.datetime, &acttime, sizeof(tx.datetime));
-	cout << tx.datetime.Year << end; << tx.datetime.Month << endl << tx.datetime.Day << endl << tx.datetime.Hour << endl tx.datetime.Minute << endl << tx.datetime.Second << endl;
+	cout << "Czas z srodka tx" << endl;
+	cout << tx.datetime.Year << end; << tx.datetime.Month << endl << tx.datetime.Day << endl << tx.datetime.Hour << endl tx.datetime.Minute << endl << tx.datetime.Second << endl << tx.datetime.GTM << endl;
 	//memcpy((void *)tx.type, (void *)typecpy, sizeof(tx.type));
 	//tx.type = typecpy;
 	tx.type = type;
