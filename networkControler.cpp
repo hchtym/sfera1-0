@@ -185,7 +185,7 @@ int networkControler::sendTrx(){
 			//cout << temp << endl;
 			//len = msg.size();
 			//int sended = 0;
-			len = strlen(temp)
+				len = strlen(temp);
 			//while(sended != len){
 				if((bytes_sent = send(sockfd, temp, len, 0)) == -1){
 					loger << "send filetx; error" << endl;
