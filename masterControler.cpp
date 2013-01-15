@@ -706,6 +706,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	acttime.Hour = 12;
 	acttime.Minute = 05;
 	acttime.Second = 55;
+	acctime.GTM = 1;
 	unsigned char factory[20];
 	memset(factory, 0, sizeof(factory));
 	strncpy( (char *)factory, sn.c_str(), sizeof(factory) );

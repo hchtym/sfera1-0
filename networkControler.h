@@ -32,6 +32,7 @@ struct Date {
 	unsigned short Day;
 	unsigned short Month;
 	unsigned short Year;
+	unsigned short GTM;
 		//unsigned short Year;
 		//unsigned short Month;
 		//unsigned short Day;
