@@ -691,7 +691,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	ofstream trx("trx.txt", ios_base::app);
 	cout << "otwieram tranz.bin" << endl;
 	ofstream outbin("tranz.bin", ofstream::binary);
-	ofstream test("tranzakcje.txt", ios_base::binary);
+	ofstream test("tranzakcje.txt", ios_base::binaryi|ios::app);
 	cout << "tworze string stream compose)" << endl;
 	stringstream compose;
 	cout << "tworze stringacza" << endl;
