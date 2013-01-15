@@ -113,7 +113,7 @@ int networkControler::sendTrx(){
 	cout << "jestem w send trx" << endl;
 	ofstream loger("logs.txt", ios_base::app);
 	char pCAPData[buffer*10];
-	unsigned char temp[730];
+	char temp[730];
 	memset(temp, 0, sizeof(temp));
 	int ulLen =0;
 	int ulHandle =0;
