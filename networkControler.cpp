@@ -137,7 +137,7 @@ int networkControler::sendTrx(){
 		//exit(1);
 	}
 	sleep(1);*/
-		cout << "sprawdzam rozmiar" << endl;
+	cout << "sprawdzam rozmiar" << endl;
 	int size = fileSize();
 	cout << size << " oto rozmiar" << endl;
 	if(size > 0)
@@ -182,10 +182,11 @@ int networkControler::sendTrx(){
 			//msg.clear();
 			//msg = temp;
 			//cout << msg << endl;
-			//cout << temp << endl;
+			cout << temp << endl;
 			//len = msg.size();
 			//int sended = 0;
-				len = strlen(temp);
+			len = strlen(temp);
+			cout << "długość stringu" << len << endl;
 			//while(sended != len){
 				if((bytes_sent = send(sockfd, temp, len, 0)) == -1){
 					loger << "send filetx; error" << endl;
