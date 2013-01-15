@@ -60,12 +60,18 @@ class masterControler{
 	};
 	
 	struct Date {
-			long Year;
-			long Month;
-			long Day;
-			long Hour;
-			long Minute;
-			long Second;
+			unsigned short Second;
+			unsigned short Minute;
+			unsigned short Hour;
+			unsigned short Day;
+			unsigned short Month;
+			unsigned short Year;
+			//unsigned short Year;
+			//unsigned short Month;
+			//unsigned short Day;
+			//unsigned short Hour;
+			//unsigned short Minute;
+			//unsigned short Second;
 	};
 	
 	Date acttime;

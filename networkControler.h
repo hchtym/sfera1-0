@@ -26,23 +26,29 @@ extern "C"{
 using namespace std;
 
 struct Date {
-		long Year;
-		long Month;
-		long Day;
-		long Hour;
-		long Minute;
-		long Second;
+	unsigned short Second;
+	unsigned short Minute;
+	unsigned short Hour;
+	unsigned short Day;
+	unsigned short Month;
+	unsigned short Year;
+		//unsigned short Year;
+		//unsigned short Month;
+		//unsigned short Day;
+		//unsigned short Hour;
+		//unsigned short Minute;
+		//unsigned short Second;
 };
 
 struct Transaction {
-    BYTE factorySN[20]; //15 znakow i 0
-    BYTE sellerLogin[6];  // 5 znakow i 0
-    BYTE cid[25];
+    unsigned char factorySN[20]; //15 znakow i 0
+    unsigned char sellerLogin[6];  // 5 znakow i 0
+    unsigned char cid[25];
     unsigned long amount; // 4
     long points; // 4
     unsigned long extra; // 4
     Date datetime; // 7
-    BYTE type; // 0 - BUY, 1 - RETURN
+    unsigned char type; // 0 - BUY, 1 - RETURN
 };
 
 
