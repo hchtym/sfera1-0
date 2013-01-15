@@ -160,7 +160,7 @@ int networkControler::sendTrx(){
 	for(int i = 0; i <size; i+=720){
 		if(ulLen > 720) ulLen = 720;
 		while(!file.eof()){
-			file.read(temp, ulLen)
+			file.read(temp, ulLen);
 		}
 
 
@@ -202,17 +202,17 @@ int networkControler::sendTrx(){
 			//msg.clear();
 			//msg = temp;
 			//cout << msg << endl;
-			cout << temp << endl;
+			//cout << temp << endl;
 			//len = msg.size();
 			//int sended = 0;
-			len = strlen(temp);
-			cout << "długość stringu" << len << endl;
+		//	len = strlen(temp);
+			//cout << "długość stringu" << len << endl;
 			//while(sended != len){
-				if((bytes_sent = send(sockfd, temp, len, 0)) == -1){
-					loger << "send filetx; error" << endl;
-					perror("send"); // logowanie do pliku !
+			//	if((bytes_sent = send(sockfd, temp, len, 0)) == -1){
+			//		loger << "send filetx; error" << endl;
+			//		perror("send"); // logowanie do pliku !
 					//exit(1);
-				}
+			//	}
 			//	sended += bytes_sent;
 			//}
 
