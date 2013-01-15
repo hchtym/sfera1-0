@@ -179,14 +179,15 @@ int networkControler::sendTrx(){
 			/*for(int g =0; temp[i] != EOF; i++){
 				msg += temp[i];
 			}*/
-			msg.clear();
-			msg = temp;
-			cout << msg << endl;
-			cout << temp << endl;
-			len = msg.size();
+			//msg.clear();
+			//msg = temp;
+			//cout << msg << endl;
+			//cout << temp << endl;
+			//len = msg.size();
 			//int sended = 0;
+			len = strlen(temp)
 			//while(sended != len){
-				if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
+				if((bytes_sent = send(sockfd, temp, len, 0)) == -1){
 					loger << "send filetx; error" << endl;
 					perror("send"); // logowanie do pliku !
 					//exit(1);
