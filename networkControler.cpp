@@ -132,7 +132,7 @@ int networkControler::sendTrx(){
 	memset(pCAPData, 0, sizeof(pCAPData));
 	stringstream compose; 
 	string msg;
-	int send;
+	int sent;
 	string info;
 	compose.str("");
 	cout << "tworze stream" << endl;
@@ -167,14 +167,14 @@ int networkControler::sendTrx(){
 	ifstream file("tranzakcje.txt", ios::in|ios::binary);
 	while(x < size)
 	{
-		if(send < size)
+		if(sent < size)
 		{
 			file.read(temp, ulLen);
-			send += ulLen;
+			sent += ulLen;
 		}
 		else
 		{
-			ulLen = size - send;
+			ulLen = size - sent;
 			file.read(temp,ulLen);
 		}
 	len = ulLen;
