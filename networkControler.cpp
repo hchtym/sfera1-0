@@ -131,8 +131,8 @@ int networkControler::sendTrx(){
 	memset(pCAPData, 0, sizeof(pCAPData));
 	stringstream compose; 
 	string msg;
+	int send;
 	string info;
-	int x;
 	compose.str("");
 	cout << "tworze stream" << endl;
 	compose << "filetx;"; //<< endl;
@@ -162,11 +162,24 @@ int networkControler::sendTrx(){
 			//exit(1);
 		}
 	sleep(1);
-	ulLen = size;
+	ulLen = 720;
 	ifstream file("tranzakcje.txt", ios::in|ios::binary);
-	file.read(temp, ulLen);
+	while(x < size)
+	}
+	if(send < size)
+	{
+		file.read(temp, ulLen);
+		send += ulLen;
+	}
+	else
+	{
+		ulLen = size - send;
+		file.read(temp,ulLen);
+	}
+	len = ulLen;
 
-		len = 720;
+
+		//len = 720;
 		cout << "długość stringu" << len << endl;
 		//while(sended != len){
 			if((bytes_sent = send(sockfd, temp, len, 0)) == -1)
@@ -175,8 +188,11 @@ int networkControler::sendTrx(){
 				perror("send"); // logowanie do pliku !
 				//exit(1);
 			}
-	
+			x += bytes_sent;
 			memset(temp, 0, sizeof(temp));
+			if(x == size) break;
+	}
+
 	//}
 		// przechodze do przesylania pliku 
 		/*cout << "otwieram plik" << endl;
