@@ -150,7 +150,8 @@ int networkControler::sendTrx(){
 		len = msg.size();
 		// send file to the serwer
 		cout << "wysylam zapytanie" << endl;
-		if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
+		if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
+		{
 			loger << "send filetx; error" << endl;
 			perror("send"); // logowanie do pliku !
 			//exit(1);
@@ -163,14 +164,15 @@ int networkControler::sendTrx(){
 		len = 720;
 		cout << "długość stringu" << len << endl;
 		//while(sended != len){
-			if((bytes_sent = send(sockfd, temp, len, 0)) == -1){
+			if((bytes_sent = send(sockfd, temp, len, 0)) == -1)
+			{
 				loger << "send filetx; error" << endl;
 				perror("send"); // logowanie do pliku !
 				//exit(1);
 			}
 	
 			memset(temp, 0, sizeof(temp));
-	}
+	//}
 		// przechodze do przesylania pliku 
 		/*cout << "otwieram plik" << endl;
 		FILE *pFile = NULL;
@@ -214,7 +216,8 @@ int networkControler::sendTrx(){
 
 		//}
 		memset(pCAPData, 0, sizeof(pCAPData));
-		if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1){
+		if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1)
+		{
 			loger << "recive error" << endl;
 			perror("recive"); // logowanie do pliku !!
 			//exit(1);
@@ -243,13 +246,15 @@ int networkControler::sendTrx(){
 		msg = compose.str();
 		len = msg.size();
 repete:		
-		if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
+		if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
+		{
 			loger << "send filetx; error" << endl;
 			perror("send"); // logowanie do pliku !
 			//exit(1);
 		}
 		// czekamy na ok
-		if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1){
+		if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1)
+		{
 			loger << "recive error" << endl;
 			perror("recive"); // logowanie do pliku !!
 			//exit(1);
@@ -271,8 +276,7 @@ repete:
 			}
 			resend++;
 			goto repete;
-		}
-		
+		}	
 	}
 
 
