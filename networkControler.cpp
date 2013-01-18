@@ -113,6 +113,7 @@ int networkControler::sendTrx(){
 	cout << "jestem w send trx" << endl;
 	ofstream loger("logs.txt", ios_base::app);
 	char pCAPData[buffer*10];
+	char bufer[50000000];
 	char temp[730];
 	memset(temp, 0, sizeof(temp));
 	int ulLen =0;
@@ -157,12 +158,7 @@ int networkControler::sendTrx(){
 	sleep(1);
 	ulLen = size;
 	ifstream file("tranzakcje.txt", ios::in|ios::binary);
-	for(int i = 0; i <size; i+=720){
-		if(ulLen > 720) ulLen = 720;
-		while(!file.eof()){
-			file.read(temp, ulLen);
-		}
-
+	file.read(temp, ulLen);
 
 		len = 720;
 		cout << "długość stringu" << len << endl;
