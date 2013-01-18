@@ -116,9 +116,9 @@ int networkControler::fileSize(){
 
 int networkControler::sendTrx(){
 	cout << "jestem w send trx" << endl;
-	ofstream loger;
+	//ofstream loger;
 	cout << "otworzylem file stram loger" << endl;
-	loger.open("logs.txt", ios_base::app);
+	//loger.open("logs.txt", ios_base::app);
 	cout << "otwarlem plik i jest git" << endl;
 	char pCAPData[buffer*10];
 	char bufer[50000000];
@@ -156,7 +156,7 @@ int networkControler::sendTrx(){
 		cout << "wysylam zapytanie" << endl;
 		if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
 		{
-			loger << "send filetx; error" << endl;
+			//loger << "send filetx; error" << endl;
 			perror("send"); // logowanie do pliku !
 			//exit(1);
 		}
@@ -170,7 +170,7 @@ int networkControler::sendTrx(){
 		//while(sended != len){
 			if((bytes_sent = send(sockfd, temp, len, 0)) == -1)
 			{
-				loger << "send filetx; error" << endl;
+				//loger << "send filetx; error" << endl;
 				perror("send"); // logowanie do pliku !
 				//exit(1);
 			}
@@ -222,7 +222,7 @@ int networkControler::sendTrx(){
 		memset(pCAPData, 0, sizeof(pCAPData));
 		if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1)
 		{
-			loger << "recive error" << endl;
+			//loger << "recive error" << endl;
 			perror("recive"); // logowanie do pliku !!
 			//exit(1);
 		}
@@ -231,11 +231,11 @@ int networkControler::sendTrx(){
 		info = compose.str();
 		if((info.compare("ok")) == 0)
 		{
-			loger << "serwer recived msg properly" << endl;
+			//loger << "serwer recived msg properly" << endl;
 		}
 		else
 		{
-			loger << "serwer didn't recive message" << endl;
+			//loger << "serwer didn't recive message" << endl;
 		}	
 		
 		
@@ -252,14 +252,14 @@ int networkControler::sendTrx(){
 repete:		
 		if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
 		{
-			loger << "send filetx; error" << endl;
+			//loger << "send filetx; error" << endl;
 			perror("send"); // logowanie do pliku !
 			//exit(1);
 		}
 		// czekamy na ok
 		if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1)
 		{
-			loger << "recive error" << endl;
+			//loger << "recive error" << endl;
 			perror("recive"); // logowanie do pliku !!
 			//exit(1);
 		}
@@ -268,14 +268,14 @@ repete:
 		info = compose.str();
 		if((info.compare("ok")) == 0)
 		{
-			loger << "serwer recived msg properly" << endl;
+			//loger << "serwer recived msg properly" << endl;
 		}
 		else
 		{
-			loger << "serwer didn't recive message" << endl;
+			//loger << "serwer didn't recive message" << endl;
 			if(resend > 3)
 			{
-				loger.close(); 
+				//loger.close(); 
 				return 0;
 			}
 			resend++;
@@ -284,7 +284,7 @@ repete:
 	}
 
 
-	loger.close();
+	//loger.close();
 	return 0;
 }
 
