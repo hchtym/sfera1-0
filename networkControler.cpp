@@ -89,7 +89,7 @@ int networkControler::disconnectAllQuiet(){
 	// zamykam plik konfiguracyjny !
 	// zamykam socket !
 	close(sockfd);
-	
+	loger.close();
 	return 0;
 }
 
