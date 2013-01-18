@@ -74,6 +74,7 @@ int networkControler::connectAllQuiet(){
 	loger << "otworzylem polaczenie sieciowe !!" << endl;
 	cout << "polaczylem sie !" << endl;
 	loger.close();
+	return 0;
 }
 
 int networkControler::disconnectAllQuiet(){
@@ -89,7 +90,7 @@ int networkControler::disconnectAllQuiet(){
 	// zamykam socket !
 	close(sockfd);
 	
-	
+	return 0;
 }
 
 int networkControler::sendTransaction(){
@@ -99,6 +100,7 @@ int networkControler::sendTransaction(){
 	sendTrx();
 	cout << "rozlaczam sie" << endl;
 	disconnectAllQuiet();
+	cout << "Rozlaczem sie !" << endl;
 }
 
 int networkControler::fileSize(){

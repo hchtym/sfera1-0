@@ -214,7 +214,7 @@ drawMenu:
 		cout << "wchodze do while odpowiedzialnego za wykrywanie guzikow timeout i inne" << endl;
 		Kb_Flush();
 	    while(1){
-			DelayMs(50);
+			/*DelayMs(50);
 			ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
 			if (ret&0x80){
 				cout << "wykrylem swipe w menu" << endl;
@@ -234,7 +234,7 @@ drawMenu:
 					break;
 				}
 
-			}
+			}*/
 
 	    	if(!Kb_Hit()){
 	    		key = Kb_GetKey();
