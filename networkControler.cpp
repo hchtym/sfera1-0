@@ -112,6 +112,7 @@ int networkControler::fileSize(){
 int networkControler::sendTrx(){
 	cout << "jestem w send trx" << endl;
 	ofstream loger("logs.txt", ios_base::app);
+	cout << "otwarlem plik i jest git" << endl;
 	char pCAPData[buffer*10];
 	char bufer[50000000];
 	char temp[730];
@@ -124,20 +125,15 @@ int networkControler::sendTrx(){
 	string info;
 	int x;
 	compose.str("");
-	
+	cout << "tworze stream" << endl;
 	compose << "filetx;"; //<< endl;
 	msg = compose.str();
 	int len,bytes_sent,bytes_recv;
 	int resend = 0;
-	len = msg.size();
+	//len = msg.size();
 	bytes_sent = 0;
 	bytes_recv = 0;
-	/*if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
-		loger << "send filetx; error" << endl;
-		perror("send"); // logowanie do pliku !
-		//exit(1);
-	}
-	sleep(1);*/
+
 	cout << "sprawdzam rozmiar" << endl;
 	int size = fileSize();
 	cout << size << " oto rozmiar" << endl;
