@@ -26,13 +26,13 @@ extern "C"{
 using namespace std;
 
 struct Date {
-	unsigned short Second;
-	unsigned short Minute;
-	unsigned short Hour;
-	unsigned short Day;
-	unsigned short Month;
-	unsigned short Year;
-	unsigned short GTM;
+	short Second;
+	short Minute;
+	short Hour;
+	short Day;
+	short Month;
+	short Year;
+	short GTM;
 		//unsigned short Year;
 		//unsigned short Month;
 		//unsigned short Day;
