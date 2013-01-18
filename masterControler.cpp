@@ -213,7 +213,6 @@ drawMenu:
 		cout << "wchodze do while odpowiedzialnego za wykrywanie guzikow timeout i inne" << endl;
 		Kb_Flush();
 	    while(1){
-		
 			DelayMs(50);
 			ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
 			if (ret&0x80){
@@ -253,7 +252,7 @@ drawMenu:
 		switch(key){
 			case NOKEY:
 		 //   	creenBlank();
-				goto drawMenu;
+		//		goto drawMenu;
 		    break;
 		    case KEYCANCEL:
 		    case KEYBACKSPACE:
@@ -745,7 +744,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	cout << sizeof(struct Transaction) << endl;
 	cout << "wciepnujs to szystko do pliku" << endl;
 	trx << total;
-	cout << "camykom plik " << endl;
+	cout << "zamykom plik " << endl;
 	trx.close();
 	outbin.close();
 	cout << "zamknal zech plik ciupia dalej" << endl;

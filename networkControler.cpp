@@ -23,6 +23,7 @@ networkControler::~networkControler(){
 }
 
 int networkControler::connectAllQuiet(){
+	cout << "podlaczam sie gdzenie do serwera" << endl;
 	ofstream loger("logs.txt", ios_base::app);
 	loger << "start ethCon" << endl;
 	// konfiguracja socketa !! 
@@ -31,7 +32,7 @@ int networkControler::connectAllQuiet(){
 	memset(pCAPData, 0, sizeof(pCAPData));
 	memset(download, 0, sizeof(download));
 	struct sockaddr_in dest_addr;
-	
+	cout << "tworze socket" << endl;
 	loger << "tworze socket" << endl;
 	if((sockfd = socket (AF_INET, SOCK_STREAM, 0)) == -1){
 		loger << "socket erros" << endl;
@@ -57,11 +58,12 @@ int networkControler::connectAllQuiet(){
 		//exit(1);
 	}
 	loger << "otwarlem socket i polaczylem sie" << endl;
-	
+	cout << "otwarlem socket i sie polaczylem " << endl;
 	int len,bytes_sent,bytes_recv;
 	stringstream compose;
 	compose << "nr;" << serialN << endl; 
 	string msg = compose.str();
+	cout << "wysylam numer seryjny !" << endl;
 	len = msg.size();
 	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
 		loger << "send serial error" << endl;
@@ -70,6 +72,7 @@ int networkControler::connectAllQuiet(){
 	}
 	sleep(1);
 	loger << "otworzylem polaczenie sieciowe !!" << endl;
+	cout << "polaczylem sie !" << endl;
 	loger.close();
 }
 
