@@ -127,6 +127,7 @@ int networkControler::sendTrx(){
 	char temp[730];
 	memset(temp, 0, sizeof(temp));
 	int ulLen =0;
+	int x =0;
 	int ulHandle =0;
 	memset(pCAPData, 0, sizeof(pCAPData));
 	stringstream compose; 
@@ -165,35 +166,35 @@ int networkControler::sendTrx(){
 	ulLen = 720;
 	ifstream file("tranzakcje.txt", ios::in|ios::binary);
 	while(x < size)
-	}
-	if(send < size)
 	{
-		file.read(temp, ulLen);
-		send += ulLen;
-	}
-	else
-	{
-		ulLen = size - send;
-		file.read(temp,ulLen);
-	}
+		if(send < size)
+		{
+			file.read(temp, ulLen);
+			send += ulLen;
+		}
+		else
+		{
+			ulLen = size - send;
+			file.read(temp,ulLen);
+		}
 	len = ulLen;
 
 
 		//len = 720;
-		cout << "długość stringu" << len << endl;
-		//while(sended != len){
-			if((bytes_sent = send(sockfd, temp, len, 0)) == -1)
-			{
+	cout << "długość stringu" << len << endl;
+
+		if((bytes_sent = send(sockfd, temp, len, 0)) == -1)
+		{
 				//loger << "send filetx; error" << endl;
-				perror("send"); // logowanie do pliku !
+			perror("send"); // logowanie do pliku !
 				//exit(1);
-			}
-			x += bytes_sent;
-			memset(temp, 0, sizeof(temp));
-			if(x == size) break;
+		}
+		x += bytes_sent;
+		memset(temp, 0, sizeof(temp));
+		if(x == size) break;
 	}
 
-	//}
+	
 		// przechodze do przesylania pliku 
 		/*cout << "otwieram plik" << endl;
 		FILE *pFile = NULL;
