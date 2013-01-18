@@ -26,19 +26,20 @@ extern "C"{
 using namespace std;
 
 struct Date {
-	short Second;
-	short Minute;
-	short Hour;
-	short Day;
-	short Month;
-	short Year;
-	short GTM;
-		//unsigned short Year;
-		//unsigned short Month;
-		//unsigned short Day;
-		//unsigned short Hour;
-		//unsigned short Minute;
-		//unsigned short Second;
+	short int Second;
+	short int Minute;
+	short int Hour;
+	short int Day;
+	short int Month;
+	short int Year;
+	short int GTM;
+		//short Year;
+		//short Month;
+		//short Day;
+		//short Hour;
+		//short Minute;
+		//short Second;
+		//short GTM;
 };
 
 struct Transaction {
