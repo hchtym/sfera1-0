@@ -114,7 +114,8 @@ int networkControler::fileSize(){
 
 int networkControler::sendTrx(){
 	cout << "jestem w send trx" << endl;
-	ofstream loger("logs.txt", ios_base::app);
+	ofstream loger;
+	loger.open("logs.txt", ios_base::app);
 	cout << "otwarlem plik i jest git" << endl;
 	char pCAPData[buffer*10];
 	char bufer[50000000];
