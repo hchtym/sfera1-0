@@ -149,6 +149,7 @@ int masterControler::dispMenu(){
 			case 4:
 				cout << "sendTranaction" << endl;
 				network->sendTransaction();
+				cout << "jestem po send transaction" << endl;
 			break;
 			case 5:
 				// tu bedzie serwis !!
