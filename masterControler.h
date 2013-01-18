@@ -49,24 +49,24 @@ class masterControler{
 	
 	
 	struct Transaction {
-	    BYTE factorySN[20]; //15 znakow i 0
-	    BYTE sellerLogin[6];  // 5 znakow i 0
-	    BYTE cid[25];
+	    unsigned char factorySN[20]; //15 znakow i 0
+	    unsigned char sellerLogin[6];  // 5 znakow i 0
+	    unsigned char cid[25];
 	    unsigned long amount; // 4
 	    long points; // 4
 	    unsigned long extra; // 4
 	    Date datetime; // 7
-	    BYTE type; // 0 - BUY, 1 - RETURN
+	    unsigned char type; // 0 - BUY, 1 - RETURN
 	};
 	
 	struct Date {
-			unsigned short Second;
-			unsigned short Minute;
-			unsigned short Hour;
-			unsigned short Day;
-			unsigned short Month;
-			unsigned short Year;
-			unsigned short GTM;
+			short Second;
+			short Minute;
+			short Hour;
+			short Day;
+			short Month;
+			short Year;
+			short GTM;
 			//unsigned short Year;
 			//unsigned short Month;
 			//unsigned short Day;
