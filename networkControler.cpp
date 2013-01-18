@@ -106,11 +106,12 @@ int networkControler::sendTransaction(){
 int networkControler::fileSize(){
 	int size;
 	FILE *pFile = NULL;
-	pFile = fopen("trx.txt", "rb" );
+	pFile = fopen("tranzakcje.txt", "rb" );
 	fseek( pFile, 0, SEEK_END );
 	size = ftell( pFile );
 	fclose( pFile );
 	
+
 	return size;
 }
 
