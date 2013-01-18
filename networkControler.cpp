@@ -233,7 +233,9 @@ int networkControler::sendTrx(){
 		
 		
 		//fclose( pFile );
-	}else{
+	}
+	else
+	{
 		//send 0;0;
 		compose.str();
 		compose << "0;0;" << endl;
@@ -273,7 +275,7 @@ repete:
 		
 	}
 	
-	loger.close();
+
 	return 0;
 }
 
