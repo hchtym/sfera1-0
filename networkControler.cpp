@@ -276,7 +276,7 @@ repete:
 	}
 
 
-
+	loger.close();
 	return 0;
 }
 
