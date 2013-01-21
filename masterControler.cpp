@@ -755,7 +755,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 }
 
 void masterControler::masterBackground(){
-	wihle(1)
+	while(1)
 	{
 		sleep(3000);
 		// sprawdzenie czy flaga zostala ustawiona ! i wyalsnie tranzakcji po wykonaniu wyslij tranzakcje w menu
