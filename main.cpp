@@ -7,8 +7,8 @@
 using namespace std;
 
 int main(){
-	void *child_stack;
-	child_stack = malloc(16384);
+	void **child_stack;
+	child_stack = (void **) malloc(16384);
 	SystemInit();
 	Prn_Init();
 //	Wls_Init();
