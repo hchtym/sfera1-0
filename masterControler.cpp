@@ -22,6 +22,7 @@ masterControler::masterControler(){
 	
 	seller.clear();
 	loginFlag = false;
+	senttrx = false;
 	//vheiu
 };
 
@@ -752,6 +753,23 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	
 	return 0;
 }
+
+void masterControler::masterBackground(){
+	wihle(1)
+	{
+		sleep(3000);
+		// sprawdzenie czy flaga zostala ustawiona ! i wyalsnie tranzakcji po wykonaniu wyslij tranzakcje w menu
+		if(senttrx == true)
+		{
+			network->sendTransaction();
+			senttrx = false;
+		}
+		// tu bedzie osluga okna czasoego !!
+		
+		
+	}
+}
+
 
 int masterControler::pointComp(string &id, string &payment, string &pnt, string &ext){
 	cout << "jestem w pointComp, oto id karty !: " << id << endl;

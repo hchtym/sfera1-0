@@ -1,3 +1,4 @@
+#include <sched.h>
 #include "deviceControler.h"
 #include "masterControler.h"
 #include "networkControler.h"
@@ -6,6 +7,8 @@
 using namespace std;
 
 int main(){
+	void **child_stack;
+	child_stack = malloc(16384);
 	SystemInit();
 	Prn_Init();
 //	Wls_Init();
@@ -24,6 +27,9 @@ int main(){
 //	device->atc24Read();
 //	device->sleRead();
 //	device->magCardScan();
+	
+	clone(masterControler->masterBackground(), child_stack, CLONE_VM, NULL);
+	
 	while(1){
 			master->dispMenu();
 

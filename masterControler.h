@@ -31,6 +31,7 @@ class masterControler{
 	void recipePrint(bool recipeCopy);
 	void menuOnOff();
 	void menuShop();
+	bool senttrx;
 	string sum; // suma zakupow
 	string points; // suma pkt za zakupy up 
 	configControler* config;
@@ -91,6 +92,7 @@ public:
 	int dispMenu();
 	int loginScr();
 	int selling();
+	void masterBackground();
 	
 };
 
