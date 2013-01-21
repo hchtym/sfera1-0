@@ -1,4 +1,6 @@
 #include <sched.h>
+#include <sys/types.h>
+#include <unistd.h>
 #include "deviceControler.h"
 #include "masterControler.h"
 #include "networkControler.h"
@@ -7,8 +9,6 @@
 using namespace std;
 
 int main(){
-	void **child_stack;
-	child_stack = (void **) malloc(16384);
 	SystemInit();
 	Prn_Init();
 //	Wls_Init();
@@ -28,12 +28,22 @@ int main(){
 //	device->sleRead();
 //	device->magCardScan();
 	
-	clone(master::masterBackground(), child_stack, CLONE_VM, NULL);
+//	clone(master->masterBackground(), child_stack, CLONE_VM, NULL);
 	
-	while(1){
-			master->dispMenu();
-
-		
+	pid_t pID = fork();
+	if(pID == 0)
+	{
+		master->masterBackground();
+	}
+	else if (pID < 0)
+	{
+		cout << "failed to rok !" << endl;
+	}
+	else
+	{
+		while(1){
+				master->dispMenu();	
+		}
 	}
 	
 	return 0;
