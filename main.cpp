@@ -7,7 +7,7 @@
 using namespace std;
 
 int main(){
-	void **child_stack;
+	void *child_stack;
 	child_stack = malloc(16384);
 	SystemInit();
 	Prn_Init();
