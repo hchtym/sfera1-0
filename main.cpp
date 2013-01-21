@@ -28,7 +28,7 @@ int main(){
 //	device->sleRead();
 //	device->magCardScan();
 	
-	clone(masterControler->masterBackground(), child_stack, CLONE_VM, NULL);
+	clone(masterControler.masterBackground(), child_stack, CLONE_VM, NULL);
 	
 	while(1){
 			master->dispMenu();
