@@ -24,44 +24,7 @@ int main(){
 	Lcd_SetFont(1,0,0);
 //	configControler* config = new configControler();
 	//master->selling();
-	//char c;
-	struct Transaction {
-        unsigned char factorySN[20]; //15 znakow i 0
-        unsigned char sellerLogin[6];  // 5 znakow i 0
-        unsigned char cid[25];
-        unsigned long amount; // 4
-        long points; // 4
-        unsigned long extra; // 4
-        Date datetime; // 7
-        unsigned char type; // 0 - BUY, 1 - RETURN
-    };
-                                                                                                                                                                                   
-    struct Date {
-        unsigned char Second;
-        unsigned char Minute;
-        unsigned char Hour;
-        unsigned char Day;
-        unsigned char Month;
-        unsigned char Year;
-        unsigned char GTM;
-    };
-
-    cout << "rozmiar struct Date: " << sizeof(struct Date) << endl;
-    cout << "rozmiar strucn transaction: " << sizeof(struct Transaction) << endl;
-
-    cout << "rozmiar int: " << sizeof(int) << endl;
-    cout << "rozmiar long: " << sizeof(long) << endl;
-    cout << "rozmiar long int: " << sizeof(long int) << endl;
-	cout << "rozmiar unsigned long: " << sizeof(unsigned long) << endl;
-	cout << "rozmiar unsigned long int" << sizeof(unsigned long int) << endl;
-    cout << "rozmiar short: " << sizeof(short) << endl;
-    cout << "rozmiar short int: " << sizeof(short int) << endl;
-	cout << "roamiar unsigned short int: " << sizeof(unsigned short int) << endl;
-	cout << "rozmiar unsigned int: " << sizeof(unsigned int) << endl;
-	cout << "rozmiar unsigned char: " << sizeof(unsigned char) << endl;
-	
-	
-	
+	//char c;	
 	int shmid;
 	key_t klucz;
 	char *shm, *s;
@@ -75,7 +38,7 @@ int main(){
 	//pid_t childpid;
 //	clone(master->masterBackground(), child_stack, CLONE_VM, NULL);
 	char bufer[6];
-	masterControler* master = new masterControler(*&shm);
+	masterControler* master = new masterControler(&data);
 	pid_t pID = fork();
 	if(pID == 0)
 	{
