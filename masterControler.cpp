@@ -160,7 +160,8 @@ int masterControler::dispMenu(){
 			break;
 			case 4:
 				cout << "sendTranaction" << endl;
-				network->sendTransaction();
+				setShare();
+				//network->sendTransaction();
 				cout << "jestem po send transaction" << endl;
 			break;
 			case 5:
