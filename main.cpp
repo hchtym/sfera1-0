@@ -45,21 +45,24 @@ int main(){
 		sleep(5);
 		cout << "Jestem w procesie dziecku" << endl;
 		klucz = 5678;
-		
+		cout << "klucz: " << klucz < endl;
 	if ((shmid = shmget(klucz, SHMSZ, 0666)) < 0) 
 	{
 	        perror("shmget");
+			cout << "errr w shmid !!" << endl;
 	        exit(1);
 	}
-	
+	cout << "jestem za shmid czy cus" << endl;
 	if ((data = shmat(shmid, NULL, 0)) == (char *) -1) 
 	{
+		cout << "error w shmat !" << endl;
 	        perror("shmat");
 	        exit(1);
 	}
-
+	cout << "Jestem przed while za shmat..." << endl;
 		while(1)
 		{
+			cout << "sleep na 3min" << endl;
 			sleep(3000);
 			cout << "Sprawdzam " << endl;
 				memset(bufer, 0, sizeof(bufer));
@@ -72,7 +75,7 @@ int main(){
 				i++;
 			}  
 				string msg = bufer;
-
+				cout << "tak wyglada msg: " << msg << endl;
 				master->masterBackground(msg);
 			
 		}
