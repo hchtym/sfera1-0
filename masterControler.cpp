@@ -32,9 +32,9 @@ void masterControler::setShare(){
 	string msg = "true";
 	for (int i =0; i <= msg.size(); i++)
 	{
-	        *share++ = msg[i];
+	        **share++ = msg[i];
 	}
-	*share = NULL;
+	**share = NULL;
 }
 
 void masterControler::menuShop(){
