@@ -63,7 +63,7 @@ int main(){
 		while(1)
 		{
 			cout << "sleep na 3min" << endl;
-			sleep(3000);
+			sleep(180);
 			cout << "Sprawdzam " << endl;
 				memset(bufer, 0, sizeof(bufer));
 				int i =0;
