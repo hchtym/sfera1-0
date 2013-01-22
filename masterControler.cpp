@@ -11,7 +11,7 @@ using namespace std;
 
 masterControler::masterControler(void *s){
 	cout << "adress zmiennej s: " << &s << endl;
-	share = *s;
+	share = s;
 	cout << "adres zmiennej share: " << &share << endl;
 	config = new configControler();
 	device = new deviceControler();
