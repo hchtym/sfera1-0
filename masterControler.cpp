@@ -9,8 +9,8 @@ using namespace std;
 
 
 
-masterControler::masterControler(char s){
-	share = s;
+masterControler::masterControler(char *s){
+	share = &s;
 	config = new configControler();
 	device = new deviceControler();
 	ip = config->returnSerwerIp(); 
