@@ -9,7 +9,7 @@ using namespace std;
 
 
 
-masterControler::masterControler(void *s){
+masterControler::masterControler(void &s){
 	cout << "adress zmiennej s: " << &s << endl;
 	share = &s;
 	cout << "adres zmiennej share: " << &share << endl;
