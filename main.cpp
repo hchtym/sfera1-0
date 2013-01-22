@@ -99,14 +99,14 @@ int main(){
 	}
 	cout << "Jestem przed while za shmat..." << endl;
 		while(1)
-		{
+		{	
 			cout << "sleep na 3min" << endl;
 			sleep(180);
 			cout << "Sprawdzam " << endl;
 				memset(bufer, 0, sizeof(bufer));
 				int i =0;
 				cout << sizeof(data) << endl;
-				len = strlen((char *)data);
+				int len = strlen((char *)data);
 				cout << len << endl;
 			if( len > 0){
 				for (s = (char *) data; *s != '\n'; s++)
