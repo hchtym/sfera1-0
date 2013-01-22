@@ -29,12 +29,9 @@ masterControler::masterControler(void *s){
 };
 
 void masterControler::setShare(){
-	string msg = "true";
-	for (int i =0; i <= msg.size(); i++)
-	{
-	        share++ = msg[i];
-	}
-	*share = NULL;
+	string msg = "true\n";
+	memcpy(share, msg.c_str(), msg.size());
+
 }
 
 void masterControler::menuShop(){
