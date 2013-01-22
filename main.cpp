@@ -27,8 +27,8 @@ int main(){
 	//char c;
 	int shmid;
 	key_t klucz;
-	char *shm, *s;
-	void *data;
+	char *shm;
+	void *data, *s;
 //	networkControler* network = new networkControler();
 //	deviceControler* device = new deviceControler();
 //	device->rfidScan();
@@ -38,7 +38,6 @@ int main(){
 	//pid_t childpid;
 //	clone(master->masterBackground(), child_stack, CLONE_VM, NULL);
 	char bufer[6];
-	s = shm;
 	masterControler* master = new masterControler(*&shm);
 	pid_t pID = fork();
 	if(pID == 0)
@@ -65,7 +64,7 @@ int main(){
 			cout << "Sprawdzam " << endl;
 				memset(bufer, 0, sizeof(bufer));
 				int i =0;
-			for (s = shm; *s != "\n"; s++)
+			for (s = data; *s != "\n"; s++)
 			{
 				cout << "czytam z rury" << endl;
 				bufer[i] = *s;
