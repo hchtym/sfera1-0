@@ -97,6 +97,7 @@ int main(){
 	        perror("shmat");
 	        exit(1);
 	}
+	cout << "adres data dziecka: " << &data << endl;
 	cout << "Jestem przed while za shmat..." << endl;
 		while(1)
 		{	
@@ -141,7 +142,7 @@ int main(){
 	        exit(1);
 	    }
 		s = shm;
-		
+		cout << "adres data rodzica: " << &data << endl;
 		
 		while(1)
 		{
