@@ -45,15 +45,17 @@ int main(){
 		cout << "Jestem w procesie dziecku" << endl;
 		klucz = 5678;
 		
-		if ((shmid = shmget(klucz, SHMSZ, IPC_CREAT | 0666)) < 0) {
-		        perror("shmget");
-		        exit(1);
-		}
-		
-		if ((shm = shmat(shmid, NULL, 0)) == (char *) -1) {
-		        perror("shmat");
-		        exit(1);
-		    }
+	if ((shmid = shmget(key, SHMSZ, 0666)) < 0) 
+	{
+	        perror("shmget");
+	        exit(1);
+	}
+	
+	if ((shm = shmat(shmid, NULL, 0)) == (char *) -1) 
+	{
+	        perror("shmat");
+	        exit(1);
+	}
 
 		while(1)
 		{
@@ -82,17 +84,15 @@ int main(){
 	{
 		klucz = 5678;
 		
-		if ((shmid = shmget(klucz, SHMSZ, IPC_CREAT | 0666)) < 0) 
-		{
-		        perror("shmget");
-		        exit(1);
-		}
-		
-		if ((shm = shmat(shmid, NULL, 0)) == (char *) -1) 
-		{
-		        perror("shmat");
-		        exit(1);
-		}
+		if ((shmid = shmget(key, SHMSZ, IPC_CREAT | 0666)) < 0) {
+	        perror("shmget");
+	        exit(1);
+	    }
+
+	    if ((shm = shmat(shmid, NULL, 0)) == (char *) -1) {
+	        perror("shmat");
+	        exit(1);
+	    }
 		s = shm;
 		
 		
