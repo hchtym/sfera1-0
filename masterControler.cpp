@@ -31,7 +31,7 @@ masterControler::masterControler(void *s){
 void masterControler::setShare(){
 	string msg = "true\n";
 	memcpy(share, msg.c_str(), msg.size());
-
+	cout << share << endl;
 }
 
 void masterControler::menuShop(){
