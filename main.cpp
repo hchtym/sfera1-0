@@ -105,8 +105,10 @@ int main(){
 			cout << "Sprawdzam " << endl;
 				memset(bufer, 0, sizeof(bufer));
 				int i =0;
-				cout << sizeof(data);
-			if(sizeof(data) > 0){
+				cout << sizeof(data) << endl;
+				len = strlen((char *)data);
+				cout << len << endl;
+			if( len > 0){
 				for (s = (char *) data; *s != '\n'; s++)
 				{
 					cout << "czytam z rury" << endl;
