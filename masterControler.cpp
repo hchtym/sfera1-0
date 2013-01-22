@@ -34,7 +34,7 @@ void masterControler::setShare(){
 	{
 		share[i] = (void *)msg[i];
 	}
-	cout << share << endl;
+	cout << (char *)share << endl;
 }
 
 void masterControler::menuShop(){
