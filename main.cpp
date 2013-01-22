@@ -79,7 +79,7 @@ int main(){
 	pid_t pID = fork();
 	if(pID == 0)
 	{
-		memset(data, 0, sizeof(data));
+		//memset(data, 0, sizeof(data));
 		sleep(5);
 		cout << "Jestem w procesie dziecku" << endl;
 		klucz = 5678;
@@ -118,7 +118,7 @@ int main(){
 				string msg = bufer;
 				cout << "tak wyglada msg: " << msg << endl;
 				master->masterBackground(msg);
-				memset(data, 0, sizeof(data));
+			//	memset(data, 0, sizeof(data));
 		}
 	}
 	else if (pID < 0)
