@@ -54,7 +54,8 @@ int main(){
     cout << "rozmiar long int: " << sizeof(long int) << endl;
     cout << "rozmiar short: " << sizeof(short) << endl;
     cout << "rozmiar short int: " << sizeof(short int) << endl;
-    
+	cout << "rozmiar unsigned int: " << sizeof(unsigned int) << endl;
+	cout << "rozmiar unsigned char: " << sizeof(unsigned char) << endl;
 	
 	
 	
