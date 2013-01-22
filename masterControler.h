@@ -32,6 +32,7 @@ class masterControler{
 	void recipePrint(bool recipeCopy);
 	void menuOnOff();
 	void menuShop();
+	void setShare();
 	bool senttrx;
 	string sum; // suma zakupow
 	string points; // suma pkt za zakupy up 

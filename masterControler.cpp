@@ -20,12 +20,20 @@ masterControler::masterControler(char *s){
 	paswd = config->returnGprsPaswd(); 
 	numerser = config->returnSeriall();
 	network = new networkControler(ip, port, apn, user, paswd, numerser);
-	
+	cout << "rozmiar struct date: " << sizeof(struct Date) << endl;
+	cout << "rozmiar struct transaction: " << sizeof(struct Transaction) << endl;
 	seller.clear();
 	loginFlag = false;
 	senttrx = false;
 	//vheiu
 };
+
+void masterControler::setShare(){
+	string msg = "true";
+	for (int i =0; i <= sizeof(); i++)
+	        *share++ = msg[i];
+	    *s = NULL;
+}
 
 void masterControler::menuShop(){
 	string items = "Sprzedaz;Zwrot";
