@@ -30,7 +30,7 @@ masterControler::masterControler(char s){
 
 void masterControler::setShare(){
 	string msg = "true";
-	for (int i =0; i <= sizeof(); i++)
+	for (int i =0; i <= msg.size(); i++)
 	{
 	        *share++ = msg[i];
 	}
