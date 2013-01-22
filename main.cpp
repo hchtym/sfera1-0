@@ -65,7 +65,7 @@ int main(){
 			cout << "Sprawdzam " << endl;
 				memset(bufer, 0, sizeof(bufer));
 				int i =0;
-			for (s = shm; *s != NULL; s++)
+			for (s = shm; *s != "\n"; s++)
 			{
 				cout << "czytam z rury" << endl;
 				bufer[i] = *s;
