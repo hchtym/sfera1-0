@@ -45,7 +45,7 @@ int main(){
 		cout << "Jestem w procesie dziecku" << endl;
 		klucz = 5678;
 		
-	if ((shmid = shmget(key, SHMSZ, 0666)) < 0) 
+	if ((shmid = shmget(klucz, SHMSZ, 0666)) < 0) 
 	{
 	        perror("shmget");
 	        exit(1);
@@ -84,7 +84,7 @@ int main(){
 	{
 		klucz = 5678;
 		
-		if ((shmid = shmget(key, SHMSZ, IPC_CREAT | 0666)) < 0) {
+		if ((shmid = shmget(klucz, SHMSZ, IPC_CREAT | 0666)) < 0) {
 	        perror("shmget");
 	        exit(1);
 	    }
