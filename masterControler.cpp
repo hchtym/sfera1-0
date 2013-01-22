@@ -32,7 +32,7 @@ void masterControler::setShare(){
 	string msg = "true\n";
 	for(int i = 0; i < msg.size(); i++)
 	{
-		(char *)share++ = msg[i];
+		share[i] = (void *)msg[i];
 	}
 	cout << share << endl;
 }
