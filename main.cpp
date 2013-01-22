@@ -53,7 +53,7 @@ int main(){
 	        exit(1);
 	}
 	
-	if ((data = shmat(shm, NULL, 0)) == (char *) -1) 
+	if ((data = shmat(shmid, NULL, 0)) == (char *) -1) 
 	{
 	        perror("shmat");
 	        exit(1);
