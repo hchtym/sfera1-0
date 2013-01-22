@@ -37,13 +37,13 @@ int main(){
     };
                                                                                                                                                                                    
     struct Date {
-        short int Second;
-        short int Minute;
-        short int Hour;
-        short int Day;
-        short int Month;
-        short int Year;
-        short int GTM;
+        unsigned char Second;
+        unsigned char Minute;
+        unsigned char Hour;
+        unsigned char Day;
+        unsigned char Month;
+        unsigned char Year;
+        unsigned char GTM;
     };
 
     cout << "rozmiar struct Date: " << sizeof(struct Date) << endl;
