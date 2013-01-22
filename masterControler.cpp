@@ -9,7 +9,8 @@ using namespace std;
 
 
 
-masterControler::masterControler(){
+masterControler::masterControler(char *s){
+	share = s;
 	config = new configControler();
 	device = new deviceControler();
 	ip = config->returnSerwerIp(); 
@@ -754,19 +755,10 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	return 0;
 }
 
-void masterControler::masterBackground(){
-	while(1)
+void masterControler::masterBackground(string msg){
+	if( (msg.compare("true")) == 0)
 	{
-		sleep(3000);
-		// sprawdzenie czy flaga zostala ustawiona ! i wyalsnie tranzakcji po wykonaniu wyslij tranzakcje w menu
-		if(senttrx == true)
-		{
-			network->sendTransaction();
-			senttrx = false;
-		}
-		// tu bedzie osluga okna czasoego !!
-		
-		
+		network->sendTransaction();
 	}
 }
 
