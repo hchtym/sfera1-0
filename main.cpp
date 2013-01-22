@@ -24,7 +24,7 @@ int main(){
 	Lcd_SetFont(1,0,0);
 //	configControler* config = new configControler();
 	//master->selling();
-	char c;
+	//char c;
 	int shmid;
 	key_t klucz;
 	char *shm, *s;
@@ -34,7 +34,7 @@ int main(){
 //	device->atc24Read();
 //	device->sleRead();
 //	device->magCardScan();
-	pid_t childpid;
+	//pid_t childpid;
 //	clone(master->masterBackground(), child_stack, CLONE_VM, NULL);
 	char bufer[6];
 	s = shm;
