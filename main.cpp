@@ -44,12 +44,12 @@ int main(){
 		sleep(5);
 		klucz = 5678;
 		
-		if ((shmid = shmget(key, SHMSZ, IPC_CREAT | 0666)) < 0) {
+		if ((shmid = shmget(klucz, SHMSZ, IPC_CREAT | 0666)) < 0) {
 		        perror("shmget");
 		        exit(1);
 		}
 		
-		if ((shmid = shmget(key, SHMSZ, IPC_CREAT | 0666)) < 0) {
+		if ((shmid = shmget(klucz, SHMSZ, IPC_CREAT | 0666)) < 0) {
 		        perror("shmget");
 		        exit(1);
 		}
@@ -78,12 +78,12 @@ int main(){
 	{
 		klucz = 5678;
 		
-		if ((shmid = shmget(key, SHMSZ, IPC_CREAT | 0666)) < 0) {
+		if ((shmid = shmget(klucz, SHMSZ, IPC_CREAT | 0666)) < 0) {
 		        perror("shmget");
 		        exit(1);
 		}
 		
-		if ((shmid = shmget(key, SHMSZ, IPC_CREAT | 0666)) < 0) {
+		if ((shmid = shmget(klucz, SHMSZ, IPC_CREAT | 0666)) < 0) {
 		        perror("shmget");
 		        exit(1);
 		}
