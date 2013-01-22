@@ -67,17 +67,20 @@ int main(){
 			cout << "Sprawdzam " << endl;
 				memset(bufer, 0, sizeof(bufer));
 				int i =0;
-			for (s = (char *) data; *s != '\n'; s++)
-			{
-				cout << "czytam z rury" << endl;
-				bufer[i] = *s;
-				cout << bufer[i] << endl;
-				i++;
-			}  
+				cout << sizeof(data);
+			if(sizeof(data) > 0){
+				for (s = (char *) data; *s != '\n'; s++)
+				{
+					cout << "czytam z rury" << endl;
+					bufer[i] = *s;
+					cout << bufer[i] << endl;
+					i++;
+				}  
+			}
 				string msg = bufer;
 				cout << "tak wyglada msg: " << msg << endl;
 				master->masterBackground(msg);
-			
+				memset(data, 0, sizeof(data));
 		}
 	}
 	else if (pID < 0)
