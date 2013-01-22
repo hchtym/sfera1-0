@@ -50,10 +50,10 @@ int main(){
 		        exit(1);
 		}
 		
-		if ((shmid = shmget(klucz, SHMSZ, IPC_CREAT | 0666)) < 0) {
-		        perror("shmget");
+		if ((shm = shmat(shmid, NULL, 0)) == (char *) -1) {
+		        perror("shmat");
 		        exit(1);
-		}
+		    }
 
 		while(1)
 		{
@@ -82,19 +82,22 @@ int main(){
 	{
 		klucz = 5678;
 		
-		if ((shmid = shmget(klucz, SHMSZ, IPC_CREAT | 0666)) < 0) {
+		if ((shmid = shmget(klucz, SHMSZ, IPC_CREAT | 0666)) < 0) 
+		{
 		        perror("shmget");
 		        exit(1);
 		}
 		
-		if ((shmid = shmget(klucz, SHMSZ, IPC_CREAT | 0666)) < 0) {
-		        perror("shmget");
+		if ((shm = shmat(shmid, NULL, 0)) == (char *) -1) 
+		{
+		        perror("shmat");
 		        exit(1);
 		}
 		s = shm;
 		
 		
-		while(1){
+		while(1)
+		{
 				master->dispMenu();	
 		}
 	}
