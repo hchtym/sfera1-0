@@ -41,7 +41,8 @@ int main(){
 	pid_t pID = fork();
 	if(pID == 0)
 	{
-		key = 5678;
+		sleep(5);
+		klucz = 5678;
 		
 		if ((shmid = shmget(key, SHMSZ, IPC_CREAT | 0666)) < 0) {
 		        perror("shmget");
@@ -75,7 +76,7 @@ int main(){
 	}
 	else
 	{
-		key = 5678;
+		klucz = 5678;
 		
 		if ((shmid = shmget(key, SHMSZ, IPC_CREAT | 0666)) < 0) {
 		        perror("shmget");
