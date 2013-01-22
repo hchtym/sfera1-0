@@ -56,7 +56,7 @@ int main(){
 
 		while(1)
 		{
-			sleep(3000
+			sleep(3000);
 				memset(bufer, 0, sizeof(bufer));
 				int i =0;
 			for (s = shm; *s != NULL; s++)
