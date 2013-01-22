@@ -90,7 +90,7 @@ class masterControler{
 	int message(int x, int y, string &str);
 	
 public:
-	masterControler(char *s);
+	masterControler(char s);
 	int dispMenu();
 	int loginScr();
 	int selling();
