@@ -30,7 +30,11 @@ masterControler::masterControler(void *s){
 
 void masterControler::setShare(){
 	string msg = "true\n";
-	memcpy(share, msg.c_str(), msg.size());
+	for(int i = 0; i < msg.size(); i++)
+	{
+		share++ = msg[i];
+	}
+	share = '\n';
 	cout << share << endl;
 }
 
