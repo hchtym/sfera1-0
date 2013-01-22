@@ -11,6 +11,7 @@ using namespace std;
 
 masterControler::masterControler(void *s){
 	share = &s;
+	cout << "adres zmiennej share: " << &share << endl;
 	config = new configControler();
 	device = new deviceControler();
 	ip = config->returnSerwerIp(); 
