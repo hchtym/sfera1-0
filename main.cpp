@@ -28,6 +28,7 @@ int main(){
 	int shmid;
 	key_t klucz;
 	char *shm, *s;
+	void *data;
 //	networkControler* network = new networkControler();
 //	deviceControler* device = new deviceControler();
 //	device->rfidScan();
@@ -52,7 +53,7 @@ int main(){
 	        exit(1);
 	}
 	
-	if ((shm = shmat(shmid, NULL, 0)) == (char *) -1) 
+	if ((data = shmat(shm, NULL, 0)) == (char *) -1) 
 	{
 	        perror("shmat");
 	        exit(1);
@@ -90,7 +91,7 @@ int main(){
 	        exit(1);
 	    }
 
-	    if ((shm = shmat(shmid, NULL, 0)) == (char *) -1) {
+	    if ((data = shmat(shm, NULL, 0)) == (char *) -1) {
 	        perror("shmat");
 	        exit(1);
 	    }
