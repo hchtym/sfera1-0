@@ -76,6 +76,7 @@ int main(){
 	pid_t pID = fork();
 	if(pID == 0)
 	{
+		memset(data, 0, sizeof(data));
 		sleep(5);
 		cout << "Jestem w procesie dziecku" << endl;
 		klucz = 5678;
