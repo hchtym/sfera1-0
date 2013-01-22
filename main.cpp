@@ -27,8 +27,8 @@ int main(){
 	//char c;
 	int shmid;
 	key_t klucz;
-	char *shm;
-	void *data, *s;
+	char *shm, *s;
+	void *data;
 //	networkControler* network = new networkControler();
 //	deviceControler* device = new deviceControler();
 //	device->rfidScan();
