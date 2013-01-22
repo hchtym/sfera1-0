@@ -34,9 +34,9 @@ void masterControler::setShare(){
 	string msg = "true\n";
 	for(int i = 0; i < msg.size(); i++)
 	{
-		share++ = (void *)msg[i];
+		///share++ = (void *)msg[i];
 	}
-	cout << (char *)share << endl;
+//	cout << (char *)share << endl;
 }
 
 void masterControler::menuShop(){
