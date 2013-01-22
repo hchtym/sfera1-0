@@ -42,6 +42,7 @@ int main(){
 	if(pID == 0)
 	{
 		sleep(5);
+		cout << "Jestem w procesie dziecku" << endl;
 		klucz = 5678;
 		
 		if ((shmid = shmget(klucz, SHMSZ, IPC_CREAT | 0666)) < 0) {
@@ -57,11 +58,14 @@ int main(){
 		while(1)
 		{
 			sleep(3000);
+			cout << "Sprawdzam " << endl;
 				memset(bufer, 0, sizeof(bufer));
 				int i =0;
 			for (s = shm; *s != NULL; s++)
 			{
+				cout << "czytam z rury" << endl;
 				bufer[i] = *s;
+				cout << bufer[i] << endl;
 				i++;
 			}  
 				string msg = bufer;

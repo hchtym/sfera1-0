@@ -767,6 +767,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 }
 
 void masterControler::masterBackground(string msg){
+	cout << "sprawdzam msg " << msg << endl;
 	if( (msg.compare("true")) == 0)
 	{
 		network->sendTransaction();
