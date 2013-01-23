@@ -32,13 +32,14 @@ masterControler::masterControler(void *s){
 };
 
 void masterControler::setShare(){
-	string msg = "true\n";
+//	string msg = "true\n";
 //	for(int i = 0; i < msg.size(); i++)
 //	{
 		//*share = (void *)msg[]
 		///share++ = (void *)msg[i];
 //	}
-	*share = msg.s_str();
+	char msg = "true\n";
+	*share = msg;
 	
 //	cout << (char *)share << endl;
 	
