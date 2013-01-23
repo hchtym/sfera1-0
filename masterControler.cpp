@@ -169,7 +169,7 @@ int masterControler::dispMenu(){
 			case 4:
 				cout << "sendTranaction" << endl;
 				setShare();
-				network->sendTransaction();
+				//network->sendTransaction();
 				cout << "jestem po send transaction" << endl;
 			break;
 			case 5:
@@ -780,7 +780,6 @@ void masterControler::masterBackground(){
 		cout << "skonczylem send transaction " << endl;
 
 }
-
 
 int masterControler::pointComp(string &id, string &payment, string &pnt, string &ext){
 	cout << "jestem w pointComp, oto id karty !: " << id << endl;
