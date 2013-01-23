@@ -38,7 +38,7 @@ void masterControler::setShare(){
 		//*share = (void *)msg[]
 		///share++ = (void *)msg[i];
 //	}
-	char msg = "true\n";
+	char msg[6] = "true\n";
 	*share = msg;
 	
 //	cout << (char *)share << endl;
