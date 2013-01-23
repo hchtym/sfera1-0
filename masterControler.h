@@ -87,7 +87,7 @@ public:
 	int dispMenu();
 	int loginScr();
 	int selling();
-	void masterBackground(string msg);
+	void masterBackground();
 	
 };
 
