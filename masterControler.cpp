@@ -774,12 +774,11 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	return 0;
 }
 
-void masterControler::masterBackground(string msg){
-	cout << "sprawdzam msg " << msg << endl;
-	if( (msg.compare("true")) == 0)
-	{
+void masterControler::masterBackground(){
+		cout << "jestem w masterBackground" << endl;
 		network->sendTransaction();
-	}
+		cout << "skonczylem send transaction " << endl;
+
 }
 
 
