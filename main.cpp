@@ -67,23 +67,13 @@ int main(){
 			cout << "sleep na 3min" << endl;
 			sleep(180);
 			cout << "Sprawdzam " << endl;
-				memset(bufer, 0, sizeof(bufer));
-				int i =0;
-				cout << sizeof(data) << endl;
-				int len = strlen((char *)data);
-				cout << len << endl;
-			if( len > 0){
-				for (s = (char *) data; *s != '\n'; s++)
-				{
-					cout << "czytam z rury" << endl;
-					bufer[i] = *s;
-					cout << bufer[i] << endl;
-					i++;
-				}  
+			bool msg = *((bool *)data);
+			if(msg)
+			{
+				cout << "jest it works !!!!!!!!!!!!!!!!!!!!!!!!" <<endl;
+				master->masterBackground();	
 			}
-				string msg = bufer;
-				cout << "tak wyglada msg: " << msg << endl;
-				master->masterBackground(msg);
+			msg = false;
 			//	memset(data, 0, sizeof(data));
 		}
 	}
