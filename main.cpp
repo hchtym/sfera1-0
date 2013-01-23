@@ -38,7 +38,7 @@ int main(){
 	//pid_t childpid;
 //	clone(master->masterBackground(), child_stack, CLONE_VM, NULL);
 	char bufer[6];
-	masterControler* master = new masterControler(data);
+	masterControler* master = new masterControler(&data);
 	pid_t pID = fork();
 	if(pID == 0)
 	{
