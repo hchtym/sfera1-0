@@ -13,6 +13,7 @@ masterControler::masterControler(void *s){
 	cout << "adress zmiennej s: " << s << endl;
 	share = s;
 	cout << "adres zmiennej share: " << &share << endl;
+	cout << "adres zmiennej s: " << &s << endl;
 	config = new configControler();
 	device = new deviceControler();
 	ip = config->returnSerwerIp(); 
