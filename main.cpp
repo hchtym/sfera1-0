@@ -64,9 +64,9 @@ int main(){
 	cout << "Jestem przed while za shmat..." << endl;
 		while(1)
 		{	
-			cout << "sleep na 3min" << endl;
-			sleep(180);
-			cout << "Sprawdzam " << endl;
+			//cout << "sleep na 3min" << endl;
+			//sleep(180);
+			//cout << "Sprawdzam " << endl;
 			bool msg = *((bool *)data);
 			if(msg)
 			{
