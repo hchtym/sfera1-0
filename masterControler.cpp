@@ -81,21 +81,16 @@ void masterControler::timeWindow(){
 	GetTime(rTime);
 	for(int i = 0; i < 4; i++)
 	{
-		cout << "tu sie wypierdolilem :D" << endl;
 		pTime[i] = rTime[i+6];
 	}
-	cout << "albo tu ?" << endl;
 	string hourConfBeg = config->returnParam(confPartBeg1);
-	cout << "albo jednak tutaj" << endl;
 	string minuteConfBeg = config->returnParam(confPartBeg2);
 	string hourConfEnd = config->returnParam(confPartEnd1);
 	string minuteConfEnd = config->returnParam(confPartEnd2);
-	cout << "chyba gdzies tu co ?" << endl;
 	string hourTxBeg = config->returnParam(txPartBeg1);
 	string minuteTxBeg = config->returnParam(txPartBeg2);
 	string hourTxEnd = config->returnParam(txPartEnd1);
 	string minuteTxEnd = config->returnParam(txPartEnd2);
-	cout << "pierunie udalo sie" << endl;
  	// config
 	compose.str("");
 	compose << hourConfBeg << minuteConfBeg ;
