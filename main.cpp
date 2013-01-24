@@ -55,7 +55,7 @@ int main(){
 			{
 			master->masterBackground();	
 			}
-		}while(num > 0)
+		}while(num > 0);
 	}
 	else if (pID < 0)/* failed */
 	{
