@@ -27,7 +27,7 @@ configControler::configControler(){
 
 string configControler::returnParam(string part){
 	cout << part << endl;
-	string param = cf->Value(part, "ok");
+	string param = cf->Value("ok", part);
 	cout << param << endl;
 	return param;
 }
