@@ -1,6 +1,7 @@
 #include "networkControler.h"
 
 #define buffer (2048)
+#define ERR_OK (0)
 
 
 using namespace std;
