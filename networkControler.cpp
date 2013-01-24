@@ -81,6 +81,7 @@ int networkControler::updClock(){
 	connectAllQuiet();
 	// wysylam zapytanie o clocka :D 
 	char pCAPData[buffer*10];
+	int ret;
 	char bufer[50000];
 	memset(bufer, 0, sizeof(bufer));
 	char temp[730];
@@ -128,6 +129,13 @@ int networkControler::updClock(){
 	BYTE bcdTime[16];
 	AscToBcd((BYTE *)serwTime.c_str(), bcdTime, serwTime.size());
 	cout << "czas po konwersji na BCD: " << bcdTime << endl;
+	
+	//ustawam zegar !
+	ret = SetTime(bcdTime);
+	if(ret != OK_ERR)
+	{
+		cout << "Nieustawilem zegara !!" << endl;
+	}
 	
 	
 	// koniec zapytanie o godzine koncze polaczenie (bo po co ma wisiec nie uzywane ...)
