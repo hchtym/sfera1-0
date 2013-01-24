@@ -289,7 +289,7 @@ repete2:		//compose.str("");
 		{
 			if(resend > 3)
 			{
-				file.cose();
+				file.close();
 				return 0;
 			}
 			resend++;
