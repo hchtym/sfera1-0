@@ -11,7 +11,8 @@ using namespace std;
 
 masterControler::masterControler(int *fifo){
 	fifoContainer = fifo;
-	actFlag = false;
+	confFlag = false;
+	txFlag = false;
 	cout << "adress fifo: " << fifo << endl;
 	cout << "adress fifoConrainer: " << fifoContainer << endl;
 	config = new configControler();
@@ -29,7 +30,8 @@ masterControler::masterControler(int *fifo){
 };
 
 masterControler::masterControler(){
-	actFlag = false;
+	confFlag = false;
+	txFlag = false;
 	config = new configControler();
 	device = new deviceControler();
 	ip = config->returnSerwerIp(); 
@@ -86,11 +88,11 @@ void masterControler::timeWindow(){
 	// config
 	compose.str("");
 	compose << hourConfBeg << minuteConfBeg ;
-	beg = compose.str();
+	begConf = compose.str();
 	
 	compose.str("");
 	compose << hourConfEnd << minuteConfEnd;
-	end = compose.str();
+	endConf = compose.str();
 	for(int i = 0; i < 4; i++)
 	{
 		bConfTime[i] = begConf[i];
@@ -102,11 +104,11 @@ void masterControler::timeWindow(){
 	//soft
 	compose.str("");
 	compose << hourTxBeg << minuteTxBeg ;
-	beg = compose.str();
+	begTx = compose.str();
 	
 	compose.str("");
 	compose << hourTxEnd << minuteTxEnd;
-	end = compose.str();
+	endTx = compose.str();
 	for(int i = 0; i < 4; i++)
 	{
 		bTxTime[i] = begTx[i];
