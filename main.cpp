@@ -72,6 +72,7 @@ int main(){
 	}
 	else /*parent */
 	{
+		int fd;
 		mknod(FIFO_NAME, S_IFIFO | 0666, 0);
 		sleep(3);
 		fd = open(FIFO_NAME, O_WRONLY | O_NDELAY);
