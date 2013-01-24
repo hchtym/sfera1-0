@@ -87,6 +87,7 @@ public:
 	int startConf(int type);
 	int gprsConnect();
 	int sendTrx();
+	int updClock();
 	int sendTransaction();
 	int updClk();
 	int updConf();

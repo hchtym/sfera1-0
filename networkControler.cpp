@@ -77,6 +77,55 @@ int networkControler::connectAllQuiet(){
 	return 0;
 }
 
+int networkControler::updClock(){
+	connectAllQuiet();
+	// wysylam zapytanie o clocka :D 
+	char pCAPData[buffer*10];
+	char bufer[50000];
+	memset(bufer, 0, sizeof(bufer));
+	char temp[730];
+	memset(temp, 0, sizeof(temp));
+	int ulLen =0;
+	int x =0;
+	int ulHandle =0;
+	memset(pCAPData, 0, sizeof(pCAPData));
+	stringstream compose; 
+	string msg;
+	int sent;
+	string serwTime;
+	compose.str("");
+	cout << "tworze stream" << endl;
+	compose << "clock"; //<< endl;
+	msg = compose.str();
+	int len,bytes_sent,bytes_recv;
+	int resend = 0;
+	len = msg.size();
+	bytes_sent = 0;
+	bytes_recv = 0;
+	//send clock request to server
+	cout << "wysylam zapytanie" << endl;
+	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
+	{
+		//loger << "send filetx; error" << endl;
+		perror("send"); // logowanie do pliku !
+		//exit(1);
+	}
+	//odbieram dane od serweta
+	if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1)
+	{
+		//loger << "recive error" << endl;
+		perror("recive"); // logowanie do pliku !!
+		//exit(1);
+	}
+	compose.str("");
+	compose << pCAPData;
+	serwTime = compose.str();
+	cout << "czas z serwera: " << serwTime << endl;
+	// koniec zapytanie o godzine koncze polaczenie (bo po co ma wisiec nie uzywane ...)
+	
+	disconnectAllQuiet();
+}
+
 int networkControler::disconnectAllQuiet(){
 	ofstream loger("logs.txt", ios_base::app);
 	int bytes_sent;
