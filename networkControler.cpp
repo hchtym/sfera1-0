@@ -130,7 +130,7 @@ int networkControler::updClock(){
 	cout << "czas po sparsowaniu: " << serwTime << endl;
 	BYTE converse[15];
 	memset(converse, 0, sizeof(converse));
-	BYTE bcdTime[27];
+	BYTE bcdTime[30];
 	memset(bcdTime, 0, sizeof(bcdTime));
 	
 	for(int i =0; i< 12; i++)
