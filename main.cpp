@@ -1,15 +1,16 @@
-#include <sched.h>
-#include <sys/types.h>
-#include <sys/ipc.h>
-#include <sys/shm.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <string>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include "deviceControler.h"
 #include "masterControler.h"
 #include "networkControler.h"
 #include "configControler.h"
 
-#define SHMSZ     27
+#define FIFO_NAME "fifo_file"
 
 using namespace std;
 
@@ -25,10 +26,8 @@ int main(){
 //	configControler* config = new configControler();
 	//master->selling();
 	//char c;	
-	int shmid;
-	key_t klucz;
-	char *shm, *s;
-	void *data;
+	mknod(FIFO_NAME,  | 0666, 0);
+	int fd;
 //	networkControler* network = new networkControler();
 //	deviceControler* device = new deviceControler();
 //	device->rfidScan();
@@ -38,68 +37,36 @@ int main(){
 	//pid_t childpid;
 //	clone(master->masterBackground(), child_stack, CLONE_VM, NULL);
 	char bufer[6];
-	masterControler* master = new masterControler(&data);
+	masterControler* master = new masterControler();
 	pid_t pID = fork();
-	if(pID == 0)
+	if(pID == 0) /* child */
 	{
-		//memset(data, 0, sizeof(data));
-		sleep(5);
+		int num;
+		char bufer[6];
+		fd = open(FIFO_NAME, O_RDONLY | O_NDELAY);
 		cout << "Jestem w procesie dziecku" << endl;
-		klucz = 5678;
-		cout << "klucz: " << klucz << endl;
-	if ((shmid = shmget(klucz, SHMSZ, 0666)) < 0) 
-	{
-	        perror("shmget");
-			cout << "errr w shmid !!" << endl;
-	        exit(1);
-	}
-	cout << "jestem za shmid czy cus" << endl;
-	if ((data = shmat(shmid, NULL, 0)) == (char *) -1) 
-	{
-		cout << "error w shmat !" << endl;
-	        perror("shmat");
-	        exit(1);
-	}
-	cout << "adres data dziecka: " << &data << endl;
-	cout << "Jestem przed while za shmat..." << endl;
-		while(1)
+		cout << "wartosc FD: " << fd << endl;
+		sleep(5);
+		
+		do
 		{	
-			//cout << "sleep na 3min" << endl;
-			//sleep(180);
-			//cout << "Sprawdzam " << endl;
-			bool msg = *((bool *)data);
-			if(msg)
+			num = read(fd, bufer, 6);
+			if(strcmp(s, "send\n") == 0)
 			{
-				cout << "jest it works !!!!!!!!!!!!!!!!!!!!!!!!" <<endl;
-				master->masterBackground();	
+			master->masterBackground();	
 			}
-			msg = false;
-			//	memset(data, 0, sizeof(data));
-		}
+		}while(num > 0)
 	}
-	else if (pID < 0)
+	else if (pID < 0)/* failed */
 	{
 		cout << "failed to rok !" << endl;
 	}
-	else
+	else /*parent */
 	{
-		klucz = 5678;
-		
-		if ((shmid = shmget(klucz, SHMSZ, IPC_CREAT | 0666)) < 0) {
-	        perror("shmget");
-	        exit(1);
-	    }
-
-	    if ((data = shmat(shmid, NULL, 0)) == (char *) -1) {
-	        perror("shmat");
-	        exit(1);
-	    }
-		s = shm;
-		cout << "adres data rodzica: " << &data << endl;
-		
+		fd = open(FIFO_NAME, O_WRONLY);
 		while(1)
 		{
-				master->dispMenu();	
+				master->dispMenu();
 		}
 	}
 	

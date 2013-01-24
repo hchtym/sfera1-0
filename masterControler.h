@@ -20,7 +20,7 @@ using namespace std;
 
 class masterControler{
 //private:
-	void *share;
+	int *fifoContainer;
 	string seller; // id sprzedawcy ustawiane przy zalogowaniu sie sprzedawcy do terminala
 	int dispMenu2(); // drugie menu do wyswietlania serwisow i innych bajerow  
 	int dispCPartFile(); // wyswietlanie pliku konfiguracyjnego
@@ -32,7 +32,7 @@ class masterControler{
 	void recipePrint(bool recipeCopy);
 	void menuOnOff();
 	void menuShop();
-	void setShare();
+	void wrtFifo();
 	bool senttrx;
 	string sum; // suma zakupow
 	string points; // suma pkt za zakupy up 
@@ -83,7 +83,7 @@ class masterControler{
 	int message(int x, int y, string &str);
 	
 public:
-	masterControler(void *s);
+	masterControler();
 	int dispMenu();
 	int loginScr();
 	int selling();

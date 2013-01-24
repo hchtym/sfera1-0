@@ -9,7 +9,8 @@ using namespace std;
 
 
 
-masterControler::masterControler(void *s){
+masterControler::masterControler(int *fifo){
+	fifoContainer = fifo;
 	cout << "adress zmiennej s: " << s << endl;
 	share = s;
 	cout << "adres zmiennej share: " << share << endl;
@@ -31,17 +32,9 @@ masterControler::masterControler(void *s){
 	//vheiu
 };
 
-void masterControler::setShare(){
-//	string msg = "true\n";
-//	for(int i = 0; i < msg.size(); i++)
-//	{
-		//*share = (void *)msg[]
-		///share++ = (void *)msg[i];
-//	}
-	bool msg = true;
-	*((bool *)share) = msg;
-	
-//	cout << (char *)share << endl;
+void masterControler::wrtFifo(){
+	int num;
+	num = write(*fifoContainer, "send\n", 5);
 	
 }
 
