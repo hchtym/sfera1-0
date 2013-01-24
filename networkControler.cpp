@@ -131,7 +131,7 @@ int networkControler::updClock(){
 	BYTE converse[12];
 	memset(converse, 0, sizeof(converse));
 	BYTE bcdTime[25];
-	memset(bcdTime, 0, sizeof(bcdTime))
+	memset(bcdTime, 0, sizeof(bcdTime));
 	
 	for(int i =0; i< 12; i++)
 	{
