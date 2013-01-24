@@ -55,7 +55,7 @@ int main(){
 		{
 		
 			sleep(20);
-			cout << "skonczylem czekac sprawdzem co jest w fifo." << endl;
+			//cout << "skonczylem czekac sprawdzem co jest w fifo." << endl;
 			//fifo.open(FIFO_NAME, ios::out | ios::turnc);
 			do
 			{	
