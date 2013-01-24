@@ -41,7 +41,8 @@ public:
 	int returnPrize(vector<string> &vec); 
 	int returnSeller(vector<string> &vec); 
 	int returnLCard(vector<string> &vec); 
-	int returnCmputation(vector<string> &vec); 
+	int returnComputation(vector<string> &vec);
+	string returnParam(string paramName);
 	string returnGprsApn(); 
 	string returnGprsUser();
 	string returnGprsPaswd();

@@ -20,6 +20,8 @@ using namespace std;
 
 class masterControler{
 //private:
+	bool confFlag;
+	bool softFlag;
 	int *fifoContainer;
 	string seller; // id sprzedawcy ustawiane przy zalogowaniu sie sprzedawcy do terminala
 	int dispMenu2(); // drugie menu do wyswietlania serwisow i innych bajerow  
@@ -89,6 +91,7 @@ public:
 	int updClk();
 	int loginScr();
 	int selling();
+	void timeWondow();
 	void masterBackground();
 	
 };

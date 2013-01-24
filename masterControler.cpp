@@ -11,6 +11,7 @@ using namespace std;
 
 masterControler::masterControler(int *fifo){
 	fifoContainer = fifo;
+	actFlag = false;
 	cout << "adress fifo: " << fifo << endl;
 	cout << "adress fifoConrainer: " << fifoContainer << endl;
 	config = new configControler();
@@ -28,6 +29,7 @@ masterControler::masterControler(int *fifo){
 };
 
 masterControler::masterControler(){
+	actFlag = false;
 	config = new configControler();
 	device = new deviceControler();
 	ip = config->returnSerwerIp(); 
@@ -45,6 +47,95 @@ masterControler::masterControler(){
 
 int masterControler::updClk(){
 	network->updClock();
+}
+
+void masterControler::timeWindow(){
+
+	stringstream compose;
+	string begConf, endConf;
+	string begTx, endTx;
+	BYTE rTime[30]; // aktualny czas terminala
+	memset(rTime, 0, sizeof(rTime));
+	char bConfTime[4]; // czas okna czasowego 
+	memset(bConfTime, 0, sizeof(bConfTime));
+	char eConfTime[4];
+	memset(eConfTime, 0, sizeof(eConfTime));
+	
+	char bTxTime[4]; // czas okna czasowego 
+	memset(bSoftTime, 0, sizeof(bTxTime));
+	char eTxTime[4];
+	memset(eTxTime, 0, sizeof(eTxTime));
+	
+	char pTime[4]; //sparsowany czas terminala
+	memset(pTime, 0, sizeof(pTime));
+	
+	GetTime(rTime);
+	for(int i = 0; i < 4; i++)
+	{
+		pTime[i] = rTime[i+6];
+	}
+	string hourConfBeg = config->returnParam("schedule.config.time.begin.hour");
+	string minuteConfBeg = config->returnParam("schedule.config.time.begin.min");
+	string hourConfEnd = config->returnParam("schedule.config.time.end.hour");
+	string minuteConfEnd = config->returnParam("schedule.config.time.end.hour");
+	
+	string hourTxBeg = config->returnParam("schedule.tx.time.begin.hour");
+	string minuteTxBeg = config->returnParam("schedule.tx.time.begin.min");
+	string hourTxEnd = config->returnParam("schedule.tx.time.end.hour");
+	string minuteTxEnd = config->returnParam("schedule.tx.time.end.hour");
+	// config
+	compose.str("");
+	compose << hourConfBeg << minuteContBeg ;
+	beg = compose.str();
+	
+	compose.str("");
+	compose << hourConfEnd << minuteConfEnd;
+	end = compose.str();
+	for(int i = 0; i < 4; i++)
+	{
+		bConfTime[i] = begConf[i];
+	}
+	for(int i = 0; i < 4; i++)
+	{
+		eConfTime[i] = endConf[i];
+	}
+	//soft
+	compose.str("");
+	compose << hourBeg << minuteBeg ;
+	beg = compose.str();
+	
+	compose.str("");
+	compose << hourTxEnd << minuteTxEnd;
+	end = compose.str();
+	for(int i = 0; i < 4; i++)
+	{
+		bTxTime[i] = begTx[i];
+	}
+	for(int i = 0; i < 4; i++)
+	{
+		eTxTime[i] = endTx[i];
+	}
+	
+	if(strcmp(pTime, bConfTime) == 0) softFlag = true;
+	if(strcmp(pTime, eConfTime) == 0) softFlag = false;
+	
+	if(strcmp(pTime, bTxTime) == 0) configFlag = true;
+	if(strcmp(pTime, eTxTime) == 0) configFlag = false;
+	
+	do
+	{
+		//pobierz dany config 
+		
+		// odrocz !!
+		
+		// tutaj trzaskamy cos :D :D 
+	} while(confFlag);
+	
+	do
+	{
+		// wyslij tego tx'a czy cus jol :D 
+	} while(softFlag);
+	
 }
 
 

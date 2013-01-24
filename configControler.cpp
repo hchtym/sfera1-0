@@ -25,6 +25,11 @@ configControler::configControler(){
 	
 }
 
+string configControler::returnParam(string paramName){
+	string param = sn->Value(paramName.c_str(), "ok");
+	return param;
+}
+
 int configControler::returnMenu(vector<string> &vec){
 	confParse(vec, "menu");
 }
@@ -41,7 +46,7 @@ int configControler::returnLCard(vector<string> &vec){
 	confParse(vec, "lc");
 }
 
-int configControler::returnCmputation(vector<string> &vec){
+int configControler::returnComputation(vector<string> &vec){
 	confParse(vec, "comp");
 }
 
