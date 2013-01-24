@@ -36,7 +36,6 @@ int main(){
 	//pid_t childpid;
 //	clone(master->masterBackground(), child_stack, CLONE_VM, NULL);
 	char bufer[6];
-	masterControler* master = new masterControler(&fd);
 	pid_t pID = fork();
 	if(pID == 0) /* child */
 	{
@@ -45,7 +44,7 @@ int main(){
 		int fd;
 		char bufer[6];
 		fd = open(FIFO_NAME, O_RDONLY | O_NDELAY);
-		
+		masterControler* master = new masterControler(&fd);
 		cout << "Jestem w procesie dziecku" << endl;
 		cout << "(dziecko)adres FD: " << &fd << endl;
 		cout << "( dziecko)zawartosc FD" << fd << endl;
@@ -76,6 +75,9 @@ int main(){
 		mknod(FIFO_NAME, S_IFIFO | 0666, 0);
 		sleep(3);
 		fd = open(FIFO_NAME, O_WRONLY | O_NDELAY);
+
+	masterControler* master = new masterControler(&fd);
+
 		cout << "(rodzic) adres FD: " << &fd << endl;
 		cout << "(rodzic)zawartosc FD: " << fd << endl;
 		while(1)
