@@ -26,7 +26,7 @@ configControler::configControler(){
 }
 
 string configControler::returnParam(string paramName){
-	string param = cf->Value(const_cast<char *>(paramName.c_str()), "ok");
+	string param = cf->Value(paramName, "ok");
 	return param;
 }
 
