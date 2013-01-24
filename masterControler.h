@@ -91,7 +91,7 @@ public:
 	int updClk();
 	int loginScr();
 	int selling();
-	void timeWondow();
+	void timeWindow();
 	void masterBackground();
 	
 };
