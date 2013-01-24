@@ -11,10 +11,8 @@ using namespace std;
 
 masterControler::masterControler(int *fifo){
 	fifoContainer = fifo;
-	cout << "adress zmiennej s: " << s << endl;
-	share = s;
-	cout << "adres zmiennej share: " << share << endl;
-	cout << "adres zmiennej s: " << &s << endl;
+	cout << "adress fifo: " << fifo << endl;
+	cout << "adress fifoConrainer: " << fifoContainer << endl;
 	config = new configControler();
 	device = new deviceControler();
 	ip = config->returnSerwerIp(); 
