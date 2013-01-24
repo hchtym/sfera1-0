@@ -63,7 +63,7 @@ int main(){
 	}
 	else /*parent */
 	{
-		sleep(2;)
+		sleep(2);
 		fd = open(FIFO_NAME, O_WRONLY);
 		while(1)
 		{
