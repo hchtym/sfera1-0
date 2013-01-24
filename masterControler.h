@@ -83,7 +83,7 @@ class masterControler{
 	int message(int x, int y, string &str);
 	
 public:
-	masterControler();
+	masterControler(int *);
 	int dispMenu();
 	int loginScr();
 	int selling();
