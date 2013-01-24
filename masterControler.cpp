@@ -32,7 +32,7 @@ masterControler::masterControler(int *fifo){
 
 void masterControler::wrtFifo(){
 	int num;
-	num = write(*fifoContainer, "send\n", 5);
+	num = write(*fifoContainer, "send\n", strlen("send\n"));
 	
 }
 

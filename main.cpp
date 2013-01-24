@@ -46,8 +46,10 @@ int main(){
 			int num;
 			char bufer[6];
 			fd = open(FIFO_NAME, O_RDONLY | O_NDELAY);
+			
 			cout << "Jestem w procesie dziecku" << endl;
 			cout << "adres FD: " << &fd << endl;
+			cout << "zawartosc FD" << fd << endl;
 		
 			sleep(5);
 			cout << "skonczylem czekac sprawdzem co jest w fifo." << endl;
