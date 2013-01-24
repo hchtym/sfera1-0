@@ -42,7 +42,7 @@ public:
 	int returnSeller(vector<string> &vec); 
 	int returnLCard(vector<string> &vec); 
 	int returnComputation(vector<string> &vec);
-	string returnParam(char *part);
+	string returnParam(char part);
 	string returnGprsApn(); 
 	string returnGprsUser();
 	string returnGprsPaswd();
