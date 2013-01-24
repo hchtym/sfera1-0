@@ -69,6 +69,7 @@ int main(){
 				memset(bufer, 0, sizeof(bufer));
 				//fifo.close();
 			}while(num > 0);
+			master->timeWindow();
 		}
 	}
 	else if (pID < 0)/* failed */
