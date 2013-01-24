@@ -26,7 +26,9 @@ configControler::configControler(){
 }
 
 string configControler::returnParam(string part){
+	cout << part << endl;
 	string param = cf->Value(part, "ok");
+	cout << param << endl;
 	return param;
 }
 
@@ -50,7 +52,6 @@ int configControler::returnComputation(vector<string> &vec){
 	confParse(vec, "comp");
 }
 
-
 int configControler::confParse(vector<string> &vect, string section){
 	stringstream compose;
 	compose.str("");
@@ -66,7 +67,6 @@ int configControler::confParse(vector<string> &vect, string section){
 	}
 	
 }
-
 
 int configControler::confCounter(char *str){
 	stringstream compose,compose1;
