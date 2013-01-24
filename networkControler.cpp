@@ -128,7 +128,7 @@ int networkControler::updClock(){
 	serwTime.clear();
 	serwTime = compose.str();
 	cout << "czas po sparsowaniu: " << serwTime << endl;
-	BYTE bcdTime[16];
+	BYTE bcdTime[25];
 	AscToBcd((BYTE *)const_cast<char *>(serwTime.c_str()), bcdTime, serwTime.size());
 	cout << "czas po konwersji na BCD: " << bcdTime << endl;
 	
