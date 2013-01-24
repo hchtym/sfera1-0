@@ -26,8 +26,7 @@ int main(){
 //	configControler* config = new configControler();
 	//master->selling();
 	//char c;	
-	mknod(FIFO_NAME, S_IFIFO | 0666, 0);
-	int fd;
+	//int fd;
 //	networkControler* network = new networkControler();
 //	deviceControler* device = new deviceControler();
 //	device->rfidScan();
@@ -41,8 +40,9 @@ int main(){
 	pid_t pID = fork();
 	if(pID == 0) /* child */
 	{
-
+		mknod(FIFO_NAME, S_IFIFO | 0666, 0);
 		int num;
+		int fd;
 		char bufer[6];
 		fd = open(FIFO_NAME, O_RDONLY | O_NDELAY);
 		
@@ -72,6 +72,7 @@ int main(){
 	}
 	else /*parent */
 	{
+		mknod(FIFO_NAME, S_IFIFO | 0666, 0);
 		sleep(3);
 		fd = open(FIFO_NAME, O_WRONLY | O_NDELAY);
 		cout << "(rodzic) adres FD: " << &fd << endl;
