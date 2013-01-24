@@ -138,7 +138,7 @@ void masterControler::timeWindow(){
 	do
 	{
 		// wyslij tego tx'a czy cus jol :D 
-		master->
+		sendTrx();
 		
 		
 	} while(txFlag);
