@@ -5,6 +5,8 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <fstream>
+#include <iostream>
 #include "deviceControler.h"
 #include "masterControler.h"
 #include "networkControler.h"
@@ -39,11 +41,13 @@ int main(){
 	pid_t pID = fork();
 	if(pID == 0) /* child */
 	{
+		//ifstream fifo;
 		mknod(FIFO_NAME, S_IFIFO | 0666, 0);
 		int num;
 		int fd;
 		char bufer[6];
 		fd = open(FIFO_NAME, O_RDONLY | O_NDELAY);
+		//fifo.open(FIFO_NAME, ios::out | ios::turnc);
 		masterControler* master = new masterControler(&fd);
 		cout << "Jestem w procesie dziecku" << endl;
 		cout << "(dziecko)adres FD: " << &fd << endl;
@@ -54,14 +58,18 @@ int main(){
 		
 			sleep(20);
 			cout << "skonczylem czekac sprawdzem co jest w fifo." << endl;
+			//fifo.open(FIFO_NAME, ios::out | ios::turnc);
 			do
 			{	
 				num = read(fd, bufer, 6);
+				//fifo.read();
 				if(strcmp(bufer, "send\n") == 0)
 				{
 					cout << "Udalo sie str jest taki sam wysylam." << endl;
 					master->masterBackground();	
 				}
+				memset(bufer, 0, sizeof(bufer));
+				//fifo.close();
 			}while(num > 0);
 		}
 	}
