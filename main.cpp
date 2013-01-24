@@ -45,14 +45,16 @@ int main(){
 		char bufer[6];
 		fd = open(FIFO_NAME, O_RDONLY | O_NDELAY);
 		cout << "Jestem w procesie dziecku" << endl;
-		cout << "wartosc FD: " << fd << endl;
-		sleep(5);
+		cout << "adres FD: " << &fd << endl;
 		
+		sleep(5);
+		cout << "skonczylem czekac sprawdzem co jest w fifo." << endl;
 		do
 		{	
 			num = read(fd, bufer, 6);
 			if(strcmp(bufer, "send\n") == 0)
 			{
+			cout << "Udalo sie str jest taki sam wysylam." << endl;
 			master->masterBackground();	
 			}
 		}while(num > 0);
@@ -64,7 +66,7 @@ int main(){
 	else /*parent */
 	{
 		sleep(2);
-		fd = open(FIFO_NAME, O_WRONLY);
+		fd = open(FIFO_NAME, O_WRONLY | O_NDELAY);
 		while(1)
 		{
 				master->dispMenu();
