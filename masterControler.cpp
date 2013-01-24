@@ -52,7 +52,14 @@ int masterControler::updClk(){
 }
 
 void masterControler::timeWindow(){
-
+	string confPartBeg1 = "schedule.config.time.begin.hour";
+	string confPartBrg2 = "schedule.config.time.begin.min";
+	string confPartEnd1 = "schedule.config.time.end.hour";
+	string confPartEnd2 = "schedule.config.time.end.min";	
+	string txPartBeg1 = "schedule.tx.time.begin.hour";
+	string txPartBeg2 = "schedule.tx.time.begin.min";
+	string txPartEnd1 = "schedule.tx.time.end.hour";
+	string txPartEnd2 = "schedule.tx.time.end.min";
 	stringstream compose;
 	string begConf, endConf;
 	string begTx, endTx;
@@ -78,17 +85,18 @@ void masterControler::timeWindow(){
 		pTime[i] = rTime[i+6];
 	}
 	cout << "albo tu ?" << endl;
-	string hourConfBeg = config->returnParam("schedule.config.time.begin.hour");
+	string hourConfBeg = config->returnParam(confPartBeg1);
 	cout << "albo jednak tutaj" << endl;
-	string minuteConfBeg = config->returnParam("schedule.config.time.begin.min");
-	string hourConfEnd = config->returnParam("schedule.config.time.end.hour");
-	string minuteConfEnd = config->returnParam("schedule.config.time.end.hour");
+	string minuteConfBeg = config->returnParam(confPartBeg2);
+	string hourConfEnd = config->returnParam(confPartEnd1);
+	string minuteConfEnd = config->returnParam(confPartEnd2);
 	cout << "chyba gdzies tu co ?" << endl;
-	string hourTxBeg = config->returnParam("schedule.tx.time.begin.hour");
-	string minuteTxBeg = config->returnParam("schedule.tx.time.begin.min");
-	string hourTxEnd = config->returnParam("schedule.tx.time.end.hour");
-	string minuteTxEnd = config->returnParam("schedule.tx.time.end.hour");
-	// config
+	string hourTxBeg = config->returnParam(txPartBeg1);
+	string minuteTxBeg = config->returnParam(txPartBeg2);
+	string hourTxEnd = config->returnParam(txPartEnd1);
+	string minuteTxEnd = config->returnParam(txPartEnd2);
+	cout << "pierunie udalo sie" << endl;
+ 	// config
 	compose.str("");
 	compose << hourConfBeg << minuteConfBeg ;
 	begConf = compose.str();

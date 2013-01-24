@@ -25,7 +25,7 @@ configControler::configControler(){
 	
 }
 
-string configControler::returnParam(char part){
+string configControler::returnParam(string part){
 	string param = cf->Value(part, "ok");
 	return param;
 }
