@@ -138,7 +138,7 @@ int networkControler::updClock(){
 		converse[i] = serwTime[i];
 	}
 	cout << "string w formacie byte: " << converse << endl;
-	AscToBcd(converse, bcdTime, strlen(converse));
+	AscToBcd(converse, bcdTime, strlen((char *)converse));
 	cout << "czas po konwersji na BCD: " << bcdTime << endl;
 	
 	//ustawam zegar !
