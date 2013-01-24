@@ -77,11 +77,13 @@ void masterControler::timeWindow(){
 		cout << "tu sie wypierdolilem :D" << endl;
 		pTime[i] = rTime[i+6];
 	}
+	cout << "albo tu ?" << endl;
 	string hourConfBeg = config->returnParam("schedule.config.time.begin.hour");
+	cout << "albo jednak tutaj" << endl;
 	string minuteConfBeg = config->returnParam("schedule.config.time.begin.min");
 	string hourConfEnd = config->returnParam("schedule.config.time.end.hour");
 	string minuteConfEnd = config->returnParam("schedule.config.time.end.hour");
-	
+	cout << "chyba gdzies tu co ?" << endl;
 	string hourTxBeg = config->returnParam("schedule.tx.time.begin.hour");
 	string minuteTxBeg = config->returnParam("schedule.tx.time.begin.min");
 	string hourTxEnd = config->returnParam("schedule.tx.time.end.hour");
