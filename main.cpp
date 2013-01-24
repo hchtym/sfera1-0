@@ -50,7 +50,7 @@ int main(){
 		//fifo.open(FIFO_NAME, ios::out | ios::turnc);
 		masterControler* master = new masterControler();
 		cout << "Child process is on the go" << endl;
-		
+		master->updClk();
 		while(1)
 		{
 		
