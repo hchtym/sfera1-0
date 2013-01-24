@@ -21,7 +21,7 @@ using namespace std;
 class masterControler{
 //private:
 	bool confFlag;
-	bool softFlag;
+	bool txFlag;
 	int *fifoContainer;
 	string seller; // id sprzedawcy ustawiane przy zalogowaniu sie sprzedawcy do terminala
 	int dispMenu2(); // drugie menu do wyswietlania serwisow i innych bajerow  

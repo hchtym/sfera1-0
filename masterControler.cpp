@@ -85,7 +85,7 @@ void masterControler::timeWindow(){
 	string minuteTxEnd = config->returnParam("schedule.tx.time.end.hour");
 	// config
 	compose.str("");
-	compose << hourConfBeg << minuteContBeg ;
+	compose << hourConfBeg << minuteConfBeg ;
 	beg = compose.str();
 	
 	compose.str("");
@@ -101,7 +101,7 @@ void masterControler::timeWindow(){
 	}
 	//soft
 	compose.str("");
-	compose << hourBeg << minuteBeg ;
+	compose << hourTxBeg << minuteTxBeg ;
 	beg = compose.str();
 	
 	compose.str("");
@@ -116,11 +116,11 @@ void masterControler::timeWindow(){
 		eTxTime[i] = endTx[i];
 	}
 	
-	if(strcmp(pTime, bConfTime) == 0) softFlag = true;
-	if(strcmp(pTime, eConfTime) == 0) softFlag = false;
+	if(strcmp(pTime, bConfTime) == 0) txFlag = true;
+	if(strcmp(pTime, eConfTime) == 0) txFlag = false;
 	
-	if(strcmp(pTime, bTxTime) == 0) configFlag = true;
-	if(strcmp(pTime, eTxTime) == 0) configFlag = false;
+	if(strcmp(pTime, bTxTime) == 0) confFlag = true;
+	if(strcmp(pTime, eTxTime) == 0) confFlag = false;
 	
 	do
 	{
