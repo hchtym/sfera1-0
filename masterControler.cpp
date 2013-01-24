@@ -43,6 +43,10 @@ masterControler::masterControler(){
 
 };
 
+int masterControler::updClk(){
+	network->updClock();
+}
+
 
 
 void masterControler::wrtFifo(){

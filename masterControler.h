@@ -86,6 +86,7 @@ public:
 	masterControler(int *);
 	masterControler();
 	int dispMenu();
+	int updClk();
 	int loginScr();
 	int selling();
 	void masterBackground();

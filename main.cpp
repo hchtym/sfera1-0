@@ -49,10 +49,8 @@ int main(){
 		fd = open(FIFO_NAME, O_RDONLY | O_NDELAY);
 		//fifo.open(FIFO_NAME, ios::out | ios::turnc);
 		masterControler* master = new masterControler();
-		cout << "Jestem w procesie dziecku" << endl;
-		cout << "(dziecko)adres FD: " << &fd << endl;
-		cout << "( dziecko)zawartosc FD" << fd << endl;
-
+		cout << "Child process is on the go" << endl;
+		
 		while(1)
 		{
 		
