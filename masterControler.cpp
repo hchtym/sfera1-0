@@ -62,6 +62,8 @@ void masterControler::timeWindow(){
 	string txPartEnd2 = "schedule.tx.time.end.min";
 	stringstream compose;
 	string begConf, endConf;
+	bool txSend;
+	bool confRcv;
 	string begTx, endTx;
 	BYTE rTime[30]; // aktualny czas terminala
 	memset(rTime, 0, sizeof(rTime));
@@ -144,7 +146,15 @@ void masterControler::timeWindow(){
 	do
 	{
 		// wyslij tego tx'a czy cus jol :D 
-		//sendTrx();
+		txSend = sendTrx();
+		if(txSend)
+		{
+			//ustaw odroczenie na maxa !
+		}
+		else
+		{
+			// ustaw odroczenie min 
+		}
 		
 		
 	} while(txFlag);
@@ -160,8 +170,18 @@ void masterControler::wrtFifo(){
 }
 
 bool masterControler::sendTrx(){
-	network->sendTransaction();
-	
+	bool id;
+	int id2;
+	id2 = network->sendTransaction();
+	if(id2 == 1)
+	{
+		id = true;
+	}
+	else
+	{
+		id = false;
+	}
+	return id;
 }
 
 void masterControler::menuShop(){
