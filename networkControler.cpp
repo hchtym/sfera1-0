@@ -128,9 +128,9 @@ int networkControler::updClock(){
 	serwTime.clear();
 	serwTime = compose.str();
 	cout << "czas po sparsowaniu: " << serwTime << endl;
-	BYTE converse[12];
+	BYTE converse[15];
 	memset(converse, 0, sizeof(converse));
-	BYTE bcdTime[25];
+	BYTE bcdTime[27];
 	memset(bcdTime, 0, sizeof(bcdTime));
 	
 	for(int i =0; i< 12; i++)
@@ -138,7 +138,7 @@ int networkControler::updClock(){
 		converse[i] = serwTime[i];
 	}
 	cout << "string w formacie byte: " << converse << endl;
-	AscToBcd(converse, bcdTime, serwTime.size());
+	AscToBcd(converse, bcdTime, strlen(converse));
 	cout << "czas po konwersji na BCD: " << bcdTime << endl;
 	
 	//ustawam zegar !
