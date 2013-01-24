@@ -74,6 +74,7 @@ void masterControler::timeWindow(){
 	GetTime(rTime);
 	for(int i = 0; i < 4; i++)
 	{
+		cout << "tu sie wypierdolilem :D" << endl;
 		pTime[i] = rTime[i+6];
 	}
 	string hourConfBeg = config->returnParam("schedule.config.time.begin.hour");
@@ -138,7 +139,7 @@ void masterControler::timeWindow(){
 	do
 	{
 		// wyslij tego tx'a czy cus jol :D 
-		sendTrx();
+		//sendTrx();
 		
 		
 	} while(txFlag);
