@@ -26,7 +26,7 @@ int main(){
 //	configControler* config = new configControler();
 	//master->selling();
 	//char c;	
-	mknod(FIFO_NAME,  | 0666, 0);
+	mknod(FIFO_NAME, S_IFIFO | 0666, 0);
 	int fd;
 //	networkControler* network = new networkControler();
 //	deviceControler* device = new deviceControler();
