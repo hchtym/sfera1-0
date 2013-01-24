@@ -1,7 +1,7 @@
 #include "networkControler.h"
 
 #define buffer (2048)
-#define ERR_OK (0)
+//#define ERR_OK (0)
 
 
 using namespace std;
@@ -133,7 +133,7 @@ int networkControler::updClock(){
 	
 	//ustawam zegar !
 	ret = SetTime(bcdTime);
-	if(ret != OK_ERR)
+	if(ret != ERR_OK)
 	{
 		cout << "Nieustawilem zegara !!" << endl;
 	}
