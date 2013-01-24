@@ -24,6 +24,7 @@ masterControler::masterControler(int *fifo){
 	network = new networkControler(ip, port, apn, user, paswd, numerser);
 	cout << "rozmiar struct date: " << sizeof(struct Date) << endl;
 	cout << "rozmiar struct transaction: " << sizeof(struct Transaction) << endl;
+	network->updClock();
 	seller.clear();
 	loginFlag = false;
 	senttrx = false;
