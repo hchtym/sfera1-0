@@ -159,7 +159,7 @@ int masterControler::dispMenu(){
 			break;
 			case 4:
 				cout << "sendTranaction" << endl;
-				setShare();
+				wrtFifo();
 				//network->sendTransaction();
 				cout << "jestem po send transaction" << endl;
 			break;
