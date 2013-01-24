@@ -84,6 +84,7 @@ class masterControler{
 	
 public:
 	masterControler(int *);
+	masterControler();
 	int dispMenu();
 	int loginScr();
 	int selling();

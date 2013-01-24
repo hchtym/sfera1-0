@@ -22,13 +22,28 @@ masterControler::masterControler(int *fifo){
 	paswd = config->returnGprsPaswd(); 
 	numerser = config->returnSeriall();
 	network = new networkControler(ip, port, apn, user, paswd, numerser);
-	cout << "rozmiar struct date: " << sizeof(struct Date) << endl;
-	cout << "rozmiar struct transaction: " << sizeof(struct Transaction) << endl;
 	seller.clear();
 	loginFlag = false;
 	senttrx = false;
-	//vheiu
 };
+
+masterControler::masterControler(){
+	config = new configControler();
+	device = new deviceControler();
+	ip = config->returnSerwerIp(); 
+	port = config->returnSerwerPort(); 
+	apn = config->returnGprsApn();
+	user = config->returnGprsUser(); 
+	paswd = config->returnGprsPaswd(); 
+	numerser = config->returnSeriall();
+	network = new networkControler(ip, port, apn, user, paswd, numerser);
+	seller.clear();
+	loginFlag = false;
+	senttrx = false;
+
+};
+
+
 
 void masterControler::wrtFifo(){
 	int num;
