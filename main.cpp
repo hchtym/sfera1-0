@@ -41,23 +41,26 @@ int main(){
 	pid_t pID = fork();
 	if(pID == 0) /* child */
 	{
-		int num;
-		char bufer[6];
-		fd = open(FIFO_NAME, O_RDONLY | O_NDELAY);
-		cout << "Jestem w procesie dziecku" << endl;
-		cout << "adres FD: " << &fd << endl;
+		while(1)
+		{
+			int num;
+			char bufer[6];
+			fd = open(FIFO_NAME, O_RDONLY | O_NDELAY);
+			cout << "Jestem w procesie dziecku" << endl;
+			cout << "adres FD: " << &fd << endl;
 		
-		sleep(5);
-		cout << "skonczylem czekac sprawdzem co jest w fifo." << endl;
-		do
-		{	
-			num = read(fd, bufer, 6);
-			if(strcmp(bufer, "send\n") == 0)
-			{
-			cout << "Udalo sie str jest taki sam wysylam." << endl;
-			master->masterBackground();	
-			}
-		}while(num > 0);
+			sleep(5);
+			cout << "skonczylem czekac sprawdzem co jest w fifo." << endl;
+			do
+			{	
+				num = read(fd, bufer, 6);
+				if(strcmp(bufer, "send\n") == 0)
+				{
+					cout << "Udalo sie str jest taki sam wysylam." << endl;
+					master->masterBackground();	
+				}
+			}while(num > 0);
+		}
 	}
 	else if (pID < 0)/* failed */
 	{
