@@ -62,7 +62,7 @@ void masterControler::timeWindow(){
 	memset(eConfTime, 0, sizeof(eConfTime));
 	
 	char bTxTime[4]; // czas okna czasowego 
-	memset(bSoftTime, 0, sizeof(bTxTime));
+	memset(bTxTime, 0, sizeof(bTxTime));
 	char eTxTime[4];
 	memset(eTxTime, 0, sizeof(eTxTime));
 	
