@@ -53,7 +53,7 @@ int masterControler::updClk(){
 
 void masterControler::timeWindow(){
 	string confPartBeg1 = "schedule.config.time.begin.hour";
-	string confPartBrg2 = "schedule.config.time.begin.min";
+	string confPartBeg2 = "schedule.config.time.begin.min";
 	string confPartEnd1 = "schedule.config.time.end.hour";
 	string confPartEnd2 = "schedule.config.time.end.min";	
 	string txPartBeg1 = "schedule.tx.time.begin.hour";
