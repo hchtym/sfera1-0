@@ -226,7 +226,7 @@ int networkControler::sendTrx(){
 	cout << size << " oto rozmiar" << endl;
 	if(size > 0)
 	{
-		//compose.str("");
+repete2:		//compose.str("");
 		compose << size << ";" << sizeof(struct Transaction) << endl;
 		msg.clear();
 		msg = compose.str();
@@ -270,50 +270,6 @@ int networkControler::sendTrx(){
 		memset(temp, 0, sizeof(temp));
 		if(x == size) break;
 	}
-
-	
-		// przechodze do przesylania pliku 
-		/*cout << "otwieram plik" << endl;
-		FILE *pFile = NULL;
-		pFile = fopen("tranzakcje.txt", "r" );
-		compose.str("");
-		for(int i = 0; i < size; i+=720)
-		{
-			//fseek(pFile, ulHandle, SEEK_CUR);
-			cout << i << " iteracja nr" << endl;
-			ulLen = size -1;
-			if(ulLen > 720) ulLen = 720;
-			int j =0;
-			while(x != EOF)
-			{
-				if(j > ulLen) break;
-				cout << j << " znaczek numer" << endl;
-				x = fgetc(pFile);
-				if(x == EOF) break;
-				temp[j]= x;
-				j++;
-			}
-			/*for(int g =0; temp[i] != EOF; i++){
-				msg += temp[i];
-			}*/
-			//msg.clear();
-			//msg = temp;
-			//cout << msg << endl;
-			//cout << temp << endl;
-			//len = msg.size();
-			//int sended = 0;
-		//	len = strlen(temp);
-			//cout << "długość stringu" << len << endl;
-			//while(sended != len){
-			//	if((bytes_sent = send(sockfd, temp, len, 0)) == -1){
-			//		loger << "send filetx; error" << endl;
-			//		perror("send"); // logowanie do pliku !
-					//exit(1);
-			//	}
-			//	sended += bytes_sent;
-			//}
-
-		//}
 		memset(pCAPData, 0, sizeof(pCAPData));
 		if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1)
 		{
@@ -326,10 +282,18 @@ int networkControler::sendTrx(){
 		info = compose.str();
 		if((info.compare("ok")) == 0)
 		{
+			return 1;
 			//loger << "serwer recived msg properly" << endl;
 		}
 		else
 		{
+			if(resend > 3)
+			{
+				file.cose();
+				return 0;
+			}
+			resend++;
+			goto repete2;
 			//loger << "serwer didn't recive message" << endl;
 		}	
 		
@@ -363,6 +327,7 @@ repete:
 		info = compose.str();
 		if((info.compare("ok")) == 0)
 		{
+			return 1;
 			//loger << "serwer recived msg properly" << endl;
 		}
 		else

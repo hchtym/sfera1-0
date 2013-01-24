@@ -58,17 +58,17 @@ void masterControler::timeWindow(){
 	string begTx, endTx;
 	BYTE rTime[30]; // aktualny czas terminala
 	memset(rTime, 0, sizeof(rTime));
-	char bConfTime[4]; // czas okna czasowego 
+	char bConfTime[10]; // czas okna czasowego 
 	memset(bConfTime, 0, sizeof(bConfTime));
-	char eConfTime[4];
+	char eConfTime[10];
 	memset(eConfTime, 0, sizeof(eConfTime));
 	
-	char bTxTime[4]; // czas okna czasowego 
+	char bTxTime[10]; // czas okna czasowego 
 	memset(bTxTime, 0, sizeof(bTxTime));
-	char eTxTime[4];
+	char eTxTime[10];
 	memset(eTxTime, 0, sizeof(eTxTime));
 	
-	char pTime[4]; //sparsowany czas terminala
+	char pTime[10]; //sparsowany czas terminala
 	memset(pTime, 0, sizeof(pTime));
 	
 	GetTime(rTime);
@@ -93,11 +93,11 @@ void masterControler::timeWindow(){
 	compose.str("");
 	compose << hourConfEnd << minuteConfEnd;
 	endConf = compose.str();
-	for(int i = 0; i < 4; i++)
+	for(int i = 0; i < begConf.size(); i++)
 	{
 		bConfTime[i] = begConf[i];
 	}
-	for(int i = 0; i < 4; i++)
+	for(int i = 0; i < endConf.size(); i++)
 	{
 		eConfTime[i] = endConf[i];
 	}
@@ -109,11 +109,11 @@ void masterControler::timeWindow(){
 	compose.str("");
 	compose << hourTxEnd << minuteTxEnd;
 	endTx = compose.str();
-	for(int i = 0; i < 4; i++)
+	for(int i = 0; i < begTx.size(); i++)
 	{
 		bTxTime[i] = begTx[i];
 	}
-	for(int i = 0; i < 4; i++)
+	for(int i = 0; i < endTx.size(); i++)
 	{
 		eTxTime[i] = endTx[i];
 	}
@@ -128,7 +128,9 @@ void masterControler::timeWindow(){
 	{
 		//pobierz dany config 
 		
-		// odrocz !!
+		
+		
+		
 		
 		// tutaj trzaskamy cos :D :D 
 	} while(confFlag);
@@ -136,6 +138,9 @@ void masterControler::timeWindow(){
 	do
 	{
 		// wyslij tego tx'a czy cus jol :D 
+		master->
+		
+		
 	} while(txFlag);
 	
 }
@@ -145,6 +150,11 @@ void masterControler::timeWindow(){
 void masterControler::wrtFifo(){
 	int num;
 	num = write(*fifoContainer, "send\n", strlen("send\n"));
+	
+}
+
+bool masterControler::sendTrx(){
+	network->sendTransaction();
 	
 }
 

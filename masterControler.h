@@ -87,6 +87,7 @@ class masterControler{
 public:
 	masterControler(int *);
 	masterControler();
+	bool sendTrx();
 	int dispMenu();
 	int updClk();
 	int loginScr();
