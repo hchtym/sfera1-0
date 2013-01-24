@@ -51,7 +51,7 @@ int main(){
 		do
 		{	
 			num = read(fd, bufer, 6);
-			if(strcmp(s, "send\n") == 0)
+			if(strcmp(bufer, "send\n") == 0)
 			{
 			master->masterBackground();	
 			}
