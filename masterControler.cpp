@@ -229,7 +229,7 @@ void masterControler::timeWindow(){
 		left = -1;
 	}
 	
-	if(!ConfFlag && (left2 == 0))
+	if(!confFlag && (left2 == 0))
 	{
 		left2 = -1;
 	}
