@@ -88,7 +88,7 @@ void masterControler::timeWindow(){
 	memset(pTime, 0, sizeof(pTime));
 	
 	GetTime(bTime);
-	BcdToAsc(rTime,bTime, strlen(bTime));
+	BcdToAsc(rTime,bTime, strlen((char *)bTime));
 	for(int i = 0; i < 4; i++)
 	{
 		pTime[i] = rTime[i+6];
