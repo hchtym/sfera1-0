@@ -313,6 +313,7 @@ void masterControler::timeWindow(){
 		left2 = -1;
 	}
 	cout << endl << endl;
+	cout << "oba lefty: " << endl << left << endl << left2 << endl; 
 }
 
 
