@@ -256,7 +256,7 @@ void masterControler::timeWindow(){
 	if(txFlag)
 	{
 		// wyslij tego tx'a czy cus jol :D 
-		if(txSend && (left == -1))
+		if(txSend) //left == -1
 		{
 			//ustaw odroczenie na maxa !
 			string timer = config->returnParam("schedule.config.success.interval");
@@ -297,6 +297,9 @@ void masterControler::timeWindow(){
 	{
 		//zapytaj o conf
 	}
+	
+	
+	// czyscimy lefty i inne bzdety
 	
 	if(!txFlag && (left == 0))
 	{
