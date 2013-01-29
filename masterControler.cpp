@@ -157,6 +157,15 @@ void masterControler::timeWindow(){
 		eTxTime[i] = endTx[i];
 	}
 	
+	for(int i = 0; i < begConf.size(); i++)
+	{
+		bConfTime[i] = begConf[i];
+	}
+	for(int i = 0; i < endConf.size(); i++)
+	{
+		eConfTime[i] = endConf[i];
+	}
+	
 	if(strcmp(pTime, bConfTime) == 0) confFlag = true;
 	if(strcmp(pTime, eConfTime) == 0) confFlag = false;
 	
