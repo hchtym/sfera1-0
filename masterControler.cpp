@@ -261,6 +261,7 @@ void masterControler::timeWindow(){
 			string timer = config->returnParam("schedule.config.success.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
 			SetTimer(1, timeout);
+			cout << " Ustawilem imerc na poczatek" << endl;
 		}
 		else
 		{
@@ -270,6 +271,7 @@ void masterControler::timeWindow(){
 				string timer = config->returnParam("schedule.config.fail.interval");
 				int timeout = atoi(timer.c_str()) * 1000;
 				SetTimer(1, timeout);
+				cout << "ustawilem timer na fail :( )" << endl;
 			}
 		}
 	}
