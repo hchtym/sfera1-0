@@ -130,11 +130,15 @@ void masterControler::timeWindow(){
 		eTxTime[i] = endTx[i];
 	}
 	
-	if(strcmp(pTime, bConfTime) == 0) txFlag = true;
-	if(strcmp(pTime, eConfTime) == 0) txFlag = false;
+	if(strcmp(pTime, bConfTime) == 0) confFlag = true;
+	if(strcmp(pTime, eConfTime) == 0) confFlag = false;
 	
-	if(strcmp(pTime, bTxTime) == 0) confFlag = true;
-	if(strcmp(pTime, eTxTime) == 0) confFlag = false;
+	if(strcmp(pTime, bTxTime) == 0)
+	{
+		txFlag = true;
+		cout << pTime << " " << bTxTime << endl;
+	}
+	if(strcmp(pTime, eTxTime) == 0) txFlag = false;
 	
 	if(confFlag | (left2 == -1))
 	{
