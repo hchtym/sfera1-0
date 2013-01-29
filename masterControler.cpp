@@ -219,6 +219,8 @@ void masterControler::timeWindow(){
 		
 	}
 	
+	cout << "jestem przed ifem z txFlag i left"
+	
 	if(txFlag && (left == -1))
 	{
 		cout << "wysylam trx" << endl;
@@ -243,20 +245,15 @@ void masterControler::timeWindow(){
 			int timeout = atoi(timer.c_str()) * 1000;
 			SetTimer(2, timeout);
 		}
-		left = CheckTimer(2);
-		if(0 == left)
-		{
-			txSend = sendTrx();
-		}
-		
-		
 		
 		
 		// tutaj trzaskamy cos :D :D 
 	}
 	
+	cout << "jestem przed txFlag"
 	if(txFlag)
 	{
+		cout << "jestem przed txSend" << endl;
 		// wyslij tego tx'a czy cus jol :D 
 		if(txSend) //left == -1
 		{
@@ -267,6 +264,7 @@ void masterControler::timeWindow(){
 		}
 		else
 		{
+			cout << "jestem w else !" << nedl;
 			// ustaw odroczenie min
 			if(!txSend && (left == -1)){
 				string timer = config->returnParam("schedule.config.fail.interval");
@@ -275,7 +273,7 @@ void masterControler::timeWindow(){
 			}
 		}
 	}
-	
+	out << "sprawdzam timery " << endl;
 	left = CheckTimer(1);
 	if(0 == left)
 	{
@@ -302,7 +300,7 @@ void masterControler::timeWindow(){
 	
 	
 	// czyscimy lefty i inne bzdety
-	
+	cout << "czyszcze flagi" << endl;
 	if(!txFlag && (left == 0))
 	{
 		left = -1;
