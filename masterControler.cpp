@@ -176,7 +176,7 @@ void masterControler::timeWindow(){
 	}
 	if(strcmp(pTime, eTxTime) == 0) txFlag = false;
 	
-	if(confFlag | (left2 == -1))
+	if(confFlag && (left2 == -1))
 	{
 		// zapytaj o conf 
 		
