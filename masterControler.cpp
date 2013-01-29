@@ -69,6 +69,8 @@ void masterControler::timeWindow(){
 	string begConf, endConf;
 	bool txSend;
 	bool confRcv;
+	BYTE bTime[30]; // czas w unsigned byte
+	memset(bTime,0, sizeof(bTime));
 	string begTx, endTx;
 	BYTE rTime[30]; // aktualny czas terminala
 	memset(rTime, 0, sizeof(rTime));
@@ -85,7 +87,8 @@ void masterControler::timeWindow(){
 	char pTime[10]; //sparsowany czas terminala
 	memset(pTime, 0, sizeof(pTime));
 	
-	GetTime(rTime);
+	GetTime(bTime);
+	BcdToAsc(rTime,bTime, strlen(bTime));
 	for(int i = 0; i < 4; i++)
 	{
 		pTime[i] = rTime[i+6];
