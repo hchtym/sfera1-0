@@ -10,8 +10,8 @@ using namespace std;
 
 
 masterControler::masterControler(int *fifo){
-	int left = -1;
-	int left2 = -1;
+	left = -1;
+	left2 = -1;
 	fifoContainer = fifo;
 	confFlag = false;
 	txFlag = false;
@@ -32,8 +32,8 @@ masterControler::masterControler(int *fifo){
 };
 
 masterControler::masterControler(){
-	int left = -1;
-	int left2 = -1;
+	left = -1;
+	left2 = -1;
 	confFlag = false;
 	txFlag = false;
 	config = new configControler();
