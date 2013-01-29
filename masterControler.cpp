@@ -240,7 +240,7 @@ void masterControler::timeWindow(){
 			//ustaw odroczenie na maxa !
 			string timer = config->returnParam("schedule.config.success.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
-			cout << timeut << endl;
+			cout << timeout << endl;
 			SetTimer(3, timeout);
 			timer2 = true;
 		}
