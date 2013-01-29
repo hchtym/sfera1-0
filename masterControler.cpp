@@ -157,14 +157,14 @@ void masterControler::timeWindow(){
 		{
 			//ustaw odroczenie na maxa !
 			string timer = config->returnParam("schedule.config.success.interval");
-			int timeout = atoi(timer) * 1000;
+			int timeout = atoi(timer.c_str()) * 1000;
 			SetTimer(2, timeout);
 		}
 		else
 		{
 			// ustaw odroczenie min
 			string timer = config->returnParam("schedule.config.fail.interval");
-			int timeout = atoi(timer) * 1000;
+			int timeout = atoi(timer.c_str()) * 1000;
 			SetTimer(2, timeout);
 		}
 		left = CheckTimer(2);
@@ -186,7 +186,7 @@ void masterControler::timeWindow(){
 		{
 			//ustaw odroczenie na maxa !
 			string timer = config->returnParam("schedule.config.success.interval");
-			int timeout = atoi(timer) * 1000;
+			int timeout = atoi(timer.c_str()) * 1000;
 			SetTimer(1, timeout);
 		}
 		else
@@ -194,7 +194,7 @@ void masterControler::timeWindow(){
 			// ustaw odroczenie min
 			if(!txSend && (flag == -1)){
 				string timer = config->returnParam("schedule.config.fail.interval");
-				int timeout = atoi(timer) * 1000;
+				int timeout = atoi(timer.c_str()) * 1000;
 				SetTimer(1, timeout);
 			}
 		}
@@ -207,13 +207,13 @@ void masterControler::timeWindow(){
 		if(!txSend)
 		{
 			string timer = config->returnParam("schedule.config.fail.interval");
-			int timeout = atoi(timer) * 1000;
+			int timeout = atoi(timer.c_str()) * 1000;
 			SetTimer(1, timeout);
 		}
 		else
 		{
 			string timer = config->returnParam("schedule.config.success.interval");
-			int timeout = atoi(timer) * 1000;
+			int timeout = atoi(timer.c_str()) * 1000;
 			SetTimer(1, timeout);
 		}
 	}
