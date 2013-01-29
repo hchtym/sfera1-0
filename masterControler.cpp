@@ -129,6 +129,15 @@ void masterControler::timeWindow(){
 		eConfTime[i] = endConf[i];
 	}
 	//soft
+	
+	compose.str("");
+	compose << hourTxBeg << minuteTxBeg ;
+	begTx = compose.str();
+	
+	compose.str("");
+	compose << hourTxEnd << minuteTxEnd;
+	endTx = compose.str();
+	
 	compose.str("");
 	compose << hourConfBeg << minuteConfBeg ;
 	begConf = compose.str();
@@ -146,14 +155,6 @@ void masterControler::timeWindow(){
 	{
 		eTxTime[i] = endTx[i];
 	}
-	
-	compose.str("");
-	compose << hourTxBeg << minuteTxBeg ;
-	begTx = compose.str();
-	
-	compose.str("");
-	compose << hourTxEnd << minuteTxEnd;
-	endTx = compose.str();
 	
 	if(strcmp(pTime, bConfTime) == 0) confFlag = true;
 	if(strcmp(pTime, eConfTime) == 0) confFlag = false;
