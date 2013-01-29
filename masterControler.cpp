@@ -150,6 +150,7 @@ void masterControler::timeWindow(){
 	
 	if(txFlag && (left == -1))
 	{
+		cout << "wysylam trx" << endl;
 		txSend = sendTrx();
 	}
 
