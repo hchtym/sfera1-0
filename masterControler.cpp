@@ -236,6 +236,7 @@ void masterControler::timeWindow(){
 			//ustaw odroczenie na maxa !
 			string timer = config->returnParam("schedule.config.success.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
+			cout << timeut << endl;
 			SetTimer(3, timeout);
 		}
 		else
@@ -243,6 +244,7 @@ void masterControler::timeWindow(){
 			// ustaw odroczenie min
 			string timer = config->returnParam("schedule.config.fail.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
+			cout << timeout << endl;
 			SetTimer(3, timeout);
 		}
 		
@@ -284,13 +286,13 @@ void masterControler::timeWindow(){
 		{
 			string timer = config->returnParam("schedule.config.fail.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
-			SetTimer(1, timeout);
+			SetTimer(2, timeout);
 		}
 		else
 		{
 			string timer = config->returnParam("schedule.config.success.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
-			SetTimer(1, timeout);
+			SetTimer(2, timeout);
 		}
 	}
 	
