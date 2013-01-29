@@ -129,6 +129,30 @@ void masterControler::timeWindow(){
 		eConfTime[i] = endConf[i];
 	}
 	//soft
+	if((minuteTxBeg.compare("0")) == 0)
+	{
+		minuteTxBeg.clear();
+		minuteTxBeg = "00";
+	}
+	
+	if((minuteTxEnd.compare("0")) == 0)
+	{
+		minuteTxEnd.clear();
+		minutetxEnd = "00";
+	}
+	
+	if((minuteConfBeg.compare("0")) == 0)
+	{
+		minuteConfBeg.clear();
+		minuteConfBeg = "00";
+	}
+	
+	if((minuteConfEnd.compare("0")) == 0)
+	{
+		minuteConfEnd.clear();
+		minuteConfEnd = "00";
+	}
+	
 	
 	compose.str("");
 	compose << hourTxBeg << minuteTxBeg ;
