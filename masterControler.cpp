@@ -138,7 +138,7 @@ void masterControler::timeWindow(){
 	if((minuteTxEnd.compare("0")) == 0)
 	{
 		minuteTxEnd.clear();
-		minutetxEnd = "00";
+		minuteTxEnd = "00";
 	}
 	
 	if((minuteConfBeg.compare("0")) == 0)
