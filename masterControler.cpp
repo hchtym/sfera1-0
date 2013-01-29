@@ -221,7 +221,7 @@ void masterControler::timeWindow(){
 	
 	cout << "jestem przed ifem z txFlag i left" << endl;
 	
-	if(txFlag && (left == -1))
+	if((txFlag) && (left == -1))
 	{
 		cout << "wysylam trx" << endl;
 		txSend = sendTrx();
