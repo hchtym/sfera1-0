@@ -312,7 +312,7 @@ void masterControler::timeWindow(){
 	{
 		left2 = -1;
 	}
-	
+	cout << endl << endl;
 }
 
 
