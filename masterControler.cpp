@@ -69,10 +69,10 @@ void masterControler::timeWindow(){
 	string begConf, endConf;
 	bool txSend;
 	bool confRcv;
-	BYTE bTime[30]; // czas w unsigned byte
+	BYTE bTime[50]; // czas w unsigned byte
 	memset(bTime,0, sizeof(bTime));
 	string begTx, endTx;
-	BYTE rTime[30]; // aktualny czas terminala
+	BYTE rTime[50]; // aktualny czas terminala
 	memset(rTime, 0, sizeof(rTime));
 	char bConfTime[10]; // czas okna czasowego 
 	memset(bConfTime, 0, sizeof(bConfTime));
