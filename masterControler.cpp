@@ -89,8 +89,7 @@ void masterControler::timeWindow(){
 	
 	GetTime(bTime);
 	cout << "czas w bcd: " << bTime << endl;
-	BcdToAsc(rTime,bTime, strlen((char *)bTime));
-	cout << "dlugosc bcd: " << strlen((char *)bTime) << endl; 
+	BcdToAsc(rTime,bTime, 12); 
 	cout << "czas w asce : " << rTime << endl;
 	for(int i = 0; i < 4; i++)
 	{
