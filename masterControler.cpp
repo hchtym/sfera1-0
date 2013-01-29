@@ -67,8 +67,8 @@ void masterControler::timeWindow(){
 	string txPartEnd2 = "schedule.tx.time.end.min";
 	stringstream compose;
 	string begConf, endConf;
-	bool txSend;
-	bool confRcv;
+	bool txSend = false;
+	bool confRcv = false;
 	BYTE bTime[50]; // czas w unsigned byte
 	memset(bTime,0, sizeof(bTime));
 	string begTx, endTx;
@@ -96,6 +96,7 @@ void masterControler::timeWindow(){
 		pTime[i] = rTime[i+6];
 	}
 	cout << pTime << "czas teminala" << endl;
+	cout << "Czytam konfig do zmiennych" << endl;
 	string hourConfBeg = config->returnParam(confPartBeg1);
 	//cout << hourConfBeg << endl;
 	string minuteConfBeg = config->returnParam(confPartBeg2);
@@ -153,7 +154,7 @@ void masterControler::timeWindow(){
 		minuteConfEnd = "00";
 	}
 	
-	
+	cout << "skladam granice z czesci configa" << endl;
 	compose.str("");
 	compose << hourTxBeg << minuteTxBeg ;
 	begTx = compose.str();
@@ -195,13 +196,14 @@ void masterControler::timeWindow(){
 	
 	cout << bConfTime << endl;
 	cout << eConfTime << endl;
-	
+	cout << "sprawdzam flagi" << endl;
 	if(strcmp(pTime, bConfTime) == 0) confFlag = true;
 	if(strcmp(pTime, eConfTime) == 0) confFlag = false;
 	
 	if(strcmp(pTime, bTxTime) == 0)
 	{
 		txFlag = true;
+		cout << txFlag;
 		cout << pTime << " " << bTxTime << endl;
 	}
 	if(strcmp(pTime, eTxTime) == 0) txFlag = false;
