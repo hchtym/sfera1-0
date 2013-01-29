@@ -219,7 +219,7 @@ void masterControler::timeWindow(){
 		
 	}
 	
-	cout << "jestem przed ifem z txFlag i left"
+	cout << "jestem przed ifem z txFlag i left" << endl;
 	
 	if(txFlag && (left == -1))
 	{
@@ -250,7 +250,7 @@ void masterControler::timeWindow(){
 		// tutaj trzaskamy cos :D :D 
 	}
 	
-	cout << "jestem przed txFlag"
+	cout << "jestem przed txFlag" << endl;
 	if(txFlag)
 	{
 		cout << "jestem przed txSend" << endl;
@@ -273,7 +273,7 @@ void masterControler::timeWindow(){
 			}
 		}
 	}
-	out << "sprawdzam timery " << endl;
+	cout << "sprawdzam timery " << endl;
 	left = CheckTimer(1);
 	if(0 == left)
 	{
