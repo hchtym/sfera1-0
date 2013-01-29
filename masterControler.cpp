@@ -206,7 +206,8 @@ void masterControler::timeWindow(){
 	}
 	if(strcmp(pTime, eTxTime) == 0) txFlag = false;
 	
-	cout << "Flaga: " << flag << endl;
+	cout << "FlagaTx: " << txFlag << endl;
+	cout << "left: " << left << endl;
 	
 	if(confFlag && (left2 == -1))
 	{
