@@ -64,6 +64,7 @@ int main(){
 				memset(bufer, 0, sizeof(bufer));
 
 			}while(num > 0);
+			cout << "jestem przed timeWindow" << endl;
 			master->timeWindow();
 		}
 	}
