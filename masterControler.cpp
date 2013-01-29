@@ -166,6 +166,12 @@ void masterControler::timeWindow(){
 		eConfTime[i] = endConf[i];
 	}
 	
+	cout << bTxTime << endl;
+	cout << eTxTime << endl;
+	
+	cout << bConfTime << endl;
+	cout << eConfTime << nedl;
+	
 	if(strcmp(pTime, bConfTime) == 0) confFlag = true;
 	if(strcmp(pTime, eConfTime) == 0) confFlag = false;
 	
