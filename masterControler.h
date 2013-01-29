@@ -20,6 +20,7 @@ using namespace std;
 
 class masterControler{
 //private:
+	int left, left2;
 	bool confFlag;
 	bool txFlag;
 	int *fifoContainer;

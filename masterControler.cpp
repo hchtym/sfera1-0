@@ -10,6 +10,8 @@ using namespace std;
 
 
 masterControler::masterControler(int *fifo){
+	int left = -1;
+	int left2 = -1;
 	fifoContainer = fifo;
 	confFlag = false;
 	txFlag = false;
@@ -30,6 +32,8 @@ masterControler::masterControler(int *fifo){
 };
 
 masterControler::masterControler(){
+	int left = -1;
+	int left2 = -1;
 	confFlag = false;
 	txFlag = false;
 	config = new configControler();
@@ -93,7 +97,7 @@ void masterControler::timeWindow(){
 	string minuteTxBeg = config->returnParam(txPartBeg2);
 	string hourTxEnd = config->returnParam(txPartEnd1);
 	string minuteTxEnd = config->returnParam(txPartEnd2);
- 	// config
+
 	compose.str("");
 	compose << hourConfBeg << minuteConfBeg ;
 	begConf = compose.str();
@@ -132,32 +136,103 @@ void masterControler::timeWindow(){
 	if(strcmp(pTime, bTxTime) == 0) confFlag = true;
 	if(strcmp(pTime, eTxTime) == 0) confFlag = false;
 	
-	do
+	if(confFlag | (left2 == -1))
+	{
+		// zapytaj o conf 
+		
+		//sciagnij cond
+		
+	}
+	
+	if(txFlag && (left == -1))
+	{
+		txSend = sendTrx();
+	}
+
+	if(confFlag)
 	{
 		//pobierz dany config 
 		
+		if(confRcv)
+		{
+			//ustaw odroczenie na maxa !
+			string timer = config->returnParam("schedule.config.success.interval");
+			int timeout = atoi(timer) * 1000;
+			SetTimer(2, timeout);
+		}
+		else
+		{
+			// ustaw odroczenie min
+			string timer = config->returnParam("schedule.config.fail.interval");
+			int timeout = atoi(timer) * 1000;
+			SetTimer(2, timeout);
+		}
+		left = CheckTimer(2);
+		if(0 == left)
+		{
+			txSend = sendTrx();
+		}
 		
 		
 		
 		
 		// tutaj trzaskamy cos :D :D 
-	} while(confFlag);
+	}
 	
-	do
+	if(txFlag)
 	{
 		// wyslij tego tx'a czy cus jol :D 
-		txSend = sendTrx();
-		if(txSend)
+		if(txSend && (flag == -1))
 		{
 			//ustaw odroczenie na maxa !
+			string timer = config->returnParam("schedule.config.success.interval");
+			int timeout = atoi(timer) * 1000;
+			SetTimer(1, timeout);
 		}
 		else
 		{
-			// ustaw odroczenie min 
+			// ustaw odroczenie min
+			if(!txSend && (flag == -1)){
+				string timer = config->returnParam("schedule.config.fail.interval");
+				int timeout = atoi(timer) * 1000;
+				SetTimer(1, timeout);
+			}
 		}
-		
-		
-	} while(txFlag);
+	}
+	
+	left = CheckTimer(1);
+	if(0 == left)
+	{
+		txSend = sendTrx();
+		if(!txSend)
+		{
+			string timer = config->returnParam("schedule.config.fail.interval");
+			int timeout = atoi(timer) * 1000;
+			SetTimer(1, timeout);
+		}
+		else
+		{
+			string timer = config->returnParam("schedule.config.success.interval");
+			int timeout = atoi(timer) * 1000;
+			SetTimer(1, timeout);
+		}
+	}
+	
+	left2 = CheckTimer(2);
+	if(0 == left2)
+	{
+		//zapytaj o conf
+	}
+	
+	if(!txFlag && (left == 0))
+	{
+		left = -1;
+	}
+	
+	if(!ConfFlag && (left2 == 0))
+	{
+		left2 = -1;
+	}
 	
 }
 

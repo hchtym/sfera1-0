@@ -19,7 +19,6 @@ using namespace std;
 int main(){
 	SystemInit();
 	Prn_Init();
-//	Wls_Init();
 	SYS_LoadDriver(DRIVER_CONTACT_MEMORY_CARD);
 	SYS_LoadDriver(DRIVER_CONTACT_CPU_CARD);
 	Lcd_Cls();
@@ -53,21 +52,17 @@ int main(){
 		master->updClk();
 		while(1)
 		{
-		
+
 			sleep(20);
-			//cout << "skonczylem czekac sprawdzem co jest w fifo." << endl;
-			//fifo.open(FIFO_NAME, ios::out | ios::turnc);
 			do
 			{	
 				num = read(fd, bufer, 6);
-				//fifo.read();
 				if(strcmp(bufer, "send\n") == 0)
 				{
-					cout << "Udalo sie str jest taki sam wysylam." << endl;
 					master->masterBackground();	
 				}
 				memset(bufer, 0, sizeof(bufer));
-				//fifo.close();
+
 			}while(num > 0);
 			master->timeWindow();
 		}
@@ -85,8 +80,6 @@ int main(){
 
 	masterControler* master = new masterControler(&fd);
 
-		cout << "(rodzic) adres FD: " << &fd << endl;
-		cout << "(rodzic)zawartosc FD: " << fd << endl;
 		while(1)
 		{
 				master->dispMenu();

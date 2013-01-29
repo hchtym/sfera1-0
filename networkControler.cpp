@@ -714,7 +714,10 @@ int networkControler::ethConf(){
 	}
 	sleep(1);
 	loger << "przedstawilem sie serwerowi" << endl;
-	string msg2 = "conf;000001030100397;2009-06-02 00:00\0";
+	compose.str("");
+	compose << "conf;" << serialN.c_str() << ";2009-06-02 00:00\0";
+	//string msg2 = "conf;000001030100397;2009-06-02 00:00\0";
+	string msg2 = compose.str();
 	len = msg2.size();
 	if((bytes_sent = send(sockfd, msg2.c_str(), len, 0)) == -1){
 		loger << "error send przedstawienie" << endl;
