@@ -264,7 +264,7 @@ void masterControler::timeWindow(){
 		}
 		else
 		{
-			cout << "jestem w else !" << nedl;
+			cout << "jestem w else !" << endl;
 			// ustaw odroczenie min
 			if(!txSend && (left == -1)){
 				string timer = config->returnParam("schedule.config.fail.interval");
