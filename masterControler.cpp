@@ -206,6 +206,8 @@ void masterControler::timeWindow(){
 	}
 	if(strcmp(pTime, eTxTime) == 0) txFlag = false;
 	
+	cout << "Flaga: " << flag << endl;
+	
 	if(confFlag && (left2 == -1))
 	{
 		// zapytaj o conf 
