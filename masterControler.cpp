@@ -238,6 +238,7 @@ void masterControler::timeWindow(){
 			int timeout = atoi(timer.c_str()) * 1000;
 			cout << timeut << endl;
 			SetTimer(3, timeout);
+			timer2 = true;
 		}
 		else
 		{
@@ -246,6 +247,8 @@ void masterControler::timeWindow(){
 			int timeout = atoi(timer.c_str()) * 1000;
 			cout << timeout << endl;
 			SetTimer(3, timeout);
+			timer2 = true;
+			
 		}
 		
 		
@@ -263,6 +266,7 @@ void masterControler::timeWindow(){
 			string timer = config->returnParam("schedule.config.success.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
 			SetTimer(2, timeout);
+			timer = true;
 			cout << " Ustawilem imerc na poczatek" << endl;
 		}
 		else
@@ -273,6 +277,7 @@ void masterControler::timeWindow(){
 				string timer = config->returnParam("schedule.config.fail.interval");
 				int timeout = atoi(timer.c_str()) * 1000;
 				SetTimer(2, timeout);
+				timer1 = true;
 				cout << "ustawilem timer na fail :( )" << endl;
 			}
 		}
@@ -287,12 +292,14 @@ void masterControler::timeWindow(){
 			string timer = config->returnParam("schedule.config.fail.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
 			SetTimer(2, timeout);
+			timer1 = true;
 		}
 		else
 		{
 			string timer = config->returnParam("schedule.config.success.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
 			SetTimer(2, timeout);
+			timer1 = true;
 		}
 	}
 	
