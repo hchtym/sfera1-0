@@ -236,14 +236,14 @@ void masterControler::timeWindow(){
 			//ustaw odroczenie na maxa !
 			string timer = config->returnParam("schedule.config.success.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
-			SetTimer(2, timeout);
+			SetTimer(3, timeout);
 		}
 		else
 		{
 			// ustaw odroczenie min
 			string timer = config->returnParam("schedule.config.fail.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
-			SetTimer(2, timeout);
+			SetTimer(3, timeout);
 		}
 		
 		
@@ -260,7 +260,7 @@ void masterControler::timeWindow(){
 			//ustaw odroczenie na maxa !
 			string timer = config->returnParam("schedule.config.success.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
-			SetTimer(1, timeout);
+			SetTimer(2, timeout);
 			cout << " Ustawilem imerc na poczatek" << endl;
 		}
 		else
@@ -270,13 +270,13 @@ void masterControler::timeWindow(){
 			if(!txSend && (left == -1)){
 				string timer = config->returnParam("schedule.config.fail.interval");
 				int timeout = atoi(timer.c_str()) * 1000;
-				SetTimer(1, timeout);
+				SetTimer(2, timeout);
 				cout << "ustawilem timer na fail :( )" << endl;
 			}
 		}
 	}
 	cout << "sprawdzam timery " << endl;
-	left = CheckTimer(1);
+	left = CheckTimer(2);
 	if(0 == left)
 	{
 		txSend = sendTrx();
@@ -294,7 +294,7 @@ void masterControler::timeWindow(){
 		}
 	}
 	
-	left2 = CheckTimer(2);
+	left2 = CheckTimer(3);
 	if(0 == left2)
 	{
 		//zapytaj o conf
