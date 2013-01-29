@@ -146,7 +146,8 @@ void masterControler::timeWindow(){
 	compose << hourConfEnd << minuteConfEnd;
 	endConf = compose.str();
 	
-	cout << "cas rozpoczecia: " << begTx << endl << "czas konca: " << endTx << endl;
+	cout << "cas rozpoczeciaTx: " << begTx << endl << "czas koncaTx: " << endTx << endl;
+	cout << "cas rozpoczeciaConf: " << begConf << endl << "czas koncaConf: " << endConf << endl;
 	for(int i = 0; i < begTx.size(); i++)
 	{
 		bTxTime[i] = begTx[i];
