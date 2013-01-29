@@ -323,11 +323,13 @@ void masterControler::timeWindow(){
 	if(!txFlag && (left == 0))
 	{
 		left = -1;
+		timer1 = false;
 	}
 	
 	if(!confFlag && (left2 == 0))
 	{
 		left2 = -1;
+		timer2 = false;
 	}
 	cout << endl << endl;
 	cout << "oba lefty: " << endl << left << endl << left2 << endl; 
