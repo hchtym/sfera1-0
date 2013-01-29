@@ -106,7 +106,7 @@ void masterControler::timeWindow(){
 	string hourTxEnd = config->returnParam(txPartEnd1);
 	cout << hourTxEnd << endl;
 	string minuteTxEnd = config->returnParam(txPartEnd2);
-	cout << minuteTxEnd << endl;
+	cout << minuteTxEnd << endl;	
 
 	compose.str("");
 	compose << hourConfBeg << minuteConfBeg ;
