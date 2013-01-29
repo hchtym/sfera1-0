@@ -182,7 +182,7 @@ void masterControler::timeWindow(){
 	if(txFlag)
 	{
 		// wyslij tego tx'a czy cus jol :D 
-		if(txSend && (flag == -1))
+		if(txSend && (left == -1))
 		{
 			//ustaw odroczenie na maxa !
 			string timer = config->returnParam("schedule.config.success.interval");
@@ -192,7 +192,7 @@ void masterControler::timeWindow(){
 		else
 		{
 			// ustaw odroczenie min
-			if(!txSend && (flag == -1)){
+			if(!txSend && (left == -1)){
 				string timer = config->returnParam("schedule.config.fail.interval");
 				int timeout = atoi(timer.c_str()) * 1000;
 				SetTimer(1, timeout);
