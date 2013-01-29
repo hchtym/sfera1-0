@@ -12,6 +12,8 @@ using namespace std;
 masterControler::masterControler(int *fifo){
 	left = -1;
 	left2 = -1;
+	timer1 = false;
+	timer2 = false;
 	fifoContainer = fifo;
 	confFlag = false;
 	txFlag = false;
@@ -34,6 +36,8 @@ masterControler::masterControler(int *fifo){
 masterControler::masterControler(){
 	left = -1;
 	left2 = -1;
+	timer1 = false;
+	timer2 = false;
 	confFlag = false;
 	txFlag = false;
 	config = new configControler();
@@ -283,23 +287,25 @@ void masterControler::timeWindow(){
 		}
 	}
 	cout << "sprawdzam timery " << endl;
-	left = CheckTimer(2);
-	if(0 == left)
-	{
-		txSend = sendTrx();
-		if(!txSend)
+	if(timer1){
+		left = CheckTimer(2);
+		if(0 == left)
 		{
-			string timer = config->returnParam("schedule.config.fail.interval");
-			int timeout = atoi(timer.c_str()) * 1000;
-			SetTimer(2, timeout);
-			timer1 = true;
-		}
-		else
-		{
-			string timer = config->returnParam("schedule.config.success.interval");
-			int timeout = atoi(timer.c_str()) * 1000;
-			SetTimer(2, timeout);
-			timer1 = true;
+			txSend = sendTrx();
+			if(!txSend)
+			{
+				string timer = config->returnParam("schedule.config.fail.interval");
+				int timeout = atoi(timer.c_str()) * 1000;
+				SetTimer(2, timeout);
+				timer1 = true;
+			}
+			else
+			{
+				string timer = config->returnParam("schedule.config.success.interval");
+				int timeout = atoi(timer.c_str()) * 1000;
+				SetTimer(2, timeout);
+				timer1 = true;
+			}
 		}
 	}
 	
