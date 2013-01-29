@@ -309,12 +309,14 @@ void masterControler::timeWindow(){
 		}
 	}
 	
+	if(timer2)
+	{
 	left2 = CheckTimer(3);
 	if(0 == left2)
 	{
 		//zapytaj o conf
 	}
-	
+	}
 	
 	// czyscimy lefty i inne bzdety
 	cout << "czyszcze flagi" << endl;
