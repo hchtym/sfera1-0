@@ -92,13 +92,21 @@ void masterControler::timeWindow(){
 	}
 	cout << pTime << "czas teminala" << endl;
 	string hourConfBeg = config->returnParam(confPartBeg1);
+	cout << hourConfBeg << endl;
 	string minuteConfBeg = config->returnParam(confPartBeg2);
+	cout << minuteConfBeg << endl;
 	string hourConfEnd = config->returnParam(confPartEnd1);
+	cout << hourConfEnd << endl;
 	string minuteConfEnd = config->returnParam(confPartEnd2);
+	cout << minuteConfEnd << endl;
 	string hourTxBeg = config->returnParam(txPartBeg1);
+	cout << hourTxBeg << endl;
 	string minuteTxBeg = config->returnParam(txPartBeg2);
+	cout << minuteTxBeg << endl;
 	string hourTxEnd = config->returnParam(txPartEnd1);
+	cout << hourTxEnd << endl;
 	string minuteTxEnd = config->returnParam(txPartEnd2);
+	cout << minuteTxEnd << endl;
 
 	compose.str("");
 	compose << hourConfBeg << minuteConfBeg ;
