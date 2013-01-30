@@ -510,7 +510,7 @@ et2:
 	
 	//sprawdzam timery !!
 	if(timer1){
-		left1 = CheckTimer(3);
+		left1 = CheckTimer(2);
 		cout << "na timer1 zostalo: " << left1 << " ms" << endl;
 		if(0 == left1)
 		{
