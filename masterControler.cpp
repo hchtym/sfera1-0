@@ -347,18 +347,14 @@ void masterControler::timeWindow(){
 	string begTx, endTx; // godziny startu i konca tranzakcji
 	BYTE rTime[50]; // aktualny czas terminala
 	memset(rTime, 0, sizeof(rTime));
-	char bConfTime[10]; // czas okna czasowego 
-	memset(bConfTime, 0, sizeof(bConfTime));
-	char eConfTime[10];
-	memset(eConfTime, 0, sizeof(eConfTime));
-	
-	char bTxTime[10]; // czas okna czasowego 
-	memset(bTxTime, 0, sizeof(bTxTime));
-	char eTxTime[10];
-	memset(eTxTime, 0, sizeof(eTxTime));
+	int bConfTime; // czas okna czasowego 
+	int eConfTime;
+	int bTxTime; // czas okna czasowego 
+	int eTxTime;
 	
 	char pTime[10]; //sparsowany czas terminala
 	memset(pTime, 0, sizeof(pTime));
+	int actTime;
 	
 	GetTime(bTime); // pobieranie czasu 
 	cout << "czas w bcd: " << bTime << endl;
@@ -369,6 +365,9 @@ void masterControler::timeWindow(){
 	{
 		pTime[i] = rTime[i+6];
 	}
+	
+	actTime = atoi(pTime);
+	
 	cout << pTime << "czas teminala" << endl;
 	cout << "Czytam konfig do zmiennych" << endl;
 	string hourConfBeg = config->returnParam("schedule.config.time.begin.hour");
@@ -426,30 +425,22 @@ void masterControler::timeWindow(){
 	cout << "cas rozpoczeciaTx: " << begTx << endl << "czas koncaTx: " << endTx << endl;
 	cout << "cas rozpoczeciaConf: " << begConf << endl << "czas koncaConf: " << endConf << endl;
 	// kopiuje zawartosc czasow z stringow do char[]
-	for(int i = 0; i < begTx.size(); i++)
-	{
-		bTxTime[i] = begTx[i];
-	}
-	for(int i = 0; i < endTx.size(); i++)
-	{
-		eTxTime[i] = endTx[i];
-	}
-	
-	for(int i = 0; i < begConf.size(); i++)
-	{
-		bConfTime[i] = begConf[i];
-	}
-	for(int i = 0; i < endConf.size(); i++)
-	{
-		eConfTime[i] = endConf[i];
-	}
+
+	bTxTime = atoi(begTx.c_str()); 
+
+	eTxTime = atoi(endTx.c_str());
+
+	bConfTime = atoi(begConf.c_str());
+
+	eConfTime = atoi(endConf.c_str());
+
 	
 	//sygnalizacja startu okna !
-	if(strcmp(pTime, bTxTime) == 0) txFlag = true ;
-	if(strcmp(pTime, eTxTime) == 0) txFlag = false;
+	if(( pTime >= bTxTime ) && ( pTime <= eTxTime )) txFlag = true ;
+	if(pTime == eTxTime) txFlag = false;
 	
-	if(strcmp(pTime, bConfTime) == 0) confFlag = true;
-	if(strcmp(pTime, eConfTime) == 0) confFlag = false;
+	if(( pTime >= bConfTime ) && ( pTime <= eConfTime )) confFlag = true;
+	if(pTime == eConfTime) confFlag = false;
 	
 	
 	//sprawdzemy flage tx
