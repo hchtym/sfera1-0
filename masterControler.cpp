@@ -18,9 +18,9 @@ masterControler::masterControler(int *fifo){
 	buildDate = BUILD_DATE;
 	for(int i =0; i< buildDate.size(); i++)
 	{
-		if(buildDate[i] == " ")
+		if(buildDate[i] == ' ')
 		{
-			buildDate[i] == ":";
+			buildDate[i] == ':';
 		}
 	}
 	cout << "build date: " << buildDate << endl;
