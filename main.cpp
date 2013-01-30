@@ -14,7 +14,7 @@
 
 #define FIFO_NAME "fifo_file"
 
-#define BUILD_DATE __DATE__ "," __TIME__
+#define BUILD_DATE __DATE__ ":" __TIME__
 
 using namespace std;
 
