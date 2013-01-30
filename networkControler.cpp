@@ -331,7 +331,7 @@ repete2:		//compose.str("");
 	{
 		//send 0;0;
 		compose.str();
-		compose << "0;0;" << endl;
+		compose << "0;0" << endl;
 		msg.clear();
 		msg = compose.str();
 		len = msg.size();
