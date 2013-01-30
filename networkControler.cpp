@@ -231,7 +231,7 @@ etk1:
 	bytes_sent = 0;
 	bytes_recv = 0;
 
-	ifstream file("config.txt");
+	ifstream file("tranzakcje.txt");
 	if(!file)
 	{
 		file.close();
