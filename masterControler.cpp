@@ -436,11 +436,11 @@ void masterControler::timeWindow(){
 
 	
 	//sygnalizacja startu okna !
-	if(( pTime >= bTxTime ) && ( pTime <= eTxTime )) txFlag = true ;
-	if(pTime == eTxTime) txFlag = false;
+	if(( actTime >= bTxTime ) && ( actTime <= eTxTime )) txFlag = true ;
+	if(actTime == eTxTime) txFlag = false;
 	
-	if(( pTime >= bConfTime ) && ( pTime <= eConfTime )) confFlag = true;
-	if(pTime == eConfTime) confFlag = false;
+	if(( actTime >= bConfTime ) && ( actTime <= eConfTime )) confFlag = true;
+	if(actTime == eConfTime) confFlag = false;
 	
 	
 	//sprawdzemy flage tx
