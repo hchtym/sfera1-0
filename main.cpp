@@ -24,18 +24,10 @@ int main(){
 	Lcd_Cls();
 	Lcd_SetGray(50);
 	Lcd_SetFont(1,0,0);
-//	configControler* config = new configControler();
-	//master->selling();
-	//char c;	
-	//int fd;
-//	networkControler* network = new networkControler();
-//	deviceControler* device = new deviceControler();
-//	device->rfidScan();
-//	device->atc24Read();
-//	device->sleRead();
-//	device->magCardScan();
-	//pid_t childpid;
-//	clone(master->masterBackground(), child_stack, CLONE_VM, NULL);
+	
+	configControler* config = new configControler();
+	delete(config);
+	
 	char bufer[6];
 	pid_t pID = fork();
 	if(pID == 0) /* child */
