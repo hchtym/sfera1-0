@@ -197,7 +197,7 @@ etk1:
 	cout << "jestem w send trx" << endl;
 	//ofstream loger;
 	ifstream file("tranzakcje.txt");
-	if(!file)
+	if(file)
 	{
 		file.close();
 	execl("/bin/cp" , "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
@@ -231,8 +231,8 @@ etk1:
 	bytes_sent = 0;
 	bytes_recv = 0;
 
-	//ifstream file("tranzakcje.txt");
-	if(!file)
+	ifstream file("tranzakcje.txt");
+	if(file)
 	{
 		file.close();
 		cout << "sprawdzam rozmiar" << endl;
