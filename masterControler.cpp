@@ -15,6 +15,8 @@ masterControler::masterControler(int *fifo){
 	left2 = -1;
 	timer1 = false;
 	timer2 = false;
+	confFlag = false;
+	txFlag = false;
 	buildDate = BUILD_DATE;
 	for(int i =0; i< buildDate.size(); i++)
 	{
@@ -23,10 +25,7 @@ masterControler::masterControler(int *fifo){
 			buildDate[i] = ':';
 		}
 	}
-	cout << "build date: " << buildDate << endl;
 	fifoContainer = fifo;
-	confFlag = false;
-	txFlag = false;
 	cout << "adress fifo: " << fifo << endl;
 	cout << "adress fifoConrainer: " << fifoContainer << endl;
 	config = new configControler();
@@ -50,6 +49,14 @@ masterControler::masterControler(){
 	timer2 = false;
 	confFlag = false;
 	txFlag = false;
+	buildDate = BUILD_DATE;
+	for(int i =0; i< buildDate.size(); i++)
+	{
+		if(buildDate[i] == ' ')
+		{
+			buildDate[i] = ':';
+		}
+	}
 	config = new configControler();
 	device = new deviceControler();
 	ip = config->returnSerwerIp(); 
