@@ -66,7 +66,7 @@ private:
 	void gprsInit();
 	int connectAllQuiet();
 	int disconnectAllQuiet();
-	int fileSize();
+	int fileSize(string fileName);
 	//Funkcja parsujaca pobrany config ! 
 	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
 	
