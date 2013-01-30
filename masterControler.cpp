@@ -4,6 +4,7 @@
 #include <string>
 
 #define BUFSIZE 1024
+#define BUILD_DATE __DATE__ " " __TIME__
 
 using namespace std;
 
@@ -14,6 +15,15 @@ masterControler::masterControler(int *fifo){
 	left2 = -1;
 	timer1 = false;
 	timer2 = false;
+	buildDate = BUILD_DATE;
+	for(int i =0; i< buildDate.size(); i++)
+	{
+		if(buildDate[i] == " ")
+		{
+			buildDate[i] == ":";
+		}
+	}
+	cout << "build date: " << buildDate << endl;
 	fifoContainer = fifo;
 	confFlag = false;
 	txFlag = false;
