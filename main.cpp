@@ -27,7 +27,7 @@ int main(){
 	Lcd_SetGray(50);
 	Lcd_SetFont(1,0,0);
 
-	cout << "you are running app version: " << BUILD_DATE
+	cout << "you are running app version: " << BUILD_DATE << endl;
 	
 	configControler* config = new configControler();
 	delete(config);
