@@ -227,7 +227,7 @@ etk1:
 	int size1 = fileSize("tranzakcje.txt");
 	int size2 = fileSize("tranzakcje.txt.bckp");
 	cout << size2 << " oto rozmiar" << endl;
-	if(size > 0)
+	if(size2 > 0)
 	{
 repete2:		//compose.str("");
 		compose << size2 << ";" << sizeof(struct Transaction) << endl;
