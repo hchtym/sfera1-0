@@ -10,7 +10,7 @@ using namespace std;
 
 
 masterControler::masterControler(int *fifo){
-	left = -1;
+	left1 = -1;
 	left2 = -1;
 	timer1 = false;
 	timer2 = false;
@@ -34,7 +34,7 @@ masterControler::masterControler(int *fifo){
 };
 
 masterControler::masterControler(){
-	left = -1;
+	left1 = -1;
 	left2 = -1;
 	timer1 = false;
 	timer2 = false;
@@ -373,7 +373,7 @@ void masterControler::timeWindow(){
 	cout << "Czytam konfig do zmiennych" << endl;
 	string hourConfBeg = config->returnParam("schedule.config.time.begin.hour");
 	string minuteConfBeg = config->returnParam("schedule.config.time.begin.min");
-	string hourConfEnd = config->returnParam("schedule.config.time.end.hour"));
+	string hourConfEnd = config->returnParam("schedule.config.time.end.hour");
 	string minuteConfEnd = config->returnParam("schedule.config.time.end.min");
 	string hourTxBeg = config->returnParam("schedule.tx.time.begin.hour");
 	string minuteTxBeg = config->returnParam("schedule.tx.time.begin.min");
