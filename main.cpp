@@ -14,6 +14,8 @@
 
 #define FIFO_NAME "fifo_file"
 
+#define BUILD_DATE __DATE__ + "," + __TIME__
+
 using namespace std;
 
 int main(){
@@ -24,10 +26,12 @@ int main(){
 	Lcd_Cls();
 	Lcd_SetGray(50);
 	Lcd_SetFont(1,0,0);
+
+	cout << "you are running app version: " << BUILD_DATE
 	
 	configControler* config = new configControler();
 	delete(config);
-	
+
 	char bufer[6];
 	pid_t pID = fork();
 	if(pID == 0) /* child */
