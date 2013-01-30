@@ -180,10 +180,10 @@ int networkControler::sendTransaction(){
 	cout << "Rozlaczem sie !" << endl;
 }
 
-int networkControler::fileSize(){
+int networkControler::fileSize(string fileName){
 	int size;
 	FILE *pFile = NULL;
-	pFile = fopen("tranzakcje.txt", "rb" );
+	pFile = fopen(fileName.c_str(), "rb" );
 	fseek( pFile, 0, SEEK_END );
 	size = ftell( pFile );
 	fclose( pFile );
@@ -193,11 +193,13 @@ int networkControler::fileSize(){
 }
 
 int networkControler::sendTrx(){
+etk1:
 	cout << "jestem w send trx" << endl;
 	//ofstream loger;
-	cout << "otworzylem file stram loger" << endl;
+	execl("/bin/cp" , "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
+	//cout << "otworzylem file stram loger" << endl;
 	//loger.open("logs.txt", ios_base::app);
-	cout << "otwarlem plik i jest git" << endl;
+	//cout << "otwarlem plik i jest git" << endl;
 	char pCAPData[buffer*10];
 	char bufer[50000];
 	memset(bufer, 0, sizeof(bufer));
@@ -222,12 +224,13 @@ int networkControler::sendTrx(){
 	bytes_recv = 0;
 
 	cout << "sprawdzam rozmiar" << endl;
-	int size = fileSize();
-	cout << size << " oto rozmiar" << endl;
+	int size1 = fileSize("tranzakcje.txt");
+	int size2 = fileSize("tranzakcje.txt.bckp");
+	cout << size2 << " oto rozmiar" << endl;
 	if(size > 0)
 	{
 repete2:		//compose.str("");
-		compose << size << ";" << sizeof(struct Transaction) << endl;
+		compose << size2 << ";" << sizeof(struct Transaction) << endl;
 		msg.clear();
 		msg = compose.str();
 		len = msg.size();
@@ -241,17 +244,17 @@ repete2:		//compose.str("");
 		}
 	sleep(1);
 	ulLen = 720;
-	ifstream file("tranzakcje.txt", ios::in|ios::binary);
-	while(x < size)
+	ifstream file("tranzakcje.txt.bckp", ios::in|ios::binary);
+	while(x < size2)
 	{
-		if(sent < size)
+		if(sent < size2)
 		{
 			file.read(temp, ulLen);
 			sent += ulLen;
 		}
 		else
 		{
-			ulLen = size - sent;
+			ulLen = size2 - sent;
 			file.read(temp,ulLen);
 		}
 	len = ulLen;
@@ -282,7 +285,16 @@ repete2:		//compose.str("");
 		info = compose.str();
 		if((info.compare("ok")) == 0)
 		{
-			return 1;
+			int size1 = fileSize("tranzakcje.txt");
+			int size2 = fileSize("tranzakcje.txt.bckp");
+			if(size1 == size2){
+				execl("/bin/rm", "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
+				return 1;
+			}
+			else
+			{
+				goto etk1;
+			}
 			//loger << "serwer recived msg properly" << endl;
 		}
 		else
