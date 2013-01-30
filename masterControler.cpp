@@ -20,7 +20,7 @@ masterControler::masterControler(int *fifo){
 	{
 		if(buildDate[i] == ' ')
 		{
-			buildDate[i] = ":";
+			buildDate[i] = ':';
 		}
 	}
 	cout << "build date: " << buildDate << endl;
