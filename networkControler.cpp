@@ -196,7 +196,12 @@ int networkControler::sendTrx(){
 etk1:
 	cout << "jestem w send trx" << endl;
 	//ofstream loger;
+	ifstream file("tranzakcje.txt");
+	if(!file)
+	{
+		file.close();
 	execl("/bin/cp" , "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
+	}
 	sleep(2);
 	//cout << "otworzylem file stram loger" << endl;
 	//loger.open("logs.txt", ios_base::app);
@@ -226,11 +231,17 @@ etk1:
 	bytes_sent = 0;
 	bytes_recv = 0;
 
-	cout << "sprawdzam rozmiar" << endl;
-	size1 = fileSize("tranzakcje.txt");
-	cout << "tranzakcje.txt size: " << size1 << endl;
-	size2 = fileSize("tranzakcje.txt.bckp");
-	cout << "tranzakcje.txt.bckp size: " << size2 << endl;
+	ifstream file("config.txt");
+	if(!file)
+	{
+		file.close();
+		cout << "sprawdzam rozmiar" << endl;
+		size1 = fileSize("tranzakcje.txt");
+		cout << "tranzakcje.txt size: " << size1 << endl;
+		size2 = fileSize("tranzakcje.txt.bckp");
+		cout << "tranzakcje.txt.bckp size: " << size2 << endl;
+	}
+	
 	if(size2 != 0)
 	{
 repete2:		//compose.str("");
