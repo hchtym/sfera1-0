@@ -271,7 +271,7 @@ repete2:		//compose.str("");
 		}
 		x += bytes_sent;
 		memset(temp, 0, sizeof(temp));
-		if(x == size) break;
+		if(x == size2) break;
 	}
 		memset(pCAPData, 0, sizeof(pCAPData));
 		if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1)
