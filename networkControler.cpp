@@ -197,6 +197,7 @@ etk1:
 	cout << "jestem w send trx" << endl;
 	//ofstream loger;
 	execl("/bin/cp" , "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
+	sleep(2);
 	//cout << "otworzylem file stram loger" << endl;
 	//loger.open("logs.txt", ios_base::app);
 	//cout << "otwarlem plik i jest git" << endl;
