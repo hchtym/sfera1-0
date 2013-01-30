@@ -59,6 +59,7 @@ int masterControler::updClk(){
 	network->updClock();
 }
 
+/*
 void masterControler::timeWindow(){
 	cout << "jestem w time window" << endl;
 	string confPartBeg1 = "schedule.config.time.begin.hour";
@@ -334,8 +335,199 @@ void masterControler::timeWindow(){
 	cout << endl << endl;
 	cout << "oba lefty: " << endl << left << endl << left2 << endl; 
 }
+*/
 
+void masterControler::timeWindow(){
+	stringstream compose; //sstream do skladania godzin itp 
+	string begConf, endConf; // godziny startu i konca config'a
+	bool txSend = false; //flaga poprawnego wyslania tranzakcji true/false
+	bool confRcv = false; //flaga poprawnej aktualizacji configa true/false 
+	BYTE bTime[50]; // czas w unsigned byte
+	memset(bTime,0, sizeof(bTime));
+	string begTx, endTx; // godziny startu i konca tranzakcji
+	BYTE rTime[50]; // aktualny czas terminala
+	memset(rTime, 0, sizeof(rTime));
+	char bConfTime[10]; // czas okna czasowego 
+	memset(bConfTime, 0, sizeof(bConfTime));
+	char eConfTime[10];
+	memset(eConfTime, 0, sizeof(eConfTime));
+	
+	char bTxTime[10]; // czas okna czasowego 
+	memset(bTxTime, 0, sizeof(bTxTime));
+	char eTxTime[10];
+	memset(eTxTime, 0, sizeof(eTxTime));
+	
+	char pTime[10]; //sparsowany czas terminala
+	memset(pTime, 0, sizeof(pTime));
+	
+	GetTime(bTime); // pobieranie czasu 
+	cout << "czas w bcd: " << bTime << endl;
+	BcdToAsc(rTime,bTime, 12); // przetwazanie bcd na asci 
+	cout << "czas w asce : " << rTime << endl;
+	//parsowanie odpowiednich wartosci czasu
+	for(int i = 0; i < 4; i++)
+	{
+		pTime[i] = rTime[i+6];
+	}
+	cout << pTime << "czas teminala" << endl;
+	cout << "Czytam konfig do zmiennych" << endl;
+	string hourConfBeg = config->returnParam("schedule.config.time.begin.hour");
+	string minuteConfBeg = config->returnParam("schedule.config.time.begin.min");
+	string hourConfEnd = config->returnParam("schedule.config.time.end.hour"));
+	string minuteConfEnd = config->returnParam("schedule.config.time.end.min");
+	string hourTxBeg = config->returnParam("schedule.tx.time.begin.hour");
+	string minuteTxBeg = config->returnParam("schedule.tx.time.begin.min");
+	string hourTxEnd = config->returnParam("schedule.tx.time.end.hour");
+	string minuteTxEnd = config->returnParam("schedule.tx.time.end.hour");
+	
+	// poprawa sprawdzenia formatu 0 na 00
+	if((minuteTxBeg.compare("0")) == 0)
+	{
+		minuteTxBeg.clear();
+		minuteTxBeg = "00";
+	}
+	
+	if((minuteTxEnd.compare("0")) == 0)
+	{
+		minuteTxEnd.clear();
+		minuteTxEnd = "00";
+	}
+	
+	if((minuteConfBeg.compare("0")) == 0)
+	{
+		minuteConfBeg.clear();
+		minuteConfBeg = "00";
+	}
+	
+	if((minuteConfEnd.compare("0")) == 0)
+	{
+		minuteConfEnd.clear();
+		minuteConfEnd = "00";
+	}
+	
+	//skladanie  danych begTx endTx begConf endConf
+	cout << "skladam granice z czesci configa" << endl;
+	compose.str("");
+	compose << hourTxBeg << minuteTxBeg ;
+	begTx = compose.str();
+	
+	compose.str("");
+	compose << hourTxEnd << minuteTxEnd;
+	endTx = compose.str();
+	
+	compose.str("");
+	compose << hourConfBeg << minuteConfBeg ;
+	begConf = compose.str();
+	
+	compose.str("");
+	compose << hourConfEnd << minuteConfEnd;
+	endConf = compose.str();
+	
+	cout << "cas rozpoczeciaTx: " << begTx << endl << "czas koncaTx: " << endTx << endl;
+	cout << "cas rozpoczeciaConf: " << begConf << endl << "czas koncaConf: " << endConf << endl;
+	// kopiuje zawartosc czasow z stringow do char[]
+	for(int i = 0; i < begTx.size(); i++)
+	{
+		bTxTime[i] = begTx[i];
+	}
+	for(int i = 0; i < endTx.size(); i++)
+	{
+		eTxTime[i] = endTx[i];
+	}
+	
+	for(int i = 0; i < begConf.size(); i++)
+	{
+		bConfTime[i] = begConf[i];
+	}
+	for(int i = 0; i < endConf.size(); i++)
+	{
+		eConfTime[i] = endConf[i];
+	}
+	
+	//sygnalizacja startu okna !
+	if(strcmp(pTime, bTxTime) == 0) txFlag = true ;
+	if(strcmp(pTime, eTxTime) == 0) txFlag = false;
+	
+	if(strcmp(pTime, bConfTime) == 0) confFlag = true;
+	if(strcmp(pTime, eConfTime) == 0) confFlag = false;
+	
+	
+	//sprawdzemy flage tx
+	if(txFlag)
+	{
+et1:
+		if(!timer1)
+		{
+			txSend = sendTrx();
+		}
+		if(txSend == true)
+		{
+			//ustaw max timeout
+			string timer = config->returnParam("schedule.tx.fail.interval");
+			int timeout = atoi(timer.c_str()) * 1000;
+			SetTimer(2, timeout);
+			timer1 = true;
+		}
+		else
+		{
+			//ustaw min timeout
+			string timer = config->returnParam("schedule.tx.success.interval");
+			int timeout = atoi(timer.c_str()) * 1000;
+			SetTimer(2, timeout);
+			timer1 = true;
+		}
+		
+	}
 
+	//sprawdzamy flage conf
+	if(confFlag)
+	{
+et2:
+		if(!timer2)
+		{
+			txSend = sendTrx();
+		}
+		if(confRcv == true)
+		{
+				//ustaw max timeout
+			string timer = config->returnParam("schedule.config.fail.interval");
+			int timeout = atoi(timer.c_str()) * 1000;
+			SetTimer(1, timeout);
+			timer2 = true;
+		}
+		else
+		{
+					//ustaw min timeout
+			string timer = config->returnParam("schedule.config.success.interval");
+			int timeout = atoi(timer.c_str()) * 1000;
+			SetTimer(1, timeout);
+			timer2 = true;
+		}
+		
+		
+	}
+	
+	
+	//sprawdzam timery !!
+	if(timer1){
+		left1 = CheckTimer(3);
+		if(0 == left1)
+		{
+			timer1 = false;
+			goto et1;
+		}
+	}
+	
+	if(timer2){
+		left2 = CheckTimer(1);
+		if(0 == left2)
+		{
+			timer2 = false;
+			goto et2;
+		}
+	}
+	
+}
 
 void masterControler::wrtFifo(){
 	int num;

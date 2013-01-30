@@ -20,7 +20,7 @@ using namespace std;
 
 class masterControler{
 //private:
-	int left, left2;
+	int left1, left2;
 	bool confFlag;
 	bool txFlag;
 	bool timer1;
