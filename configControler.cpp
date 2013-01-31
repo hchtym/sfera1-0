@@ -25,6 +25,14 @@ configControler::configControler(){
 	
 }
 
+void configControler::reloadConfig()
+{
+	delete(cf);
+	delete(sn);
+	cf = new ConfigFile("config.txt");
+	sn = new ConfigFile("seriall.txt");
+}
+
 string configControler::returnParam(string part){
 	string param = cf->Value("ok", part);
 	return param;

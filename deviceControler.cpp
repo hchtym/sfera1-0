@@ -865,8 +865,8 @@ void deviceControler::printTotal(char *cid, int points, bool copy)
         return;
 
     
-    BYTE buf[8];
-	memset(buf, 0, 8);
+    BYTE buf[20];
+	memset(buf, 0, 20);
     GetTime(buf);
     char datetime[12] = {0};
     BcdToAsc((unsigned char*)datetime, buf, 12);
@@ -878,7 +878,7 @@ void deviceControler::printTotal(char *cid, int points, bool copy)
 	Prn_SetYGap(0);
 
 //    printTicketHeader(datetime, factorySN, config.sellerLogin, cid, NULL, NULL, NULL);
-    printTicketHeader(datetime, "19201201", Config::sellerLogin, cid, NULL, NULL, NULL);
+    printTicketHeader(datetime, , masterControler::seller, cid, NULL, NULL, NULL);
 
 //    strcpy(row, "STAN KONTA");
 //    memset(baTemp, 0x00, sizeof (baTemp));
