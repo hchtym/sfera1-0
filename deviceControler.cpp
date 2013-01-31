@@ -876,9 +876,9 @@ void deviceControler::printTotal(char *cid, int points, bool copy)
 	Prn_SetFont(EnLcdFont8X16, 0, 0);
 	Prn_SetXGap(0);
 	Prn_SetYGap(0);
-
+	string SN = masterControler::returnSeriall();
 //    printTicketHeader(datetime, factorySN, config.sellerLogin, cid, NULL, NULL, NULL);
-    printTicketHeader(datetime, , masterControler::seller, cid, NULL, NULL, NULL);
+    printTicketHeader(datetime, SN.c_str(), masterControler::seller, cid, NULL, NULL, NULL);
 
 //    strcpy(row, "STAN KONTA");
 //    memset(baTemp, 0x00, sizeof (baTemp));
