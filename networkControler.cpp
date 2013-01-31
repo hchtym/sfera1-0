@@ -201,7 +201,7 @@ int networkControler::fileSize(string fileName)
 
 void networkControler::catFile()
 {
-	filestream file;
+	fstream file;
 	file.open("tranzakcje.txt", ios_base::in | ios_base::binary);
 	char temp[100000];
 	int filesize = fileSize("tranzakcje.txt.bckp");
