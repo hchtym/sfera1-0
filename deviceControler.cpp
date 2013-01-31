@@ -381,7 +381,7 @@ bool deviceControler::isPrinterReady(){
 	while((state = Prn_CheckStatus()) && key != KEYENTER){
 		switch(state){	
 			case PRINTER_HIGHTEMP_MASK :
-				printError("Glowica drukarki\n   przegrzana   \nOdczekaj chwile \n i kliknij OK   ");
+				//printError("Glowica drukarki\n   przegrzana   \nOdczekaj chwile \n i kliknij OK   ");
 				break;
 			case PRINTER_NOPAPER_MASK : 
 				//printError("  Brak papieru  \n   w drukarce   \nUzupelnij papier\n i kliknij OK   ");
@@ -395,7 +395,7 @@ bool deviceControler::isPrinterReady(){
 				//printError(buf);
 				break;
 		}
-		key = CKeyboardInterface::WaitKey(200);
+		//key = CKeyboardInterface::WaitKey(200);
 	}
 	return false;
 }
