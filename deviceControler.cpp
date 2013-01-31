@@ -446,7 +446,7 @@ void deviceControler::printLines(int amount){
 }
 
 
-void deviceControler::printTrx(sting seriallNr, string sellerId, string date, string cid)
+void deviceControler::printTrx(string seriallNr, string sellerId, string date, string cid)
 {
 	printerInit();
 	//printerHeader();
