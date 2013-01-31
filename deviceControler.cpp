@@ -449,21 +449,21 @@ void deviceControler::printLines(int amount){
 void deviceControler::printTrx()
 {
 	printerInit();
-	printerHeader();
+	//printerHeader();
 	
 }
 
 void deviceControler::printSend()
 {
 	printerInit();
-	printerHeader();
+	//printerHeader();
 	
 }
 
 void deviceControler::checkPoint()
 {
 	printerInit();
-	printerHeader();
+	//printerHeader();
 	
 }
 
