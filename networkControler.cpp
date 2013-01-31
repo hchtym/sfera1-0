@@ -6,7 +6,8 @@
 
 using namespace std;
 
-networkControler::networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr, string &serialNr){
+networkControler::networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr, string &serialNr)
+{
 	cout << "pizda2" << endl;
 	cout << "konfig z obiektu networkControler przed przekazaniem !!" << endl;
 	ip = ipr;
@@ -18,12 +19,14 @@ networkControler::networkControler(string &ipr, string &portr, string &apnr, str
 	
 }
 
-networkControler::~networkControler(){
+networkControler::~networkControler()
+{
 	
 	
 }
 
-int networkControler::connectAllQuiet(){
+int networkControler::connectAllQuiet()
+{
 	cout << "podlaczam sie gdzenie do serwera" << endl;
 	ofstream loger("logs.txt", ios_base::app);
 	loger << "start ethCon" << endl;
@@ -78,7 +81,8 @@ int networkControler::connectAllQuiet(){
 	return 0;
 }
 
-int networkControler::updClock(){
+int networkControler::updClock()
+{
 	connectAllQuiet();
 	// wysylam zapytanie o clocka :D 
 	char pCAPData[buffer*10];
@@ -154,7 +158,8 @@ int networkControler::updClock(){
 	disconnectAllQuiet();
 }
 
-int networkControler::disconnectAllQuiet(){
+int networkControler::disconnectAllQuiet()
+{
 	ofstream loger("logs.txt", ios_base::app);
 	int bytes_sent;
 	sleep(1);
@@ -170,7 +175,8 @@ int networkControler::disconnectAllQuiet(){
 	return 0;
 }
 
-int networkControler::sendTransaction(){
+int networkControler::sendTransaction()
+{
 	cout << "jestem w send trx" << endl;
 	connectAllQuiet();
 	cout << "wchodze do sendtrx" << endl;
@@ -180,7 +186,8 @@ int networkControler::sendTransaction(){
 	cout << "Rozlaczem sie !" << endl;
 }
 
-int networkControler::fileSize(string fileName){
+int networkControler::fileSize(string fileName)
+{
 	int size;
 	FILE *pFile = NULL;
 	pFile = fopen(fileName.c_str(), "rb" );
@@ -192,18 +199,35 @@ int networkControler::fileSize(string fileName){
 	return size;
 }
 
-int networkControler::sendTrx(){
+void networkControler::catFile()
+{
+	filestream file;
+	file.open("tranzakcje.txt", ios_base::in | ios_base::binary);
+	char temp[100000];
+	int filesize = fileSize("tranzakcje.txt.bckp");
+	int len = filesize/sizeof(struct Transaction);
+	file.read(temp, len);
+	string tempA = temp;
+	tempA.erase(0, len);
+	file.close();
+	
+	file.open("sample.txt", ios_base::out | ios_base::trunc | ios_base::binary);
+	file << tempA;
+	file.close();
+}
+
+int networkControler::sendTrx()
+{
 etk1:
 	cout << "jestem w send trx" << endl;
 	//ofstream loger;
 	ifstream filee("tranzakcje.txt");
 	if(filee)
 	{
-		//filee.close();
 	execl("/bin/cp" , "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
 	}
-	sleep(2);
-	//cout << "otworzylem file stram loger" << endl;
+	sleep(1);
+	//cout << "otworzylem file stream loger" << endl;
 	//loger.open("logs.txt", ios_base::app);
 	//cout << "otwarlem plik i jest git" << endl;
 	char pCAPData[buffer*10];
@@ -232,15 +256,6 @@ etk1:
 	bytes_recv = 0;
 
 	//ifstream file("tranzakcje.txt");
-	if(filee)
-	{
-		//filee.close();
-		cout << "sprawdzam rozmiar" << endl;
-		size1 = fileSize("tranzakcje.txt");
-		cout << "tranzakcje.txt size: " << size1 << endl;
-		size2 = fileSize("tranzakcje.txt.bckp");
-		cout << "tranzakcje.txt.bckp size: " << size2 << endl;
-	}
 	
 	if(size2 != 0)
 	{
@@ -300,15 +315,23 @@ repete2:		//compose.str("");
 		info = compose.str();
 		if((info.compare("ok")) == 0)
 		{
-			int size1 = fileSize("tranzakcje.txt");
-			int size2 = fileSize("tranzakcje.txt.bckp");
+
+				cout << "sprawdzam rozmiar" << endl;
+				size1 = fileSize("tranzakcje.txt");
+				cout << "tranzakcje.txt size: " << size1 << endl;
+				size2 = fileSize("tranzakcje.txt.bckp");
+				cout << "tranzakcje.txt.bckp size: " << size2 << endl;
+
 			if(size1 == size2){
 				execl("/bin/rm", "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
 				return 1;
 			}
 			else
 			{
-				goto etk1;
+				//funkcja ktora wycina wyslane dane ! 
+				catFile();
+				execl("/bin/rm", "tranzakcje.txt.bckp", (char *) 0);
+				return 0;
 			}
 			//loger << "serwer recived msg properly" << endl;
 		}
@@ -375,7 +398,8 @@ repete:
 	return 0;
 }
 
-int networkControler::checkSignalStr(){
+int networkControler::checkSignalStr()
+{
 	int ret,sig;
 	sig = -1;
 	ret = Wls_CheckSignal(&sig);
@@ -402,7 +426,8 @@ int networkControler::checkSignalStr(){
 
 }
 
-void networkControler::gprsInit(){
+void networkControler::gprsInit()
+{
 	Lcd_Cls();
 	Wls_InputUidPwd((BYTE *)user.c_str(), (BYTE *)password.c_str() );
 	int ret;
@@ -440,7 +465,8 @@ void networkControler::gprsInit(){
 	
 }
 
-int networkControler::gprsConnect(){
+int networkControler::gprsConnect()
+{
 	gprs_apnConnected = false;
 	gprs_serverConnected = false;
 	int i,j,ret, signal;
@@ -534,7 +560,8 @@ int networkControler::gprsConnect(){
 		}	
 }
 
-int networkControler::gprsCon(){
+int networkControler::gprsCon()
+{
 	ofstream file("config.txt", ios_base::app);
 	ofstream loger("logs.txt", ios_base::app);
 	
@@ -691,7 +718,8 @@ int networkControler::gprsCon(){
 	
 }
 
-int networkControler::ethConf(){
+int networkControler::ethConf()
+{
 	cout << "ehtCon pizda od srodka" << endl;
 	// tworze plik konfiguracyjny !
 	ofstream file("config.txt", ios_base::app);
@@ -870,7 +898,8 @@ int networkControler::ethConf(){
 	
 }
 
-int networkControler::startConf(int type){
+int networkControler::startConf(int type)
+{
 	int conf;
 	cout << "startConf pizda" << endl;
 	switch(type){
@@ -897,7 +926,8 @@ int networkControler::startConf(int type){
 
 }
 
-void networkControler::Tokenize(const string& str, vector<string>& tokens, const string& delimiters = " "){
+void networkControler::Tokenize(const string& str, vector<string>& tokens, const string& delimiters = " ")
+{
 	string::size_type lastPos = str.find_first_not_of(delimiters, 0);
 	string::size_type pos = str.find_first_of(delimiters, lastPos);
 
@@ -909,7 +939,8 @@ void networkControler::Tokenize(const string& str, vector<string>& tokens, const
 
 }
 
-const char* const networkControler::configs[2][6]={
+const char* const networkControler::configs[2][6]=
+{
 {
 "par.podst.", "zab.karty",
 "opcje menu", "nagrody",
