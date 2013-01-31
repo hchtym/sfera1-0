@@ -8,7 +8,7 @@ deviceControler::deviceControler(){
 	Prn_Start();
 };
 
-int deviceControler::rfidScan(){;
+int deviceControler::rfidScan(){
 	BYTE buf[40] = {0};
 	char str[20]= {0};
 	char str2[20]= {0};
@@ -62,11 +62,6 @@ int deviceControler::rfidScan(){;
 	}
 
 }
-
-/*int deviceControler::rfidMemWrite(){
-	
-	
-}*/
 
 int deviceControler::atc24Read(){
 	stringstream compose;
@@ -454,21 +449,21 @@ void deviceControler::printLines(int amount){
 void deviceControler::printTrx()
 {
 	printerInit();
-	printLines(3);
+	printerHeader();
 	
 }
 
 void deviceControler::printSend()
 {
 	printerInit();
-	printLines(3);
+	printerHeader();
 	
 }
 
 void deviceControler::checkPoint()
 {
 	printerInit();
-	printLines(3);
+	printerHeader();
 	
 }
 
@@ -757,6 +752,7 @@ void deviceControler::printerHeader(string seriallNr, string sellerId, string da
 	row.clear();
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
+	
 }
 
 
