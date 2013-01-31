@@ -39,8 +39,8 @@ public:
 	deviceControler();
 	void printTotal(char *cid, int points, bool copy);
 
-	void printTx();
-	void printSend();
+	void printTx(string seriallNr, string sellerId, string date, string cid);
+	void printSend(string seriallNr, string sellerId, string date, string cid);
 	void checkPoint();
 	void printerHeader(string seriallNr, string sellerId, string date, string cid);
 	void printTrx();

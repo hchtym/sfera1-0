@@ -446,14 +446,14 @@ void deviceControler::printLines(int amount){
 }
 
 
-void deviceControler::printTrx()
+void deviceControler::printTrx(sting seriallNr, string sellerId, string date, string cid)
 {
 	printerInit();
 	//printerHeader();
 	
 }
 
-void deviceControler::printSend()
+void deviceControler::printSend(string seriallNr, string sellerId, string date, string cid)
 {
 	printerInit();
 	//printerHeader();
