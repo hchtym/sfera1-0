@@ -3,6 +3,7 @@
 
 #include "ConfigFile.h"
 #include "Chameleon.h"
+#include "masterConrtoler"
 #include <vector>
 #include <string>
 #include <sstream>
@@ -29,7 +30,7 @@ private:
 	void formatCardNumber(char *cid, char *temp);
 	char* formatAmount(unsigned long a, char *temp);
 
-	void printLines(int amount);x
+	void printLines(int amount);
 	void printTicketHeader(const char* datetime, char *terminalId, char *sellerId, char *cardNumber1, char *cardNumber2,
 								char *id, char *pin);
 	void printTicketHeaderNoLogo(const char* datetime, char *terminalId, char *sellerId, char *cardNumber1,
