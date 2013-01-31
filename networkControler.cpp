@@ -216,6 +216,16 @@ void networkControler::catFile()
 	file.close();
 }
 
+int networkControler::getPointState()
+{
+	connectAllQuiet();
+	
+	
+	
+	
+	disconnectAllQuiet();
+}
+
 int networkControler::sendTrx()
 {
 etk1:

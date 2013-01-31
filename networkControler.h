@@ -85,16 +85,17 @@ public:
 	networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr, string &serialNr);
 	~networkControler();
 	int startConf(int type);
-	int gprsConnect();
-	int sendTrx();
-	int updClock();
-	int sendTransaction();
-	int updClk();
 	int updConf();
+	int updClock();
+	int sendTrx();
+	int updClk();
 	int updSoft();
 	int sendLogs();
 	int wrtConLogs();
+	int gprsConnect();
+	int getPointState();
 	int checkSignalStr();
+	int sendTransaction();
 	int checkTotalPoints();
 
 	
