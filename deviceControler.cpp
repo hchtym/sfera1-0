@@ -740,23 +740,23 @@ void deviceControler::printerHeader(string seriallNr, string sellerId, string da
    	
 	compose.str("");
 	compose << "Numer terminala: " << seriallNr << endl;
-	row = somposr.str();
-	Prn_printf(row.c_str());
+	row = compose.str();
+	Prn_printf((char *)row.c_str());
 	compose.str("");
 	compose << "ID sprzedawcy: " << sellerId << endl;
 	row.clear();
 	row = compose.str();
-	Prn_printf(row.c_str());
+	Prn_printf((char *)row.c_str());
 	compose.str("");
 	compose << "Data: " << date << endl;
 	row.clear();
 	row = compose.str();
-	Prn_printf(row.c_str());
+	Prn_printf((char *)row.c_str());
 	compose.str("");
 	compose << "Numer karty: " << endl << cid << endl;
 	row.clear();
 	row = compose.str();
-	Prn_printf(row.c_str());
+	Prn_printf((char *)row.c_str());
 }
 
 
