@@ -3,7 +3,7 @@
 
 #include "ConfigFile.h"
 #include "Chameleon.h"
-#include "masterControler"
+#include "masterControler.h"
 #include <vector>
 #include <string>
 #include <sstream>
