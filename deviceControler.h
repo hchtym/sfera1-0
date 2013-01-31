@@ -27,34 +27,22 @@ private:
 
 	void justify(char* to, const char* left, const char* right);
 
-	void formatCardNumber(char *cid, char *temp);
+	void printerInit();
+
 	char* formatAmount(unsigned long a, char *temp);
 
 	void printLines(int amount);
-	void printTicketHeader(const char* datetime, char *terminalId, char *sellerId, char *cardNumber1, char *cardNumber2,
-								char *id, char *pin);
-	void printTicketHeaderNoLogo(const char* datetime, char *terminalId, char *sellerId, char *cardNumber1,
-											char *cardNumber2, char *id, char *pin);
-	void printTicketFooter(bool copy);
+
 
 
 public:
 	deviceControler();
 	void printTotal(char *cid, int points, bool copy);
 
-	void printTxSentRaport(unsigned long txCount, unsigned long txSell);
-	void printFailRaport(char *str1, char *str2, char *str3);
-	void printScheduleRaport(
-            const char* confWindowOpenedTime,
-            const char* confWindowClosedTime,
-            const char* txWindowOpenedTime,
-            const char* txWindowClosedTime,
-            unsigned int confTriesCount,
-            unsigned int txTriesCount,
-            unsigned int confSuccessCount,
-            unsigned int txSuccessCount
-            );
-
+	void printTx();
+	void printSend();
+	void checkPoint();
+	void printerHeader(string seriallNr, string sellerId, string date, string cid);
 	int printRecipe();
 	int rfidScan();
 	int atc24Read();

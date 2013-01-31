@@ -1,4 +1,6 @@
 #include "deviceControler.h"
+#include "masterControler.h"
+#include "confgiControler.h"
 
 using namespace std;
 
@@ -10,7 +12,7 @@ int deviceControler::rfidScan(){;
 	BYTE buf[40] = {0};
 	char str[20]= {0};
 	char str2[20]= {0};
-	char str3[20]= {0};
+	//char str3[20]= {0};
 	RF_Init();
 	DelayMs(1000);
 	Lcd_Cls();
@@ -347,25 +349,26 @@ void deviceControler::hexToString(char *str, BYTE* buf, int len){
 	        str[j] = 0;
 }
 
-void points2string(long p, char *str) {
-    if(p<0)
-        p = -p;
-    
-    if (p == 1)
-        strcpy(str, "punkt");
-    else if ((p % 10 == 2 || p % 10 == 3 || p % 10 == 4) && (p % 100 > 20 || p % 100 < 10))
-        strcpy(str, "punkty");
-    else
-        strcpy(str, "punktow");
+void deviceControler::printerInit()
+{
+	Prn_Init();
+	Prn_SetXGap(0);
+	prn_SetYGap(0);
+	
 }
 
-void printError(const char* text){
-	Lcd_Cls();
-	Lcd_SetAttr(0);
-	Lcd_ClrLine(0,63);
-	Lcd_Gotoxy(0,0);
-	Lcd_printf((char*)text);
+void deviceControler::printerSetFont(int size)
+{	
+	if(size == 8)
+	{
+		Prn_SetFont(EnLcdFont6X8, 0, 0);
+	}
+	if(size == 16)
+	{
+		Prn_SetFont(EnLcdFont8X16, 0, 0);
+	}
 }
+
 
 
 bool deviceControler::isPrinterReady(){
@@ -412,29 +415,6 @@ void deviceControler::justify(char* to, const char* left, const char* right){
     to[lineWidth] = 0;
 }
 
-void deviceControler::formatCardNumber(char *cid, char *temp){
-    unsigned int i;
-    
-    temp[0] = 0;
-    
-    if(strlen(cid) != 10){
-        for(i=0; i< strlen(cid) / 3 + 1; i++){
-            if(strlen(&cid[i*3])<= 3){
-                strncat(temp, &cid[i*3], strlen(&cid[i*3]));
-            }else{
-                strncat(temp, &cid[i*3],3);
-                strcat(temp, " ");
-            }
-        }
-    }else{
-        strncat(temp, &cid[0],3);
-        strcat(temp, " ");
-        strncat(temp, &cid[3],3);
-        strcat(temp, " ");
-        strncat(temp, &cid[6],4);
-    }
-}
-
 char* deviceControler::formatAmount(unsigned long a, char *temp){
     unsigned int i,j;
     char amount[32];
@@ -470,11 +450,33 @@ void deviceControler::printLines(int amount){
 	}
 }
 
-void deviceControler::printTicketHeader(const char* datetime, char *terminalId, char *sellerId, char *cardNumber1, char *cardNumber2,char *id, char *pin)
+
+void deviceControler::printTrx()
 {
-//    char temp1[33];
-    char temp2[33];
-    char row[33];
+	printerInit();
+	printLines(3);
+	
+}
+
+void deviceControler::printSend()
+{
+	printerInit();
+	printLines(3);
+	
+}
+
+void deviceControler::checkPoint()
+{
+	printerInit();
+	printLines(3);
+	
+}
+
+void deviceControler::printerHeader(string seriallNr, string sellerId, string date, string cid){
+	
+	stringstream compose;
+	string row;
+
 
  BYTE baPrinterLogo[] = {//Width=50, Height=252
 0x0, 
@@ -731,341 +733,31 @@ void deviceControler::printTicketHeader(const char* datetime, char *terminalId, 
 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 
 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 };
-    printLines( 1); //a space  1 line
+
+	printLines(2);
 	Prn_Logo((unsigned char *) baPrinterLogo, 50, 252, 0, 0);
-//    Prn_Logo((unsigned char *) baPrinterLogo, 0, 203, 15); //SFERA
-
-    //Roll the paper of printer without printing, this is specified in a dot.
-    printLines( 1); //a space  1 line
-
-    sprintf(row, "Numer terminala:%s\n", terminalId);
- //   print_center(row, temp1);
-
-  Prn_printf(row);
-    printf("%s",row);
-
-     sprintf(row, "ID sprzedawcy: %s\n", sellerId);
-    //print_center(row, temp1);
-    Prn_printf(row);
-   printf("%s",row);
-    
-//    sprintf(row, "Data: %4d/%02d/%02d  %02d:%02d", 2000 + datetime.bYear, datetime.bMonth, datetime.bDay, datetime.bHour, datetime.bMinute);
-    sprintf(row, "Data: %c%c/%c%c/%c%c %c%c:%c%c:%c%c\n",datetime[0],datetime[1],datetime[2],datetime[3],
-														datetime[4],datetime[5],datetime[6],datetime[7],
-														datetime[8],datetime[9],datetime[10],datetime[11]);
-  // print_center(row, temp1);
-    Prn_printf(row);
-    printf("%s\n",row);
-
-    if ((cardNumber1 != NULL) && (strlen(cardNumber1) > 0) ) {
-        Prn_printf("Numer karty");
-        printf("Numer karty");
-        
-        formatCardNumber(cardNumber1, temp2);
-        sprintf(row, " %s\n", temp2);
-       // print_center(row, temp1);
-        Prn_printf(row);
-        printf("%s\n",row);
-    }
-
-    if ((cardNumber2 != NULL) && (strlen(cardNumber2) > 0) && (strcmp(cardNumber1,cardNumber2)!=0) ) {
-        formatCardNumber(cardNumber2, temp2);
-        sprintf(row, "Nr karty glownej: %s\n", temp2); // nr glowny (karty z programu)
-      //  print_center(row, temp1);
-        Prn_printf(row);
-        printf("%s\n",row);
-    }
-
-    if(id != NULL){
-        sprintf(row, "Kod transakcji: %s\n", id);
-        Prn_printf(row);
-        printf("%s\n",row);
-        
-        sprintf(row, "Identyfikator: %s\n", pin);
-        Prn_printf(row);
-        printf("%s\n",row);
-    }
-    printLines(2);
+	printLines(1);
+   	
+	compose.str("");
+	compose << "Numer terminala: " << seriallNr << endl;
+	row = somposr.str();
+	Prn_printf(row.c_str());
+	compose.str("");
+	compose << "ID sprzedawcy: " << sellerId << endl;
+	row.clear();
+	row = compose.str();
+	Prn_printf(row.c_str());
+	compose.str("");
+	compose << "Data: " << date << endl;
+	row.clear();
+	row = compose.str();
+	Prn_printf(row.c_str());
+	compose.str("");
+	compose << "Numer karty: " << endl << cid << endl;
+	row.clear();
+	row = compose.str();
+	Prn_printf(row.c_str());
 }
-
-void deviceControler::printTicketHeaderNoLogo(const char* datetime, char *terminalId, char *sellerId, char *cardNumber1, char *cardNumber2, char *id, char *pin) 
-{
-
-    char temp1[33];
-    char temp2[33];
-    char row[33];
-
-    center(row, "SFERA");
-    Prn_printf(row);
-    
-    sprintf(temp1, "%s %s\n", terminalId, sellerId);
-    center(row, temp1);
-    Prn_printf(row);
-
-//    sprintf(temp1, "%4d/%02d/%02d  %02d:%02d", 2000 + datetime.bYear, datetime.bMonth, datetime.bDay, datetime.bHour, datetime.bMinute);
-    sprintf(row, "Data: %c%c/%c%c/%c%c %c%c:%c%c:%c%c\n",datetime[0],datetime[1],datetime[2],datetime[3],
-														datetime[4],datetime[5],datetime[6],datetime[7],
-														datetime[8],datetime[9],datetime[10],datetime[11]);
-   center(row, temp1);
-    Prn_printf(row);
-
-    if ((cardNumber1 != NULL) && (strlen(cardNumber1) > 0) ) {
-         formatCardNumber(cardNumber1, temp2);
-        sprintf(temp1, "%s\n", temp2);
-        center(row, temp1);
-        Prn_printf(row);
-    }
-
-    if ((cardNumber2 != NULL) && (strlen(cardNumber2) > 0) && (strcmp(cardNumber1,cardNumber2)!=0) ) {
-         formatCardNumber(cardNumber2, temp2);
-        sprintf(temp1, "karta: %s\n", temp2); // nr glowny (karty z programu)
-        center(row, temp1);
-        Prn_printf(row);
-    }
-
-    if(id != NULL){
-        sprintf(temp1, "ID: %s\n", id);
-        sprintf(temp2, "PIN: %s\n", pin);
-        justify(row, temp1, temp2);
-        Prn_printf(row);
-    }
-    printLines(1);
-}
-
-void deviceControler::printTicketFooter(bool copy) {
-    printLines(2);
- 
-    if (copy) {
-        Prn_printf("\fr     DLA SPRZEDAWCY     ");
-    }else{
-        Prn_printf("\fr       DLA KLIENTA      ");
-    }
-
-    printLines(7);
-}
-
-void deviceControler::printTotal(char *cid, int points, bool copy)
-{
-    char temp1[33];
-    char temp2[33];
-//    char temp3[33];
-    char row[33];
-//    char registerTX1[]="Zarejestruj transakcje";
-//    char registerTX2[]="w systemie";
-    
-    uint8_t baTemp[384 * 64]; //The width of paper is 384 dot.
-    char factorySN[20];
- 
-    memset(factorySN, 0, sizeof (factorySN));
-//    CTOS_GetFactorySN(factorySN);
-    factorySN[15] = 0;
-    
-    
-    if(!isPrinterReady())
-        return;
-
-    
-    BYTE buf[20];
-	memset(buf, 0, 20);
-    GetTime(buf);
-    char datetime[12] = {0};
-    BcdToAsc((unsigned char*)datetime, buf, 12);
-
-//	Prn_SetDoubleSize(1);
-	Prn_SetDoubleSize(0);
-	Prn_SetFont(EnLcdFont8X16, 0, 0);
-	Prn_SetXGap(0);
-	Prn_SetYGap(0);
-	string SN = masterControler::returnSeriall();
-//    printTicketHeader(datetime, factorySN, config.sellerLogin, cid, NULL, NULL, NULL);
-    printTicketHeader(datetime, SN.c_str(), masterControler::seller, cid, NULL, NULL, NULL);
-
-//    strcpy(row, "STAN KONTA");
-//    memset(baTemp, 0x00, sizeof (baTemp));
-//    CTOS_PrinterBufferPutString((BYTE *) baTemp, (384 - strlen(row) * 16) / 2, 0, row, &FONT_ATTRIB);
-//    CTOS_PrinterBufferOutput((BYTE *) baTemp, 8);
-	
-//	Prn_printf("STAN KONTA");
-    printLines(1);
-    memset(temp1, 0, sizeof(temp1));
-   
-    points2string(points, temp1);
-    sprintf(row, "%s %s", formatAmount(points, temp2), temp1);
-    memset(baTemp, 0x00, sizeof (baTemp));
-	Prn_printf(row);
-//    CTOS_PrinterBufferPutString((BYTE *) baTemp, (384 - strlen(row) * 16) / 2, 0, row, &FONT_ATTRIB);
-//    CTOS_PrinterBufferOutput((BYTE *) baTemp, 8);
-
-    printTicketFooter(copy);
-	Prn_Start();
-}
-
-void deviceControler::printTxSentRaport(unsigned long txCount, unsigned long txSell)
-{
-    char temp1[33];
-    char temp2[33];
-    char row[33];
-    char factorySN[20];
- 
-    memset(factorySN, 0, sizeof (factorySN));
-//    CTOS_GetFactorySN(factorySN);
-    factorySN[15] = 0;
-    
-    if(!isPrinterReady())
-        return;
-
-    BYTE buf[8];
-	memset(buf, 0, 8);
-    GetTime(buf);
-    char datetime[12] = {0};
-    BcdToAsc((unsigned char*)datetime, buf, 12);
-
-	Prn_SetDoubleSize(0);
-	Prn_SetFont(EnLcdFont8X16, 0, 0);
-	Prn_SetXGap(0);
-	Prn_SetYGap(0);
-	lineWidth = 24;
-
-    printTicketHeader(datetime, factorySN, Config::sellerLogin, NULL, NULL, NULL, NULL);
-
-    center(row, "Raport wysylki");
-    Prn_printf("%s",row);
-	center(row,"transakcji");
-	Prn_printf("%s",row);
-    center(row, "-----------------------");
-    Prn_printf("%s",row);
-    
-    printLines(1);
-    
-    strcpy(temp1, "Liczba transakcji:");
-    sprintf(temp2, "%ld", txCount);
-    justify(row, temp1, temp2);
-    Prn_printf("%s",row);
-    
-	printf("asdasdasd\n");
-    printTicketFooter(true);
-	Prn_Start();
-}
-    
-// drukowanie raportu z bledow w trakcie operacji online
-void deviceControler::printFailRaport(char *str1, char *str2, char *str3)
-{
-
-    char row[33];
-    char factorySN[20];
- 
-    memset(factorySN, 0, sizeof (factorySN));
-//    CTOS_GetFactorySN(factorySN);
-    factorySN[15] = 0;
-    
-    if(!isPrinterReady())
-        return;
-    
-	Prn_SetDoubleSize(0);
-	Prn_SetFont(EnLcdFont8X16, 0, 0);
-	Prn_SetXGap(0);
-	Prn_SetYGap(0);
-	lineWidth = 24;
-
-    BYTE buf[8];
-	memset(buf, 0, 8);
-    GetTime(buf);
-    char datetime[12] = {0};
-    BcdToAsc((unsigned char*)datetime, buf, 12);
-   
-    printTicketHeaderNoLogo(datetime, factorySN, Config::sellerLogin, NULL, NULL, NULL, NULL);
-
-	Prn_SetDoubleSize(0);
-	Prn_SetFont(EnLcdFont8X16, 0, 0);
-	Prn_SetXGap(0);
-	Prn_SetYGap(0);
-
-       
-    center(row, "Raport z bledu online");
-    Prn_printf("%s",row);
-    center(row, "-----------------------");
-    Prn_printf("%s",row);
-    
-    printLines(1);
-    center(row, str1);
-    Prn_printf("%s",row);
-  
-    if(str2 != NULL){
-        center(row, str2);
-        Prn_printf("%s",row);
-    }
-    if(str3 != NULL){
-        center(row, str3);
-        Prn_printf("%s",row);
-    }
-    printLines(7);
-	Prn_Start();
-    
-}
-
-void deviceControler::printScheduleRaport(
-            const char* confWindowOpenedTime,
-            const char* confWindowClosedTime,
-            const char* txWindowOpenedTime,
-            const char* txWindowClosedTime,
-            unsigned int confTriesCount,
-            unsigned int txTriesCount,
-            unsigned int confSuccessCount,
-            unsigned int txSuccessCount
-            )
-
-{
-
-    char temp1[33];
-    char temp2[33];
-    char row[33];
-    char factorySN[20];
- 
-    memset(factorySN, 0, sizeof (factorySN));
-//    CTOS_GetFactorySN(factorySN);
-    factorySN[15] = 0;
-    
-    if(!isPrinterReady())
-        return;
-    
-    BYTE buf[8];
-	memset(buf, 0, 8);
-    GetTime(buf);
-    char datetime[12] = {0};
-    BcdToAsc((unsigned char*)datetime, buf, 12);
-   
-    printTicketHeaderNoLogo(datetime, factorySN, Config::sellerLogin, NULL, NULL, NULL, NULL);
-
-   
-
-    center(row, "Raport z harmonogramu");
-    Prn_printf("%s",row);
-    center(row, "------------------------------");
-    Prn_printf("%s",row);
-    
-    printLines(1);
-    
-    center(row, "Konfiguracja:");
-    Prn_printf("%s",row);
-    
-    strcpy(temp1, "  Liczba prob:");
-    sprintf(temp2, "%d", confTriesCount);
-    justify(row, temp1, temp2);
-    Prn_printf("%s",row);
-    
-    strcpy(temp1, "  Liczba sukcesow:");
-    sprintf(temp2, "%d", confTriesCount);
-    justify(row, temp1, temp2);
-    Prn_printf("%s",row);
-    
-    center(row, "Konfiguracja:");
-    Prn_printf("%s",row);
-        
-    printLines(7);
-    
-}
-
-
 
 
 
