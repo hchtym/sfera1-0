@@ -19,9 +19,6 @@ class deviceControler{
 private:
 	int lineWidth;
 	void hexToString(char *str, BYTE* buf, int len);
-	
-	
-	printer();
 
 	bool isPrinterReady();
 
