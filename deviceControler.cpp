@@ -832,7 +832,7 @@ void deviceControler::printTicketHeaderNoLogo(const char* datetime, char *termin
     printLines(1);
 }
 
-void printer::printTicketFooter(bool copy) {
+void deviceControler::printTicketFooter(bool copy) {
     printLines(2);
  
     if (copy) {
