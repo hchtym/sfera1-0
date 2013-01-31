@@ -3,7 +3,7 @@
 
 #include "ConfigFile.h"
 #include "Chameleon.h"
-#include "masterConrtoler"
+#include "masterControler"
 #include <vector>
 #include <string>
 #include <sstream>
@@ -44,8 +44,8 @@ public:
 	void checkPoint();
 	void printerHeader(string seriallNr, string sellerId, string date, string cid);
 	void printTrx();
-	void 
-	int printRecipe();
+	void printRecipe();
+	void printerSetFont(int size);
 	int rfidScan();
 	int atc24Read();
 	int sleRead();
