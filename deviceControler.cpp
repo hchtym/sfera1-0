@@ -353,7 +353,7 @@ void deviceControler::printerInit()
 {
 	Prn_Init();
 	Prn_SetXGap(0);
-	prn_SetYGap(0);
+	Prn_SetYGap(0);
 	
 }
 
@@ -379,12 +379,12 @@ bool deviceControler::isPrinterReady(){
 		return true;
 
 	while((state = Prn_CheckStatus()) && key != KEYENTER){
-		switch(state){
+		switch(state){	
 			case PRINTER_HIGHTEMP_MASK :
 				printError("Glowica drukarki\n   przegrzana   \nOdczekaj chwile \n i kliknij OK   ");
 				break;
 			case PRINTER_NOPAPER_MASK : 
-				printError("  Brak papieru  \n   w drukarce   \nUzupelnij papier\n i kliknij OK   ");
+				//printError("  Brak papieru  \n   w drukarce   \nUzupelnij papier\n i kliknij OK   ");
 				break;
 			case 0 :
 				return true;
@@ -392,7 +392,7 @@ bool deviceControler::isPrinterReady(){
 			default:
 				char buf[65];
 				sprintf(buf," Blad drukarki \nkod bledu=0x%x",state);
-				printError(buf);
+				//printError(buf);
 				break;
 		}
 		key = CKeyboardInterface::WaitKey(200);

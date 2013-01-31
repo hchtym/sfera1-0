@@ -43,6 +43,8 @@ public:
 	void printSend();
 	void checkPoint();
 	void printerHeader(string seriallNr, string sellerId, string date, string cid);
+	void printTrx();
+	void 
 	int printRecipe();
 	int rfidScan();
 	int atc24Read();
