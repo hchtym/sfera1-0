@@ -52,13 +52,6 @@ masterControler::masterControler()
 	confFlag = false;
 	txFlag = false;
 	buildDate = BUILD_DATE;
-	for(int i =0; i< buildDate.size(); i++)
-	{
-		if(buildDate[i] == ' ')
-		{
-			buildDate[i] = ':';
-		}
-	}
 	config = new configControler();
 	device = new deviceControler();
 	ip = config->returnSerwerIp(); 
@@ -71,8 +64,31 @@ masterControler::masterControler()
 	seller.clear();
 	loginFlag = false;
 	senttrx = false;
-
 };
+
+string masterControler::returnBuildDate()
+{
+	char month[12] = {'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'};
+	char number[12] = {'01','02','03','04','05','06','07','08','09','10','11','12'};
+	vector<string> compose;
+	for(int i =0; i< buildDate.size(); i++)
+	{
+		if(buildDate[i] == ' ')
+		{
+			buildDate[i] = ':';
+		}
+	}
+	string convert = compose[0];
+	Tokenize(&buildDate, &compose, ":");
+	for (int i = 0; i < 12 ; ++i)
+	{
+		if(strcmp(convert.c_str(), month[i]))
+		{
+			compose[1] = number[i];
+		}
+	}
+
+}
 
 int masterControler::updClk()
 {
@@ -1244,7 +1260,8 @@ void masterControler::Tokenize(const string& str, vector<string>& tokens, const 
 
 }
 
-void masterControler::recipePrint(bool recipeCopy){
+void masterControler::recipePrint(bool recipeCopy)
+{
 	
 }
 

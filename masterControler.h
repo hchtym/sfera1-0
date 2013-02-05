@@ -87,6 +87,7 @@ class masterControler{
 	int clear();
 	int infoMSG(string &msg);
 	int message(int x, int y, string &str);
+	string returnBuildDate();
 	
 public:
 	masterControler(int *);

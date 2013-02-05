@@ -174,8 +174,7 @@ int configControler::configGenerator()
 	//Lcd_Cls();
 	//Lcd_Printxy(0,0,0, "Udalo sie ! chyba ?");
 	//cout << "cipa max pizda 56600" << endl;
-	delete conector;
-	
+	delete conector;	
 }
 
 int configControler::miniScreen(string &title, int size, bool opt)
@@ -483,7 +482,7 @@ int configControler::miniInput(string& title, string& variable)
 string configControler::returnSeriall()
 {
 	string seriall = sn->Value("seriall","SN");
-	return seriall;
+	return seriall;	
 }
 
 string configControler::returnSerwerIp()
