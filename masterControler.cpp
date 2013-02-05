@@ -119,7 +119,12 @@ int masterControler::checkVersion()
 	ifstream file("versionFlag.txt");
 	if(file)
 	{
-		file.read();
+		file.read(temp, 50);
+		string buildD = returnBuildDate();
+		if(buildD.compare(temp) == 0)
+		{
+			network->sendAck(buildD);
+		}
 
 	}
 	else

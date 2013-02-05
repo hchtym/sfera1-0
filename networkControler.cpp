@@ -245,7 +245,7 @@ int networkControler::softUpdate(string data)
 	if(info.compare("ok") == 0)
 	{
 		//procedura pobierania softu
-		ofstream file("versionFlag.txt", ios_base::app);
+		ofstream file("versionFlag.txt", ios_base::app | ios_base::trunc);
 		file << date;
 		file.close();
 		string ip = config->returnParam("ftp.path");
@@ -254,7 +254,7 @@ int networkControler::softUpdate(string data)
 		string path = config->returnParam("ftp.ip");
 
 		execl();
-		sleep(20);
+		sleep(60);
 		execl("/usr/bin/killall", "scl_app", (char *) 0);
 		execl("/bin/cp", "/home/strong_lion/scl_app_new", "/home/strong_lion/scl_app", (char *) 0);
 		execl("/bin/chmod", "755" ,"/home/strong_lion/scl_app", (char *) 0);
