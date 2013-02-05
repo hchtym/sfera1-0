@@ -76,7 +76,8 @@ int main(){
 		fd = open(FIFO_NAME, O_WRONLY | O_NDELAY);
 
 	masterControler* master = new masterControler(&fd);
-	master->returnBuildDate();
+	string dupa = master->returnBuildDate();
+	cout << dupa << endl;
 		while(1)
 		{
 				master->dispMenu();

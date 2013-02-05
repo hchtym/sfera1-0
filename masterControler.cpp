@@ -68,6 +68,8 @@ masterControler::masterControler()
 
 string masterControler::returnBuildDate()
 {
+	char *numb[10] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+	char *equiv[10] = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09"};
 	char *month[12] = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 	char *number[12] = {"01","02","03","04","05","06","07","08","09","10","11","12"};
 	vector<string> compose;
@@ -88,13 +90,24 @@ string masterControler::returnBuildDate()
 			compose[0] = number[i];
 		}
 	}
+	string temp = compose[1];
+	if (temp.size() == 1)
+	{
+		for (int i = 0; i < 9; ++i)
+		{
+			if ((temp.compare(numb[i])) == 0)
+			{
+				compose[1] = equiv[i];
+			}
+		}
+	}
 
 	for (int i = 0; i < compose.size(); ++i)
 	{
 		test << compose[i] << " ";
 	}
 	string disp = test.str();
-	cout << "data kompilacji: " << disp << endl;
+	return disp;
 	/// tutaj bedzie komponowanie daty ale nie chce mi sie teraz nad tym myslec !! 
 }
 
