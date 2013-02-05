@@ -445,10 +445,40 @@ void deviceControler::printLines(int amount){
 }
 
 
-void deviceControler::printTx(string seriallNr, string sellerId, string date, string cid)
+void deviceControler::printTx(string seriallNr, string sellerId, string date, string cid, string sum, string point, string extra, string footer)
 {
+
+	stringstream compose;
+	string row;
+
 	printerInit(16);
 	printerHeader(seriallNr, sellerId, date, cid);
+
+	printLines(1);
+
+	compose.str("");
+	compose << "suma zakupow: " << endl << sum << endl;
+	row.clear();
+	row = compose.str();
+	Prn_printf((char *)row.c_str());
+
+	printLines(1);
+
+	compose.str("");
+	compose << "Punkty: " << point << endl;
+	row.clear();
+	row = compose.str();
+	Prn_printf((char *)row.c_str());
+
+	printLines(1);
+
+	compose.str("");
+	compose << "Extra punkty: " << extra << endl;
+	row.clear();
+	row = compose.str();
+	Prn_printf((char *)row.c_str());
+
+	printLines(2);
 
 	Prn_Start();
 	

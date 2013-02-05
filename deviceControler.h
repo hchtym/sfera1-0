@@ -27,7 +27,7 @@ private:
 
 	void justify(char* to, const char* left, const char* right);
 
-	void printerInit(int size);
+void printerInit(int size);
 
 	char* formatAmount(unsigned long a, char *temp);
 
@@ -39,7 +39,7 @@ public:
 	deviceControler();
 	void printTotal(char *cid, int points, bool copy);
 
-	void printTx(string seriallNr, string sellerId, string date, string cid);
+	void printTx(string seriallNr, string sellerId, string date, string cid, string point, string extra, string footers);
 	void printSend(string seriallNr, string sellerId, string date, string cid);
 	void checkPoint();
 	void printerHeader(string seriallNr, string sellerId, string date, string cid);
