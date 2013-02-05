@@ -398,7 +398,7 @@ void deviceControler::center(string &cent)
 {
 	int lineWidth = 22;
 	stringstream compose;
-	for (int i = 0; i < ((lineWidth - cent.size()) /2)); ++i)
+	for (int i = 0; i < ((lineWidth - cent.size()) /2); ++i)
 	{
 		compose << " ";
 	}
