@@ -71,6 +71,7 @@ string masterControler::returnBuildDate()
 	char *month[12] = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 	char *number[12] = {"01","02","03","04","05","06","07","08","09","10","11","12"};
 	vector<string> compose;
+	stringstream test;
 	for(int i =0; i < buildDate.size(); i++)
 	{
 		if(buildDate[i] == ' ')
@@ -84,9 +85,16 @@ string masterControler::returnBuildDate()
 	{
 		if( ( convert.compare(month[i]) ) == 0)
 		{
-			compose[1] = number[i];
+			compose[0] = number[i];
 		}
 	}
+
+	for (int i = 0; i < compose; ++i)
+	{
+		test << compose[i] << " ";
+	}
+	string disp = test.str();
+	cout << disp << endl;
 	/// tutaj bedzie komponowanie daty ale nie chce mi sie teraz nad tym myslec !! 
 }
 
@@ -280,7 +288,7 @@ et2:
 
 void masterControler::softUpdAck()
 {
-	
+
 }
 
 void masterControler::wrtFifo(){
