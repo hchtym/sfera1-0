@@ -82,7 +82,7 @@ string masterControler::returnBuildDate()
 	Tokenize(buildDate, compose, ":");
 	for (int i = 0; i < 12 ; ++i)
 	{
-		if((strcmp( (char *)convert.c_str(), month[i]) ) == 0)
+		if((convert.compare(month[i])) == 0)
 		{
 			compose[1] = number[i];
 		}
