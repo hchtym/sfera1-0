@@ -411,7 +411,7 @@ int masterControler::dispMenu()
 					loginFlag = false;
 				}
 			}else{
-				device->printTx();
+				device->printTx("00100200086567","00075","2013-02-05 10:46:52","0020000044");
 				// tu bedzie przejscie do sklepu in the future :D jeeeeeee
 			}
 			break;

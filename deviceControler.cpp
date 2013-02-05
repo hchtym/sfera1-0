@@ -345,7 +345,7 @@ void deviceControler::hexToString(char *str, BYTE* buf, int len){
 
 void deviceControler::printerInit()
 {
-	Prn_Init();
+	Prn_Init(8);
 	Prn_SetXGap(0);
 	Prn_SetYGap(0);
 	
