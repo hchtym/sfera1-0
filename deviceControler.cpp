@@ -461,7 +461,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	stringstream compose;
 	string row;
 
-	printerInit(16);
+	printerInit(8);
 	printerHeader(seriallNr, sellerId, date, cid);
 
 	row.clear();
