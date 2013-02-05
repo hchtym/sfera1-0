@@ -212,7 +212,7 @@ void networkControler::softUpdate()
 	string info;
 	compose.str("");
 	cout << "tworze stream" << endl;
-	stinr serNr = config->returnSeriall();
+	string serNr = config->returnSeriall();
 	compose << "cap-ack;" << serNr << ";" << data << endl; //<< endl;
 	msg = compose.str();
 	int len,bytes_sent,bytes_recv;
