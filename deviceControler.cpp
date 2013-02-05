@@ -490,7 +490,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 
 	printLines(2);
 
-	center(&footer);
+	center(footer);
 
 	compose.str("");
 	compose << footer << endl;
