@@ -188,14 +188,14 @@ int networkControler::sendTransaction()
 	cout << "Rozlaczem sie !" << endl;
 }
 
-void networkControler::softAck()
+void networkControler::softAck(string date)
 {
 	connectAllQuiet();
-	softUpdate();
+	softUpdate(date);
 	disconnectAllQuiet();
 }
 
-void networkControler::softUpdate()
+void networkControler::softUpdate(string data)
 {
 	char pCAPData[buffer*10];
 	char bufer[50000];

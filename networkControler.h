@@ -72,7 +72,7 @@ private:
 	//Funkcja parsujaca pobrany config ! 
 	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
 	void catFile();
-	void softUpdate();
+	void softUpdate(string date);
 	//zmienne do eth/gprs
 	string ip, port, apn, user, password, serialN;
 	//zmienna kanalu w jakim dziala gprs
@@ -88,7 +88,7 @@ private:
 public:
 	networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr, string &serialNr);
 	~networkControler();
-	void softAck();
+	void softAck(string date);
 	int startConf(int type);
 	int updConf();
 	int updClock();
