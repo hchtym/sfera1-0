@@ -467,7 +467,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	printLines(1);
 
 	compose.str("");
-	compose << "suma zakupow: " << endl << sum << endl;
+	compose << "Suma zakupow: " << endl << sum << "zl" << endl;
 	row.clear();
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
