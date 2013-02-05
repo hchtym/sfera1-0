@@ -213,7 +213,7 @@ void networkControler::softUpdate(string data)
 	compose.str("");
 	cout << "tworze stream" << endl;
 	string serNr = config->returnSeriall();
-	compose << "cap-ack;" << serNr << ";" << data << endl; //<< endl;
+	compose << "cap;" << serNr << ";" << data << endl; //<< endl;
 	msg = compose.str();
 	int len,bytes_sent,bytes_recv;
 	int resend = 0;
@@ -222,24 +222,38 @@ void networkControler::softUpdate(string data)
 	bytes_sent = 0;
 	bytes_recv = 0;
 
-	
-	if(size2 != 0)
+	len = msg.size();
+	cout << "wysylam zapytanie" << endl;
+	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
 	{
-repete2:		//compose.str("");
-		compose << size2 << ";" << sizeof(struct Transaction) << endl;
-		msg.clear();
-		msg = compose.str();
-		len = msg.size();
-		// send file to the serwer
-		cout << "wysylam zapytanie" << endl;
-		if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
-		{
-			//loger << "send filetx; error" << endl;
-			perror("send"); // logowanie do pliku !
-			//exit(1);
-		}
-	sleep(1);
+		//loger << "send filetx; error" << endl;
+		perror("send"); // logowanie do pliku !
+		//exit(1);
 	}
+	sleep(1);
+
+	if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1)
+	{
+		//loger << "recive error" << endl;
+		perror("recive"); // logowanie do pliku !!
+		//exit(1);
+	}
+	compose.str("");
+	compose << pCAPData;
+	info = compose.str();
+
+	if(info.compare("ok") == 0)
+	{
+		//procedura pobierania softu
+	}
+	else
+	{
+		if(info.compare("brak") == 0)
+		{
+			return 0;
+		}
+	}
+
 
 }
 
