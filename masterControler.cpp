@@ -71,7 +71,7 @@ string masterControler::returnBuildDate()
 	char month[12] = {'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'};
 	char number[12] = {'01','02','03','04','05','06','07','08','09','10','11','12'};
 	vector<string> compose;
-	for(int i =0; i< buildDate.size(); i++)
+	for(int i =0; i < buildDate.size(); i++)
 	{
 		if(buildDate[i] == ' ')
 		{
