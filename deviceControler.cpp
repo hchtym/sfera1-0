@@ -348,7 +348,7 @@ void deviceControler::printerInit(int size)
 	Prn_Init();
 	Prn_SetXGap(0);
 	Prn_SetYGap(0);
-	printerSetFont(size)
+	printerSetFont(size);
 }
 
 void deviceControler::printerSetFont(int size)
@@ -456,7 +456,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 
 void deviceControler::printSend(string seriallNr, string sellerId, string date, string cid)
 {
-	printerInit();
+	printerInit(8);
 	//printerHeader();
 	
 }
