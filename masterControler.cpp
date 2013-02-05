@@ -78,8 +78,8 @@ string masterControler::returnBuildDate()
 			buildDate[i] = ':';
 		}
 	}
-	string convert = compose[0];
 	Tokenize(buildDate, compose, ":");
+	string convert = compose[0];
 	for (int i = 0; i < 12 ; ++i)
 	{
 		if( ( convert.compare(month[i]) ) == 0)
