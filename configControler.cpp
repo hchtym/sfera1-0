@@ -492,7 +492,7 @@ string configControler::returnSerwerIp()
 	return adr;
 }
 
-string configControler::returnSerwerPort(
+string configControler::returnSerwerPort()
 {
 	string prt = cf->Value("ok", "gprs.port");
 	return prt;
