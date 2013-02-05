@@ -46,6 +46,7 @@ int main(){
 		masterControler* master = new masterControler();
 		cout << "Child process is on the go" << endl;
 		master->updClk();
+		master->checkVersion();
 		while(1)
 		{
 
