@@ -95,6 +95,7 @@ public:
 	bool sendTrx();
 	int dispMenu();
 	int updClk();
+	int checjVersion();
 	int loginScr();
 	int selling();
 	void timeWindow();

@@ -113,6 +113,21 @@ int masterControler::updClk()
 	network->updClock();
 }
 
+int masterControler::checkVersion()
+{
+	char temp[50];
+	ifstream file("versionFlag.txt");
+	if(file)
+	{
+		file.read();
+
+	}
+	else
+	{
+		return 0;
+	}
+}
+
 void masterControler::timeWindow(){
 	stringstream compose; //sstream do skladania godzin itp 
 	string begConf, endConf; // godziny startu i konca config'a

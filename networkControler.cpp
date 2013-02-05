@@ -195,7 +195,7 @@ void networkControler::softAck(string date)
 	disconnectAllQuiet();
 }
 
-void networkControler::softUpdate(string data)
+int networkControler::softUpdate(string data)
 {
 	char pCAPData[buffer*10];
 	char bufer[50000];
@@ -245,6 +245,21 @@ void networkControler::softUpdate(string data)
 	if(info.compare("ok") == 0)
 	{
 		//procedura pobierania softu
+		ofstream file("versionFlag.txt", ios_base::app);
+		file << date;
+		file.close();
+		string ip = config->returnParam("ftp.path");
+		string user = config->returnParam("ftp.login");
+		string password = config->returnParam("ftp.password");
+		string path = config->returnParam("ftp.ip");
+
+		execl();
+		sleep(20);
+		execl("/usr/bin/killall", "scl_app", (char *) 0);
+		execl("/bin/cp", "/home/strong_lion/scl_app_new", "/home/strong_lion/scl_app", (char *) 0);
+		execl("/bin/chmod", "755" ,"/home/strong_lion/scl_app", (char *) 0);
+		execl("/home/strong_lion/scl_app&", (char *) 0);
+
 	}
 	else
 	{
@@ -257,6 +272,64 @@ void networkControler::softUpdate(string data)
 
 }
 
+int networkControler::sendAck(string date)
+{
+	connectAllQuiet();
+
+
+	char pCAPData[buffer*10];
+	char bufer[50000];
+	memset(bufer, 0, sizeof(bufer));
+	char temp[730];
+	memset(temp, 0, sizeof(temp));
+	int ulLen =0;
+	int x =0;
+	int ulHandle =0;
+	memset(pCAPData, 0, sizeof(pCAPData));
+	stringstream compose; 
+	string msg;
+	int sent;
+	string info;
+	compose.str("");
+	cout << "tworze stream" << endl;
+	string serNr = config->returnSeriall();
+	compose << "cap-ack;" << serNr << ";" << date << endl; //<< endl;
+	msg = compose.str();
+	int len,bytes_sent,bytes_recv;
+	int resend = 0;
+	int size1 = 0;
+	int size2 = 0;
+	bytes_sent = 0;
+	bytes_recv = 0;
+
+	len = msg.size();
+	cout << "wysylam zapytanie" << endl;
+	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
+	{
+		//loger << "send filetx; error" << endl;
+		perror("send"); // logowanie do pliku !
+		//exit(1);
+	}
+	sleep(1);
+
+	if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1)
+	{
+		//loger << "recive error" << endl;
+		perror("recive"); // logowanie do pliku !!
+		//exit(1);
+	}
+	compose.str("");
+	compose << pCAPData;
+	info = compose.str();
+
+
+	if(info.compare("ok") == 0)
+	{
+		execl("/bin/rm", "versionFlag.txt", (char *) 0);
+	}
+
+	disconnectAllQuiet();
+}
 
 int networkControler::fileSize(string fileName)
 {

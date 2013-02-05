@@ -88,7 +88,8 @@ private:
 public:
 	networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr, string &serialNr);
 	~networkControler();
-	void softAck(string date);
+	int softAck(string date);
+	int sendAck(string date);
 	int startConf(int type);
 	int updConf();
 	int updClock();
