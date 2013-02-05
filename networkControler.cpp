@@ -188,7 +188,7 @@ int networkControler::sendTransaction()
 	cout << "Rozlaczem sie !" << endl;
 }
 
-void networkControler::softAck(string date)
+int networkControler::softAck(string date)
 {
 	connectAllQuiet();
 	softUpdate(date);
