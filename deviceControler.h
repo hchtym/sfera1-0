@@ -27,7 +27,7 @@ private:
 
 	void justify(char* to, const char* left, const char* right);
 
-	void printerInit();
+	void printerInit(int size);
 
 	char* formatAmount(unsigned long a, char *temp);
 

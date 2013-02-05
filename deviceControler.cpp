@@ -5,7 +5,7 @@
 using namespace std;
 
 deviceControler::deviceControler(){
-	Prn_Start();
+	Prn_Init();
 };
 
 int deviceControler::rfidScan(){
@@ -343,12 +343,12 @@ void deviceControler::hexToString(char *str, BYTE* buf, int len){
 	        str[j] = 0;
 }
 
-void deviceControler::printerInit()
+void deviceControler::printerInit(int size)
 {
-	Prn_Init(8);
+	Prn_Init();
 	Prn_SetXGap(0);
 	Prn_SetYGap(0);
-	
+	printerSetFont(size)
 }
 
 void deviceControler::printerSetFont(int size)
@@ -447,7 +447,7 @@ void deviceControler::printLines(int amount){
 
 void deviceControler::printTx(string seriallNr, string sellerId, string date, string cid)
 {
-	printerInit();
+	printerInit(8);
 	printerHeader(seriallNr, sellerId, date, cid);
 
 	Prn_Start();
