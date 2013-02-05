@@ -318,7 +318,8 @@ et2:
 
 void masterControler::softUpdAck()
 {
-	network->softAck();
+	string date = returnBuildDate();
+	network->softAck(date);
 }
 
 void masterControler::wrtFifo(){
