@@ -73,7 +73,7 @@ string masterControler::returnBuildDate()
 	char *month[12] = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 	char *number[12] = {"01","02","03","04","05","06","07","08","09","10","11","12"};
 	vector<string> compose;
-	stringstream test;
+	stringstream comp;
 	for(int i =0; i < buildDate.size(); i++)
 	{
 		if(buildDate[i] == ' ')
@@ -93,7 +93,7 @@ string masterControler::returnBuildDate()
 	string temp = compose[1];
 	if (temp.size() == 1)
 	{
-		for (int i = 0; i < 9; ++i)
+		for (int i = 0; i < 10; ++i)
 		{
 			if ((temp.compare(numb[i])) == 0)
 			{
@@ -101,11 +101,8 @@ string masterControler::returnBuildDate()
 			}
 		}
 	}
-
-	for (int i = 0; i < compose.size(); ++i)
-	{
-		test << compose[i] << " ";
-	}
+	comp << compose[2] << "-" << compose[1] << "-" << compose[0] << " " << compose[3] << ":" << compose[4];
+	
 	string disp = test.str();
 	return disp;
 	/// tutaj bedzie komponowanie daty ale nie chce mi sie teraz nad tym myslec !! 
