@@ -94,7 +94,7 @@ string masterControler::returnBuildDate()
 		test << compose[i] << " ";
 	}
 	string disp = test.str();
-	cout << disp << endl;
+	cout << "data kompilacji: " << disp << endl;
 	/// tutaj bedzie komponowanie daty ale nie chce mi sie teraz nad tym myslec !! 
 }
 
