@@ -490,13 +490,15 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 
 	printLines(2);
 
+	center(&footer);
+
 	compose.str("");
 	compose << footer << endl;
 	row.clear();
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
 
-	printLines(2);
+	printLines(3);
 
 	Prn_Start();
 	
