@@ -89,7 +89,7 @@ string masterControler::returnBuildDate()
 		}
 	}
 
-	for (int i = 0; i < compose; ++i)
+	for (int i = 0; i < compose.size(); ++i)
 	{
 		test << compose[i] << " ";
 	}
