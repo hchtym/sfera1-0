@@ -190,6 +190,7 @@ int networkControler::sendTransaction()
 
 int networkControler::softAck(string date)
 {
+	cout << "jestem w softAck" << endl;
 	connectAllQuiet();
 	softUpdate(date);
 	disconnectAllQuiet();
@@ -252,7 +253,7 @@ int networkControler::softUpdate(string data)
 		string user = config->returnParam("ftp.login");
 		string password = config->returnParam("ftp.password");
 		string path = config->returnParam("ftp.ip");
-		
+
 		execl("/bin/rm", "/home/strong_lion/scl_app_new", (char *) 0);
 		execl("/usr/bin/ftpget",  "-u", user.c_str(), "-p", password.c_str(), ip.c_str(), "/home/strong_lion/scl_app_new", path.c_str(), (char *) 0);
 		sleep(60);
@@ -269,8 +270,6 @@ int networkControler::softUpdate(string data)
 			return 0;
 		}
 	}
-
-
 }
 
 int networkControler::sendAck(string date)
@@ -1057,12 +1056,13 @@ int networkControler::startConf(int type)
 			gprsCon();
 		break;
 		case 1:
-			//cout << "ethCon pizdacz !" << endl;
+			cout << "ethCon pizdacz !" << endl;
 			conf = ethConf();
 		break;
 		default:
 		return 0;
 			//zaloguj bledny typ;
+			cout << "bledny typ" << endl;
 		break;
 	}
 }

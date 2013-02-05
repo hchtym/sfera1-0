@@ -5,6 +5,7 @@ using namespace std;
 
 configControler::configControler()
 {
+	cout << "sprawdzam istnienie pliku" << endl;
 	ifstream file("config.txt");
 	if(file)
 	{
@@ -14,6 +15,7 @@ configControler::configControler()
 	}
 	else
 	{
+		cout << "przechodze do generatora" << endl;
 		configGenerator();
 	}
 }
@@ -161,6 +163,7 @@ int configControler::configGenerator()
 	loger << "sprawdzam  flage" << endl;
 	if(flag.compare("eth") ==0){
 		loger << "sprawdzilem flage i odpalam eth !)" << endl;
+		cout << "odpalam opcje dla eth" << endl;
 		int type = 1;
 		conector->startConf(type);
 	}else{

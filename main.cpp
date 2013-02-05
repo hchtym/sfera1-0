@@ -28,8 +28,10 @@ int main(){
 	Lcd_SetFont(1,0,0);
 
 	//cout << "Build date: " << BUILD_DATE << endl;
-	
+	cout << "tworze configControler" << endl;
 	configControler* config = new configControler();
+	cout << "kiluje obiekt" << endl;
+	sleep(20);
 	delete(config);
 
 	char bufer[6];
