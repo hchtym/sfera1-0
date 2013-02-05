@@ -12,7 +12,6 @@ int deviceControler::rfidScan(){
 	BYTE buf[40] = {0};
 	char str[20]= {0};
 	char str2[20]= {0};
-	//char str3[20]= {0};
 	RF_Init();
 	DelayMs(1000);
 	Lcd_Cls();
@@ -449,7 +448,9 @@ void deviceControler::printLines(int amount){
 void deviceControler::printTx(string seriallNr, string sellerId, string date, string cid)
 {
 	printerInit();
-	//printerHeader();
+	printerHeader(seriallNr, sellerId, date, cid);
+
+	Prn_Start();
 	
 }
 

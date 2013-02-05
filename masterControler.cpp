@@ -87,7 +87,7 @@ string masterControler::returnBuildDate()
 			compose[1] = number[i];
 		}
 	}
-
+	/// tutaj bedzie komponowanie daty ale nie chce mi sie teraz nad tym myslec !! 
 }
 
 int masterControler::updClk()
@@ -411,6 +411,7 @@ int masterControler::dispMenu()
 					loginFlag = false;
 				}
 			}else{
+				device->printTx();
 				// tu bedzie przejscie do sklepu in the future :D jeeeeeee
 			}
 			break;
@@ -520,16 +521,9 @@ drawMenu:
 
 	    	}
 
-	    	//left = CheckTimer(0);
-	    	//if(0 == left){
-	    	//	key = NOKEY;
-	    	//	break;
-	    	//}
         }
 		switch(key){
 			case NOKEY:
-		 //   	creenBlank();
-		//		goto drawMenu;
 		    break;
 		    case KEYCANCEL:
 		    case KEYBACKSPACE:
@@ -553,7 +547,7 @@ drawMenu:
 		            if(index2 < view) view--;
 		        }else{
 		            index2 = size -1;
-		                        //      view = size -1;
+
 		        	if(index2 >= view + visible) view = index2 -  visible +1;
 		        }
 		//      goto drawMenu;
