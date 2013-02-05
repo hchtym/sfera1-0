@@ -463,7 +463,7 @@ void deviceControler::printSend(string seriallNr, string sellerId, string date, 
 
 void deviceControler::checkPoint()
 {
-	printerInit();
+	printerInit(8);
 	//printerHeader();
 	
 }
