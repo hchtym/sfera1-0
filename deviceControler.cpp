@@ -394,11 +394,17 @@ bool deviceControler::isPrinterReady(){
 	return false;
 }
 
-void deviceControler::center(char* to, const char* from){
-    int space = ' ';
-    memset(to, space, lineWidth);
-    strncpy(&to[(lineWidth - strlen(from)) / 2], from, strlen(from));
-    to[lineWidth] = 0;
+void deviceControler::center(string *cent)
+{
+	int lineWidth = 32;
+	stringstream compose;
+	for (int i = 0; i < (lineWidth - (cent.size()/2)); ++i)
+	{
+		compose << " ";
+	}
+    compose << cent << endl;
+    cent.clear();
+    cent = compose.str();
 }
 
 void deviceControler::justify(char* to, const char* left, const char* right){
