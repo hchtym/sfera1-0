@@ -246,7 +246,7 @@ int networkControler::softUpdate(string data)
 	{
 		//procedura pobierania softu
 		ofstream file("versionFlag.txt", ios_base::app | ios_base::trunc);
-		file << date;
+		file << data;
 		file.close();
 		string ip = config->returnParam("ftp.path");
 		string user = config->returnParam("ftp.login");
