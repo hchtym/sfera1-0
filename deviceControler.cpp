@@ -468,7 +468,8 @@ void deviceControler::checkPoint()
 	
 }
 
-void deviceControler::printerHeader(string seriallNr, string sellerId, string date, string cid){
+void deviceControler::printerHeader(string seriallNr, string sellerId, string date, string cid)
+{
 	
 	stringstream compose;
 	string row;
@@ -735,7 +736,7 @@ void deviceControler::printerHeader(string seriallNr, string sellerId, string da
 	printLines(1);
    	
 	compose.str("");
-	compose << "Numer terminala: " << seriallNr << endl;
+	compose << "Numer terminala: " << endl << seriallNr << endl;
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
 	compose.str("");
@@ -744,7 +745,7 @@ void deviceControler::printerHeader(string seriallNr, string sellerId, string da
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
 	compose.str("");
-	compose << "Data: " << date << endl;
+	compose << "Data: " << endl << date << endl;
 	row.clear();
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
