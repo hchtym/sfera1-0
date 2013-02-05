@@ -18,6 +18,7 @@
 #include <iterator>
 #include <fstream>
 #include <unistd.h>
+#include "configControler.h"
 
 extern "C"{
 #include "all_headers.h"	
@@ -56,7 +57,7 @@ struct Transaction {
 
 class networkControler{
 private:
-	configControler *config;
+
 	// zmienna zawieajaca dane do pobieranie konfiguracji wykorzystywane w 2 metodach;
 	static const char* const configs[2][6];
 	// funkcje wykorzystywane tylko raz przy pierwszym pobieraniu konfiguracji 
@@ -79,7 +80,7 @@ private:
 	static const int socket0 = 0;
 	bool gprs_apnConnected;
 	bool gprs_serverConnected;
-
+	configControler* config;
 	
 	Date acttime;
 	Transaction tx;

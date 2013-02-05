@@ -1,4 +1,5 @@
 #include "networkControler.h"
+#include "configControler.h"
 
 #define buffer (2048)
 //#define ERR_OK (0)
