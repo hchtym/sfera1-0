@@ -278,6 +278,11 @@ et2:
 	
 }
 
+void masterControler::softUpdAck()
+{
+	
+}
+
 void masterControler::wrtFifo(){
 	int num;
 	num = write(*fifoContainer, "send\n", strlen("send\n"));

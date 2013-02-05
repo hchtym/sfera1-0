@@ -56,6 +56,7 @@ struct Transaction {
 
 class networkControler{
 private:
+	configControler *config;
 	// zmienna zawieajaca dane do pobieranie konfiguracji wykorzystywane w 2 metodach;
 	static const char* const configs[2][6];
 	// funkcje wykorzystywane tylko raz przy pierwszym pobieraniu konfiguracji 
@@ -70,6 +71,7 @@ private:
 	//Funkcja parsujaca pobrany config ! 
 	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
 	void catFile();
+	void softUpdate();
 	//zmienne do eth/gprs
 	string ip, port, apn, user, password, serialN;
 	//zmienna kanalu w jakim dziala gprs
@@ -77,6 +79,7 @@ private:
 	static const int socket0 = 0;
 	bool gprs_apnConnected;
 	bool gprs_serverConnected;
+
 	
 	Date acttime;
 	Transaction tx;
@@ -84,6 +87,7 @@ private:
 public:
 	networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr, string &serialNr);
 	~networkControler();
+	void softAck();
 	int startConf(int type);
 	int updConf();
 	int updClock();

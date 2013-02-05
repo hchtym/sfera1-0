@@ -98,6 +98,7 @@ public:
 	int loginScr();
 	int selling();
 	void timeWindow();
+	void softUpdAck();
 	void masterBackground();
 	
 };

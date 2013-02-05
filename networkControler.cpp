@@ -16,6 +16,7 @@ networkControler::networkControler(string &ipr, string &portr, string &apnr, str
 	user = userr;
 	password = passwordr;
 	serialN = serialNr;
+	config = new configControler();
 	
 }
 
@@ -185,6 +186,62 @@ int networkControler::sendTransaction()
 	disconnectAllQuiet();
 	cout << "Rozlaczem sie !" << endl;
 }
+
+void networkControler::softAck()
+{
+	connectAllQuiet();
+	softUpdate();
+	disconnectAllQuiet();
+}
+
+void networkControler::softUpdate()
+{
+	char pCAPData[buffer*10];
+	char bufer[50000];
+	memset(bufer, 0, sizeof(bufer));
+	char temp[730];
+	memset(temp, 0, sizeof(temp));
+	int ulLen =0;
+	int x =0;
+	int ulHandle =0;
+	memset(pCAPData, 0, sizeof(pCAPData));
+	stringstream compose; 
+	string msg;
+	int sent;
+	string info;
+	compose.str("");
+	cout << "tworze stream" << endl;
+	stinr serNr = config->returnSeriall();
+	compose << "cap-ack;" << serNr << ";" << data << endl; //<< endl;
+	msg = compose.str();
+	int len,bytes_sent,bytes_recv;
+	int resend = 0;
+	int size1 = 0;
+	int size2 = 0;
+	bytes_sent = 0;
+	bytes_recv = 0;
+
+	
+	if(size2 != 0)
+	{
+repete2:		//compose.str("");
+		compose << size2 << ";" << sizeof(struct Transaction) << endl;
+		msg.clear();
+		msg = compose.str();
+		len = msg.size();
+		// send file to the serwer
+		cout << "wysylam zapytanie" << endl;
+		if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
+		{
+			//loger << "send filetx; error" << endl;
+			perror("send"); // logowanie do pliku !
+			//exit(1);
+		}
+	sleep(1);
+	}
+
+}
+
 
 int networkControler::fileSize(string fileName)
 {
@@ -448,7 +505,6 @@ void networkControler::gprsInit()
 	//	Lcd_Printxy(0,8,0, "Blad modolu gprs");
 	//}
 
-//	DelayMs(3000);
 	for(int i = 0; i < 100; i++)
 	{
 	
@@ -471,8 +527,7 @@ void networkControler::gprsInit()
 		Lcd_Printxy(0,24, 0, "SIM = OK");
 	}else{
 		Lcd_Printxy(0,24, 0, "Brak karty SIM");
-	}
-	
+	}	
 }
 
 int networkControler::gprsConnect()
@@ -718,14 +773,7 @@ int networkControler::gprsCon()
     file.close();
 	loger.close();
 	// zamykam socket !
-	//close(sockfd);
-	
-	
-	
-	
-	
-	
-	
+	//close(sockfd);	
 }
 
 int networkControler::ethConf()
@@ -928,12 +976,6 @@ int networkControler::startConf(int type)
 			//zaloguj bledny typ;
 		break;
 	}
-	
-/*	if(type == 1){
-		cout << "pizda z ifa" << endl;
-		int t= ethConf();
-	}*/
-
 }
 
 void networkControler::Tokenize(const string& str, vector<string>& tokens, const string& delimiters = " ")
