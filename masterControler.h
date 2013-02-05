@@ -92,6 +92,7 @@ public:
 	masterControler(int *);
 	masterControler();
 	string returnBuildDate();
+	int checkVersion();
 	bool sendTrx();
 	int dispMenu();
 	int updClk();
