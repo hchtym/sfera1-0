@@ -23,7 +23,7 @@ private:
 
 	bool isPrinterReady();
 
-	void center(string *cent);
+	void center(string &cent);
 
 	void justify(char* to, const char* left, const char* right);
 

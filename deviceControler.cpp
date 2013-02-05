@@ -394,7 +394,7 @@ bool deviceControler::isPrinterReady(){
 	return false;
 }
 
-void deviceControler::center(string *cent)
+void deviceControler::center(string &cent)
 {
 	int lineWidth = 32;
 	stringstream compose;
