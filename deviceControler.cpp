@@ -452,7 +452,7 @@ void deviceControler::printLines(int amount){
 
 void deviceControler::printBold(int mode)
 {
-	Prn_ SetDoubleSize(mode);
+	Prn_SetDoubleSize(mode);
 }
 
 void deviceControler::printTx(string seriallNr, string sellerId, string date, string cid, string sum, string point, string extra, string footer)
