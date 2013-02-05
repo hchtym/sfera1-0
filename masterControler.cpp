@@ -103,7 +103,7 @@ string masterControler::returnBuildDate()
 	}
 	comp << compose[2] << "-" << compose[1] << "-" << compose[0] << " " << compose[3] << ":" << compose[4];
 	
-	string disp = test.str();
+	string disp = comp.str();
 	return disp;
 	/// tutaj bedzie komponowanie daty ale nie chce mi sie teraz nad tym myslec !! 
 }
