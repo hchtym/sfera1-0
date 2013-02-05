@@ -396,9 +396,9 @@ bool deviceControler::isPrinterReady(){
 
 void deviceControler::center(string &cent)
 {
-	int lineWidth = 32;
+	int lineWidth = 22;
 	stringstream compose;
-	for (int i = 0; i < (lineWidth - (cent.size()/2)); ++i)
+	for (int i = 0; i < ((lineWidth - cent.size()) /2)); ++i)
 	{
 		compose << " ";
 	}
@@ -464,6 +464,10 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	printerInit(16);
 	printerHeader(seriallNr, sellerId, date, cid);
 
+	row.clear();
+	row = "----------------------";
+	Prn_printf((char *)row.c_str());
+
 	printLines(1);
 
 	compose.str("");
@@ -491,6 +495,10 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	printLines(2);
 
 	center(footer);
+
+	row.clear();
+	row = "----------------------\n";
+	Prn_printf((char *)row.c_str());
 
 	compose.str("");
 	compose << footer << endl;
