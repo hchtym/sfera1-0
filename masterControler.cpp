@@ -10,7 +10,8 @@ using namespace std;
 
 
 
-masterControler::masterControler(int *fifo){
+masterControler::masterControler(int *fifo)
+{
 	left1 = -1;
 	left2 = -1;
 	timer1 = false;
@@ -42,7 +43,8 @@ masterControler::masterControler(int *fifo){
 	senttrx = false;
 };
 
-masterControler::masterControler(){
+masterControler::masterControler()
+{
 	left1 = -1;
 	left2 = -1;
 	timer1 = false;
@@ -72,7 +74,8 @@ masterControler::masterControler(){
 
 };
 
-int masterControler::updClk(){
+int masterControler::updClk()
+{
 	network->updClock();
 }
 
@@ -192,7 +195,7 @@ et1:
 		}
 		if(txSend == true)
 		{
-			//ustaw max timeout
+
 			string timer = config->returnParam("schedule.tx.fail.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
 			SetTimer(2, timeout);
@@ -200,7 +203,7 @@ et1:
 		}
 		else
 		{
-			//ustaw min timeout
+
 			string timer = config->returnParam("schedule.tx.success.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
 			SetTimer(2, timeout);
@@ -209,7 +212,7 @@ et1:
 		
 	}
 
-	//sprawdzamy flage conf
+
 	if(confFlag)
 	{
 et2:
@@ -219,7 +222,7 @@ et2:
 		}
 		if(confRcv == true)
 		{
-				//ustaw max timeout
+
 			string timer = config->returnParam("schedule.config.fail.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
 			SetTimer(1, timeout);
@@ -227,7 +230,7 @@ et2:
 		}
 		else
 		{
-					//ustaw min timeout
+
 			string timer = config->returnParam("schedule.config.success.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
 			SetTimer(1, timeout);
@@ -238,7 +241,6 @@ et2:
 	}
 	
 	
-	//sprawdzam timery !!
 	if(timer1){
 		left1 = CheckTimer(2);
 		cout << "na timer1 zostalo: " << left1 << " ms" << endl;
@@ -295,8 +297,8 @@ void masterControler::menuOnOff(){
 	int menuId[2] = {1,2};
 }
 
-int masterControler::dispMenu(){
-	// to tutaj bedzie odpowiedzialne za wyswietlenie menu z logowaniem sie i innymi gownami ! 
+int masterControler::dispMenu()
+{
 	cout << "Jestem w menu disp !" << endl;
 	int menuIdOn[6];
 	memset(menuIdOn, 0, sizeof(menuIdOn));
@@ -321,7 +323,7 @@ int masterControler::dispMenu(){
 	cout << "tworze vectory dusplay menu on/off" << endl;
 	vector<string> displayMenuOn;
 	vector<string> displayMenuOff;
-// parsowanie menu bez usera
+
 	cout << "passuje pliki opcji i pliki pozycji menu dla zalogowania i niezalogowania" << endl;
 	k =0;
 	for(i = 0; i < 6; i++)
@@ -342,7 +344,7 @@ int masterControler::dispMenu(){
 			}
 		}
 	}
-// parsowanie menu z userem
+
 	k =0;
 	for(i = 0; i < 6; i++)
 	{
@@ -418,7 +420,8 @@ int masterControler::dispMenu(){
 	}
 }
 
-int masterControler::menuScr(const string &menuname,vector<string> &vect, int size, int index, int *menuid){
+int masterControler::menuScr(const string &menuname,vector<string> &vect, int size, int index, int *menuid)
+{
 	cout << "jestem w mnue scr" << endl;
 	const int visible = 6;
     int i, j, view =0;
@@ -545,7 +548,8 @@ drawMenu:
 	
 }
 
-int masterControler::menuScrOther(const string &menuname,vector<string> &vect, int size, int index, int *menuid){
+int masterControler::menuScrOther(const string &menuname,vector<string> &vect, int size, int index, int *menuid)
+{
 	cout << "jestem w mnue scr" << endl;
 	const int visible = 6;
     int i, j, view =0;
@@ -648,7 +652,8 @@ void masterControler::screenSaver(){
 	
 }
 
-int masterControler::loginScr(){
+int masterControler::loginScr()
+{
 	clear();
 	title("Prosze zaloguj sie");
 	BYTE login[6];
@@ -682,7 +687,8 @@ int masterControler::loginScr(){
 	}
 }
 
-int masterControler::infoMSG(string &msg){
+int masterControler::infoMSG(string &msg)
+{
 	string msg2 = msg;
 	clear();
 	int x =0;
@@ -692,11 +698,13 @@ int masterControler::infoMSG(string &msg){
 	DelayMs(5000);
 }
 
-int masterControler::message(int x, int y, string &str){
+int masterControler::message(int x, int y, string &str)
+{
 	Lcd_Printxy(x, y, 0, const_cast<char *>(str.c_str()));
 }
 
-int masterControler::title(string str){
+int masterControler::title(string str)
+{
 	int len = (21 - str.size());
 	stringstream compose;
 	compose.str("");
@@ -711,11 +719,13 @@ int masterControler::title(string str){
 	
 }
 
-int masterControler::clear(){
+int masterControler::clear()
+{
 	Lcd_Cls();
 }
 
-int masterControler::selling(){
+int masterControler::selling()
+{
 	unsigned char input[40];
 	string payment, point, extra, seler;
 	string date;
@@ -768,7 +778,8 @@ int masterControler::selling(){
 	return 0;
 }
 
-int masterControler::sumInput(string &payment){
+int masterControler::sumInput(string &payment)
+{
 	BYTE key = NOKEY;
 	stringstream compo,compo1;
 	string temp;
@@ -882,7 +893,7 @@ int masterControler::sumInput(string &payment){
 			case KEYBACKSPACE:
 			temp.clear();
 			temp = compo.str();
-//				temp[temp.size()-1] = "\0";
+
 			int len = temp.size();
 			if(len == 0){
 				str2.clear();
@@ -939,10 +950,10 @@ int masterControler::sumInput(string &payment){
 			str2 = compo1.str();
 		}
 	}	
-
 }
 
-int masterControler::fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char type, string &date){
+int masterControler::fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char type, string &date)
+{
 	cout << "otwieram trx.txt" << endl;
 	ofstream out("test.dat");
 	ofstream trx("trx.txt", ios_base::app);
@@ -1010,25 +1021,24 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	return 0;
 }
 
-void masterControler::masterBackground(){
+void masterControler::masterBackground()
+{
 		cout << "jestem w masterBackground" << endl;
 		network->sendTransaction();
 		cout << "skonczylem send transaction " << endl;
-
 }
 
-int masterControler::pointComp(string &id, string &payment, string &pnt, string &ext){
+int masterControler::pointComp(string &id, string &payment, string &pnt, string &ext)
+{
 	cout << "jestem w pointComp, oto id karty !: " << id << endl;
 	int sumapkt;
 	BYTE key = NOKEY;
-	stringstream compo, compo1;
-	//string flag = config->pointComp(); 
+	stringstream compo, compo1; 
 	string flag = "off";
 	string str2 = "0";
 	string temp;
 	Kb_Flush();
 		if((flag.compare("off")) == 0){
-		//reczne podawanie pkt !! 
 		while(1){
 			compo1.str("");
 			for(int i = 0; i < (21 - str2.size()); i++)
@@ -1221,7 +1231,8 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 	return 0;
 }
 
-void masterControler::Tokenize(const string& str, vector<string>& tokens, const string& delimiters = " "){
+void masterControler::Tokenize(const string& str, vector<string>& tokens, const string& delimiters = " ")
+{
 	string::size_type lastPos = str.find_first_not_of(delimiters, 0);
 	string::size_type pos = str.find_first_of(delimiters, lastPos);
 

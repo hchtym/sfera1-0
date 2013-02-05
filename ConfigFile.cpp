@@ -2,7 +2,8 @@
 
 #include <fstream>
 
-std::string trim(std::string const& source, char const* delims = " \t\r\n") {
+std::string trim(std::string const& source, char const* delims = " \t\r\n")
+{
   std::string result(source);
   std::string::size_type index = result.find_last_not_of(delims);
   if(index != std::string::npos)

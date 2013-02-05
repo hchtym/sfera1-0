@@ -1,28 +1,21 @@
 #include "configControler.h"
 #include "networkControler.h"
 
-//definicje guzikow klawiatury
-
-//#define KEYCANCEL  0x1B
-//#define KEYENTER  0x0D 
-//#define KEYUP  0x3C 
-//#define KEYDOWN  0x3E
-//#define NOKEY 0xFE
-//#define KEYFUN 0x12
-
 using namespace std;
 
-configControler::configControler(){
+configControler::configControler()
+{
 	ifstream file("config.txt");
 	if(file)
 	{
 		file.close();
 		cf = new ConfigFile("config.txt");
 		sn = new ConfigFile("seriall.txt");
-	}else{
+	}
+	else
+	{
 		configGenerator();
 	}
-	
 }
 
 void configControler::reloadConfig()
@@ -33,32 +26,39 @@ void configControler::reloadConfig()
 	sn = new ConfigFile("seriall.txt");
 }
 
-string configControler::returnParam(string part){
+string configControler::returnParam(string part)
+{
 	string param = cf->Value("ok", part);
 	return param;
 }
 
-int configControler::returnMenu(vector<string> &vec){
+int configControler::returnMenu(vector<string> &vec)
+{
 	confParse(vec, "menu");
 }
 
-int configControler::returnPrize(vector<string> &vec){
+int configControler::returnPrize(vector<string> &vec)
+{
 	confParse(vec, "prize");
 }
 
-int configControler::returnSeller(vector<string> &vec){
+int configControler::returnSeller(vector<string> &vec)
+{
 	confParse(vec, "prize");
 }
 
-int configControler::returnLCard(vector<string> &vec){
+int configControler::returnLCard(vector<string> &vec)
+{
 	confParse(vec, "lc");
 }
 
-int configControler::returnComputation(vector<string> &vec){
+int configControler::returnComputation(vector<string> &vec)
+{
 	confParse(vec, "comp");
 }
 
-int configControler::confParse(vector<string> &vect, string section){
+int configControler::confParse(vector<string> &vect, string section)
+{
 	stringstream compose;
 	compose.str("");
 	int size = confCounter(const_cast<char *>(section.c_str()));
@@ -70,11 +70,11 @@ int configControler::confParse(vector<string> &vect, string section){
 		compose.str("");
 		string item	= cf->Value(section,part);
 		vect.push_back(item);
-	}
-	
+	}	
 }
 
-int configControler::confCounter(char *str){
+int configControler::confCounter(char *str)
+{
 	stringstream compose,compose1;
 	string pos3;
 	int pos2 =0;
@@ -106,7 +106,8 @@ int configControler::confCounter(char *str){
 	return pos2;
 }
 
-int configControler::configGenerator(){
+int configControler::configGenerator()
+{
 	int item;
 	string name = "Konfiguracja wstepna"; 
 	stringstream compose;
@@ -177,7 +178,8 @@ int configControler::configGenerator(){
 	
 }
 
-int configControler::miniScreen(string &title, int size, bool opt){
+int configControler::miniScreen(string &title, int size, bool opt)
+{
 	int	marked =0;
 	BYTE key;
 	bool ends;
@@ -321,10 +323,10 @@ int configControler::miniScreen(string &title, int size, bool opt){
 	
 		
 	}
-	
 }
 
-int configControler::miniInput(string& title, string& variable){
+int configControler::miniInput(string& title, string& variable)
+{
 	stringstream compo;
 	BYTE key = NOKEY;
 	bool arg  =true;
@@ -351,22 +353,28 @@ int configControler::miniInput(string& title, string& variable){
 	str3 = compo.str();
 	compo.str("");
 	compo.clear();
-	if(title.compare("Ip") == 0){
-		while(arg){
+	if(title.compare("Ip") == 0)
+	{
+		while(arg)
+		{
 			Lcd_Cls();
 			Lcd_Printxy(0, 0, 1, const_cast<char *>(str.c_str()) );
 			Lcd_Printxy(1, 11, 0, const_cast<char *>(str3.c_str()) );
 			Lcd_Printxy(0, 24, 0, const_cast<char *>(str2.c_str()) );
 			Lcd_Printxy(1, 55, 0, "AlPha = .");
-			while(1){
-				if(Kb_Hit){
+			while(1)
+			{
+				if(Kb_Hit)
+				{
 					key = Kb_GetKey();
-					if(key != NOKEY){
+					if(key != NOKEY)
+					{
 						break;
 					}
 				}
 			}
-			switch(key){
+			switch(key)
+			{
 				case KEY0:
 					compo << "0";
 					str2.clear();
@@ -434,10 +442,8 @@ int configControler::miniInput(string& title, string& variable){
 				return 0;
 				break;
 				case KEYBACKSPACE:
-//				compo.seekg(0, ios::end);
 				temp.clear();
 				temp = compo.str();
-//				temp[temp.size()-1] = "\0";
 				int len = temp.size();
 				temp = temp.erase(len-1);
 					compo.str("");
@@ -451,58 +457,67 @@ int configControler::miniInput(string& title, string& variable){
 			}
 			
 		
-//		Kb_GetStr(0, 20, input, 4, 12, 0, 60);
-//			Lcd_Printxy(1, 55, 0, "AlPha = .");
 		}
-	}else{
+	}
+	else
+	{
 		Lcd_Printxy(1, 11, 0, const_cast<char *>(str3.c_str()) );
 		Kb_GetStr(0, 24, input, 4, 19, 0, 120);
 	}
-		if(str2.size() != 0){
+		if(str2.size() != 0)
+		{
 			if(title.compare("Ip") == 0) ip = str2; //const_cast<char *>(input);
 		}
 		
 		string conv = (char *)input;
-		if(conv.size() != 0){
+
+		if(conv.size() != 0)
+		{
 	
 			if(title.compare("Port") == 0) port = conv; //const_cast<char *>(input);
 	
 			if(title.compare("Seriall Number") == 0) seriallnumber = conv; //const_cast<char *>(input);
 		}
-	
 }
 
-string configControler::returnSeriall(){
+string configControler::returnSeriall()
+{
 	string seriall = sn->Value("seriall","SN");
 	return seriall;
 }
 
-string configControler::returnSerwerIp(){
+string configControler::returnSerwerIp()
+{
 	string adr = cf->Value("ok", "gprs.address");
 	return adr;
 }
 
-string configControler::returnSerwerPort(){
+string configControler::returnSerwerPort(
+{
 	string prt = cf->Value("ok", "gprs.port");
 	return prt;
 }
 
-string configControler::returnGprsApn(){
+string configControler::returnGprsApn()
+{
 	string gapn = cf->Value("ok", "gprs.apn");
 	return gapn;
 }
 
-string configControler::returnGprsUser(){
+string configControler::returnGprsUser()
+{
 	string guser = cf->Value("ok", "gprs.login");
 	return guser;
 }
 
-string configControler::returnGprsPaswd(){
+string configControler::returnGprsPaswd()
+{
 	string gpaswd = cf->Value("ok", "gprs.password");
 	return gpaswd;
 }
 
-void configControler::Tokenize(const string& str, vector<string>& tokens, const string& delimiters = " "){
+void configControler::Tokenize(const string& str, vector<string>& tokens, const string& delimiters = " ")
+{
 	string::size_type lastPos = str.find_first_not_of(delimiters, 0);
 	string::size_type pos = str.find_first_of(delimiters, lastPos);
 
@@ -511,6 +526,5 @@ void configControler::Tokenize(const string& str, vector<string>& tokens, const 
 	    lastPos = str.find_first_not_of(delimiters, pos);
 	    pos = str.find_first_of(delimiters, lastPos);
 	}
-
 }
 
