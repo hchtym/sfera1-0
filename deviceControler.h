@@ -32,6 +32,7 @@ void printerInit(int size);
 	char* formatAmount(unsigned long a, char *temp);
 
 	void printLines(int amount);
+	void printBold(int mode);
 
 
 

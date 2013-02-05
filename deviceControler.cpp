@@ -444,6 +444,10 @@ void deviceControler::printLines(int amount){
 	}
 }
 
+void deviceControler::printBold(int mode)
+{
+	Prn_ SetDoubleSize(mode);
+}
 
 void deviceControler::printTx(string seriallNr, string sellerId, string date, string cid, string sum, string point, string extra, string footer)
 {
@@ -455,6 +459,8 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	printerHeader(seriallNr, sellerId, date, cid);
 
 	printLines(1);
+
+	printBold(1);
 
 	compose.str("");
 	compose << "suma zakupow: " << endl << sum << endl;
@@ -477,6 +483,8 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	row.clear();
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
+
+	printBold(0);
 
 	printLines(2);
 
