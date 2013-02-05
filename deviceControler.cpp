@@ -447,7 +447,7 @@ void deviceControler::printLines(int amount){
 
 void deviceControler::printTx(string seriallNr, string sellerId, string date, string cid)
 {
-	printerInit(8);
+	printerInit(16);
 	printerHeader(seriallNr, sellerId, date, cid);
 
 	Prn_Start();
