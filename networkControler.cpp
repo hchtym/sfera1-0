@@ -257,7 +257,7 @@ int networkControler::softUpdate(string data)
 		//sleep(5);
 		cout << "pobieram plik !" << endl;
 		//execl("/usr/bin/ftpget", "ftpget", "-u", user.c_str(), "-p", password.c_str(), ip.c_str(), "/home/strong_lion/scl_app_new", path.c_str(), 0);
-		execl("/usr/bin/ftpget", "ftpget", "-u", user.c_str(), "-p", password.c_str(), ip.c_str(), "/home/strong_lion/scl_app_new", "/terminale/scl/sfera1-0/sfera ", 0);
+		execl("/usr/bin/ftpget", "ftpget", "-u", user.c_str(), "-p", password.c_str(), ip.c_str(), "/home/strong_lion/scl_app_new", " terminale/scl/sfera1-0/sfera ", 0);
 		sleep(60);
 		cout << "kiluje apke :) " << endl;
 		execl("/bin/upd.sh", "upd.sh", 0);
