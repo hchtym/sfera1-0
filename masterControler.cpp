@@ -465,6 +465,7 @@ int masterControler::dispMenu()
 			break;
 			case 3:
 				//tu bedzie spr pkt
+				device->rfidScan();
 			break;
 			case 4:
 				cout << "sendTranaction" << endl;
