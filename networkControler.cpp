@@ -261,7 +261,7 @@ int networkControler::softUpdate(string data)
 			if (ret == 1)
 			{
 				int size = 0;
-				ret = ftp->Size(path.c_str(), size, ftplib::image);
+				ret = ftp->Size(path.c_str(), &size, ftplib::image);
 				if (ret == 1)
 				{
 					ret = ftp->Get("/home/strong_lion/scl_app_new", path.c_str(), ftplib::image);
