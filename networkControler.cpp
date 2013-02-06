@@ -256,10 +256,10 @@ int networkControler::softUpdate(string data)
 		//execl("/bin/rm", "/home/strong_lion/scl_app_new", (char *) 0);
 		//sleep(5);
 		cout << "pobieram plik !" << endl;
-		execl("/usr/bin/ftpget",  "-u", user.c_str(), "-p", password.c_str(), ip.c_str(), "/home/strong_lion/scl_app_new", path.c_str(), (char *) 0);
+		execl("/usr/bin/ftpget", "ftpget", "-u", user.c_str(), "-p", password.c_str(), ip.c_str(), "/home/strong_lion/scl_app_new", path.c_str(), 0);
 		sleep(60);
 		cout << "kiluje apke :) " << endl;
-		execl("/bin/upd.sh", (char *) 0);
+		execl("/bin/upd.sh", "upd.sh", 0);
 
 	}
 	else
