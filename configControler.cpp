@@ -160,8 +160,8 @@ int configControler::configGenerator()
 	loger << "Stworzylem plik tworze obiekt!" << endl;
 	cout << "konfiguracja przed przekazaniem danych to konstruktora !" << endl;
 	cout << ip << endl << port << endl << apnc << endl << userc << endl << passwordc << endl << seriallnumber << endl;
-	//networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
 	networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
+	cout << "dane zostaly przekazana do obiektu !" << endl;
 	loger << "sprawdzam  flage" << endl;
 	cout << flag << endl;
 	if(flag.compare("eth") ==0){

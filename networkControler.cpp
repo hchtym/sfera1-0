@@ -17,7 +17,7 @@ networkControler::networkControler(string &ipr, string &portr, string &apnr, str
 	user = userr;
 	password = passwordr;
 	serialN = serialNr;
-	config = new configControler();
+	//config = new configControler();
 	
 }
 
