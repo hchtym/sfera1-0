@@ -19,7 +19,7 @@
 #include <fstream>
 #include <unistd.h>
 #include "configControler.h"
-#include "ftplib.h"
+//#include "ftplib.h"
 
 extern "C"{
 #include "all_headers.h"	
@@ -83,7 +83,7 @@ private:
 	bool gprs_apnConnected;
 	bool gprs_serverConnected;
 	configControler* config;
-	ftplib * ftp;
+	//ftplib * ftp;
 	Date acttime;
 	Transaction tx;
 	
