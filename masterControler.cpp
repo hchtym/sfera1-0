@@ -52,7 +52,7 @@ masterControler::masterControler()
 	confFlag = false;
 	txFlag = false;
 	buildDate = BUILD_DATE;
-	config = new configControler();
+	config = new configControler(false);
 	device = new deviceControler();
 	ip = config->returnSerwerIp(); 
 	port = config->returnSerwerPort(); 
