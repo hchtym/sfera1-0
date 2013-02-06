@@ -254,29 +254,29 @@ int networkControler::softUpdate(string data)
 		string password = config->returnParam("ftp.password");
 		string path = config->returnParam("ftp.ip");
 
-		int ret = ftp->Connect(ip.c_str());
-		if(ret == 1)
-		{
-			ret = ftp->Login(user.c_str(), password.c_str());
-			if (ret == 1)
-			{
-				int size = 0;
-				ret = ftp->Size(path.c_str(), &size, ftplib::image);
-				if (ret == 1)
-				{
-					ret = ftp->Get("/home/strong_lion/scl_app_new", path.c_str(), ftplib::image);
-					if ( ret == 1)
-					{
-						cout << "file was downloaded from serwer !!" << endl;
-					}
-				}
-				else
-				{
-					cout << "no such file" << endl;
-				}
-			}
+		//int ret = ftp->Connect(ip.c_str());
+		//if(ret == 1)
+		//{
+		//	ret = ftp->Login(user.c_str(), password.c_str());
+		//	if (ret == 1)
+		//	{
+		//		int size = 0;
+		//		ret = ftp->Size(path.c_str(), &size, ftplib::image);
+		//		if (ret == 1)
+		//		{
+		//			ret = ftp->Get("/home/strong_lion/scl_app_new", path.c_str(), ftplib::image);
+		//			if ( ret == 1)
+		//			{
+		//				cout << "file was downloaded from serwer !!" << endl;
+		//			}
+		//		}
+		//		else
+		//		{
+		//			cout << "no such file" << endl;
+		//		}
+		//	}
 
-		}
+		//}
 		//cout << "kiluje apke :) " << endl;
 		//execl("/bin/upd.sh", "upd.sh", 0);
 
