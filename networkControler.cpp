@@ -252,9 +252,9 @@ int networkControler::softUpdate(string data)
 		string user = config->returnParam("ftp.login");
 		string password = config->returnParam("ftp.password");
 		string path = config->returnParam("ftp.ip");
-		cout << "usuwam stara wersje" << endl;
-		execl("/bin/rm", "/home/strong_lion/scl_app_new", (char *) 0);
-		sleep(5);
+		//cout << "usuwam stara wersje" << endl;
+		//execl("/bin/rm", "/home/strong_lion/scl_app_new", (char *) 0);
+		//sleep(5);
 		cout << "pobieram plik !" << endl;
 		execl("/usr/bin/ftpget",  "-u", user.c_str(), "-p", password.c_str(), ip.c_str(), "/home/strong_lion/scl_app_new", path.c_str(), (char *) 0);
 		sleep(60);
