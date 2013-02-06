@@ -18,6 +18,7 @@ networkControler::networkControler(string &ipr, string &portr, string &apnr, str
 	password = passwordr;
 	serialN = serialNr;
 	config = new configControler(false);
+	ftp =  new ftplib();
 }
 
 networkControler::~networkControler()
@@ -252,15 +253,32 @@ int networkControler::softUpdate(string data)
 		string user = config->returnParam("ftp.login");
 		string password = config->returnParam("ftp.password");
 		string path = config->returnParam("ftp.ip");
-		//cout << "usuwam stara wersje" << endl;
-		//execl("/bin/rm", "/home/strong_lion/scl_app_new", (char *) 0);
-		//sleep(5);
-		cout << "pobieram plik !" << endl;
-		//execl("/usr/bin/ftpget", "ftpget", "-u", user.c_str(), "-p", password.c_str(), ip.c_str(), "/home/strong_lion/scl_app_new", path.c_str(), 0);
-		execl("/usr/bin/ftpget", "ftpget", "-u", user.c_str(), "-p", password.c_str(), ip.c_str(), "/home/strong_lion/scl_app_new", "~/terminale/scl/sfera1-0/sfera", 0);
-		sleep(60);
-		cout << "kiluje apke :) " << endl;
-		execl("/bin/upd.sh", "upd.sh", 0);
+
+		int ret = ftp->Connect(ip.c_str());
+		if(ret == 1)
+		{
+			ret = ftp->Login(user.c_str(), password.c_str());
+			if (ret == 1)
+			{
+				int size = 0;
+				ret = ftp->Size(path.c_str(), size, ftplib::image);
+				if (ret == 1)
+				{
+					ret = ftp->Get("/home/strong_lion/scl_app_new", path.c_str(), ftplib::image);
+					if ( ret == 1)
+					{
+						cout << "file was downloaded from serwer !!" << endl;
+					}
+				}
+				else
+				{
+					cout << "no such file" << endl;
+				}
+			}
+
+		}
+		//cout << "kiluje apke :) " << endl;
+		//execl("/bin/upd.sh", "upd.sh", 0);
 
 	}
 	else

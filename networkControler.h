@@ -19,6 +19,7 @@
 #include <fstream>
 #include <unistd.h>
 #include "configControler.h"
+#include "ftplib.h"
 
 extern "C"{
 #include "all_headers.h"	
@@ -64,6 +65,7 @@ private:
 	int gprsCon();
 	int ethConf();
 	int sockfd;
+
 	// inicjator karty sim, oraz kanalu
 	void gprsInit();
 	int connectAllQuiet();
@@ -81,7 +83,7 @@ private:
 	bool gprs_apnConnected;
 	bool gprs_serverConnected;
 	configControler* config;
-	
+	ftplib * ftp;
 	Date acttime;
 	Transaction tx;
 	
