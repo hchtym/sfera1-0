@@ -252,14 +252,14 @@ int networkControler::softUpdate(string data)
 		string user = config->returnParam("ftp.login");
 		string password = config->returnParam("ftp.password");
 		string path = config->returnParam("ftp.ip");
-
+		cout << "usuwam stara wersje" << endl;
 		execl("/bin/rm", "/home/strong_lion/scl_app_new", (char *) 0);
+		sleep(5);
+		cout << "pobieram plik !" << endl;
 		execl("/usr/bin/ftpget",  "-u", user.c_str(), "-p", password.c_str(), ip.c_str(), "/home/strong_lion/scl_app_new", path.c_str(), (char *) 0);
 		sleep(60);
-		execl("/usr/bin/killall", "scl_app", (char *) 0);
-		execl("/bin/cp", "/home/strong_lion/scl_app_new", "/home/strong_lion/scl_app", (char *) 0);
-		execl("/bin/chmod", "755" ,"/home/strong_lion/scl_app", (char *) 0);
-		execl("/home/strong_lion/scl_app&", (char *) 0);
+		cout << "kiluje apke :) " << endl;
+		execl("/bin/upd.sh", (char *) 0);
 
 	}
 	else
