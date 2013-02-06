@@ -132,10 +132,12 @@ int configControler::configGenerator()
 			switch(item){
 				case 0:
 				flag = "eth";
+				cout << flag << endl;
 				ret = miniScreen(title, 2, false);
 				break;
 				case 1:
 				flag = "gprs";
+				cout << flag << endl;
 				ret = miniScreen(title, 2, false);
 				break;
 				case 2:
@@ -161,6 +163,7 @@ int configControler::configGenerator()
 	//networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
 	networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
 	loger << "sprawdzam  flage" << endl;
+	cout << flag << endl;
 	if(flag.compare("eth") ==0){
 		loger << "sprawdzilem flage i odpalam eth !)" << endl;
 		cout << "odpalam opcje dla eth" << endl;
@@ -169,6 +172,7 @@ int configControler::configGenerator()
 	}else{
 		if(flag.compare("gprs") == 0){
 			loger << "sprawdzialem flage i odpalam gprs" << endl;
+			cout << "odalam dla gprs" << endl; 
 			conector->startConf(0);
 		}else{
 			// loguj nieznany typ !
