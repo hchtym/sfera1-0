@@ -17,8 +17,7 @@ networkControler::networkControler(string &ipr, string &portr, string &apnr, str
 	user = userr;
 	password = passwordr;
 	serialN = serialNr;
-	//config = new configControler();
-	
+	config = new configControler(false);
 }
 
 networkControler::~networkControler()
@@ -242,7 +241,7 @@ int networkControler::softUpdate(string data)
 	compose.str("");
 	compose << pCAPData;
 	info = compose.str();
-
+	cout << info << endl;
 	if(info.compare("ok") == 0)
 	{
 		//procedura pobierania softu

@@ -3,20 +3,28 @@
 
 using namespace std;
 
-configControler::configControler()
+configControler::configControler(bool conf)
 {
-	cout << "sprawdzam istnienie pliku" << endl;
-	ifstream file("config.txt");
-	if(file)
+	if (conf)
 	{
-		file.close();
-		cf = new ConfigFile("config.txt");
-		sn = new ConfigFile("seriall.txt");
+		cout << "sprawdzam istnienie pliku" << endl;
+		ifstream file("config.txt");
+		if(file)
+		{
+			file.close();
+			cf = new ConfigFile("config.txt");
+			sn = new ConfigFile("seriall.txt");
+		}
+		else
+		{
+			cout << "przechodze do generatora" << endl;
+			configGenerator();
+		}
 	}
 	else
 	{
-		cout << "przechodze do generatora" << endl;
-		configGenerator();
+		cf = new ConfigFile("config.txt");
+		sn = new ConfigFile("seriall.txt");
 	}
 }
 

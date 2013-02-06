@@ -34,7 +34,7 @@ private:
 	///
 	
 public: 
-	configControler(); 
+	configControler(bool conf); 
 	int configReload(); 
 	int getConfig(); 
 	int returnMenu(vector<string> &vec); 

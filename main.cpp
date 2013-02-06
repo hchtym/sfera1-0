@@ -29,7 +29,7 @@ int main(){
 
 	//cout << "Build date: " << BUILD_DATE << endl;
 	cout << "tworze configControler" << endl;
-	configControler* config = new configControler();
+	configControler* config = new configControler(true);
 	cout << "kiluje obiekt" << endl;
 	sleep(20);
 	delete(config);

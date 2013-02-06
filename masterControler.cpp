@@ -29,7 +29,7 @@ masterControler::masterControler(int *fifo)
 	fifoContainer = fifo;
 	cout << "adress fifo: " << fifo << endl;
 	cout << "adress fifoConrainer: " << fifoContainer << endl;
-	config = new configControler();
+	config = new configControler(false);
 	device = new deviceControler();
 	ip = config->returnSerwerIp(); 
 	port = config->returnSerwerPort(); 
