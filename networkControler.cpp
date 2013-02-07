@@ -198,6 +198,7 @@ int networkControler::softAck(string date)
 
 int networkControler::softUpdate(string data)
 {
+	fstrem file("/home/strong_lion/scl_app_new", ios_base::trunc | ios_base::in | ios_base::app );
 	char pCAPData[buffer*10];
 	char bufer[50000];
 	memset(bufer, 0, sizeof(bufer));
@@ -239,56 +240,65 @@ int networkControler::softUpdate(string data)
 		perror("recive"); // logowanie do pliku !!
 		//exit(1);
 	}
+
+
 	compose.str("");
 	compose << pCAPData;
 	info = compose.str();
 	cout << info << endl;
 	if(info.compare("ok") == 0)
 	{
-		//procedura pobierania softu
-		ofstream file("versionFlag.txt", ios_base::app | ios_base::trunc);
-		file << data;
-		file.close();
-		string ip = config->returnParam("ftp.path");
-		string user = config->returnParam("ftp.login");
-		string password = config->returnParam("ftp.password");
-		string path = config->returnParam("ftp.ip");
+		msg.clear();
+		msg = "ok\n\r";
+		if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
+		{
+		//loger << "send filetx; error" << endl;
+		perror("send"); // logowanie do pliku !
+		//exit(1);
+		}
+
+		if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1)
+		{
+		//loger << "recive error" << endl;
+		perror("recive"); // logowanie do pliku !!
+		//exit(1);
+		}
 
 		compose.str("");
-		compose << "-u " << user << " -p " << password << " " << ip << " /home/strong_lion/scl_app_new " << path;
-		string temp = compose.str();
-		char *argv[3];
-		argv[0] = "ftpget";
-		argv[1] = (char *)temp.c_str();
-		argv[2] = 0;
-		//execvp("ftpget", "-u", (char *)user.c_str(), "-p", password.c_str(), ip.c_str(), "/home/strong_lion/scl_app_new",  "terminale/scl/sfera1-0/sfera\n\r", 0);
-		execvp(argv[0], argv);
-		//int ret = ftp->Connect(ip.c_str());
-		//if(ret == 1)
-		//{
-		//	ret = ftp->Login(user.c_str(), password.c_str());
-		//	if (ret == 1)
-		//	{
-		//		int size = 0;
-		//		ret = ftp->Size(path.c_str(), &size, ftplib::image);
-		//		if (ret == 1)
-		//		{
-		//			ret = ftp->Get("/home/strong_lion/scl_app_new", path.c_str(), ftplib::image);
-		//			if ( ret == 1)
-		//			{
-		//				cout << "file was downloaded from serwer !!" << endl;
-		//			}
-		//		}
-		//		else
-		//		{
-		//			cout << "no such file" << endl;
-		//		}
-		//	}
+		compose << pCAPData;
+		info.clear();
+		info = compose.str();
+		// odbieram rozmiar
+		if(info.size() > 0)
+		{
+			msg.clear();
+			msg = "ok\n\r";
+			if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
+			{
+			//loger << "send filetx; error" << endl;
+			perror("send"); // logowanie do pliku !
+			//exit(1);
+			}
+			int downloaded =0;
+			int reciveSize = atoi( info.c_str() );
+			// przygotowuje sie do odebrania softu
+			while(downloaded < reciveSize)
+			{
+				bytes_recv = 0;
+				if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1)
+				{
+				//loger << "recive error" << endl;
+				perror("recive"); // logowanie do pliku !!
+				//exit(1);
+				}
+				downloaded += bytes_recv;
+				file << pCAPData;
+				memset(pCAPData, 0, sizeof(pCAPData));
 
-		//}
-		//cout << "kiluje apke :) " << endl;
-		//execl("/bin/upd.sh", "upd.sh", 0);
+			}
 
+
+		}
 	}
 	else
 	{
