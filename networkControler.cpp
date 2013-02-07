@@ -255,7 +255,7 @@ int networkControler::softUpdate(string data)
 		string path = config->returnParam("ftp.ip");
 
 
-		execvp("ftpget", "-u", user.c_str(), "-p", password.c_str(), ip.c_str(), "/home/strong_lion/scl_app_new",  "terminale/scl/sfera1-0/sfera\n\r", 0);
+		execvp("ftpget", "-u", (char *)user.c_str(), "-p", password.c_str(), ip.c_str(), "/home/strong_lion/scl_app_new",  "terminale/scl/sfera1-0/sfera\n\r", 0);
 		//int ret = ftp->Connect(ip.c_str());
 		//if(ret == 1)
 		//{
