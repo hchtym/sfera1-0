@@ -101,7 +101,7 @@ string masterControler::returnBuildDate()
 			}
 		}
 	}
-	comp << compose[2] << "-" << compose[1] << "-" << compose[0] << " " << compose[3] << ":" << compose[4];
+	comp << compose[2] << "-" << compose[0] << "-" << compose[1] << " " << compose[3] << ":" << compose[4];
 	
 	string disp = comp.str();
 	return disp;
