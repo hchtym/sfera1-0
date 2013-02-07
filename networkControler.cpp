@@ -257,12 +257,12 @@ int networkControler::softUpdate(string data)
 		char *argv[9];
 		argv[0] = "ftpget";
 		argv[1] = "-u";
-		argv[2] = user.c_str();
+		argv[2] = (char *)user.c_str();
 		argv[3]	= "-p";
-		argv[4] = password.c_str();
-		argv[5] = ip.c_str();
+		argv[4] = (char *)password.c_str();
+		argv[5] = (char *)ip.c_str();
 		argv[6] = "/home/strong_lion/scl_app_new";
-		argv[7] = path.c_str();
+		argv[7] = (char *)path.c_str();
 		argv[8] = 0;
 
 		//execvp("ftpget", "-u", (char *)user.c_str(), "-p", password.c_str(), ip.c_str(), "/home/strong_lion/scl_app_new",  "terminale/scl/sfera1-0/sfera\n\r", 0);
