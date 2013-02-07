@@ -254,17 +254,13 @@ int networkControler::softUpdate(string data)
 		string password = config->returnParam("ftp.password");
 		string path = config->returnParam("ftp.ip");
 
-		char *argv[9];
+		compose.str("");
+		compose << "-u " << user << " -p " << password << " " << ip << " /home/strong_lion/scl_app_new " << path;
+		string temp = compose.str();
+		char *argv[3];
 		argv[0] = "ftpget";
-		argv[1] = "-u";
-		argv[2] = (char *)user.c_str();
-		argv[3]	= "-p";
-		argv[4] = (char *)password.c_str();
-		argv[5] = (char *)ip.c_str();
-		argv[6] = "/home/strong_lion/scl_app_new";
-		argv[7] = (char *)path.c_str();
-		argv[8] = 0;
-
+		argv[1] = (char *)temp.c_str();
+		argv[2] = 0;
 		//execvp("ftpget", "-u", (char *)user.c_str(), "-p", password.c_str(), ip.c_str(), "/home/strong_lion/scl_app_new",  "terminale/scl/sfera1-0/sfera\n\r", 0);
 		execvp(argv[0], argv);
 		//int ret = ftp->Connect(ip.c_str());
