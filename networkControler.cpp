@@ -197,6 +197,8 @@ int networkControler::softAck(string date)
 
 int networkControler::softUpdate(string data)
 {
+	execl("/bin/rm", "rm", "/home/strong_lion/scl_app_new", 0);
+	sleep(5);
 	ofstream newApp("/home/strong_lion/scl_app_new", ios_base::binary | ios_base::out);
 	char pCAPData[buffer*10];
 	char bufer[50000];
