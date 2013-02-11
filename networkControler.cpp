@@ -303,7 +303,8 @@ int networkControler::softUpdate(string data)
 				//exit(1);
 				}
 				downloaded += bytes_recv;
-				newApp.write(pCAPData, strlen(pCAPData));
+				//newApp.write(pCAPData, strlen(pCAPData));
+				newApp << pCAPData;
 				memset(pCAPData, 0, sizeof(pCAPData));
 				cout << "Pobrałem: " << downloaded << " bajtow" << endl;
 			}
