@@ -233,7 +233,7 @@ int networkControler::softUpdate(string data)
 		perror("send"); // logowanie do pliku !
 		//exit(1);
 	}
-	sleep(1);
+	//sleep(1);
 
 	if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1)
 	{
@@ -257,13 +257,15 @@ int networkControler::softUpdate(string data)
 		perror("send"); // logowanie do pliku !
 		//exit(1);
 		}
-
+		cout << "wyslalem: " << msg << endl;
 		if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1)
 		{
 		//loger << "recive error" << endl;
 		perror("recive"); // logowanie do pliku !!
 		//exit(1);
 		}
+
+		cout << "ostrzymalem: " << pCAPData << endl;
 
 		compose.str("");
 		compose << pCAPData;
@@ -274,7 +276,7 @@ int networkControler::softUpdate(string data)
 		{
 			msg.clear();
 			msg = "ok\n\r";
-			if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
+			if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1)
 			{
 			//loger << "send filetx; error" << endl;
 			perror("send"); // logowanie do pliku !
