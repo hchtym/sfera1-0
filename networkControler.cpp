@@ -307,11 +307,14 @@ int networkControler::softUpdate(string data)
 				}
 				downloaded += bytes_recv;
 				//newApp.write(pCAPData, strlen(pCAPData));
+				cout << "wyswietlam smieci !!" << endl;
 				cout << pCAPData << endl;
 				newApp << pCAPData;
 				memset(pCAPData, 0, sizeof(pCAPData));
 				cout << "Pobrałem: " << downloaded << " bajtow" << endl;
 			}
+
+
 			cout << "sciagniete: " << downloaded << endl;
 			cout << "rozmiar przyslany " << reciveSize << endl;
 			if(downloaded == reciveSize)
