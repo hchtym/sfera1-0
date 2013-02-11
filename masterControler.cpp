@@ -138,7 +138,7 @@ int masterControler::checkPoints()
 {
 	string cid;
 	// sykrywaj spisanie swipe karty albo wpisanie numerka
-	cid = device->magCardScan();
+	cid = device->magCardScan(false);
 
 	// wyslij zapytanie o punkty !!
 	network->getPointStatus(cid);
