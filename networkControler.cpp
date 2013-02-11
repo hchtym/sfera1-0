@@ -296,7 +296,13 @@ int networkControler::softUpdate(string data)
 				memset(pCAPData, 0, sizeof(pCAPData));
 
 			}
-
+			if(downloaded == reciveSize)
+			{
+				fstrem file("versionFlag.txt", ios_base::trunc | ios_base::in | ios_base::app);
+				file << date;
+				file.close();
+				return 1;
+			}
 
 		}
 	}
@@ -308,6 +314,40 @@ int networkControler::softUpdate(string data)
 		}
 	}
 }
+
+int networkControler::getPointStatus(string cid)
+{
+	cher recived[100];
+	stringstream temp;
+	string msg;
+
+	temp.str("");
+	temp << "" << cid << endl;
+	msg.clear();
+	msg = temp.str();
+
+	connectAllQuiet();
+
+	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
+	{
+	//loger << "send filetx; error" << endl;
+	perror("send"); // logowanie do pliku !
+	//exit(1);
+	}
+
+
+
+	if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1)
+	{
+		//loger << "recive error" << endl;
+		perror("recive"); // logowanie do pliku !!
+		//exit(1);
+	}
+
+
+	disconnectAllQuiet();
+}
+
 
 int networkControler::sendAck(string date)
 {
@@ -362,7 +402,7 @@ int networkControler::sendAck(string date)
 
 	if(info.compare("ok") == 0)
 	{
-		execl("/bin/rm", "versionFlag.txt", (char *) 0);
+		execl("/bin/rm", "rm", "versionFlag.txt", (char *) 0);
 	}
 
 	disconnectAllQuiet();
@@ -416,7 +456,7 @@ etk1:
 	ifstream filee("tranzakcje.txt");
 	if(filee)
 	{
-	execl("/bin/cp" , "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
+	execl("/bin/cp", "cp", "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
 	}
 	sleep(1);
 	//cout << "otworzylem file stream loger" << endl;
@@ -515,14 +555,14 @@ repete2:		//compose.str("");
 				cout << "tranzakcje.txt.bckp size: " << size2 << endl;
 
 			if(size1 == size2){
-				execl("/bin/rm", "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
+				execl("/bin/rm", "rm", "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
 				return 1;
 			}
 			else
 			{
 				//funkcja ktora wycina wyslane dane ! 
 				catFile();
-				execl("/bin/rm", "tranzakcje.txt.bckp", (char *) 0);
+				execl("/bin/rm", "rm", "tranzakcje.txt.bckp", (char *) 0);
 				return 0;
 			}
 			//loger << "serwer recived msg properly" << endl;

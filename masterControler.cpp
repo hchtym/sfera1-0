@@ -124,6 +124,7 @@ int masterControler::checkVersion()
 		if(buildD.compare(temp) == 0)
 		{
 			network->sendAck(buildD);
+
 		}
 
 	}
@@ -131,6 +132,20 @@ int masterControler::checkVersion()
 	{
 		return 0;
 	}
+}
+
+int masterControler::checkPoints()
+{
+	string cid;
+	// sykrywaj spisanie swipe karty albo wpisanie numerka
+	cid = device->magCardScan();
+
+	// wyslij zapytanie o punkty !!
+	network->getPointStatus(cid);
+
+	//wyswietl je i wydrukj potwierdzenie !!
+
+
 }
 
 void masterControler::timeWindow(){
@@ -322,13 +337,14 @@ void masterControler::softUpdAck()
 	network->softAck(date);
 }
 
-void masterControler::wrtFifo(){
+void masterControler::wrtFifo()
+{
 	int num;
 	num = write(*fifoContainer, "send\n", strlen("send\n"));
-	
 }
 
-bool masterControler::sendTrx(){
+bool masterControler::sendTrx()
+{
 	bool id;
 	int id2;
 	id2 = network->sendTransaction();
@@ -343,14 +359,16 @@ bool masterControler::sendTrx(){
 	return id;
 }
 
-void masterControler::menuShop(){
+void masterControler::menuShop()
+{
 	string items = "Sprzedaz;Zwrot";
 	vector<string> vect;
 	Tokenize(items, vect, ";");
 	int menuId[2] = {1,2};
 }
 
-void masterControler::menuOnOff(){
+void masterControler::menuOnOff()
+{
 	string items = "Online;Ofline";
 	vector<string> vect;
 	Tokenize(items, vect, ";");

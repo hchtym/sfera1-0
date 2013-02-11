@@ -111,13 +111,12 @@ int deviceControler::sleRead(){
 	}
 }
 
-int deviceControler::chipCardScan(){
-	
-	
-	
+int deviceControler::chipCardScan()
+{
 }
 
-string deviceControler::magCardScan(bool kbd){
+string deviceControler::magCardScan(bool kbd)
+{
 	BYTE key = NOKEY;
 	string wyciep;
 	stringstream tempsremp;
@@ -150,124 +149,127 @@ string deviceControler::magCardScan(bool kbd){
 	{
 		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
 	}
-//	Kb_Flush();
-while(1){
-//	key = NOKEY;
 	Kb_Flush();
-	Lcd_Cls();
-	Lcd_Printxy(0,0,1, const_cast<char *>(title.c_str()) );
-	if(!Kb_Hit()){
-		key = Kb_GetKey();
-	}
-	if( key == KEYCANCEL){
-		cout << "Wychwycilem KEYCANCEL !!  zwracam return sedn" << endl;
-		return send;
-	}
+	while(1){
+	//	key = NOKEY;
+		Kb_Flush();
+		Lcd_Cls();
+		Lcd_Printxy(0,0,1, const_cast<char *>(title.c_str()) );
+		if(!Kb_Hit()){
+			key = Kb_GetKey();
+		}
+		if( key == KEYCANCEL){
+			cout << "Wychwycilem KEYCANCEL !!  zwracam return sedn" << endl;
+			return send;
+		}
 	
-	if(kbd){
-		cout << "klawcia jest na chodzie wyswietlam to co wpisalem" << endl;
-		Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
-					if(!Kb_Hit()){
-						key = Kb_GetKey();
-						if(key != NOKEY){
-							presed = true;
-						}else{
-							presed = false;
-							key = NOKEY;
+		if(kbd){
+			cout << "klawcia jest na chodzie wyswietlam to co wpisalem" << endl;
+			Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
+						if(!Kb_Hit()){
+							key = Kb_GetKey();
+							if(key != NOKEY){
+								presed = true;
+							}else{
+								presed = false;
+								key = NOKEY;
+							}
 						}
-					}
-				//cout << "jestem przed switchem klawiszy" << endl;
-				if(presed){
-					switch(key){
-						case KEY0:
-							compo << "0";
-							str2.clear();
-							str2 = compo.str();
-						break;
-						case KEY1:
-							compo << "1";
-							str2.clear();
-							str2 = compo.str();
-						break;
-						case KEY2:
-							compo << "2";
-							str2.clear();
-							str2 = compo.str();
-						break;
-						case KEY3:
-							compo << "3";
-							str2.clear();
-							str2 = compo.str();
-						break;
-						case KEY4:
-							compo << "4";
-							str2.clear();
-							str2 = compo.str();
-						break;
-						case KEY5:
-							compo << "5";
-							str2.clear();
-							str2 = compo.str();
-						break;
-						case KEY6:
-							compo << "6";
-							str2.clear();
-							str2 = compo.str();
-						break;
-						case KEY7:
-							compo << "7";
-							str2.clear();
-							str2 = compo.str();
-						break;
-						case KEY8:
-							compo << "8";
-							str2.clear();
-							str2 = compo.str();
-						break;
-							case KEY9:
-							compo << "9";
-							str2.clear();
-							str2 = compo.str();
-						break;
-						case KEYENTER:
-						cout << "nacisnalem enterem" << endl;
-						//str2.clear();
-						//str2 = compo.str();
-						if(str2.size() >= 6 && str2.size() < 30){
-							cout << "wyciepuje wartosc z klawci" << endl;
-							//strcpy(const_cast<char*>((char*)btrck), str2);
-							return str2;
-						}else{
-							Lcd_Cls();
-							Lcd_Printxy(0,0,0,"Informacja");
-							Lcd_Printxy(0,32,0, "Podales zakrotki badz zadlugi numer.");
-							DelayMs(5000);
-						}
-						break;
-						case KEYCANCEL:
-						return send;
-						break;
-						case KEYBACKSPACE:
-						temp.clear();
-						temp = compo.str();
-		//				temp[temp.size()-1] = "\0";
-						int len = temp.size();
-						if(len == 0){
-						str2.clear();
-					//string ma dlugosc 0 i dupa ! 
+					//cout << "jestem przed switchem klawiszy" << endl;
+					if(presed){
+						switch(key){
+							case KEY0:
+								compo << "0";
+								str2.clear();
+								str2 = compo.str();
 							break;
-						}else{
-							temp = temp.erase(len-1);
-							compo.str("");
-							compo.clear();
-							compo << temp;
-					str2.clear();
-					str2 = temp;
-					}
-					break;
-					default:
-					break;
-					}
+							case KEY1:
+								compo << "1";
+								str2.clear();
+								str2 = compo.str();
+							break;
+							case KEY2:
+								compo << "2";
+								str2.clear();
+								str2 = compo.str();
+							break;
+							case KEY3:
+								compo << "3";
+								str2.clear();
+								str2 = compo.str();
+							break;
+							case KEY4:
+								compo << "4";
+								str2.clear();
+								str2 = compo.str();
+							break;
+							case KEY5:
+								compo << "5";
+								str2.clear();
+								str2 = compo.str();
+							break;
+							case KEY6:
+								compo << "6";
+								str2.clear();
+								str2 = compo.str();
+							break;
+							case KEY7:
+								compo << "7";
+								str2.clear();
+								str2 = compo.str();
+							break;
+							case KEY8:
+								compo << "8";
+								str2.clear();
+								str2 = compo.str();
+							break;
+								case KEY9:
+								compo << "9";
+								str2.clear();
+								str2 = compo.str();
+							break;
+							case KEYENTER:
+								cout << "nacisnalem enterem" << endl;
+								//str2.clear();
+								//str2 = compo.str();
+								if(str2.size() >= 6 && str2.size() < 30){
+									cout << "wyciepuje wartosc z klawci" << endl;
+									//strcpy(const_cast<char*>((char*)btrck), str2);
+									return str2;
+								}else{
+								Lcd_Cls();
+								Lcd_Printxy(0,0,0,"Informacja");
+								Lcd_Printxy(0,32,0, "Podales zakrotki badz zadlugi numer.");
+								DelayMs(5000);
+								}
+							break;
+							case KEYCANCEL:
+							return send;
+							break;
+							case KEYBACKSPACE:
+								temp.clear();
+								temp = compo.str();
+		//						temp[temp.size()-1] = "\0";
+								int len = temp.size();
+								if(len == 0)
+								{
+									str2.clear();
+									//string ma dlugosc 0 i dupa ! 
+									break;
+								}
+								else
+								{
+									temp = temp.erase(len-1);
+									compo.str("");
+									compo.clear();
+									compo << temp;
+									str2.clear();
+									str2 = temp;
+								}
+							break;
+							default:
+							break;
+						}
 				}
 
 		
@@ -315,7 +317,7 @@ while(1){
 	}
 	
 }	
-cout << "jestem za while przed mcrclose" << endl;
+	cout << "jestem za while przed mcrclose" << endl;
 	Mcr_Close();
 	tempsremp << trck;
 	wyciep = tempsremp.str();
@@ -510,8 +512,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	printBold(0);
 	printLines(3);
 
-	Prn_Start();
-	
+	Prn_Start();	
 }
 
 void deviceControler::printSend(string seriallNr, string sellerId, string date, string cid)
