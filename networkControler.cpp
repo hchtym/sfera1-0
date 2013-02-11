@@ -300,8 +300,8 @@ int networkControler::softUpdate(string data)
 			}
 			if(downloaded == reciveSize)
 			{
-				fstrem vFlag("versionFlag.txt", ios_base::trunc | ios_base::in | ios_base::app);
-				vFlag << date;
+				fstream vFlag("versionFlag.txt", ios_base::trunc | ios_base::in | ios_base::app);
+				vFlag << data;
 				vFlag.close();
 				return 1;
 			}
