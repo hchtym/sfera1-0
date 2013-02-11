@@ -216,7 +216,7 @@ int networkControler::softUpdate(string data)
 	cout << "tworze stream" << endl;
 	string serNr = config->returnSeriall();
 	//compose << "cap;" << serNr << ";" << data << endl; //<< endl;
-	compose << "cap;" << serNr << "2013-02-07 15:02" << endl;
+	compose << "cap;" << serNr << ";" << "2013-02-07 15:02" << endl;
 	msg = compose.str();
 	int len,bytes_sent,bytes_recv;
 	int resend = 0;
