@@ -198,7 +198,7 @@ int networkControler::softAck(string date)
 
 int networkControler::softUpdate(string data)
 {
-	fstream file("/home/strong_lion/scl_app_new", ios_base::trunc | ios_base::in | ios_base::app );
+	fstream file("scl_app_new", ios_base::trunc | ios_base::in | ios_base::app );
 	char pCAPData[buffer*10];
 	char bufer[50000];
 	memset(bufer, 0, sizeof(bufer));
