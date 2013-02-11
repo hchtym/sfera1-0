@@ -22,7 +22,8 @@ networkControler::networkControler(string &ipr, string &portr, string &apnr, str
 }
 
 networkControler::~networkControler()
-{	
+{
+
 }
 
 int networkControler::connectAllQuiet()
@@ -196,7 +197,7 @@ int networkControler::softAck(string date)
 
 int networkControler::softUpdate(string data)
 {
-	ofstream newApp("/home/strong_lion/scl_app_new", ios_base::trunc | ios_base::out | ios_base::app );
+	ofstream newApp("/home/strong_lion/scl_app_new", ios_base::trunc | ios_base::binary | ios_base::out);
 	char pCAPData[buffer*10];
 	char bufer[50000];
 	memset(bufer, 0, sizeof(bufer));
@@ -310,7 +311,7 @@ int networkControler::softUpdate(string data)
 			{
 				cout << "zamykam newApp, tworze i zapisuje plik versionFlag" << endl;
 				newApp.close();
-				ofstream vFlag("versionFlag.txt", ios_base::trunc | ios_base::out | ios_base::app);
+				ofstream vFlag("versionFlag.txt", ios_base::out | ios_base::app);
 				vFlag << data;
 				vFlag.close();
 				return 1;
