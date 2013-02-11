@@ -310,8 +310,8 @@ int networkControler::softUpdate(string data)
 				//newApp.write(pCAPData, strlen(pCAPData));
 				cout << "wyswietlam smieci !!" << endl;
 				cout << (char *)pCAPData << endl;
-				//newApp << pCAPData;
-				newApp.write(pCAPData, (buffer *10));
+				newApp << pCAPData;
+				//newApp.write(pCAPData, (buffer *10));
 
 				cout << "Pobrałem: " << downloaded << " bajtow" << endl;
 			}
