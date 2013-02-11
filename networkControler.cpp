@@ -215,6 +215,7 @@ int networkControler::softUpdate(string data)
 	compose.str("");
 	cout << "tworze stream" << endl;
 	string serNr = config->returnSeriall();
+	cout << "Wysylam zapytanie." << endl;
 	//compose << "cap;" << serNr << ";" << data << endl; //<< endl;
 	compose << "cap;" << serNr << ";" << "2013-02-07 15:02" << endl;
 	msg = compose.str();
@@ -249,6 +250,7 @@ int networkControler::softUpdate(string data)
 	cout << info << endl;
 	if(info.compare("ok") == 0)
 	{
+		cout << "wysylam potwierdzenie 'ok' " << endl;
 		msg.clear();
 		msg = "ok\n\r";
 		if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1)
@@ -265,7 +267,7 @@ int networkControler::softUpdate(string data)
 		//exit(1);
 		}
 
-		cout << "ostrzymalem: " << pCAPData << endl;
+		cout << "ostrzymalem rozmiar: " << pCAPData << endl;
 
 		compose.str("");
 		compose << pCAPData;
@@ -274,6 +276,7 @@ int networkControler::softUpdate(string data)
 		// odbieram rozmiar
 		if(info.size() > 0)
 		{
+			cout << "wysyłam potwierdzenie otrzymania rozmiaru !!" << endl;
 			msg.clear();
 			msg = "ok\n\r";
 			if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1)
@@ -286,6 +289,8 @@ int networkControler::softUpdate(string data)
 			int downloaded =0;
 			int reciveSize = atoi( info.c_str() );
 			// przygotowuje sie do odebrania softu
+
+			cout << "Przygotowuje się do pobierania softu." << endl;
 			while(downloaded < reciveSize)
 			{
 				bytes_recv = 0;
@@ -295,6 +300,7 @@ int networkControler::softUpdate(string data)
 				perror("recive"); // logowanie do pliku !!
 				//exit(1);
 				}
+				cout << "Pobrałem: " << downloaded << " bajtow" << endl;
 				downloaded += bytes_recv;
 				file << pCAPData;
 				memset(pCAPData, 0, sizeof(pCAPData));
