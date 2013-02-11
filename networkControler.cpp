@@ -251,7 +251,7 @@ int networkControler::softUpdate(string data)
 	{
 		msg.clear();
 		msg = "ok\n\r";
-		if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
+		if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1)
 		{
 		//loger << "send filetx; error" << endl;
 		perror("send"); // logowanie do pliku !
