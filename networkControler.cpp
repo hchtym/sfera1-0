@@ -197,7 +197,7 @@ int networkControler::softAck(string date)
 
 int networkControler::softUpdate(string data)
 {
-	if( remove( "myfile.txt" ) != 0 )
+	if( remove( "/home/strong_lion/scl_app_new" ) != 0 )
     cout << "Error deleting file" << endl;
   	else
     cout << "File successfully deleted" << endl;
