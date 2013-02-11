@@ -331,7 +331,7 @@ int networkControler::getPointStatus(string cid)
 
 	connectAllQuiet();
 
-	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
+	if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1)
 	{
 	//loger << "send filetx; error" << endl;
 	perror("send"); // logowanie do pliku !
@@ -340,7 +340,7 @@ int networkControler::getPointStatus(string cid)
 
 
 
-	if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1)
+	if((bytes_recv = recv(sockfd, recived, sizeof(recived) -1, 0)) == -1)
 	{
 		//loger << "recive error" << endl;
 		perror("recive"); // logowanie do pliku !!
