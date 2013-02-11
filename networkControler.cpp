@@ -215,7 +215,8 @@ int networkControler::softUpdate(string data)
 	compose.str("");
 	cout << "tworze stream" << endl;
 	string serNr = config->returnSeriall();
-	compose << "cap;" << serNr << ";" << data << endl; //<< endl;
+	//compose << "cap;" << serNr << ";" << data << endl; //<< endl;
+	compose << "cap;" << serNr << "2013-02-07 15:02" << endl;
 	msg = compose.str();
 	int len,bytes_sent,bytes_recv;
 	int resend = 0;
@@ -240,7 +241,7 @@ int networkControler::softUpdate(string data)
 		perror("recive"); // logowanie do pliku !!
 		//exit(1);
 	}
-
+	cout << "recived message: " << pCAPData << endl;
 
 	compose.str("");
 	compose << pCAPData;
@@ -294,13 +295,14 @@ int networkControler::softUpdate(string data)
 				downloaded += bytes_recv;
 				file << pCAPData;
 				memset(pCAPData, 0, sizeof(pCAPData));
+				file.close();
 
 			}
 			if(downloaded == reciveSize)
 			{
-				fstrem file("versionFlag.txt", ios_base::trunc | ios_base::in | ios_base::app);
-				file << date;
-				file.close();
+				fstrem vFlag("versionFlag.txt", ios_base::trunc | ios_base::in | ios_base::app);
+				vFlag << date;
+				vFlag.close();
 				return 1;
 			}
 
