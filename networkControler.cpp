@@ -300,7 +300,7 @@ int networkControler::softUpdate(string data)
 			{
 				memset(pCAPData, 0, sizeof(pCAPData));
 				bytes_recv = 0;
-				if((bytes_recv = recv(sockfd, pCAPData,(buffer*10) -1, 0)) == -1)
+				if((bytes_recv = recv(sockfd, pCAPData,(buffer*10), 0)) == -1)
 				{
 				//loger << "recive error" << endl;
 				perror("recive"); // logowanie do pliku !!
@@ -311,7 +311,7 @@ int networkControler::softUpdate(string data)
 				cout << "wyswietlam smieci !!" << endl;
 				cout << (char *)pCAPData << endl;
 				//newApp << pCAPData;
-				newApp.write((int *)pCAPData, ((buffer *10) -1));
+				newApp.write((int *)pCAPData, (buffer *10));
 
 				cout << "Pobrałem: " << downloaded << " bajtow" << endl;
 			}
