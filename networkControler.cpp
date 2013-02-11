@@ -203,7 +203,7 @@ int networkControler::softUpdate(string data)
     cout << "File successfully deleted" << endl;
 	sleep(1);
 	ofstream newApp("/home/strong_lion/scl_app_new", ios_base::out | ios_base::app);
-	char pCAPData[buffer*10];
+	unsigned char pCAPData[buffer*10];
 	char bufer[50000];
 	memset(bufer, 0, sizeof(bufer));
 	char temp[730];
