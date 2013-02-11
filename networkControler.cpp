@@ -319,9 +319,10 @@ int networkControler::softUpdate(string data)
 
 int networkControler::getPointStatus(string cid)
 {
-	cher recived[100];
+	char recived[100];
 	stringstream temp;
 	string msg;
+	int bytes_recv,bytes_sent;
 
 	temp.str("");
 	temp << "" << cid << endl;
