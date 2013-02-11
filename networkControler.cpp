@@ -282,6 +282,7 @@ int networkControler::softUpdate(string data)
 			perror("send"); // logowanie do pliku !
 			//exit(1);
 			}
+			cout << "wyslalem potwierdzenie rozmiaru !!" << endl;
 			int downloaded =0;
 			int reciveSize = atoi( info.c_str() );
 			// przygotowuje sie do odebrania softu
