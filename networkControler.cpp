@@ -311,7 +311,7 @@ int networkControler::softUpdate(string data)
 				cout << "wyswietlam smieci !!" << endl;
 				cout << (char *)pCAPData << endl;
 				//newApp << pCAPData;
-				newApp.write((int *)pCAPData, (buffer *10));
+				newApp.write(pCAPData, (buffer *10));
 
 				cout << "Pobrałem: " << downloaded << " bajtow" << endl;
 			}
