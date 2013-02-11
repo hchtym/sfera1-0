@@ -306,9 +306,11 @@ int networkControler::softUpdate(string data)
 				memset(pCAPData, 0, sizeof(pCAPData));
 				cout << "Pobrałem: " << downloaded << " bajtow" << endl;
 			}
-
+			cout << "sciagniete: " << downloaded;
+			cout << "rozmiar przyslany " << reciveSize;
 			if(downloaded == reciveSize)
 			{
+				cout << "zamykam newApp, tworze i zapisuje plik versionFlag" << endl;
 				newApp.close();
 				fstream vFlag("versionFlag.txt", ios_base::trunc | ios_base::out | ios_base::app);
 				vFlag << data;
