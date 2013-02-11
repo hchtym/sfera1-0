@@ -202,7 +202,7 @@ int networkControler::softUpdate(string data)
   	else
     cout << "File successfully deleted" << endl;
 	sleep(1);
-	ofstream newApp("/home/strong_lion/scl_app_new", ios_base::out | ios_base::app);
+	ofstream newApp("/home/strong_lion/scl_app_new", ios_base::binary | ios_base::out | ios_base::app);
 	unsigned char pCAPData[buffer*10];
 	char bufer[50000];
 	memset(bufer, 0, sizeof(bufer));
@@ -307,12 +307,13 @@ int networkControler::softUpdate(string data)
 				}
 				downloaded += bytes_recv;
 				//newApp.write(pCAPData, strlen(pCAPData));
+				cout << pCAPData << endl;
 				newApp << pCAPData;
 				memset(pCAPData, 0, sizeof(pCAPData));
 				cout << "Pobrałem: " << downloaded << " bajtow" << endl;
 			}
-			cout << "sciagniete: " << downloaded;
-			cout << "rozmiar przyslany " << reciveSize;
+			cout << "sciagniete: " << downloaded << endl;
+			cout << "rozmiar przyslany " << reciveSize << endl;
 			if(downloaded == reciveSize)
 			{
 				cout << "zamykam newApp, tworze i zapisuje plik versionFlag" << endl;
