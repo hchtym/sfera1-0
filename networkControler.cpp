@@ -295,8 +295,17 @@ int networkControler::softUpdate(string data)
 			int reciveSize = atoi( info.c_str() );
 			// przygotowuje sie do odebrania softu
 
+			unsigned char recvTemp[reciveSize];
+
+			if((bytes_recv = recv(sockfd, recvTemp, sizeof(recvTemp), 0)) == -1)
+				{
+				//loger << "recive error" << endl;
+				perror("recive"); // logowanie do pliku !!
+				//exit(1);
+				}
+
 			cout << "Przygotowuje się do pobierania softu." << endl;
-			while(downloaded < reciveSize)
+			/*while(downloaded < reciveSize)
 			{
 				memset(pCAPData, 0, sizeof(pCAPData));
 				bytes_recv = 0;
@@ -314,7 +323,7 @@ int networkControler::softUpdate(string data)
 				//newApp.write((char *)pCAPData, (buffer *10));
 
 				cout << "Pobrałem: " << downloaded << " bajtow" << endl;
-			}
+			}*/
 
 
 			cout << "sciagniete: " << downloaded << endl;
