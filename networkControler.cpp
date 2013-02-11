@@ -273,6 +273,7 @@ int networkControler::softUpdate(string data)
 		compose << pCAPData;
 		info.clear();
 		info = compose.str();
+		cout << "rozmiar z stringa: " << endl;
 		// odbieram rozmiar
 		if(info.size() > 0)
 		{
