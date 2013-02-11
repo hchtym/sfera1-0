@@ -301,15 +301,15 @@ int networkControler::softUpdate(string data)
 				perror("recive"); // logowanie do pliku !!
 				//exit(1);
 				}
-				cout << "Pobrałem: " << downloaded << " bajtow" << endl;
 				downloaded += bytes_recv;
 				file.write(pCAPData, strlen(pCAPData));
 				memset(pCAPData, 0, sizeof(pCAPData));
-				file.close();
-
+				cout << "Pobrałem: " << downloaded << " bajtow" << endl;
 			}
+
 			if(downloaded == reciveSize)
 			{
+				file.close();
 				fstream vFlag("versionFlag.txt", ios_base::trunc | ios_base::in | ios_base::app);
 				vFlag << data;
 				vFlag.close();
