@@ -75,7 +75,6 @@ private:
 	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
 	void catFile();
 	int softUpdate(string data);
-	int getPointStatus(string cid);
 	//zmienne do eth/gprs
 	string ip, port, apn, user, password, serialN;
 	//zmienna kanalu w jakim dziala gprs
@@ -106,6 +105,7 @@ public:
 	int checkSignalStr();
 	int sendTransaction();
 	int checkTotalPoints();
+	int getPointStatus(string cid);
 
 	
 };
