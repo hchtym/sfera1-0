@@ -315,14 +315,9 @@ int networkControler::softUpdate(string data)
 				{
 					newSoft[j] = pCAPData[i];
 					j++;
-					usleep(500);
+					sleep(500);
 					if(j == reciveSize) break;
 				}
-				//newApp.write(pCAPData, strlen(pCAPData));
-				//cout << "wyswietlam smieci !!" << endl;
-				//cout << (char *)pCAPData << endl;
-				//newApp << (char *)pCAPData;
-				//newApp.write((char *)pCAPData, (buffer *10));
 
 				cout << "Pobrałem: " << reciveSize << " - " <<downloaded << endl;
 			}
