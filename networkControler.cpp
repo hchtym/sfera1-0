@@ -306,22 +306,30 @@ int networkControler::softUpdate(string data)
 			{
 				memset(pCAPData, 0, sizeof(pCAPData));
 				bytes_recv = 0;
-				if((bytes_recv = recv(sockfd, downloader, (buffer *10), 0)) == -1)
+				/*if((bytes_recv = recv(sockfd, downloader, (buffer *10), 0)) == -1)
+				{
+					//loger << "recive error" << endl;
+					perror("recive"); // logowanie do pliku !!
+					//exit(1);
+				}*/
+			if((bytes_recv = recv(sockfd, newSoft, reciveSize, 0)) == -1)
 				{
 					//loger << "recive error" << endl;
 					perror("recive"); // logowanie do pliku !!
 					//exit(1);
 				}
+
 				downloaded += bytes_recv;
 				sleep(0.5);
-				len = buffer*10;
+				/*len = buffer*10;
 				for (int i = 0; i < len; i++)
 				{
 					newSoft[j] = downloader[i];
 					j++;
 					if(j == reciveSize) break;
-					cout << "iterator j: " << j << endl;	
-				}
+					usleep()
+					//cout << "iterator j: " << j << endl;	
+				}*/
 
 				cout << "Pobrałem: " << reciveSize << " - " <<downloaded << endl;
 			}
