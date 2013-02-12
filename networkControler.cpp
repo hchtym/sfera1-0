@@ -197,7 +197,7 @@ int networkControler::softAck(string date)
 	if(ret == 1)
 	{	
 		cout << "odpalam skrypt instalacyjny !!" << endl;
-		execl("/bin/upd.sh", NULL);
+		system("/bin/upd.sh");
 	}
 	return 0;
 }
