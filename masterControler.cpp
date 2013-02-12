@@ -629,14 +629,14 @@ drawMenu:
 					ret1 = loginScr();
 					if(ret1 == 1){
 						loginFlag = true;
-						transSelling(track1, track2, track3);
+						transSelling(ret, track1, track2, track3);
 						break;
 					}else{
 						loginFlag = false;
 					}
 				}else{
 					cout << "zalogowany sprawdzam pkt !!" << endl;
-					transSelling(track1, track2, track3);	
+					transSelling(ret, track1, track2, track3);	
 					break;
 				}
 
