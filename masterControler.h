@@ -88,6 +88,8 @@ class masterControler{
 	int infoMSG(string &msg);
 	int message(int x, int y, string &str);
 	int checkPoints();
+	int transSelling(char track1, char track2, char track3);
+	int selling();
 	
 public:
 	masterControler(int *);
@@ -99,7 +101,6 @@ public:
 	int updClk();
 	int checjVersion();
 	int loginScr();
-	int selling();
 	void timeWindow();
 	void softUpdAck();
 	void masterBackground();

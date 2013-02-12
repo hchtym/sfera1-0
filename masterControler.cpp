@@ -139,6 +139,8 @@ int masterControler::checkVersion()
 
 int masterControler::checkPoints()
 {
+	string display;
+	stringstream compose;
 	string cid;
 	while(1)
 	{
@@ -147,9 +149,21 @@ int masterControler::checkPoints()
 		cid = device->magCardScan(false);
 
 		// wyslij zapytanie o punkty !!
-		network->getPointStatus(cid);
+		string points = network->getPointStatus(cid);
 
+		compose.str("");
+		compose << "Nr. Karty:" << cid << endl;
+		display.clear();
+		display = compose.str();
 		//wyswietl je i wydrukj potwierdzenie !!
+		title("Stan punktowy");
+		message(0, 16, display);
+
+		compose.str("");
+		compose << "Punkty: " << points << endl;
+		display.clear();
+		display = compose.str();
+		message(0, 32, display);
 	}
 }
 
@@ -503,6 +517,55 @@ int masterControler::dispMenu()
 	}
 }
 
+int masterControler::transSelling(int ret, char track1, char track2, char track3)
+{
+	string payment, point, extra;
+	stringstream compose;
+	string cid;
+	char trck[11];
+	if(ret & 1)
+	{
+		for(int i = 0; i < 10; i++)
+		{
+			trck[i]=track1[i];
+		}
+		trck[10] = 0;
+		
+	}
+
+	if(ret & 2) > 0)
+	{
+		for(int i = 0; i < 10; i++)
+		{
+			trck[i]=track2[i];
+		}
+		trck[10] = 0;
+		
+	}
+
+	if(ret & 3) > 0)
+	{
+		for(int i = 0; i < 10; i++)
+		{
+			trck[i]=track3[i];
+		}
+		trck[10] = 0;
+	}
+	compose.str("");
+	compose << trck;
+	cid.clear();
+	cid = compose.str();
+	sumInput(payment);
+	char type = '0';
+	//cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
+	pointComp(cid, payment, point, extra);
+	fileSave(numerser, seller, cid, payment, point, extra, type, date);
+
+	selling();
+
+return 0;
+}
+
 int masterControler::menuScr(const string &menuname,vector<string> &vect, int size, int index, int *menuid)
 {
 	cout << "jestem w mnue scr" << endl;
@@ -566,14 +629,14 @@ drawMenu:
 					ret1 = loginScr();
 					if(ret1 == 1){
 						loginFlag = true;
-						selling();
+						transSelling(track1, track2, track3);
 						break;
 					}else{
 						loginFlag = false;
 					}
 				}else{
-					cout << "zalogowany sprawdzam pkt !!" << endl;	
-					selling();
+					cout << "zalogowany sprawdzam pkt !!" << endl;
+					transSelling(track1, track2, track3);	
 					break;
 				}
 

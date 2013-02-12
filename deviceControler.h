@@ -54,6 +54,7 @@ public:
 	int ertErrDevLogs();
 	int printerDev();
 	string magCardScan(bool kbd);
+	string transMagCardScen();
 	
 };
 

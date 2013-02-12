@@ -106,7 +106,7 @@ public:
 	int checkSignalStr();
 	int sendTransaction();
 	int checkTotalPoints();
-	int getPointStatus(string cid);
+	string getPointStatus(string cid);
 
 	
 };

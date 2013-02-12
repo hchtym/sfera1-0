@@ -150,8 +150,8 @@ string deviceControler::magCardScan(bool kbd)
 		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
 	}
 	Kb_Flush();
-	while(1){
-	//	key = NOKEY;
+	while(1)
+	{
 		Kb_Flush();
 		Lcd_Cls();
 		Lcd_Printxy(0,0,1, const_cast<char *>(title.c_str()) );
@@ -271,8 +271,6 @@ string deviceControler::magCardScan(bool kbd)
 							break;
 						}
 				}
-
-		
 	}
 	DelayMs(50);	
 	ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
@@ -314,8 +312,7 @@ string deviceControler::magCardScan(bool kbd)
 			//return *trck;
 			break;
 		}
-	}
-	
+	}	
 }	
 	cout << "jestem za while przed mcrclose" << endl;
 	Mcr_Close();

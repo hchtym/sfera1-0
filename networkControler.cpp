@@ -363,15 +363,15 @@ int networkControler::softUpdate(string data)
 	}
 }
 
-int networkControler::getPointStatus(string cid)
+string networkControler::getPointStatus(string cid)
 {
-	char recived[100];
+	char recived[100000];
 	stringstream temp;
 	string msg;
 	int bytes_recv,bytes_sent;
 
 	temp.str("");
-	temp << "" << cid << endl;
+	temp << "total;" << cid << endl;
 	msg.clear();
 	msg = temp.str();
 
@@ -392,9 +392,13 @@ int networkControler::getPointStatus(string cid)
 		perror("recive"); // logowanie do pliku !!
 		//exit(1);
 	}
-
+	temp.str("");
+	temp << recived << endl;
+	msg.clear();
+	msg = temp.str();
 
 	disconnectAllQuiet();
+	return msg;
 }
 
 
