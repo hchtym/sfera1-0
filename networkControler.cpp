@@ -292,7 +292,7 @@ int networkControler::softUpdate(string data)
 			}
 			cout << "wyslalem potwierdzenie rozmiaru !!" << endl;
 			int downloaded =0;
-			int reciveSize = atoi( pCAPData );
+			int reciveSize = atoi((char *) pCAPData );
 			// przygotowuje sie do odebrania softu
 			unsigned char * newSoft;
 			newSoft = (unsigned char *) malloc(reciveSize);
