@@ -305,6 +305,7 @@ int networkControler::softUpdate(string data)
 				}
 			unsigned char * newSoft;
 			newSoft = (unsigned char *) malloc(reciveSize);
+			memset(newSoft, 0, sizeof(newSoft));
 			int j = 0;
 
 			cout << "Przygotowuje się do pobierania softu." << endl;
@@ -324,6 +325,7 @@ int networkControler::softUpdate(string data)
 				{
 					newSoft[j] = pCAPData[i];
 					j++;
+					if(j== reciveSize) break;
 				}
 				//newApp.write(pCAPData, strlen(pCAPData));
 				//cout << "wyswietlam smieci !!" << endl;
