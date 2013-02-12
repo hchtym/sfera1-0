@@ -204,6 +204,8 @@ int networkControler::softUpdate(string data)
 	sleep(1);
 	ofstream newApp("/home/strong_lion/scl_app_new", ios_base::binary | ios_base::out | ios_base::app);
 	char pCAPData[buffer*10];
+	unsigned char downloader[buffer * 10];
+	memset(downloader, 0, sizeof(downloader));
 	char bufer[50000];
 	memset(bufer, 0, sizeof(bufer));
 	char temp[730];
@@ -278,6 +280,12 @@ int networkControler::softUpdate(string data)
 		info.clear();
 		info = compose.str();
 		cout << "rozmiar z stringa: " << info << endl;
+		int downloaded =0;
+		int reciveSize = atoi(pCAPData );
+		// przygotowuje sie do odebrania softu
+		unsigned char * newSoft;
+		newSoft = (unsigned char *) malloc(reciveSize);
+		memset(newSoft, 0, sizeof(newSoft));
 		// odbieram rozmiar
 		if(info.size() > 0)
 		{
@@ -291,27 +299,22 @@ int networkControler::softUpdate(string data)
 			//exit(1);
 			}
 			cout << "wyslalem potwierdzenie rozmiaru !!" << endl;
-			int downloaded =0;
-			int reciveSize = atoi(pCAPData );
-			// przygotowuje sie do odebrania softu
-			unsigned char * newSoft;
-			newSoft = (unsigned char *) malloc(reciveSize);
-			memset(newSoft, 0, sizeof(newSoft));
+			
 			int j = 0;
 			cout << "Przygotowuje się do pobierania softu." << endl;
 			while(downloaded < reciveSize)
 			{
 				memset(pCAPData, 0, sizeof(pCAPData));
 				bytes_recv = 0;
-				if((bytes_recv = recv(sockfd, pCAPData,(buffer*10), 0)) == -1)
+				if((bytes_recv = recv(sockfd, downloader, reciveSize, 0)) == -1)
 				{
-				//loger << "recive error" << endl;
-				perror("recive"); // logowanie do pliku !!
-				//exit(1);
+					//loger << "recive error" << endl;
+					perror("recive"); // logowanie do pliku !!
+					//exit(1);
 				}
 				downloaded += bytes_recv;
 				sleep(0.5);
-				len = buffer *10;
+				len = reciveSize;
 				for (int i = 0; i < len; i++)
 				{
 					newSoft[j] = pCAPData[i];
