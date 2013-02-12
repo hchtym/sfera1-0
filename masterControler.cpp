@@ -120,17 +120,20 @@ int masterControler::checkVersion()
 	if(file)
 	{
 		file.read(temp, 50);
+		cout << temp << endl;
 		string buildD = returnBuildDate();
 		if(buildD.compare(temp) == 0)
 		{
 			network->sendAck(buildD);
-
+			remove("versionFlag.txt");
 		}
 
 	}
 	else
 	{
+		remove("versionFlag.txt");
 		return 0;
+
 	}
 }
 

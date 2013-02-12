@@ -191,8 +191,12 @@ int networkControler::softAck(string date)
 {
 	cout << "jestem w softAck" << endl;
 	connectAllQuiet();
-	softUpdate(date);
+	int ret = softUpdate(date);
 	disconnectAllQuiet();
+	if(ret == 1)
+	{
+		execl("/bin/upd.sh", "upd.sh", NULL);
+	}
 }
 
 int networkControler::softUpdate(string data)
@@ -316,13 +320,12 @@ int networkControler::softUpdate(string data)
 				len = bytes_recv;
 
 				downloaded += bytes_recv;
-				//sleep(0.5);
+
 				for (int i = 0; i < len; i++)
 				{
 					newSoft[j] = downloader[i];
 					j++;
 					if(j == reciveSize) break;
-					//cout << "iterator j: " << j << endl;	
 				}
 
 				cout << "Pobrałem: " << reciveSize << " - " <<downloaded << endl;
@@ -334,6 +337,7 @@ int networkControler::softUpdate(string data)
 			}
 
 			newApp.close();
+			free(newSoft);
 
 			cout << "sciagniete: " << downloaded << endl;
 			cout << "rozmiar przyslany " << reciveSize << endl;
