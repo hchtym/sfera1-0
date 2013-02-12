@@ -167,7 +167,8 @@ int masterControler::checkPoints()
 	}
 }
 
-void masterControler::timeWindow(){
+void masterControler::timeWindow()
+{
 	stringstream compose; //sstream do skladania godzin itp 
 	string begConf, endConf; // godziny startu i konca config'a
 	bool txSend = false; //flaga poprawnego wyslania tranzakcji true/false
@@ -276,7 +277,7 @@ void masterControler::timeWindow(){
 	//sprawdzemy flage tx
 	if(txFlag)
 	{
-et1:
+	et1:
 		if(!timer1)
 		{
 			txSend = sendTrx();
@@ -302,7 +303,7 @@ et1:
 
 	if(confFlag)
 	{
-et2:
+	et2:
 		if(!timer2)
 		{
 			txSend = sendTrx();
@@ -343,8 +344,7 @@ et2:
 			timer2 = false;
 			goto et2;
 		}
-	}
-	
+	}	
 }
 
 void masterControler::softUpdAck()
@@ -562,8 +562,7 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 	fileSave(numerser, seller, cid, payment, point, extra, type, date);
 
 	selling();
-
-return 0;
+	return 0;
 }
 
 int masterControler::menuScr(const string &menuname,vector<string> &vect, int size, int index, int *menuid)
@@ -589,7 +588,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	}
     //key=NOKEY;
 	cout << "jestem przed draw menu !" << endl;
-drawMenu:
+	drawMenu:
 	if(index2 < 0 || index2 > size -1) index2 =0;
 	if(index2 > visible -1 ) view = index2 - visible +1;
 	cout << "wchodze do while w menuscr" << endl;
@@ -702,7 +701,7 @@ int masterControler::menuScrOther(const string &menuname,vector<string> &vect, i
 	}
     //key=NOKEY;
 	cout << "jestem przed draw menu !" << endl;
-drawMenu:
+	drawMenu:
 	if(index2 < 0 || index2 > size -1) index2 =0;
 	if(index2 > visible -1 ) view = index2 - visible +1;
 	cout << "wchodze do while w menuscr" << endl;
