@@ -140,15 +140,17 @@ int masterControler::checkVersion()
 int masterControler::checkPoints()
 {
 	string cid;
-	// sykrywaj spisanie swipe karty albo wpisanie numerka
-	cid = device->magCardScan(false);
+	while(1)
+	{
+		// sykrywaj spisanie swipe karty albo wpisanie numerka
+		cid.clear();
+		cid = device->magCardScan(false);
 
-	// wyslij zapytanie o punkty !!
-	network->getPointStatus(cid);
+		// wyslij zapytanie o punkty !!
+		network->getPointStatus(cid);
 
-	//wyswietl je i wydrukj potwierdzenie !!
-
-
+		//wyswietl je i wydrukj potwierdzenie !!
+	}
 }
 
 void masterControler::timeWindow(){
@@ -284,7 +286,6 @@ et1:
 		
 	}
 
-
 	if(confFlag)
 	{
 et2:
@@ -308,10 +309,8 @@ et2:
 			SetTimer(1, timeout);
 			timer2 = true;
 		}
-		
-		
-	}
-	
+				
+	}	
 	
 	if(timer1){
 		left1 = CheckTimer(2);
@@ -621,8 +620,7 @@ drawMenu:
 		        break;
 		}
 		
-	}
-	
+	}	
 }
 
 int masterControler::menuScrOther(const string &menuname,vector<string> &vect, int size, int index, int *menuid)
@@ -722,7 +720,6 @@ drawMenu:
 		}
 		
 	}
-	
 }
 
 void masterControler::screenSaver(){
@@ -793,7 +790,6 @@ int masterControler::title(string str)
 	str.clear();
 	str = compose.str();
 	Lcd_Printxy(0,0,1, const_cast<char *>(str.c_str()));
-	
 }
 
 int masterControler::clear()

@@ -23,7 +23,6 @@ networkControler::networkControler(string &ipr, string &portr, string &apnr, str
 
 networkControler::~networkControler()
 {
-
 }
 
 int networkControler::connectAllQuiet()
