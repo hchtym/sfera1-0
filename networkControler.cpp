@@ -316,14 +316,12 @@ int networkControler::softUpdate(string data)
 				len = bytes_recv;
 
 				downloaded += bytes_recv;
-				sleep(0.5);
-				//len = buffer*10;
+				//sleep(0.5);
 				for (int i = 0; i < len; i++)
 				{
 					newSoft[j] = downloader[i];
 					j++;
 					if(j == reciveSize) break;
-					usleep()
 					//cout << "iterator j: " << j << endl;	
 				}
 
