@@ -203,7 +203,7 @@ int networkControler::softUpdate(string data)
     cout << "File successfully deleted" << endl;
 	sleep(1);
 	ofstream newApp("/home/strong_lion/scl_app_new", ios_base::binary | ios_base::out | ios_base::app);
-	unsigned char pCAPData[buffer*10];
+	char pCAPData[buffer*10];
 	char bufer[50000];
 	memset(bufer, 0, sizeof(bufer));
 	char temp[730];
@@ -292,7 +292,7 @@ int networkControler::softUpdate(string data)
 			}
 			cout << "wyslalem potwierdzenie rozmiaru !!" << endl;
 			int downloaded =0;
-			int reciveSize = atoi((char *) pCAPData );
+			int reciveSize = atoi(pCAPData );
 			// przygotowuje sie do odebrania softu
 			unsigned char * newSoft;
 			newSoft = (unsigned char *) malloc(reciveSize);
@@ -318,7 +318,6 @@ int networkControler::softUpdate(string data)
 					j++;
 					if(j == reciveSize) break;
 
-					//cout << "iterator j: " << j << endl;
 				}
 
 				cout << "Pobrałem: " << reciveSize << " - " <<downloaded << endl;
