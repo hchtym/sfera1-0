@@ -155,6 +155,24 @@ string deviceControler::magCardScan(bool kbd)
 		Kb_Flush();
 		Lcd_Cls();
 		Lcd_Printxy(0,0,1, const_cast<char *>(title.c_str()) );
+
+		if(!Kb_Hit()){
+			key = Kb_GetKey();
+			if(key != NOKEY){
+				presed = true;
+			}
+			else
+			{
+				presed = false;
+				key = NOKEY;
+			}
+		}
+
+		if (key == KEYCANCEL)
+		{
+			return send;
+		}
+
 		if(!Kb_Hit()){
 			key = Kb_GetKey();
 		}
@@ -162,19 +180,10 @@ string deviceControler::magCardScan(bool kbd)
 			cout << "Wychwycilem KEYCANCEL !!  zwracam return sedn" << endl;
 			return send;
 		}
-	
+		
 		if(kbd){
 			cout << "klawcia jest na chodzie wyswietlam to co wpisalem" << endl;
 			Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
-						if(!Kb_Hit()){
-							key = Kb_GetKey();
-							if(key != NOKEY){
-								presed = true;
-							}else{
-								presed = false;
-								key = NOKEY;
-							}
-						}
 					//cout << "jestem przed switchem klawiszy" << endl;
 					if(presed){
 						switch(key){
