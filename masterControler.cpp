@@ -519,7 +519,7 @@ int masterControler::dispMenu()
 
 int masterControler::transSelling(int ret, char *track1, char *track2, char *track3)
 {
-	string payment, point, extra;
+	string payment, point, extra, date;
 	stringstream compose;
 	string cid;
 	char trck[11];
