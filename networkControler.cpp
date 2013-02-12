@@ -294,20 +294,10 @@ int networkControler::softUpdate(string data)
 			int downloaded =0;
 			int reciveSize = atoi( info.c_str() );
 			// przygotowuje sie do odebrania softu
-
-			unsigned char recvTemp[reciveSize];
-
-			if((bytes_recv = recv(sockfd, recvTemp, sizeof(recvTemp), 0)) == -1)
-				{
-				//loger << "recive error" << endl;
-				perror("recive"); // logowanie do pliku !!
-				//exit(1);
-				}
 			unsigned char * newSoft;
 			newSoft = (unsigned char *) malloc(reciveSize);
 			memset(newSoft, 0, sizeof(newSoft));
 			int j = 0;
-
 			cout << "Przygotowuje się do pobierania softu." << endl;
 			while(downloaded < reciveSize)
 			{
