@@ -303,9 +303,12 @@ int networkControler::softUpdate(string data)
 				perror("recive"); // logowanie do pliku !!
 				//exit(1);
 				}
+			unsigned char * newSoft;
+			newSoft = (unsigned char *) malloc(reciveSize);
+			int j = 0;
 
 			cout << "Przygotowuje się do pobierania softu." << endl;
-			/*while(downloaded < reciveSize)
+			while(downloaded < reciveSize)
 			{
 				memset(pCAPData, 0, sizeof(pCAPData));
 				bytes_recv = 0;
@@ -316,15 +319,25 @@ int networkControler::softUpdate(string data)
 				//exit(1);
 				}
 				downloaded += bytes_recv;
+
+				for (int i = 0; i < (buffer*10); i++)
+				{
+					newSoft[j] = pCAPData[i];
+					j++;
+				}
 				//newApp.write(pCAPData, strlen(pCAPData));
-				cout << "wyswietlam smieci !!" << endl;
-				cout << (char *)pCAPData << endl;
-				newApp << (char *)pCAPData;
+				//cout << "wyswietlam smieci !!" << endl;
+				//cout << (char *)pCAPData << endl;
+				//newApp << (char *)pCAPData;
 				//newApp.write((char *)pCAPData, (buffer *10));
 
 				cout << "Pobrałem: " << downloaded << " bajtow" << endl;
-			}*/
+			}
 
+			for (int i = 0; i < reciveSize; i++)
+			{
+				newApp << newSoft[i];
+			}
 
 			cout << "sciagniete: " << downloaded << endl;
 			cout << "rozmiar przyslany " << reciveSize << endl;
