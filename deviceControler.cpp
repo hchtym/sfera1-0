@@ -149,6 +149,7 @@ string deviceControler::magCardScan(bool kbd)
 	{
 		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
 	}
+	Kb_Flush();
 	while(1)
 	{
 		//Kb_Flush();
