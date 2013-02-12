@@ -151,7 +151,7 @@ string deviceControler::magCardScan(bool kbd)
 	}
 	while(1)
 	{
-		Kb_Flush();
+		//Kb_Flush();
 		Lcd_Cls();
 		Lcd_Printxy(0,0,1, const_cast<char *>(title.c_str()) );
 
@@ -171,7 +171,7 @@ string deviceControler::magCardScan(bool kbd)
 			else
 			{
 				presed = false;
-				Kb_Flush();
+				//Kb_Flush();
 			}
 		}
 		
