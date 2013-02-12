@@ -149,44 +149,34 @@ string deviceControler::magCardScan(bool kbd)
 	{
 		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
 	}
-	Kb_Flush();
 	while(1)
 	{
 		Kb_Flush();
 		Lcd_Cls();
 		Lcd_Printxy(0,0,1, const_cast<char *>(title.c_str()) );
 
-		if(!Kb_Hit()){
+		if(!Kb_Hit())
+		{
 			key = Kb_GetKey();
-			if(key != NOKEY){
+			if(key != NOKEY)
+			{
 				presed = true;
 			}
 			else
 			{
 				presed = false;
-				key = NOKEY;
+				Kb_Flush();
 			}
 		}
-
-		if (key == KEYCANCEL)
-		{
-			return send;
-		}
-
-		if(!Kb_Hit()){
-			key = Kb_GetKey();
-		}
-		if( key == KEYCANCEL){
-			cout << "Wychwycilem KEYCANCEL !!  zwracam return sedn" << endl;
-			return send;
-		}
 		
-		if(kbd){
+		if(kbd)
+		{
 			cout << "klawcia jest na chodzie wyswietlam to co wpisalem" << endl;
 			Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
 					//cout << "jestem przed switchem klawiszy" << endl;
-					if(presed){
-						switch(key){
+			if(presed){
+				switch(key)
+				{
 							case KEY0:
 								compo << "0";
 								str2.clear();
@@ -239,26 +229,26 @@ string deviceControler::magCardScan(bool kbd)
 							break;
 							case KEYENTER:
 								cout << "nacisnalem enterem" << endl;
-								//str2.clear();
-								//str2 = compo.str();
-								if(str2.size() >= 6 && str2.size() < 30){
+								if(str2.size() >= 6 && str2.size() < 30)
+								{
 									cout << "wyciepuje wartosc z klawci" << endl;
 									//strcpy(const_cast<char*>((char*)btrck), str2);
 									return str2;
-								}else{
-								Lcd_Cls();
-								Lcd_Printxy(0,0,0,"Informacja");
-								Lcd_Printxy(0,32,0, "Podales zakrotki badz zadlugi numer.");
-								DelayMs(5000);
+								}
+								else
+								{
+									Lcd_Cls();
+									Lcd_Printxy(0,0,0,"Informacja");
+									Lcd_Printxy(0,32,0, "Podales zakrotki badz zadlugi numer.");
+									DelayMs(5000);
 								}
 							break;
 							case KEYCANCEL:
-							return send;
+								return send;
 							break;
 							case KEYBACKSPACE:
 								temp.clear();
 								temp = compo.str();
-		//						temp[temp.size()-1] = "\0";
 								int len = temp.size();
 								if(len == 0)
 								{
@@ -278,13 +268,13 @@ string deviceControler::magCardScan(bool kbd)
 							break;
 							default:
 							break;
-						}
 				}
-	}
-	DelayMs(50);	
-	ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
-	if (ret&0x80)
-	{//detected swiping
+			}
+		}
+		DelayMs(50);	
+		ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
+		if (ret&0x80)
+		{
 		if(ret & 1){
 			cout << "track 1" << endl;
 			for(int i = 0; i < 10; i++)
@@ -321,8 +311,8 @@ string deviceControler::magCardScan(bool kbd)
 			//return *trck;
 			break;
 		}
+		}	
 	}	
-}	
 	cout << "jestem za while przed mcrclose" << endl;
 	Mcr_Close();
 	tempsremp << trck;
