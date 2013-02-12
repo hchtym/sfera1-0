@@ -310,13 +310,14 @@ int networkControler::softUpdate(string data)
 				//exit(1);
 				}
 				downloaded += bytes_recv;
+				sleep(0.5);
 
 				for (int i = 0; i < (buffer*10); i++)
 				{
 					newSoft[j] = pCAPData[i];
 					j++;
-					sleep(500);
 					if(j == reciveSize) break;
+					cout << "iterator j: " << j << endl;
 				}
 
 				cout << "Pobrałem: " << reciveSize << " - " <<downloaded << endl;
