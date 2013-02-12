@@ -162,7 +162,7 @@ string deviceControler::magCardScan(bool kbd)
 			if(key != NOKEY)
 			{
 				presed = true;
-				if (key = KEYCANCEL)
+				if (key == KEYCANCEL)
 				{
 					cout << "CANCEL wcisniety !!" << endl;
 					return send;
