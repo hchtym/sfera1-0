@@ -166,6 +166,7 @@ string deviceControler::magCardScan(bool kbd)
 				if (key == KEYCANCEL)
 				{
 					cout << "CANCEL wcisniety !!" << endl;
+					Kb_Flush();
 					return send;
 				}
 			}
@@ -188,51 +189,61 @@ string deviceControler::magCardScan(bool kbd)
 								compo << "0";
 								str2.clear();
 								str2 = compo.str();
+								Kb_Flush();
 							break;
 							case KEY1:
 								compo << "1";
 								str2.clear();
 								str2 = compo.str();
+								Kb_Flush();
 							break;
 							case KEY2:
 								compo << "2";
 								str2.clear();
 								str2 = compo.str();
+								Kb_Flush();
 							break;
 							case KEY3:
 								compo << "3";
 								str2.clear();
 								str2 = compo.str();
+								Kb_Flush();
 							break;
 							case KEY4:
 								compo << "4";
 								str2.clear();
 								str2 = compo.str();
+								Kb_Flush();
 							break;
 							case KEY5:
 								compo << "5";
 								str2.clear();
 								str2 = compo.str();
+								Kb_Flush();
 							break;
 							case KEY6:
 								compo << "6";
 								str2.clear();
 								str2 = compo.str();
+								Kb_Flush();
 							break;
 							case KEY7:
 								compo << "7";
 								str2.clear();
 								str2 = compo.str();
+								Kb_Flush();
 							break;
 							case KEY8:
 								compo << "8";
 								str2.clear();
 								str2 = compo.str();
+								Kb_Flush();
 							break;
 								case KEY9:
 								compo << "9";
 								str2.clear();
 								str2 = compo.str();
+								Kb_Flush();
 							break;
 							case KEYENTER:
 								cout << "nacisnalem enterem" << endl;
@@ -249,8 +260,10 @@ string deviceControler::magCardScan(bool kbd)
 									Lcd_Printxy(0,32,0, "Podales zakrotki badz zadlugi numer.");
 									DelayMs(5000);
 								}
+								Kb_Flush();
 							break;
 							case KEYCANCEL:
+								Kb_Flush();
 								return send;
 							break;
 							case KEYBACKSPACE:
@@ -272,8 +285,10 @@ string deviceControler::magCardScan(bool kbd)
 									str2.clear();
 									str2 = temp;
 								}
+								Kb_Flush();
 							break;
 							default:
+								Kb_Flush();
 							break;
 				}
 			}
