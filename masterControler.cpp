@@ -119,7 +119,7 @@ int masterControler::checkVersion()
 	ifstream file("versionFlag.txt");
 	if(file)
 	{
-		file.read(temp, 50);
+		file.read(temp, 16);
 		cout << temp << endl;
 		string buildD = returnBuildDate();
 		if(buildD.compare(temp) == 0)

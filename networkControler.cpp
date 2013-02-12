@@ -193,8 +193,10 @@ int networkControler::softAck(string date)
 	connectAllQuiet();
 	int ret = softUpdate(date);
 	disconnectAllQuiet();
+	cout << "jestem za disconnectAllQuiet a ret wynosi: " << ret << endl;
 	if(ret == 1)
-	{
+	{	
+		cout << "odpalam skrypt instalacyjny !!" << endl;
 		execl("/bin/upd.sh", "upd.sh", NULL);
 	}
 	return 0;
