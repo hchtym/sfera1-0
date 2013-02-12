@@ -333,7 +333,9 @@ string deviceControler::magCardScan(bool kbd)
 				//return *trck;
 				break;
 			}
-		}	
+		}
+		DelayMs(200);
+		Kb_Flush();
 	}	
 	cout << "jestem za while przed mcrclose" << endl;
 	Mcr_Close();
