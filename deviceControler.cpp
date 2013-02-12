@@ -157,10 +157,16 @@ string deviceControler::magCardScan(bool kbd)
 
 		if(!Kb_Hit())
 		{
+			cout << "ncisnalem guzik" << endl;
 			key = Kb_GetKey();
 			if(key != NOKEY)
 			{
 				presed = true;
+				if (key = KEYCANCEL)
+				{
+					cout << "CANCEL wcisniety !!" << endl;
+					return send;
+				}
 			}
 			else
 			{
@@ -275,42 +281,42 @@ string deviceControler::magCardScan(bool kbd)
 		ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
 		if (ret&0x80)
 		{
-		if(ret & 1){
-			cout << "track 1" << endl;
-			for(int i = 0; i < 10; i++)
-			{
-				trck[i]=track1[i];
+			if(ret & 1){
+				cout << "track 1" << endl;
+				for(int i = 0; i < 10; i++)
+				{
+					trck[i]=track1[i];
+				}
+				trck[10] = 0;
+				//Mcr_Close();
+				cout << "dane z track1 w trck: " << trck << endl;
+				//return *trck;
+				break;
 			}
-			trck[10] = 0;
-			//Mcr_Close();
-			cout << "dane z track1 w trck: " << trck << endl;
-			//return *trck;
-			break;
-		}
-		if(ret & 2){
-			cout << "track 2: " << endl;
-			for(int i = 0; i < 10; i++)
-			{
-				trck[i]=track2[i];	
+			if(ret & 2){
+				cout << "track 2: " << endl;
+				for(int i = 0; i < 10; i++)
+				{
+					trck[i]=track2[i];	
+				}
+				trck[10] = 0;
+				//Mcr_Close();
+				cout << "dane z track2 w trck: " << trck << endl;
+				//return *trck;
+				break;
 			}
-			trck[10] = 0;
-			//Mcr_Close();
-			cout << "dane z track2 w trck: " << trck << endl;
-			//return *trck;
-			break;
-		}
-		if(ret & 4){
-			cout << "track 3" << endl;
-			for(int i = 0; i < 10; i++)
-			{
-				trck[i]=track3[i];
+			if(ret & 4){
+				cout << "track 3" << endl;
+				for(int i = 0; i < 10; i++)
+				{
+					trck[i]=track3[i];
+				}
+				trck[10] = 0;
+				//Mcr_Close();
+				cout << "dane z track3 w trck: " << trck << endl;
+				//return *trck;
+				break;
 			}
-			trck[10] = 0;
-			//Mcr_Close();
-			cout << "dane z track3 w trck: " << trck << endl;
-			//return *trck;
-			break;
-		}
 		}	
 	}	
 	cout << "jestem za while przed mcrclose" << endl;
@@ -321,8 +327,9 @@ string deviceControler::magCardScan(bool kbd)
 	return wyciep;
 }
 
-void deviceControler::hexToString(char *str, BYTE* buf, int len){
-//	stringstream compose;
+void deviceControler::hexToString(char *str, BYTE* buf, int len)
+{
+	//	stringstream compose;
 	        int j = 0;
 	        for(int i = 0; i < len; i++){
 	                str[j] = (buf[i]/16);
@@ -405,7 +412,8 @@ void deviceControler::center(string &cent)
     cent = compose.str();
 }
 
-void deviceControler::justify(char* to, const char* left, const char* right){
+void deviceControler::justify(char* to, const char* left, const char* right)
+{
     int space = (int)' ';
     memset(to, space, lineWidth);
     strncpy(to, left, strlen(left));
@@ -413,7 +421,8 @@ void deviceControler::justify(char* to, const char* left, const char* right){
     to[lineWidth] = 0;
 }
 
-char* deviceControler::formatAmount(unsigned long a, char *temp){
+char* deviceControler::formatAmount(unsigned long a, char *temp)
+{
     unsigned int i,j;
     char amount[32];
     
@@ -441,7 +450,8 @@ char* deviceControler::formatAmount(unsigned long a, char *temp){
     return temp;
 }
 
-void deviceControler::printLines(int amount){
+void deviceControler::printLines(int amount)
+{
 	for(int i = 0; i < amount; i++){
 		Prn_printf("\n");
 		printf("\n");
