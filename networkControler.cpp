@@ -311,8 +311,8 @@ int networkControler::softUpdate(string data)
 				}
 				downloaded += bytes_recv;
 				sleep(0.5);
-
-				for (int i = 0; i < (buffer*10); i++)
+				len = buffer *10;
+				for (int i = 0; i < len; i++)
 				{
 					newSoft[j] = pCAPData[i];
 					j++;
@@ -329,12 +329,13 @@ int networkControler::softUpdate(string data)
 				newApp << newSoft[i];
 			}
 
+			newApp.close();
+
 			cout << "sciagniete: " << downloaded << endl;
 			cout << "rozmiar przyslany " << reciveSize << endl;
 			if(downloaded == reciveSize)
 			{
 				cout << "zamykam newApp, tworze i zapisuje plik versionFlag" << endl;
-				newApp.close();
 				ofstream vFlag("versionFlag.txt", ios_base::out | ios_base::app);
 				vFlag << data;
 				vFlag.close();
