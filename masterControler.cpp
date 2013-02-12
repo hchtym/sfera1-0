@@ -517,7 +517,7 @@ int masterControler::dispMenu()
 	}
 }
 
-int masterControler::transSelling(int ret, char track1, char track2, char track3)
+int masterControler::transSelling(int ret, char *track1, char *track2, char *track3)
 {
 	string payment, point, extra;
 	stringstream compose;
@@ -533,7 +533,7 @@ int masterControler::transSelling(int ret, char track1, char track2, char track3
 		
 	}
 
-	if(ret & 2) > 0)
+	if(ret & 2)
 	{
 		for(int i = 0; i < 10; i++)
 		{
@@ -543,7 +543,7 @@ int masterControler::transSelling(int ret, char track1, char track2, char track3
 		
 	}
 
-	if(ret & 3) > 0)
+	if(ret & 3)
 	{
 		for(int i = 0; i < 10; i++)
 		{

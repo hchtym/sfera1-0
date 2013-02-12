@@ -88,7 +88,7 @@ class masterControler{
 	int infoMSG(string &msg);
 	int message(int x, int y, string &str);
 	int checkPoints();
-	int transSelling(int ret,char *track1, char *track2, char *track3);
+	int transSelling(int ret, char *track1, char *track2, char *track3);
 	int selling();
 	
 public:
