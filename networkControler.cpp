@@ -317,7 +317,8 @@ int networkControler::softUpdate(string data)
 					newSoft[j] = pCAPData[i];
 					j++;
 					if(j == reciveSize) break;
-					cout << "iterator j: " << j << endl;
+					usleep(1);
+					//cout << "iterator j: " << j << endl;
 				}
 
 				cout << "Pobrałem: " << reciveSize << " - " <<downloaded << endl;
