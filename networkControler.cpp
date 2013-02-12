@@ -197,6 +197,7 @@ int networkControler::softAck(string date)
 	{
 		execl("/bin/upd.sh", "upd.sh", NULL);
 	}
+	return 0;
 }
 
 int networkControler::softUpdate(string data)
