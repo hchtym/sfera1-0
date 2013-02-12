@@ -527,7 +527,7 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 	{
 		for(int i = 0; i < 10; i++)
 		{
-			trck[i]= *track1[i];
+			(char *)trck[i]= track1[i];
 		}
 		trck[10] = 0;
 		
@@ -537,7 +537,7 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 	{
 		for(int i = 0; i < 10; i++)
 		{
-			trck[i]= *track2[i];
+			(char *)trck[i]= track2[i];
 		}
 		trck[10] = 0;
 		
@@ -547,7 +547,7 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 	{
 		for(int i = 0; i < 10; i++)
 		{
-			trck[i]= *track3[i];
+			(char *)trck[i]= track3[i];
 		}
 		trck[10] = 0;
 	}
