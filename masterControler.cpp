@@ -168,6 +168,8 @@ int masterControler::checkPoints()
 			display.clear();
 			display = compose.str();
 			message(0, 32, display);
+
+			sleep(500);
 		}
 	}
 }
