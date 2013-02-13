@@ -157,7 +157,8 @@ int masterControler::checkPoints()
 
 		if (temp == 'o')
 		{
-			points.erase(0,1);
+			Lcd_Cls();
+			points.erase(0,2);
 			compose.str("");
 			compose << "Nr. Karty:" << cid << endl;
 			display.clear();
