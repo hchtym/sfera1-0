@@ -152,7 +152,7 @@ int masterControler::checkPoints()
 
 		string points = network->getPointStatus(cid);
 
-		if (strcmp(points[0], "o") == 0)
+		if (strcmp((char *)points[0], "o") == 0)
 		{
 			points.erase(0,1);
 			compose.str("");
