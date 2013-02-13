@@ -143,9 +143,9 @@ int masterControler::computeTrxNumber(string trxDate)
 
 	cout << "zawartosć tempTrxNumber: " << tempTrxNumber << endl;
 
-	for (int i = 0; i < trxNumber.size(); i++)
+	for (int i = 0; i < tempTrxNumber.size(); i++)
 	{
-		if(trxNumber[i] != "0")
+		if(tempTrxNumber[i] != "0")
 		{
 			zeroMarker = i;
 			break;
