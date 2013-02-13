@@ -125,7 +125,7 @@ int masterControler::computeTrxNumber(string trxDate)
 
 
 	cout << "Zawartosc serialNumber: " << serialNumber << endl;
-	
+
 	if (serialNumber.size() < 15)
 	{
 		int len = 15 - serialNumber.size();
@@ -141,7 +141,7 @@ int masterControler::computeTrxNumber(string trxDate)
 	tempTrxNumber.clear();
 	tempTrxNumber = compose.str();
 
-	cout << "zawartosć tempTrxNumber: " << 
+	cout << "zawartosć tempTrxNumber: " << tempTrxNumber << endl;
 
 	for (int i = 0; i < trxNumber.size(); i++)
 	{
