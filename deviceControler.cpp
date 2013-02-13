@@ -153,14 +153,19 @@ string deviceControler::magCardScan(bool kbd)
 	Kb_Flush();
 	while(1)
 	{
-	while(1)
-	{
-		//Kb_Flush();
-		Lcd_Cls();
-		Lcd_Printxy(0,0,1, const_cast<char *>(title.c_str()) );
-
-		if(!Kb_Hit())
+		while(1)
 		{
+			//Kb_Flush();
+			Lcd_Cls();
+			Lcd_Printxy(0,0,1, const_cast<char *>(title.c_str()) );
+			if (str2.size() > 0)
+			{
+				Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
+			}
+
+
+			if(!Kb_Hit())
+			{
 			cout << "ncisnalem guzik" << endl;
 			key = Kb_GetKey();
 			if(key != NOKEY)
@@ -179,14 +184,12 @@ string deviceControler::magCardScan(bool kbd)
 				presed = false;
 				//Kb_Flush();
 			}
-		}
+			}
 		
-		
-
-		DelayMs(50);	
-		ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
-		if (ret&0x80)
-		{
+			DelayMs(50);	
+			ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
+			if (ret&0x80)
+			{
 			if(ret & 1){
 				cout << "track 1" << endl;
 				for(int i = 0; i < 10; i++)
@@ -226,15 +229,14 @@ string deviceControler::magCardScan(bool kbd)
 				readed = true;
 				break;
 			}
+			}
 		}
 
-	}
 
-
-	if(kbd)
-	{
+		if(kbd)
+		{
 			cout << "klawcia jest na chodzie wyswietlam to co wpisalem" << endl;
-			Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
+
 					//cout << "jestem przed switchem klawiszy" << endl;
 			if(presed){
 				switch(key)
@@ -346,12 +348,13 @@ string deviceControler::magCardScan(bool kbd)
 							break;
 				}
 			}
-	}
+		}
 
-	if (readed)
-	{
-		break;
-	}
+		if (readed)
+		{
+			break;
+		}
+
 
 
 	}	
