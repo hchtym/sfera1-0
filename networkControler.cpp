@@ -401,7 +401,7 @@ string networkControler::getPointStatus(string cid)
 	cout << "Odpowiedz na total; : " << msg << endl;
 
 	disconnectAllQuiet();
-	//return msg;
+	return msg;
 }
 
 
