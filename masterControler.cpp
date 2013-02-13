@@ -154,6 +154,7 @@ int masterControler::checkPoints()
 
 		if (points[0] == 'o')
 		{
+			points.erase(0,1);
 			compose.str("");
 			compose << "Nr. Karty:" << cid << endl;
 			display.clear();
@@ -494,7 +495,9 @@ int masterControler::dispMenu()
 				}
 			}else{
 				//device->printTx("00100200086567","00075","2013-02-05 10:46:52","0020000044", "123,45", "30", "0", "Dla Klienta");
-				softUpdAck();
+				//softUpdAck();
+				checkPoints();
+				//checkPoints();
 				// tu bedzie przejscie do sklepu in the future :D jeeeeeee
 			}
 			break;
