@@ -90,6 +90,7 @@ class masterControler{
 	int checkPoints();
 	int transSelling(int ret, char *track1, char *track2, char *track3);
 	int selling();
+	int returnSelling();
 	
 public:
 	masterControler(int *);
