@@ -145,7 +145,7 @@ int masterControler::computeTrxNumber(string trxDate)
 
 	for (int i = 0; i < tempTrxNumber.size(); i++)
 	{
-		if(tempTrxNumber[i] != "0")
+		if(tempTrxNumber[i] != '0')
 		{
 			zeroMarker = i;
 			break;
