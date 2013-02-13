@@ -166,24 +166,24 @@ string deviceControler::magCardScan(bool kbd)
 
 			if(!Kb_Hit())
 			{
-			cout << "ncisnalem guzik" << endl;
-			key = Kb_GetKey();
-			if(key != NOKEY)
-			{
-				presed = true;
-				if (key == KEYCANCEL)
+				cout << "ncisnalem guzik" << endl;
+				key = Kb_GetKey();
+				if(key != NOKEY)
 				{
-					cout << "CANCEL wcisniety !!" << endl;
-					Kb_Flush();
-					return send;
+					presed = true;
+					if (key == KEYCANCEL)
+					{
+						cout << "CANCEL wcisniety !!" << endl;
+						Kb_Flush();
+						return send;
+					}
+					break;
 				}
-				break;
-			}
-			else
-			{
-				presed = false;
-				//Kb_Flush();
-			}
+				else
+				{
+					presed = false;
+					//Kb_Flush();
+				}
 			}
 		
 			DelayMs(50);	
@@ -396,7 +396,7 @@ void deviceControler::printerInit(int size)
 }
 
 void deviceControler::printerSetFont(int size)
-{
+{ 
 	if(size == 8)
 	{
 		Prn_SetFont(EnLcdFont6X8, 0, 0);
@@ -409,7 +409,8 @@ void deviceControler::printerSetFont(int size)
 
 
 
-bool deviceControler::isPrinterReady(){
+bool deviceControler::isPrinterReady()
+{
 	int state = Prn_CheckStatus();
 	int key = KEYENTER;
 

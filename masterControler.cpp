@@ -113,6 +113,79 @@ int masterControler::updClk()
 	network->updClock();
 }
 
+int masterControler::cmputeTrxNumber(string trxDate)
+{
+	stringstream compose;
+	stringstream temp;
+	string serialNumber config->returnSeriall();
+	string trxNumber;
+	string tempTrxNumber;
+	int zeroMarker;
+	vector<string> vect;
+
+
+	if (serialNumber < 15)
+	{
+		int len = 15 - serialNumber.size();
+		for (int i = 0; i < len; i++)
+		{
+			compose << "0";
+		}
+		compose << serialNumber;
+	}
+
+	compose << trxDate;
+
+	tempTrxNumber.clear()
+	tempTrxNumber = compose.str();
+
+	for (int i = 0; i < trxNumber.size(); i++)
+	{
+		if(trxNumber[i] != '0')
+		{
+			zeroMarker = i;
+			break;
+		}
+	}
+
+	tempTrxNumber.erase(0, zeroMarke);
+	cout << "przed kodowaniem" << tempTrxNumber << endl;
+	
+	if((tempTrxNumber.size() % 2) != 0)
+	{
+		compose << "0" << tempTrxNumber;
+		tempTrxNumber.clear();
+		tempTrxNumber = compose.str();
+	}
+
+	compose.str();
+	compose << zeroMarker;
+
+	for (int i = 0; i < ; i+=2)
+	{
+		temp.str("");
+		temp << tempTrxNumber[i] << tempTrxNumber[i+1];
+		vect.push_back(temp.str());
+		
+	}
+
+
+}
+
+string masterControler::trxTime()
+{
+	stringstream compose;
+	GetTime(bTime); // pobieranie czasu 
+	cout << "czas w bcd: " << bTime << endl;
+	BcdToAsc(rTime,bTime, 12); // przetwazanie bcd na asci 
+	cout << "czas w asce : " << rTime << endl;
+	
+	compose.str("");
+	compose << rTime;
+	string timeNow = compose.str();
+	return timeNow;
+}
+
 int masterControler::checkVersion()
 {
 	char temp[50];
@@ -139,43 +212,109 @@ int masterControler::checkVersion()
 
 int masterControler::checkPoints()
 {
-	string display;
+	string display1, display2;
 	stringstream compose;
 	string cid;
-	while(1)
-	{
 		// sykrywaj spisanie swipe karty albo wpisanie numerka
-		cid.clear();
-		cid = device->magCardScan(false);
-		if((cid.compare("end")) == 0) break;
-		// wyslij zapytanie o punkty !!
+	cid.clear();
+	cid = device->magCardScan(false);
+	if((cid.compare("end")) == 0) break;
+	// wyslij zapytanie o punkty !!
 
-		string points = network->getPointStatus(cid);
-		cout << "Odczytano z networka: " << points << endl; 
-		char temp = points[0];
-		cout << "co jest w temp: " << temp << endl;
+	string points = network->getPointStatus(cid);
+	cout << "Odczytano z networka: " << points << endl; 
+	char temp = points[0];
+	cout << "co jest w temp: " << temp << endl;
 
-		if (temp == 'o')
-		{
-			Lcd_Cls();
-			points.erase(0,2);
-			compose.str("");
-			compose << "Nr. Karty:" << cid << endl;
-			display.clear();
-			display = compose.str();
+	if (temp == 'o')
+	{
+		Lcd_Cls();
+		points.erase(0,2);
+		compose.str("");
+		compose << "Nr. Karty:" << cid << endl;
+		display1.clear();
+		display1 = compose.str();
+
+		compose.str("");
+		compose << "Punkty: " << points << endl;
+		display2.clear();
+		display2 = compose.str();
+
+		while(1)
+		{			
 			//wyswietl je i wydrukj potwierdzenie !!
 			title("Stan punktowy");
-			message(0, 16, display);
+			message(0, 16, display1);
+			message(0, 32, display2);
 
-			compose.str("");
-			compose << "Punkty: " << points << endl;
-			display.clear();
-			display = compose.str();
-			message(0, 32, display);
-
-			sleep(500);
+			if(!Kb_Hit())
+			{
+				cout << "ncisnalem guzik" << endl;
+				key = Kb_GetKey();
+				if(key != NOKEY)
+				{
+					if (key == KEYENTER)
+					{
+						break;
+					}
+					else
+					{
+						Kb_Flush();
+					}
+				}
+				else
+				{
+					Kb_Flush();
+				}
+			}
 		}
+
+		while(1)
+		{
+			// wydrukuj cetlik 
+
+			//spytaj sie o kopie
+			while(1)
+			{
+				clear();
+				title("Informacja");
+				message(0, 32, "Wydrukować Potwierdzenie ?");
+				message(0, 40, "OK drukuj");
+				message(0, 48, "CANCEL anuluj");
+
+
+				if(!Kb_Hit())
+				{
+					cout << "ncisnalem guzik" << endl;
+					key = Kb_GetKey();
+					if(key != NOKEY)
+					{
+						if (key == KEYENTER)
+						{
+							break;
+						}
+						if (key == KEYCANCEL)
+						{
+							return 0;
+						}
+						else
+						{
+							Kb_Flush();
+						}
+					}
+					else
+					{
+						Kb_Flush();
+					}
+				}
+
+			}
+
+			//wydrukuj kopie
+		}
+
 	}
+
 }
 
 void masterControler::timeWindow()
