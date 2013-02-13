@@ -149,21 +149,25 @@ int masterControler::checkPoints()
 		cid = device->magCardScan(false);
 		if((cid.compare("end")) == 0) break;
 		// wyslij zapytanie o punkty !!
+
 		string points = network->getPointStatus(cid);
 
-		compose.str("");
-		compose << "Nr. Karty:" << cid << endl;
-		display.clear();
-		display = compose.str();
-		//wyswietl je i wydrukj potwierdzenie !!
-		title("Stan punktowy");
-		message(0, 16, display);
+		if (points[0] == 'o')
+		{
+			compose.str("");
+			compose << "Nr. Karty:" << cid << endl;
+			display.clear();
+			display = compose.str();
+			//wyswietl je i wydrukj potwierdzenie !!
+			title("Stan punktowy");
+			message(0, 16, display);
 
-		compose.str("");
-		compose << "Punkty: " << points << endl;
-		display.clear();
-		display = compose.str();
-		message(0, 32, display);
+			compose.str("");
+			compose << "Punkty: " << points << endl;
+			display.clear();
+			display = compose.str();
+			message(0, 32, display);
+		}
 	}
 }
 
@@ -490,9 +494,7 @@ int masterControler::dispMenu()
 				}
 			}else{
 				//device->printTx("00100200086567","00075","2013-02-05 10:46:52","0020000044", "123,45", "30", "0", "Dla Klienta");
-				string cid = "0020000044";
-				network->getPointStatus(cid);
-				//softUpdAck();
+				softUpdAck();
 				// tu bedzie przejscie do sklepu in the future :D jeeeeeee
 			}
 			break;
