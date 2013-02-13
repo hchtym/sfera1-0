@@ -195,6 +195,7 @@ int masterControler::computeTrxNumber(string trxDate)
 
 		if (code >= 50)
 		{
+			cout << "Kod wiekszy od 50: " << code << endl;
 			if (number[0] == '5')
 			{
 				compose << "Q";
