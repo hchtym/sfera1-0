@@ -165,11 +165,63 @@ int masterControler::computeTrxNumber(string trxDate)
 	{
 		temp.str("");
 		temp << tempTrxNumber[i] << tempTrxNumber[i+1];
-		vect.push_back(temp.str());
-		
+		vect.push_back(temp.str());	
 	}
 
+	for (int i = 0; i < vect.size(); i++)
+	{
+		string number = vect[i];
+		int code = atoi(number.c_str());
 
+		if(code < 10)
+		{
+			compose << code;
+		}
+
+
+		if((code < 36) && (code >= 10))
+		{
+			char sign = (code +87);
+			compose << sign;
+		}
+
+
+		if((code < 50) && (code >= 36)
+		{
+			char sign = (code + 29);
+			compose << sign;
+		}
+
+		if (code >= 50)
+		{
+			if (number[0] == '5')
+			{
+				compose << "Q";
+			}
+			if (number[0] == '6')
+			{
+				compose << "R";
+			}
+			if (number[0] == '7')
+			{
+				compose << "S";
+			}
+			if (number[0] == '8')
+			{
+				compose << "T";
+			}
+			if (number[0] == '5')
+			{
+				compose << "U";
+			}
+			compose << number[1];
+		}
+	}
+
+	trxNumber.clear();
+	trxNumber = compose.str();
+
+	cout << "oto numer tranzakcji: " << 
 }
 
 string masterControler::trxTime()
