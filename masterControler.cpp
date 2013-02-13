@@ -491,7 +491,7 @@ int masterControler::dispMenu()
 			}else{
 				//device->printTx("00100200086567","00075","2013-02-05 10:46:52","0020000044", "123,45", "30", "0", "Dla Klienta");
 				string cid = device->magCardScan(false);
-				network->getPointStatus(string cid);
+				network->getPointStatus(cid);
 				//softUpdAck();
 				// tu bedzie przejscie do sklepu in the future :D jeeeeeee
 			}
