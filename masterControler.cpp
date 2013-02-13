@@ -186,7 +186,7 @@ int masterControler::computeTrxNumber(string trxDate)
 		}
 
 
-		if((code < 50) &* (code >= 36))
+		if((code < 50) && (code >= 36))
 		{
 			char sign = (code + 29);
 			compose << sign;
@@ -221,7 +221,7 @@ int masterControler::computeTrxNumber(string trxDate)
 	trxNumber.clear();
 	trxNumber = compose.str();
 
-	cout << "oto numer tranzakcji: " << 
+	cout << "oto numer tranzakcji: " << trxNumber << endl;
 }
 
 string masterControler::trxTime()
