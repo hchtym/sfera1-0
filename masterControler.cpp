@@ -147,7 +147,7 @@ int masterControler::checkPoints()
 		// sykrywaj spisanie swipe karty albo wpisanie numerka
 		cid.clear();
 		cid = device->magCardScan(false);
-
+		if((cid.compare("end")) == 0) break;
 		// wyslij zapytanie o punkty !!
 		string points = network->getPointStatus(cid);
 
@@ -401,8 +401,8 @@ int masterControler::dispMenu()
 	int i,j,k;
 	int ret;
 	cout << "tworze 2 stringi login i logout" << endl;
-	string menu1 = "LOGIN;SHOP;PRIZE;CHECKPOINT;TRANSACTIONS_SEND;SERVICE;;Wylogowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
-	string menu2 = "LOGOUT;SHOP;PRIZE;CHECKTPOIN;TRANSACTIONS_SEND;SERVICE;;Logowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
+	string menu1 = "LOGIN;SHOP;PRIZE;CHECKPOINT;TRANSACTIONS_SEND; ;;Wylogowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
+	string menu2 = "LOGOUT;SHOP;PRIZE;CHECKTPOIN;TRANSACTIONS_SEND; ;;Logowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
 	cout << "tworze 2 vectory to przechowywania pozycji menu" << endl;
 	vector<string> items;
 	vector<string> items2;
@@ -490,7 +490,9 @@ int masterControler::dispMenu()
 				}
 			}else{
 				//device->printTx("00100200086567","00075","2013-02-05 10:46:52","0020000044", "123,45", "30", "0", "Dla Klienta");
-				softUpdAck();
+				string cid = device->magCardScan(false);
+				network->getPointStatus(string cid);
+				//softUpdAck();
 				// tu bedzie przejscie do sklepu in the future :D jeeeeeee
 			}
 			break;
@@ -912,9 +914,7 @@ int masterControler::returnSelling()
 	//cout << "jestem przes zapisam do pliku rekordu !!" << endl;
 	//fileSave(numerser, seller, str, payment, point, extra, type, date);
 	//cout << "zapisalem plik !"c<< endl;
-	return 0;
-}
-
+		return 0;
 }
 
 

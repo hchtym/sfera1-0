@@ -396,7 +396,7 @@ void deviceControler::printerInit(int size)
 }
 
 void deviceControler::printerSetFont(int size)
-{	
+{
 	if(size == 8)
 	{
 		Prn_SetFont(EnLcdFont6X8, 0, 0);
@@ -520,7 +520,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	printLines(1);
 
 	compose.str("");
-	compose << "Suma zakupow: " << sum << "zl" << endl;
+	compose << "Kwota: " << sum << "zl" << endl;
 	row.clear();
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
@@ -528,7 +528,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	printLines(1);
 
 	compose.str("");
-	compose << "Punkty: " << point << endl;
+	compose << "Suma punktow: " << point << endl;
 	row.clear();
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
@@ -537,7 +537,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 
 	compose.str("");
 	compose << "Extra punkty: " << extra << endl;
-	row.clear();
+	row.clear(); 
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
 
