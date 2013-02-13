@@ -151,6 +151,7 @@ int masterControler::computeTrxNumber(string trxDate)
 			break;
 		}
 	}
+	cout << "zawartość zeroMarker: " << zeroMarker << endl;
 
 	tempTrxNumber.erase(0, zeroMarker);
 	cout << "przed kodowaniem" << tempTrxNumber << endl;
