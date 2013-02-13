@@ -217,7 +217,7 @@ int masterControler::computeTrxNumber(string trxDate)
 			{
 				compose << "T";
 			}
-			if (number[0] == '5')
+			if (number[0] == '9')
 			{
 				compose << "U";
 			}
