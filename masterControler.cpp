@@ -154,7 +154,7 @@ int masterControler::checkPoints()
 		cout << "Odczytano z networka: " << points << endl; 
 		char temp = points[0];
 
-		if (strcmp(temp, 'o') == 0)
+		if (strcmp(temp, "o") == 0)
 		{
 			points.erase(0,1);
 			compose.str("");
