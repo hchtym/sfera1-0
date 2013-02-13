@@ -179,14 +179,14 @@ int masterControler::computeTrxNumber(string trxDate)
 		}
 
 
-		if((code < 36) & (code >= 10))
+		if((code < 36) && (code >= 10))
 		{
 			char sign = (code +87);
 			compose << sign;
 		}
 
 
-		if((code < 50) & (code >= 36)
+		if((code < 50) &* (code >= 36))
 		{
 			char sign = (code + 29);
 			compose << sign;
