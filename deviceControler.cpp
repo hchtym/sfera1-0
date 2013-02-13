@@ -133,6 +133,7 @@ string deviceControler::magCardScan(bool kbd)
 	string temp;
 	int ret;
 	bool presed = false;
+	bool readed = false;
 	memset(track1, 0, sizeof(track1));
 	memset(track1, 0, sizeof(track2));
 	memset(track1, 0, sizeof(track3));
@@ -150,6 +151,8 @@ string deviceControler::magCardScan(bool kbd)
 		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
 	}
 	Kb_Flush();
+	while(1)
+	{
 	while(1)
 	{
 		//Kb_Flush();
@@ -177,8 +180,58 @@ string deviceControler::magCardScan(bool kbd)
 			}
 		}
 		
-		if(kbd)
+		
+
+		DelayMs(50);	
+		ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
+		if (ret&0x80)
 		{
+			if(ret & 1){
+				cout << "track 1" << endl;
+				for(int i = 0; i < 10; i++)
+				{
+					trck[i]=track1[i];
+				}
+				trck[10] = 0;
+				//Mcr_Close();
+				cout << "dane z track1 w trck: " << trck << endl;
+				//return *trck;
+				readed = true;
+				break;
+			}
+			if(ret & 2){
+				cout << "track 2: " << endl;
+				for(int i = 0; i < 10; i++)
+				{
+					trck[i]=track2[i];	
+				}
+				trck[10] = 0;
+				//Mcr_Close();
+				cout << "dane z track2 w trck: " << trck << endl;
+				//return *trck;
+				readed = true;
+				break;
+			}
+			if(ret & 3){
+				cout << "track 3" << endl;
+				for(int i = 0; i < 10; i++)
+				{
+					trck[i]=track3[i];
+				}
+				trck[10] = 0;
+				//Mcr_Close();
+				cout << "dane z track3 w trck: " << trck << endl;
+				//return *trck;
+				readed = true;
+				break;
+			}
+		}
+
+	}
+
+
+	if(kbd)
+	{
 			cout << "klawcia jest na chodzie wyswietlam to co wpisalem" << endl;
 			Lcd_Printxy(0,32,0, const_cast<char *>(str2.c_str()) );
 					//cout << "jestem przed switchem klawiszy" << endl;
@@ -292,50 +345,13 @@ string deviceControler::magCardScan(bool kbd)
 							break;
 				}
 			}
-		}
-		DelayMs(50);	
-		ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
-		if (ret&0x80)
-		{
-			if(ret & 1){
-				cout << "track 1" << endl;
-				for(int i = 0; i < 10; i++)
-				{
-					trck[i]=track1[i];
-				}
-				trck[10] = 0;
-				//Mcr_Close();
-				cout << "dane z track1 w trck: " << trck << endl;
-				//return *trck;
-				break;
-			}
-			if(ret & 2){
-				cout << "track 2: " << endl;
-				for(int i = 0; i < 10; i++)
-				{
-					trck[i]=track2[i];	
-				}
-				trck[10] = 0;
-				//Mcr_Close();
-				cout << "dane z track2 w trck: " << trck << endl;
-				//return *trck;
-				break;
-			}
-			if(ret & 4){
-				cout << "track 3" << endl;
-				for(int i = 0; i < 10; i++)
-				{
-					trck[i]=track3[i];
-				}
-				trck[10] = 0;
-				//Mcr_Close();
-				cout << "dane z track3 w trck: " << trck << endl;
-				//return *trck;
-				break;
-			}
-		}
-		DelayMs(200);
-		Kb_Flush();
+	}
+	if (readed)
+	{
+		break;
+	}
+
+
 	}	
 	cout << "jestem za while przed mcrclose" << endl;
 	Mcr_Close();
