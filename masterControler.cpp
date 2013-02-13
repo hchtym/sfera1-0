@@ -249,8 +249,8 @@ int masterControler::checkPoints()
 		{			
 			//wyswietl je i wydrukj potwierdzenie !!
 			title("Stan punktowy");
-			message(0, 16, display1);
-			message(0, 32, display2);
+			message(0, 16, display1.c_str());
+			message(0, 32, display2.c_str());
 
 			if(!Kb_Hit())
 			{
