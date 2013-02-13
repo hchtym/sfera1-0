@@ -153,6 +153,7 @@ int masterControler::checkPoints()
 		string points = network->getPointStatus(cid);
 		cout << "Odczytano z networka: " << points << endl; 
 		char temp = points[0];
+		cout << "co jest w temp: " << temp << endl;
 
 		if (temp == 'o')
 		{
