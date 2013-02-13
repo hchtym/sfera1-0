@@ -160,11 +160,12 @@ int masterControler::computeTrxNumber(string trxDate)
 
 	compose.str("");
 	compose << zeroMarker;
-
+	cout << "zawartość compose: " << compose.str() << endl;
 	for (int i = 0; i < tempTrxNumber.size(); i+=2)
 	{
 		temp.str("");
 		temp << tempTrxNumber[i] << tempTrxNumber[i+1];
+		cout << "element vectora: " << temp.str();
 		vect.push_back(temp.str());	
 	}
 
