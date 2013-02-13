@@ -172,6 +172,7 @@ string deviceControler::magCardScan(bool kbd)
 					Kb_Flush();
 					return send;
 				}
+				break;
 			}
 			else
 			{
@@ -346,6 +347,7 @@ string deviceControler::magCardScan(bool kbd)
 				}
 			}
 	}
+
 	if (readed)
 	{
 		break;
