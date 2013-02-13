@@ -151,6 +151,7 @@ int masterControler::checkPoints()
 		// wyslij zapytanie o punkty !!
 
 		string points = network->getPointStatus(cid);
+		cout << "Odczytano z networka: " << points << endl; 
 
 		if (strcmp((char *)points[0], "o") == 0)
 		{
