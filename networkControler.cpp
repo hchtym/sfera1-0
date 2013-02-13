@@ -397,8 +397,10 @@ string networkControler::getPointStatus(string cid)
 	msg.clear();
 	msg = temp.str();
 
+	cout << "Odpowiedz na total; : " << msg << endl;
+
 	disconnectAllQuiet();
-	return msg;
+	//return msg;
 }
 
 
@@ -503,7 +505,7 @@ int networkControler::getPointState()
 
 int networkControler::sendTrx()
 {
-etk1:
+	etk1:
 	cout << "jestem w send trx" << endl;
 	//ofstream loger;
 	ifstream filee("tranzakcje.txt");
@@ -544,7 +546,7 @@ etk1:
 	
 	if(size2 != 0)
 	{
-repete2:		//compose.str("");
+	repete2:		//compose.str("");
 		compose << size2 << ";" << sizeof(struct Transaction) << endl;
 		msg.clear();
 		msg = compose.str();
@@ -643,7 +645,7 @@ repete2:		//compose.str("");
 		msg.clear();
 		msg = compose.str();
 		len = msg.size();
-repete:		
+	repete:		
 		if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
 		{
 			//loger << "send filetx; error" << endl;

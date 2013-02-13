@@ -520,7 +520,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	printLines(1);
 
 	compose.str("");
-	compose << "Suma zakupow: " << endl << sum << "zl" << endl;
+	compose << "Suma zakupow: " << sum << "zl" << endl;
 	row.clear();
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
@@ -581,7 +581,7 @@ void deviceControler::printerHeader(string seriallNr, string sellerId, string da
 	string row;
 
 
- BYTE baPrinterLogo[] = {//Width=50, Height=252
+ 	BYTE baPrinterLogo[] = {//Width=50, Height=252
 0x0, 
 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 
 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 
@@ -842,7 +842,7 @@ void deviceControler::printerHeader(string seriallNr, string sellerId, string da
 	printLines(1);
    	
 	compose.str("");
-	compose << "Numer terminala: " << endl << seriallNr << endl;
+	compose << "Terminal: " << seriallNr << endl;
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
 
@@ -852,20 +852,18 @@ void deviceControler::printerHeader(string seriallNr, string sellerId, string da
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
 
+	int end = date.size();
+	int begin = end -3;
+	date.erase(begin, end);
+
 	compose.str("");
-	compose << "Data: " << endl;
+	compose << "Data: " << date << endl;
 	row.clear();
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
 
 	compose.str("");
-	compose << date << endl;
-	row.clear();
-	row = compose.str();
-	Prn_printf((char *)row.c_str());
-
-	compose.str("");
-	compose << "Numer karty: " << endl << cid << endl;
+	compose << "Nr karty: " << cid << endl;
 	row.clear();
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
