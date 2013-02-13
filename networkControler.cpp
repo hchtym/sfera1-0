@@ -366,6 +366,7 @@ int networkControler::softUpdate(string data)
 string networkControler::getPointStatus(string cid)
 {
 	char recived[100000];
+	memset(recived, 0, sizeof(recived));
 	stringstream temp;
 	string msg;
 	int bytes_recv,bytes_sent;
