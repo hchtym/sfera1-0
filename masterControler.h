@@ -91,7 +91,7 @@ class masterControler{
 	int transSelling(int ret, char *track1, char *track2, char *track3);
 	int selling();
 	int returnSelling();
-	int computeTrxNumber(strin trxDate);
+	int computeTrxNumber(string trxDate);
 	string trxTime();
 	
 public:
