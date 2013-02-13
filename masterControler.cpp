@@ -158,7 +158,7 @@ int masterControler::computeTrxNumber(string trxDate)
 		tempTrxNumber = compose.str();
 	}
 
-	compose.str();
+	compose.str("");
 	compose << zeroMarker;
 
 	for (int i = 0; i < tempTrxNumber.size(); i+=2)
