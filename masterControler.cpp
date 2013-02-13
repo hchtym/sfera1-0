@@ -859,6 +859,65 @@ int masterControler::clear()
 	Lcd_Cls();
 }
 
+int masterControler::returnSelling()
+{
+
+	unsigned char input[40];
+	string payment, point, extra, seler;
+	string date;
+	//string id;
+	memset(input, 0 , sizeof(input));
+	stringstream compose;
+	string str,conv;
+		
+	while(1){
+		cout << "tu doszedlem " << endl;
+		//char id = device->magCardScan(true);
+		string str8 = device->magCardScan(false);
+		if((str8.compare("end")) == 0) break;
+		//char id = device->magCardScan(true);
+		cout << "to jest id tuz za magCardScan: " << str8 << endl; 
+		//cout << device->magCardScan(false) << endl;
+		cout << "Co miesci sie w id: " << str8 << endl;
+		compose << str8; 
+		//compose << device->magCardScan(false);
+		//str = id; //compose.str();
+		str = compose.str();
+		compose.str("");
+		//cout << "tu jestem trololololololololo " << compose.str() << endl;
+		cout << "tu jestem trololololololololo " << str << " : " << str.size() << endl;
+		if(str.size() > 0 ){
+			if(str.size() > 5 && str.size() < 30){
+				cout << "przed suminput" << endl;
+				sumInput(payment);
+				char type = '1';
+				//pointComp(str, payment, point, extra);
+				point = "0";
+				extra = "0";
+				fileSave(numerser, seller, str, payment, point, extra, type, date);
+			}
+		}
+	}
+	//seller = "00033";
+	//date = "13:01:03:12:14:25";
+	//string sernum = config->returnSeriall();
+	//cout << "numer seryjny terminala: " << numerser << endl;
+	//cout << "sprzedawca: " << seller << endl;
+	//cout << "Zaplata: " << payment << endl;
+	//cout << "punkty: " << point << endl;
+	//cout << "extra pkt: " << extra << endl;
+	//cout:w
+	//:out << date << endl;
+	//char type = '0';
+	//cout << "jestem przes zapisam do pliku rekordu !!" << endl;
+	//fileSave(numerser, seller, str, payment, point, extra, type, date);
+	//cout << "zapisalem plik !"c<< endl;
+	return 0;
+}
+
+}
+
+
 int masterControler::selling()
 {
 	unsigned char input[40];
