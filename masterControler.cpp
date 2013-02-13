@@ -113,11 +113,11 @@ int masterControler::updClk()
 	network->updClock();
 }
 
-int masterControler::cmputeTrxNumber(string trxDate)
+int masterControler::computeTrxNumber(string trxDate)
 {
 	stringstream compose;
 	stringstream temp;
-	string serialNumber config->returnSeriall();
+	string serialNumber = config->returnSeriall();
 	string trxNumber;
 	string tempTrxNumber;
 	int zeroMarker;
@@ -148,7 +148,7 @@ int masterControler::cmputeTrxNumber(string trxDate)
 		}
 	}
 
-	tempTrxNumber.erase(0, zeroMarke);
+	tempTrxNumber.erase(0, zeroMarker);
 	cout << "przed kodowaniem" << tempTrxNumber << endl;
 	
 	if((tempTrxNumber.size() % 2) != 0)
@@ -161,7 +161,7 @@ int masterControler::cmputeTrxNumber(string trxDate)
 	compose.str();
 	compose << zeroMarker;
 
-	for (int i = 0; i < ; i+=2)
+	for (int i = 0; i < tempTrxNumber.size(); i+=2)
 	{
 		temp.str("");
 		temp << tempTrxNumber[i] << tempTrxNumber[i+1];
@@ -174,6 +174,10 @@ int masterControler::cmputeTrxNumber(string trxDate)
 
 string masterControler::trxTime()
 {
+	BYTE bTime[50];
+	BYTE rTime[50];
+	memset(bTime, 0, sizeof(bTime));
+	memset(rTime, 0, sizeof(rTime));
 	stringstream compose;
 	GetTime(bTime); // pobieranie czasu 
 	cout << "czas w bcd: " << bTime << endl;
@@ -212,6 +216,7 @@ int masterControler::checkVersion()
 
 int masterControler::checkPoints()
 {
+	BYTE key;
 	string display1, display2;
 	stringstream compose;
 	string cid;
