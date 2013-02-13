@@ -124,7 +124,7 @@ int masterControler::computeTrxNumber(string trxDate)
 	vector<string> vect;
 
 
-	if (serialNumber < 15)
+	if (serialNumber.size() < 15)
 	{
 		int len = 15 - serialNumber.size();
 		for (int i = 0; i < len; i++)
@@ -136,7 +136,7 @@ int masterControler::computeTrxNumber(string trxDate)
 
 	compose << trxDate;
 
-	tempTrxNumber.clear()
+	tempTrxNumber.clear();
 	tempTrxNumber = compose.str();
 
 	for (int i = 0; i < trxNumber.size(); i++)
@@ -216,6 +216,9 @@ int masterControler::checkVersion()
 
 int masterControler::checkPoints()
 {
+	string msg1 = "Wydrukować Potwierdzenie ?";
+	string msg2 = "OK drukuj";
+	string msg3 = "CANCEL anuluj";
 	BYTE key;
 	string display1, display2;
 	stringstream compose;
@@ -223,7 +226,7 @@ int masterControler::checkPoints()
 		// sykrywaj spisanie swipe karty albo wpisanie numerka
 	cid.clear();
 	cid = device->magCardScan(false);
-	if((cid.compare("end")) == 0) break;
+	if((cid.compare("end")) == 0) return 0;
 	// wyslij zapytanie o punkty !!
 
 	string points = network->getPointStatus(cid);
@@ -249,8 +252,8 @@ int masterControler::checkPoints()
 		{			
 			//wyswietl je i wydrukj potwierdzenie !!
 			title("Stan punktowy");
-			message(0, 16, display1.c_str());
-			message(0, 32, display2.c_str());
+			message(0, 16, display1);
+			message(0, 32, display2);
 
 			if(!Kb_Hit())
 			{
@@ -281,11 +284,12 @@ int masterControler::checkPoints()
 			//spytaj sie o kopie
 			while(1)
 			{
+
 				clear();
 				title("Informacja");
-				message(0, 32, "Wydrukować Potwierdzenie ?");
-				message(0, 40, "OK drukuj");
-				message(0, 48, "CANCEL anuluj");
+				message(0, 32, msg1);
+				message(0, 40, msg2);
+				message(0, 48, msg3);
 
 
 				if(!Kb_Hit())
