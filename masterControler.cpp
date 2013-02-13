@@ -152,7 +152,7 @@ int masterControler::checkPoints()
 
 		string points = network->getPointStatus(cid);
 
-		if (points[0] == 'o')
+		if (points[0] == "o")
 		{
 			points.erase(0,1);
 			compose.str("");
