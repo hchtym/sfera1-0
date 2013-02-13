@@ -401,8 +401,8 @@ int masterControler::dispMenu()
 	int i,j,k;
 	int ret;
 	cout << "tworze 2 stringi login i logout" << endl;
-	string menu1 = "LOGIN;SHOP;PRIZE;CHECKPOINT;TRANSACTIONS_SEND;SERVICE;;Wylogowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
-	string menu2 = "LOGOUT;SHOP;PRIZE;CHECKTPOIN;TRANSACTIONS_SEND;SERVICE;;Logowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
+	string menu1 = "LOGIN;SHOP;PRIZE;CHECKPOINT;TRANSACTIONS_SEND;SERVICE;Wylogowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
+	string menu2 = "LOGOUT;SHOP;PRIZE;CHECKTPOIN;TRANSACTIONS_SEND;SERVICE;Logowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
 	cout << "tworze 2 vectory to przechowywania pozycji menu" << endl;
 	vector<string> items;
 	vector<string> items2;
