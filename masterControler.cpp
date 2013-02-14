@@ -122,6 +122,7 @@ string masterControler::computeTrxNumber(string trxDate)
 	string tempTrxNumber;
 	int zeroMarker;
 	vector<string> vect;
+	vector<string> parse;
 
 
 	cout << "Zawartosc serialNumber: " << serialNumber << endl;
@@ -173,6 +174,12 @@ string masterControler::computeTrxNumber(string trxDate)
 		cout << "element vectora: " << temp.str();
 		vect.push_back(temp.str());	
 	}
+
+	string temporary;
+
+	temporary = vect[6];
+	vect[6] = vect[8]
+	vect[8] = temporary;
 
 	for (int i = 0; i < vect.size(); i++)
 	{
