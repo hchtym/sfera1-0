@@ -1239,7 +1239,7 @@ int masterControler::selling()
 			}
 		}
 
-		string footer = "DLA KLIENTA\n\r";
+		string footer = "DLA KLIENTA";
 		device->printTx(numerser, seller, trxDateTime, str, payment, point, extra, footer, trxIdNumber);
 
 		while(1)
