@@ -867,7 +867,7 @@ void deviceControler::printerHeader(string seriallNr, string sellerId, string da
 		vect.push_back(compose.str());
 	}
 	compose.str("");
-	compose << "20" << vect[0] << "-" << vect[1] << "-" << vect[2] << " " << vect[3] << ":" << vect[4] << endl;
+	compose << "20" << vect[0] << "-" << vect[1] << "-" << vect[2] << " " << vect[3] << ":" << vect[4];
 	date.clear();
 	date = compose.str(); 
 
