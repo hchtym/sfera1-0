@@ -536,7 +536,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 		}
 		else
 		{
-			compose << sum[i]
+			compose << sum[i];
 		}
 	}
 
