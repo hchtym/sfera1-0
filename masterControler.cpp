@@ -750,6 +750,7 @@ int masterControler::dispMenu()
 
 int masterControler::transSelling(int ret, char *track1, char *track2, char *track3)
 {
+	BYTE key;
 	string trxDateTime = trxTime();
 	string trxIdNumber = computeTrxNumber(trxDateTime);
 	string payment, point, extra, date;
@@ -830,7 +831,7 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 	
 	footer.clear();
 	footer = "DLA SPRZEDAWCY\n\r";
-	device->printTx(numerser, seller, trxDateTime, str8, sum, point, extra, footer, trxIdNumber);
+	device->printTx(numerser, seller, trxDateTime, cid, sum, point, extra, footer, trxIdNumber);
 
 
 
