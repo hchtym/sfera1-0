@@ -493,7 +493,8 @@ int deviceControler::rfidScan(){
 
 }
 
-int deviceControler::atc24Read(){
+int deviceControler::atc24Read()
+{
 	stringstream compose;
 	string name;
 	BYTE buf[1024];
