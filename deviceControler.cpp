@@ -516,13 +516,13 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	printerHeader(seriallNr, sellerId, date, cid);
 
 	compose.str("");
-	compose << "Trz nr: " << trxNumber << endl;
+	compose << "Nr tr: " << trxNumber << endl;
 	row.clear();
 	row = compose.str();
 	Prn_printf((char *)row.c_str());	
 
 	row.clear();
-	row = "----------------------";
+	row = "-----------------------";
 	Prn_printf((char *)row.c_str());
 
 	printLines(1);

@@ -1240,7 +1240,7 @@ int masterControler::selling()
 		}
 
 		string footer = "DLA KLIENTA\n\r";
-		device->printTx(numerser, seller, trxDateTime, str, sum, point, extra, footer, trxIdNumber);
+		device->printTx(numerser, seller, trxDateTime, str, payment, point, extra, footer, trxIdNumber);
 
 		while(1)
 		{
@@ -1270,12 +1270,12 @@ int masterControler::selling()
 				}
 			}
 			DelayMs(250);
-			
+
 		}
 	
 		footer.clear();
 		footer = "DLA SPRZEDAWCY\n\r";
-		device->printTx(numerser, seller, trxDateTime, str, sum, point, extra, footer, trxIdNumber);
+		device->printTx(numerser, seller, trxDateTime, str, payment, point, extra, footer, trxIdNumber);
 
 	}
 
