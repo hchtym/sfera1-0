@@ -528,6 +528,22 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	printLines(1);
 
 	compose.str("");
+	for (int i = 0; i < sum.size(); ++i)
+	{
+		if (i == (sum.size() - 2))
+		{
+			compose << "," << sum[i];
+		}
+		else
+		{
+			compose << sum[i]
+		}
+	}
+
+	sum.clear();
+	sum = compose.str();
+
+	compose.str("");
 	compose << "Kwota: " << sum << "zl" << endl;
 	row.clear();
 	row = compose.str();
