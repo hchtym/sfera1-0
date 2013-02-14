@@ -738,8 +738,8 @@ int masterControler::dispMenu()
 			case 3:
 				//tu bedzie spr pkt
 				//device->rfidScan();
-				device->atc24Read();
-				//device->sleRead();
+				//device->atc24Read();
+				device->sleRead();
 			break;
 			case 4:
 				cout << "sendTranaction" << endl;
