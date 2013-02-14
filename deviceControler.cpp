@@ -523,7 +523,8 @@ int deviceControler::atc24Read()
 	}		
 }
 
-int deviceControler::sleRead(){
+int deviceControler::sleRead()
+{
 	BYTE buf[50] = {0};
 	stringstream compose;
 	string name;
@@ -538,6 +539,7 @@ int deviceControler::sleRead(){
 			name = compose.str();
 			Lcd_Cls();
 			Lcd_Printxy(0,0,0, const_cast<char *>(name.c_str()) );
+			
 		}
 
 		DelayMs(2000);
