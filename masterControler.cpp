@@ -178,7 +178,7 @@ string masterControler::computeTrxNumber(string trxDate)
 	string temporary;
 
 	temporary = vect[6];
-	vect[6] = vect[8]
+	vect[6] = vect[8];
 	vect[8] = temporary;
 
 	for (int i = 0; i < vect.size(); i++)
