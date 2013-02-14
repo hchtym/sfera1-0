@@ -1244,7 +1244,7 @@ int masterControler::selling()
 
 		while(1)
 		{
-			string msg = "Wydrukowac potwierdzenie ?\n\r";
+			string msg = "Wydrukowac potwierdzenie ?";
 			clear();
 			title("Informacja");
 			message(0, 32, msg);
@@ -1274,7 +1274,7 @@ int masterControler::selling()
 		}
 	
 		footer.clear();
-		footer = "DLA SPRZEDAWCY\n\r";
+		footer = "DLA SPRZEDAWCY";
 		device->printTx(numerser, seller, trxDateTime, str, payment, point, extra, footer, trxIdNumber);
 
 	}
