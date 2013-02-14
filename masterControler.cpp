@@ -1270,6 +1270,7 @@ int masterControler::selling()
 				}
 			}
 			DelayMs(250);
+			
 		}
 	
 		footer.clear();
