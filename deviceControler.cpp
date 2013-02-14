@@ -512,7 +512,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 
 	printBold(1);
 
-	printerInit(16);
+	printerInit(8);
 	printerHeader(seriallNr, sellerId, date, cid);
 
 	compose.str("");

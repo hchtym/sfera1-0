@@ -1066,8 +1066,8 @@ int masterControler::menuScrOther(const string &menuname,vector<string> &vect, i
 	}
 }
 
-void masterControler::screenSaver(){
-	
+void masterControler::screenSaver()
+{
 }
 
 int masterControler::loginScr()
