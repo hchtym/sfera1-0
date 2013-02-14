@@ -1251,7 +1251,6 @@ int masterControler::selling()
 			msg.clear();
 			msg = "Potwierdz OK\n\r";
 			message(0, 40, msg);
-
 			if(!Kb_Hit())
 			{
 				cout << "ncisnalem guzik" << endl;
@@ -1270,7 +1269,7 @@ int masterControler::selling()
 					}
 				}
 			}
-
+			DelayMs(250);
 		}
 	
 		footer.clear();
