@@ -1193,12 +1193,14 @@ int masterControler::returnSelling()
 int masterControler::selling()
 {
 	unsigned char input[40];
+	BYTE key;
 	string payment, point, extra, seler;
 	string date;
 	//string id;
 	memset(input, 0 , sizeof(input));
 	stringstream compose;
 	string str,conv;
+	//string str8;
 	string trxDateTime = trxTime();
 	string trxIdNumber = computeTrxNumber(trxDateTime);
 		
@@ -1230,7 +1232,7 @@ int masterControler::selling()
 		}
 	}
 	string footer = "DLA KLIENTA\n\r";
-	device->printTx(numerser, seller, trxDateTime, str8, sum, point, extra, footer, trxIdNumber);
+	device->printTx(numerser, seller, trxDateTime, str, sum, point, extra, footer, trxIdNumber);
 
 	while(1)
 	{
@@ -1265,7 +1267,7 @@ int masterControler::selling()
 	
 	footer.clear();
 	footer = "DLA SPRZEDAWCY\n\r";
-	device->printTx(numerser, seller, trxDateTime, str8, sum, point, extra, footer, trxIdNumber);
+	device->printTx(numerser, seller, trxDateTime, str, sum, point, extra, footer, trxIdNumber);
 
 
 
