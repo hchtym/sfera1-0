@@ -40,11 +40,10 @@ public:
 	deviceControler();
 	void printTotal(char *cid, int points, bool copy);
 
-	void printTx(string seriallNr, string sellerId, string date, string cid, string sum, string point, string extra, string footer);
+	void printTx(string seriallNr, string sellerId, string date, string cid, string sum, string point, string extra, string footer, string trxNumber);
 	void printSend(string seriallNr, string sellerId, string date, string cid);
 	void checkPoint();
 	void printerHeader(string seriallNr, string sellerId, string date, string cid);
-	void printTrx();
 	void printRecipe();
 	void printerSetFont(int size);
 	int rfidScan();
@@ -54,7 +53,6 @@ public:
 	int ertErrDevLogs();
 	int printerDev();
 	string magCardScan(bool kbd);
-	string transMagCardScen();
 	
 };
 

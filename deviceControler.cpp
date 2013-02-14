@@ -175,8 +175,8 @@ string deviceControler::magCardScan(bool kbd)
 					{
 						cout << "CANCEL wcisniety !!" << endl;
 						Kb_Flush();
-						return send;
-					}
+					return send;
+				}
 					break;
 				}
 				else
@@ -409,6 +409,7 @@ void deviceControler::printerSetFont(int size)
 
 
 
+
 bool deviceControler::isPrinterReady()
 {
 	int state = Prn_CheckStatus();
@@ -503,7 +504,7 @@ void deviceControler::printBold(int mode)
 	Prn_SetDoubleSize(mode);
 }
 
-void deviceControler::printTx(string seriallNr, string sellerId, string date, string cid, string sum, string point, string extra, string footer)
+void deviceControler::printTx(string seriallNr, string sellerId, string date, string cid, string sum, string point, string extra, string footer, string trxNumber)
 {
 
 	stringstream compose;
@@ -511,8 +512,14 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 
 	printBold(1);
 
-	printerInit(8);
+	printerInit(16);
 	printerHeader(seriallNr, sellerId, date, cid);
+
+	compose.str("");
+	compose << "" << trxNumber << endl;
+	row.clear();
+	row = compose.str();
+	Prn_printf((char *)row.c_str());	
 
 	row.clear();
 	row = "----------------------";

@@ -113,7 +113,7 @@ int masterControler::updClk()
 	network->updClock();
 }
 
-int masterControler::computeTrxNumber(string trxDate)
+string masterControler::computeTrxNumber(string trxDate)
 {
 	stringstream compose;
 	stringstream temp;
@@ -229,6 +229,7 @@ int masterControler::computeTrxNumber(string trxDate)
 	trxNumber = compose.str();
 
 	cout << "oto numer tranzakcji: " << trxNumber << endl;
+	return trxNumber;
 }
 
 string masterControler::trxTime()
@@ -258,10 +259,17 @@ int masterControler::checkVersion()
 		file.read(temp, 16);
 		cout << temp << endl;
 		string buildD = returnBuildDate();
-		if(buildD.compare(temp) == 0)
+		if(buildD.compare(temp) != 0)
 		{
 			network->sendAck(buildD);
 			remove("versionFlag.txt");
+			//wydrukuj ze soft zostal zaktualizowany :D !! 
+			//device->printSoftUpdConfirm();
+		}
+		else
+		{
+			remove("versionFlag.txt");
+			return 0;
 		}
 
 	}
@@ -271,6 +279,7 @@ int masterControler::checkVersion()
 		return 0;
 
 	}
+	return 0;
 }
 
 int masterControler::checkPoints()
@@ -741,6 +750,8 @@ int masterControler::dispMenu()
 
 int masterControler::transSelling(int ret, char *track1, char *track2, char *track3)
 {
+	string trxDateTime = trxTime();
+	string trxIdNumber = computeTrxNumber(trxDateTime);
 	string payment, point, extra, date;
 	stringstream compose;
 	string cid;
@@ -781,7 +792,48 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 	char type = '0';
 	//cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
 	pointComp(cid, payment, point, extra);
-	fileSave(numerser, seller, cid, payment, point, extra, type, date);
+	fileSave(numerser, seller, cid, payment, point, extra, type, trxDateTime);
+
+	string footer = "DLA KLIENTA\n\r";
+	device->printTx(numerser, seller, trxDateTime, cid, payment, point, extra, footer, trxIdNumber);
+
+	while(1)
+	{
+		string msg = "Wydrukowac potwierdzenie ?\n\r";
+		clear();
+		title("Informacja");
+		message(0, 32, msg);
+		msg.clear();
+		msg = "Potwierdz OK\n\r";
+		message(0, 40, msg);
+
+		if(!Kb_Hit())
+		{
+			cout << "ncisnalem guzik" << endl;
+			key = Kb_GetKey();
+			if(key != NOKEY)
+			{
+				if (key == KEYENTER)
+				{
+					cout << "OK wcisniety !!" << endl;
+					Kb_Flush();
+					break;
+				}
+				else
+				{
+					Kb_Flush();
+				}
+			}
+		}
+
+	}
+	
+	footer.clear();
+	footer = "DLA SPRZEDAWCY\n\r";
+	device->printTx(numerser, seller, trxDateTime, str8, sum, point, extra, footer, trxIdNumber);
+
+
+
 
 	selling();
 	return 0;
@@ -1147,12 +1199,14 @@ int masterControler::selling()
 	memset(input, 0 , sizeof(input));
 	stringstream compose;
 	string str,conv;
+	string trxDateTime = trxTime();
+	string trxIdNumber = computeTrxNumber(trxDateTime);
 		
 	while(1){
 		cout << "tu doszedlem " << endl;
 		//char id = device->magCardScan(true);
 		string str8 = device->magCardScan(true);
-		if((str8.compare("end")) == 0) break;
+		if((str8.compare("end")) == 0) return 0;
 		//char id = device->magCardScan(true);
 		cout << "to jest id tuz za magCardScan: " << str8 << endl; 
 		//cout << device->magCardScan(false) << endl;
@@ -1171,24 +1225,50 @@ int masterControler::selling()
 				char type = '0';
 				//cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
 				pointComp(str, payment, point, extra);
-				fileSave(numerser, seller, str, payment, point, extra, type, date);
+				fileSave(numerser, seller, str, payment, point, extra, type, trxDateTime);
 			}
 		}
 	}
-	//seller = "00033";
-	//date = "13:01:03:12:14:25";
-	//string sernum = config->returnSeriall();
-	//cout << "numer seryjny terminala: " << numerser << endl;
-	//cout << "sprzedawca: " << seller << endl;
-	//cout << "Zaplata: " << payment << endl;
-	//cout << "punkty: " << point << endl;
-	//cout << "extra pkt: " << extra << endl;
-	//cout:w
-	//:out << date << endl;
-	//char type = '0';
-	//cout << "jestem przes zapisam do pliku rekordu !!" << endl;
-	//fileSave(numerser, seller, str, payment, point, extra, type, date);
-	//cout << "zapisalem plik !"c<< endl;
+	string footer = "DLA KLIENTA\n\r";
+	device->printTx(numerser, seller, trxDateTime, str8, sum, point, extra, footer, trxIdNumber);
+
+	while(1)
+	{
+		string msg = "Wydrukowac potwierdzenie ?\n\r";
+		clear();
+		title("Informacja");
+		message(0, 32, msg);
+		msg.clear();
+		msg = "Potwierdz OK\n\r";
+		message(0, 40, msg);
+
+		if(!Kb_Hit())
+		{
+			cout << "ncisnalem guzik" << endl;
+			key = Kb_GetKey();
+			if(key != NOKEY)
+			{
+				if (key == KEYENTER)
+				{
+					cout << "OK wcisniety !!" << endl;
+					Kb_Flush();
+					break;
+				}
+				else
+				{
+					Kb_Flush();
+				}
+			}
+		}
+
+	}
+	
+	footer.clear();
+	footer = "DLA SPRZEDAWCY\n\r";
+	device->printTx(numerser, seller, trxDateTime, str8, sum, point, extra, footer, trxIdNumber);
+
+
+
 	return 0;
 }
 
@@ -1368,6 +1448,7 @@ int masterControler::sumInput(string &payment)
 
 int masterControler::fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char type, string &date)
 {
+	vector<string> vect;
 	cout << "otwieram trx.txt" << endl;
 	ofstream out("test.dat");
 	ofstream trx("trx.txt", ios_base::app);
@@ -1383,20 +1464,20 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	cout << "wypelniam string tym: " << endl << sn << ";" << seler << ";" << client << ";" << pay << ";" << point << ";" << extrapoint << ";" << type << ";" << date << endl;
 	compose << sn << ";" << seler << ";" << client << ";" << pay << ";" << point << ";" << extrapoint << ";" << type << ";" << date << endl;
 	cout << "Cas z struktury acttime" << endl;
-	acttime.Year = 13;
-	cout << acttime.Year << endl;
-	acttime.Month = 01;
-	cout << acttime.Month << endl;
-	acttime.Day = 04;
-	cout << acttime.Day << endl;
-	acttime.Hour = 12;
-	cout << acttime.Hour << endl;
-	acttime.Minute = 05;
-	cout << acttime.Minute << endl;
-	acttime.Second = 55;
-	cout << acttime.Second << endl;
-	acttime.GTM = 1;
-	cout << acttime.GTM << endl;
+	//acttime.Year = 13;
+	//cout << acttime.Year << endl;
+	//acttime.Month = 01;
+	//cout << acttime.Month << endl;
+	//acttime.Day = 04;
+	//cout << acttime.Day << endl;
+	//acttime.Hour = 12;
+	//cout << acttime.Hour << endl;
+	//acttime.Minute = 05;
+	//cout << acttime.Minute << endl;
+	//acttime.Second = 55;
+	//cout << acttime.Second << endl;
+	//acttime.GTM = 1;
+	//cout << acttime.GTM << endl;
 	
 	unsigned char factory[20];
 	memset(factory, 0, sizeof(factory));
@@ -1660,7 +1741,6 @@ void masterControler::Tokenize(const string& str, vector<string>& tokens, const 
 
 void masterControler::recipePrint(bool recipeCopy)
 {
-	
 }
 
 

@@ -82,7 +82,7 @@ class masterControler{
 	Transaction tx;
 	
 	bool loginFlag;
-	int fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char type,string &date);
+	int fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char type,string &date, string trxTime);
 	int title(string str);
 	int clear();
 	int infoMSG(string &msg);
@@ -91,7 +91,7 @@ class masterControler{
 	int transSelling(int ret, char *track1, char *track2, char *track3);
 	int selling();
 	int returnSelling();
-	int computeTrxNumber(string trxDate);
+	string computeTrxNumber(string trxDate);
 	string trxTime();
 	
 public:
