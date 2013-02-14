@@ -516,7 +516,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	printerHeader(seriallNr, sellerId, date, cid);
 
 	compose.str("");
-	compose << "" << trxNumber << endl;
+	compose << "Trz nr: " << trxNumber << endl;
 	row.clear();
 	row = compose.str();
 	Prn_printf((char *)row.c_str());	
