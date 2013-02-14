@@ -187,15 +187,15 @@ string masterControler::computeTrxNumber(string trxDate)
 
 		if((code < 36) && (code >= 10))
 		{
-			char sign = (code +87);
-			compose << sign;
+			char sign1 = (code +87);
+			compose << sign1;
 		}
 
 
 		if((code < 50) && (code >= 36))
 		{
-			char sign = (code + 29);
-			compose << sign;
+			char sign2 = (code + 29);
+			compose << sign2;
 		}
 
 		if (code >= 50)
@@ -391,7 +391,6 @@ int masterControler::checkPoints()
 		}
 
 	}
-
 }
 
 void masterControler::timeWindow()
