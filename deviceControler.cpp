@@ -587,7 +587,7 @@ void deviceControler::printerHeader(string seriallNr, string sellerId, string da
 	
 	stringstream compose;
 	string row;
-
+	vector<string> vect;
 
  	BYTE baPrinterLogo[] = {//Width=50, Height=252
 0x0, 
@@ -860,9 +860,16 @@ void deviceControler::printerHeader(string seriallNr, string sellerId, string da
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
 
-	int end = date.size();
-	int begin = end -3;
-	date.erase(begin, end);
+	for (int i = 0; i < date.size(); i+=2)
+	{
+		compose.str("");
+		compose << date[i] << date[i+1];
+		vect.push_back(compose.str());
+	}
+	compose.str("");
+	compose << "20" << vect[0] << "-" << vect[1] << "-" << vect[2] << " " << vect[3] << ":" << vect[4] << endl;
+	date.clear();
+	date = compose.str(); 
 
 	compose.str("");
 	compose << "Data: " << date << endl;
