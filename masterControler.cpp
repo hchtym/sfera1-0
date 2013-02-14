@@ -1168,7 +1168,7 @@ int masterControler::returnSelling()
 				//pointComp(str, payment, point, extra);
 				point = "0";
 				extra = "0";
-				fileSave(numerser, seller, str, payment, point, extra, type, date);
+				//fileSave(numerser, seller, str, payment, point, extra, type, );
 			}
 		}
 	}

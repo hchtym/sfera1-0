@@ -82,7 +82,7 @@ class masterControler{
 	Transaction tx;
 	
 	bool loginFlag;
-	int fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char type,string &date, string trxTime);
+	int fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char type,string &date);
 	int title(string str);
 	int clear();
 	int infoMSG(string &msg);
