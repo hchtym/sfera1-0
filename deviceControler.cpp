@@ -510,9 +510,9 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	stringstream compose;
 	string row;
 
-	printBold(1);
+	//printBold(1);
 
-	printerInit(8);
+	printerInit(16);
 	printerHeader(seriallNr, sellerId, date, cid);
 
 	compose.str("");
@@ -562,7 +562,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	row.clear();
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
-	printBold(0);
+	//printBold(0);
 	printLines(3);
 
 	Prn_Start();	
