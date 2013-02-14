@@ -1238,46 +1238,46 @@ int masterControler::selling()
 				fileSave(numerser, seller, str, payment, point, extra, type, trxDateTime);
 			}
 		}
-	}
-	string footer = "DLA KLIENTA\n\r";
-	device->printTx(numerser, seller, trxDateTime, str, sum, point, extra, footer, trxIdNumber);
 
-	while(1)
-	{
-		string msg = "Wydrukowac potwierdzenie ?\n\r";
-		clear();
-		title("Informacja");
-		message(0, 32, msg);
-		msg.clear();
-		msg = "Potwierdz OK\n\r";
-		message(0, 40, msg);
+		string footer = "DLA KLIENTA\n\r";
+		device->printTx(numerser, seller, trxDateTime, str, sum, point, extra, footer, trxIdNumber);
 
-		if(!Kb_Hit())
+		while(1)
 		{
-			cout << "ncisnalem guzik" << endl;
-			key = Kb_GetKey();
-			if(key != NOKEY)
+			string msg = "Wydrukowac potwierdzenie ?\n\r";
+			clear();
+			title("Informacja");
+			message(0, 32, msg);
+			msg.clear();
+			msg = "Potwierdz OK\n\r";
+			message(0, 40, msg);
+
+			if(!Kb_Hit())
 			{
-				if (key == KEYENTER)
+				cout << "ncisnalem guzik" << endl;
+				key = Kb_GetKey();
+				if(key != NOKEY)
 				{
-					cout << "OK wcisniety !!" << endl;
-					Kb_Flush();
-					break;
-				}
-				else
-				{
-					Kb_Flush();
+					if (key == KEYENTER)
+					{
+						cout << "OK wcisniety !!" << endl;
+						Kb_Flush();
+						break;
+					}
+					else
+					{
+						Kb_Flush();
+					}
 				}
 			}
+
 		}
+	
+		footer.clear();
+		footer = "DLA SPRZEDAWCY\n\r";
+		device->printTx(numerser, seller, trxDateTime, str, sum, point, extra, footer, trxIdNumber);
 
 	}
-	
-	footer.clear();
-	footer = "DLA SPRZEDAWCY\n\r";
-	device->printTx(numerser, seller, trxDateTime, str, sum, point, extra, footer, trxIdNumber);
-
-
 
 	return 0;
 }
