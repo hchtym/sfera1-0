@@ -646,6 +646,7 @@ int networkControler::sendTrx()
 			if(size1 == size2){
 				remove("tranzakcje.txt");
 				remove("tranzakcje.txt.bckp");
+				device->printSend(seriallNr, date, trxAmountSize, footer);
 				return 1;
 			}
 			else
