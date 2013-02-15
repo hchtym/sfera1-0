@@ -609,7 +609,7 @@ int networkControler::sendTrx()
 			file.read(temp,ulLen);
 		}
 	len = ulLen;
-	cout << size2 << "-" << sent << endl;
+	cout << size2 << "-" << x << endl;
 
 	//len = 720;
 	//cout << "długość stringu" << len << endl;
