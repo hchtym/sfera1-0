@@ -736,12 +736,14 @@ int masterControler::dispMenu()
 				// tu bede nagrody
 			break;
 			case 3:
+			{
 				string snumer = config->returnSeriall();
 				string dater = trxTime();
 				string cider = "0020000044";
 				string point = "11456";
 				string sender = "25";
 				string footerd = "DLA SPRZEDAWCY";
+			}
 				device->printSend(snumer, dater, sender, footerd);
 				device->checkPoint(snumer, seller, dater, cider, point,footerd);
 				//tu bedzie spr pkt
