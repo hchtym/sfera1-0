@@ -1021,14 +1021,48 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 
 void deviceControler::printSend(string seriallNr, string sellerId, string date, string cid)
 {
+	stringstream compose;
+	string row;
+
 	printerInit(8);
 	printerHeaderLesser();
 
-	
+	row.clear();
+	row = "-----------------------";
+	Prn_printf((char *)row.c_str());
+
+	printLines(1);
+
+	compose.str("");
+	compose << "Wyslane tr:  " << point << endl;
+	row.clear();
+	row = compose.str();
+	Prn_printf((char *)row.c_str());
+
+	printLines(1);
+
+	center(footer);
+
+	row.clear();
+	row = "----------------------\n";
+	Prn_printf((char *)row.c_str());
+
+	compose.str("");
+	compose << footer << endl;
+	row.clear();
+	row = compose.str();
+	Prn_printf((char *)row.c_str());
+	//printBold(0);
+	printLines(3);
+
+	Prn_Start();	
 }
 
 void deviceControler::checkPoint(string seriallNr, string sellerId, string date, string cid, string point,string footer)
 {
+	stringstream compose;
+	string row;
+
 	printerInit(16);
 	printerHeader(seriallNr, sellerId, date, cid);
 
