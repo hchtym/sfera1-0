@@ -944,14 +944,22 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 
 	stringstream compose;
 	string row;
-
+	string temp = trxNumber
 	//printBold(1);
 
 	printerInit(16);
 	printerHeader(seriallNr, sellerId, date, cid);
 
 	compose.str("");
-	compose << "Nr tr: " << trxNumber << endl;
+	compose << "TID: " << temp[0] << temp[1] << temp[2] << temp[3] << endl;
+	row.clear();
+	row = compose.str();
+	Prn_printf((char *)row.c_str());	
+
+	temp.erase(1,4);
+
+	compose.str("");
+	compose << "MID: " << temp << endl;
 	row.clear();
 	row = compose.str();
 	Prn_printf((char *)row.c_str());	
