@@ -743,13 +743,13 @@ int masterControler::dispMenu()
 				string point = "11456";
 				string sender = "25";
 				string footerd = "DLA SPRZEDAWCY";
-			}
 				device->printSend(snumer, dater, sender, footerd);
 				device->checkPoint(snumer, seller, dater, cider, point,footerd);
 				//tu bedzie spr pkt
 				//device->rfidScan();
 				//device->atc24Read();
 				//device->sleRead();
+			}
 			break;
 			case 4:
 				cout << "sendTranaction" << endl;
