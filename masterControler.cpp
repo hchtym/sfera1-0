@@ -361,6 +361,7 @@ int masterControler::checkPoints()
 				break;
 			}
 		}
+		pressed = false;
 
 		while(1)
 		{
@@ -376,31 +377,38 @@ int masterControler::checkPoints()
 				message(0, 40, msg2);
 				message(0, 48, msg3);
 
-
-				if(!Kb_Hit())
+				while(1)
 				{
-					cout << "ncisnalem guzik" << endl;
-					key = Kb_GetKey();
-					if(key != NOKEY)
+					if(!Kb_Hit())
 					{
-						if (key == KEYENTER)
+						cout << "ncisnalem guzik" << endl;
+						key = Kb_GetKey();
+						if(key != NOKEY)
 						{
-							break;
-						}
-						if (key == KEYCANCEL)
-						{
-							return 0;
+							if (key == KEYENTER)
+							{
+								pressed = true;
+								break;
+							}
+							if (key == KEYCANCEL)
+							{
+								return 0;
+							}
+							else
+							{
+								Kb_Flush();
+							}
 						}
 						else
 						{
 							Kb_Flush();
 						}
 					}
-					else
-					{
-						Kb_Flush();
-					}
 				}
+			if (pressed)
+			{
+				break;
+			}
 
 			}
 
