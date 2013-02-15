@@ -58,6 +58,7 @@ int main(){
 				num = read(fd, bufer, 6);
 				if(strcmp(bufer, "send\n") == 0)
 				{
+					cout << "dostalem polecenie sen !!" << endl;
 					master->masterBackground();	
 				}
 				memset(bufer, 0, sizeof(bufer));
