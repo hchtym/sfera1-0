@@ -569,6 +569,9 @@ int networkControler::sendTrx()
 	bytes_sent = 0;
 	bytes_recv = 0;
 
+	size1 = fileSize("tranzakcje.txt");
+	size2 = fileSize("tranzakcje.txt.bckp");
+
 	//ifstream file("tranzakcje.txt");
 	
 	if(size2 != 0)
