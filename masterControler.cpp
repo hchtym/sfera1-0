@@ -413,11 +413,11 @@ int masterControler::checkPoints()
 					break;
 				}
 			}
-
+*/
 			//wydrukuj kopie
 		}
 
-	*/}
+	}
 }
 
 void masterControler::timeWindow()
