@@ -547,7 +547,6 @@ int networkControler::sendTrx()
 	int x =0;
 	int ulHandle =0;
 	memset(pCAPData, 0, sizeof(pCAPData));
-	stringstream compose; 
 	string msg;
 	int sent;
 	string info;
