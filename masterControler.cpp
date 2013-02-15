@@ -298,6 +298,7 @@ int masterControler::checkPoints()
 	string display1, display2;
 	stringstream compose;
 	string cid;
+	bool pressed = false;
 		// sykrywaj spisanie swipe karty albo wpisanie numerka
 	cid.clear();
 	cid = device->magCardScan(false);
@@ -331,25 +332,33 @@ int masterControler::checkPoints()
 			message(0, 16, display1);
 			message(0, 32, display2);
 
-			if(!Kb_Hit())
+			while(1)
 			{
-				cout << "ncisnalem guzik" << endl;
-				key = Kb_GetKey();
-				if(key != NOKEY)
+				if(!Kb_Hit())
 				{
-					if (key == KEYENTER)
+					cout << "ncisnalem guzik" << endl;
+					key = Kb_GetKey();
+					if(key != NOKEY)
 					{
-						break;
+						if (key == KEYENTER)
+						{
+							pressed = true;
+							break;
+						}
+						else
+						{
+							Kb_Flush();
+						}
 					}
 					else
 					{
 						Kb_Flush();
 					}
 				}
-				else
-				{
-					Kb_Flush();
-				}
+			}
+			if (pressed)
+			{
+				break;
 			}
 		}
 
