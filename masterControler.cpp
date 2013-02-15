@@ -408,11 +408,10 @@ int masterControler::checkPoints()
 						}
 					}
 				}
-			if (pressed)
-			{
-				break;
-			}
-
+				if (pressed)
+				{
+					break;
+				}
 			}
 
 			//wydrukuj kopie
