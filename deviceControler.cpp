@@ -1097,7 +1097,7 @@ void deviceControler::checkPoint(string seriallNr, string sellerId, string date,
 	Prn_Start();
 }
 
-void deviceControler::printerHeaderLesser()
+void deviceControler::printerHeaderLesser(string seriallNr, string date)
 {
 	stringstream compose;
 	string row;
