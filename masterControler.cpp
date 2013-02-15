@@ -365,11 +365,11 @@ int masterControler::checkPoints()
 			}
 		}
 		pressed = false;
-
-		while(1)
-		{
+		device->checkPoint(seriallNr, seller, date, cid, points, footer);
+		//while(1)
+		//{
 			// wydrukuj cetlik 
-			device->checkPoint(seriallNr, seller, date, cid, points, footer);
+			
 			//spytaj sie o kopie
 /*			while(1)
 			{
@@ -415,7 +415,7 @@ int masterControler::checkPoints()
 			}
 */
 			//wydrukuj kopie
-		}
+		//}
 
 	}
 }
