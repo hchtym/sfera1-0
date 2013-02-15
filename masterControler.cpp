@@ -291,7 +291,7 @@ int masterControler::checkVersion()
 
 int masterControler::checkPoints()
 {
-	string msg1 = "Wydrukować Potwierdzenie ?";
+	string msg1 = "Wydrukowac Potwierdzenie ?";
 	string msg2 = "OK drukuj";
 	string msg3 = "CANCEL anuluj";
 	BYTE key;
@@ -326,6 +326,7 @@ int masterControler::checkPoints()
 		while(1)
 		{			
 			//wyswietl je i wydrukj potwierdzenie !!
+			clear();
 			title("Stan punktowy");
 			message(0, 16, display1);
 			message(0, 32, display2);
