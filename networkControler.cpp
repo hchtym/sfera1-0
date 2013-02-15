@@ -535,7 +535,9 @@ int networkControler::sendTrx()
 	ifstream  src("tranzakcje.txt");
     ofstream  dst("tranzakcje.txt.bckp");
 
-     dst << src.rdbuf();
+    dst << src.rdbuf();
+    src.close();
+    dst.close();
 	//system("/bin/cp tranzakcje.txt tranzakcje.txt.bckp");
 	//execl("/bin/cp", "cp", "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
 	}
