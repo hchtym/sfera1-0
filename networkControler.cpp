@@ -609,10 +609,10 @@ int networkControler::sendTrx()
 			file.read(temp,ulLen);
 		}
 	len = ulLen;
+	cout << size2 << "-" << sent << endl;
 
-
-		//len = 720;
-	cout << "długość stringu" << len << endl;
+	//len = 720;
+	//cout << "długość stringu" << len << endl;
 
 		if((bytes_sent = send(sockfd, temp, len, 0)) == -1)
 		{
