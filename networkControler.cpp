@@ -460,7 +460,8 @@ int networkControler::sendAck(string date)
 
 	if(info.compare("ok") == 0)
 	{
-		execl("/bin/rm", "rm", "versionFlag.txt", (char *) 0);
+		remove("versionFlag.txt");
+		//execl("/bin/rm", "rm", "versionFlag.txt", (char *) 0);
 	}
 
 	disconnectAllQuiet();
@@ -531,8 +532,8 @@ int networkControler::sendTrx()
 	ifstream filee("tranzakcje.txt");
 	if(filee)
 	{
-	system("/bin/cp tranzakcje.txt tranzakcje.txt.bckp");
-	//execl("/bin/cp", "cp", "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
+	//system("/bin/cp tranzakcje.txt tranzakcje.txt.bckp");
+	execl("/bin/cp", "cp", "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
 	}
 	sleep(1);
 	//cout << "otworzylem file stream loger" << endl;
