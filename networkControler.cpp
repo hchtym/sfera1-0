@@ -643,7 +643,7 @@ int networkControler::sendTrx()
 				//funkcja ktora wycina wyslane dane ! 
 				catFile();
 				remove("tranzakcje.txt.bckp");
-				device->printSend(seriallNr, date, trxSendAmount, footer);
+				device->printSend(seriallNr, date, trxAmountSize, footer);
 				return 0;
 			}
 			//loger << "serwer recived msg properly" << endl;
