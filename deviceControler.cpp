@@ -1019,7 +1019,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	Prn_Start();	
 }
 
-void deviceControler::printSend(string seriallNr, string sellerId, string date, string cid)
+void deviceControler::printSend(string seriallNr, string sellerId, string date, string sendTrx, string footer)
 {
 	stringstream compose;
 	string row;
@@ -1034,7 +1034,7 @@ void deviceControler::printSend(string seriallNr, string sellerId, string date, 
 	printLines(1);
 
 	compose.str("");
-	compose << "Wyslane tr:  " << point << endl;
+	compose << "Wyslane tr:  " << sendTrx << endl;
 	row.clear();
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
