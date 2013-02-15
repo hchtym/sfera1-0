@@ -439,7 +439,8 @@ deviceControler::deviceControler(){
 	Prn_Init();
 };
 
-int deviceControler::rfidScan(){
+int deviceControler::rfidScan()
+{
 	BYTE buf[40] = {0};
 	char str[20]= {0};
 	char str2[20]= {0};
@@ -490,7 +491,6 @@ int deviceControler::rfidScan(){
 			}
  		}
 	}
-
 }
 
 int deviceControler::atc24Read()
@@ -1022,15 +1022,79 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 void deviceControler::printSend(string seriallNr, string sellerId, string date, string cid)
 {
 	printerInit(8);
-	//printerHeader();
+	printerHeaderLesser();
+
 	
 }
 
-void deviceControler::checkPoint()
+void deviceControler::checkPoint(string seriallNr, string sellerId, string date, string cid, string point,string footer)
 {
-	printerInit(8);
-	//printerHeader();
-	
+	printerInit(16);
+	printerHeader(seriallNr, sellerId, date, cid);
+
+	row.clear();
+	row = "-----------------------";
+	Prn_printf((char *)row.c_str());
+
+	printLines(1);
+
+	compose.str("");
+	compose << "Stan pkt: " << point << endl;
+	row.clear();
+	row = compose.str();
+	Prn_printf((char *)row.c_str());
+
+	printLines(1);
+
+	center(footer);
+
+	row.clear();
+	row = "----------------------\n";
+	Prn_printf((char *)row.c_str());
+
+	compose.str("");
+	compose << footer << endl;
+	row.clear();
+	row = compose.str();
+	Prn_printf((char *)row.c_str());
+	//printBold(0);
+	printLines(3);
+
+	Prn_Start();
+}
+
+void deviceControler::printerHeaderLesser()
+{
+	stringstream compose;
+	string row;
+	vector<string> vect;
+
+	printLines(2);
+	Prn_Logo((unsigned char *) baPrinterLogo, 50, 252, 0, 0);
+	//Prn_Logo((unsigned char *) baPrinterLogo2, 33, 169, 0, 0);
+	printLines(1);
+   	
+	compose.str("");
+	compose << "Terminal: " << seriallNr << endl;
+	row = compose.str();
+	Prn_printf((char *)row.c_str());
+
+	for (int i = 0; i < date.size(); i+=2)
+	{
+		compose.str("");
+		compose << date[i] << date[i+1];
+		vect.push_back(compose.str());
+	}
+	compose.str("");
+	compose << "20" << vect[0] << "-" << vect[1] << "-" << vect[2] << " " << vect[3] << ":" << vect[4];
+	date.clear();
+	date = compose.str(); 
+
+	compose.str("");
+	compose << "Data: " << date << endl;
+	row.clear();
+	row = compose.str();
+	Prn_printf((char *)row.c_str());
 }
 
 void deviceControler::printerHeader(string seriallNr, string sellerId, string date, string cid)
@@ -1078,7 +1142,6 @@ void deviceControler::printerHeader(string seriallNr, string sellerId, string da
 	row.clear();
 	row = compose.str();
 	Prn_printf((char *)row.c_str());
-	
 }
 
 
