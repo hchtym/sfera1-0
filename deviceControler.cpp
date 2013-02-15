@@ -944,7 +944,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 
 	stringstream compose;
 	string row;
-	string temp = trxNumber
+	string temp = trxNumber;
 	//printBold(1);
 
 	printerInit(16);
