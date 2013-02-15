@@ -20,6 +20,7 @@
 #include <fstream>
 #include <unistd.h>
 #include "configControler.h"
+#include "deviceControler.h"
 //#include "ftplib.h"
 
 extern "C"{
@@ -62,6 +63,7 @@ private:
 
 	// zmienna zawieajaca dane do pobieranie konfiguracji wykorzystywane w 2 metodach;
 	static const char* const configs[2][6];
+	deviceControler *device;
 	// funkcje wykorzystywane tylko raz przy pierwszym pobieraniu konfiguracji 
 	int gprsCon();
 	int ethConf();

@@ -1,5 +1,6 @@
 #include "networkControler.h"
 #include "configControler.h"
+#include "deviceControler.h"
 
 #define buffer (2048)
 //#define ERR_OK (0)
@@ -9,7 +10,7 @@ using namespace std;
 
 networkControler::networkControler(string &ipr, string &portr, string &apnr, string &userr, string &passwordr, string &serialNr)
 {
-	cout << "pizda2" << endl;
+	device = new deviceControler();
 	cout << "konfig z obiektu networkControler przed przekazaniem !!" << endl;
 	ip = ipr;
 	port = portr;
@@ -23,6 +24,7 @@ networkControler::networkControler(string &ipr, string &portr, string &apnr, str
 
 networkControler::~networkControler()
 {
+	device = new deviceControler();
 }
 
 int networkControler::connectAllQuiet()
@@ -563,6 +565,7 @@ int networkControler::sendTrx()
 	sleep(1);
 	ulLen = 720;
 	ifstream file("tranzakcje.txt.bckp", ios::in|ios::binary);
+	int trxSendAmount = size2/sizeof(struct Transaction);
 	while(x < size2)
 	{
 		if(sent < size2)
@@ -611,14 +614,15 @@ int networkControler::sendTrx()
 				cout << "tranzakcje.txt.bckp size: " << size2 << endl;
 
 			if(size1 == size2){
-				execl("/bin/rm", "rm", "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
+				remove("tranzakcje.txt");
+				remove("tranzakcje.txt.bckp");
 				return 1;
 			}
 			else
 			{
 				//funkcja ktora wycina wyslane dane ! 
 				catFile();
-				execl("/bin/rm", "rm", "tranzakcje.txt.bckp", (char *) 0);
+				remove("tranzakcje.txt.bckp");
 				return 0;
 			}
 			//loger << "serwer recived msg properly" << endl;
