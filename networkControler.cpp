@@ -518,7 +518,7 @@ int networkControler::sendTrx()
 	cout << "czas w bcd: " << bTime << endl;
 	BcdToAsc(rTime,bTime, 12); // przetwazanie bcd na asci 
 	cout << "czas w asce : " << rTime << endl;
-	
+	string trxAmountSize;
 	compose.str("");
 	compose << rTime;
 	string date = compose.str();
@@ -583,6 +583,9 @@ int networkControler::sendTrx()
 	ulLen = 720;
 	ifstream file("tranzakcje.txt.bckp", ios::in|ios::binary);
 	int trxSendAmount = size2/sizeof(struct Transaction);
+	compose.str("");
+	compose << trxSendAmount;
+	trxAmountSize = compose.str();
 	while(x < size2)
 	{
 		if(sent < size2)
