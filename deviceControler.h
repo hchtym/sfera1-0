@@ -44,7 +44,7 @@ public:
 	void printSend(string seriallNr, string sellerId, string date, string sendTrx, string footer);
 	void checkPoint(string seriallNr, string sellerId, string date, string cid, string point,string footer);
 	void printerHeader(string seriallNr, string sellerId, string date, string cid);
-	void printerHeaderLesser();
+	void printerHeaderLesser(string seriallNr, string date);
 	void printRecipe();
 	void printerSetFont(int size);
 	int rfidScan();
