@@ -508,13 +508,17 @@ int networkControler::getPointState()
 
 int networkControler::sendTrx()
 {
+	string footer = "DLA SPRZEDAWCY";
+	string date = config->trxTime();
+	string seriallNr = config->returnSeriall();
 	etk1:
 	cout << "jestem w send trx" << endl;
 	//ofstream loger;
 	ifstream filee("tranzakcje.txt");
 	if(filee)
 	{
-	execl("/bin/cp", "cp", "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
+	system("/bin/cp tranzakcje.txt tranzakcje.txt.bckp");
+	//execl("/bin/cp", "cp", "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
 	}
 	sleep(1);
 	//cout << "otworzylem file stream loger" << endl;
@@ -623,6 +627,7 @@ int networkControler::sendTrx()
 				//funkcja ktora wycina wyslane dane ! 
 				catFile();
 				remove("tranzakcje.txt.bckp");
+				device->printSend(seriallNr, date, trxSendAmount, footer);
 				return 0;
 			}
 			//loger << "serwer recived msg properly" << endl;
