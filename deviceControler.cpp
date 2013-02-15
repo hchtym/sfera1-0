@@ -1019,13 +1019,13 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	Prn_Start();	
 }
 
-void deviceControler::printSend(string seriallNr, string sellerId, string date, string sendTrx, string footer)
+void deviceControler::printSend(string seriallNr, string date, string sendTrx, string footer)
 {
 	stringstream compose;
 	string row;
 
 	printerInit(8);
-	printerHeaderLesser();
+	printerHeaderLesser(string seriallNr, string date);
 
 	row.clear();
 	row = "-----------------------";

@@ -41,7 +41,7 @@ public:
 	void printTotal(char *cid, int points, bool copy);
 
 	void printTx(string seriallNr, string sellerId, string date, string cid, string sum, string point, string extra, string footer, string trxNumber);
-	void printSend(string seriallNr, string sellerId, string date, string sendTrx, string footer);
+	void printSend(string seriallNr, string date, string sendTrx, string footer);
 	void checkPoint(string seriallNr, string sellerId, string date, string cid, string point,string footer);
 	void printerHeader(string seriallNr, string sellerId, string date, string cid);
 	void printerHeaderLesser(string seriallNr, string date);
