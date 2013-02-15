@@ -371,7 +371,7 @@ int masterControler::checkPoints()
 			// wydrukuj cetlik 
 			device->checkPoint(seriallNr, seller, date, cid, points, footer);
 			//spytaj sie o kopie
-			while(1)
+/*			while(1)
 			{
 
 				clear();
@@ -417,7 +417,7 @@ int masterControler::checkPoints()
 			//wydrukuj kopie
 		}
 
-	}
+	*/}
 }
 
 void masterControler::timeWindow()
