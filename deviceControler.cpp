@@ -1025,7 +1025,7 @@ void deviceControler::printSend(string seriallNr, string date, string sendTrx, s
 	string row;
 
 	printerInit(8);
-	printerHeaderLesser(string seriallNr, string date);
+	printerHeaderLesser(seriallNr, date);
 
 	row.clear();
 	row = "-----------------------";
