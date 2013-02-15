@@ -294,7 +294,10 @@ int masterControler::checkPoints()
 	string msg1 = "Wydrukowac Potwierdzenie ?";
 	string msg2 = "OK drukuj";
 	string msg3 = "CANCEL anuluj";
+	string footer = "DLA KLIENTA";
+	string date = trxTime();
 	BYTE key;
+	sring seriallNr = config->returnSeriall();
 	string display1, display2;
 	stringstream compose;
 	string cid;
@@ -366,7 +369,7 @@ int masterControler::checkPoints()
 		while(1)
 		{
 			// wydrukuj cetlik 
-
+			device->checkPoint(seriallNr, seller, date, cid, points, footer);
 			//spytaj sie o kopie
 			while(1)
 			{
