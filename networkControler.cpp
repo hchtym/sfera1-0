@@ -532,8 +532,12 @@ int networkControler::sendTrx()
 	ifstream filee("tranzakcje.txt");
 	if(filee)
 	{
+	ifstream  src("tranzakcje.txt");
+    ofstream  dst("tranzakcje.txt.bckp");
+
+     dst << src.rdbuf();
 	//system("/bin/cp tranzakcje.txt tranzakcje.txt.bckp");
-	execl("/bin/cp", "cp", "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
+	//execl("/bin/cp", "cp", "tranzakcje.txt", "tranzakcje.txt.bckp", (char *) 0);
 	}
 	sleep(1);
 	//cout << "otworzylem file stream loger" << endl;
