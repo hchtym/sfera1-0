@@ -736,7 +736,7 @@ int masterControler::dispMenu()
 				// tu bede nagrody
 			break;
 			case 3:
-			{
+			/*{
 				string snumer = config->returnSeriall();
 				string dater = trxTime();
 				string cider = "0020000044";
@@ -749,7 +749,8 @@ int masterControler::dispMenu()
 				//device->rfidScan();
 				//device->atc24Read();
 				//device->sleRead();
-			}
+			}*/
+			checkPoints();
 			break;
 			case 4:
 				cout << "sendTranaction" << endl;
