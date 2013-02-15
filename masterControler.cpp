@@ -736,14 +736,14 @@ int masterControler::dispMenu()
 				// tu bede nagrody
 			break;
 			case 3:
-				strnig snumer = config->returnSeriall();
-				string date = trxTime();
-				string cid = "0020000044";
-				strnig point = "11456";
-				string sended = "25";
-				string footer = "DLA SPRZEDAWCY";
-				device->printSend(snumer, date, footer);
-				device->checkPoint(snumer, seller, date, cid, point,footer);
+				string snumer = config->returnSeriall();
+				string dater = trxTime();
+				string cider = "0020000044";
+				string point = "11456";
+				string sender = "25";
+				string footerd = "DLA SPRZEDAWCY";
+				device->printSend(snumer, date, sender, footer);
+				device->checkPoint(snumer, seller, dater, cider, point,footerd);
 				//tu bedzie spr pkt
 				//device->rfidScan();
 				//device->atc24Read();
