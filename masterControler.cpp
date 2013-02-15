@@ -297,7 +297,7 @@ int masterControler::checkPoints()
 	string footer = "DLA KLIENTA";
 	string date = trxTime();
 	BYTE key;
-	sring seriallNr = config->returnSeriall();
+	string seriallNr = config->returnSeriall();
 	string display1, display2;
 	stringstream compose;
 	string cid;
