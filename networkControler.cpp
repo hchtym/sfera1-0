@@ -508,8 +508,22 @@ int networkControler::getPointState()
 
 int networkControler::sendTrx()
 {
+	// wyznacza godzine tranzakcji
+	BYTE bTime[50];
+	BYTE rTime[50];
+	memset(bTime, 0, sizeof(bTime));
+	memset(rTime, 0, sizeof(rTime));
+	stringstream compose;
+	GetTime(bTime); // pobieranie czasu 
+	cout << "czas w bcd: " << bTime << endl;
+	BcdToAsc(rTime,bTime, 12); // przetwazanie bcd na asci 
+	cout << "czas w asce : " << rTime << endl;
+	
+	compose.str("");
+	compose << rTime;
+	string date = compose.str();
+
 	string footer = "DLA SPRZEDAWCY";
-	string date = config->trxTime();
 	string seriallNr = config->returnSeriall();
 	etk1:
 	cout << "jestem w send trx" << endl;
