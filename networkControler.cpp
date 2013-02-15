@@ -555,7 +555,7 @@ int networkControler::sendTrx()
 	int ulHandle =0;
 	memset(pCAPData, 0, sizeof(pCAPData));
 	string msg;
-	int sent;
+	int sent = 0;
 	string info;
 	compose.str("");
 	cout << "tworze stream" << endl;
