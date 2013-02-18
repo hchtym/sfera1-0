@@ -517,7 +517,7 @@ int networkControler::updConf(){
 	msg = compose.str();
 
 	cout << "Otrzymana wiadomosc" << msg << endl;
-	if (msg.compare("brak") == 0)
+	if (msg.compare("brak\n") == 0)
 	{
 		cout << "Brak Konfiguracji !" << endl;
 		return 0;
