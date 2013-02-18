@@ -366,56 +366,7 @@ int masterControler::checkPoints()
 		}
 		pressed = false;
 		device->checkPoint(seriallNr, seller, date, cid, points, footer);
-		//while(1)
-		//{
-			// wydrukuj cetlik 
-			
-			//spytaj sie o kopie
-/*			while(1)
-			{
-
-				clear();
-				title("Informacja");
-				message(0, 32, msg1);
-				message(0, 40, msg2);
-				message(0, 48, msg3);
-
-				while(1)
-				{
-					if(!Kb_Hit())
-					{
-						cout << "ncisnalem guzik" << endl;
-						key = Kb_GetKey();
-						if(key != NOKEY)
-						{
-							if (key == KEYENTER)
-							{
-								pressed = true;
-								break;
-							}
-							if (key == KEYCANCEL)
-							{
-								return 0;
-							}
-							else
-							{
-								Kb_Flush();
-							}
-						}
-						else
-						{
-							Kb_Flush();
-						}
-					}
-				}
-				if (pressed)
-				{
-					break;
-				}
-			}
-*/
-			//wydrukuj kopie
-		//}
+		
 
 	}
 }
