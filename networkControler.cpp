@@ -482,6 +482,7 @@ int networkControler::fileSize(string fileName)
 
 int networkControler::updConf(){
 	string msg;
+	string msg2;
 	stringstream compose;
 	string snumer = config->returnSeriall();
 	string confVer = config->returnConfVer();
@@ -513,7 +514,7 @@ int networkControler::updConf(){
 	compose.str("");
 	compose << pCAPData;
 	msg.clear();
-	msg = compose.srt();
+	msg = compose.str();
 
 	if (msg.compare("brak") == 0)
 	{
@@ -553,7 +554,7 @@ int networkControler::updConf(){
     		if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))== -1){
     			perror("send"); // logowanie do pliku !!
     		}else{
-				loger << "Potwierdzeniew yslane poprawnie !!" << endl;
+				cout << "Potwierdzeniew yslane poprawnie !!" << endl;
 			}
 
     		memset(pCAPData, 0, sizeof(pCAPData));
