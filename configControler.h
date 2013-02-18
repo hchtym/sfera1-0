@@ -52,6 +52,7 @@ public:
 	int returnVersion(); 
 	int returnServiceCode();
 	string returnSeriall();
+	string returnConfVer();
 	int confParse(vector<string> &vect, string section);
 	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
 	void reloadConfig();

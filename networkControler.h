@@ -100,6 +100,7 @@ public:
 	int updClock();
 	int sendTrx();
 	int updClk();
+	int updConf();
 	int updSoft();
 	int sendLogs();
 	int wrtConLogs();

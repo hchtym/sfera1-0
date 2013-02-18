@@ -480,6 +480,141 @@ int networkControler::fileSize(string fileName)
 	return size;
 }
 
+int networkControler::updConf(){
+	string msg;
+	stringstream compose;
+	string snumer = config->returnSeriall();
+	string confVer = config->returnConfVer();
+	char pCAPData[buffer*10];
+	char download[buffer*10];
+	memset(pCAPData, 0, sizeof(pCAPData));
+	memset(download, 0, sizeof(download));
+	int len,bytes_sent,bytes_recv;
+	connectAllQuiet();
+
+	compose.str("");
+	compose << "conf;" << snumer << ";" << confVer << "\n\r";
+
+	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
+	{
+		//loger << "send filetx; error" << endl;
+		perror("send"); // logowanie do pliku !
+		//exit(1);
+	}
+	//sleep(1);
+
+	if((bytes_recv = recv(sockfd, pCAPData,(buffer*10) -1, 0)) == -1)
+	{
+		//loger << "recive error" << endl;
+		perror("recive"); // logowanie do pliku !!
+		//exit(1);
+	}
+
+	compose.str("");
+	compose << pCAPData;
+	msg.clear();
+	msg = compose.srt();
+
+	if (msg.compare("brak") == 0)
+	{
+		cout << "Brak Konfiguracji !" << endl;
+		return 0;
+	}
+	else
+	{
+		remove("config.txt");
+
+		ofstream file("config.txt", ios_base::app);
+		// konfiguracja socketa !! 
+		cout << "entering for !" << endl;
+		for(int i =0; i<6; i++){
+			sleep(1);
+		    char str[40];
+		    int dataLen;
+		    sprintf(str, "%s" ,configs[1][i]);
+		    char msg3[50];
+		    strcpy(msg3, configs[0][i]);
+		    len = msg2.size();
+		    if((bytes_sent = send(sockfd, str, strlen(str), 0)) == -1 ){
+			    perror("send"); // logowanie do pliku !
+			 //   exit(1);
+    		}else{
+				cout << "Sendet request for data "  << configs[1][i] << endl;
+			}
+    		memset(pCAPData, 0, sizeof(pCAPData));
+    		if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1){
+    			perror("reciv"); // logowanie do pliku !!
+    		//	exit(1);
+    		}else{
+				cout << "reciver dataLen: " << pCAPData << endl;
+			}
+    	    dataLen = atoi(pCAPData);
+			cout << "wysylam potwierdzenie datalen" << endl;
+    		if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))== -1){
+    			perror("send"); // logowanie do pliku !!
+    		}else{
+				loger << "Potwierdzeniew yslane poprawnie !!" << endl;
+			}
+
+    		memset(pCAPData, 0, sizeof(pCAPData));
+			memset(download, 0, sizeof(download));
+        	bytes_recv = 0;
+
+			while(bytes_recv < dataLen){
+				int recive = 0;
+					if((recive = recv(sockfd, download, dataLen, 0))== -1){
+				    		perror("Reciv"); // logowanie do pliku !!
+				    //		exit(1);
+			    	}
+			    	else
+			    	{
+						cout << "recived part of this size: " << recive << endl;
+					}
+					bytes_recv += recive;
+					strcat(pCAPData, download);
+					memset(download, 0, sizeof(download));		
+			}
+			// przekazuje pobrane dane to stringa 
+        	string dane(pCAPData);
+			// tworze vector
+        	vector<string> tokens;
+			// prasuje ztringa i podaje go do vectora
+        	Tokenize(dane, tokens, ";");
+			// iteruje vector i wrzucam dane do pliku !!
+        	std::vector<string>::iterator j;
+			int licz=0;
+			file << "[" << configs[1][i] << "]" << endl;
+        	for(j=tokens.begin(); j<tokens.end(); ++j)
+        	{
+				if(configs[1][i]== "ok"){
+					file << *j;
+					file << endl;
+				}else{
+					file << "No" << licz << " = " << *j << endl;
+					licz++;
+				}
+    	    }
+			file << "[/" << configs[1][i] << "]" << endl;
+			file << endl;
+    	   // cout << endl;
+			memset(pCAPData, 0, sizeof(pCAPData));
+		}
+		// potwierdzam zakonczenie pobierania danych !!
+		sleep(1);
+
+    	if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))==-1){
+    	    perror("send");
+    	    //exit(1);
+    	}
+    	file.close();
+
+	}
+
+
+	disconnectAllQuiet();
+	return 1;
+}
+
 void networkControler::catFile()
 {
 	fstream file;
@@ -1208,9 +1343,6 @@ int networkControler::ethConf()
     file.close();
 	// zamykam socket !
 	close(sockfd);
-	
-	
-	
 }
 
 int networkControler::startConf(int type)
