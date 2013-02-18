@@ -693,40 +693,19 @@ int masterControler::dispMenu()
 					loginFlag = false;
 				}
 			}else{
-				//string dupa = trxTime();
-				//computeTrxNumber(dupa);
-				selling();
-				//device->printTx("00100200086567","00075","2013-02-05 10:46:52","0020000044", "123,45", "30", "0", "Dla Klienta");
-				//softUpdAck();
-				//check point do sprawdzenia z drukarka :D 
-				//checkPoints();
-				// tu bedzie przejscie do sklepu in the future :D jeeeeeee
+				//selling();
+				network->updConf();
 			}
 			break;
 			case 2:
 				// tu bede nagrody
 			break;
 			case 3:
-			/*{
-				string snumer = config->returnSeriall();
-				string dater = trxTime();
-				string cider = "0020000044";
-				string point = "11456";
-				string sender = "25";
-				string footerd = "DLA SPRZEDAWCY";
-				device->printSend(snumer, dater, sender, footerd);
-				device->checkPoint(snumer, seller, dater, cider, point,footerd);
-				//tu bedzie spr pkt
-				//device->rfidScan();
-				//device->atc24Read();
-				//device->sleRead();
-			}*/
-			checkPoints();
+				checkPoints();
 			break;
 			case 4:
 				cout << "sendTranaction" << endl;
 				wrtFifo();
-				//network->sendTransaction();
 				cout << "jestem po send transaction" << endl;
 			break;
 			case 5:
@@ -1730,12 +1709,8 @@ void masterControler::Tokenize(const string& str, vector<string>& tokens, const 
 	    lastPos = str.find_first_not_of(delimiters, pos);
 	    pos = str.find_first_of(delimiters, lastPos);
 	}
-
 }
 
-void masterControler::recipePrint(bool recipeCopy)
-{
-}
 
 
 
