@@ -42,6 +42,12 @@ string configControler::returnParam(string part)
 	return param;
 }
 
+string configControler::returnConfVer()
+{
+	string  confVer = cf->Value("ok", "version.date");
+	return confVer;
+}
+
 int configControler::returnMenu(vector<string> &vec)
 {
 	confParse(vec, "menu");
