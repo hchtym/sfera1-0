@@ -44,7 +44,7 @@ string configControler::returnParam(string part)
 
 string configControler::returnConfVer()
 {
-	string  confVer = cf->Value("version.date", "ok");
+	string  confVer = cf->Value("ok", "version.date");
 	return confVer;
 }
 
@@ -60,7 +60,7 @@ int configControler::returnPrize(vector<string> &vec)
 
 int configControler::returnSeller(vector<string> &vec)
 {
-	confParse(vec, "prize");
+	confParse(vec, "seller");
 }
 
 int configControler::returnLCard(vector<string> &vec)
