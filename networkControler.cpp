@@ -480,7 +480,8 @@ int networkControler::fileSize(string fileName)
 	return size;
 }
 
-int networkControler::updConf(){
+int networkControler::updConf()
+{
 	string msg;
 	string msg2;
 	stringstream compose;
@@ -523,7 +524,8 @@ int networkControler::updConf(){
 		return 0;
 	}
 	else
-	{
+	{	
+		cout << "pobieram nowa konfiguracje: " << msg << endl;
 		remove("config.txt");
 
 		ofstream file("config.txt", ios_base::app);
