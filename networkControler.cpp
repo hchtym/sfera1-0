@@ -1380,7 +1380,6 @@ void networkControler::Tokenize(const string& str, vector<string>& tokens, const
 	    lastPos = str.find_first_not_of(delimiters, pos);
 	    pos = str.find_first_of(delimiters, lastPos);
 	}
-
 }
 
 const char* const networkControler::configs[2][6]=

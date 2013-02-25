@@ -694,7 +694,7 @@ int masterControler::dispMenu()
 				}
 			}else{
 				//selling();
-				network->updConf();
+				//network->updConf();
 			}
 			break;
 			case 2:
