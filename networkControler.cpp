@@ -496,7 +496,7 @@ int networkControler::updConf()
 
 	compose.str("");
 	compose << "conf;" << snumer << ";" << confVer << "\n\r";
-
+	cout << "Wysylam zapytsanie o config: " << compose.str() << endl;
 	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
 	{
 		//loger << "send filetx; error" << endl;
