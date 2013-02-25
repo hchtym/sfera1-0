@@ -44,7 +44,7 @@ string configControler::returnParam(string part)
 
 string configControler::returnConfVer()
 {
-	string  confVer = cf->Value("ok", "version.date");
+	string  confVer = cf->Value("version.date", "ok");
 	return confVer;
 }
 
