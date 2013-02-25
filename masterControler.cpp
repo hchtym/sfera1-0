@@ -693,8 +693,8 @@ int masterControler::dispMenu()
 					loginFlag = false;
 				}
 			}else{
-				selling();
-				//network->updConf();
+				//selling();
+				network->updConf();
 			}
 			break;
 			case 2:
