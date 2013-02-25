@@ -483,7 +483,6 @@ int networkControler::fileSize(string fileName)
 int networkControler::updConf()
 {
 	string msg;
-	string msg2;
 	stringstream compose;
 	string snumer = config->returnSeriall();
 	string confVer = config->returnConfVer();
@@ -495,7 +494,7 @@ int networkControler::updConf()
 	connectAllQuiet();
 
 	compose.str("");
-	compose << "conf;" << snumer << ";" << confVer << "\n\r";
+	compose << "conf;" << snumer << ";" << confVer;
 	cout << "Wysylam zapytsanie o config: " << compose.str() << endl;
 	msg.clear();
 	msg = compose.str();
@@ -540,7 +539,6 @@ int networkControler::updConf()
 		    sprintf(str, "%s" ,configs[1][i]);
 		    char msg3[50];
 		    strcpy(msg3, configs[0][i]);
-		    len = msg2.size();
 		    if((bytes_sent = send(sockfd, str, strlen(str), 0)) == -1 ){
 			    perror("send"); // logowanie do pliku !
 			 //   exit(1);
