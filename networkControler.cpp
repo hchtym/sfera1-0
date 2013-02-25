@@ -497,6 +497,8 @@ int networkControler::updConf()
 	compose.str("");
 	compose << "conf;" << snumer << ";" << confVer << "\n\r";
 	cout << "Wysylam zapytsanie o config: " << compose.str() << endl;
+	msg.clear();
+	msg = compose.str();
 	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
 	{
 		//loger << "send filetx; error" << endl;
@@ -518,7 +520,7 @@ int networkControler::updConf()
 	msg = compose.str();
 
 	cout << "Otrzymana wiadomosc" << msg << endl;
-	if (msg.compare("brak\n") == 0)
+	if (msg.compare("brak") == 0)
 	{
 		cout << "Brak Konfiguracji !" << endl;
 		return 0;
