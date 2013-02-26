@@ -102,7 +102,6 @@ public:
 	bool sendTrx();
 	int dispMenu();
 	int updClk();
-	int checkVersion();
 	int loginScr();
 	void timeWindow();
 	void softUpdAck();
