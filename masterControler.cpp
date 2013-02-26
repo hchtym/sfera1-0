@@ -693,8 +693,8 @@ int masterControler::dispMenu()
 					loginFlag = false;
 				}
 			}else{
-				//selling();
-				network->updConf();
+				selling();
+				//network->updConf();
 			}
 			break;
 			case 2:
@@ -709,6 +709,7 @@ int masterControler::dispMenu()
 				cout << "jestem po send transaction" << endl;
 			break;
 			case 5:
+				softUpdAck();
 				// tu bedzie serwis !!
 			break;
 			default:
