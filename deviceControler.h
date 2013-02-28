@@ -10,19 +10,6 @@
 #include <iostream>
 #include <stdlib.h>
 
-
-#include <fcntl.h>
-#include <termio.h>
-#include <unistd.h>
-#include <string.h>
-#include <ctype.h>
-#include <stdlib.h>
-#include <stdio.h>
-
-#include "test_interface.h"
-
-
-
 extern "C"{
 #include "all_headers.h"	
 }
