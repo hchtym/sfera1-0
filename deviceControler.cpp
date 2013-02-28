@@ -450,29 +450,32 @@ int deviceControler::rfidScan()
 	Lcd_Printxy(0,0,0, "Test RFID");
 	
 	
-	while(1){
+	while(1)
+	{
 
-		if(ERR_OK == RF_WaitCard_Timeout(RF_M1, buf, 150)){
+		if(ERR_OK == RF_WaitCard_Timeout(RF_M1, buf, 300))
+		{
 			cout << "M1" << endl;
-			if(buf[0] > 0){
+			if(buf[0] > 0)
+			{
 				sprintf(str, "%x\n",(long)buf+1);
 				hexToString(str2, buf + 1, buf[0]);
 				break;
 			}
 		}
 
-		if(ERR_OK == RF_WaitCard_Timeout(RF_TYPE_A, buf, 150)){
+		if(ERR_OK == RF_WaitCard_Timeout(RF_TYPE_A, buf, 300))
+		{
 			cout << "typeA" << endl;
-			if(buf[0] > 0){
+			if(buf[0] > 0)
+			{
 				sprintf(str, "%x\n",(long)buf+1);
 				hexToString(str2, buf + 1, buf[0]);
 				break;
 			}
-		}
-
-
-		
+		}		
 	}
+
 	RF_Close();
 	
 	int len = strlen(str2);
