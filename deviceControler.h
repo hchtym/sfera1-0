@@ -29,11 +29,6 @@ extern "C"{
 
 using namespace std;
 
-
-int test_14443(void);
-int test_rf_card(void);
-
-
 class deviceControler{
 private:
 	int lineWidth;
@@ -69,6 +64,7 @@ public:
 	void printerSetFont(int size);
 	int tagScan();
 	int rfidScan();
+	int rfidWrite();
 	int atc24Read();
 	int sleRead();
 	int chipCardScan();
