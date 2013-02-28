@@ -709,7 +709,8 @@ int masterControler::dispMenu()
 				cout << "jestem po send transaction" << endl;
 			break;
 			case 5:
-				softUpdAck();
+				//softUpdAck();
+				device->rfidScan();
 				// tu bedzie serwis !!
 			break;
 			default:
