@@ -1027,6 +1027,377 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	Prn_Start();	
 }
 
+int tagScan()
+{
+	unsigned char sn[100]="";
+	
+	Lcd_Cls();
+	Api_DispString("Test M1", 0, MIDDLE_DISP, 1);
+	Api_DispString("Please put the M1 card", 4, MIDDLE_DISP, 0);
+	if(RF_WaitCard(RF_M1, sn))
+	{
+		return ERR_CANCELLED;
+	}
+
+	char buf[100]="";
+	sprintf(buf, "%02X%02X%02X%02X", sn[1], sn[2], sn[3], sn[4]);	
+/*	
+	Api_LcdClrLine(2, 7);
+	Api_DispString(buf, 2, MIDDLE_DISP, 0);
+	unsigned int no;
+	no = sn[1]*256*256*256+sn[2]*256*256+sn[3]*256+sn[4];
+	sprintf(buf, "%u", no);
+	Api_DispString(buf, 4, MIDDLE_DISP, 0);
+	no = sn[4]*256*256*256+sn[3]*256*256+sn[2]*256+sn[1];
+	sprintf(buf, "%u", no);
+	Api_DispString(buf, 6, MIDDLE_DISP, 0);
+	Api_WaitKey(15);
+*/
+
+	Lcd_Cls();
+	Api_DispString(buf, 0, MIDDLE_DISP, 1);
+
+	while(1)
+	{
+		uchar oper, key_type, key_data[20]="", data_2_w[20]="";
+		int addr, i, value;
+		char input_buf[100];
+
+		//1.
+		Api_LcdClrLine(2, 7);
+		Api_DispString("1-Read 2-Write", 2, LEFT_DISP, 0);
+		Api_DispString("3-Add  4-Decre", 4, LEFT_DISP, 0);
+		Api_DispString("5-Init ", 6, LEFT_DISP, 0);
+
+		oper = Api_WaitKey(30);
+		if((KEY1 > oper) || (KEY5 < oper))
+		{
+			return 0;
+		}
+
+		if(KEY6 == oper)
+		{
+			Lcd_Cls();
+			Api_DispString("Multi Cards", 0, MIDDLE_DISP, 1);
+
+			while(1)
+			{				
+				Api_LcdClrLine(2, 7);
+				Api_DispString("Please put the M1 card", 4, MIDDLE_DISP, 0);
+				if(RF_WaitCard(RF_M1, sn))
+				{
+					break;
+				}
+				Api_LcdClrLine(2, 7);
+				sprintf(buf, "%02X%02X%02X%02X", sn[1], sn[2], sn[3], sn[4]);	
+				Api_DispString(buf, 4, MIDDLE_DISP, 1);
+				Api_DispString("Any key to next", 6, LEFT_DISP, 0);
+				RF_Halt();
+				Api_WaitKey(0);
+			}
+
+			continue;
+		}
+		
+		//2.
+		Api_LcdClrLine(2, 7);
+		Api_DispString("Enter the block number to be operated", 2, LEFT_DISP, 0);
+		memset(input_buf, 0, sizeof(input_buf));
+		if(ERR_OK != Kb_GetStr(8*9, 4*8, (uchar *)input_buf, 1, 3, NUM_IN, 30))
+		{
+			continue;
+		}
+
+		addr = atoi(input_buf);
+
+		//3.
+		Api_LcdClrLine(2, 7);
+		Api_DispString("1-Key A", 2, LEFT_DISP, 0);
+		Api_DispString("2-Key B", 4, LEFT_DISP, 0);
+
+		key_type = Api_WaitKey(30);
+		if((KEY1 != key_type) && (KEY2 != key_type))
+		{
+			continue;
+		}
+
+		key_type = key_type-KEY1+M1_PASS_A;
+
+		//4.
+INPUT_PASSWORD:
+		Api_LcdClrLine(2, 7);
+		Api_DispString("Enter the password", 2, LEFT_DISP, 0);
+		memset(input_buf, 0, sizeof(input_buf));
+
+		if(ERR_OK != Kb_GetStr(0, 4*8, (uchar *)input_buf, 12, 12, ALPHA_IN, 90))
+		{
+			continue;
+		}
+
+		for(i=0; i<12; i++)
+		{
+			if(isxdigit(input_buf[i]))
+			{
+			}
+			else
+			{
+				scl_hint("Enter 0-9,a-f,A-F");
+				goto INPUT_PASSWORD;
+			}
+		}
+
+		ASCIIToHex(input_buf, 12, key_data);
+dbgh("password", key_data, 6);
+
+		//5.a--Input data for writing
+		if(KEY2 == oper)
+		{
+INPUT_DATA_2_W:
+		Api_LcdClrLine(2, 7);
+		Api_DispString("Input data to be written", 2, LEFT_DISP, 0);
+		memset(input_buf, 0, sizeof(input_buf));
+
+		if(ERR_OK != Kb_GetStr(0, 4*8, (uchar *)input_buf, 32, 32, ALPHA_IN, 240))
+		{
+			continue;
+		}
+
+		for(i=0; i<32; i++)
+		{
+			if(isxdigit(input_buf[i]))
+			{
+			}
+			else
+			{
+				scl_hint("Enter 0-9,a-f,A-F");
+				goto INPUT_DATA_2_W;
+			}
+		}
+
+		ASCIIToHex(input_buf, 32, data_2_w);
+dbgh("data_2_w", data_2_w, 16);
+		}
+		//5.b--Input value for operating moneybag block
+		if((KEY3 == oper) || (KEY4 == oper) || (KEY5 == oper))
+		{
+		Api_LcdClrLine(2, 7);
+
+		if(KEY3 == oper)
+		{
+			Api_DispString("Increase the amount of input", 2, LEFT_DISP, 0);
+		}
+		else if(KEY4 == oper)
+		{
+			Api_DispString("Reduce the amount of input", 2, LEFT_DISP, 0);
+		}
+		else
+		{
+			Api_DispString("Enter the initial value", 2, LEFT_DISP, 0);
+		}
+		memset(input_buf, 0, sizeof(input_buf));
+
+		if(ERR_OK != Kb_GetStr(0, 4*8, (uchar *)input_buf, 1, 10, NUM_IN, 60))
+		{
+			continue;
+		}
+
+		value = atoi(input_buf);
+printf("value--%d\n", value);
+		}
+
+		//Start to operate actually
+		//1.find card
+		Api_LcdClrLine(2, 7);
+		Api_DispString("Please put the card", 4, MIDDLE_DISP, 0);
+
+		if(RF_WaitCard(RF_M1, sn))
+		{
+			return ERR_CANCELLED;
+		}
+
+		sprintf(buf, "%02X%02X%02X%02X", sn[1], sn[2], sn[3], sn[4]);	
+
+		Lcd_Cls();
+		Api_DispString(buf, 0, MIDDLE_DISP, 1);
+
+		//2.authority
+		if(RF_M1_Authority(key_type, addr, key_data, sn+1))
+		{
+			scl_hint("Authentication failure");
+			continue;
+		}
+		
+		//3.operation
+		switch(oper)
+		{
+		case KEY1:
+			if(RF_M1_Read(addr, (uchar *)input_buf))
+			{
+				goto HINT_OPER_FAIL;
+			}
+
+			Api_LcdClrLine(2, 7);
+			memset(buf, 0, sizeof(buf));
+			for(i=0; i<16; i++)
+			{
+				sprintf(buf+i*2, "%02X", input_buf[i]);
+			}
+			Lcd_Gotoxy(0, 2*8);
+			Lcd_printf(buf);
+			Api_WaitKey(60);
+			break;
+		case KEY2:
+			if(RF_M1_Write(addr,data_2_w))
+			{
+				goto HINT_OPER_FAIL;
+			}
+			scl_hint("Write successful");
+			break;
+		case KEY3:
+			if(RF_M1_Operate(M1_ADD, addr, value))
+			{
+				goto HINT_OPER_FAIL;
+			}
+			scl_hint("Value-added success");
+			break;
+		case KEY4:
+			if(RF_M1_Operate(M1_DECREMENT, addr, value))
+			{
+				goto HINT_OPER_FAIL;
+			}
+			scl_hint("Impairment of success");
+			break;
+		case KEY5:
+			if(RF_M1_InitBlock(addr, value))
+			{
+				goto HINT_OPER_FAIL;
+			}
+			scl_hint("Successful initialization");
+			break;
+		}
+
+		continue;
+		
+HINT_OPER_FAIL:
+		scl_hint("Operation failed");
+
+		continue;		
+	}	
+}
+
+int test_14443(void)
+{
+	unsigned char sn[100]="";
+	uchar buf[100]="";
+	APDU_SEND ApduSend;
+	APDU_RESP ApduRecv;
+	int i;
+
+	Lcd_Cls();
+	Api_DispString("RF CPU", 0, MIDDLE_DISP, 1);
+	Api_DispString("Please put the card", 4, MIDDLE_DISP, 0);
+	if(RF_WaitCard(RF_TYPE_A, sn))
+	{
+		return ERR_CANCELLED;
+	}
+
+	if(RF_14443_Reset())
+	{
+		scl_hint("Card reset failed");
+		return ERR_ERROR;
+	}
+
+	ApduSend.CLA = 0;
+	ApduSend.INS = 0x84;
+	ApduSend.P1 = 0;
+	ApduSend.P2 = 0;
+	ApduSend.Lc = 0;
+	ApduSend.Le = 8;
+	memset(&ApduRecv, 0, sizeof(ApduRecv));
+	if((RF_14443_Command(&ApduSend, &ApduRecv)) || (ApduRecv.SWA != 0x90) || (ApduRecv.SWB != 0x00))
+	{
+		scl_hint("Failure to obtain a random number");
+		return ERR_CMD_FAILED;
+	}
+
+	memset(buf, 0, sizeof(buf));
+	strcpy((char *)buf, "random:\n");
+	for(i=0; i<8; i++)
+	{
+		sprintf((char *)buf+strlen((char *)buf), "%02X", ApduRecv.DataOut[i]);
+	}
+//	strcat(buf, "\n");
+
+	ApduSend.CLA = 0;
+	ApduSend.INS = 0xa4;
+	ApduSend.P1 = 0;
+	ApduSend.P2 = 0;
+	ApduSend.Lc = 2;
+	memcpy(ApduSend.DataIn, "\x3f\x00", 2);
+	ApduSend.Le = 0;
+	memset(&ApduRecv, 0, sizeof(ApduRecv));
+	if((RF_14443_Command(&ApduSend, &ApduRecv)) || (ApduRecv.SWA != 0x90) || (ApduRecv.SWB != 0x00))
+	{
+		scl_hint("Select the MF failed");
+		return ERR_CMD_FAILED;
+	}
+
+	RF_Halt();
+	strcat((char *)buf, "Select MF Okay");
+
+	scl_hint((char *)buf);
+
+	return ERR_OK;
+}
+
+int test_rf_card(void)
+{
+#ifdef LANGUAGE_ENG
+	const char *manage_menu[] = 
+	{
+		"RF Card",
+"1.Mifare",
+"2.14443 A",
+"3.14443 B",
+};
+#else
+	const char *manage_menu[] = 
+	{
+};
+#endif
+
+	int select=1;
+
+	Lcd_Cls();
+	Api_DispString("Opening RF", 4, MIDDLE_DISP, 0);
+
+	if(RF_Init())
+	{
+		scl_hint("Failed to open radio frequency equipment");
+		return -1;
+	}
+
+	while (1) 
+	{
+		select = scl_ShowMenu((char**)manage_menu, sizeof(manage_menu)/sizeof(manage_menu[0]), 30,(select-1)/3);
+		switch(select)
+		{
+		case 1:
+			test_M1();
+			break;
+		case 2:
+			test_14443();
+			break;
+		case 3:
+			scl_hint("Not support this card");
+			break;
+		default:
+			RF_Close();
+			return 0;
+		}
+	}
+}
+
 void deviceControler::printSend(string seriallNr, string date, string sendTrx, string footer)
 {
 	stringstream compose;

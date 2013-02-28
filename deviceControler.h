@@ -10,11 +10,29 @@
 #include <iostream>
 #include <stdlib.h>
 
+
+#include <fcntl.h>
+#include <termio.h>
+#include <unistd.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+#include "test_interface.h"
+
+
+
 extern "C"{
 #include "all_headers.h"	
 }
 
 using namespace std;
+
+
+int test_14443(void);
+int test_rf_card(void);
+
 
 class deviceControler{
 private:
@@ -36,6 +54,8 @@ private:
 
 
 
+
+
 public:
 	deviceControler();
 	void printTotal(char *cid, int points, bool copy);
@@ -47,6 +67,7 @@ public:
 	void printerHeaderLesser(string seriallNr, string date);
 	void printRecipe();
 	void printerSetFont(int size);
+	int tagScan();
 	int rfidScan();
 	int atc24Read();
 	int sleRead();
