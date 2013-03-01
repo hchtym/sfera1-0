@@ -449,7 +449,7 @@ int deviceControler::rfidScan()
 	memset(rfidData, 0, sizeof(rfidData));
 	char str[20]= {0};
 	char str2[20]= {0};
-	//RF_Init();
+	RF_Init();
 	//DelayMs(1000);
 	Lcd_Cls();
 	Lcd_Printxy(0,0,0, "Test RFID");
