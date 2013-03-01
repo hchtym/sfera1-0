@@ -445,6 +445,8 @@ int deviceControler::rfidScan()
 	//BYTE buf[4];
 	//memset(buf, 0, sizeof(buf));
 	memset(rfidIdBufer, 0, sizeof(rfidIdBufer));
+	memset(rfidSerialNo, 0, sizeof(rfidSerialNo));
+	memset(rfidData, 0, sizeof(rfidData));
 	char str[20]= {0};
 	char str2[20]= {0};
 	//RF_Init();
