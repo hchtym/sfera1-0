@@ -18,8 +18,14 @@ using namespace std;
 
 class deviceControler{
 private:
+	static const BYTE rfidPass[16] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+	BYTE rfidSerialNo[16];
+	BYTE rfidIdBufer[16];
+	BYTE rfidData[16];
 	int lineWidth;
 	void hexToString(char *str, BYTE* buf, int len);
+	string rfidType;
+	BYTE rfidBuffer[16];
 
 	bool isPrinterReady();
 
@@ -52,6 +58,7 @@ public:
 	int tagScan();
 	int rfidScan();
 	int rfidWrite();
+	int rfidRead();
 	int atc24Read();
 	int sleRead();
 	int chipCardScan();

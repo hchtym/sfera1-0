@@ -441,35 +441,39 @@ deviceControler::deviceControler(){
 
 int deviceControler::rfidScan()
 {
-	BYTE buf[40] = {0};
+	BYTE buf[4];
+	memset(buf, 0, sizeof(buf));
+	memset(rfidIdBufer, 0, sizeof(rfidIdBufer));
 	char str[20]= {0};
 	char str2[20]= {0};
-	RF_Init();
-	DelayMs(1000);
+	//RF_Init();
+	//DelayMs(1000);
 	Lcd_Cls();
 	Lcd_Printxy(0,0,0, "Test RFID");
-	
+	sprintf(buf, "%02X%02X%02X%02X", rfidSerialNo[1], rfidSerialNo[2], rfidSerialNo[3], rfidSerialNo[4]);	
 	
 	while(1)
 	{
-		if(ERR_OK == RF_WaitCard_Timeout(RF_M1, buf, 300))
+		if(ERR_OK == RF_WaitCard_Timeout(RF_M1, rfidSerialNo, 300))
 		{
+			rfidType = "M1";
 			cout << "M1" << endl;
 			if(buf[0] > 0)
 			{
 				sprintf(str, "%x\n",(long)buf+1);
-				hexToString(str2, buf + 1, buf[0]);
+				hexToString(str2, rfidSerialNo + 1, rfidSerialNo[0]);
 				break;
 			}
 		}
 
-		if(ERR_OK == RF_WaitCard_Timeout(RF_TYPE_A, buf, 300))
+		if(ERR_OK == RF_WaitCard_Timeout(RF_TYPE_A, rfidSerialNo, 300))
 		{
 			cout << "typeA" << endl;
+			rfidType = "typeA";
 			if(buf[0] > 0)
 			{
 				sprintf(str, "%x\n",(long)buf+1);
-				hexToString(str2, buf + 1, buf[0]);
+				hexToString(str2, rfidSerialNo + 1, rfidSerialNo[0]);
 				break;
 			}
 		}		
@@ -481,23 +485,57 @@ int deviceControler::rfidScan()
 	Lcd_Cls();
 	if(len <= 16){
 		Lcd_Printxy(0,0,0, str2);
-                //CBasicDialog::Show("nr karty", 0, 0 , str2);
+        sleep(8);
     }else{
 		if(len <= 32){
 			Lcd_Printxy(0,0,0, str2);
+			sleep(8);
                 //CBasicDialog::Show("nr karty", 0, str2, str2+16);
 		}else{
 	 		if(len <= 48){
 				Lcd_Printxy(0,0,0, str2);
+				sleep(8);
                 //CBasicDialog::Show("nr karty", str2, str2+16, str2+32);
 			}
  		}
 	}
 }
 
-int deviceControler::rfidWrite()
+int deviceControler::rfidWrite(string input)
 {
 	cout << "rfidWrite module." << endl;
+
+	if(rfidType.compare("M1") == 0)
+	{
+		RF_M1_Authority(M1_PASS_A,1,rfidPass,rfidSerialNo+1);
+
+		RF_M1_Write(0,rfidData);
+	}
+
+	if(rfidType.compare("typeA") == 0)
+	{
+		//in future !! :D 
+	}
+
+
+}
+
+int deviceControler::rfidRead()
+{
+	cout << "rfidRead module." << endl;
+
+	if(rfidType.compare("M1") == 0)
+	{
+		RF_M1_Authority(M1_PASS_A,1,rfidPass,rfidSerialNo);
+
+		RF_M1_Read(0,rfidIdBufer);
+	}
+
+	if(rfidType.compare("typeA") == 0)
+	{
+		//in future !! :D 
+	}
+
 }
 
 int deviceControler::atc24Read()

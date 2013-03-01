@@ -27,11 +27,23 @@ int main(){
 	Lcd_SetGray(50);
 	Lcd_SetFont(1,0,0);
 
+	if(RF_Init())
+	{
+		Lcd_Printxy();
+	}
+
+
 	//cout << "Build date: " << BUILD_DATE << endl;
 	cout << "tworze configControler" << endl;
 	configControler* config = new configControler(true);
 	cout << "kiluje obiekt" << endl;
 	sleep(20);
+	Lcd_Cls();
+	Lcd_Printxy(0,0,0,"Ładowanie systemu");
+	//Lcd_Logo();
+	Lcd_Printxy(0,0,0,"Proszę czekać...");
+
+
 	delete(config);
 
 	char bufer[6];
