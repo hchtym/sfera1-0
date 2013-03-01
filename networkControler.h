@@ -37,13 +37,6 @@ struct Date {
 	unsigned char Month;
 	unsigned char Year;
 	unsigned char GTM;
-		//short Year;
-		//short Month;
-		//short Day;
-		//short Hour;
-		//short Minute;
-		//short Second;
-		//short GTM;
 };
 
 struct Transaction {

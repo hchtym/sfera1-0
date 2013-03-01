@@ -18,7 +18,7 @@ using namespace std;
 
 class deviceControler{
 private:
-	static const BYTE rfidPass[16] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+	static const BYTE rfidPass[6] = {1,1,1,1,1,1};
 	BYTE rfidSerialNo[16];
 	BYTE rfidIdBufer[16];
 	BYTE rfidData[16];
