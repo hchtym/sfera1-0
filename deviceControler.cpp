@@ -442,7 +442,7 @@ deviceControler::deviceControler(){
 int deviceControler::rfidScan()
 {
 	//BYTE buf[4];
-	memset(buf, 0, sizeof(buf));
+	//memset(buf, 0, sizeof(buf));
 	memset(rfidIdBufer, 0, sizeof(rfidIdBufer));
 	char str[20]= {0};
 	char str2[20]= {0};
@@ -501,7 +501,7 @@ int deviceControler::rfidScan()
 	}
 }
 
-int deviceControler::rfidPass = = {1,1,1,1,1,1};
+int deviceControler::rfidPass = {1,1,1,1,1,1};
 
 int deviceControler::rfidWrite(string input)
 {
