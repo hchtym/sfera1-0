@@ -501,7 +501,7 @@ int deviceControler::rfidScan()
 	}
 }
 
-static const BYTE deviceControler::rfidPass[6] = {1,1,1,1,1,1};
+const BYTE deviceControler::rfidPass[6] = {1,1,1,1,1,1};
 
 int deviceControler::rfidWrite(string input)
 {
