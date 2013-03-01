@@ -437,7 +437,7 @@ BYTE baPrinterLogo[] = {//Width=50, Height=252
 
 deviceControler::deviceControler(){
 	Prn_Init();
-	rfidPass = {1,1,1,1,1,1};
+	rfidPass[] = {1,1,1,1,1,1};
 };
 
 int deviceControler::rfidScan()
