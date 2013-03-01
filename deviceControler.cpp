@@ -458,7 +458,7 @@ int deviceControler::rfidScan()
 		{
 			rfidType = "M1";
 			cout << "M1" << endl;
-			if(buf[0] > 0)
+			if(rfidSerialNo[0] > 0)
 			{
 				sprintf(str, "%x\n",(long)buf+1);
 				hexToString(str2, rfidSerialNo + 1, rfidSerialNo[0]);
@@ -470,7 +470,7 @@ int deviceControler::rfidScan()
 		{
 			cout << "typeA" << endl;
 			rfidType = "typeA";
-			if(buf[0] > 0)
+			if(rfidSerialNo[0] > 0)
 			{
 				sprintf(str, "%x\n",(long)buf+1);
 				hexToString(str2, rfidSerialNo + 1, rfidSerialNo[0]);
