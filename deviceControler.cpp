@@ -441,7 +441,7 @@ deviceControler::deviceControler(){
 
 int deviceControler::rfidScan()
 {
-	BYTE buf[4];
+	//BYTE buf[4];
 	memset(buf, 0, sizeof(buf));
 	memset(rfidIdBufer, 0, sizeof(rfidIdBufer));
 	char str[20]= {0};
@@ -450,7 +450,7 @@ int deviceControler::rfidScan()
 	//DelayMs(1000);
 	Lcd_Cls();
 	Lcd_Printxy(0,0,0, "Test RFID");
-	sprintf(buf, "%02X%02X%02X%02X", rfidSerialNo[1], rfidSerialNo[2], rfidSerialNo[3], rfidSerialNo[4]);	
+	//printf(buf, "%02X%02X%02X%02X", rfidSerialNo[1], rfidSerialNo[2], rfidSerialNo[3], rfidSerialNo[4]);	
 	
 	while(1)
 	{
