@@ -39,9 +39,9 @@ int main(){
 	cout << "kiluje obiekt" << endl;
 	sleep(20);
 	Lcd_Cls();
-	Lcd_Printxy(0,0,0,"Ładowanie systemu");
+	Lcd_Printxy(0,0,0,"Ladowanie systemu");
 	//Lcd_Logo();
-	Lcd_Printxy(0,0,0,"Proszę czekać...");
+	Lcd_Printxy(0,55,0,"Prosze czekac...");
 
 
 	delete(config);
