@@ -29,7 +29,7 @@ int main(){
 
 	if(RF_Init())
 	{
-		Lcd_Printxy();
+		Lcd_Printxy(0,0,0,"Failed to initialize.");
 	}
 
 
