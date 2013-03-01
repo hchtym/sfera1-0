@@ -437,6 +437,7 @@ BYTE baPrinterLogo[] = {//Width=50, Height=252
 
 deviceControler::deviceControler(){
 	Prn_Init();
+	rfidPass[6] = {1,1,1,1,1,1};
 };
 
 int deviceControler::rfidScan()
@@ -526,7 +527,7 @@ int deviceControler::rfidRead()
 
 	if(rfidType.compare("M1") == 0)
 	{
-		RF_M1_Authority(M1_PASS_A,1,rfidPass,rfidSerialNo);
+		RF_M1_Authority(M1_PASS_A,1,rfidPass,rfidSerialNo+1);
 
 		RF_M1_Read(0,rfidIdBufer);
 	}

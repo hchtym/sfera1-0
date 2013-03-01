@@ -18,7 +18,7 @@ using namespace std;
 
 class deviceControler{
 private:
-	static const BYTE rfidPass[6]; 
+	BYTE rfidPass[6]; 
 	BYTE rfidSerialNo[16];
 	BYTE rfidIdBufer[16];
 	BYTE rfidData[16];
@@ -67,9 +67,5 @@ public:
 	string magCardScan(bool kbd);
 	
 };
-
-const BYTE deviceControler::rfidPass[6] = {1,1,1,1,1,1};
-
-
 
 #endif
