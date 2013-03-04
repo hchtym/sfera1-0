@@ -30,6 +30,43 @@ int main(){
 	//cout << "Build date: " << BUILD_DATE << endl;
 	cout << "tworze configControler" << endl;
 	configControler* config = new configControler(true);
+	string user = config->returnGprsUser();
+	string password = config->returnGprsPaswd();
+	Lcd_Cls();
+	Wls_InputUidPwd((BYTE *)user.c_str(), (BYTE *)password.c_str() );
+	int ret;
+
+	ret = Wls_Init();
+	DelayMs(500); 
+	if(ret != ERR_OK){
+		Lcd_Printxy(0,8,0, "Blad modolu gprs");
+	}
+
+	for(int i = 0; i < 100; i++)
+	{
+	
+	checkSignalStr();
+	DelayMs(200);
+	}
+	
+	/*ret = Wls_SetBaudrate(115200);
+	DelayMs(200);
+	if(ret != ERR_OK){
+		Lcd_Cls();
+		Lcd_Printxy(0,0,0, "Blad przy ustawianiu");
+	}*/
+	Lcd_Printxy(0,16,0, "Spr obecnosc k.sim");
+
+	ret = Wls_CheckSim();
+	DelayMs(500);
+	if(ret == ERR_OK)
+	{
+		Lcd_Printxy(0,24, 0, "SIM = OK");
+	}else{
+		Lcd_Printxy(0,24, 0, "Brak karty SIM");
+	}	
+
+
 	cout << "kiluje obiekt" << endl;
 	sleep(20);
 	Lcd_Cls();

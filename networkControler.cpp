@@ -24,7 +24,7 @@ networkControler::networkControler(string &ipr, string &portr, string &apnr, str
 
 networkControler::~networkControler()
 {
-	device = new deviceControler();
+	delete(device);
 }
 
 int networkControler::connectAllQuiet()
@@ -886,7 +886,6 @@ int networkControler::checkSignalStr()
 		Lcd_Icon(1, ICON_OFF, 1);
 		break;
 	}
-
 }
 
 void networkControler::gprsInit()
