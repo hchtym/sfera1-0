@@ -30,7 +30,7 @@ int main(){
 	//cout << "Build date: " << BUILD_DATE << endl;
 	cout << "tworze configControler" << endl;
 	configControler* config = new configControler(true);
-	string user = config->returnGprsUser();
+	/*string user = config->returnGprsUser();
 	string password = config->returnGprsPaswd();
 	Lcd_Cls();
 	Wls_InputUidPwd((BYTE *)user.c_str(), (BYTE *)password.c_str() );
@@ -86,7 +86,7 @@ int main(){
 	}else{
 		Lcd_Printxy(0,24, 0, "Brak karty SIM");
 	}	
-
+	*/
 
 	cout << "kiluje obiekt" << endl;
 	sleep(20);
