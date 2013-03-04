@@ -723,7 +723,8 @@ int masterControler::dispMenu()
 			break;
 			case 5:
 				//softUpdAck();
-				device->rfidScan();
+				menuService();
+				//device->rfidScan();
 				// tu bedzie serwis !!
 			break;
 			default:
@@ -1149,7 +1150,7 @@ int masterControler::menuService()
 	if (state == 1)
 	{
 		//menu serwisowe
-		
+
 	}
 	else
 	{
