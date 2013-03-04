@@ -681,7 +681,7 @@ int masterControler::dispMenu()
 		if(!loginFlag){
 			usItem = menuScr(title, displayMenuOff, displayMenuOff.size(), usItem, menuIdOff);
 		}else{
-			usItem = menuScr(title, displayMenuOn, displayMenuOff.size(), usItem, menuIdOn);
+			usItem = menuScr(title, displayMenuOn, displayMenuOn.size(), usItem, menuIdOn);
 		}
 		cout << usItem << endl;
 		switch(usItem){
