@@ -822,9 +822,9 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	cout << "jestem w mnue scr" << endl;
 	const int visible = 6;
     int i, j, view =0;
-	int ret;
-	int state;
-	int ret1;
+	int ret =0;
+	int state =0;
+	int ret1 =0;
     BYTE key;
 	char track1[100];
 	char track2[100];
@@ -880,7 +880,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 				if(ret & 2) state = 2;
 				if(ret & 3) state = 3;
 				cout << "zawartosc ret: " << ret << endl;
-				cout << "zawartosc state: " << state << endl;
+				cout << "zawartosc state: " << state  << endl;
 
 				cout << "wykrylem swipe w menu" << endl;
 				if(!loginFlag){
