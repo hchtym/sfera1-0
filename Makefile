@@ -1,4 +1,4 @@
-CXX	= ../compilor/curver/usr/bin/arm-linux-g++
+CXX	= ../compilor/curver/usr/bin/arm-linux-g++ 
 LD	= ../compilor/curver/usr/bin/arm-linux-g++
         
 LDFLAGS = -lm -lpthread -static-libgcc
