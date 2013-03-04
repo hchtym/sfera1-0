@@ -1145,21 +1145,21 @@ int masterControler::returnSelling()
 				cout << "przed suminput" << endl;
 				sumInput(payment);
 				char type = '1';
-				//pointComp(str, payment, point, extra);
+				pointComp(str, payment, point, extra);
 				point = "0";
 				extra = "0";
-				//fileSave(numerser, seller, str, payment, point, extra, type, );
+				fileSave(numerser, seller, str, payment, point, extra, type, );
 			}
 		}
 	}
 	//seller = "00033";
 	//date = "13:01:03:12:14:25";
 	//string sernum = config->returnSeriall();
-	//cout << "numer seryjny terminala: " << numerser << endl;
-	//cout << "sprzedawca: " << seller << endl;
-	//cout << "Zaplata: " << payment << endl;
-	//cout << "punkty: " << point << endl;
-	//cout << "extra pkt: " << extra << endl;
+	cout << "numer seryjny terminala: " << numerser << endl;
+	cout << "sprzedawca: " << seller << endl;
+	cout << "Zaplata: " << payment << endl;
+	cout << "punkty: " << point << endl;
+	cout << "extra pkt: " << extra << endl;
 	//cout:w
 	//:out << date << endl;
 	//char type = '0';
