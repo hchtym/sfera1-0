@@ -818,10 +818,7 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 	
 	footer.clear();
 	footer = "DLA SPRZEDAWCY\n\r";
-	//device->printTx(numerser, seller, trxDateTime, cid, sum, point, extra, footer, trxIdNumber);
-
-
-
+	device->printTx(numerser, seller, trxDateTime, cid, sum, point, extra, footer, trxIdNumber);
 
 	selling();
 	return 0;
@@ -1191,6 +1188,7 @@ int masterControler::selling()
 {
 	unsigned char input[40];
 	BYTE key;
+	int yolo = 0;
 	string payment, point, extra, seler;
 	string date;
 	//string id;
@@ -1240,31 +1238,38 @@ int masterControler::selling()
 			msg.clear();
 			msg = "Potwierdz OK\n\r";
 			message(0, 40, msg);
-			if(!Kb_Hit())
+			while(1)
 			{
-				cout << "ncisnalem guzik" << endl;
-				key = Kb_GetKey();
-				if(key != NOKEY)
+				if(!Kb_Hit())
 				{
-					if (key == KEYENTER)
+					cout << "ncisnalem guzik" << endl;
+					key = Kb_GetKey();
+					if(key != NOKEY)
 					{
-						cout << "OK wcisniety !!" << endl;
-						Kb_Flush();
-						break;
-					}
-					else
-					{
-						Kb_Flush();
+						if (key == KEYENTER)
+						{
+							yolo = 1;
+							cout << "OK wcisniety !!" << endl;
+							Kb_Flush();
+							break;
+						}
+						else
+						{
+							yolo = 0;
+							Kb_Flush();
+						}
 					}
 				}
-			}
-			//DelayMs(250);
-
+				if (yolo == 1)
+				{
+					break;
+				}
+			}				
 		}
 	
 		footer.clear();
 		footer = "DLA SPRZEDAWCY";
-		//device->printTx(numerser, seller, trxDateTime, str, payment, point, extra, footer, trxIdNumber);
+		device->printTx(numerser, seller, trxDateTime, str, payment, point, extra, footer, trxIdNumber);
 
 	}
 
