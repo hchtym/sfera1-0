@@ -1101,9 +1101,6 @@ int masterControler::serviceLogin()
 	}
 }
 
-
-}
-
 int masterControler::loginScr()
 {
 	clear();
