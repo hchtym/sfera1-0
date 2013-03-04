@@ -621,6 +621,8 @@ int masterControler::dispMenu()
 	cout << "tworze vectory dusplay menu on/off" << endl;
 	vector<string> displayMenuOn;
 	vector<string> displayMenuOff;
+	cout << "rozmiar displayMenuOn: " << displayMenuOn.size() << endl;
+	cout << "rozmiar displayMenuOff: " << displayMenuOff.size() << endl;
 
 	cout << "passuje pliki opcji i pliki pozycji menu dla zalogowania i niezalogowania" << endl;
 	k =0;
