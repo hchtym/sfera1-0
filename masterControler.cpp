@@ -735,33 +735,31 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 	string cid;
 	char trck[11];
 	memset(trck, 0, sizeof(trck));
-	if(ret&0x80){
-		if(ret == 1)
+	if(ret == 1)
+	{
+		for(int i = 0; i < 10; i++)
 		{
-			for(int i = 0; i < 10; i++)
-			{
-				trck[i]= track1[i];
-			}
-			trck[10] = 0;		
+			trck[i]= track1[i];
 		}
+		trck[10] = 0;		
+	}
 
-		if(ret == 2)
+	if(ret == 2)
+	{
+		for(int i = 0; i < 10; i++)
 		{
-			for(int i = 0; i < 10; i++)
-			{
-				trck[i]= track2[i];
-			}
-			trck[10] = 0;		
+			trck[i]= track2[i];
 		}
+		trck[10] = 0;		
+	}
 
-		if(ret == 3)
+	if(ret == 3)
+	{
+		for(int i = 0; i < 10; i++)
 		{
-			for(int i = 0; i < 10; i++)
-			{
-				trck[i]= track3[i];
-			}
-			trck[10] = 0;
+			trck[i]= track3[i];
 		}
+		trck[10] = 0;
 	}
 	compose.str("");
 	compose << trck;
