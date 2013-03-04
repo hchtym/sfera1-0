@@ -519,7 +519,7 @@ string configControler::returnSerwerPort()
 }
 
 
-string configControler::confRetrunServiceCode();
+string configControler::confRetrunServiceCode()
 {
 	string prt = cf->Value("ok", "service.code");
 	return prt;
