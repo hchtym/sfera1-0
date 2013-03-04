@@ -729,6 +729,7 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 	stringstream compose;
 	string cid;
 	char trck[11];
+	memset(trck, 0, sizeof(trck));
 	if(ret & 1)
 	{
 		for(int i = 0; i < 10; i++)
@@ -763,8 +764,9 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 	cid = compose.str();
 	sumInput(payment);
 	char type = '0';
-	//cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
+	cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
 	pointComp(cid, payment, point, extra);
+	cout << str << endl << payment << endl << point << endl << extra << endl << numerser << endl;
 	fileSave(numerser, seller, cid, payment, point, extra, type, trxDateTime);
 
 	string footer = "DLA KLIENTA\n\r";
