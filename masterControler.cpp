@@ -1142,6 +1142,21 @@ int masterControler::loginScr()
 	}
 }
 
+int masterControler::menuService()
+{
+	int state = serviceLogin();
+
+	if (state == 1)
+	{
+		//menu serwisowe
+		
+	}
+	else
+	{
+		return 0;
+	}
+}
+
 int masterControler::infoMSG(string &msg)
 {
 	string msg2 = msg;

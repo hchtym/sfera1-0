@@ -92,6 +92,7 @@ class masterControler{
 	int serviceLogin();
 	int selling();
 	int returnSelling();
+	int menuService();
 	string computeTrxNumber(string trxDate);
 	string trxTime();
 	
