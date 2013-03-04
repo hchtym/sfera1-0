@@ -874,10 +874,13 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	    while(1){
 			DelayMs(50);
 			ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
+			cout << "zawartosc ret: " << ret << endl;
 			if (ret&0x80){
 				if(ret & 1) state = 1;
 				if(ret & 2) state = 2;
 				if(ret & 3) state = 3;
+				cout << "zawartosc ret: " << ret << endl;
+				cout << "zawartosc state: " << state << endl;
 
 				cout << "wykrylem swipe w menu" << endl;
 				if(!loginFlag){
