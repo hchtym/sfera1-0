@@ -1118,7 +1118,7 @@ int masterControler::returnSelling()
 
 	unsigned char input[40];
 	string payment, point, extra, seler;
-	string date;
+	string date = trxTime();
 	//string id;
 	memset(input, 0 , sizeof(input));
 	stringstream compose;
@@ -1148,7 +1148,7 @@ int masterControler::returnSelling()
 				pointComp(str, payment, point, extra);
 				point = "0";
 				extra = "0";
-				fileSave(numerser, seller, str, payment, point, extra, type, );
+				fileSave(numerser, seller, str, payment, point, extra, type, date);
 			}
 		}
 	}
