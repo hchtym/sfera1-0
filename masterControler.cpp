@@ -1087,7 +1087,7 @@ int masterControler::loginScr()
 				seller = logon;
 				return 1;
 			}
-			if(i == len)
+			if(i == (len -1))
 			{
 				string str = "Niepoprawny login";
 				infoMSG(str);
