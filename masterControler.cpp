@@ -1078,7 +1078,10 @@ int masterControler::loginScr()
 		for(int i = 0; i < len; i++)
 		{
 			string nick = vect[i];
+			cout << "avilable login: " << nick << endl;
 			nick.erase(nick.size()-1);
+			cout << "after erase: " << nick << endl;
+			cout << "desire login: " << logon << endl;
 			if((nick.compare(logon))==0){
 				seller = logon;
 				return 1;
@@ -1087,7 +1090,6 @@ int masterControler::loginScr()
 				infoMSG(str);
 				return 0;
 			}
-		
 		}
 	}
 }
