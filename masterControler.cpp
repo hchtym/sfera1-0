@@ -881,13 +881,13 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	    while(1){
 			DelayMs(50);
 			cardState = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
-			cout << "zawartosc ret: " << cardState << endl;
+			//cout << "zawartosc ret: " << cardState << endl;
 			if (cardState&0x80){
 				if((cardState - 128) == 1) state = 1;
 				if((cardState - 128) == 2) state = 2;
 				if((cardState - 123) == 3) state = 3;
-				cout << "zawartosc ret: " << cardState << endl;
-				cout << "zawartosc state: " << state  << endl;
+				//cout << "zawartosc ret: " << cardState << endl;
+				//cout << "zawartosc state: " << state  << endl;
 
 				cout << "wykrylem swipe w menu" << endl;
 				if(!loginFlag){

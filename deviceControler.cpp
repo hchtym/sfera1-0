@@ -671,10 +671,10 @@ string deviceControler::magCardScan(bool kbd)
 		
 			DelayMs(50);	
 			ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
-			cout << "zwartosc ret: " << ret << endl;
+			//cout << "zwartosc ret: " << ret << endl;
 			if (ret&0x80)
 			{
-				cout << "zwartosc ret: " << ret << endl;
+				//cout << "zwartosc ret: " << ret << endl;
 				if(ret & 1){
 					cout << "zwartosc ret: " << ret << endl;
 					cout << "track 1" << endl;
