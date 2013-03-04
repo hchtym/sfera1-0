@@ -1075,8 +1075,8 @@ int masterControler::serviceLogin()
 	clear();
 	title("Prosze podaj haslo serwisowe: ");
 	BYTE code[6];
-	memset(code, 0, sizeof(login));	
-	string logon;
+	memset(code, 0, sizeof(code));	
+	string sCode;
 	string serviceCode;
 	Lcd_Printxy(0, 32, 0, "Haslo: ");
 	Kb_GetStr(0, 40, code, 5, 5, 0, 300);
