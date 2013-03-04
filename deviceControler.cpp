@@ -671,47 +671,52 @@ string deviceControler::magCardScan(bool kbd)
 		
 			DelayMs(50);	
 			ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
+			cout << "zwartosc ret: " << ret << endl;
 			if (ret&0x80)
 			{
-			if(ret & 1){
-				cout << "track 1" << endl;
-				for(int i = 0; i < 10; i++)
-				{
-					trck[i]=track1[i];
+				cout << "zwartosc ret: " << ret << endl;
+				if(ret & 1){
+					cout << "zwartosc ret: " << ret << endl;
+					cout << "track 1" << endl;
+					for(int i = 0; i < 10; i++)
+					{
+						trck[i]=track1[i];
+					}
+					trck[10] = 0;
+					//Mcr_Close();
+					cout << "dane z track1 w trck: " << trck << endl;
+					//return *trck;
+					readed = true;
+					break;
 				}
-				trck[10] = 0;
-				//Mcr_Close();
-				cout << "dane z track1 w trck: " << trck << endl;
-				//return *trck;
-				readed = true;
-				break;
-			}
-			if(ret & 2){
-				cout << "track 2: " << endl;
-				for(int i = 0; i < 10; i++)
-				{
-					trck[i]=track2[i];	
+				if(ret & 2){
+					cout << "zwartosc ret: " << ret << endl;
+					cout << "track 2: " << endl;
+					for(int i = 0; i < 10; i++)
+					{
+						trck[i]=track2[i];	
+					}
+					trck[10] = 0;
+					//Mcr_Close();
+					cout << "dane z track2 w trck: " << trck << endl;
+					//return *trck;
+					readed = true;
+					break;
 				}
-				trck[10] = 0;
-				//Mcr_Close();
-				cout << "dane z track2 w trck: " << trck << endl;
-				//return *trck;
-				readed = true;
-				break;
-			}
-			if(ret & 3){
-				cout << "track 3" << endl;
-				for(int i = 0; i < 10; i++)
-				{
-					trck[i]=track3[i];
+				if(ret & 3){
+					cout << "zwartosc ret: " << ret << endl;
+					cout << "track 3" << endl;
+					for(int i = 0; i < 10; i++)
+					{
+						trck[i]=track3[i];
+					}
+					trck[10] = 0;
+					//Mcr_Close();
+					cout << "dane z track3 w trck: " << trck << endl;
+					//return *trck;
+					readed = true;
+					break;
 				}
-				trck[10] = 0;
-				//Mcr_Close();
-				cout << "dane z track3 w trck: " << trck << endl;
-				//return *trck;
-				readed = true;
-				break;
-			}
 			}
 		}
 
