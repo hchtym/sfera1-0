@@ -1376,6 +1376,7 @@ int masterControler::sumInput(string &payment)
 			if(str2.size() > 0){
 				cout << "str2 jest wieksze od sera i przepisuje jego wartosc do sum !" << endl;
 				payment = str3;
+				cout << "zawartość str3: " << str3 << endl; 
 				cout << " przechodze do returna !!!! wowwwwww" << endl;
 			return 0;
 			}
