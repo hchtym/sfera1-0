@@ -769,9 +769,9 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 	cid = compose.str();
 	sumInput(payment);
 	char type = '0';
-	cout << cid << endl << payment << endl << point << endl << extra << endl << numerser << endl;
+	cout << "id klienta: " << cid << endl << "zaplata: " << payment << endl << "punkty: " << point << endl << "extra: " << extra << endl << "numerser: " << numerser << endl;
 	pointComp(cid, payment, point, extra);
-	cout << cid << endl << payment << endl << point << endl << extra << endl << numerser << endl;
+	cout << "id klienta: " << cid << endl << "zaplata: " << payment << endl << "punkty: " << point << endl << "extra: " << extra << endl << "numerser: " << numerser << endl;
 	fileSave(numerser, seller, cid, payment, point, extra, type, trxDateTime);
 
 	string footer = "DLA KLIENTA\n\r";
@@ -1241,7 +1241,7 @@ int masterControler::selling()
 					}
 				}
 			}
-			DelayMs(250);
+			//DelayMs(250);
 
 		}
 	
