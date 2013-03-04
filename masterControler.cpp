@@ -1154,6 +1154,10 @@ int masterControler::menuService()
 	if (state == 1)
 	{
 		//menu serwisowe
+		while(1)
+		{
+			clear();
+		}
 
 	}
 	else
