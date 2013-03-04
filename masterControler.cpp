@@ -1071,6 +1071,7 @@ int masterControler::loginScr()
 	vector<string> vect;
 	config->confParse(vect, "seller");
 	int len = vect.size();
+	cout << "Ilosc userow w configu: " << len << endl;
 	if(sizeof(login)==0){
 		return 0;
 	}else{
