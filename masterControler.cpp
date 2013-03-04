@@ -728,6 +728,7 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 	cout << "track3: " << track3 << endl;
 	cout << "ret: " << ret << endl;
 	BYTE key;
+	int yolo = 0;
 	string trxDateTime = trxTime();
 	string trxIdNumber = computeTrxNumber(trxDateTime);
 	string payment, point, extra, date;
@@ -785,23 +786,32 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 		msg = "Potwierdz OK\n\r";
 		message(0, 40, msg);
 
-		if(!Kb_Hit())
+		while(1)
 		{
-			cout << "ncisnalem guzik" << endl;
-			key = Kb_GetKey();
-			if(key != NOKEY)
+			if(!Kb_Hit())
 			{
-				if (key == KEYENTER)
+				cout << "ncisnalem guzik" << endl;
+				key = Kb_GetKey();
+				if(key != NOKEY)
 				{
-					cout << "OK wcisniety !!" << endl;
-					Kb_Flush();
-					break;
-				}
-				else
-				{
-					Kb_Flush();
+					if (key == KEYENTER)
+					{
+						cout << "OK wcisniety !!" << endl;
+						yolo = 1;
+						Kb_Flush();
+						break;
+					}
+					else
+					{
+						yolo = 0;
+						Kb_Flush();
+					}
 				}
 			}
+		}
+		if (yolo == 1)
+		{
+			break;
 		}
 
 	}
