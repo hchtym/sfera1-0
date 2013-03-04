@@ -840,7 +840,7 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 int masterControler::menuScr(const string &menuname,vector<string> &vect, int size, int index, int *menuid)
 {
 	cout << "jestem w mnue scr" << endl;
-	const int visible = 6;
+	const int visible = 7;
     int i, j, view = 0;
 	int cardState = 0;
 	int state = 0;
