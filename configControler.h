@@ -46,6 +46,7 @@ public:
 	string returnGprsApn(); 
 	string returnGprsUser();
 	string returnGprsPaswd();
+	string confRetrunServiceCode();
 	string returnSerwerIp();
 	string returnSerwerPort(); 
 	int returnTime(); 

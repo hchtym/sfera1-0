@@ -89,6 +89,7 @@ class masterControler{
 	int message(int x, int y, string &str);
 	int checkPoints();
 	int transSelling(int ret, char *track1, char *track2, char *track3);
+	int serviceLogin();
 	int selling();
 	int returnSelling();
 	string computeTrxNumber(string trxDate);

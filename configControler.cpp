@@ -518,6 +518,14 @@ string configControler::returnSerwerPort()
 	return prt;
 }
 
+
+string configControler::confRetrunServiceCode();
+{
+	string prt = cf->Value("ok", "service.code");
+	return prt;
+}
+
+
 string configControler::returnGprsApn()
 {
 	string gapn = cf->Value("ok", "gprs.apn");
