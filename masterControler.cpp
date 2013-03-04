@@ -826,8 +826,8 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	char track2[100];
 	char track3[100];
     memset(track1, 0, sizeof(track1));
-	memset(track1, 0, sizeof(track2));
-	memset(track1, 0, sizeof(track3));
+	memset(track2, 0, sizeof(track2));
+	memset(track3, 0, sizeof(track3));
 	
     int index2 = 0;      
     int tick = 0;
