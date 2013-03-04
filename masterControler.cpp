@@ -628,7 +628,7 @@ int masterControler::dispMenu()
 	for(i = 0; i < 6; i++)
 	{
 		string comp = items2[i];
-		cout << compo << endl;
+		cout << comp << endl;
 		for(j = 0; j < len; j++)
 		{
 			string opose = menuOptions[j];
@@ -647,13 +647,13 @@ int masterControler::dispMenu()
 		}
 	}
 
-	cout << "Parsuje druga czesc manu zalogowane" << endl;
+	cout << "Parsuje druga czesc menu zalogowane" << endl;
 
 	k =0;
 	for(i = 0; i < 6; i++)
 	{
 		string comp = items[i];
-		cout << compo << endl;
+		cout << comp << endl;
 		for(j = 0; j < len; j++)
 		{
 			string opose = menuOptions[j];
