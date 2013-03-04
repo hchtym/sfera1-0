@@ -1069,6 +1069,41 @@ void masterControler::screenSaver()
 {
 }
 
+int masterControler::serviceLogin()
+{
+
+	clear();
+	title("Prosze podaj haslo serwisowe: ");
+	BYTE code[6];
+	memset(code, 0, sizeof(login));	
+	string logon;
+	string serviceCode;
+	Lcd_Printxy(0, 32, 0, "Haslo: ");
+	Kb_GetStr(0, 40, code, 5, 5, 0, 300);
+	stringstream compose;
+	compose << code;
+	sCode = compose.str();
+	serviceCode = config->confRetrunServiceCode();
+	if(sizeof(code)==0)
+	{
+		return 0;
+	}
+	else
+	{
+		if((serviceCode.compare(sCode))==0)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+}
+
+
+}
+
 int masterControler::loginScr()
 {
 	clear();
