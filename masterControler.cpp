@@ -1373,6 +1373,8 @@ int masterControler::sumInput(string &payment)
 			break;
 			case KEYENTER:
 			cout << "nacisnalem enterem" << endl;
+			str3.clear();
+			str3 = compo.str();
 			if(str2.size() > 0){
 				cout << "str2 jest wieksze od sera i przepisuje jego wartosc do sum !" << endl;
 				payment = str3;
