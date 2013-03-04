@@ -644,9 +644,6 @@ int masterControler::dispMenu()
 		}
 	}
 
-	cout << "rozmiar displayMenuOn: " << displayMenuOn.size() << endl;
-	cout << "rozmiar displayMenuOff: " << displayMenuOff.size() << endl;
-
 	k =0;
 	for(i = 0; i < 6; i++)
 	{
@@ -666,6 +663,10 @@ int masterControler::dispMenu()
 			}
 		}
 	}
+
+	cout << "rozmiar displayMenuOn: " << displayMenuOn.size() << endl;
+	cout << "rozmiar displayMenuOff: " << displayMenuOff.size() << endl;
+
 	int usItem;
 	cout << "wchodze do while !!" << endl;
 	while(1){
