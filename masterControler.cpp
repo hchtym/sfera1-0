@@ -633,14 +633,16 @@ int masterControler::dispMenu()
 			string opose = menuOptions[j];
 			if( (comp.compare(opose)) == 0 ){
 				displayMenuOff.push_back(items2[i+6]);
+				cout << items2[i] << endl;
+				cout << items2[i+6] << endl;
 				menuIdOff[k]=i;
 				k++;
 			}
-			if( (comp.compare("")) == 0 ){
+			/*if( (comp.compare("")) == 0 ){
 				displayMenuOff.push_back(items2[i+6]);
 				menuIdOff[k]=i;
 				k++;
-			}
+			}*/
 		}
 	}
 
@@ -653,14 +655,16 @@ int masterControler::dispMenu()
 			string opose = menuOptions[j];
 			if( (comp.compare(opose)) == 0 ){
 				displayMenuOn.push_back(items[i+6]);
+				cout << items[i] << endl;
+				cout << items[i+6] << endl;
 				menuIdOn[k]=i;
 				k++;
 			}
-			if( (comp.compare("")) == 0 ){
+			/*if( (comp.compare("")) == 0 ){
 				displayMenuOn.push_back(items[i+6]);
 				menuIdOn[k]=i;
 				k++;
-			}
+			}*/
 		}
 	}
 
