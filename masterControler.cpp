@@ -1074,7 +1074,7 @@ int masterControler::serviceLogin()
 {
 
 	clear();
-	title("Prosze podaj haslo serwisowe: ");
+	title("Podaj haslo serwisowe:");
 	BYTE code[6];
 	memset(code, 0, sizeof(code));	
 	string sCode;
