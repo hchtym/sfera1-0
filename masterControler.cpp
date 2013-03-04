@@ -1085,7 +1085,9 @@ int masterControler::loginScr()
 			if((nick.compare(logon))==0){
 				seller = logon;
 				return 1;
-			}else{
+			}
+			if(i == len)
+			{
 				string str = "Niepoprawny login";
 				infoMSG(str);
 				return 0;
