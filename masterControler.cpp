@@ -720,12 +720,13 @@ int masterControler::dispMenu()
 	}
 }
 
-int masterControler::transSelling(int ret, char *track1, char *track2, char *track3)
+int masterControler::transSelling(int *ret, char *track1, char *track2, char *track3)
 {
 	cout  << "!!!!!!! Jestem w trans selling !!" << endl;
 	cout << "trakc1: " << track1 << endl;
 	cout << "track2: " << track2 << endl;
 	cout << "track3: " << track3 << endl;
+	cout << "ret: " << ret << endl;
 	BYTE key;
 	string trxDateTime = trxTime();
 	string trxIdNumber = computeTrxNumber(trxDateTime);
