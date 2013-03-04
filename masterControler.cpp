@@ -1082,6 +1082,7 @@ int masterControler::loginScr()
 			nick.erase(nick.size()-1);
 			cout << "after erase: " << nick << endl;
 			cout << "desire login: " << logon << endl;
+			cout << "iteracja: " << i << endl;
 			if((nick.compare(logon))==0){
 				seller = logon;
 				return 1;
