@@ -44,8 +44,29 @@ int main(){
 
 	for(int i = 0; i < 100; i++)
 	{
-	
-	checkSignalStr();
+		int ret,sig;
+		sig = -1;
+		ret = Wls_CheckSignal(&sig);
+		switch(sig){
+			case NO_SIGNAL:
+			Lcd_Icon(1, ICON_ON, 1);
+			break;
+			case SIGNAL_VERY_WEAK:
+			Lcd_Icon(1, ICON_ON, 2);
+			break;
+			case SIGNAL_NORMAL:
+			Lcd_Icon(1, ICON_ON, 3);
+			break;
+			case SIGNAL_STRONG:
+			Lcd_Icon(1, ICON_ON, 4);
+			break;
+			case SIGNAL_VERY_STRONG:
+			Lcd_Icon(1, ICON_ON, 5);
+			break;
+			default:
+			Lcd_Icon(1, ICON_OFF, 1);
+			break;
+		}
 	DelayMs(200);
 	}
 	
