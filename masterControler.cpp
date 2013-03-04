@@ -720,7 +720,7 @@ int masterControler::dispMenu()
 	}
 }
 
-int masterControler::transSelling(int *ret, char *track1, char *track2, char *track3)
+int masterControler::transSelling(int ret, char *track1, char *track2, char *track3)
 {
 	cout  << "!!!!!!! Jestem w trans selling !!" << endl;
 	cout << "trakc1: " << track1 << endl;
