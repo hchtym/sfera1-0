@@ -736,7 +736,7 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 	char trck[11];
 	memset(trck, 0, sizeof(trck));
 	if(ret&0x80){
-		if(ret & 1)
+		if(ret == 1)
 		{
 			for(int i = 0; i < 10; i++)
 			{
@@ -745,7 +745,7 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 			trck[10] = 0;		
 		}
 
-		if(ret & 2)
+		if(ret == 2)
 		{
 			for(int i = 0; i < 10; i++)
 			{
@@ -754,7 +754,7 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 			trck[10] = 0;		
 		}
 
-		if(ret & 3)
+		if(ret == 3)
 		{
 			for(int i = 0; i < 10; i++)
 			{
@@ -825,6 +825,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	const int visible = 6;
     int i, j, view =0;
 	int ret;
+	int state;
 	int ret1;
     BYTE key;
 	char track1[100];
@@ -876,20 +877,25 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 			DelayMs(50);
 			ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
 			if (ret&0x80){
+				if(ret & 1) state = 1;
+				if(ret & 2) state = 2;
+				if(ret & 3) state = 3;
+
 				cout << "wykrylem swipe w menu" << endl;
 				if(!loginFlag){
 					cout << "niezalogowany !" << endl;
 					ret1 = loginScr();
 					if(ret1 == 1){
 						loginFlag = true;
-						transSelling(ret, track1, track2, track3);
+
+						transSelling(state, track1, track2, track3);
 						break;
 					}else{
 						loginFlag = false;
 					}
 				}else{
 					cout << "zalogowany sprawdzam pkt !!" << endl;
-					transSelling(ret, track1, track2, track3);	
+					transSelling(state, track1, track2, track3);	
 					break;
 				}
 
