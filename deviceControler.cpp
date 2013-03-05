@@ -529,6 +529,7 @@ int deviceControler::rfidWrite(string input)
 
 int deviceControler::rfidRead()
 {
+	RF_Init();
 	dbgh("sn", rfidSerialNo, 20);
 	cout << "rfidRead module." << endl;
 
@@ -549,7 +550,7 @@ int deviceControler::rfidRead()
 	{
 		//in future !! :D 
 	}
-
+	RF_Close();
 }
 
 int deviceControler::atc24Read()
