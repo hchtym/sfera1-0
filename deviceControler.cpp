@@ -562,7 +562,8 @@ int deviceControler::rfidRead()
 	//RF_Close();
 	cout << "zawartosc segmentu: " << rfidIdBufer << endl;
 
-	for(i=0; i<16; i++)
+	memset(buf, 0, sizeof(0));
+	for(int i=0; i<16; i++)
 	{
 		sprintf(buf+i*2, "%02X", rfidIdBufer[i]);
 	}
