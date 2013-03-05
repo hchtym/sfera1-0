@@ -1163,7 +1163,7 @@ int masterControler::menuService()
 	Tokenize(items,menuItems, ";");
 
 	int k =0;
-	for(i = 0; i < menuItems.size(); i++)
+	for(int i = 0; i < menuItems.size(); i++)
 	{
 		menuid[k] = i;
 		k++;
