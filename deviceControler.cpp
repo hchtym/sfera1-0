@@ -609,12 +609,14 @@ int deviceControler::rfidWrite()
 		cout << "iteracja: " << i << endl;
 		buf[i]='0';
 	}
+	len = strlen(buf);
 
-	cout << "Rozmiar po dopelnieniu zerami" << endl;
+	cout << "Rozmiar po dopelnieniu zerami: " << len << endl;
 
 	ASCIIToHex(buf, 32, rfidData);
 
 	cout << "Rozmiar rfidData: " << sizeof(rfidData) << endl;
+	dbgh("dane ", rfidData, 20);
 
 	ret = rfidScan();	
 
