@@ -1187,6 +1187,7 @@ int masterControler::menuService()
 					//device->
 				break;
 				case 1:
+					device->rfidScan();
 					device->rfidRead();
 				break;
 				case 2:
