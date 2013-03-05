@@ -557,6 +557,7 @@ int deviceControler::rfidDisplay()
 {
 	Lcd_Cls();
 	char buf[100];
+	memset(buf, 0, sizeof(buf));
 	string title;
 	stringstream compose;
 	compose.str("");
@@ -592,7 +593,8 @@ int deviceControler::rfidWrite()
 {
 	memset(rfidData, 0, sizeof(rfidData));
 	Lcd_Cls();
-	char buf[100] = "";
+	char buf[100];
+	memset(buf, 0, sizeof(buf));
 	cout << "rfidWrite module." << endl;
 
 	int ret = rfidScan();
@@ -615,11 +617,10 @@ int deviceControler::rfidWrite()
 
 	ASCIIToHex(buf, 32, rfidData);
 
-	cout << "Rozmiar rfidData: " << sizeof(rfidData) << endl;
 	dbgh("dane ", rfidData, 20);
 
 	ret = rfidScan();	
-
+	cout << "zawartosc ret: " << ret << endl;
 	if(ret == 1)
 	{
 
