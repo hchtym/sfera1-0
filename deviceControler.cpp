@@ -590,28 +590,48 @@ int deviceControler::rfidDisplay()
 
 int deviceControler::rfidWrite()
 {
+	memset(rfidData, 0, sizeof(rfidData));
+	Lcd_Cls();
 	char buf[100] = "";
 	cout << "rfidWrite module." << endl;
 
-	Kb_GetStr(0, 4*8, (uchar*)buf, 32, 32, ALPHA_IN, 240);
+	int ret = rfidScan();
+
+	Kb_GetStr(0, 4*8, (uchar*)buf, 1, 32, ALPHA_IN, 240);
+
+
+	int len = strlen(buf);
+	for (int i = len; i < 32; i++)
+	{
+		rfidData[i]=0;
+	}
+
 	ASCIIToHex(buf, 32, rfidData);
 
-	if(rfidType.compare("M1") == 0)
+	ret = rfidScan();	
+
+	if(ret == 1)
 	{
-		RF_M1_Authority(M1_PASS_A,1,rfidPass,rfidSerialNo+1);
 
-		RF_M1_Write(1,rfidData);
+		if(rfidType.compare("M1") == 0)
+		{
+			RF_M1_Authority(M1_PASS_A,1,rfidPass,rfidSerialNo+1);
+
+			RF_M1_Write(1,rfidData);
+		}
+
+		if(rfidType.compare("typeA") == 0)
+		{
+			//in future !! :D 
+			RF_M1_Authority(M1_PASS_A,1,rfidPass,rfidSerialNo+1);
+
+			RF_M1_Write(1,rfidData);
+		}
 	}
-
-	if(rfidType.compare("typeA") == 0)
-	{
-		//in future !! :D 
-		RF_M1_Authority(M1_PASS_A,1,rfidPass,rfidSerialNo+1);
-
-		RF_M1_Write(1,rfidData);
-	}
-
-
+	
+	Lcd_Cls();
+	Lcd_Printxy(0,48,0, "Dane zstaly zapisane");
+	return 0;
 }
 
 
