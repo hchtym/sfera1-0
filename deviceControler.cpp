@@ -450,7 +450,7 @@ int deviceControler::rfidScan()
 	memset(rfidId, 0, sizeof(rfidId));
 	memset(rfidIdBufer, 0, sizeof(rfidIdBufer));
 	memset(rfidSerialNo, 0, sizeof(rfidSerialNo));
-	memset(rfidData, 0, sizeof(rfidData));
+	//memset(rfidData, 0, sizeof(rfidData));
 	//RF_Init();
 	//DelayMs(1000);
 	Lcd_Cls();
