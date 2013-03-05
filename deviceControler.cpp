@@ -559,6 +559,7 @@ int deviceControler::rfidRead()
 		cout << "Jestem za RF_M1_Read" << endl;
 	}
 	//RF_Close();
+	cout << "zawartosc segmentu: " << rfidIdBufer << endl;
 }
 
 int deviceControler::atc24Read()
