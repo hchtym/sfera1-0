@@ -1074,13 +1074,13 @@ int masterControler::serviceLogin()
 {
 
 	clear();
-	title("Podaj haslo serwisowe:");
+	title("Haslo serwisowe:");
 	BYTE code[6];
 	memset(code, 0, sizeof(code));	
 	string sCode;
 	string serviceCode;
 	Lcd_Printxy(0, 32, 0, "Haslo: ");
-	Kb_GetStr(0, 40, code, 5, 5, 0, 300);
+	Kb_GetStr(0, 40, code, 1, 5, 0, 300);
 	stringstream compose;
 	compose << code;
 	sCode = compose.str();
