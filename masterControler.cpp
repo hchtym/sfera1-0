@@ -1082,6 +1082,7 @@ int masterControler::serviceLogin()
 	string serviceCode;
 	Lcd_Printxy(0, 32, 0, "Haslo: ");
 	Kb_GetStr(0, 40, code, 1, 5, 0, 300);
+	cout << "zapodane hasło: " << code << endl;
 	stringstream compose;
 	compose << code;
 	sCode = compose.str();
