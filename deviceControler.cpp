@@ -534,7 +534,7 @@ int deviceControler::rfidWrite(string input)
 
 }
 
-nt deviceControler::rfidWrite()
+int deviceControler::rfidWrite()
 {
 	char buf[100] = "";
 	cout << "rfidWrite module." << endl;
