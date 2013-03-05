@@ -463,6 +463,7 @@ int deviceControler::rfidScan()
 		if(ERR_OK == RF_WaitCard_Timeout(RF_M1, rfidSerialNo, 90))
 		{
 			rfidType = "M1";
+			cout << "Zawartosc poczatkowego segmentu: " << rfidSerialNo << endl;
 			cout << "M1" << endl;
 			if(rfidSerialNo[0] > 0)
 			{
