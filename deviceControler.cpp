@@ -546,21 +546,24 @@ int deviceControler::rfidWrite(string input)
 int deviceControler::rfidDisplay()
 {
 	char buf[100];
+	string title;
+	stringstream compose;
+	compose.str("");
+	compose	<< "Tag ID: "; 
+	compose << rfidId;
+	title.clear();
+	title = compose.str();
 
-	Lcd_Cls();
-	int len = strlen(rfidId);
-	Lcd_Cls();
-	if(len <= 16){
-		Lcd_Printxy(0,0,1, rfidId);
-    }else{
-		if(len <= 32){
-			Lcd_Printxy(0,0,1, rfidId);
-		}else{
-	 		if(len <= 48){
-				Lcd_Printxy(0,0,1, rfidId);
-			}
- 		}
+	int len = (21 - title.size());
+	compose.str("");
+	compose << str;
+	for(int i = 0; i < len; i++)
+	{
+		compose << " ";
 	}
+	title.clear();
+	title = compose.str();
+	Lcd_Printxy(0,0,1, const_cast<char *>(str.c_str()));
 
 	memset(buf, 0, sizeof(buf));
 	for(int i=0; i<16; i++)
