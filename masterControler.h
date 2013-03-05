@@ -101,6 +101,7 @@ public:
 	masterControler();
 	string returnBuildDate();
 	int checkVersion();
+	int reloadConfig();
 	bool sendTrx();
 	int dispMenu();
 	int updClk();

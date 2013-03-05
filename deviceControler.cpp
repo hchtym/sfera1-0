@@ -713,6 +713,11 @@ int deviceControler::chipCardScan()
 {
 }
 
+int deviceControler::configReload()
+{
+	config->configReload();
+}
+
 string deviceControler::magCardScan(bool kbd)
 {
 	BYTE key = NOKEY;

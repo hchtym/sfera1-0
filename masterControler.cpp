@@ -1152,6 +1152,13 @@ int masterControler::loginScr()
 	}
 }
 
+int masterControler::reloadConfig()
+{
+	config->reloadConfig();
+	device->reloadConfig();
+	network->reloadConfig();
+}
+
 int masterControler::menuService()
 {
 	int state = serviceLogin();
