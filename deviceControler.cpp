@@ -606,7 +606,7 @@ int deviceControler::rfidWrite()
 	cout << "dlugos wpisanych danych: " << len << endl;
 	for (int i = len; i < 32; i++)
 	{
-		buf[i]="0";
+		buf[i]='0';
 	}
 
 	ASCIIToHex(buf, 32, rfidData);
