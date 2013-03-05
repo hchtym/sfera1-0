@@ -1197,7 +1197,7 @@ int masterControler::menuService()
 				break;
 				case 3:
 					// Aktualizacja configa
-					updConf();
+					network->updConf();
 				break;
 				case 4:
 					// aktualizacja softu !!
