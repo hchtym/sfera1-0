@@ -641,6 +641,7 @@ int deviceControler::rfidWrite()
 
 	Lcd_Cls();
 	Lcd_Printxy(0,48,0, "Dane zstaly zapisane");
+	sleep(2);
 	return 0;
 }
 
