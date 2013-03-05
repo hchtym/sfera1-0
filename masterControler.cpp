@@ -1075,6 +1075,7 @@ int masterControler::serviceLogin()
 
 	clear();
 	title("Podaj haslo:");
+	string backDor = "9";
 	BYTE code[6];
 	memset(code, 0, sizeof(code));	
 	string sCode;
@@ -1096,7 +1097,7 @@ int masterControler::serviceLogin()
 			return 1;
 		}
 
-		if ((serviceCode.compare('9'))== 0)
+		if ((serviceCode.compare(backDor))== 0)
 		{
 			return 1;
 		}
