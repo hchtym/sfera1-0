@@ -623,11 +623,12 @@ int deviceControler::rfidWrite()
 	cout << "zawartosc ret: " << ret << endl;
 	if(ret == 1)
 	{
+		cout << "Jestem za ifem" << endl;
 
 		if(rfidType.compare("M1") == 0)
 		{
 			RF_M1_Authority(M1_PASS_A,1,rfidPass,rfidSerialNo+1);
-
+			cout << "zapisuje M1" << endl;
 			RF_M1_Write(1,rfidData);
 		}
 
@@ -635,7 +636,7 @@ int deviceControler::rfidWrite()
 		{
 			//in future !! :D 
 			RF_M1_Authority(M1_PASS_A,1,rfidPass,rfidSerialNo+1);
-
+			cout << "zapije TypeA" << endl;
 			RF_M1_Write(1,rfidData);
 		}
 	}
