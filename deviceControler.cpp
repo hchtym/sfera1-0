@@ -531,6 +531,7 @@ int deviceControler::rfidWrite(string input)
 int deviceControler::rfidRead()
 {
 	//RF_Init();
+	buf[100] = "";
 	dbgh("sn", rfidSerialNo, 20);
 	cout << "rfidRead module." << endl;
 
@@ -560,6 +561,14 @@ int deviceControler::rfidRead()
 	}
 	//RF_Close();
 	cout << "zawartosc segmentu: " << rfidIdBufer << endl;
+
+	for(i=0; i<16; i++)
+	{
+		sprintf(buf+i*2, "%02X", rfidIdBufer[i]);
+	}
+
+	cout << "zawartosc po konwersji: " << buf << endl;
+
 }
 
 int deviceControler::atc24Read()
