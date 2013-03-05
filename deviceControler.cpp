@@ -563,7 +563,7 @@ int deviceControler::rfidDisplay()
 	}
 	title.clear();
 	title = compose.str();
-	Lcd_Printxy(0,0,1, const_cast<char *>(str.c_str()));
+	Lcd_Printxy(0,0,1, const_cast<char *>(title.c_str()));
 
 	memset(buf, 0, sizeof(buf));
 	for(int i=0; i<16; i++)
