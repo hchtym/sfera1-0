@@ -611,6 +611,8 @@ int deviceControler::rfidWrite()
 
 	ASCIIToHex(buf, 32, rfidData);
 
+	cout << "Rozmiar rfidData: " << sizeof(rfidData) << endl;
+
 	ret = rfidScan();	
 
 	if(ret == 1)
