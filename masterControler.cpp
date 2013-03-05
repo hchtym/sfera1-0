@@ -1097,7 +1097,7 @@ int masterControler::serviceLogin()
 			return 1;
 		}
 
-		if ((serviceCode.compare(backDor))== 0)
+		if ( strcmp(serviceCode.c_str(), sCode.c_str()) == 0)
 		{
 			return 1;
 		}
