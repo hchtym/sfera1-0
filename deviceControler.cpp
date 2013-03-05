@@ -609,6 +609,8 @@ int deviceControler::rfidWrite()
 		buf[i]='0';
 	}
 
+	cout << "Rozmiar po dopelnieniu zerami" << endl;
+
 	ASCIIToHex(buf, 32, rfidData);
 
 	cout << "Rozmiar rfidData: " << sizeof(rfidData) << endl;
