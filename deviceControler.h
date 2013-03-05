@@ -9,7 +9,7 @@
 #include <sstream>
 #include <iostream>
 #include <stdlib.h>
-#include "Algorithm_extr.h"
+#include "internal.h"
 
 extern "C"{
 #include "all_headers.h"	
