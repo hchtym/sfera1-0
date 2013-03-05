@@ -536,7 +536,7 @@ int deviceControler::rfidRead()
 
 		cout << "Jestem za RF_M1_Authority" << endl;
 
-		RF_M1_Read(0,rfidIdBufer);
+		RF_M1_Read(1,rfidIdBufer);
 
 		cout << "Jestem za RF_M1_Read" << endl;
 	}
