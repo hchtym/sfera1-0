@@ -534,7 +534,11 @@ int deviceControler::rfidRead()
 	{
 		RF_M1_Authority(M1_PASS_A,1,rfidPass,rfidSerialNo+1);
 
+		cout << "Jestem za RF_M1_Authority" << endl;
+
 		RF_M1_Read(0,rfidIdBufer);
+
+		cout << "Jestem za RF_M1_Read" << endl;
 	}
 
 	cout << "zawartosc segmentu: " << rfidIdBufer << endl;
