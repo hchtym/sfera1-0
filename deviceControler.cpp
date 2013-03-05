@@ -606,6 +606,7 @@ int deviceControler::rfidWrite()
 	cout << "dlugos wpisanych danych: " << len << endl;
 	for (int i = len; i < 32; i++)
 	{
+		cout << "iteracja: " << i << end;
 		buf[i]='0';
 	}
 
