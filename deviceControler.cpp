@@ -454,7 +454,7 @@ int deviceControler::rfidScan()
 	//RF_Init();
 	//DelayMs(1000);
 	Lcd_Cls();
-	Lcd_Printxy(10,45,0, "Przyloz tag RFID");
+	Lcd_Printxy(10,32,0, "Przyloz tag RFID");
 	//printf(buf, "%02X%02X%02X%02X", rfidSerialNo[1], rfidSerialNo[2], rfidSerialNo[3], rfidSerialNo[4]);	
 	
 	while(1)
@@ -512,12 +512,22 @@ int deviceControler::rfidScan()
 
 int deviceControler::rfidWrite(string input)
 {
+	memset(rfidData, 0, sizeof(rfidData));
 	Lcd_Cls();
-	Lcd_Printxy(0,0,0, "Wpisz segment danych ");
 	char buf[100] = "";
 	cout << "rfidWrite module." << endl;
 
-	Kb_GetStr(0, 4*8, rfidData, 32, 32, ALPHA_IN, 240);
+	int ret = rfidScan();
+
+	Lcd_Cls();
+	Lcd_Printxy(0,0,1, "Wpisz segment danych ");
+
+	Kb_GetStr(0, 4*8, rfidData, 1, 32, ALPHA_IN, 240);
+	int len = strlen((char *)rfidData);
+	for (int i = len; i < 32; i++)
+	{
+		rfidData[i]=0;
+	}
 
 	int ret = rfidScan();
 
@@ -545,6 +555,7 @@ int deviceControler::rfidWrite(string input)
 
 int deviceControler::rfidDisplay()
 {
+	Lcd_Cls();
 	char buf[100];
 	string title;
 	stringstream compose;
