@@ -1184,7 +1184,8 @@ int masterControler::menuService()
 			switch(usItem)
 			{
 				case 0:
-					//device->
+					device->rfidScan();
+					device->rfidWrite();
 				break;
 				case 1:
 					device->rfidScan();
