@@ -534,6 +534,32 @@ int deviceControler::rfidWrite(string input)
 
 }
 
+nt deviceControler::rfidWrite()
+{
+	char buf[100] = "";
+	cout << "rfidWrite module." << endl;
+
+	Kb_GetStr(0, 4*8, rfidData, 32, 32, ALPHA_IN, 240);
+
+	if(rfidType.compare("M1") == 0)
+	{
+		RF_M1_Authority(M1_PASS_A,1,rfidPass,rfidSerialNo+1);
+
+		RF_M1_Write(1,rfidData);
+	}
+
+	if(rfidType.compare("typeA") == 0)
+	{
+		//in future !! :D 
+		RF_M1_Authority(M1_PASS_A,1,rfidPass,rfidSerialNo+1);
+
+		RF_M1_Write(1,rfidData);
+	}
+
+
+}
+
+
 int deviceControler::rfidRead()
 {
 	//RF_Init();

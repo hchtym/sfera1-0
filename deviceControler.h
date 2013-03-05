@@ -60,6 +60,7 @@ public:
 	int tagScan();
 	int rfidScan();
 	int rfidWrite(string input);
+	int rfidWrite();
 	int rfidRead();
 	int atc24Read();
 	int sleRead();
