@@ -79,7 +79,6 @@ private:
 	bool gprs_apnConnected;
 	bool gprs_serverConnected;
 	configControler* config;
-	//ftplib * ftp;
 	Date acttime;
 	Transaction tx;
 	

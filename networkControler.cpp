@@ -482,6 +482,7 @@ int networkControler::fileSize(string fileName)
 int networkControler::reloadConfig();
 {
 	config->reloadConfig();
+}
 
 int networkControler::updConf()
 {
