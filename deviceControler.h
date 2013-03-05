@@ -3,7 +3,7 @@
 
 #include "ConfigFile.h"
 #include "Chameleon.h"
-//#include "masterControler.h"
+#include "configControler.h"
 #include <vector>
 #include <string>
 #include <sstream>
@@ -20,6 +20,7 @@ using namespace std;
 class deviceControler{
 private:
 	char rfidId[20];
+	configControler *config;
 	string rfidPasswd;
 	BYTE rfidPass[20]; 
 	BYTE rfidSerialNo[100];
