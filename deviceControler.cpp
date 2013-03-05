@@ -603,7 +603,7 @@ int deviceControler::rfidWrite()
 	Kb_GetStr(0, 4*8, (uchar*)buf, 1, 32, ALPHA_IN, 240);
 
 	int len = strlen(buf);
-	cout << "dlugos wpisanych danych: " << len << end;
+	cout << "dlugos wpisanych danych: " << len << endl;
 	for (int i = len; i < 32; i++)
 	{
 		buf[i]="0";
