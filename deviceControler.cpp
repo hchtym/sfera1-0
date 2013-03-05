@@ -529,7 +529,7 @@ int deviceControler::rfidWrite(string input)
 		rfidData[i]=0;
 	}
 
-	int ret = rfidScan();
+	ret = rfidScan();
 
 	if(ret == 1)
 	{
