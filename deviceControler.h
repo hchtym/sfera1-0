@@ -19,9 +19,9 @@ using namespace std;
 class deviceControler{
 private:
 	BYTE rfidPass[6]; 
-	BYTE rfidSerialNo[16];
-	BYTE rfidIdBufer[16];
-	BYTE rfidData[16];
+	BYTE rfidSerialNo[100];
+	BYTE rfidIdBufer[100];
+	BYTE rfidData[100];
 	int lineWidth;
 	void hexToString(char *str, BYTE* buf, int len);
 	string rfidType;
