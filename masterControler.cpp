@@ -1095,8 +1095,8 @@ int masterControler::serviceLogin()
 		{
 			return 1;
 		}
-		
-		if ((serviceCode.compare("9\n"))== 0)
+
+		if ((serviceCode.compare(9))== 0)
 		{
 			return 1;
 		}
