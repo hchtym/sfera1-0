@@ -30,6 +30,10 @@ int main(){
 	//cout << "Build date: " << BUILD_DATE << endl;
 	cout << "tworze configControler" << endl;
 	configControler* config = new configControler(true);
+	Lcd_Cls();
+	Lcd_Printxy(0,0,0,"Ladowanie systemu");
+	//Lcd_Logo();
+	Lcd_Printxy(0,55,0,"Prosze czekac...");
 	/*string user = config->returnGprsUser();
 	string password = config->returnGprsPaswd();
 	Lcd_Cls();
@@ -90,10 +94,6 @@ int main(){
 
 	cout << "kiluje obiekt" << endl;
 	sleep(20);
-	Lcd_Cls();
-	Lcd_Printxy(0,0,0,"Ladowanie systemu");
-	//Lcd_Logo();
-	Lcd_Printxy(0,55,0,"Prosze czekac...");
 
 
 	delete(config);
