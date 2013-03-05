@@ -445,17 +445,13 @@ deviceControler::deviceControler(){
 
 int deviceControler::rfidScan()
 {
-	//BYTE buf[4];
-	//memset(buf, 0, sizeof(buf));
+
 	memset(rfidId, 0, sizeof(rfidId));
 	memset(rfidIdBufer, 0, sizeof(rfidIdBufer));
 	memset(rfidSerialNo, 0, sizeof(rfidSerialNo));
-	//memset(rfidData, 0, sizeof(rfidData));
-	//RF_Init();
-	//DelayMs(1000);
+
 	Lcd_Cls();
 	Lcd_Printxy(10,32,0, "Przyloz tag RFID");
-	//printf(buf, "%02X%02X%02X%02X", rfidSerialNo[1], rfidSerialNo[2], rfidSerialNo[3], rfidSerialNo[4]);	
 	
 	while(1)
 	{
@@ -466,7 +462,6 @@ int deviceControler::rfidScan()
 			cout << "M1" << endl;
 			if(rfidSerialNo[0] > 0)
 			{
-				//sprintf(str, "%x\n",(long)rfidSerialNo+1);
 				hexToString(rfidId, rfidSerialNo + 1, rfidSerialNo[0]);
 				return 1;
 				break;
@@ -480,7 +475,6 @@ int deviceControler::rfidScan()
 			rfidType = "typeA";
 			if(rfidSerialNo[0] > 0)
 			{
-				//sprintf(str, "%x\n",(long)rfidSerialNo+1);
 				hexToString(rfidId, rfidSerialNo + 1, rfidSerialNo[0]);
 				return 1;
 				break;
@@ -488,26 +482,6 @@ int deviceControler::rfidScan()
 		}		
 	}
 	return 0;
-	//RF_Close();
-	
-	/*int len = strlen(rfidId);
-	Lcd_Cls();
-	if(len <= 16){
-		Lcd_Printxy(0,0,0, rfidId);
-        //sleep(8);
-    }else{
-		if(len <= 32){
-			Lcd_Printxy(0,0,0, rfidId);
-			//sleep(8);
-                //CBasicDialog::Show("nr karty", 0, str2, str2+16);
-		}else{
-	 		if(len <= 48){
-				Lcd_Printxy(0,0,0, rfidId);
-				//sleep(8);
-                //CBasicDialog::Show("nr karty", str2, str2+16, str2+32);
-			}
- 		}
-	}*/
 }
 
 int deviceControler::rfidWrite(string input)
@@ -585,8 +559,6 @@ int deviceControler::rfidDisplay()
 
 	Lcd_Printxy(0,32,0, buf);
 	sleep(5);
-
-
 }
 
 int deviceControler::rfidWrite()
@@ -650,7 +622,6 @@ int deviceControler::rfidWrite()
 
 int deviceControler::rfidRead()
 {
-	//RF_Init();
 	char buf[100] = "";
 	dbgh("sn", rfidSerialNo, 20);
 	cout << "rfidRead module." << endl;
@@ -666,11 +637,8 @@ int deviceControler::rfidRead()
 		cout << "Jestem za RF_M1_Read" << endl;
 	}
 
-	//cout << "zawartosc segmentu: " << rfidIdBufer << endl;
-
 	if(rfidType.compare("typeA") == 0)
 	{
-		//in future !! :D 
 		RF_M1_Authority(M1_PASS_A,1,rfidPass,rfidSerialNo+1);
 
 		cout << "Jestem za RF_M1_Authority" << endl;
@@ -679,7 +647,6 @@ int deviceControler::rfidRead()
 
 		cout << "Jestem za RF_M1_Read" << endl;
 	}
-	//RF_Close();
 	cout << "zawartosc segmentu: " << rfidIdBufer << endl;
 
 	memset(buf, 0, sizeof(0));
@@ -708,13 +675,10 @@ int deviceControler::atc24Read()
 			Lcd_Cls();
 			At24c_Read(1,100, buf);
 			DelayMs(300);
-			//compose << buf;
-			//name = compose.str();
 			char str[1040];
 			sprintf(str, "%s", buf);
 			Lcd_Cls();
 			Lcd_Printxy(0,0,0, str);
-			//Lcd_Printxy(0,0,0, const_cast<char *>(name.c_str()) );
 			At24c_Close();
 			compose.str("");
 			DelayMs(80000);
@@ -789,7 +753,7 @@ string deviceControler::magCardScan(bool kbd)
 	{
 		while(1)
 		{
-			//Kb_Flush();
+
 			Lcd_Cls();
 			Lcd_Printxy(0,0,1, const_cast<char *>(title.c_str()) );
 			if (str2.size() > 0)
@@ -816,16 +780,14 @@ string deviceControler::magCardScan(bool kbd)
 				else
 				{
 					presed = false;
-					//Kb_Flush();
 				}
 			}
 		
 			DelayMs(50);	
 			ret = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
-			//cout << "zwartosc ret: " << ret << endl;
 			if (ret&0x80)
 			{
-				//cout << "zwartosc ret: " << ret << endl;
+
 				if(ret & 1){
 					cout << "zwartosc ret: " << ret << endl;
 					cout << "track 1" << endl;
@@ -834,9 +796,9 @@ string deviceControler::magCardScan(bool kbd)
 						trck[i]=track1[i];
 					}
 					trck[10] = 0;
-					//Mcr_Close();
+
 					cout << "dane z track1 w trck: " << trck << endl;
-					//return *trck;
+
 					readed = true;
 					break;
 				}
@@ -848,9 +810,9 @@ string deviceControler::magCardScan(bool kbd)
 						trck[i]=track2[i];	
 					}
 					trck[10] = 0;
-					//Mcr_Close();
+
 					cout << "dane z track2 w trck: " << trck << endl;
-					//return *trck;
+
 					readed = true;
 					break;
 				}
@@ -862,9 +824,9 @@ string deviceControler::magCardScan(bool kbd)
 						trck[i]=track3[i];
 					}
 					trck[10] = 0;
-					//Mcr_Close();
+
 					cout << "dane z track3 w trck: " << trck << endl;
-					//return *trck;
+
 					readed = true;
 					break;
 				}
@@ -876,7 +838,6 @@ string deviceControler::magCardScan(bool kbd)
 		{
 			cout << "klawcia jest na chodzie wyswietlam to co wpisalem" << endl;
 
-					//cout << "jestem przed switchem klawiszy" << endl;
 			if(presed){
 				switch(key)
 				{
@@ -945,7 +906,6 @@ string deviceControler::magCardScan(bool kbd)
 								if(str2.size() >= 6 && str2.size() < 30)
 								{
 									cout << "wyciepuje wartosc z klawci" << endl;
-									//strcpy(const_cast<char*>((char*)btrck), str2);
 									return str2;
 								}
 								else
@@ -968,7 +928,6 @@ string deviceControler::magCardScan(bool kbd)
 								if(len == 0)
 								{
 									str2.clear();
-									//string ma dlugosc 0 i dupa ! 
 									break;
 								}
 								else
@@ -1001,13 +960,11 @@ string deviceControler::magCardScan(bool kbd)
 	Mcr_Close();
 	tempsremp << trck;
 	wyciep = tempsremp.str();
-	//strcpy(const_cast<char *>((char *)btrck), trck);
 	return wyciep;
 }
 
 void deviceControler::hexToString(char *str, BYTE* buf, int len)
 {
-	//	stringstream compose;
 	        int j = 0;
 	        for(int i = 0; i < len; i++){
 	                str[j] = (buf[i]/16);
