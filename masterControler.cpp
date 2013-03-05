@@ -1074,7 +1074,7 @@ int masterControler::serviceLogin()
 {
 
 	clear();
-	title("Haslo serwisowe:");
+	title("Podaj haslo:");
 	BYTE code[6];
 	memset(code, 0, sizeof(code));	
 	string sCode;
@@ -1085,7 +1085,7 @@ int masterControler::serviceLogin()
 	compose << code;
 	sCode = compose.str();
 	serviceCode = config->confRetrunServiceCode();
-	if(sizeof(code)==0)
+	if( sCode.size() == 0)
 	{
 		return 0;
 	}
