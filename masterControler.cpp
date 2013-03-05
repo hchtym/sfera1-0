@@ -1159,7 +1159,7 @@ int masterControler::menuService()
 	int size = 0;
 	int usItem = 0;
 	string title = "Menu serwisowe";
-	string items = "Zapisz do RFID;Zczytaj RFID;Parametry GPRS";
+	string items = "Zapisz do RFID;Zczytaj RFID;Parametry GPRS;Aktualizacja konf;Aktualizacja soft";
 	vector<string> menuItems;
 	Tokenize(items,menuItems, ";");
 
@@ -1193,16 +1193,18 @@ int masterControler::menuService()
 					device->rfidDisplay();
 				break;
 				case 2:
-
+					// Parametry GPRS
 				break;
 				case 3:
-
+					// Aktualizacja configa
+					updConf();
 				break;
 				case 4:
-
+					// aktualizacja softu !!
+					softUpdAck();
 				break;
 				case 5:
-
+					// we will see
 				break;
 				case 6:
 

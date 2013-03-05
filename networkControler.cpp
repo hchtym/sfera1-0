@@ -19,7 +19,6 @@ networkControler::networkControler(string &ipr, string &portr, string &apnr, str
 	password = passwordr;
 	serialN = serialNr;
 	config = new configControler(false);
-//	ftp =  new ftplib();
 }
 
 networkControler::~networkControler()
