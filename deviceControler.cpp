@@ -529,6 +529,7 @@ int deviceControler::rfidWrite(string input)
 
 int deviceControler::rfidRead()
 {
+	dbgh("sn", rfidSerialNo, 20);
 	cout << "rfidRead module." << endl;
 
 	if(rfidType.compare("M1") == 0)
