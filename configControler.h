@@ -35,7 +35,7 @@ private:
 	
 public: 
 	configControler(bool conf); 
-	int reloadConfig(); 
+	void reloadConfig(); 
 	int getConfig(); 
 	int returnMenu(vector<string> &vec); 
 	int returnPrize(vector<string> &vec); 
@@ -56,7 +56,6 @@ public:
 	string returnConfVer();
 	int confParse(vector<string> &vect, string section);
 	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
-	void reloadConfig();
 };
 
 
