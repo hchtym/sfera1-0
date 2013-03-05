@@ -1157,6 +1157,7 @@ int masterControler::menuService()
 	int state = serviceLogin();
 	int menuid[20];
 	int size = 0;
+	int usItem = 0;
 	string title = "Menu serwisowe";
 	string items = "Zapisz do RFID;Zczytaj RFID;Parametry GPRS";
 	vector<string> menuItems;
@@ -1175,7 +1176,7 @@ int masterControler::menuService()
 
 		while(1)
 		{
-			usItem = menuScrOther(title, menuItems, menuItems.size(), usItem, );
+			usItem = menuScrOther(title, menuItems, menuItems.size(), usItem, menuid);
 			clear();
 		}
 
