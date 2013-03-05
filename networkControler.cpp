@@ -528,7 +528,7 @@ int networkControler::updConf()
 		cout << "Brak Konfiguracji !" << endl;
 		return 0;
 	}
-	else
+	if (msg.compare("ok") == 0)
 	{	
 		cout << "pobieram nowa konfiguracje: " << msg << endl;
 		remove("config.txt");
@@ -617,6 +617,11 @@ int networkControler::updConf()
     	}
     	file.close();
 
+	}
+	else
+	{
+		//nastapil blad !!
+		return 0;
 	}
 
 
