@@ -479,7 +479,7 @@ int networkControler::fileSize(string fileName)
 	return size;
 }
 
-int networkControler::reloadConfig();
+int networkControler::reloadConfig()
 {
 	config->reloadConfig();
 }
