@@ -513,7 +513,7 @@ int deviceControler::rfidScan()
 int deviceControler::rfidWrite(string input)
 {
 	Lcd_Cls();
-	Lcd_Printxy(0,0, "Wpisz segment danych ");
+	Lcd_Printxy(0,0,0, "Wpisz segment danych ");
 	char buf[100] = "";
 	cout << "rfidWrite module." << endl;
 
@@ -556,7 +556,7 @@ int deviceControler::rfidDisplay()
 
 	int len = (21 - title.size());
 	compose.str("");
-	compose << str;
+	compose << title;
 	for(int i = 0; i < len; i++)
 	{
 		compose << " ";
