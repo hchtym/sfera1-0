@@ -488,16 +488,16 @@ int deviceControler::rfidScan()
 	Lcd_Cls();
 	if(len <= 16){
 		Lcd_Printxy(0,0,0, str2);
-        sleep(8);
+        //sleep(8);
     }else{
 		if(len <= 32){
 			Lcd_Printxy(0,0,0, str2);
-			sleep(8);
+			//sleep(8);
                 //CBasicDialog::Show("nr karty", 0, str2, str2+16);
 		}else{
 	 		if(len <= 48){
 				Lcd_Printxy(0,0,0, str2);
-				sleep(8);
+				//sleep(8);
                 //CBasicDialog::Show("nr karty", str2, str2+16, str2+32);
 			}
  		}
