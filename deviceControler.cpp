@@ -597,13 +597,15 @@ int deviceControler::rfidWrite()
 
 	int ret = rfidScan();
 
-	Kb_GetStr(0, 4*8, (uchar*)buf, 1, 32, ALPHA_IN, 240);
+	Lcd_Cls();
+	Lcd_Printxy(0,0,1, "Wpisz segment danych ");
 
+	Kb_GetStr(0, 4*8, (uchar*)buf, 1, 32, ALPHA_IN, 240);
 
 	int len = strlen(buf);
 	for (int i = len; i < 32; i++)
 	{
-		rfidData[i]=0;
+		buf[i]=0;
 	}
 
 	ASCIIToHex(buf, 32, rfidData);
@@ -628,7 +630,7 @@ int deviceControler::rfidWrite()
 			RF_M1_Write(1,rfidData);
 		}
 	}
-	
+
 	Lcd_Cls();
 	Lcd_Printxy(0,48,0, "Dane zstaly zapisane");
 	return 0;
