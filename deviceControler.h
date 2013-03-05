@@ -19,6 +19,7 @@ using namespace std;
 
 class deviceControler{
 private:
+	char rfidId[20];
 	string rfidPasswd;
 	BYTE rfidPass[20]; 
 	BYTE rfidSerialNo[100];
@@ -61,6 +62,7 @@ public:
 	int rfidScan();
 	int rfidWrite(string input);
 	int rfidWrite();
+	int rfidDisplay();
 	int rfidRead();
 	int atc24Read();
 	int sleRead();

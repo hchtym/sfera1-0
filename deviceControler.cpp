@@ -447,12 +447,10 @@ int deviceControler::rfidScan()
 {
 	//BYTE buf[4];
 	//memset(buf, 0, sizeof(buf));
-	
+	memset(rfidId, 0, sizeof(rfidId));
 	memset(rfidIdBufer, 0, sizeof(rfidIdBufer));
 	memset(rfidSerialNo, 0, sizeof(rfidSerialNo));
 	memset(rfidData, 0, sizeof(rfidData));
-	char str[20]= {0};
-	char str2[20]= {0};
 	//RF_Init();
 	//DelayMs(1000);
 	Lcd_Cls();
@@ -469,7 +467,7 @@ int deviceControler::rfidScan()
 			if(rfidSerialNo[0] > 0)
 			{
 				sprintf(str, "%x\n",(long)rfidSerialNo+1);
-				hexToString(str2, rfidSerialNo + 1, rfidSerialNo[0]);
+				hexToString(rfidId, rfidSerialNo + 1, rfidSerialNo[0]);
 				break;
 			}
 		}
@@ -481,7 +479,7 @@ int deviceControler::rfidScan()
 			if(rfidSerialNo[0] > 0)
 			{
 				sprintf(str, "%x\n",(long)rfidSerialNo+1);
-				hexToString(str2, rfidSerialNo + 1, rfidSerialNo[0]);
+				hexToString(rfidId, rfidSerialNo + 1, rfidSerialNo[0]);
 				break;
 			}
 		}		
@@ -489,24 +487,24 @@ int deviceControler::rfidScan()
 
 	//RF_Close();
 	
-	int len = strlen(str2);
+	/*int len = strlen(rfidId);
 	Lcd_Cls();
 	if(len <= 16){
-		Lcd_Printxy(0,0,0, str2);
+		Lcd_Printxy(0,0,0, rfidId);
         //sleep(8);
     }else{
 		if(len <= 32){
-			Lcd_Printxy(0,0,0, str2);
+			Lcd_Printxy(0,0,0, rfidId);
 			//sleep(8);
                 //CBasicDialog::Show("nr karty", 0, str2, str2+16);
 		}else{
 	 		if(len <= 48){
-				Lcd_Printxy(0,0,0, str2);
+				Lcd_Printxy(0,0,0, rfidId);
 				//sleep(8);
                 //CBasicDialog::Show("nr karty", str2, str2+16, str2+32);
 			}
  		}
-	}
+	}*/
 }
 
 int deviceControler::rfidWrite(string input)
@@ -530,6 +528,37 @@ int deviceControler::rfidWrite(string input)
 
 		RF_M1_Write(1,rfidData);
 	}
+
+
+}
+
+int deviceControler::rfidDisplay()
+{
+	char buf[100];
+
+	Lcd_Cls();
+	int len = strlen(rfidId);
+	Lcd_Cls();
+	if(len <= 16){
+		Lcd_Printxy(0,0,1, rfidId);
+    }else{
+		if(len <= 32){
+			Lcd_Printxy(0,0,1, rfidId);
+		}else{
+	 		if(len <= 48){
+				Lcd_Printxy(0,0,1, rfidId);
+			}
+ 		}
+	}
+
+	memset(buf, 0, sizeof(buf));
+	for(int i=0; i<16; i++)
+	{
+		sprintf(buf+i*2, "%02X", rfidIdBufer[i]);
+	}
+
+	Lcd_Printxy(0,32,0, buf);
+	sleep(5);
 
 
 }
