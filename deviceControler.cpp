@@ -534,6 +534,8 @@ int deviceControler::rfidRead()
 		RF_M1_Read(0,rfidIdBufer);
 	}
 
+	cout << "zawartosc segmentu: " << rfidIdBufer << endl;
+
 	if(rfidType.compare("typeA") == 0)
 	{
 		//in future !! :D 
