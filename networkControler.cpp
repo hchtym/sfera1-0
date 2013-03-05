@@ -498,7 +498,7 @@ int networkControler::updConf()
 	connectAllQuiet();
 
 	compose.str("");
-	compose << "conf;" << snumer << ";" << confVer;
+	compose << "conf;" << snumer << ";" << confVer << "\0";
 	cout << "Wysylam zapytsanie o config: " << compose.str() << endl;
 	msg.clear();
 	msg = compose.str();
