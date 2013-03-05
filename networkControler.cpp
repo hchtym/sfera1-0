@@ -481,7 +481,7 @@ int networkControler::fileSize(string fileName)
 
 int networkControler::configReload()
 {
-	config->configReload();
+	config->configReload(false);
 }
 
 int networkControler::updConf()
