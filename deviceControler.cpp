@@ -437,6 +437,7 @@ BYTE baPrinterLogo[] = {//Width=50, Height=252
 
 deviceControler::deviceControler(){
 	Prn_Init();
+	RF_Init();
 	rfidPasswd = "FFFFFFFFFFFF";
 	ASCIIToHex((char *)rfidPasswd.c_str(), 12, rfidPass);
 	dbgh("password", rfidPass, 6);
@@ -452,7 +453,7 @@ int deviceControler::rfidScan()
 	memset(rfidData, 0, sizeof(rfidData));
 	char str[20]= {0};
 	char str2[20]= {0};
-	RF_Init();
+	//RF_Init();
 	//DelayMs(1000);
 	Lcd_Cls();
 	Lcd_Printxy(0,0,0, "Test RFID");
@@ -486,7 +487,7 @@ int deviceControler::rfidScan()
 		}		
 	}
 
-	RF_Close();
+	//RF_Close();
 	
 	int len = strlen(str2);
 	Lcd_Cls();
@@ -529,7 +530,7 @@ int deviceControler::rfidWrite(string input)
 
 int deviceControler::rfidRead()
 {
-	RF_Init();
+	//RF_Init();
 	dbgh("sn", rfidSerialNo, 20);
 	cout << "rfidRead module." << endl;
 
@@ -557,7 +558,7 @@ int deviceControler::rfidRead()
 
 		cout << "Jestem za RF_M1_Read" << endl;
 	}
-	RF_Close();
+	//RF_Close();
 }
 
 int deviceControler::atc24Read()
