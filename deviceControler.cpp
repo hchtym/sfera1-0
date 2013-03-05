@@ -532,7 +532,7 @@ int deviceControler::rfidRead()
 
 	if(rfidType.compare("M1") == 0)
 	{
-		RF_M1_Authority(M1_PASS_A,1,rfidPass,rfidSerialNo+1);
+		RF_M1_Authority(M1_PASS_A,01,rfidPass,rfidSerialNo);
 
 		cout << "Jestem za RF_M1_Authority" << endl;
 
