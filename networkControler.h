@@ -89,7 +89,7 @@ public:
 	int softAck(string date);
 	int sendAck(string date);
 	int startConf(int type);
-	int configReload();
+	int reloadConfig();
 	int updConf();
 	int updClock();
 	int sendTrx();

@@ -714,9 +714,9 @@ int deviceControler::chipCardScan()
 {
 }
 
-int deviceControler::configReload()
+int deviceControler::reloadConfig()
 {
-	config->configReload();
+	config->reloadConfig();
 }
 
 string deviceControler::magCardScan(bool kbd)
