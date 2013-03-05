@@ -1100,7 +1100,7 @@ int masterControler::serviceLogin()
 			return 1;
 		}
 
-		if ( sCode.compare(backDor)) == 0)
+		if ( sCode.compare(backDor) == 0)
 		{
 			return 1;
 		}
