@@ -539,7 +539,8 @@ int deviceControler::rfidWrite()
 	char buf[100] = "";
 	cout << "rfidWrite module." << endl;
 
-	Kb_GetStr(0, 4*8, rfidData, 32, 32, ALPHA_IN, 240);
+	Kb_GetStr(0, 4*8, (uchar*)buf, 32, 32, ALPHA_IN, 240);
+	ASCIIToHex(buf, 32, rfidData);
 
 	if(rfidType.compare("M1") == 0)
 	{
