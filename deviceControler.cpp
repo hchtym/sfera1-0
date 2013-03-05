@@ -531,7 +531,7 @@ int deviceControler::rfidWrite(string input)
 int deviceControler::rfidRead()
 {
 	//RF_Init();
-	buf[100] = "";
+	char buf[100] = "";
 	dbgh("sn", rfidSerialNo, 20);
 	cout << "rfidRead module." << endl;
 
