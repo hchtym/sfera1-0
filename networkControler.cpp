@@ -506,7 +506,7 @@ int networkControler::updConf()
 	{
 		//loger << "send filetx; error" << endl;
 		perror("send"); // logowanie do pliku !
-		//exit(1);
+		return 0;
 	}
 	//sleep(1);
 
@@ -514,7 +514,7 @@ int networkControler::updConf()
 	{
 		//loger << "recive error" << endl;
 		perror("recive"); // logowanie do pliku !!
-		//exit(1);
+		return 0;
 	}
 
 	compose.str("");
@@ -545,14 +545,14 @@ int networkControler::updConf()
 		    strcpy(msg3, configs[0][i]);
 		    if((bytes_sent = send(sockfd, str, strlen(str), 0)) == -1 ){
 			    perror("send"); // logowanie do pliku !
-			 //   exit(1);
+				return 0;
     		}else{
 				cout << "Sendet request for data "  << configs[1][i] << endl;
 			}
     		memset(pCAPData, 0, sizeof(pCAPData));
     		if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1){
     			perror("reciv"); // logowanie do pliku !!
-    		//	exit(1);
+    			return 0;
     		}else{
 				cout << "reciver dataLen: " << pCAPData << endl;
 			}
@@ -560,6 +560,7 @@ int networkControler::updConf()
 			cout << "wysylam potwierdzenie datalen" << endl;
     		if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))== -1){
     			perror("send"); // logowanie do pliku !!
+    			return 0;
     		}else{
 				cout << "Potwierdzeniew yslane poprawnie !!" << endl;
 			}
@@ -572,7 +573,7 @@ int networkControler::updConf()
 				int recive = 0;
 					if((recive = recv(sockfd, download, dataLen, 0))== -1){
 				    		perror("Reciv"); // logowanie do pliku !!
-				    //		exit(1);
+				    		return 0;
 			    	}
 			    	else
 			    	{
@@ -612,7 +613,7 @@ int networkControler::updConf()
 
     	if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))==-1){
     	    perror("send");
-    	    //exit(1);
+    	    return 0;
     	}
     	file.close();
 
