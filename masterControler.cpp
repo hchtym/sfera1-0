@@ -1891,7 +1891,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 		
 	}else{
 		cout << "obliczam automatycznie !!" << endl;
-		string extraActive  = config->returnExtraActive();
+		//string extraActive  = config->returnExtraActive();
 
 		//if (extraActive.compare("true") == 0)
 		if(true)
