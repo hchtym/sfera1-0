@@ -1414,10 +1414,10 @@ int masterControler::selling()
 						}
 					}
 				}
-				if (yolo == 1)
-				{
-					break;
-				}
+			}
+			if (yolo == 1)
+			{
+				break;
 			}				
 		}
 	
