@@ -68,7 +68,7 @@ string configControler::returnExtraValue()
 
 string configControler::returnExtraFrom()
 {
-	string param = cf->Value("extra," "epc.from");	
+	string param = cf->Value("extra", "epc.from");	
 	return param;
 }
 
