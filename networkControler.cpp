@@ -657,7 +657,7 @@ int networkControler::updConf()
 		string dane(pCAPData);
         vector<string> tokens;
         Tokenize(dane, tokens, ";");
-
+        std::vector<string>::iterator j;
         for(j=tokens.begin(); j<tokens.end(); ++j)
         {
 			file << *j << endl;		
