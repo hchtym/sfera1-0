@@ -69,6 +69,7 @@ string configControler::returnExtraPoints()
 string configControler::returnExtraRange()
 {
 	string param = cf->Value("extra","extraRange");
+	return param;
 }
 
 int configControler::returnExtraRangeValue(vector<string> &vec, int range)
