@@ -50,7 +50,7 @@ string configControler::returnExtraMultiplier()
 
 string configControler::returnExtraMode()
 {
-	string param = cf->Value("extra", "epc.typ");
+	string param = cf->Value("extra", "epc.type");
 	return param;
 }
 
