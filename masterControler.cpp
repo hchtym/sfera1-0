@@ -1893,7 +1893,8 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 		cout << "obliczam automatycznie !!" << endl;
 		string extraActive  = config->returnExtraActive();
 
-		if (extraActive.compare("true") == 0)
+		//if (extraActive.compare("true") == 0)
+		if(true)
 		{
 			cout << "obliczanie automatyczne odpalone !!" << endl;
 			string extraMode = config->returnExtraMode();
