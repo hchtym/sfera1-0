@@ -611,6 +611,13 @@ int networkControler::updConf()
 
 		memset(pCAPData, 0, sizeof(pCAPData));
 
+		msg.clear();
+		msg = "ok";
+		if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1){
+			perror("send"); // logowanie do pliku !
+			return 0;
+		}
+
 		if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1)
 		{
     		perror("reciv"); // logowanie do pliku !!
@@ -619,13 +626,10 @@ int networkControler::updConf()
 			 cout << "reciver dataLen: " << pCAPData << endl;
 		}
 
-		msg.clear();
-		msg = "ok";
 		if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1){
 			perror("send"); // logowanie do pliku !
 			return 0;
 		}
-
 
     	dataLen = atoi(pCAPData);
 
