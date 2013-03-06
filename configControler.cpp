@@ -74,7 +74,7 @@ string configControler::returnExtraFrom()
 
 string configControler::returnExtraTo()
 {
-	string param = cf->Value("extra," "epc.to");	
+	string param = cf->Value("extra", "epc.to");	
 	return param;
 }
 
