@@ -1986,6 +1986,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 				stringstream compose;
 				vector<string> vect;
 				string from = config->returnExtraFrom();
+				cout << "zawartosc przed erease: " << from << endl;
 				cout << "rozmiar from: " << from.size() << endl;
 				from.erase(4);
 				cout << "erease from 4" << endl;
