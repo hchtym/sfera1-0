@@ -2088,13 +2088,16 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 					string stringBegin = vect1[0];
 					cout << "zawartosc stringBegin: " << stringBegin << endl;
 					string stringEnd = vect0[1];
-					cout << "zawartosc stringEnd: " << stringBegin << endl;
+					cout << "zawartosc stringEnd: " << stringEnd << endl;
 					string stringExtra = vect1[2];
 					cout << "zawartosc stringExtra: " << stringExtra << endl;
 
 					int begin = atoi(stringBegin.c_str());
+					cout << begin << end;
 					int end = atoi(stringEnd.c_str());
+					cout << end << endl;
 					int extra = atoi(stringExtra.c_str());
+					cout << extra << endl;
 					int payParam = atoi(sumary.c_str());
 					cout << "zawartosc payParam: " << payParam << endl;
 					if( (payParam >= begin) && (payParam <= end))
@@ -2107,15 +2110,6 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 						temp << sumapkt;
 						pnt = temp.str();
 						return 0;
-					}
-					if(payParam < begin)
-					{
-						stringstream temp;
-						ext.clear();
-						ext = "0";
-						temp.str("");
-						temp << sumapkt;
-						pnt = temp.str();
 					}
 				}
 
