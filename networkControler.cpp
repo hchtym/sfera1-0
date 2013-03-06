@@ -1359,7 +1359,6 @@ int networkControler::ethConf()
     while(bytes_recv < dataLen){
 			int recive = 0;
 				if((recive = recv(sockfd, download, dataLen, 0))== -1){
-					loger << "error reciving data for: " << configs[1][i] << endl;
 		    		perror("Reciv"); // logowanie do pliku !!
 		    //		exit(1);
 		    	}else{
@@ -1427,15 +1426,15 @@ void networkControler::Tokenize(const string& str, vector<string>& tokens, const
 	}
 }
 
-const char* const networkControler::configs[2][7]=
+const char* const networkControler::configs[2][6]=
 {
 {
 "par.podst.", "zab.karty",
 "opcje menu", "nagrody",
-"sprzedawcy", "obliczenia", "extra zasady"
+"sprzedawcy", "obliczenia"
 },{
 "ok", "lc",
 "menu", "prize",
-"seller", "comp", "ok"
+"seller", "comp"
 }
 };
