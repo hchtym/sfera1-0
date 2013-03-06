@@ -1988,18 +1988,18 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 				string from = config->returnExtraFrom();
 				cout << "zawartosc przed erease: " << from << endl;
 				cout << "rozmiar from: " << from.size() << endl;
-				from.erase(7);
+				from.erase(from.begin()+7);
 				cout << "erease from 7" << endl;
-				from.erase(4);
+				from.erase(from.begin()+4);
 				cout << "erease from 4" << endl;
 
 				cout << "zawartosc from: " << from << endl;
 
 				string to = config->returnExtraTo();
 				cout << "rozmiar to: " << to << endl;
-				to.erase(7);
+				to.erase(to.begin()+7);
 				cout << "erease to 7" << endl;
-				to.erase(4);
+				to.erase(to.begin()+4);
 				cout << "erease to 4" << endl;
 
 				cout << "zawartosc to: " << to << endl;
