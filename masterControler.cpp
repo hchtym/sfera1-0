@@ -1803,7 +1803,8 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 		cout << "jestem sobie w obliczeniach muahahahah" << endl;
 		vector<string> vect;
 		config->confParse(vect, "comp");
-		for(int i = 0; i < vect.size(); i++){
+		for(int i = 0; i < vect.size(); i++)
+		{
 			vector<string> compos;
 			string part = vect[i];
 			cout << part << endl;
@@ -1822,10 +1823,12 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 				cout << "typ karty: " << type << endl;
 				string opt = compos[0];
 				cout << "opcja do porownania ! : " << opt << endl;
-				if((type.compare(opt))==0){
+				if((type.compare(opt))==0)
+				{
 					cout << "karta zgodna z opcja konfiguracji! " << endl;
 					//karta jest taka sama jak ta w konfiguracji basta ! 
-					if((payment.size()-2) > 1){
+					if((payment.size()-2) > 1)
+					{
 						string interval = compos[3];
 						interval.erase(interval.size()-1);
 						interval.erase(interval.size()-1);
@@ -1847,8 +1850,10 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 						int extra = atoi(str2.c_str());
 						string option = compos[4];
 						cout << "option: " << option << endl;
-						if((type.compare(opt))==0){
-							if((option.compare("1"))==0){
+						if((type.compare(opt))==0)
+						{
+							if((option.compare("1"))==0)
+							{
 								sumapkt = ((equation/inter)*mult)+extra;
 								cout << "sumapkt, option 1: " << sumapkt << endl;
 								stringstream temp;
@@ -1859,7 +1864,9 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 								ext = temp.str();
 								return 0;
 								break;
-							}else{
+							}
+							else
+							{
 								sumapkt = (( (equation - min) /inter)*mult)+extra;
 								cout << "sumapkt, option 0: " << sumapkt << endl;
 								stringstream temp;
@@ -1882,7 +1889,112 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 		
 
 	}else{
-		//tu bedzie automatyczne liczenie pkt na podstawie zakresu sumy albo cos takiego sie jeszcze zobaczy 
+		string extraActive  = config->returnExtraActive();
+
+		if (extraActive.compare("true"))
+		{
+		
+			string extraMode = config->returnExtraMode();
+
+			//tu bedzie automatyczne liczenie pkt na podstawie zakresu sumy albo cos takiego sie jeszcze zobaczy 
+
+			cout << "jestem sobie w obliczeniach muahahahah" << endl;
+			vector<string> vect;
+			config->confParse(vect, "comp");
+			for(int i = 0; i < vect.size(); i++)
+			{
+				vector<string> compos;
+				string part = vect[i];
+				cout << part << endl;
+				config->Tokenize(part, compos, ":");
+				compo1.str("");
+				cout << "rozmiar kodu zczytanego z karty !: " <<  id.size() << endl;
+				// sprawdz pierwsze 3 cyfry i porownaj je z konfiguracja....
+				string type;
+				for(int i = 0; i < 3; i++)
+				{
+					compo1 << id[i];
+					type = compo1.str();
+				}
+				if(id.size() == 10)
+				{	
+					cout << "typ karty: " << type << endl;
+					string opt = compos[0];
+					cout << "opcja do porownania ! : " << opt << endl;
+					if((type.compare(opt))==0)
+					{
+						cout << "karta zgodna z opcja konfiguracji! " << endl;
+						//karta jest taka sama jak ta w konfiguracji basta ! 
+						if((payment.size()-2) > 1)
+						{
+							string interval = compos[3];
+							interval.erase(interval.size()-1);
+							interval.erase(interval.size()-1);
+							string minimum = compos[1];
+							minimum.erase(minimum.size()-1);
+							minimum.erase(minimum.size()-1);
+							string sumary = payment;
+							sumary.erase(sumary.size()-1);
+							sumary.erase(sumary.size()-1);
+							int equation = atoi(sumary.c_str());
+							cout << "equation: " << equation << endl;
+							string multip = compos[2];
+							int mult = atoi(multip.c_str());
+							cout << "multip: " << mult << endl;
+							int inter = atoi(interval.c_str());
+							cout << "inter: " << inter << endl;
+							int min = atoi(minimum.c_str());
+							cout << "min: " << min << endl;
+							string option = compos[4];
+							cout << "option: " << option << endl;
+							if((type.compare(opt))==0)
+							{
+								if((option.compare("1"))==0)
+								{
+									sumapkt = ((equation/inter)*mult);
+									cout << "sumapkt, option 1: " << sumapkt << endl;
+									stringstream temp;
+									temp << sumapkt;
+									pnt = temp.str();
+									break;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			if(extraMode.compare("MULTIPLY") == 0)
+			{
+
+				string value = config->returnExtraOption();
+				int multiplayer = atoi(value.c_str());
+				int extra = sumapkt * multiplayer;
+				stringstream temp;
+				temp << extra;
+				ext = temp.str();
+				sumapkt += extra;
+				temp.str("");
+				temp << sumapkt;
+				pnt = temp.str();
+			}
+
+			if(extraMode.compare("DATE_RANGE") == 0)
+			{
+			
+			}
+
+			if(extraMode.compare("OVER") == 0)
+			{
+			
+			}
+
+			if(extraMode.compare("RANGE") == 0)
+			{
+			
+			}
+		}
+
 	}
 	return 0;
 }

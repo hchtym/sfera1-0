@@ -42,6 +42,42 @@ string configControler::returnParam(string part)
 	return param;
 }
 
+string configControler::returnExtraMode()
+{
+	string param = cf->Value("extra", "epc.typ");
+	return param;
+}
+
+string configControler::returnExtraActive()
+{
+	string param = cf->Value("extra", "epc.active");
+	return param;
+}
+
+string configControler::returnExtraPoints()
+{
+	string param = cf->Value("extra", "epc.points");
+	return param;
+}
+
+string configControler::returnExtraValue()
+{
+	string param = cf->Value("extra", "epc.value");
+	return param;
+}
+
+string configControler::returnExtraFrom()
+{
+	string param = cf->Value("extra," "epc.from");	
+	return param;
+}
+
+string configControler::returnExtraTo()
+{
+	string param = cf->Value("extra," "epc.to");	
+	return param;
+}
+
 string configControler::returnConfVer()
 {
 	string  confVer = cf->Value("ok", "version.date");

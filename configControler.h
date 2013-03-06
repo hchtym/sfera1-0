@@ -43,7 +43,13 @@ public:
 	int returnLCard(vector<string> &vec); 
 	int returnComputation(vector<string> &vec);
 	string returnParam(string part);
-	string returnGprsApn(); 
+	string returnGprsApn();
+	string returnExtraMode();
+	string returnExtraActive();
+	string returnExtraPoints();
+	string returnExtraValue();
+	string returnExtraFrom();
+	string returnExtraTo();
 	string returnGprsUser();
 	string returnGprsPaswd();
 	string confRetrunServiceCode();
