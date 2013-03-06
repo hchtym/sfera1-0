@@ -2087,7 +2087,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 					//ztokenizowane teraz porownujemy !!!!!!!!
 					string stringBegin = vect1[0];
 					cout << "zawartosc stringBegin: " << stringBegin << endl;
-					string stringEnd = vect0[1];
+					string stringEnd = vect1[1];
 					cout << "zawartosc stringEnd: " << stringEnd << endl;
 					string stringExtra = vect1[2];
 					cout << "zawartosc stringExtra: " << stringExtra << endl;
