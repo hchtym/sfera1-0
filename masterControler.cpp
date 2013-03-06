@@ -1981,9 +1981,31 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 
 			if(extraMode.compare("DATE_RANGE") == 0)
 			{
+				stringstream compose;
+				vector<string> vect;
 				string from = config->returnExtraFrom();
+				from.erase(4);
+				from.erase(7);
+				from.erase(10);
+				from.erase(13);
+
 				string to = config->returnExtraTo();
+				to.erase(4);
+				to.erase(7);
+				to.erase(10);
+				to.erase(13);
+
 				string actDate = trxTime();
+				for (int i = 0; i < actDate.size(); i+=2)
+				{
+					compose.str("");
+					compose << actDate[i] << actDate[i+1];
+					vect.push_back(compose.str());
+				}
+				compose.str("");
+				compose << "20" << vect[0] << vect[1] << vect[2] << vect[3] << vect[4];
+				actDate.clear();
+				actDate = compose.str();
 
 				int intFrom = atoi(from.c_str());
 				int intTo = atoi(to.c_str());
