@@ -1981,7 +1981,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 
 			if(extraMode.compare("DATE_RANGE") == 0)
 			{
-			
+				
 			}
 
 			if(extraMode.compare("OVER") == 0)
