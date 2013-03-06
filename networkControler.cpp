@@ -608,7 +608,7 @@ int networkControler::updConf()
     	   // cout << endl;
 			memset(pCAPData, 0, sizeof(pCAPData));
 		}
-		// potwierdzam zakonczenie pobierania danych !!
+
 		sleep(1);
 
     	if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))==-1){
