@@ -1694,8 +1694,10 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 	string str2 = "0";
 	string temp;
 	Kb_Flush();
-		if((flag.compare("off")) == 0){
-		while(1){
+	if((flag.compare("off")) == 0)
+	{
+		while(1)
+		{
 			compo1.str("");
 			for(int i = 0; i < (21 - str2.size()); i++)
 			{
@@ -1887,15 +1889,14 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 	
 		}
 		
-
 	}else{
 		string extraActive  = config->returnExtraActive();
 
-		if (extraActive.compare("true"))
+		if (extraActive.compare("true") == 0)
 		{
 		
 			string extraMode = config->returnExtraMode();
-
+			string sumary = payment;
 			//tu bedzie automatyczne liczenie pkt na podstawie zakresu sumy albo cos takiego sie jeszcze zobaczy 
 
 			cout << "jestem sobie w obliczeniach muahahahah" << endl;
@@ -1933,7 +1934,6 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 							string minimum = compos[1];
 							minimum.erase(minimum.size()-1);
 							minimum.erase(minimum.size()-1);
-							string sumary = payment;
 							sumary.erase(sumary.size()-1);
 							sumary.erase(sumary.size()-1);
 							int equation = atoi(sumary.c_str());
@@ -1970,10 +1970,10 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 				string value = config->returnExtraMultiplier();
 				int multiplayer = atoi(value.c_str());
 				int extra = sumapkt * multiplayer;
+				sumapkt += extra;
 				stringstream temp;
 				temp << extra;
 				ext = temp.str();
-				sumapkt += extra;
 				temp.str("");
 				temp << sumapkt;
 				pnt = temp.str();
@@ -1981,11 +1981,57 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 
 			if(extraMode.compare("DATE_RANGE") == 0)
 			{
+				string from = config->returnExtraFrom();
+				string to = config->returnExtraTo();
+				//string actDate =
+
+				int intFrom = atoi(from.c_str());
+				int intTo = atoi(to.c_str());
+				int intActDate = atoi(actDate.c_str());
+
+				if( (intActDate >= intFrom) && (intActDate <= intTo) )
+				{
+					string value = config->returnExtraPoints();
+					int extra = atoi(value.c_str());
+					sumapkt += extra;
+					stringstream temp;
+					temp << extra;
+					ext = temp.str();
+					temp.str("");
+					temp << sumapkt;
+					pnt = temp.str();
+				}
+				else
+				{
+					int extra = 0;
+					stringstream temp;
+					temp << extra;
+					ext = temp.str();
+					sumapkt += extra;
+					temp.str("");
+					temp << sumapkt;
+					pnt = temp.str();
+				}
 				
 			}
 
 			if(extraMode.compare("OVER") == 0)
 			{
+				string value = config->returnExtraValue();
+				int extraOver = atoi(value.c_str());
+				int pay = atoi(sumary.c_str());
+				if(pay > extraOver)
+				{
+					int extra = pay;
+					sumapkt += extra;
+					stringstream temp;
+					temp << extra;
+					ext = temp.str();
+					temp.str("");
+					temp << sumapkt;
+					pnt = temp.str();
+
+				}
 			
 			}
 
