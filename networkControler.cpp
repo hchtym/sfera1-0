@@ -618,6 +618,8 @@ int networkControler::updConf()
 			return 0;
 		}
 
+		cout << "wyslalem potwierdzenie, czekam na rozmiar" <<e endl;
+
 		if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1)
 		{
     		perror("reciv"); // logowanie do pliku !!
@@ -626,12 +628,15 @@ int networkControler::updConf()
 			 cout << "reciver dataLen: " << pCAPData << endl;
 		}
 
+		dataLen = atoi(pCAPData);
+		cout << "otrzymałem rozmiar: " <<  << " Wysylem potwierdzenie" << endl;
+
 		if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1){
 			perror("send"); // logowanie do pliku !
 			return 0;
 		}
 
-    	dataLen = atoi(pCAPData);
+		cout << "wysłałem potwierdzenie sciagam ostatni part configa." << endl;
 
     	file << "[extra]" << endl;
 
@@ -649,6 +654,7 @@ int networkControler::updConf()
 					cout << "nie pobralem czesci konfiguracji" << endl;
 				}
 				bytes_recv += recive;
+				cout << "Pobralem: " << dataLen << "/" << bytes_recv << endl;
 				//sleep(0.5);
 				strcat(pCAPData, download);
 				memset(download, 0, sizeof(download));		
