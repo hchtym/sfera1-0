@@ -495,6 +495,7 @@ int networkControler::updConf()
 	memset(pCAPData, 0, sizeof(pCAPData));
 	memset(download, 0, sizeof(download));
 	int len,bytes_sent,bytes_recv;
+	int dataLen;
 	connectAllQuiet();
 
 	compose.str("");
@@ -539,7 +540,6 @@ int networkControler::updConf()
 		for(int i =0; i<6; i++){
 			sleep(1);
 		    char str[40];
-		    int dataLen;
 		    sprintf(str, "%s" ,configs[1][i]);
 		    char msg3[50];
 		    strcpy(msg3, configs[0][i]);
@@ -613,7 +613,6 @@ int networkControler::updConf()
 
 		if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1)
 		{
-			loger << "recive eror datalen" << endl;
     		perror("reciv"); // logowanie do pliku !!
     		//	exit(1);
     	}else{
@@ -623,7 +622,6 @@ int networkControler::updConf()
 		msg.clear();
 		msg = "ok";
 		if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1){
-			loger << "error send przedstawienie" << endl;
 			perror("send"); // logowanie do pliku !
 			return 0;
 		}
@@ -644,7 +642,7 @@ int networkControler::updConf()
 		    		perror("Reciv"); // logowanie do pliku !!
 		    		return 0;
 		    	}else{
-					loger << "recived part of this size: " << recive << endl;
+					cout << "nie pobralem czesci konfiguracji" << endl;
 				}
 				bytes_recv += recive;
 				//sleep(0.5);
