@@ -2069,6 +2069,10 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 
 			if(extraMode.compare("RANGE") == 0)
 			{
+				string value = config->returnExtraRange();
+				int rnge = atoi(value.c_str());
+				vector<string> vect0;
+				config->returnExtraRangeValue(vect0, rnge); 
 			
 			}
 			return 0;

@@ -46,6 +46,8 @@ public:
 	string returnGprsApn();
 	string returnExtraMode();
 	string returnExtraActive();
+	string returnExtraRange();
+	int returnExtraRangeValue(vector<string> &vec, int range);
 	string returnExtraPoints();
 	string returnExtraValue();
 	string returnExtraFrom();

@@ -66,6 +66,27 @@ string configControler::returnExtraPoints()
 	return param;
 }
 
+string configControler::returnExtraRange()
+{
+	string param = cf->Value("extra","extraRange");
+}
+
+int configControler::returnExtraRangeValue(vector<string> &vec, int range)
+{
+	string part;
+	stringstream compose;
+	for(int i = 0; i < range; i++)
+	{
+		compose.str("");
+		compose << "epc.range" << i;
+		part.clear();
+		part = compose.str();
+		string parameter = cf->Value("extra", part);
+		vec.push_back(parameter);
+
+	}
+}
+
 string configControler::returnExtraValue()
 {
 	string param = cf->Value("extra", "epc.value");

@@ -662,11 +662,31 @@ int networkControler::updConf()
 
 		string dane(pCAPData);
         vector<string> tokens;
+        int extraRange = 0;
+        string token = "epc.range";
         Tokenize(dane, tokens, ";");
+        for (int i = 0; i < tokens.size() ; i++)
+        {
+        	string finder = tokens[i];
+        	unsigned found = finder.find(token);
+        	if(found!=std::string::npos)
+        	{
+        		extraRange++;
+        	}
+        }
+
+
         std::vector<string>::iterator j;
         for(j=tokens.begin(); j<tokens.end(); ++j)
         {
 			file << *j << endl;		
+    	}
+
+    	if(extraRange >= 0)
+    	{
+    		stringstream temp;
+    		temp << extraRange;
+    		file << "extraRange = " << temp.str() << endl;
     	}
 
     	file << "[/extra]" << endl;
