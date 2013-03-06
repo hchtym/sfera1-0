@@ -1690,7 +1690,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 	int sumapkt;
 	BYTE key = NOKEY;
 	stringstream compo, compo1; 
-	string flag = "off";
+	string flag = "on";
 	string str2 = "0";
 	string temp;
 	Kb_Flush();
@@ -1890,11 +1890,12 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 		}
 		
 	}else{
+		cout << "obliczam automatycznie !!" << endl;
 		string extraActive  = config->returnExtraActive();
 
 		if (extraActive.compare("true") == 0)
 		{
-		
+			cout << "obliczanie automatyczne odpalone !!" << endl;
 			string extraMode = config->returnExtraMode();
 			string sumary = payment;
 			//tu bedzie automatyczne liczenie pkt na podstawie zakresu sumy albo cos takiego sie jeszcze zobaczy 
