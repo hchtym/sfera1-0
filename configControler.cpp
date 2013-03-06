@@ -42,6 +42,12 @@ string configControler::returnParam(string part)
 	return param;
 }
 
+string configControler::returnExtraMultiplier()
+{
+	string param = cf->Value("extra", "epc.multiplier");
+	return param;
+}
+
 string configControler::returnExtraMode()
 {
 	string param = cf->Value("extra", "epc.typ");

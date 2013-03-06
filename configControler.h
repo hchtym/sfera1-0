@@ -50,6 +50,7 @@ public:
 	string returnExtraValue();
 	string returnExtraFrom();
 	string returnExtraTo();
+	string returnExtraMultiplier();
 	string returnGprsUser();
 	string returnGprsPaswd();
 	string confRetrunServiceCode();

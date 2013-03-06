@@ -1967,7 +1967,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 			if(extraMode.compare("MULTIPLY") == 0)
 			{
 
-				string value = config->returnExtraOption();
+				string value = config->returnExtraMultiplier();
 				int multiplayer = atoi(value.c_str());
 				int extra = sumapkt * multiplayer;
 				stringstream temp;
