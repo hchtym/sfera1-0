@@ -2089,7 +2089,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 					int end = atoi(stringEnd.c_str());
 					int extra = atoi(stringExtra.c_str());
 					int payParam = atoi(sumary.c_str());
-					if( (payParam >= begin) && (payParam < end))
+					if( (payParam >= begin) && (payParam <= end))
 					{
 						sumapkt += extra;
 						stringstream temp;
