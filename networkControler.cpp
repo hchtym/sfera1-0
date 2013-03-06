@@ -1187,7 +1187,7 @@ int networkControler::ethConf()
 	// tworze plik konfiguracyjny !
 	ofstream file("config.txt", ios_base::app);
 	ofstream loger("logs.txt", ios_base::app);
-	
+	int dataLen;
 	loger << "start ethCon" << endl;
 	// konfiguracja socketa !! 
 	char pCAPData[buffer*10];
@@ -1258,7 +1258,6 @@ int networkControler::ethConf()
 	for(int i =0; i<6; i++){
 		sleep(1);
 	    char str[40];
-	    int dataLen;
 	    sprintf(str, "%s" ,configs[1][i]);
 	    char msg3[50];
 	    strcpy(msg3, configs[0][i]);
@@ -1348,7 +1347,7 @@ int networkControler::ethConf()
 		loger << "reciver dataLen: " << pCAPData << endl;
 	}
 
-	
+
     dataLen = atoi(pCAPData);
 
     file << "[extra]" << endl;
