@@ -2111,6 +2111,15 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 						pnt = temp.str();
 						return 0;
 					}
+					else
+					{
+						stringstream temp;
+						ext = "0";
+						temp.str("");
+						temp << sumapkt;
+						pnt = temp.str();
+
+					}
 				}
 
 			
