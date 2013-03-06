@@ -2063,6 +2063,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 			{
 			
 			}
+			return 0;
 		}
 
 	}
