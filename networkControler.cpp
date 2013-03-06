@@ -616,7 +616,7 @@ int networkControler::updConf()
     		perror("reciv"); // logowanie do pliku !!
     		//	exit(1);
     	}else{
-			loger << "reciver dataLen: " << pCAPData << endl;
+			 cout << "reciver dataLen: " << pCAPData << endl;
 		}
 
 		msg.clear();
