@@ -629,7 +629,7 @@ int networkControler::updConf()
 		}
 
 		dataLen = atoi(pCAPData);
-		cout << "otrzymałem rozmiar: " <<  << " Wysylem potwierdzenie" << endl;
+		cout << "otrzymałem rozmiar: " << dataLen << " Wysylem potwierdzenie" << endl;
 
 		if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1){
 			perror("send"); // logowanie do pliku !
