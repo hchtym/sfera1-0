@@ -618,7 +618,7 @@ int networkControler::updConf()
 			return 0;
 		}
 
-		cout << "wyslalem potwierdzenie, czekam na rozmiar" <<e endl;
+		cout << "wyslalem potwierdzenie, czekam na rozmiar" << endl;
 
 		if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1)
 		{
