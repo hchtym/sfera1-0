@@ -2093,7 +2093,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 					cout << "zawartosc stringExtra: " << stringExtra << endl;
 
 					int begin = atoi(stringBegin.c_str());
-					cout << begin << end;
+					cout << begin << endl;
 					int end = atoi(stringEnd.c_str());
 					cout << end << endl;
 					int extra = atoi(stringExtra.c_str());
