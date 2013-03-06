@@ -2071,24 +2071,32 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 
 			if(extraMode.compare("RANGE") == 0)
 			{
+				cout << "naliczanie w trybie Range" << endl;
 				string value = config->returnExtraRange();
 				int rnge = atoi(value.c_str());
+				cout << "ilosc zakresow: " << rnge << endl;
 				vector<string> vect0;
 				config->returnExtraRangeValue(vect0, rnge);
 				for (int i = 0; i < vect0.size(); i++)
 				{
+					cout << "parsuje elementy  i obliczam punkty" << endl;
 					vector<string> vect1;
 					string part = vect0[i];
 					Tokenize(part, vect1, ":");
+					cout << "stokenizowalem" << endl;
 					//ztokenizowane teraz porownujemy !!!!!!!!
 					string stringBegin = vect1[0];
+					cout << "zawartosc stringBegin: " << stringBegin << endl;
 					string stringEnd = vect0[1];
+					cout << "zawartosc stringEnd: " << stringBegin << endl;
 					string stringExtra = vect1[2];
+					cout << "zawartosc stringExtra: " << stringExtra << endl;
 
 					int begin = atoi(stringBegin.c_str());
 					int end = atoi(stringEnd.c_str());
 					int extra = atoi(stringExtra.c_str());
 					int payParam = atoi(sumary.c_str());
+					cout << "zawartosc payParam: " << payParam << endl;
 					if( (payParam >= begin) && (payParam <= end))
 					{
 						sumapkt += extra;
