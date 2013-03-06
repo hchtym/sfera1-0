@@ -502,7 +502,7 @@ int networkControler::updConf()
 	cout << "Wysylam zapytsanie o config: " << compose.str() << endl;
 	msg.clear();
 	msg = compose.str();
-	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1)
+	if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1)
 	{
 		//loger << "send filetx; error" << endl;
 		perror("send"); // logowanie do pliku !
