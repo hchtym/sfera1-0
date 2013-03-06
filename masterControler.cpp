@@ -1986,6 +1986,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 				stringstream compose;
 				vector<string> vect;
 				string from = config->returnExtraFrom();
+				cout << "rozmiar from: " << from.size() << endl;
 				from.erase(4);
 				cout << "erease from 4" << endl;
 				from.erase(7);
@@ -1997,6 +1998,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 				cout << "zawartosc from: " << from << endl;
 
 				string to = config->returnExtraTo();
+				cout << "rozmiar to: " << to << endl;
 				to.erase(4);
 				cout << "erease to 4" << endl;
 				to.erase(7);
