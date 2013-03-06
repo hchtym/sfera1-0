@@ -1987,15 +1987,25 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 				vector<string> vect;
 				string from = config->returnExtraFrom();
 				from.erase(4);
+				cout << "erease from 4" << endl;
 				from.erase(7);
+				cout << "erease from 7" << endl;
 				from.erase(10);
+				cout << "erease from 10" << endl;
 				from.erase(13);
+				cout << "erease from 13" << endl;
+				cout << "zawartosc from: " << from << endl;
 
 				string to = config->returnExtraTo();
 				to.erase(4);
+				cout << "erease to 4" << endl;
 				to.erase(7);
+				cout << "erease to 7" << endl;
 				to.erase(10);
+				cout << "erease to 10" << endl;
 				to.erase(13);
+				cout << "erease to 13" << endl;
+				cout << "zawartosc to: " << to << endl;
 
 				string actDate = trxTime();
 				for (int i = 0; i < actDate.size(); i+=2)
@@ -2008,6 +2018,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 				compose << "20" << vect[0] << vect[1] << vect[2] << vect[3] << vect[4];
 				actDate.clear();
 				actDate = compose.str();
+				cout << "zawartosc actDate: " << actDate << endl;
 
 				int intFrom = atoi(from.c_str());
 				int intTo = atoi(to.c_str());
