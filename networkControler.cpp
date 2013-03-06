@@ -1338,6 +1338,41 @@ int networkControler::ethConf()
        // cout << endl;
 		memset(pCAPData, 0, sizeof(pCAPData));
 	}
+
+	if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1)
+	{
+		loger << "recive eror datalen" << endl;
+    	perror("reciv"); // logowanie do pliku !!
+    	//	exit(1);
+    }else{
+		loger << "reciver dataLen: " << pCAPData << endl;
+	}
+
+	
+    dataLen = atoi(pCAPData);
+
+    file << "[extra]" << endl;
+
+    memset(pCAPData, 0, sizeof(pCAPData));
+	memset(download, 0, sizeof(download));
+    bytes_recv = 0;
+
+    while(bytes_recv < dataLen){
+			int recive = 0;
+				if((recive = recv(sockfd, download, dataLen, 0))== -1){
+					loger << "error reciving data for: " << configs[1][i] << endl;
+		    		perror("Reciv"); // logowanie do pliku !!
+		    //		exit(1);
+		    	}else{
+					loger << "recived part of this size: " << recive << endl;
+				}
+				bytes_recv += recive;
+				//sleep(0.5);
+				strcat(pCAPData, download);
+				memset(download, 0, sizeof(download));		
+		}
+
+    file << "[/extra]" << endl;
 	// potwierdzam zakonczenie pobierania danych !!
 	sleep(1);
 	loger << "sending ok that the data was reciver properly" << endl;
@@ -1393,15 +1428,15 @@ void networkControler::Tokenize(const string& str, vector<string>& tokens, const
 	}
 }
 
-const char* const networkControler::configs[2][6]=
+const char* const networkControler::configs[2][7]=
 {
 {
 "par.podst.", "zab.karty",
 "opcje menu", "nagrody",
-"sprzedawcy", "obliczenia"
+"sprzedawcy", "obliczenia", "extra zasady"
 },{
 "ok", "lc",
 "menu", "prize",
-"seller", "comp"
+"seller", "comp", "ok"
 }
 };
