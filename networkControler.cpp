@@ -654,6 +654,11 @@ int networkControler::updConf()
 				memset(download, 0, sizeof(download));		
 		}
 
+		string dane(pCAPData);
+        vector<string> tokens;
+        Tokenize(dane, tokens, ";");
+        file << *j << endl;
+        
     	file << "[/extra]" << endl;
 
 
