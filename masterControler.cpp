@@ -832,7 +832,7 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 	
 	footer.clear();
 	footer = "DLA SPRZEDAWCY\n\r";
-	device->printTx(numerser, seller, trxDateTime, cid, sum, point, extra, footer, trxIdNumber);
+	device->printTx(numerser, seller, trxDateTime, cid, payment, point, extra, footer, trxIdNumber);
 
 	selling();
 	return 0;
