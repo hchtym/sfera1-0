@@ -2050,6 +2050,8 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 			if(extraMode.compare("OVER") == 0)
 			{
 				string value = config->returnExtraValue();
+				string stringBegin, stringEnd;
+				string stringExtra;
 				int extraOver = atoi(value.c_str());
 				int pay = atoi(sumary.c_str());
 				if(pay > extraOver)
@@ -2072,7 +2074,43 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 				string value = config->returnExtraRange();
 				int rnge = atoi(value.c_str());
 				vector<string> vect0;
-				config->returnExtraRangeValue(vect0, rnge); 
+				config->returnExtraRangeValue(vect0, rnge);
+				for (int i = 0; i < vect0.size(); i++)
+				{
+					vector<string> vect1;
+					string part = vect0[i];
+					Tokenize(part, vect1, ":");
+					//ztokenizowane teraz porownujemy !!!!!!!!
+					stringBegin = vect1[0];
+					stringEnd = vect0[1];
+					stringExtra = vect1[2];
+
+					int begin = atoi(stringBegin.c_str());
+					int end = atoi(stringEnd.c_str());
+					int extra = atoi(stringExtra.c_str());
+					int payParam = atoi(sumary.c_str());
+					if( (payParam >= begin) && (payParam < end))
+					{
+						sumapkt += extra;
+						stringstream temp;
+						temp << extra;
+						ext = temp.str();
+						temp.str("");
+						temp << sumapkt;
+						pnt = temp.str();
+						return 0;
+					}
+					else
+					{
+						stringstream temp;
+						ext.clear();
+						ext = "0";
+						temp.str("");
+						temp << sumapkt;
+						pnt = temp.str();
+					}
+				}
+
 			
 			}
 			return 0;
