@@ -86,6 +86,7 @@ int configControler::returnExtraRangeValue(vector<string> &vec, int range)
 		vec.push_back(parameter);
 
 	}
+	return 0;
 }
 
 string configControler::returnExtraValue()
