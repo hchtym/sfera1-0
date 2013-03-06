@@ -1983,7 +1983,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 			{
 				string from = config->returnExtraFrom();
 				string to = config->returnExtraTo();
-				//string actDate =
+				string actDate = trxTime();
 
 				int intFrom = atoi(from.c_str());
 				int intTo = atoi(to.c_str());
