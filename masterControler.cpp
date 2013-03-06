@@ -2081,9 +2081,9 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 					string part = vect0[i];
 					Tokenize(part, vect1, ":");
 					//ztokenizowane teraz porownujemy !!!!!!!!
-					stringBegin = vect1[0];
-					stringEnd = vect0[1];
-					stringExtra = vect1[2];
+					string stringBegin = vect1[0];
+					string stringEnd = vect0[1];
+					string stringExtra = vect1[2];
 
 					int begin = atoi(stringBegin.c_str());
 					int end = atoi(stringEnd.c_str());
