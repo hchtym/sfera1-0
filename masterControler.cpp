@@ -2108,7 +2108,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 						pnt = temp.str();
 						return 0;
 					}
-					else
+					if(payParam < begin)
 					{
 						stringstream temp;
 						ext.clear();
