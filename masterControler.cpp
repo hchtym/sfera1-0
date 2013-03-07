@@ -1140,7 +1140,8 @@ void masterControler::screenSaver()
 	Lcd_SetBackLight(BACKLIGHT_OFF);
 	if (loginFlag)
 	{
-		stringstream compose << "Zalogowany:     " << seller;
+		stringstream compose;
+		compose << "Zalogowany:     " << seller;
 		string upperScreen = compose.str();
 		Lcd_Printxy(0,0,0, const_cast<char *>(upperScreen.c_str()) ;
 	}
