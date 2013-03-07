@@ -623,7 +623,7 @@ int masterControler::dispMenu()
 	vector<string> displayMenuOff;
 
 
-	cout << "passuje pliki opcji i pliki pozycji menu dla zalogowania i niezalogowania" << endl;
+	cout << "parsuje pliki opcji i pliki pozycji menu dla zalogowania i niezalogowania" << endl;
 	k =0;
 	for(i = 0; i < 6; i++)
 	{
@@ -861,6 +861,10 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
 	}
     //key=NOKEY;
+    string screenTimeout = config->returnScreenSaverTimeout();
+	int timeout = atoi(screenTimeout.s_ctr());
+	SetTimer(0, (timeout*1000));
+
 	cout << "jestem przed draw menu !" << endl;
 	drawMenu:
 	if(index2 < 0 || index2 > size -1) index2 =0;
@@ -888,7 +892,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	//                      Lcd_Printxy(1, i+3, 0, "                 ");
 	        }
 		}
-	    SetTimer(0, 30000);
+	    //SetTimer(0, 30000);
 	    int left = -1;
 		cout << "wchodze do while odpowiedzialnego za wykrywanie guzikow timeout i inne" << endl;
 		Kb_Flush();
@@ -923,17 +927,25 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 
 			}
 
-	    	if(!Kb_Hit()){
+	    	if(!Kb_Hit())
+	    	{
 	    		key = Kb_GetKey();
-	    		if(key !=NOKEY){
+	    		if(key !=NOKEY)
+	    		{
 	    			break;
 	    		}
 
+	    	}
+	    	left = CheckTimer(0);
+	    	if(0 == left){
+	    		key = NOKEY;
+	    		break;
 	    	}
 
         }
 		switch(key){
 			case NOKEY:
+				screenSaver();
 		    break;
 		    case KEYCANCEL:
 		    case KEYBACKSPACE:
@@ -1009,8 +1021,7 @@ int masterControler::menuScrOther(const string &menuname,vector<string> &vect, i
 	//                      Lcd_Printxy(1, i+3, 0, "                 ");
 	        }
 		}
-	    SetTimer(0, 30000);
-	    int left = -1;
+		int left = -1;
 		cout << "wchodze do while odpowiedzialnego za wykrywanie guzikow timeout i inne" << endl;
 		Kb_Flush();
 	    while(1){
@@ -1023,15 +1034,15 @@ int masterControler::menuScrOther(const string &menuname,vector<string> &vect, i
 
 	    	}
 
-	    	left = CheckTimer(0);
+	    	/*left = CheckTimer(0);
 	    	if(0 == left){
 	    		key = NOKEY;
 	    		break;
-	    	}
+	    	}*/
         }
 		switch(key){
 			case NOKEY:
-		 //   	creenBlank();
+			   	screenSaver();
 				goto drawMenu;
 		    break;
 		    case KEYCANCEL:
@@ -1068,6 +1079,28 @@ int masterControler::menuScrOther(const string &menuname,vector<string> &vect, i
 
 void masterControler::screenSaver()
 {
+	BYTE key;
+	clear();
+	Lcd_SetBackLight(BACKLIGHT_OFF);
+	Lcd_Logo();
+	Kb_Flush();
+	while(1)
+	{
+
+		if(!Kb_Hit())
+	    {
+	    	key = Kb_GetKey();
+	    	if(key !=NOKEY)
+	    	{
+	    		string screenTimeout = config->returnScreenSaverTimeout();
+				int timeout = atoi(screenTimeout.s_ctr());
+				SetTimer(0, (timeout*1000));
+	    		Lcd_SetBackLight(BACKLIGHT_ON);
+	    		break;
+	    	}
+	   	}
+	}
+
 }
 
 int masterControler::serviceLogin()

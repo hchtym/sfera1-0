@@ -48,6 +48,7 @@ public:
 	string returnExtraActive();
 	string returnExtraRange();
 	int returnExtraRangeValue(vector<string> &vec, int range);
+	string returnScreenSaverTimeout();
 	string returnExtraPoints();
 	string returnExtraValue();
 	string returnExtraFrom();

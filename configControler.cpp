@@ -72,6 +72,12 @@ string configControler::returnExtraRange()
 	return param;
 }
 
+string configControler::returnScreenSaverTimeout()
+{
+	string param = cf->Value("ok", "screensaver.timeout");
+	return param;
+}
+
 int configControler::returnExtraRangeValue(vector<string> &vec, int range)
 {
 	string part;
