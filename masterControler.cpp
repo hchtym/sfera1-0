@@ -1082,7 +1082,8 @@ void masterControler::screenSaver()
 	BYTE key;
 	clear();
 	Lcd_SetBackLight(BACKLIGHT_OFF);
-	Lcd_Logo();
+	//Lcd_Logo();
+	cout << "Tu bedzie jakies logo w przyszlosci :D !" << endl;
 	Kb_Flush();
 	while(1)
 	{
