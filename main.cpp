@@ -32,21 +32,11 @@ int main(){
 	configControler* config = new configControler(true);
 	Lcd_Cls();
 	Lcd_Printxy(0,0,0,"Ladowanie systemu");
-	//Lcd_Logo();
 	Lcd_Printxy(0,55,0,"Prosze czekac...");
-	/*string user = config->returnGprsUser();
-	string password = config->returnGprsPaswd();
-	Lcd_Cls();
-	Wls_InputUidPwd((BYTE *)user.c_str(), (BYTE *)password.c_str() );
-	int ret;
+	//Lcd_Logo();
 
-	ret = Wls_Init();
-	DelayMs(500); 
-	if(ret != ERR_OK){
-		Lcd_Printxy(0,8,0, "Blad modolu gprs");
-	}
-
-	for(int i = 0; i < 100; i++)
+	// ustalam ikonke zasiegu 
+	for(int i = 0; i < 20; i++)
 	{
 		int ret,sig;
 		sig = -1;
@@ -71,26 +61,20 @@ int main(){
 			Lcd_Icon(1, ICON_OFF, 1);
 			break;
 		}
-	DelayMs(200);
 	}
-	
-	ret = Wls_SetBaudrate(115200);
-	DelayMs(200);
-	if(ret != ERR_OK){
-		Lcd_Cls();
-		Lcd_Printxy(0,0,0, "Blad przy ustawianiu");
-	}
-	Lcd_Printxy(0,16,0, "Spr obecnosc k.sim");
 
-	ret = Wls_CheckSim();
-	DelayMs(500);
-	if(ret == ERR_OK)
+	//nawizauje polaczenie z siecia 
+	if(Wls_CheckPPPLink(45))
 	{
-		Lcd_Printxy(0,24, 0, "SIM = OK");
-	}else{
-		Lcd_Printxy(0,24, 0, "Brak karty SIM");
-	}	
-	*/
+		Lcd_Cls();
+		Lcd_Printxy(0,8,0, "Brak połączenia z internetem.");
+		Lcd_Printxy(0,32,0, "Wszystkie funkcje sieciowe zostana odłączone.");
+	}
+
+	Lcd_Cls();
+	Lcd_Printxy(0,0,0,"Ladowanie systemu");
+	Lcd_Printxy(0,55,0,"Prosze czekac...");
+	
 
 	cout << "kiluje obiekt" << endl;
 	sleep(20);
@@ -102,6 +86,8 @@ int main(){
 	pid_t pID = fork();
 	if(pID == 0) /* child */
 	{
+
+
 		//ifstream fifo;
 		mknod(FIFO_NAME, S_IFIFO | 0666, 0);
 		int num;
@@ -111,25 +97,34 @@ int main(){
 		//fifo.open(FIFO_NAME, ios::out | ios::turnc);
 		masterControler* master = new masterControler();
 		cout << "Child process is on the go" << endl;
-		master->updClk();
+
+
+		//master->updClk();
 		master->checkVersion();
+
 		while(1)
 		{
+			if(Wls_CheckPPPLink(45))
+			{
+				sleep(45);
+			}
+			else
+			{
+				sleep(20);
+				do
+				{	
+					num = read(fd, bufer, 6);
+					if(strcmp(bufer, "send\n") == 0)
+					{
+						cout << "dostalem polecenie sen !!" << endl;
+						master->masterBackground();	
+					}
+					memset(bufer, 0, sizeof(bufer));
 
-			sleep(20);
-			do
-			{	
-				num = read(fd, bufer, 6);
-				if(strcmp(bufer, "send\n") == 0)
-				{
-					cout << "dostalem polecenie sen !!" << endl;
-					master->masterBackground();	
-				}
-				memset(bufer, 0, sizeof(bufer));
-
-			}while(num > 0);
-			cout << "jestem przed timeWindow" << endl;
-			master->timeWindow();
+				}while(num > 0);
+				cout << "jestem przed timeWindow" << endl;
+				master->timeWindow();
+			}
 		}
 	}
 	else if (pID < 0)/* failed */
