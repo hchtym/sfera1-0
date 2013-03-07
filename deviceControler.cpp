@@ -1397,7 +1397,7 @@ void deviceControler::printerHeader(string seriallNr, string sellerId, string da
 
 	printLines(2);
 	//Prn_Logo((unsigned char *) baPrinterLogo, 50, 252, 0, 0);
-	Prn_Logo((unsigned char *) baPrinterLogo2, 33, 169, 0, 0);
+	Prn_Logo((unsigned char *) baPrinterLogo2, 50, 252, 0, 0);
 	printLines(1);
    	
 	compose.str("");
