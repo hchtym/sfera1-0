@@ -1135,6 +1135,8 @@ void masterControler::screenSaver()
 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	};
 
+	SetTimer(1, 1000);
+	int left = -1;
 	bool blink = true;
 	vector<string> vect;
 	string actDate;
@@ -1167,6 +1169,7 @@ void masterControler::screenSaver()
 			compose << actDate[i] << actDate[i+1];
 			vect.push_back(compose.str());
 		}
+
 		if (blink)
 		{
 			compose.str("");
@@ -1200,8 +1203,13 @@ void masterControler::screenSaver()
 	    		break;
 	    	}
 	   	}
-	   	DelayMs(250);
-	   	blink = false;
+	   	left = CheckTimer(0);
+	    	if(0 == left){
+	    		SetTimer(1, 1000);
+				left = -1;
+				blink = false;
+	    		
+	    	}
 	}
 
 }
