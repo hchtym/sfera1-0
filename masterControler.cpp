@@ -1094,7 +1094,7 @@ void masterControler::screenSaver()
 	    	if(key !=NOKEY)
 	    	{
 	    		string screenTimeout = config->returnScreenSaverTimeout();
-				int timeout = atoi(screenTimeout.s_str());
+				int timeout = atoi(screenTimeout.c_str());
 				SetTimer(0, (timeout*1000));
 	    		Lcd_SetBackLight(BACKLIGHT_ON);
 	    		break;
