@@ -1138,7 +1138,9 @@ void masterControler::screenSaver()
 	BYTE key;
 	clear();
 	Lcd_SetBackLight(BACKLIGHT_OFF);
+	Lcd_Printxy(0,0,0, "Niezalogowany");
 	Lcd_Logo(lcdLogo,sizeof(lcdLogo),8);
+	Lcd_Printxy(0,0,0, "tutaj bedzie data");
 	cout << "Tu bedzie jakies logo w przyszlosci :D !" << endl;
 	Kb_Flush();
 	while(1)
