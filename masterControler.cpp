@@ -1204,12 +1204,13 @@ void masterControler::screenSaver()
 	    	}
 	   	}
 	   	left = CheckTimer(1);
-	    	if(0 == left){
-	    		SetTimer(1, 1000);
-				left = -1;
-				blink = false;
-	    		
-	    	}
+	    if(0 == left)
+	    {
+	    	SetTimer(1, 3000);
+			left = -1;
+			blink = false;		
+	    }
+
 	}
 
 }
