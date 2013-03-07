@@ -605,8 +605,8 @@ int masterControler::dispMenu()
 	int i,j,k;
 	int ret;
 	cout << "tworze 2 stringi login i logout" << endl;
-	string menu1 = "LOGIN;SHOP;PRIZE;CHECKPOINT;TRANSACTIONS_SEND;SERVICE;Wylogowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
-	string menu2 = "LOGOUT;SHOP;PRIZE;CHECKTPOIN;TRANSACTIONS_SEND;SERVICE;Logowanie;Sklep;Nagrody;Stan punktowy;Wyslij tranzakcje;Serwis";
+	string menu1 = "LOGIN;SHOP;PRIZE;CHECKPOINT;TRANSACTIONS_SEND;SERVICE;Wylogowanie;Sklep;Nagrody;Stan punktowy;Wyslij transakcje;Serwis";
+	string menu2 = "LOGOUT;SHOP;PRIZE;CHECKTPOIN;TRANSACTIONS_SEND;SERVICE;Logowanie;Sklep;Nagrody;Stan punktowy;Wyslij transakcje;Serwis";
 	cout << "tworze 2 vectory to przechowywania pozycji menu" << endl;
 	vector<string> items;
 	vector<string> items2;
@@ -1136,6 +1136,7 @@ void masterControler::screenSaver()
 
 	SetTimer(1, 1000);
 	int left = -1;
+	int left2 = -1;
 	bool blink = true;
 	vector<string> vect;
 	string actDate;
@@ -1209,6 +1210,13 @@ void masterControler::screenSaver()
 			blink = !blink;
 	    }
 
+	    left2 = CheckTimer(2);
+	    if(0 == left)
+	    {
+	    	SetTimer(2, 1200000);
+			left2 = -1;
+			cout << "szprawdzam czy jest dostepne nowe oprogramowanie !!" << endl;
+	    }
 	}
 
 }
