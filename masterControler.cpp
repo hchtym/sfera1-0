@@ -1143,7 +1143,7 @@ void masterControler::screenSaver()
 		stringstream compose;
 		compose << "Zalogowany:     " << seller;
 		string upperScreen = compose.str();
-		Lcd_Printxy(0,0,0, const_cast<char *>(upperScreen.c_str()) ;
+		Lcd_Printxy(0,0,0, const_cast<char *>(upperScreen.c_str()) );
 	}
 	else
 	{
