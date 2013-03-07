@@ -1183,6 +1183,7 @@ void masterControler::screenSaver()
 			actDate.clear();
 			actDate = compose.str();
 			Lcd_Printxy(0,55,0, const_cast<char *>( actDate.c_str()) );
+			blink = true;
 			//cout << "zawartosc actDate: " << actDate << endl;
 		}
 		
