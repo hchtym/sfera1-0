@@ -1186,7 +1186,6 @@ void masterControler::screenSaver()
 			actDate.clear();
 			actDate = compose.str();
 			Lcd_Printxy(0,55,0, const_cast<char *>( actDate.c_str()) );
-			blink = true;
 			//cout << "zawartosc actDate: " << actDate << endl;
 		}
 		
@@ -1206,9 +1205,9 @@ void masterControler::screenSaver()
 	   	left = CheckTimer(1);
 	    if(0 == left)
 	    {
-	    	SetTimer(1, 3000);
+	    	SetTimer(1, 1000);
 			left = -1;
-			blink = false;		
+			blink = !blink;
 	    }
 
 	}
