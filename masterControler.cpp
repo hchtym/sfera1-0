@@ -1169,7 +1169,7 @@ void masterControler::screenSaver()
 			compose << actDate[i] << actDate[i+1];
 			vect.push_back(compose.str());
 		}
-
+		cout << "zawartosc blink: " << blink << endl;
 		if (blink)
 		{
 			compose.str("");
