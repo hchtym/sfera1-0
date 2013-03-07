@@ -1136,14 +1136,14 @@ void masterControler::screenSaver()
 	};
 
 	bool blink = true;
-	vector<tring> vect;
+	vector<string> vect;
 	string actDate;
+	stringstream compose;
 	BYTE key;
 	clear();
 	Lcd_SetBackLight(BACKLIGHT_OFF);
 	if (loginFlag)
 	{
-		stringstream compose;
 		compose << "Zalogowany:     " << seller;
 		string upperScreen = compose.str();
 		Lcd_Printxy(0,0,0, const_cast<char *>(upperScreen.c_str()) );
