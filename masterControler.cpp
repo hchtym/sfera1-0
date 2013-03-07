@@ -1176,7 +1176,7 @@ void masterControler::screenSaver()
 			compose << "20" << vect[0] << "-" << vect[1] << "-" << vect[2] << " " << vect[3] << ":" << vect[4];
 			actDate.clear();
 			actDate = compose.str();
-			Lcd_Printxy(0,55,0, const_cast<char *>( actDate.c_str()) );
+			Lcd_Printxy(10,55,0, const_cast<char *>( actDate.c_str()) );
 			//cout << "zawartosc actDate: " << actDate << endl;
 		}
 		else
@@ -1185,7 +1185,7 @@ void masterControler::screenSaver()
 			compose << "20" << vect[0] << "-" << vect[1] << "-" << vect[2] << " " << vect[3] << " " << vect[4];
 			actDate.clear();
 			actDate = compose.str();
-			Lcd_Printxy(0,55,0, const_cast<char *>( actDate.c_str()) );
+			Lcd_Printxy(10,55,0, const_cast<char *>( actDate.c_str()) );
 			//cout << "zawartosc actDate: " << actDate << endl;
 		}
 		
