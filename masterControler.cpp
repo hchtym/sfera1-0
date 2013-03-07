@@ -1138,7 +1138,15 @@ void masterControler::screenSaver()
 	BYTE key;
 	clear();
 	Lcd_SetBackLight(BACKLIGHT_OFF);
-	Lcd_Printxy(0,0,0, "Niezalogowany");
+	if (loginFlag)
+	{
+		string upperScreen = "Zalogowany:     " << seller;
+		Lcd_Printxy(0,0,0, )
+	}
+	else
+	{
+		Lcd_Printxy(0,0,0, "Niezalogowany");
+	}
 	Lcd_Logo(lcdLogo,sizeof(lcdLogo),8);
 	Lcd_Printxy(0,55,0, "tutaj bedzie data");
 	cout << "Tu bedzie jakies logo w przyszlosci :D !" << endl;
