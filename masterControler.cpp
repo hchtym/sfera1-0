@@ -1153,7 +1153,7 @@ void masterControler::screenSaver()
 		Lcd_Printxy(0,0,0, "Niezalogowany");
 	}
 	Lcd_Logo(lcdLogo,sizeof(lcdLogo),8);
-	Lcd_Printxy(0,55,0, "tutaj bedzie data");
+	//Lcd_Printxy(0,55,0, "tutaj bedzie data");
 	cout << "Tu bedzie jakies logo w przyszlosci :D !" << endl;
 	Kb_Flush();
 	while(1)
@@ -1173,7 +1173,8 @@ void masterControler::screenSaver()
 			compose << "20" << vect[0] << "-" << vect[1] << "-" << vect[2] << " " << vect[3] << ":" << vect[4];
 			actDate.clear();
 			actDate = compose.str();
-			cout << "zawartosc actDate: " << actDate << endl;
+			Lcd_Printxy(0,55,0, const_cast<char *>( actDate.c_str()) );
+			//cout << "zawartosc actDate: " << actDate << endl;
 		}
 		else
 		{
@@ -1181,7 +1182,8 @@ void masterControler::screenSaver()
 			compose << "20" << vect[0] << "-" << vect[1] << "-" << vect[2] << " " << vect[3] << " " << vect[4];
 			actDate.clear();
 			actDate = compose.str();
-			cout << "zawartosc actDate: " << actDate << endl;
+			Lcd_Printxy(0,55,0, const_cast<char *>( actDate.c_str()) );
+			//cout << "zawartosc actDate: " << actDate << endl;
 		}
 		
 
