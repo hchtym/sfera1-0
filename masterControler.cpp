@@ -1151,7 +1151,7 @@ void masterControler::screenSaver()
 	}
 	else
 	{
-		Lcd_Printxy(0,0,0, "Niezalogowany");
+		Lcd_Printxy(25,0,0, "Niezalogowany");
 	}
 	Lcd_Logo(lcdLogo,sizeof(lcdLogo),8);
 	//Lcd_Printxy(0,55,0, "tutaj bedzie data");
