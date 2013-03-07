@@ -1135,6 +1135,9 @@ void masterControler::screenSaver()
 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	};
 
+	bool blink = true;
+	vector<tring> vect;
+	string actDate;
 	BYTE key;
 	clear();
 	Lcd_SetBackLight(BACKLIGHT_OFF);
@@ -1155,6 +1158,32 @@ void masterControler::screenSaver()
 	Kb_Flush();
 	while(1)
 	{
+		actDate.clear();
+		actDate = trxTime();
+		vect.clear();
+		for (int i = 0; i < actDate.size(); i+=2)
+		{
+			compose.str("");
+			compose << actDate[i] << actDate[i+1];
+			vect.push_back(compose.str());
+		}
+		if (blink)
+		{
+			compose.str("");
+			compose << "20" << vect[0] << "-" << vect[1] << "-" << vect[2] << " " << vect[3] << ":" << vect[4];
+			actDate.clear();
+			actDate = compose.str();
+			cout << "zawartosc actDate: " << actDate << endl;
+		}
+		else
+		{
+			compose.str("");
+			compose << "20" << vect[0] << "-" << vect[1] << "-" << vect[2] << " " << vect[3] << " " << vect[4];
+			actDate.clear();
+			actDate = compose.str();
+			cout << "zawartosc actDate: " << actDate << endl;
+		}
+		
 
 		if(!Kb_Hit())
 	    {
@@ -1168,6 +1197,8 @@ void masterControler::screenSaver()
 	    		break;
 	    	}
 	   	}
+	   	DelayMs(250);
+	   	blink = false;
 	}
 
 }
