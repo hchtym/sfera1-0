@@ -862,7 +862,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	}
     //key=NOKEY;
     string screenTimeout = config->returnScreenSaverTimeout();
-	int timeout = atoi(screenTimeout.s_ctr());
+	int timeout = atoi(screenTimeout.c_str());
 	SetTimer(0, (timeout*1000));
 
 	cout << "jestem przed draw menu !" << endl;
