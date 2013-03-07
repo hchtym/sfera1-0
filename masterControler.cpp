@@ -932,6 +932,9 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	    		key = Kb_GetKey();
 	    		if(key !=NOKEY)
 	    		{
+	    		    string screenTimeout = config->returnScreenSaverTimeout();
+					int timeout = atoi(screenTimeout.c_str());
+					SetTimer(0, (timeout*1000));
 	    			break;
 	    		}
 
