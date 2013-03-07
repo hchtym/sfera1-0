@@ -1203,7 +1203,7 @@ void masterControler::screenSaver()
 	    		break;
 	    	}
 	   	}
-	   	left = CheckTimer(0);
+	   	left = CheckTimer(1);
 	    	if(0 == left){
 	    		SetTimer(1, 1000);
 				left = -1;
