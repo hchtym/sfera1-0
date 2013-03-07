@@ -1141,7 +1141,7 @@ void masterControler::screenSaver()
 	if (loginFlag)
 	{
 		string upperScreen = "Zalogowany:     " << seller;
-		Lcd_Printxy(0,0,0, )
+		Lcd_Printxy(0,0,0, const_cast<char *>(upperScreen.c_str()) ;
 	}
 	else
 	{
