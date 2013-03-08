@@ -75,7 +75,6 @@ int main()
 
 	SystemInit();
 	Prn_Init();
-	RF_Init();
 	SYS_LoadDriver(DRIVER_CONTACT_MEMORY_CARD);
 	SYS_LoadDriver(DRIVER_CONTACT_CPU_CARD);
 	Lcd_Cls();
@@ -139,7 +138,7 @@ int main()
 
 
 	delete(config);
-
+	RF_Init();
 	char bufer[6];
 	pid_t pID = fork();
 	if(pID == 0) /* child */
