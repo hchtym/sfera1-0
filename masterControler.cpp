@@ -1561,7 +1561,7 @@ int masterControler::masterTitle(string str)
 	string newTitle;
 	for (int i = 0; i < (21 - seller.size()); i++)
 	{
-		compose << " ";
+		compose << "-";
 	}
 	if (seller.size() > 0)
 	{
