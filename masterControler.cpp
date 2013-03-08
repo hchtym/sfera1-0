@@ -1249,8 +1249,6 @@ void masterControler::screenSaver()
 		Lcd_Printxy(23,0,0, "Niezalogowany");
 	}
 	Lcd_Logo(lcdLogo,sizeof(lcdLogo),8);
-	//Lcd_Printxy(0,55,0, "tutaj bedzie data");
-	cout << "Tu bedzie jakies logo w przyszlosci :D !" << endl;
 	Kb_Flush();
 	while(1)
 	{
@@ -1345,7 +1343,6 @@ void masterControler::screenSaver()
 			DelayMs(250);
 		}
 	}
-
 }
 
 int masterControler::serviceLogin()
