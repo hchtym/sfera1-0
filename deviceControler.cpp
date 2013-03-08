@@ -537,7 +537,7 @@ int deviceControler::rfidScan()
 	
 	while(1)
 	{
-		if(ERR_OK == RF_WaitCard_Timeout(RF_M1, rfidSerialNo, 50))
+		if(ERR_OK == RF_WaitCard_Timeout(RF_M1, rfidSerialNo, 0))
 		{
 			rfidType = "M1";
 			cout << "Zawartosc poczatkowego segmentu: " << rfidSerialNo << endl;
@@ -551,7 +551,7 @@ int deviceControler::rfidScan()
 			}
 		}
 
-		if(ERR_OK == RF_WaitCard_Timeout(RF_TYPE_A, rfidSerialNo, 50))
+		if(ERR_OK == RF_WaitCard_Timeout(RF_TYPE_A, rfidSerialNo, 0))
 		{
 			cout << "typeA" << endl;
 			rfidType = "typeA";
