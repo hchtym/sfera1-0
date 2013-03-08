@@ -36,7 +36,7 @@ int main(){
 	//Lcd_Logo();
 
 	// ustalam ikonke zasiegu 
-	for(int i = 0; i < 20; i++)
+	for(int i = 0; i < 100; i++)
 	{
 		int ret,sig;
 		sig = -1;
@@ -61,6 +61,7 @@ int main(){
 			Lcd_Icon(1, ICON_OFF, 1);
 			break;
 		}
+		DelayMs(250);
 	}
 
 	//nawizauje polaczenie z siecia 
