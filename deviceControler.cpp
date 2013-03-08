@@ -606,19 +606,19 @@ string deviceControler::rfidRetrunStringId()
 	int digit = 0;
 	int len = 0;
 	memset(buf, 0, sizeof(0));
-
+	BYTE hexCid[10];
+	memset(hexCid, 0, sizeof(hexCid));
 	char hex
 	compose << "00";
 	char hexArray[16] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"};
 
-	for (int i = 0; i < sizeof(rfidIdBufer); ++i)
+	for (int i = 0; i < sizeof(hexCid); i++)
 	{
-		if (rfidIdBufer[i] == 0)break;
-		hexArray[i] = rfidIdBufer[i];
-		i ==0
+		//if (rfidIdBufer[i] == 0)break;
+		hexCid[i] = rfidIdBufer[i];
 	}
 
-	for(int i=0; i< sizeof(hexArray); i++)
+	for(int i=0; i< sizeof(hexCid); i++)
 	{
 		sprintf(buf+i*2, "%02X", rfidIdBufer[i]);
 	}
@@ -643,6 +643,7 @@ string deviceControler::rfidRetrunStringId()
 	compose << digit;
 	cid.clear();
 	cid = compose.str();
+	cid.erase(cib.begin()+10, cid.end());
 
 	return cid;
 }
