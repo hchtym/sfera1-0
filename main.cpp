@@ -18,7 +18,8 @@
 
 using namespace std;
 
-int main(){
+int main()
+{
 	SystemInit();
 	Prn_Init();
 	SYS_LoadDriver(DRIVER_CONTACT_MEMORY_CARD);
@@ -78,7 +79,7 @@ int main(){
 	
 
 	cout << "kiluje obiekt" << endl;
-	sleep(20);
+	//sleep(20);
 
 
 	delete(config);

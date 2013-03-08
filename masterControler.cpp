@@ -947,7 +947,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	while(1){
 		clear();
 	    masterTitle(menuname);
-
+	    cout << "jestem za nowym menu." << endl;
 		for(i=0; i < visible; i++){
 
 			if(view +i < size){

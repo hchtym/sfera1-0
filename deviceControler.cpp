@@ -568,6 +568,7 @@ int deviceControler::rfidScan()
 
 int deviceControler::rfidSilentScan()
 {
+	cout << "jestem w rfid silen scan !" << endl;
 
 	if(ERR_OK == RF_WaitCard_Timeout(RF_M1, rfidSerialNo, 90))
 	{
@@ -591,6 +592,7 @@ int deviceControler::rfidSilentScan()
 			return 1;
 		}
 	}
+	cout << "wychodze z rfid silentscan !" << endl;
 	return 0;
 }
 
