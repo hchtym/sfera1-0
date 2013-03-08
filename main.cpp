@@ -75,6 +75,7 @@ int main()
 
 	SystemInit();
 	Prn_Init();
+	RF_Init();
 	SYS_LoadDriver(DRIVER_CONTACT_MEMORY_CARD);
 	SYS_LoadDriver(DRIVER_CONTACT_CPU_CARD);
 	Lcd_Cls();
