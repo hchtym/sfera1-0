@@ -973,8 +973,8 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	    while(1){
 			DelayMs(50);
 			cardState = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
-			rfidState = device->rfidSilentScan();
-			device->rfidRead();
+			//rfidState = device->rfidSilentScan();
+			//device->rfidRead();
 			//cout << "zawartosc ret: " << cardState << endl;
 			if ( (cardState&0x80) || (rfidState == 1) ){
 				if((cardState - 128) == 1) state = 1;
