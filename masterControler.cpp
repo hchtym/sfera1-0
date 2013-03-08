@@ -304,7 +304,7 @@ int masterControler::checkPoints()
 	bool pressed = false;
 		// sykrywaj spisanie swipe karty albo wpisanie numerka
 	cid.clear();
-	cid = device->magCardScan(false);
+	cid = device->magCardRfidScan(false);
 	if((cid.compare("end")) == 0) return 0;
 	// wyslij zapytanie o punkty !!
 
@@ -838,12 +838,83 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 	return 0;
 }
 
+int masterControler::transSelling(string hexNum)
+{
+	cout  << "!!!!!!! Jestem w trans selling !!" << endl;
+	BYTE key;
+	int yolo = 0;
+	string trxDateTime = trxTime();
+	string trxIdNumber = computeTrxNumber(trxDateTime);
+	string payment, point, extra, date;
+	stringstream compose;
+	string cid;
+
+	cid = hexNum;
+	sumInput(payment);
+	char type = '0';
+	cout << "id klienta: " << cid << endl << "zaplata: " << payment << endl << "punkty: " << point << endl << "extra: " << extra << endl << "numerser: " << numerser << endl;
+	pointComp(cid, payment, point, extra);
+	cout << "id klienta: " << cid << endl << "zaplata: " << payment << endl << "punkty: " << point << endl << "extra: " << extra << endl << "numerser: " << numerser << endl;
+	fileSave(numerser, seller, cid, payment, point, extra, type, trxDateTime);
+
+	string footer = "DLA KLIENTA\n\r";
+	device->printTx(numerser, seller, trxDateTime, cid, payment, point, extra, footer, trxIdNumber);
+
+	while(1)
+	{
+		string msg = "Wydrukowac potwierdzenie ?\n\r";
+		clear();
+		title("Informacja");
+		message(0, 32, msg);
+		msg.clear();
+		msg = "Potwierdz OK\n\r";
+		message(0, 40, msg);
+
+		while(1)
+		{
+			if(!Kb_Hit())
+			{
+				cout << "ncisnalem guzik" << endl;
+				key = Kb_GetKey();
+				if(key != NOKEY)
+				{
+					if (key == KEYENTER)
+					{
+						cout << "OK wcisniety !!" << endl;
+						yolo = 1;
+						Kb_Flush();
+						break;
+					}
+					else
+					{
+						yolo = 0;
+						Kb_Flush();
+					}
+				}
+			}
+		}
+		if (yolo == 1)
+		{
+			break;
+		}
+
+	}
+	
+	footer.clear();
+	footer = "DLA SPRZEDAWCY\n\r";
+	device->printTx(numerser, seller, trxDateTime, cid, payment, point, extra, footer, trxIdNumber);
+
+	selling();
+	return 0;
+}
+
 int masterControler::menuScr(const string &menuname,vector<string> &vect, int size, int index, int *menuid)
 {
 	cout << "jestem w mnue scr" << endl;
 	const int visible = 7;
     int i, j, view = 0;
 	int cardState = 0;
+	int rfidState = 0;
 	int state = 0;
 	int ret1 = 0;
     BYTE key;
@@ -863,7 +934,10 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
     //key=NOKEY;
     string screenTimeout = config->returnScreenSaverTimeout();
 	int timeout = atoi(screenTimeout.c_str());
-	SetTimer(0, (timeout*1000));
+	if (timeout != 0)
+	{
+		SetTimer(0, (timeout*1000));
+	}
 
 	cout << "jestem przed draw menu !" << endl;
 	drawMenu:
@@ -872,7 +946,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	cout << "wchodze do while w menuscr" << endl;
 	while(1){
 		clear();
-	    title(menuname);
+	    masterTitle(menuname);
 
 		for(i=0; i < visible; i++){
 
@@ -899,8 +973,10 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	    while(1){
 			DelayMs(50);
 			cardState = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
+			rfidState = device->rfidSilentScan();
+			device->rfidRead();
 			//cout << "zawartosc ret: " << cardState << endl;
-			if (cardState&0x80){
+			if ( (cardState&0x80) || (rfidState == 1) ){
 				if((cardState - 128) == 1) state = 1;
 				if((cardState - 128) == 2) state = 2;
 				if((cardState - 123) == 3) state = 3;
@@ -913,15 +989,30 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 					ret1 = loginScr();
 					if(ret1 == 1){
 						loginFlag = true;
-
-						transSelling(state, track1, track2, track3);
+						if ( rfidState == 1)
+						{
+							string hexNum = device->rfidRetrunStringId();
+							transSelling(hexNum);
+						}
+						else
+						{	
+							transSelling(state, track1, track2, track3);
+						}
 						break;
 					}else{
 						loginFlag = false;
 					}
 				}else{
 					cout << "zalogowany sprawdzam pkt !!" << endl;
-					transSelling(state, track1, track2, track3);	
+					if(rfidState == 1)
+					{
+						string hexNum = device->rfidRetrunStringId();
+						transSelling(hexNum);
+					}
+					else
+					{
+						transSelling(state, track1, track2, track3);	
+					}
 					break;
 				}
 
@@ -934,7 +1025,10 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	    		{
 	    		    string screenTimeout = config->returnScreenSaverTimeout();
 					int timeout = atoi(screenTimeout.c_str());
-					SetTimer(0, (timeout*1000));
+					if (timeout != 0)
+					{
+						SetTimer(0, (timeout*1000));
+					}
 	    			break;
 	    		}
 
@@ -1197,8 +1291,11 @@ void masterControler::screenSaver()
 	    	{
 	    		string screenTimeout = config->returnScreenSaverTimeout();
 				int timeout = atoi(screenTimeout.c_str());
-				SetTimer(0, (timeout*1000));
-	    		Lcd_SetBackLight(BACKLIGHT_ON);
+				if(timeout != 0)
+				}
+					SetTimer(0, (timeout*1000));
+	    			Lcd_SetBackLight(BACKLIGHT_ON);
+	    		}
 	    		break;
 	    	}
 	   	}
@@ -1213,10 +1310,12 @@ void masterControler::screenSaver()
 	    left2 = CheckTimer(2);
 	    if(0 == left)
 	    {
-	    	SetTimer(2, 1200000);
+	    	SetTimer(2, 2400000);
 			left2 = -1;
 			cout << "szprawdzam czy jest dostepne nowe oprogramowanie !!" << endl;
+
 	    }
+
 	    for(int i = 0; i < 100; i++)
 		{
 			int ret,sig;
@@ -1455,6 +1554,23 @@ int masterControler::title(string str)
 	Lcd_Printxy(0,0,1, const_cast<char *>(str.c_str()));
 }
 
+int masterControler::masterTitle(string str)
+{
+	title();
+	stringstream compose;
+	string newTitle;
+	for (int i = 0; i < (21 - seller.size()); i++)
+	{
+		compose << " ";
+	}
+	if (seller.size() > 0)
+	{
+		compose << seller;
+	}
+	newTitle = compose.str();
+	Lcd_Printxy(0, 8, 0, const_cast<char *>(newTitle.c_str()));
+}
+
 int masterControler::clear()
 {
 	Lcd_Cls();
@@ -1474,7 +1590,7 @@ int masterControler::returnSelling()
 	while(1){
 		cout << "tu doszedlem " << endl;
 		//char id = device->magCardScan(true);
-		string str8 = device->magCardScan(false);
+		string str8 = device->magCardRfidScan(false);
 		if((str8.compare("end")) == 0) break;
 		//char id = device->magCardScan(true);
 		cout << "to jest id tuz za magCardScan: " << str8 << endl; 
@@ -1535,7 +1651,7 @@ int masterControler::selling()
 	while(1){
 		cout << "tu doszedlem " << endl;
 		//char id = device->magCardScan(true);
-		string str8 = device->magCardScan(true);
+		string str8 = device->magCardRfidScan(true);
 		if((str8.compare("end")) == 0) return 0;
 		//char id = device->magCardScan(true);
 		cout << "to jest id tuz za magCardScan: " << str8 << endl; 

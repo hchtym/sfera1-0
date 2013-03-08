@@ -84,11 +84,13 @@ class masterControler{
 	bool loginFlag;
 	int fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char type,string &date);
 	int title(string str);
+	int masterTitle(string str);
 	int clear();
 	int infoMSG(string &msg);
 	int message(int x, int y, string &str);
 	int checkPoints();
 	int transSelling(int ret, char *track1, char *track2, char *track3);
+	int transSelling(string hexNum);
 	int serviceLogin();
 	int selling();
 	int returnSelling();

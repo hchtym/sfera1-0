@@ -566,6 +566,88 @@ int deviceControler::rfidScan()
 	return 0;
 }
 
+int deviceControler::rfidSilentScan()
+{
+
+	if(ERR_OK == RF_WaitCard_Timeout(RF_M1, rfidSerialNo, 90))
+	{
+		rfidType = "M1";
+		cout << "Zawartosc poczatkowego segmentu: " << rfidSerialNo << endl;
+		cout << "M1" << endl;
+		if(rfidSerialNo[0] > 0)
+		{
+			hexToString(rfidId, rfidSerialNo + 1, rfidSerialNo[0]);
+			return 1;
+			break;
+
+		}
+	}
+
+	if(ERR_OK == RF_WaitCard_Timeout(RF_TYPE_A, rfidSerialNo, 90))
+	{
+		cout << "typeA" << endl;
+		rfidType = "typeA";
+		if(rfidSerialNo[0] > 0)
+		{
+			hexToString(rfidId, rfidSerialNo + 1, rfidSerialNo[0]);
+			return 1;
+			break;
+		}
+	}
+	return 0;
+}
+
+string deviceControler::rfidRetrunStringId()
+{
+	stringstream compose;
+	compose.str("");
+	string cid;
+	char buf[100];
+	int digit = 0;
+	int len = 0;
+	memset(buf, 0, sizeof(0));
+	BYTE hexCid[10];
+	memset(hexCid, 0, sizeof(hexArray));
+	char hex
+	compose << "00";
+	char hexArray[16] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"};
+
+	for (int i = 0; i < sizeof(rfidIdBufer); ++i)
+	{
+		if (rfidIdBufer[i] == 0)break;
+		hexArray[i] = rfidIdBufer[i];
+		i ==0
+	}
+
+	for(int i=0; i< sizeof(hexArray); i++)
+	{
+		sprintf(buf+i*2, "%02X", rfidIdBufer[i]);
+	}
+	int buflen = strlen(buf);
+	for (int i = 0; i < buflen; i++)
+	{
+		for (int j = 0; j < sizeof(hexArray); j++)
+		{
+			if (buf[i] == hexArray[j]);
+			{
+				if(i == buflen-1)
+				{
+					digit += j;
+				}
+				else
+				{
+					digit += j*16;
+				}
+			}
+		}
+	}
+	compose << digit;
+	cid.clear();
+	cid = compose.str();
+
+	return cid;
+}
+
 int deviceControler::rfidWrite(string input)
 {
 	memset(rfidData, 0, sizeof(rfidData));
@@ -738,7 +820,6 @@ int deviceControler::rfidRead()
 	}
 
 	cout << "zawartosc po konwersji: " << buf << endl;
-
 }
 
 int deviceControler::atc24Read()
@@ -800,7 +881,7 @@ int deviceControler::reloadConfig()
 	config->reloadConfig();
 }
 
-string deviceControler::magCardScan(bool kbd)
+string deviceControler::magCardRfidScan(bool kbd)
 {
 	BYTE key = NOKEY;
 	string wyciep;
@@ -810,6 +891,8 @@ string deviceControler::magCardScan(bool kbd)
 	char track3[100];
 	char trck[11];
 	string str2;
+	string hexNum;
+
 	str2.clear();
 	string send = "end";
 	stringstream compo;
@@ -918,6 +1001,14 @@ string deviceControler::magCardScan(bool kbd)
 					break;
 				}
 			}
+		}
+
+		ret = rfidSilentScan();
+		rfidRead();
+		if(ret == 1)
+		{
+			hexNum = rfidRetrunStringId();
+			return hexNum;
 		}
 
 

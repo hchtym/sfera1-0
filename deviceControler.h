@@ -70,7 +70,8 @@ public:
 	int chipCardScan();
 	int ertErrDevLogs();
 	int printerDev();
-	string magCardScan(bool kbd);
+	string magCardRfidScan(bool kbd);
+	string rfidRetrunStringId();
 	
 };
 
