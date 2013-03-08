@@ -578,8 +578,6 @@ int deviceControler::rfidSilentScan()
 		{
 			hexToString(rfidId, rfidSerialNo + 1, rfidSerialNo[0]);
 			return 1;
-			break;
-
 		}
 	}
 
@@ -591,7 +589,6 @@ int deviceControler::rfidSilentScan()
 		{
 			hexToString(rfidId, rfidSerialNo + 1, rfidSerialNo[0]);
 			return 1;
-			break;
 		}
 	}
 	return 0;
@@ -610,7 +607,7 @@ string deviceControler::rfidRetrunStringId()
 	memset(hexCid, 0, sizeof(hexCid));
 	char hex
 	compose << "00";
-	char hexArray[16] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"};
+	char hexArray[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
 	for (int i = 0; i < sizeof(hexCid); i++)
 	{
@@ -643,7 +640,7 @@ string deviceControler::rfidRetrunStringId()
 	compose << digit;
 	cid.clear();
 	cid = compose.str();
-	cid.erase(cib.begin()+10, cid.end());
+	cid.erase(cid.begin()+10, cid.end());
 
 	return cid;
 }

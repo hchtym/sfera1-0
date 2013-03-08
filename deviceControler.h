@@ -60,7 +60,7 @@ public:
 	void printRecipe();
 	void printerSetFont(int size);
 	int tagScan();
-	int rfidScan();
+	int rfidSilentScan();
 	int rfidWrite(string input);
 	int rfidWrite();
 	int rfidDisplay();
