@@ -606,8 +606,7 @@ string deviceControler::rfidRetrunStringId()
 	int digit = 0;
 	int len = 0;
 	memset(buf, 0, sizeof(0));
-	BYTE hexCid[10];
-	memset(hexCid, 0, sizeof(hexArray));
+
 	char hex
 	compose << "00";
 	char hexArray[16] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"};
