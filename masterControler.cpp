@@ -1341,7 +1341,7 @@ void masterControler::screenSaver()
 				Lcd_Icon(1, ICON_OFF, 1);
 				break;
 			}
-			DelayMs(250);
+			DelayMs(2);
 		}
 	}
 }
