@@ -61,6 +61,7 @@ public:
 	void printerSetFont(int size);
 	int tagScan();
 	int rfidSilentScan();
+	int rfidScan();
 	int rfidWrite(string input);
 	int rfidWrite();
 	int rfidDisplay();
