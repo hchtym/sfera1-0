@@ -1556,7 +1556,7 @@ int masterControler::title(string str)
 
 int masterControler::masterTitle(string str)
 {
-	title();
+	title(str);
 	stringstream compose;
 	string newTitle;
 	for (int i = 0; i < (21 - seller.size()); i++)
