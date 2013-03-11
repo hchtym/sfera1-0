@@ -1315,7 +1315,7 @@ void masterControler::screenSaver()
 
 	    }
 
-	    for(int i = 0; i < 100; i++)
+	    /*for(int i = 0; i < 100; i++)
 		{
 			int ret,sig;
 			sig = -1;
@@ -1342,7 +1342,7 @@ void masterControler::screenSaver()
 				break;
 			}
 			DelayMs(2);
-		}
+		}*/
 	}
 }
 
