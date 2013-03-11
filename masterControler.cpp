@@ -2265,6 +2265,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 			cout << "obliczanie automatyczne odpalone !!" << endl;
 			string extraMode = config->returnExtraMode();
 			string sumary = payment;
+			cout << "id ktore zostalo podane: " << id << endl;
 			//tu bedzie automatyczne liczenie pkt na podstawie zakresu sumy albo cos takiego sie jeszcze zobaczy 
 
 			cout << "jestem sobie w obliczeniach muahahahah" << endl;
@@ -2332,6 +2333,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 				}
 				else
 				{
+					cout << "rozmiar rozny od zera" << endl;
 					//sekcja dla numerow podawanych recznie !! 
 					ext = "0";
 					pnt = "0";
