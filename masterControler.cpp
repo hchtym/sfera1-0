@@ -702,6 +702,7 @@ int masterControler::dispMenu()
 				ret = loginScr();
 				if(ret == 1){
 					loginFlag = true;
+					selling();
 				}else{
 					loginFlag = false;
 				}
@@ -714,7 +715,21 @@ int masterControler::dispMenu()
 				// tu bede nagrody
 			break;
 			case 3:
-				checkPoints();
+				ret = loginScr();
+					if(ret == 1)
+					{
+						loginFlag = true;
+						checkPoints();
+					}
+					else
+					{
+						loginFlag = false;
+					}
+				}
+				else
+				{
+					checkPoints();
+				}
 			break;
 			case 4:
 				cout << "sendTranaction" << endl;
@@ -722,10 +737,7 @@ int masterControler::dispMenu()
 				cout << "jestem po send transaction" << endl;
 			break;
 			case 5:
-				//softUpdAck();
 				menuService();
-				//device->rfidScan();
-				// tu bedzie serwis !!
 			break;
 			default:
 			break;
@@ -808,6 +820,16 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 				key = Kb_GetKey();
 				if(key != NOKEY)
 				{
+					if(timeoutFlag)
+	    			{
+		    		    string screenTimeout = config->returnScreenSaverTimeout();
+						int timeout = atoi(screenTimeout.c_str());
+						if (timeout != 0)
+						{
+							SetTimer(0, (timeout*1000));
+						}
+					}
+
 					if (key == KEYENTER)
 					{
 						cout << "OK wcisniety !!" << endl;
@@ -945,8 +967,13 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
     //key=NOKEY;
     string screenTimeout = config->returnScreenSaverTimeout();
 	int timeout = atoi(screenTimeout.c_str());
-	if (timeout != 0)
+	if (timeout == 0)
 	{
+		timeoutFlag == false;
+	}
+	else
+	{
+		timeoutFlag == true;
 		SetTimer(0, (timeout*1000));
 	}
 
@@ -1035,20 +1062,28 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	    		key = Kb_GetKey();
 	    		if(key !=NOKEY)
 	    		{
-	    		    string screenTimeout = config->returnScreenSaverTimeout();
-					int timeout = atoi(screenTimeout.c_str());
-					if (timeout != 0)
-					{
-						SetTimer(0, (timeout*1000));
+	    			if(timeoutFlag)
+	    			{
+		    		    string screenTimeout = config->returnScreenSaverTimeout();
+						int timeout = atoi(screenTimeout.c_str());
+						if (timeout != 0)
+						{
+							SetTimer(0, (timeout*1000));
+						}
 					}
 	    			break;
 	    		}
 
 	    	}
-	    	left = CheckTimer(0);
-	    	if(0 == left){
-	    		key = NOKEY;
-	    		break;
+
+	    	if (timeoutFlag)
+	    	{		    	
+		    	left = CheckTimer(0);
+		    	if(0 == left)
+		    	{
+		    		key = NOKEY;
+		    		break;
+		    	}
 	    	}
 
         }
@@ -1137,7 +1172,17 @@ int masterControler::menuScrOther(const string &menuname,vector<string> &vect, i
 
 	    	if(!Kb_Hit()){
 	    		key = Kb_GetKey();
-	    		if(key !=NOKEY){
+	    		if(key !=NOKEY)
+	    		{
+	    			if(timeoutFlag)
+	    			{
+		    		    string screenTimeout = config->returnScreenSaverTimeout();
+						int timeout = atoi(screenTimeout.c_str());
+						if (timeout != 0)
+						{
+							SetTimer(0, (timeout*1000));
+						}
+					}
 	    			break;
 	    		}
 

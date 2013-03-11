@@ -82,6 +82,7 @@ class masterControler{
 	Transaction tx;
 	
 	bool loginFlag;
+	bool timeoutFlag;
 	int fileSave(string &sn, string &seler, string &client, string &pay, string &point, string &extrapoint, char type,string &date);
 	int title(string str);
 	int masterTitle(string str);
