@@ -1645,7 +1645,7 @@ int masterControler::selling()
 	//string str8;
 	string trxDateTime = trxTime();
 	string trxIdNumber = computeTrxNumber(trxDateTime);
-		
+	et1:	
 	while(1){
 		cout << "tu doszedlem " << endl;
 		//char id = device->magCardScan(true);
@@ -1705,7 +1705,7 @@ int masterControler::selling()
 							yolo = 0;
 							cout << "CANCEL wcisniety !!" << endl;
 							Kb_Flush();
-							return 0;
+							break;
 						}
 						else
 						{
@@ -1718,7 +1718,11 @@ int masterControler::selling()
 			if (yolo == 1)
 			{
 				break;
-			}				
+			}
+			if (yolo == 0)
+			{
+				goto: et1;
+			}			
 		}
 	
 		footer.clear();
