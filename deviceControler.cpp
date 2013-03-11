@@ -1007,17 +1007,16 @@ string deviceControler::magCardRfidScan(bool kbd)
 					break;
 				}
 			}
+			cout << "rfid silent scan !!" << endl;
+			ret = rfidSilentScan();
+			rfidRead();
+			if(ret == 1)
+			{
+				hexNum = rfidRetrunStringId();
+				return hexNum;
+			}
+			cout <<  "za sprawdzeniem rfid" << endl;
 		}
-		cout << "rfid silent scan !!" << endl;
-		ret = rfidSilentScan();
-		rfidRead();
-		if(ret == 1)
-		{
-			hexNum = rfidRetrunStringId();
-			return hexNum;
-		}
-		cout <<  "za sprawdzeniem rfid" << endl;
-
 
 		if(kbd)
 		{
