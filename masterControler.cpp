@@ -2271,7 +2271,8 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 			cout << "jestem sobie w obliczeniach muahahahah" << endl;
 			vector<string> vect;
 			config->confParse(vect, "comp");
-			if (id.size() != 10)
+			int idLen = strlen(id.c_str());
+			if (idLen != 10)
 			{
 				cout << "rozmiar id: " << id.size() << endl;
 				ext = "0";
