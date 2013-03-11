@@ -2249,6 +2249,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 			}else{
 				ext = "0";
 				pnt = "0";
+				return 0;
 				// tutaj bedzie bezposredni zapis tranzakcji do pliku i tyle !!
 			}
 	
@@ -2334,6 +2335,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 					//sekcja dla numerow podawanych recznie !! 
 					ext = "0";
 					pnt = "0";
+					return 0;
 				}
 			}
 
