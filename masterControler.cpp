@@ -1779,7 +1779,7 @@ int masterControler::selling()
 			}
 			if (yolo == 0)
 			{
-				goto: et1;
+				goto et1;
 			}			
 		}
 	
