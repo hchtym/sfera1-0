@@ -1431,6 +1431,89 @@ int networkControler::ethConf()
 		memset(pCAPData, 0, sizeof(pCAPData));
 	}
 	
+	memset(pCAPData, 0, sizeof(pCAPData));
+
+	msg.clear();
+	msg = "ok";
+	if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1){
+		perror("send"); // logowanie do pliku !
+		return 0;
+	}
+
+	cout << "wyslalem potwierdzenie, czekam na rozmiar" << endl;
+
+	if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1)
+	{
+		perror("reciv"); // logowanie do pliku !!
+		//	exit(1);
+	}else{
+		 cout << "reciver dataLen: " << pCAPData << endl;
+	}
+
+	dataLen = atoi(pCAPData);
+	cout << "otrzymałem rozmiar: " << dataLen << " Wysylem potwierdzenie" << endl;
+
+	if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1){
+		perror("send"); // logowanie do pliku !
+		return 0;
+	}
+
+	cout << "wysłałem potwierdzenie sciagam ostatni part configa." << endl;
+
+	file << "[extra]" << endl;
+
+	memset(pCAPData, 0, sizeof(pCAPData));
+	memset(download, 0, sizeof(download));
+	bytes_recv = 0;
+
+	while(bytes_recv < dataLen)
+	{
+		int recive = 0;
+			if((recive = recv(sockfd, download, dataLen, 0))== -1){
+	    		perror("Reciv"); // logowanie do pliku !!
+	    		return 0;
+	    	}else{
+				cout << "nie pobralem czesci konfiguracji" << endl;
+			}
+			bytes_recv += recive;
+			cout << "Pobralem: " << dataLen << "/" << bytes_recv << endl;
+			//sleep(0.5);
+			strcat(pCAPData, download);
+			memset(download, 0, sizeof(download));		
+	}
+
+	string dane(pCAPData);
+    vector<string> tokens;
+    int extraRange = 0;
+    string token = "epc.range";
+    Tokenize(dane, tokens, ";");
+    for (int i = 0; i < tokens.size() ; i++)
+    {
+    	string finder = tokens[i];
+    	unsigned found = finder.find(token);
+    	if(found!=std::string::npos)
+    	{
+    		extraRange++;
+    	}
+    }
+
+
+    std::vector<string>::iterator j;
+    for(j=tokens.begin(); j<tokens.end(); ++j)
+    {
+		file << *j << endl;		
+	}
+
+	if(extraRange >= 0)
+	{
+		stringstream temp;
+		temp << extraRange;
+		file << "extraRange = " << temp.str() << endl;
+	}
+
+	file << "[/extra]" << endl;
+
+
 	// potwierdzam zakonczenie pobierania danych !!
 	sleep(1);
 	loger << "sending ok that the data was reciver properly" << endl;
