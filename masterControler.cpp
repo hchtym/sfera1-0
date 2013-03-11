@@ -2269,8 +2269,8 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 				else
 				{
 					//sekcja dla numerow podawanych recznie !! 
-					ext =0;
-					pnt =0;
+					ext = "0";
+					pnt = "0";
 				}
 			}
 
