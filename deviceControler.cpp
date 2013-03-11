@@ -652,7 +652,7 @@ string deviceControler::rfidRetrunStringId()
 
 int deviceControler::rfidWrite(string input)
 {
-	RF_Init();
+
 	memset(rfidData, 0, sizeof(rfidData));
 	Lcd_Cls();
 	char buf[100] = "";
@@ -691,7 +691,6 @@ int deviceControler::rfidWrite(string input)
 	}
 	Lcd_Cls();
 	Lcd_Printxy(0,48,0, "Dane zstaly zapisane");
-	RF_Close();
 	return 0;
 }
 
@@ -731,7 +730,7 @@ int deviceControler::rfidDisplay()
 
 int deviceControler::rfidWrite()
 {
-	RF_Init();
+
 	memset(rfidData, 0, sizeof(rfidData));
 	Lcd_Cls();
 	char buf[100];
@@ -785,14 +784,12 @@ int deviceControler::rfidWrite()
 	Lcd_Cls();
 	Lcd_Printxy(0,48,0, "Dane zstaly zapisane");
 	sleep(2);
-	RF_Close();
 	return 0;
 }
 
 
 int deviceControler::rfidRead()
 {
-	RF_Init();
 	char buf[100] = "";
 	dbgh("sn", rfidSerialNo, 20);
 	cout << "rfidRead module." << endl;
@@ -827,7 +824,7 @@ int deviceControler::rfidRead()
 	}
 
 	cout << "zawartosc po konwersji: " << buf << endl;
-	RF_Close();
+
 	return 0;
 }
 
