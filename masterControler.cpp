@@ -1703,8 +1703,9 @@ int masterControler::selling()
 	//string str8;
 	string trxDateTime = trxTime();
 	string trxIdNumber = computeTrxNumber(trxDateTime);
-	et1:	
-	while(1){
+et1:	
+	while(1)
+	{
 		cout << "tu doszedlem " << endl;
 		//char id = device->magCardScan(true);
 		string str8 = device->magCardRfidScan(true);
