@@ -885,6 +885,13 @@ int masterControler::transSelling(string hexNum)
 						Kb_Flush();
 						break;
 					}
+					if (key == KEYCANCEL)
+					{
+						yolo = 0;
+						cout << "CANCEL wcisniety !!" << endl;
+						Kb_Flush();
+						break;
+					}
 					else
 					{
 						yolo = 0;
@@ -896,6 +903,10 @@ int masterControler::transSelling(string hexNum)
 		if (yolo == 1)
 		{
 			break;
+		}
+		if (yolo == 0)
+		{
+			goto et1;
 		}
 
 	}
