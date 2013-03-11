@@ -28,9 +28,9 @@ networkControler::~networkControler()
 
 int networkControler::connectAllQuiet()
 {
-	if(Wls_CheckPPPLink(45))
+	if(false)
 	{
-		//tu ma byc ekran o brau polaczenia !!!
+		//tu ma byc ekran o braku polaczenia !!!
 		return 0;
 	}
 	else

@@ -162,9 +162,9 @@ int main()
 
 		while(1)
 		{
-			if(Wls_CheckPPPLink(45))
+			if(false)
 			{
-				sleep(45);
+				
 			}
 			else
 			{
