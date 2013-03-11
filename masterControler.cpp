@@ -1700,6 +1700,13 @@ int masterControler::selling()
 							Kb_Flush();
 							break;
 						}
+						if (key == KEYCANCEL)
+						{
+							yolo = 0;
+							cout << "CANCEL wcisniety !!" << endl;
+							Kb_Flush();
+							return 0;
+						}
 						else
 						{
 							yolo = 0;
