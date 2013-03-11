@@ -938,7 +938,7 @@ int masterControler::transSelling(string hexNum)
 	footer.clear();
 	footer = "DLA SPRZEDAWCY\n\r";
 	device->printTx(numerser, seller, trxDateTime, cid, payment, point, extra, footer, trxIdNumber);
-
+et1:
 	selling();
 	return 0;
 }
