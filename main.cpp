@@ -138,7 +138,7 @@ int main()
 
 
 	delete(config);
-	RF_Close();
+	//RF_Close();
 	RF_Init();
 	char bufer[6];
 	pid_t pID = fork();
