@@ -644,7 +644,7 @@ string deviceControler::rfidRetrunStringId()
 		}
 	}
 	cout << "zawartosc digit: " << digit << endl;
-	compose << digit;
+	compose << digit << endl;
 	cid.clear();
 	cid = compose.str();
 	cid.erase(cid.begin()+10, cid.end());
