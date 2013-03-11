@@ -609,7 +609,7 @@ string deviceControler::rfidRetrunStringId()
 	int digit = 0;
 	int len = 0;
 	memset(buf, 0, sizeof(0));
-	BYTE hexCid[10];
+	BYTE hexCid[16];
 	memset(hexCid, 0, sizeof(hexCid));
 	compose << "00";
 	char hexArray[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
@@ -622,13 +622,14 @@ string deviceControler::rfidRetrunStringId()
 
 	for(int i=0; i< sizeof(hexCid); i++)
 	{
-		sprintf(buf+i*2, "%02X", rfidIdBufer[i]);
+		sprintf(buf+i*2, "%02X", hexCid[i]);
 	}
 	int buflen = strlen(buf);
 	for (int i = 0; i < buflen; i++)
 	{
 		for (int j = 0; j < sizeof(hexArray); j++)
 		{
+			cout << "buf od i: " << buf[i] << " hexArray od j: " << hexArray[j] << endl;
 			if (buf[i] == hexArray[j]);
 			{
 				if(i == buflen-1)
@@ -642,6 +643,7 @@ string deviceControler::rfidRetrunStringId()
 			}
 		}
 	}
+	cout << "zawartosc digit: " << digit << endl;
 	compose << digit;
 	cid.clear();
 	cid = compose.str();
