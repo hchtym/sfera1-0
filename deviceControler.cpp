@@ -516,7 +516,8 @@ BYTE baPrinterLogo[] = {//Width=50, Height=252
 	0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 };
 
-deviceControler::deviceControler(){
+deviceControler::deviceControler()
+{
 	config = new configControler(false);
 	Prn_Init();
 	RF_Init();
@@ -527,7 +528,7 @@ deviceControler::deviceControler(){
 
 int deviceControler::rfidScan()
 {
-
+	RF_Init();
 	memset(rfidId, 0, sizeof(rfidId));
 	memset(rfidIdBufer, 0, sizeof(rfidIdBufer));
 	memset(rfidSerialNo, 0, sizeof(rfidSerialNo));
@@ -563,11 +564,13 @@ int deviceControler::rfidScan()
 			}
 		}		
 	}
+	RF_Close();
 	return 0;
 }
 
 int deviceControler::rfidSilentScan()
 {
+	RF_Init();
 	memset(rfidId, 0, sizeof(rfidId));
 	memset(rfidIdBufer, 0, sizeof(rfidIdBufer));
 	memset(rfidSerialNo, 0, sizeof(rfidSerialNo));
@@ -597,6 +600,7 @@ int deviceControler::rfidSilentScan()
 		}
 	}
 	cout << "wychodze z rfid silentscan !" << endl;
+	RF_Close();
 	return 0;
 }
 
@@ -652,6 +656,7 @@ string deviceControler::rfidRetrunStringId()
 
 int deviceControler::rfidWrite(string input)
 {
+	RF_Init();
 	memset(rfidData, 0, sizeof(rfidData));
 	Lcd_Cls();
 	char buf[100] = "";
@@ -690,6 +695,7 @@ int deviceControler::rfidWrite(string input)
 	}
 	Lcd_Cls();
 	Lcd_Printxy(0,48,0, "Dane zstaly zapisane");
+	RF_Close();
 	return 0;
 }
 
@@ -729,6 +735,7 @@ int deviceControler::rfidDisplay()
 
 int deviceControler::rfidWrite()
 {
+	RF_Init();
 	memset(rfidData, 0, sizeof(rfidData));
 	Lcd_Cls();
 	char buf[100];
@@ -782,12 +789,14 @@ int deviceControler::rfidWrite()
 	Lcd_Cls();
 	Lcd_Printxy(0,48,0, "Dane zstaly zapisane");
 	sleep(2);
+	RF_Close();
 	return 0;
 }
 
 
 int deviceControler::rfidRead()
 {
+	RF_Init();
 	char buf[100] = "";
 	dbgh("sn", rfidSerialNo, 20);
 	cout << "rfidRead module." << endl;
@@ -822,6 +831,8 @@ int deviceControler::rfidRead()
 	}
 
 	cout << "zawartosc po konwersji: " << buf << endl;
+	RF_Close();
+	return 0;
 }
 
 int deviceControler::atc24Read()
