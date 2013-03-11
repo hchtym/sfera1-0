@@ -715,7 +715,9 @@ int masterControler::dispMenu()
 				// tu bede nagrody
 			break;
 			case 3:
-				ret = loginScr();
+				if (!loginFlag)
+				{	
+					ret = loginScr();
 					if(ret == 1)
 					{
 						loginFlag = true;
