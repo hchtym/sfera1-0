@@ -839,6 +839,13 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 						Kb_Flush();
 						break;
 					}
+					if (key == KEYCANCEL)
+					{
+						yolo = 0;
+						cout << "CANCEL wcisniety !!" << endl;
+						Kb_Flush();
+						break;
+					}
 					else
 					{
 						yolo = 0;
@@ -851,13 +858,17 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 		{
 			break;
 		}
+		if (yolo = 0)
+		{
+			goto et1;
+		}
 
 	}
 	
 	footer.clear();
 	footer = "DLA SPRZEDAWCY\n\r";
 	device->printTx(numerser, seller, trxDateTime, cid, payment, point, extra, footer, trxIdNumber);
-
+	et1:
 	selling();
 	return 0;
 }
@@ -938,7 +949,7 @@ int masterControler::transSelling(string hexNum)
 	footer.clear();
 	footer = "DLA SPRZEDAWCY\n\r";
 	device->printTx(numerser, seller, trxDateTime, cid, payment, point, extra, footer, trxIdNumber);
-et1:
+	et1:
 	selling();
 	return 0;
 }
