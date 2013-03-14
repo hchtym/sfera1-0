@@ -791,19 +791,19 @@ int deviceControler::rfidWrite()
 
 	decHex(buf, hexData);
 
-	//int len = strlen(hexData);
-	int len = strlen(buf);
+	int len = strlen(hexData);
+	//int len = strlen(buf);
 	cout << "dlugos wpisanych danych: " << len << endl;
 	for (int i = len; i < 32; i++)
 	{
 		cout << "iteracja: " << i << endl;
-		buf[i]='0';
+		hexData[i]='0';
 	}
-	len = strlen(buf);
+	len = strlen(hexData);
 
 	cout << "Rozmiar po dopelnieniu zerami: " << len << endl;
 
-	ASCIIToHex(buf, 32, rfidData);
+	ASCIIToHex(hexData, 32, rfidData);
 
 	dbgh("dane ", rfidData, 20);
 
