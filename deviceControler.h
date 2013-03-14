@@ -43,8 +43,8 @@ private:
 
 	void printLines(int amount);
 	void printBold(int mode);
-	void decHex(char *buf, char *hex);
-	void hexDec(char *buf, char *hex);
+	void decHex(char *buf[100], char *hex[100]);
+	void hexDec(char *buf[100], char *hex[100]);
 
 
 
