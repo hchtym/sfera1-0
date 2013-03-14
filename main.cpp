@@ -157,7 +157,7 @@ int main()
 		cout << "Child process is on the go" << endl;
 
 
-		//master->updClk();
+		master->updClk();
 		master->checkVersion();
 
 		while(1)
