@@ -27,7 +27,7 @@ private:
 	BYTE rfidIdBufer[100];
 	BYTE rfidData[100];
 	int lineWidth;
-	void hexToString(char *str, BYTE* buf, int len);
+	void hexToString(char str, BYTE* buf, int len);
 	string rfidType;
 	BYTE rfidBuffer[16];
 

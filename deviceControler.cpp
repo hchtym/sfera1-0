@@ -531,9 +531,9 @@ void deviceControler::hexDec(char *buf[100], char *hex[100])
 
 }
 
-void deviceControler::decHex(char *buf[100], char *hex[100])
+void deviceControler::decHex(char buf[100], char *hex[100])
 {
-	int decimal = atoi((char **)buf);
+	int decimal = atoi(buf);
 	int dividend, remain;
 	string result = "";
 	string hexArray[16];
@@ -777,7 +777,7 @@ int deviceControler::rfidWrite()
 
 	memset(rfidData, 0, sizeof(rfidData));
 	Lcd_Cls();
-	char *buf[100];
+	char buf[100];
 	char *hexData[100];
 
 	memset(buf, 0, sizeof(buf));
