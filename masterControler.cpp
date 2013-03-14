@@ -839,6 +839,7 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 						Kb_Flush();
 						break;
 					}
+
 					if (key == KEYCANCEL)
 					{
 						yolo = 0;
@@ -858,7 +859,7 @@ int masterControler::transSelling(int ret, char *track1, char *track2, char *tra
 		{
 			break;
 		}
-		if (yolo = 0)
+		if (yolo == 0)
 		{
 			goto et1;
 		}
