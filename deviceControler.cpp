@@ -533,6 +533,7 @@ void deviceControler::hexDec(char *buf, char *hex)
 
 void deviceControler::decHex(char *buf, char *hex)
 {
+	cout << "zawartosc buf: " << buf << endl;
 	int decimal = atoi(buf);
 	int dividend, remain;
 	string result = "";
@@ -547,12 +548,12 @@ void deviceControler::decHex(char *buf, char *hex)
 	hexArray[7] = "7";
 	hexArray[8] = "8";
 	hexArray[9] = "9";
-	hexArray[10] = "a";
-	hexArray[11] = "b";
-	hexArray[12] = "c";
-	hexArray[13] = "d";
-	hexArray[14] = "e";
-	hexArray[15] = "f";
+	hexArray[10] = "A";
+	hexArray[11] = "B";
+	hexArray[12] = "C";
+	hexArray[13] = "D";
+	hexArray[14] = "E";
+	hexArray[15] = "F";
 	dividend = decimal/16;
 	remain = decimal%16;
 	result = hexArray[remain];
@@ -566,6 +567,7 @@ void deviceControler::decHex(char *buf, char *hex)
 	{
 		hex[i] = result[i];
 	}
+	cout << "zawartosc po konwersji: " << hex << endl;
 }
 
 int deviceControler::rfidScan()
@@ -654,42 +656,8 @@ string deviceControler::rfidRetrunStringId()
 	BYTE hexCid[16];
 	memset(hexCid, 0, sizeof(hexCid));
 	compose << "00";
-	char hexArray[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
-	for (int i = 0; i < sizeof(hexCid); i++)
-	{
-		//if (rfidIdBufer[i] == 0)break;
-		hexCid[i] = rfidIdBufer[i];
-	}
 
-	for(int i=0; i< sizeof(hexCid); i++)
-	{
-		sprintf(buf+i*2, "%02X", hexCid[i]);
-	}
-	int buflen = strlen(buf);
-	for (int i = 0; i < buflen; i++)
-	{
-		for (int j = 0; j < sizeof(hexArray); j++)
-		{
-			cout << "buf od i: " << buf[i] << " hexArray od j: " << hexArray[j] << endl;
-			if (buf[i] == hexArray[j]);
-			{
-				if(i == buflen-1)
-				{
-					digit += j;
-				}
-				else
-				{
-					digit += j*16;
-				}
-			}
-		}
-	}
-	cout << "zawartosc digit: " << digit << endl;
-	compose << digit << endl;
-	cid.clear();
-	cid = compose.str();
-	cid.erase(cid.begin()+10, cid.end());
 
 	return cid;
 }
