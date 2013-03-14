@@ -1195,7 +1195,7 @@ string deviceControler::magCardRfidScan(bool kbd)
 	return wyciep;
 }
 
-void deviceControler::hexToString(char *str, BYTE* buf, int len)
+void deviceControler::hexToString(char str, BYTE* buf, int len)
 {
 	        int j = 0;
 	        for(int i = 0; i < len; i++){
