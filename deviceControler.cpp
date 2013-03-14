@@ -533,7 +533,7 @@ void deviceControler::hexDec(char *buf[100], char *hex[100])
 
 void deviceControler::decHex(char *buf[100], char *hex[100])
 {
-	int decimal = atoi(const_cast<char *>(buf);
+	int decimal = atoi(buf);
 	int dividend, remain;
 	string result = "";
 	string hexArray[16];
@@ -790,7 +790,7 @@ int deviceControler::rfidWrite()
 
 	Kb_GetStr(0, 4*8, (uchar*)buf, 1, 32, NUM_IN, 240);
 
-	decHex(buf, hexData);
+	decHex(&buf, &hexData);
 
 	int len = strlen((char)hexData);
 	cout << "dlugos wpisanych danych: " << len << endl;
