@@ -526,7 +526,7 @@ deviceControler::deviceControler()
 	dbgh("password", rfidPass, 6);
 }
 
-void deviceControler::hexDec(char *buf, char *hex)
+void deviceControler::hexDec(char *buf, char hex)
 {
 
 }
