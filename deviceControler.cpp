@@ -791,7 +791,7 @@ int deviceControler::rfidWrite()
 
 	Kb_GetStr(0, 4*8, (uchar*)buf, 1, 32, NUM_IN, 240);
 
-	decHex(*bufer, *bufer1);
+	decHex(&buf, &hexData);
 
 	int len = strlen(hexData);
 	cout << "dlugos wpisanych danych: " << len << endl;
