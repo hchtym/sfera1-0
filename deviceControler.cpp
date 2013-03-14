@@ -526,12 +526,12 @@ deviceControler::deviceControler()
 	dbgh("password", rfidPass, 6);
 }
 
-void deviceControler::hexDec(char *buf, char *hex)
+void deviceControler::hexDec(char *buf[100], char *hex[100])
 {
 
 }
 
-void deviceControler::decHex(char *buf, char *hex)
+void deviceControler::decHex(char *buf[100], char *hex[100])
 {
 	int decimal = atoi(buf);
 	int dividend, remain;
