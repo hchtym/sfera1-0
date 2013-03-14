@@ -526,12 +526,12 @@ deviceControler::deviceControler()
 	dbgh("password", rfidPass, 6);
 }
 
-void deviceControler::hexDec(char *buf[100], char hex[100])
+void deviceControler::hexDec(char *buf, char *hex)
 {
 
 }
 
-void deviceControler::decHex(char buf[100], char *hex[100])
+void deviceControler::decHex(char *buf, char *hex)
 {
 	int decimal = atoi(buf);
 	int dividend, remain;
@@ -553,8 +553,8 @@ void deviceControler::decHex(char buf[100], char *hex[100])
 	hexArray[13] = "d";
 	hexArray[14] = "e";
 	hexArray[15] = "f";
-	dividend = decimal/16;
-	remain = decimal%16;
+	dividend = (int)num/16;
+	remain = num%16;
 	result = hexArray[remain];
 	while (dividend != 0)
 	{
@@ -564,7 +564,7 @@ void deviceControler::decHex(char buf[100], char *hex[100])
 	}
 	for (int i = 0; i < result.size(); i++)
 	{
-		hex[i] = (char *)result[i];
+		hex[i] = result[i];
 	}
 }
 
@@ -779,7 +779,6 @@ int deviceControler::rfidWrite()
 	Lcd_Cls();
 	char buf[100];
 	char hexData[100];
-
 	memset(buf, 0, sizeof(buf));
 	cout << "rfidWrite module." << endl;
 
@@ -790,20 +789,21 @@ int deviceControler::rfidWrite()
 
 	Kb_GetStr(0, 4*8, (uchar*)buf, 1, 32, NUM_IN, 240);
 
-	//decHex(buf, hexData);
+	//decHex(&buf, &hexData);
 
-	int len = strlen((char)hexData);
+	//int len = strlen(hexData);
+	int len = strlen(buf);
 	cout << "dlugos wpisanych danych: " << len << endl;
 	for (int i = len; i < 32; i++)
 	{
 		cout << "iteracja: " << i << endl;
-		hexData[i]='0';
+		buf[i]='0';
 	}
-	//len = strlen(buf);
+	len = strlen(buf);
 
 	cout << "Rozmiar po dopelnieniu zerami: " << len << endl;
 
-	ASCIIToHex(hexData, 32, rfidData);
+	ASCIIToHex(buf, 32, rfidData);
 
 	dbgh("dane ", rfidData, 20);
 
@@ -1195,24 +1195,24 @@ string deviceControler::magCardRfidScan(bool kbd)
 	return wyciep;
 }
 
-void deviceControler::hexToString(char str, BYTE* buf, int len)
+void deviceControler::hexToString(char *str, BYTE* buf, int len)
 {
-    int j = 0;
-    for(int i = 0; i < len; i++){
-            str[j] = (buf[i]/16);
-            if(str[j] > 9)
-                    str[j] += 'A' - 10;
-            else
-                    str[j] += '0';
-            str[++j] = (buf[i]%16);
-            if(str[j] > 9)
-                    str[j] += 'A' - 10;
-            else
-                    str[j] += '0';
-            j++;
-    }
-    putchar('\n');
-    str[j] = 0;
+	        int j = 0;
+	        for(int i = 0; i < len; i++){
+	                str[j] = (buf[i]/16);
+	                if(str[j] > 9)
+	                        str[j] += 'A' - 10;
+	                else
+	                        str[j] += '0';
+	                str[++j] = (buf[i]%16);
+	                if(str[j] > 9)
+	                        str[j] += 'A' - 10;
+	                else
+	                        str[j] += '0';
+	                j++;
+	        }
+	        putchar('\n');
+	        str[j] = 0;
 }
 
 void deviceControler::printerInit(int size)
