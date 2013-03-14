@@ -553,8 +553,8 @@ void deviceControler::decHex(char buf[100], char *hex[100])
 	hexArray[13] = "d";
 	hexArray[14] = "e";
 	hexArray[15] = "f";
-	dividend = (int)num/16;
-	remain = num%16;
+	dividend = decimal/16;
+	remain = decimal%16;
 	result = hexArray[remain];
 	while (dividend != 0)
 	{
@@ -564,7 +564,7 @@ void deviceControler::decHex(char buf[100], char *hex[100])
 	}
 	for (int i = 0; i < result.size(); i++)
 	{
-		hex[i] = result[i];
+		//hex[i] = result[i];
 	}
 }
 
