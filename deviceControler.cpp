@@ -1197,22 +1197,22 @@ string deviceControler::magCardRfidScan(bool kbd)
 
 void deviceControler::hexToString(char str, BYTE* buf, int len)
 {
-	        int j = 0;
-	        for(int i = 0; i < len; i++){
-	                str[j] = (buf[i]/16);
-	                if(str[j] > 9)
-	                        str[j] += 'A' - 10;
-	                else
-	                        str[j] += '0';
-	                str[++j] = (buf[i]%16);
-	                if(str[j] > 9)
-	                        str[j] += 'A' - 10;
-	                else
-	                        str[j] += '0';
-	                j++;
-	        }
-	        putchar('\n');
-	        str[j] = 0;
+    int j = 0;
+    for(int i = 0; i < len; i++){
+            str[j] = (buf[i]/16);
+            if(str[j] > 9)
+                    str[j] += 'A' - 10;
+            else
+                    str[j] += '0';
+            str[++j] = (buf[i]%16);
+            if(str[j] > 9)
+                    str[j] += 'A' - 10;
+            else
+                    str[j] += '0';
+            j++;
+    }
+    putchar('\n');
+    str[j] = 0;
 }
 
 void deviceControler::printerInit(int size)
