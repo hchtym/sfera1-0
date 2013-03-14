@@ -559,7 +559,7 @@ void deviceControler::decHex(char *buf, char *hex)
 	while (dividend != 0)
 	{
 		remain = dividend%16;
-		dividend = (int)dividend/16;
+		dividend = dividend/16;
 		result = hexArray[remain]+result;
 	}
 	for (int i = 0; i < result.size(); i++)
