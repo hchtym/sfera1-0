@@ -533,7 +533,7 @@ void deviceControler::hexDec(char *buf[100], char *hex[100])
 
 void deviceControler::decHex(char *buf[100], char *hex[100])
 {
-	int decimal = atoi(buf);
+	int decimal = atoi((char)buf);
 	int dividend, remain;
 	string result = "";
 	string hexArray[16];
@@ -564,7 +564,7 @@ void deviceControler::decHex(char *buf[100], char *hex[100])
 	}
 	for (int i = 0; i < result.size(); i++)
 	{
-		hex[i] = result[i];
+		hex[i] = (char *)result[i];
 	}
 }
 
