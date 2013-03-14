@@ -526,6 +526,48 @@ deviceControler::deviceControler()
 	dbgh("password", rfidPass, 6);
 }
 
+void deviceControler::hexDec(char *buf, char *hex)
+{
+
+}
+
+void deviceControler::decHex(char *buf, char *hex)
+{
+	int decimal = atoi(buf);
+	int dividend, remain;
+	string result = "";
+	string hexArray[16];
+	hexArray[0] = "0";
+	hexArray[1] = "1";
+	hexArray[2] = "2";
+	hexArray[3] = "3";
+	hexArray[4] = "4";
+	hexArray[5] = "5";
+	hexArray[6] = "6";
+	hexArray[7] = "7";
+	hexArray[8] = "8";
+	hexArray[9] = "9";
+	hexArray[10] = "a";
+	hexArray[11] = "b";
+	hexArray[12] = "c";
+	hexArray[13] = "d";
+	hexArray[14] = "e";
+	hexArray[15] = "f";
+	dividend = (int)num/16;
+	remain = num%16;
+	result = hexArray[remain];
+	while (dividend != 0)
+	{
+		remain = dividend%16;
+		dividend = (int)dividend/16;
+		result = hexArray[remain]+result;
+	}
+	for (int i = 0; i < result.size(); i++)
+	{
+		hex[i] = result[i];
+	}
+}
+
 int deviceControler::rfidScan()
 {
 	memset(rfidId, 0, sizeof(rfidId));
@@ -736,6 +778,7 @@ int deviceControler::rfidWrite()
 	memset(rfidData, 0, sizeof(rfidData));
 	Lcd_Cls();
 	char buf[100];
+	char hexData[100];
 	memset(buf, 0, sizeof(buf));
 	cout << "rfidWrite module." << endl;
 
@@ -744,20 +787,22 @@ int deviceControler::rfidWrite()
 	Lcd_Cls();
 	Lcd_Printxy(0,0,1, "Wpisz segment danych ");
 
-	Kb_GetStr(0, 4*8, (uchar*)buf, 1, 32, ALPHA_IN, 240);
+	Kb_GetStr(0, 4*8, (uchar*)buf, 1, 32, NUM_IN, 240);
 
-	int len = strlen(buf);
+	decHex(&buf, &hexData);
+
+	int len = strlen(hexData);
 	cout << "dlugos wpisanych danych: " << len << endl;
 	for (int i = len; i < 32; i++)
 	{
 		cout << "iteracja: " << i << endl;
-		buf[i]='0';
+		hexData[i]='0';
 	}
 	len = strlen(buf);
 
 	cout << "Rozmiar po dopelnieniu zerami: " << len << endl;
 
-	ASCIIToHex(buf, 32, rfidData);
+	ASCIIToHex(hexData, 32, rfidData);
 
 	dbgh("dane ", rfidData, 20);
 
