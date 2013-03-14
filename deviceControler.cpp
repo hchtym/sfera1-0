@@ -531,7 +531,7 @@ void deviceControler::hexDec(char *buf, char *hex)
 
 }
 
-void deviceControler::decHex(char *buf, char *hex)
+void deviceControler::decHex(char &buf, char &hex)
 {
 	int decimal = atoi(buf);
 	int dividend, remain;
