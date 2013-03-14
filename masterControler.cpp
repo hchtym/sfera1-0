@@ -2008,31 +2008,31 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 		vect.push_back(compose.str());
 	}
 	temp = vect[0];
-	acttime.Year = atoi(temp.c_st());
+	acttime.Year = atoi(temp.c_str());
 	cout << acttime.Year << endl;
 	temp.clear();
 	temp = vect[1];
-	acttime.Month = atoi(temp.c_st());
+	acttime.Month = atoi(temp.c_str());
 	cout << acttime.Month << endl;
 	temp.clear();
 	temp = vect[2];
-	acttime.Day = atoi(temp.c_st());
+	acttime.Day = atoi(temp.c_str());
 	cout << acttime.Day << endl;
 	temp.clear();
 	temp = vect[3];
-	acttime.Hour = atoi(temp.c_st());
+	acttime.Hour = atoi(temp.c_str());
 	cout << acttime.Hour << endl;
 	temp.clear();
 	temp = vect[4];
-	acttime.Minute = atoi(temp.c_st());
+	acttime.Minute = atoi(temp.c_str());
 	cout << acttime.Minute << endl;
 	temp.clear();
 	temp = vect[5];
-	acttime.Second = atoi(temp.c_st());
+	acttime.Second = atoi(temp.c_str());
 	cout << acttime.Second << endl;
 	temp.clear();
 	temp = vect[6];
-	acttime.GTM = atoi(temp.c_st());
+	acttime.GTM = atoi(temp.c_str());
 	cout << acttime.GTM << endl;
 	
 	unsigned char factory[20];
