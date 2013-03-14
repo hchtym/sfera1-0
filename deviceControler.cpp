@@ -564,7 +564,7 @@ void deviceControler::decHex(char *buf, char *hex)
 	}
 	for (int i = 0; i < result.size(); i++)
 	{
-		//hex[i] = result[i];
+		hex[i] = result[i];
 	}
 }
 
