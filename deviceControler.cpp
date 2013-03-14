@@ -748,6 +748,7 @@ int deviceControler::rfidWrite()
 	char buf[100];
 	char hexData[100];
 	memset(buf, 0, sizeof(buf));
+	memset(hexData, 0, sizeof(hexData));
 	cout << "rfidWrite module." << endl;
 
 	int ret = rfidScan();
@@ -757,7 +758,10 @@ int deviceControler::rfidWrite()
 
 	Kb_GetStr(0, 4*8, (uchar*)buf, 1, 32, NUM_IN, 240);
 
+	cout << "zawartosc buf przed konwersja: " << buf << endl;
 	decHex(buf, hexData);
+
+	cout << "zawartosc hex po konwersji: " << hexData << endl;
 
 	int len = strlen(hexData);
 	//int len = strlen(buf);
