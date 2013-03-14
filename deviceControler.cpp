@@ -777,8 +777,8 @@ int deviceControler::rfidWrite()
 
 	memset(rfidData, 0, sizeof(rfidData));
 	Lcd_Cls();
-	char buf[100];
-	char hexData[100];
+	char *buf[100];
+	char *hexData[100];
 
 	memset(buf, 0, sizeof(buf));
 	cout << "rfidWrite module." << endl;
@@ -792,14 +792,14 @@ int deviceControler::rfidWrite()
 
 	decHex(buf, hexData);
 
-	int len = strlen(hexData);
+	int len = strlen((char)hexData);
 	cout << "dlugos wpisanych danych: " << len << endl;
 	for (int i = len; i < 32; i++)
 	{
 		cout << "iteracja: " << i << endl;
 		hexData[i]='0';
 	}
-	len = strlen(buf);
+	//len = strlen(buf);
 
 	cout << "Rozmiar po dopelnieniu zerami: " << len << endl;
 
