@@ -2030,9 +2030,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	temp = vect[5];
 	acttime.Second = atoi(temp.c_str());
 	cout << acttime.Second << endl;
-	temp.clear();
-	temp = vect[6];
-	acttime.GTM = atoi(temp.c_str());
+	acttime.GTM = 1;
 	cout << acttime.GTM << endl;
 	
 	unsigned char factory[20];
