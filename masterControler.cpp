@@ -1714,7 +1714,7 @@ int masterControler::selling()
 	//string str8;
 	string trxDateTime = trxTime();
 	string trxIdNumber = computeTrxNumber(trxDateTime);
-et1:	
+	et1:	
 	while(1)
 	{
 		cout << "tu doszedlem " << endl;
@@ -1992,6 +1992,7 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	ofstream test("tranzakcje.txt", ios_base::binary|ios::app);
 	cout << "tworze string stream compose)" << endl;
 	stringstream compose;
+	vector<string> vect;
 	cout << "tworze stringacza" << endl;
 	string total;
 	cout << "czyszcze string strema" << endl; 
@@ -1999,20 +2000,27 @@ int masterControler::fileSave(string &sn, string &seler, string &client, string 
 	cout << "wypelniam string tym: " << endl << sn << ";" << seler << ";" << client << ";" << pay << ";" << point << ";" << extrapoint << ";" << type << ";" << date << endl;
 	compose << sn << ";" << seler << ";" << client << ";" << pay << ";" << point << ";" << extrapoint << ";" << type << ";" << date << endl;
 	cout << "Cas z struktury acttime" << endl;
-	//acttime.Year = 13;
-	//cout << acttime.Year << endl;
-	//acttime.Month = 01;
-	//cout << acttime.Month << endl;
-	//acttime.Day = 04;
-	//cout << acttime.Day << endl;
-	//acttime.Hour = 12;
-	//cout << acttime.Hour << endl;
-	//acttime.Minute = 05;
-	//cout << acttime.Minute << endl;
-	//acttime.Second = 55;
-	//cout << acttime.Second << endl;
-	//acttime.GTM = 1;
-	//cout << acttime.GTM << endl;
+
+	for (int i = 0; i < date.size(); i+=2)
+	{
+		compose.str("");
+		compose << date[i] << date[i+1];
+		vect.push_back(compose.str());
+	}
+	acttime.Year = atoi(vect[0]);
+	cout << acttime.Year << endl;
+	acttime.Month = atoi(vect[1]);
+	cout << acttime.Month << endl;
+	acttime.Day = atoi(vect[2]);
+	cout << acttime.Day << endl;
+	acttime.Hour = atoi(vect[3]);
+	cout << acttime.Hour << endl;
+	acttime.Minute = atoi(vect[4]);
+	cout << acttime.Minute << endl;
+	acttime.Second = atoi(vect[5]);
+	cout << acttime.Second << endl;
+	acttime.GTM = atoi(vect[6]);
+	cout << acttime.GTM << endl;
 	
 	unsigned char factory[20];
 	memset(factory, 0, sizeof(factory));
