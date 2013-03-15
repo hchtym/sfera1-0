@@ -162,9 +162,9 @@ int main()
 
 		while(1)
 		{
-			if(false)
+			if(Wls_CheckPPPLink(45))
 			{
-				
+				sleep(30);
 			}
 			else
 			{
@@ -174,7 +174,7 @@ int main()
 					num = read(fd, bufer, 6);
 					if(strcmp(bufer, "send\n") == 0)
 					{
-						cout << "dostalem polecenie sen !!" << endl;
+						cout << "dostalem polecenie send !!" << endl;
 						master->masterBackground();	
 					}
 					memset(bufer, 0, sizeof(bufer));
