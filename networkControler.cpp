@@ -231,7 +231,7 @@ int networkControler::softUpdate(string data)
 	int x =0;
 	int ulHandle =0;
 	memset(pCAPData, 0, sizeof(pCAPData));
-	stringstream compose; 
+	stringstream compose;
 	string msg;
 	int sent;
 	string info;
@@ -239,8 +239,8 @@ int networkControler::softUpdate(string data)
 	cout << "tworze stream" << endl;
 	string serNr = config->returnSeriall();
 	cout << "Wysylam zapytanie." << endl;
-	//compose << "cap;" << serNr << ";" << data << endl; //<< endl;
-	compose << "cap;" << serNr << ";" << "2013-02-07 15:02" << endl;
+	compose << "cap;" << serNr << ";" << data << endl; //<< endl;
+	//compose << "cap;" << serNr << ";" << "2013-02-07 15:02" << endl;
 	msg = compose.str();
 	int len,bytes_sent,bytes_recv;
 	int resend = 0;
