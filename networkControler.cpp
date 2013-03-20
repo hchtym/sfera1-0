@@ -623,7 +623,8 @@ int networkControler::updConf()
 
 		msg.clear();
 		msg = "ok";
-		if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1){
+		if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1)
+		{
 			perror("send"); // logowanie do pliku !
 			return 0;
 		}
@@ -1571,13 +1572,14 @@ void networkControler::Tokenize(const string& str, vector<string>& tokens, const
 
 const char* const networkControler::configs[2][6]=
 {
-{
-"par.podst.", "zab.karty",
-"opcje menu", "nagrody",
-"sprzedawcy", "obliczenia"
-},{
-"ok", "lc",
-"menu", "prize",
-"seller", "comp"
-}
+	{
+		"par.podst.", "zab.karty",
+		"opcje menu", "nagrody",
+		"sprzedawcy", "obliczenia"
+	},
+	{
+		"ok", "lc",
+		"menu", "prize",
+		"seller", "comp"
+	}
 };

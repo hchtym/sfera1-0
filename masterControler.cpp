@@ -2468,7 +2468,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 				string stringExtra;
 				int extraOver = atoi(value.c_str());
 				int pay = atoi(sumary.c_str());
-				if(pay > extraOver)
+				if(pay >= extraOver)
 				{
 					int extra = pay;
 					sumapkt += extra;

@@ -618,7 +618,7 @@ int deviceControler::rfidSilentScan()
 
 	cout << "jestem w rfid silen scan !" << endl;
 
-	if(ERR_OK == RF_WaitCard_Timeout(RF_M1, rfidSerialNo, 5))
+	if(ERR_OK == RF_WaitCard_Timeout(RF_M1, rfidSerialNo, 10))
 	{
 		rfidType = "M1";
 		cout << "Zawartosc poczatkowego segmentu: " << rfidSerialNo << endl;
@@ -630,7 +630,7 @@ int deviceControler::rfidSilentScan()
 		}
 	}
 
-	if(ERR_OK == RF_WaitCard_Timeout(RF_TYPE_A, rfidSerialNo, 5))
+	if(ERR_OK == RF_WaitCard_Timeout(RF_TYPE_A, rfidSerialNo, 10))
 	{
 		cout << "typeA" << endl;
 		rfidType = "typeA";
@@ -926,6 +926,8 @@ string deviceControler::magCardRfidScan(bool kbd)
 	compo1.str("");
 	string temp;
 	int ret;
+	int left = -1;
+	SetTimer(19, 300);
 	bool presed = false;
 	bool readed = false;
 	memset(track1, 0, sizeof(track1));
@@ -1028,14 +1030,18 @@ string deviceControler::magCardRfidScan(bool kbd)
 				}
 			}
 			cout << "rfid silent scan !!" << endl;
-			ret = rfidSilentScan();
-			rfidRead();
-			if(ret == 1)
-			{
-				hexNum = rfidRetrunStringId();
-				return hexNum;
+			left = CheckTimer(19);
+			if(left == 0)
+			{	
+				ret = rfidSilentScan();
+				rfidRead();
+				if(ret == 1)
+				{
+					hexNum = rfidRetrunStringId();
+					return hexNum;
+				}
+				cout <<  "za sprawdzeniem rfid" << endl;
 			}
-			cout <<  "za sprawdzeniem rfid" << endl;
 		}
 
 		if(kbd)
