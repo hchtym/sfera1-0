@@ -9,6 +9,8 @@
 #include <sstream>
 #include <iostream>
 #include <stdlib.h>
+#include <stdio.h>
+#include <cstdlib>
 //#include "internal.h"
 
 extern "C"{
@@ -43,8 +45,8 @@ private:
 
 	void printLines(int amount);
 	void printBold(int mode);
-	void decHex(char *buf, char *hex);
-	void hexDec(char *buf, char *hex);
+	void decHex(char *dec, char *hex);
+	void hexDec(char *dec, char *hex);
 
 
 

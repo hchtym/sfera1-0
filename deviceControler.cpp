@@ -526,12 +526,19 @@ deviceControler::deviceControler()
 	dbgh("password", rfidPass, 6);
 }
 
-void deviceControler::hexDec(char *buf, char *hex)
+void deviceControler::hexDec(char *dec, char *hex)
 {
-
+	int decimal;
+	char temp[32];
+	for (int i = 0; i < 32; i++)
+	{
+		temp[i] = dec[i];
+	}
+	decimal = strtoul(temp, NULL, 16);
+	itoa(decimal, hex, 10);
 }
 
-void deviceControler::decHex(char *buf, char *hex)
+void deviceControler::decHex(char *dec, char *hex)
 {
 	cout << "zawartosc buf: " << buf << endl;
 	int decimal = atoi(buf);
@@ -649,16 +656,23 @@ string deviceControler::rfidRetrunStringId()
 	stringstream compose;
 	compose.str("");
 	string cid;
-	char buf[100];
-	int digit = 0;
-	int len = 0;
+	char decimal[100];
 	memset(buf, 0, sizeof(0));
-	BYTE hexCid[16];
+	hex hexCid[32];
 	memset(hexCid, 0, sizeof(hexCid));
 	compose << "00";
 
+	for (int i = 0; i < 32; i++)
+	{
+		hexCid[i] = (char)rfidIdBufer[i];
+	}
 
-
+	hexDec(&decimal, &hexCid);
+	cout << "zawartosc decial: " << 
+	compose << decimal;
+	cid.clear();
+	cid = compose.str();
+	cout << "cid z rfid: " << cid << endl;
 	return cid;
 }
 
@@ -747,6 +761,10 @@ int deviceControler::rfidWrite()
 	Lcd_Cls();
 	char buf[100];
 	char hexData[100];
+	char temp[100];
+	int marker = 0;
+	int iterate = 0;
+	memset(temp, 0, sizeof(temp));
 	memset(buf, 0, sizeof(buf));
 	memset(hexData, 0, sizeof(hexData));
 	cout << "rfidWrite module." << endl;
@@ -766,11 +784,19 @@ int deviceControler::rfidWrite()
 	int len = strlen(hexData);
 	//int len = strlen(buf);
 	cout << "dlugos wpisanych danych: " << len << endl;
-	for (int i = len; i < 32; i++)
+	for (int i = 0; i < (32-len); i++)
 	{
-		cout << "iteracja: " << i << endl;
-		hexData[i]='0';
+		temp[i]='0';
+		marker = i;
 	}
+
+	for (int i = marker; i < 32; i++)
+	{
+		temp[i] = hexData[j];
+		j++;
+	}
+	memset(hexData, 0, sizeof(hexData));
+	strcpy(hexData, temp);
 	len = strlen(hexData);
 
 	cout << "Rozmiar po dopelnieniu zerami: " << len << endl;
@@ -1029,7 +1055,6 @@ string deviceControler::magCardRfidScan(bool kbd)
 					break;
 				}
 			}
-			cout << "rfid silent scan !!" << endl;
 			left = CheckTimer(19);
 			if(left == 0)
 			{	
