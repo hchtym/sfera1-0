@@ -962,6 +962,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	int rfidState = 0;
 	int state = 0;
 	int ret1 = 0;
+	int timeout =0;
     BYTE key;
 	char track1[100];
 	char track2[100];
@@ -977,14 +978,14 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	}
     //key=NOKEY;
     string screenTimeout = config->returnScreenSaverTimeout();
-	int timeout = atoi(screenTimeout.c_str());
+	timeout = atoi(screenTimeout.c_str());
 	if (timeout == 0)
 	{
-		timeoutFlag == false;
+		timeoutFlag = false;
 	}
 	else
 	{
-		timeoutFlag == true;
+		timeoutFlag = true;
 		SetTimer(0, (timeout*1000));
 	}
 
