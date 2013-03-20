@@ -584,7 +584,6 @@ void masterControler::menuShop()
 	string items = "Sprzedaz;Zwrot";
 	vector<string> vect;
 	Tokenize(items, vect, ";");
-	int menuId[2] = {1,2};
 }
 
 void masterControler::menuOnOff()
@@ -592,7 +591,6 @@ void masterControler::menuOnOff()
 	string items = "Online;Ofline";
 	vector<string> vect;
 	Tokenize(items, vect, ";");
-	int menuId[2] = {1,2};
 }
 
 int masterControler::dispMenu()
@@ -959,7 +957,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 {
 	cout << "jestem w mnue scr" << endl;
 	const int visible = 7;
-    int i, j, view = 0;
+    int i, view = 0;
 	int cardState = 0;
 	int rfidState = 0;
 	int state = 0;
@@ -972,8 +970,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	memset(track2, 0, sizeof(track2));
 	memset(track3, 0, sizeof(track3));
 	
-    int index2 = 0;      
-    int tick = 0;
+    int index2 = 0;
 	if(Mcr_Open()<0)
 	{
 		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
@@ -992,7 +989,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	}
 
 	cout << "jestem przed draw menu !" << endl;
-	drawMenu:
+	//drawMenu:
 	if(index2 < 0 || index2 > size -1) index2 =0;
 	if(index2 > visible -1 ) view = index2 - visible +1;
 	cout << "wchodze do while w menuscr" << endl;
@@ -1141,12 +1138,9 @@ int masterControler::menuScrOther(const string &menuname,vector<string> &vect, i
 {
 	cout << "jestem w mnue scr" << endl;
 	const int visible = 6;
-    int i, j, view =0;
-	int ret;
-	int ret1;
+    int i, view =0;
     BYTE key;
     int index2 = 0;
-    int tick = 0;
 	if(Mcr_Open()<0)
 	{
 		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
@@ -1179,7 +1173,7 @@ int masterControler::menuScrOther(const string &menuname,vector<string> &vect, i
 	//                      Lcd_Printxy(1, i+3, 0, "                 ");
 	        }
 		}
-		int left = -1;
+		//int left = -1;
 		cout << "wchodze do while odpowiedzialnego za wykrywanie guzikow timeout i inne" << endl;
 		Kb_Flush();
 	    while(1){

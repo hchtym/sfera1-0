@@ -73,7 +73,7 @@ int networkControler::connectAllQuiet()
 		}
 		loger << "otwarlem socket i polaczylem sie" << endl;
 		cout << "otwarlem socket i sie polaczylem " << endl;
-		int len,bytes_sent,bytes_recv;
+		int len,bytes_sent; //,bytes_recv;
 		stringstream compose;
 		compose << "nr;" << serialN << endl; 
 		string msg = compose.str();
@@ -102,20 +102,20 @@ int networkControler::updClock()
 	memset(bufer, 0, sizeof(bufer));
 	char temp[730];
 	memset(temp, 0, sizeof(temp));
-	int ulLen =0;
-	int x =0;
-	int ulHandle =0;
+	//int ulLen =0;
+	//int x =0;
+	//int ulHandle =0;
 	memset(pCAPData, 0, sizeof(pCAPData));
 	stringstream compose; 
 	string msg;
-	int sent;
+	//int sent;
 	string serwTime;
 	compose.str("");
 	cout << "tworze stream" << endl;
 	compose << "clock"; //<< endl;
 	msg = compose.str();
 	int len,bytes_sent,bytes_recv;
-	int resend = 0;
+	//int resend = 0;
 	len = msg.size();
 	bytes_sent = 0;
 	bytes_recv = 0;
@@ -227,13 +227,13 @@ int networkControler::softUpdate(string data)
 	memset(bufer, 0, sizeof(bufer));
 	char temp[730];
 	memset(temp, 0, sizeof(temp));
-	int ulLen =0;
-	int x =0;
-	int ulHandle =0;
+	//int ulLen =0;
+	//int x =0;
+	//int ulHandle =0;
 	memset(pCAPData, 0, sizeof(pCAPData));
 	stringstream compose;
 	string msg;
-	int sent;
+	//int sent;
 	string info;
 	compose.str("");
 	cout << "tworze stream" << endl;
@@ -243,9 +243,9 @@ int networkControler::softUpdate(string data)
 	//compose << "cap;" << serNr << ";" << "2013-02-07 15:02" << endl;
 	msg = compose.str();
 	int len,bytes_sent,bytes_recv;
-	int resend = 0;
-	int size1 = 0;
-	int size2 = 0;
+	//int resend = 0;
+	//int size1 = 0;
+	//int size2 = 0;
 	bytes_sent = 0;
 	bytes_recv = 0;
 
@@ -426,13 +426,13 @@ int networkControler::sendAck(string date)
 	memset(bufer, 0, sizeof(bufer));
 	char temp[730];
 	memset(temp, 0, sizeof(temp));
-	int ulLen =0;
-	int x =0;
-	int ulHandle =0;
+	//int ulLen =0;
+	//int x =0;
+	//int ulHandle =0;
 	memset(pCAPData, 0, sizeof(pCAPData));
 	stringstream compose; 
 	string msg;
-	int sent;
+	//int sent;
 	string info;
 	compose.str("");
 	cout << "tworze stream" << endl;
@@ -440,9 +440,9 @@ int networkControler::sendAck(string date)
 	compose << "cap-ack;" << serNr << ";" << date << endl; //<< endl;
 	msg = compose.str();
 	int len,bytes_sent,bytes_recv;
-	int resend = 0;
-	int size1 = 0;
-	int size2 = 0;
+	//int resend = 0;
+	//int size1 = 0;
+	//int size2 = 0;
 	bytes_sent = 0;
 	bytes_recv = 0;
 

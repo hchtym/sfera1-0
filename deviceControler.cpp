@@ -1041,6 +1041,8 @@ string deviceControler::magCardRfidScan(bool kbd)
 					return hexNum;
 				}
 				cout <<  "za sprawdzeniem rfid" << endl;
+				left = -1;
+				SetTimer(19, 300);
 			}
 		}
 
