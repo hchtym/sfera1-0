@@ -530,18 +530,20 @@ void deviceControler::hexDec(char *dec, char *hex)
 {
 	int decimal;
 	char temp[32];
+	char buf[100];
 	for (int i = 0; i < 32; i++)
 	{
 		temp[i] = dec[i];
 	}
 	decimal = strtoul(temp, NULL, 16);
-	itoa(decimal, hex, 10);
+	sprintf(buf, "%d", decimal);
+	strcpy(dec, buf);
 }
 
 void deviceControler::decHex(char *dec, char *hex)
 {
-	cout << "zawartosc buf: " << buf << endl;
-	int decimal = atoi(buf);
+	cout << "zawartosc buf: " << dec << endl;
+	int decimal = atoi(dec);
 	int dividend, remain;
 	string result = "";
 	string hexArray[16];
