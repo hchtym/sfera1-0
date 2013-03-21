@@ -535,9 +535,17 @@ void deviceControler::hexDec(char *dec, char *hex)
 	{
 		temp[i] = hex[i];
 	}
+	cout << "zwartosc temp w hexDec: " << temp << endl;
 	decimal = strtoul(temp, NULL, 16);
 	sprintf(buf, "%d", decimal);
-	strcpy(dec, buf);
+	cout << "zawartosc decimal w hexDec: " << decimal << endl;
+	cout << "zawartość bufora w hexDec: " << buf;
+	int len = strlen(buf);
+	for (int i = 0; i < len; i++)
+	{
+		dec[i] = buf[i];
+	}
+	cout << "zawartosc dec w hexDec: " << dec << endl;
 }
 
 void deviceControler::decHex(char *dec, char *hex)
