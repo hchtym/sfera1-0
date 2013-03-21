@@ -1062,9 +1062,9 @@ string deviceControler::magCardRfidScan(bool kbd)
 			if(left == 0)
 			{	
 				ret = rfidSilentScan();
-				rfidRead();
 				if(ret == 1)
 				{
+					rfidRead();
 					hexNum = rfidRetrunStringId();
 					return hexNum;
 				}
