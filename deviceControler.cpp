@@ -658,9 +658,10 @@ string deviceControler::rfidRetrunStringId()
 	stringstream compose;
 	compose.str("");
 	string cid;
+	char buf[100];
 	char decimal[100];
 	memset(buf, 0, sizeof(0));
-	hex hexCid[32];
+	char hexCid[32];
 	memset(hexCid, 0, sizeof(hexCid));
 	compose << "00";
 
@@ -791,7 +792,7 @@ int deviceControler::rfidWrite()
 		temp[i]='0';
 		marker = i;
 	}
-
+	int j=0;
 	for (int i = marker; i < 32; i++)
 	{
 		temp[i] = hexData[j];
