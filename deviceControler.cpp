@@ -818,7 +818,7 @@ int deviceControler::rfidWrite()
 	int len = strlen(hexData);
 	//int len = strlen(buf);
 	cout << "dlugos wpisanych danych: " << len << endl;
-	for (int i = 0; i < (32-len); i++)
+	for (int i = 0; i < (33-len); i++)
 	{
 		temp[i]='0';
 		marker = i;

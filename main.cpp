@@ -116,7 +116,7 @@ int main()
 			Lcd_Icon(1, ICON_OFF, 1);
 			break;
 		}
-		DelayMs(50);
+		DelayMs(100);
 	}
 
 	//nawizauje polaczenie z siecia 
@@ -131,7 +131,7 @@ int main()
 	Lcd_Printxy(0,0,0,"Ladowanie systemu");
 	Lcd_Logo(lcdLogo,sizeof(lcdLogo),8);
 	Lcd_Printxy(0,55,0,"Prosze czekac...");
-	sleep(20);
+	//sleep(20);
 
 	cout << "kiluje obiekt" << endl;
 	//sleep(20);
