@@ -666,9 +666,9 @@ string deviceControler::rfidRetrunStringId()
 	memset(hexCid, 0, sizeof(hexCid));
 	compose << "00";
 
-	for (int i = 0; i < 32; i++)
+	for(int i=0; i<16; i++)
 	{
-		hexCid[i] = rfidIdBufer[i];
+		sprintf(hexCid+i*2, "%02X", rfidIdBufer[i]);
 	}
 
 	cout << "zawartosc hexCid: " << hexCid << endl;
