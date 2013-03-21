@@ -684,7 +684,7 @@ int deviceControler::rfidWrite(string input)
 
 	memset(rfidData, 0, sizeof(rfidData));
 	Lcd_Cls();
-	char buf[100] = "";
+	//char buf[100] = "";
 	cout << "rfidWrite module." << endl;
 
 	int ret = rfidScan();
@@ -766,7 +766,7 @@ int deviceControler::rfidWrite()
 	char hexData[100];
 	char temp[100];
 	int marker = 0;
-	int iterate = 0;
+	//int iterate = 0;
 	memset(temp, 0, sizeof(temp));
 	memset(buf, 0, sizeof(buf));
 	memset(hexData, 0, sizeof(hexData));
