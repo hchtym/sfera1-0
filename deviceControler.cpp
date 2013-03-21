@@ -655,6 +655,7 @@ int deviceControler::rfidSilentScan()
 
 string deviceControler::rfidRetrunStringId()
 {
+	cout << "ZNAJDUJE SIE W ZWRACANIU STRINGA !!" << endl;
 	stringstream compose;
 	compose.str("");
 	string cid;
@@ -671,11 +672,12 @@ string deviceControler::rfidRetrunStringId()
 	}
 
 	hexDec(decimal, hexCid);
-	cout << "zawartosc decial: " << 
+	cout << "zawartosc decial: " << decimal << endl;
 	compose << decimal;
 	cid.clear();
 	cid = compose.str();
 	cout << "cid z rfid: " << cid << endl;
+	cout << "ZWRACAM WARTOSC CID: " << cid << endl;
 	return cid;
 }
 
