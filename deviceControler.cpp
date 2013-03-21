@@ -727,6 +727,9 @@ int deviceControler::rfidWrite(string input)
 		rfidData[i] = buf[i];
 	}
 
+	cout << "zawartosc buf przed zapisem: " << buf << endl;
+	cout << "zawartosc rfidData przed zapisem: " << rfidData << endl;
+
 	ret = rfidScan();
 
 	if(ret == 1)
