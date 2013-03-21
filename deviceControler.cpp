@@ -670,7 +670,7 @@ string deviceControler::rfidRetrunStringId()
 		hexCid[i] = (char)rfidIdBufer[i];
 	}
 
-	hexDec(&decimal, &hexCid);
+	hexDec(decimal, hexCid);
 	cout << "zawartosc decial: " << 
 	compose << decimal;
 	cid.clear();
