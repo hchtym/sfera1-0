@@ -533,7 +533,7 @@ void deviceControler::hexDec(char *dec, char *hex)
 	char buf[100];
 	for (int i = 0; i < 32; i++)
 	{
-		temp[i] = dec[i];
+		temp[i] = hex[i];
 	}
 	decimal = strtoul(temp, NULL, 16);
 	sprintf(buf, "%d", decimal);
