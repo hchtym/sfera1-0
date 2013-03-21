@@ -197,6 +197,21 @@ int networkControler::sendTransaction()
 	cout << "Rozlaczem sie !" << endl;
 }
 
+int networkControler::title(string str)
+{
+	int len = (21 - str.size());
+	stringstream compose;
+	compose.str("");
+	compose << str;
+	for(int i = 0; i < len; i++)
+	{
+		compose << " ";
+	}
+	str.clear();
+	str = compose.str();
+	Lcd_Printxy(0,0,1, const_cast<char *>(str.c_str()));
+}
+
 int networkControler::softAck(string date)
 {
 	cout << "jestem w softAck" << endl;
@@ -214,6 +229,11 @@ int networkControler::softAck(string date)
 
 int networkControler::softUpdate(string data)
 {
+	Lcd_Cls();
+	title("Informacja");
+	Lcd_Printxy(30, 16, 0, "Prosze czekac");
+	Lcd_Printxy(15, 24, 0, "Sprawdzam dostepnosc");
+	Lcd_Printxy(30, 32, 0, "aktualizacji");
 	if( remove( "/home/strong_lion/scl_app_new" ) != 0 )
     cout << "Error deleting file" << endl;
   	else
@@ -224,6 +244,8 @@ int networkControler::softUpdate(string data)
 	unsigned char downloader[buffer * 10];
 	memset(downloader, 0, sizeof(downloader));
 	char bufer[50000];
+	int progres = 0;
+	int progresBar = 0;
 	memset(bufer, 0, sizeof(bufer));
 	char temp[730];
 	memset(temp, 0, sizeof(temp));
@@ -232,6 +254,7 @@ int networkControler::softUpdate(string data)
 	//int ulHandle =0;
 	memset(pCAPData, 0, sizeof(pCAPData));
 	stringstream compose;
+	stringstream composeExtra;
 	string msg;
 	//int sent;
 	string info;
@@ -273,6 +296,8 @@ int networkControler::softUpdate(string data)
 	cout << info << endl;
 	if(info.compare("ok") == 0)
 	{
+		Lcd_Cls();
+		title("Informacja");
 		cout << "wysylam potwierdzenie 'ok' " << endl;
 		msg.clear();
 		msg = "ok\n\r";
@@ -306,6 +331,21 @@ int networkControler::softUpdate(string data)
 		// odbieram rozmiar
 		if(info.size() > 0)
 		{
+			Lcd_Cls();
+			title("Informacja");
+			Lcd_Printxy(15, 16, 0, "Pobieram:");
+			composeExtra << progres << "\%";
+			string displayProgres = composeExtra.str();
+			composeExtra.str("");
+			for (int i = 0; i < ((22- displayProgres.size())/2); i++)
+			{
+				compose << " ";
+			}
+			compose << displayProgres;
+			displayProgres.clear();
+			displayProgres = compose.str();
+			Lcd_Printxy(59, 32, 0, displayProgres.c_str());
+
 			cout << "wysyłam potwierdzenie otrzymania rozmiaru !!" << endl;
 			msg.clear();
 			msg = "ok\n\r";
@@ -329,6 +369,23 @@ int networkControler::softUpdate(string data)
 					perror("recive"); // logowanie do pliku !!
 					//exit(1);
 				}
+
+				progres = (100 * downloaded)/reciveSize;
+				composeExtra << progres << "%";
+				string displayProgres = composeExtra.str();
+				composeExtra.str("");
+				for (int i = 0; i < ((22- displayProgres.size())/2); i++)
+				{
+					compose << " ";
+				}
+				compose << displayProgres;
+				displayProgres.clear();
+				displayProgres = compose.str();
+				Lcd_Printxy(59, 32, 0, displayProgres.c_str());
+
+				displayProgres = (progres * 120) / 100;
+				Lcd_DrawLine(LINE_H, 3, 36, displayProgres, 8);
+
 
 				len = bytes_recv;
 
@@ -369,6 +426,10 @@ int networkControler::softUpdate(string data)
 	{
 		if(info.compare("brak") == 0)
 		{
+			Lcd_Cls();
+			title("Informacja");
+			Lcd_Printxy(0, 24, 0, "Dziekuje za cieplowosc");
+			sleep(3);
 			return 0;
 		}
 	}

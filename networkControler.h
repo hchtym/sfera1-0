@@ -67,6 +67,7 @@ private:
 	int connectAllQuiet();
 	int disconnectAllQuiet();
 	int fileSize(string fileName);
+	int title(string str);
 	//Funkcja parsujaca pobrany config ! 
 	void Tokenize(const string& str, vector<string>& tokens, const string& delimiters);
 	void catFile();
