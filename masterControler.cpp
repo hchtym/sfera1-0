@@ -1148,7 +1148,7 @@ int masterControler::menuScrOther(const string &menuname,vector<string> &vect, i
 	}
     //key=NOKEY;
 	cout << "jestem przed draw menu !" << endl;
-	//drawMenu:
+	drawMenu:
 	if(index2 < 0 || index2 > size -1) index2 =0;
 	if(index2 > visible -1 ) view = index2 - visible +1;
 	cout << "wchodze do while w menuscr" << endl;
