@@ -716,8 +716,8 @@ int deviceControler::rfidWrite(string input)
 
 	for (int i = 0; i < len; i++)
 	{
-		buf[k] = rfidData[i];
-		k++;
+		buf[marker] = rfidData[i];
+		marker++;
 	}
 	memset(rfidData, 0, sizeof(rfidData));
 
