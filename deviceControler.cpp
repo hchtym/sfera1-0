@@ -1466,7 +1466,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	}
 	else
 	{
-		goto beg;
+		goto beg2;
 	}
 }
 
@@ -1523,7 +1523,7 @@ void deviceControler::printSend(string seriallNr, string date, string sendTrx, s
 void deviceControler::checkPoint(string seriallNr, string sellerId, string date, string cid, string point,string footer)
 {
 	beg:
-	isPrinterReady()
+	isPrinterReady();
 	stringstream compose;
 	string row;
 	int ret;
