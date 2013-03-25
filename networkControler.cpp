@@ -231,9 +231,9 @@ int networkControler::softUpdate(string data)
 {
 	Lcd_Cls();
 	title("Informacja");
-	Lcd_Printxy(30, 16, 0, "Prosze czekac");
-	Lcd_Printxy(15, 24, 0, "Sprawdzam dostepnosc");
-	Lcd_Printxy(30, 32, 0, "aktualizacji");
+	Lcd_Printxy(0, 16, 0, "    Prosze czekac.");
+	Lcd_Printxy(0, 24, 0, " Sprawdzam dostepnosc");
+	Lcd_Printxy(0, 32, 0, "    aktualizacji.");
 	if( remove( "/home/strong_lion/scl_app_new" ) != 0 )
     cout << "Error deleting file" << endl;
   	else
@@ -296,8 +296,8 @@ int networkControler::softUpdate(string data)
 	cout << info << endl;
 	if(info.compare("ok") == 0)
 	{
-		Lcd_Cls();
-		title("Informacja");
+		//Lcd_Cls();
+		//title("Informacja");
 		cout << "wysylam potwierdzenie 'ok' " << endl;
 		msg.clear();
 		msg = "ok\n\r";
@@ -333,8 +333,8 @@ int networkControler::softUpdate(string data)
 		{
 			Lcd_Cls();
 			title("Informacja");
-			Lcd_Printxy(15, 16, 0, "Pobieram:");
-			composeExtra << progres << "\%";
+			Lcd_Printxy(0, 16, 0, "            Pobieram:");
+			composeExtra << "          " << progres << "%";
 			string displayProgres = composeExtra.str();
 			composeExtra.str("");
 			for (int i = 0; i < ((22- displayProgres.size())/2); i++)
@@ -381,10 +381,10 @@ int networkControler::softUpdate(string data)
 				compose << displayProgres;
 				displayProgres.clear();
 				displayProgres = compose.str();
-				Lcd_Printxy(59, 32, 0, displayProgres.c_str());
+				Lcd_Printxy(0, 32, 0, displayProgres.c_str());
 
-				displayProgres = (progres * 120) / 100;
-				Lcd_DrawLine(LINE_H, 3, 36, displayProgres, 8);
+				progresBar = (progres * 120) / 100;
+				Lcd_DrawLine(LINE_H, 3, 36, progresBar, 8);
 
 
 				len = bytes_recv;
