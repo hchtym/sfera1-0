@@ -510,7 +510,7 @@ void masterControler::timeWindow()
 	et2:
 		if(!timer2)
 		{
-			txSend = network->updConf(); !;
+			txSend = network->updConf();
 		}
 		if(confRcv == true)
 		{
