@@ -1536,7 +1536,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 					    BYTE key = Kb_GetKey();
 					    if(KEYCANCEL == key)
 					    {
-							return false; 
+							return; 
 						}
 						if(KEYENTER == key)
 						{
@@ -1557,7 +1557,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 					    BYTE key = Kb_GetKey();
 					    if(KEYCANCEL == key)
 					    {
-							return false; 
+							return; 
 						}
 						if(KEYENTER == key)
 						{
@@ -1582,7 +1582,7 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 				    	BYTE key = Kb_GetKey();
 				    	if(KEYCANCEL == key)
 				    	{
-							return false; 
+							return; 
 						}
 						if(KEYENTER == key)
 						{
@@ -1662,7 +1662,7 @@ void deviceControler::printSend(string seriallNr, string date, string sendTrx, s
 					    BYTE key = Kb_GetKey();
 					    if(KEYCANCEL == key)
 					    {
-							return false; 
+							return; 
 						}
 						if(KEYENTER == key)
 						{
@@ -1683,7 +1683,7 @@ void deviceControler::printSend(string seriallNr, string date, string sendTrx, s
 					    BYTE key = Kb_GetKey();
 					    if(KEYCANCEL == key)
 					    {
-							return false; 
+							return; 
 						}
 						if(KEYENTER == key)
 						{
@@ -1708,7 +1708,7 @@ void deviceControler::printSend(string seriallNr, string date, string sendTrx, s
 				    	BYTE key = Kb_GetKey();
 				    	if(KEYCANCEL == key)
 				    	{
-							return false; 
+							return; 
 						}
 						if(KEYENTER == key)
 						{
@@ -1790,7 +1790,7 @@ void deviceControler::checkPoint(string seriallNr, string sellerId, string date,
 					    BYTE key = Kb_GetKey();
 					    if(KEYCANCEL == key)
 					    {
-							return false; 
+							return; 
 						}
 						if(KEYENTER == key)
 						{
@@ -1811,7 +1811,7 @@ void deviceControler::checkPoint(string seriallNr, string sellerId, string date,
 					    BYTE key = Kb_GetKey();
 					    if(KEYCANCEL == key)
 					    {
-							return false; 
+							return; 
 						}
 						if(KEYENTER == key)
 						{
@@ -1836,7 +1836,7 @@ void deviceControler::checkPoint(string seriallNr, string sellerId, string date,
 				    	BYTE key = Kb_GetKey();
 				    	if(KEYCANCEL == key)
 				    	{
-							return false; 
+							return; 
 						}
 						if(KEYENTER == key)
 						{
@@ -1846,7 +1846,7 @@ void deviceControler::checkPoint(string seriallNr, string sellerId, string date,
 				}
 				break;
 		}
-		
+
 		goto beg;
 	}
 }
