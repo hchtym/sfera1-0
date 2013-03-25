@@ -218,7 +218,7 @@ int networkControler::softAck(string date)
 	Lcd_Cls();
 	title("Informacja");
 	Lcd_Printxy(0, 16, 0, "    Prosze czekac.");
-	Lcd_Printxy(12, 24, 0, "Sprawdzam dostepnosc");
+	Lcd_Printxy(6, 24, 0, "Sprawdzam dostepnosc");
 	Lcd_Printxy(0, 32, 0, "    aktualizacji.");
 
 	connectAllQuiet();
