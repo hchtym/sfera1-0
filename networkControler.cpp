@@ -229,6 +229,7 @@ int networkControler::softAck(string date)
 
 int networkControler::softUpdate(string data)
 {
+	cout << "Jestem w softUpdate." << endl;
 	Lcd_Cls();
 	title("Informacja");
 	Lcd_Printxy(0, 16, 0, "    Prosze czekac.");
