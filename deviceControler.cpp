@@ -1283,25 +1283,74 @@ bool deviceControler::isPrinterReady()
 
 	while(1)
 	{
+		state = Prn_CheckStatus();
 		switch(state){	
 			case PRINTER_HIGHTEMP_MASK :
 				Lcd_Cls();
-				Lcd_Printxy(0,0,1, "Informacja            ");
-				Lcd_Printxy(0,32,0, " Drukarka przegrzana ");		
+				Lcd_Printxy(0,0,1, "Informacja           ");
+				Lcd_Printxy(0,32,0, " Drukarka przegrzana ");
+				Kb_Flush();
+				while(1)
+				{
+					if(!Kb_Hit())
+					{
+					    BYTE key = Kb_GetKey();
+					    if(KEYCANCEL == key)
+					    {
+							return false; 
+						}
+						if(KEYENTER == key)
+						{
+							break;
+						}
+					}
+				}		
 				break;
 			case PRINTER_NOPAPER_MASK : 
 				Lcd_Cls();
-				Lcd_Printxy(0,0,1, "Informacja            ");
-				Lcd_Printxy(0,32,0, "     Brak papieru");		
+				Lcd_Printxy(0,0,1, "Informacja           ");
+				Lcd_Printxy(0,32,0, "     Brak papieru");
+				Kb_Flush();
+				while(1)
+				{
+					if(!Kb_Hit())
+					{
+					    BYTE key = Kb_GetKey();
+					    if(KEYCANCEL == key)
+					    {
+							return false; 
+						}
+						if(KEYENTER == key)
+						{
+							break;
+						}
+					}
+				}	
 				break;
 			case 0 :
 				return true;
 			case PRINTER_RIBBON_FAILED_MASK :
 			default:
 				Lcd_Cls();
-				Lcd_Printxy(0,0,1, "Informacja            ");
+				Lcd_Printxy(0,0,1, "Informacja           ");
 				Lcd_Printxy(0,24,0, " Prosze skontrolowac");
 				Lcd_Printxy(0,32,0, "      drukarke.");
+				Kb_Flush();
+				while(1)
+				{
+					if(!Kb_Hit())
+					{
+				    	BYTE key = Kb_GetKey();
+				    	if(KEYCANCEL == key)
+				    	{
+							return false; 
+						}
+						if(KEYENTER == key)
+						{
+							break;
+						}
+					}
+				}
 				break;
 		}
 	}
@@ -1374,13 +1423,18 @@ void deviceControler::printBold(int mode)
 
 void deviceControler::printTx(string seriallNr, string sellerId, string date, string cid, string sum, string point, string extra, string footer, string trxNumber)
 {
+	bool ret2;
 	beg2:
-	isPrinterReady();
+	ret2 = isPrinterReady();
 	stringstream compose;
 	string row;
 	string temp = trxNumber;
 	int ret;
 	//printBold(1);
+	if (!ret2)
+	{
+		return;
+	}
 
 	printerInit(16);
 	printerHeader(seriallNr, sellerId, date, cid);
@@ -1473,10 +1527,15 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 void deviceControler::printSend(string seriallNr, string date, string sendTrx, string footer)
 {
 	beg1:
-	isPrinterReady();
+	bool ret2;
+	ret2 = isPrinterReady();
 	stringstream compose;
 	string row;
 	int ret;
+	if (!ret2)
+	{
+		return;
+	}
 
 	printerInit(16);
 	printerHeaderLesser(seriallNr, date);
@@ -1523,10 +1582,15 @@ void deviceControler::printSend(string seriallNr, string date, string sendTrx, s
 void deviceControler::checkPoint(string seriallNr, string sellerId, string date, string cid, string point,string footer)
 {
 	beg:
+	bool ret2;
 	isPrinterReady();
 	stringstream compose;
 	string row;
 	int ret;
+	if (!ret2)
+	{
+		return;
+	}
 
 	printerInit(16);
 	printerHeader(seriallNr, sellerId, date, cid);

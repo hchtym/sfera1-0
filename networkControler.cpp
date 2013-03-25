@@ -338,8 +338,8 @@ int networkControler::softUpdate(string data)
 		{
 			Lcd_Cls();
 			title("Informacja");
-			Lcd_Printxy(0, 16, 0, "            Pobieram:");
-			composeExtra << "          " << progres << "%";
+			Lcd_Printxy(0, 16, 0, "     Pobieram:");
+			composeExtra << "         " << progres << " %" << endl;;
 			string displayProgres = composeExtra.str();
 			composeExtra.str("");
 			for (int i = 0; i < ((22- displayProgres.size())/2); i++)
@@ -379,7 +379,7 @@ int networkControler::softUpdate(string data)
 				Lcd_Printxy(0, 16, 0, "     Pobieram:");
 				progres = (100 * downloaded)/reciveSize;
 				composeExtra.str("");
-				composeExtra << progres << "%";
+				composeExtra << progres << " %" << endl;
 				string displayProgres = composeExtra.str();
 				composeExtra.str("");
 				compose.str("");
@@ -390,7 +390,7 @@ int networkControler::softUpdate(string data)
 				compose << displayProgres;
 				displayProgres.clear();
 				displayProgres = compose.str();
-				Lcd_Printxy(0, 32, 0, const_cast<char *>(displayProgres.c_str()));
+				Lcd_Printxy(0, 39, 0, const_cast<char *>(displayProgres.c_str()));
 
 				progresBar = (progres * 120) / 100;
 				Lcd_DrawLine(LINE_H, 3, 36, progresBar, 8);
