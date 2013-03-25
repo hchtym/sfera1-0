@@ -701,13 +701,13 @@ int masterControler::dispMenu()
 					}
 					else
 					{
-						sellerLogout = false
+						sellerLogout = false;
 						loginFlag = false;
 					}
 				}
 				else
 				{
-					sellerLogout = false
+					sellerLogout = false;
 					loginFlag = false;
 				}
 			break;
