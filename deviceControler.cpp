@@ -1284,7 +1284,8 @@ bool deviceControler::isPrinterReady()
 	while(1)
 	{
 		state = Prn_CheckStatus();
-		switch(state){	
+		switch(state)
+		{	
 			case PRINTER_HIGHTEMP_MASK :
 				Lcd_Cls();
 				Lcd_Printxy(0,0,1, "Informacja           ");
@@ -1520,6 +1521,78 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	}
 	else
 	{
+
+		switch(ret)
+		{	
+			case PRINTER_HIGHTEMP_MASK :
+				Lcd_Cls();
+				Lcd_Printxy(0,0,1, "Informacja           ");
+				Lcd_Printxy(0,32,0, " Drukarka przegrzana. ");
+				Kb_Flush();
+				while(1)
+				{
+					if(!Kb_Hit())
+					{
+					    BYTE key = Kb_GetKey();
+					    if(KEYCANCEL == key)
+					    {
+							return false; 
+						}
+						if(KEYENTER == key)
+						{
+							break;
+						}
+					}
+				}		
+				break;
+			case PRINTER_NOPAPER_MASK : 
+				Lcd_Cls();
+				Lcd_Printxy(0,0,1, "Informacja           ");
+				Lcd_Printxy(0,32,0, "     Brak papieru");
+				Kb_Flush();
+				while(1)
+				{
+					if(!Kb_Hit())
+					{
+					    BYTE key = Kb_GetKey();
+					    if(KEYCANCEL == key)
+					    {
+							return false; 
+						}
+						if(KEYENTER == key)
+						{
+							break;
+						}
+					}
+				}	
+				break;
+			case 0 :
+				break;
+			case PRINTER_RIBBON_FAILED_MASK :
+			default:
+				Lcd_Cls();
+				Lcd_Printxy(0,0,1, "Informacja           ");
+				Lcd_Printxy(0,24,0, " Prosze skontrolowac");
+				Lcd_Printxy(0,32,0, "      drukarke.");
+				Kb_Flush();
+				while(1)
+				{
+					if(!Kb_Hit())
+					{
+				    	BYTE key = Kb_GetKey();
+				    	if(KEYCANCEL == key)
+				    	{
+							return false; 
+						}
+						if(KEYENTER == key)
+						{
+							break;
+						}
+					}
+				}
+				break;
+		}
+
 		goto beg2;
 	}
 }
@@ -1575,6 +1648,79 @@ void deviceControler::printSend(string seriallNr, string date, string sendTrx, s
 	}
 	else
 	{
+		switch(ret)
+		{	
+			case PRINTER_HIGHTEMP_MASK :
+				Lcd_Cls();
+				Lcd_Printxy(0,0,1, "Informacja           ");
+				Lcd_Printxy(0,32,0, " Drukarka przegrzana. ");
+				Kb_Flush();
+				while(1)
+				{
+					if(!Kb_Hit())
+					{
+					    BYTE key = Kb_GetKey();
+					    if(KEYCANCEL == key)
+					    {
+							return false; 
+						}
+						if(KEYENTER == key)
+						{
+							break;
+						}
+					}
+				}		
+				break;
+			case PRINTER_NOPAPER_MASK : 
+				Lcd_Cls();
+				Lcd_Printxy(0,0,1, "Informacja           ");
+				Lcd_Printxy(0,32,0, "     Brak papieru");
+				Kb_Flush();
+				while(1)
+				{
+					if(!Kb_Hit())
+					{
+					    BYTE key = Kb_GetKey();
+					    if(KEYCANCEL == key)
+					    {
+							return false; 
+						}
+						if(KEYENTER == key)
+						{
+							break;
+						}
+					}
+				}	
+				break;
+			case 0 :
+				break;
+			case PRINTER_RIBBON_FAILED_MASK :
+			default:
+				Lcd_Cls();
+				Lcd_Printxy(0,0,1, "Informacja           ");
+				Lcd_Printxy(0,24,0, " Prosze skontrolowac");
+				Lcd_Printxy(0,32,0, "      drukarke.");
+				Kb_Flush();
+				while(1)
+				{
+					if(!Kb_Hit())
+					{
+				    	BYTE key = Kb_GetKey();
+				    	if(KEYCANCEL == key)
+				    	{
+							return false; 
+						}
+						if(KEYENTER == key)
+						{
+							break;
+						}
+					}
+				}
+				break;
+		}
+
+
+
 		goto beg1;
 	}	
 }
@@ -1630,6 +1776,77 @@ void deviceControler::checkPoint(string seriallNr, string sellerId, string date,
 	}
 	else
 	{
+		switch(ret)
+		{	
+			case PRINTER_HIGHTEMP_MASK :
+				Lcd_Cls();
+				Lcd_Printxy(0,0,1, "Informacja           ");
+				Lcd_Printxy(0,32,0, " Drukarka przegrzana. ");
+				Kb_Flush();
+				while(1)
+				{
+					if(!Kb_Hit())
+					{
+					    BYTE key = Kb_GetKey();
+					    if(KEYCANCEL == key)
+					    {
+							return false; 
+						}
+						if(KEYENTER == key)
+						{
+							break;
+						}
+					}
+				}		
+				break;
+			case PRINTER_NOPAPER_MASK : 
+				Lcd_Cls();
+				Lcd_Printxy(0,0,1, "Informacja           ");
+				Lcd_Printxy(0,32,0, "     Brak papieru");
+				Kb_Flush();
+				while(1)
+				{
+					if(!Kb_Hit())
+					{
+					    BYTE key = Kb_GetKey();
+					    if(KEYCANCEL == key)
+					    {
+							return false; 
+						}
+						if(KEYENTER == key)
+						{
+							break;
+						}
+					}
+				}	
+				break;
+			case 0 :
+				break;
+			case PRINTER_RIBBON_FAILED_MASK :
+			default:
+				Lcd_Cls();
+				Lcd_Printxy(0,0,1, "Informacja           ");
+				Lcd_Printxy(0,24,0, " Prosze skontrolowac");
+				Lcd_Printxy(0,32,0, "      drukarke.");
+				Kb_Flush();
+				while(1)
+				{
+					if(!Kb_Hit())
+					{
+				    	BYTE key = Kb_GetKey();
+				    	if(KEYCANCEL == key)
+				    	{
+							return false; 
+						}
+						if(KEYENTER == key)
+						{
+							break;
+						}
+					}
+				}
+				break;
+		}
+		
 		goto beg;
 	}
 }
