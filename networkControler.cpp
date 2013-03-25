@@ -435,7 +435,7 @@ int networkControler::softUpdate(string data)
 		{
 			Lcd_Cls();
 			title("Informacja");
-			Lcd_Printxy(0, 24, 0, "          Dziekuje za");
+			Lcd_Printxy(0, 24, 0, "     Dziekuje za");
 			Lcd_Printxy(0, 32, 0, "     cierpliwosc.");
 			sleep(3);
 			return 0;
