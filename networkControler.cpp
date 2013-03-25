@@ -53,8 +53,6 @@ int networkControler::connectAllQuiet()
 			//exit(1);
 		}
 		loger << "utworzylam socket" << endl;
-		//int ports;
-		//atoi(port.c_str());
 		dest_addr.sin_family = AF_INET;
 		loger << "konfiguruje port" << endl;
 		dest_addr.sin_port = htons( atoi(port.c_str())	); // wstawic port 
@@ -376,7 +374,9 @@ int networkControler::softUpdate(string data)
 					perror("recive"); // logowanie do pliku !!
 					//exit(1);
 				}
-
+				Lcd_Cls();
+				title("Informacja");
+				Lcd_Printxy(0, 16, 0, "            Pobieram:");
 				progres = (100 * downloaded)/reciveSize;
 				composeExtra << progres << "%";
 				string displayProgres = composeExtra.str();
