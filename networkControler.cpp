@@ -326,7 +326,7 @@ int networkControler::softUpdate(string data)
 		int reciveSize = atoi(pCAPData );
 		// przygotowuje sie do odebrania softu
 		unsigned char * newSoft;
-		newSoft = (unsigned char *) malloc(reciveSize);
+		newSoft = (unsigned char *) malloc(reciveSize+1);
 		memset(newSoft, 0, sizeof(newSoft));
 		// odbieram rozmiar
 		if(info.size() > 0)
@@ -344,7 +344,7 @@ int networkControler::softUpdate(string data)
 			compose << displayProgres;
 			displayProgres.clear();
 			displayProgres = compose.str();
-			Lcd_Printxy(59, 32, 0, displayProgres.c_str());
+			Lcd_Printxy(59, 32, 0, const_cast<char *>(displayProgres.c_str()));
 
 			cout << "wysyłam potwierdzenie otrzymania rozmiaru !!" << endl;
 			msg.clear();
@@ -381,7 +381,7 @@ int networkControler::softUpdate(string data)
 				compose << displayProgres;
 				displayProgres.clear();
 				displayProgres = compose.str();
-				Lcd_Printxy(0, 32, 0, displayProgres.c_str());
+				Lcd_Printxy(0, 32, 0, const_cast<char *>(displayProgres.c_str()));
 
 				progresBar = (progres * 120) / 100;
 				Lcd_DrawLine(LINE_H, 3, 36, progresBar, 8);
