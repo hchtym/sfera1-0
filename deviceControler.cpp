@@ -1277,26 +1277,31 @@ void deviceControler::printerSetFont(int size)
 bool deviceControler::isPrinterReady()
 {
 	int state = Prn_CheckStatus();
-	int key = KEYENTER;
 
 	if(!state)
 		return true;
 
-	while((state = Prn_CheckStatus()) && key != KEYENTER){
+	while(1)
+	{
 		switch(state){	
 			case PRINTER_HIGHTEMP_MASK :
-				
+				Lcd_Cls();
+				Lcd_Printxy(0,0,1, "Informacja            ");
+				Lcd_Printxy(0,32,0, " Drukarka przegrzana ");		
 				break;
 			case PRINTER_NOPAPER_MASK : 
-				
+				Lcd_Cls();
+				Lcd_Printxy(0,0,1, "Informacja            ");
+				Lcd_Printxy(0,32,0, "     Brak papieru");		
 				break;
 			case 0 :
 				return true;
 			case PRINTER_RIBBON_FAILED_MASK :
 			default:
-				char buf[65];
-				sprintf(buf," Blad drukarki \nkod bledu=0x%x",state);
-
+				Lcd_Cls();
+				Lcd_Printxy(0,0,1, "Informacja            ");
+				Lcd_Printxy(0,24,0, " Prosze skontrolowac");
+				Lcd_Printxy(0,32,0, "      drukarke.");
 				break;
 		}
 	}
@@ -1369,10 +1374,12 @@ void deviceControler::printBold(int mode)
 
 void deviceControler::printTx(string seriallNr, string sellerId, string date, string cid, string sum, string point, string extra, string footer, string trxNumber)
 {
-
+	beg2:
+	isPrinterReady();
 	stringstream compose;
 	string row;
 	string temp = trxNumber;
+	int ret;
 	//printBold(1);
 
 	printerInit(16);
@@ -1452,13 +1459,24 @@ void deviceControler::printTx(string seriallNr, string sellerId, string date, st
 	//printBold(0);
 	printLines(3);
 
-	Prn_Start();	
+	ret = Prn_Start();
+	if(ret == ERR_OK)
+	{
+		return;
+	}
+	else
+	{
+		goto beg;
+	}
 }
 
 void deviceControler::printSend(string seriallNr, string date, string sendTrx, string footer)
 {
+	beg1:
+	isPrinterReady();
 	stringstream compose;
 	string row;
+	int ret;
 
 	printerInit(16);
 	printerHeaderLesser(seriallNr, date);
@@ -1491,13 +1509,24 @@ void deviceControler::printSend(string seriallNr, string date, string sendTrx, s
 	//printBold(0);
 	printLines(3);
 
-	Prn_Start();	
+	ret = Prn_Start();
+	if(ret == ERR_OK)
+	{
+		return;
+	}
+	else
+	{
+		goto beg1;
+	}	
 }
 
 void deviceControler::checkPoint(string seriallNr, string sellerId, string date, string cid, string point,string footer)
 {
+	beg:
+	isPrinterReady()
 	stringstream compose;
 	string row;
+	int ret;
 
 	printerInit(16);
 	printerHeader(seriallNr, sellerId, date, cid);
@@ -1530,7 +1559,15 @@ void deviceControler::checkPoint(string seriallNr, string sellerId, string date,
 	//printBold(0);
 	printLines(3);
 
-	Prn_Start();
+	ret = Prn_Start();
+	if(ret == ERR_OK)
+	{
+		return;
+	}
+	else
+	{
+		goto beg;
+	}
 }
 
 void deviceControler::printerHeaderLesser(string seriallNr, string date)
