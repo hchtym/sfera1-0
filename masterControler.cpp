@@ -731,7 +731,7 @@ int masterControler::dispMenu()
 					}
 					selling();
 				}else{
-					sellerLogout = false
+					sellerLogout = false;
 					loginFlag = false;
 				}
 			}else{
