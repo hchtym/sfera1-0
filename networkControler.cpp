@@ -376,11 +376,13 @@ int networkControler::softUpdate(string data)
 				}
 				Lcd_Cls();
 				title("Informacja");
-				Lcd_Printxy(0, 16, 0, "            Pobieram:");
+				Lcd_Printxy(0, 16, 0, "     Pobieram:");
 				progres = (100 * downloaded)/reciveSize;
+				composeExtra.str("");
 				composeExtra << progres << "%";
 				string displayProgres = composeExtra.str();
 				composeExtra.str("");
+				compose.str("");
 				for (int i = 0; i < ((22- displayProgres.size())/2); i++)
 				{
 					compose << " ";
