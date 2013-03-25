@@ -39,6 +39,7 @@ masterControler::masterControler(int *fifo)
 	numerser = config->returnSeriall();
 	network = new networkControler(ip, port, apn, user, paswd, numerser);
 	seller.clear();
+	SetTimer(18, 3000000);
 	loginFlag = false;
 	senttrx = false;
 };
@@ -501,8 +502,7 @@ void masterControler::timeWindow()
 			int timeout = atoi(timer.c_str()) * 1000;
 			SetTimer(2, timeout);
 			timer1 = true;
-		}
-		
+		}		
 	}
 
 	if(confFlag)
@@ -510,14 +510,14 @@ void masterControler::timeWindow()
 	et2:
 		if(!timer2)
 		{
-			txSend = sendTrx();
+			txSend = network->updConf(); !;
 		}
 		if(confRcv == true)
 		{
 
 			string timer = config->returnParam("schedule.config.fail.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
-			SetTimer(1, timeout);
+			SetTimer(17, timeout);
 			timer2 = true;
 		}
 		else
@@ -525,14 +525,14 @@ void masterControler::timeWindow()
 
 			string timer = config->returnParam("schedule.config.success.interval");
 			int timeout = atoi(timer.c_str()) * 1000;
-			SetTimer(1, timeout);
+			SetTimer(16, timeout);
 			timer2 = true;
 		}
 				
 	}	
 	
 	if(timer1){
-		left1 = CheckTimer(2);
+		left1 = CheckTimer(17);
 		cout << "na timer1 zostalo: " << left1 << " ms" << endl;
 		if(0 == left1)
 		{
@@ -542,7 +542,7 @@ void masterControler::timeWindow()
 	}
 	
 	if(timer2){
-		left2 = CheckTimer(1);
+		left2 = CheckTimer(16);
 		if(0 == left2)
 		{
 			timer2 = false;
@@ -1371,43 +1371,15 @@ void masterControler::screenSaver()
 			blink = !blink;
 	    }
 
-	    left2 = CheckTimer(2);
+	    left2 = CheckTimer(18);
 	    if(0 == left)
 	    {
-	    	SetTimer(2, 2400000);
+	    	SetTimer(18, 3000000);
 			left2 = -1;
 			cout << "szprawdzam czy jest dostepne nowe oprogramowanie !!" << endl;
-
+			softUpdAck();
 	    }
 
-	    /*for(int i = 0; i < 100; i++)
-		{
-			int ret,sig;
-			sig = -1;
-			ret = Wls_CheckSignal(&sig);
-			switch(sig)
-			{
-				case NO_SIGNAL:
-				Lcd_Icon(1, ICON_ON, 1);
-				break;
-				case SIGNAL_VERY_WEAK:
-				Lcd_Icon(1, ICON_ON, 2);
-				break;
-				case SIGNAL_NORMAL:
-				Lcd_Icon(1, ICON_ON, 3);
-				break;
-				case SIGNAL_STRONG:
-				Lcd_Icon(1, ICON_ON, 4);
-				break;
-				case SIGNAL_VERY_STRONG:
-				Lcd_Icon(1, ICON_ON, 5);
-				break;
-				default:
-				Lcd_Icon(1, ICON_OFF, 1);
-				break;
-			}
-			DelayMs(2);
-		}*/
 	}
 }
 

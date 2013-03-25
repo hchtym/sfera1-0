@@ -618,31 +618,41 @@ int networkControler::updConf()
 		ofstream file("config.txt", ios_base::app);
 		// konfiguracja socketa !! 
 		cout << "entering for !" << endl;
-		for(int i =0; i<6; i++){
+		for(int i =0; i<6; i++)
+		{
 			sleep(1);
 		    char str[40];
 		    sprintf(str, "%s" ,configs[1][i]);
 		    char msg3[50];
 		    strcpy(msg3, configs[0][i]);
-		    if((bytes_sent = send(sockfd, str, strlen(str), 0)) == -1 ){
+		    if((bytes_sent = send(sockfd, str, strlen(str), 0)) == -1 )
+		    {
 			    perror("send"); // logowanie do pliku !
 				return 0;
-    		}else{
+    		}
+    		else
+    		{
 				cout << "Sendet request for data "  << configs[1][i] << endl;
 			}
     		memset(pCAPData, 0, sizeof(pCAPData));
-    		if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1){
+    		if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1)
+    		{
     			perror("reciv"); // logowanie do pliku !!
     			return 0;
-    		}else{
+    		}
+    		else
+    		{
 				cout << "reciver dataLen: " << pCAPData << endl;
 			}
     	    dataLen = atoi(pCAPData);
 			cout << "wysylam potwierdzenie datalen" << endl;
-    		if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))== -1){
+    		if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))== -1)
+    		{
     			perror("send"); // logowanie do pliku !!
     			return 0;
-    		}else{
+    		}
+    		else
+    		{
 				cout << "Potwierdzeniew yslane poprawnie !!" << endl;
 			}
 
@@ -650,9 +660,11 @@ int networkControler::updConf()
 			memset(download, 0, sizeof(download));
         	bytes_recv = 0;
 
-			while(bytes_recv < dataLen){
+			while(bytes_recv < dataLen)
+			{
 				int recive = 0;
-					if((recive = recv(sockfd, download, dataLen, 0))== -1){
+					if((recive = recv(sockfd, download, dataLen, 0))== -1)
+					{
 				    		perror("Reciv"); // logowanie do pliku !!
 				    		return 0;
 			    	}
@@ -706,14 +718,17 @@ int networkControler::updConf()
 		{
     		perror("reciv"); // logowanie do pliku !!
     		//	exit(1);
-    	}else{
+    	}
+    	else
+    	{
 			 cout << "reciver dataLen: " << pCAPData << endl;
 		}
 
 		dataLen = atoi(pCAPData);
 		cout << "otrzymałem rozmiar: " << dataLen << " Wysylem potwierdzenie" << endl;
 
-		if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1){
+		if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1)
+		{
 			perror("send"); // logowanie do pliku !
 			return 0;
 		}
@@ -732,7 +747,9 @@ int networkControler::updConf()
 				if((recive = recv(sockfd, download, dataLen, 0))== -1){
 		    		perror("Reciv"); // logowanie do pliku !!
 		    		return 0;
-		    	}else{
+		    	}
+		    	else
+		    	{
 					cout << "nie pobralem czesci konfiguracji" << endl;
 				}
 				bytes_recv += recive;
@@ -776,7 +793,8 @@ int networkControler::updConf()
 
 		sleep(1);
 
-    	if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))==-1){
+    	if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))==-1)
+    	{
     	    perror("send");
     	    return 0;
     	}
