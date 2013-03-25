@@ -25,6 +25,8 @@ class masterControler{
 	bool txFlag;
 	bool timer1;
 	bool timer2;
+	int logoutTimer;
+	bool sellerLogout;
 	int *fifoContainer;
 	string buildDate; //data kompilacji jednoczesnie wersja softu !
 	string seller; //id sprzedawcy ustawiane przy zalogowaniu sie sprzedawcy do terminala

@@ -401,7 +401,6 @@ void masterControler::timeWindow()
 	{
 		pTime[i] = rTime[i+6];
 	}
-	
 	actTime = atoi(pTime);
 	
 	cout << pTime << "czas teminala" << endl;
@@ -470,14 +469,12 @@ void masterControler::timeWindow()
 
 	eConfTime = atoi(endConf.c_str());
 
-	
 	//sygnalizacja startu okna !
 	if(( actTime >= bTxTime ) && ( actTime <= eTxTime )) txFlag = true ;
 	if(actTime == eTxTime) txFlag = false;
 	
 	if(( actTime >= bConfTime ) && ( actTime <= eConfTime )) confFlag = true;
 	if(actTime == eConfTime) confFlag = false;
-	
 	
 	//sprawdzemy flage tx
 	if(txFlag)
@@ -527,8 +524,7 @@ void masterControler::timeWindow()
 			int timeout = atoi(timer.c_str()) * 1000;
 			SetTimer(16, timeout);
 			timer2 = true;
-		}
-				
+		}			
 	}	
 	
 	if(timer1){
@@ -684,14 +680,34 @@ int masterControler::dispMenu()
 		cout << usItem << endl;
 		switch(usItem){
 			case 0:
-				if(!loginFlag){
+				if(!loginFlag)
+				{
 					ret = loginScr();
 					if(ret == 1){
 						loginFlag = true;
-					}else{
+						string logoutTimeout = config->returnParam("logout.timeout");
+						int timeout = atoi(logoutTimeout.c_str());
+						if (timeout == 0)
+						{
+							logoutTimer = -1;
+							sellerLogout = false;
+							break;
+						}
+						else
+						{
+							sellerLogout = true;
+							SetTimer(15, timeout* 1000);
+						}
+					}
+					else
+					{
+						sellerLogout = false
 						loginFlag = false;
 					}
-				}else{
+				}
+				else
+				{
+					sellerLogout = false
 					loginFlag = false;
 				}
 			break;
@@ -700,11 +716,26 @@ int masterControler::dispMenu()
 				ret = loginScr();
 				if(ret == 1){
 					loginFlag = true;
+					string logoutTimeout = config->returnParam("logout.timeout");
+					int timeout = atoi(logoutTimeout.c_str());
+					if (timeout == 0)
+					{
+						logoutTimer = -1;
+						sellerLogout = false;
+						break;
+					}
+					else
+					{
+						sellerLogout = true;
+						SetTimer(15, timeout* 1000);
+					}
 					selling();
 				}else{
+					sellerLogout = false
 					loginFlag = false;
 				}
 			}else{
+				sellerLogout = true;
 				selling();
 				//network->updConf();
 			}
@@ -719,15 +750,30 @@ int masterControler::dispMenu()
 					if(ret == 1)
 					{
 						loginFlag = true;
+						string logoutTimeout = config->returnParam("logout.timeout");
+						int timeout = atoi(logoutTimeout.c_str());
+						if (timeout == 0)
+						{
+							logoutTimer = -1;
+							sellerLogout = false;
+							break;
+						}
+						else
+						{
+							sellerLogout = true;
+							SetTimer(15, timeout* 1000);
+						}
 						checkPoints();
 					}
 					else
 					{
+						sellerLogout = false;
 						loginFlag = false;
 					}
 				}
 				else
 				{
+					sellerLogout = true;
 					checkPoints();
 				}
 			break;
@@ -961,6 +1007,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	int cardState = 0;
 	int rfidState = 0;
 	int state = 0;
+	int selLogout = -1;
 	int ret1 = 0;
 	int timeout =0;
     BYTE key;
@@ -1086,6 +1133,18 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	    			break;
 	    		}
 
+	    	}
+
+	    	if(sellerLogout)
+	    	{
+	    		selLogout = CheckTimer(15);
+	    		if(0 == selLogout)
+		    	{
+		    		selLogout = -1;
+		    		loginFlag = false;
+		    		sellerLogout = false;
+		    		seller.clear();
+		    	}
 	    	}
 
 	    	if (timeoutFlag)
