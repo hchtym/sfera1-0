@@ -28,6 +28,49 @@ configControler::configControler(bool conf)
 	}
 }
 
+void configControler::gprsConfigGenerator(string apn, string user, string password)
+{
+
+	fstrem gprsConf;
+
+	gprsConf.open("ppp-on-dialer-m72", fstream::in | fstream::trunc | fstream::ate );
+
+	cout << "gen_dialer_script" << endl;
+	gprsConf << "#!/bin/sh" << endl;
+	gprsConf << "execchat-v" << endl;
+	gprsConf << "\tABORT\t\t'BUSY'\t\t\\" << endl;
+	gprsConf << "\tABORT\t\t'NOCARRIER'\t\t\\" << endl;
+	gprsConf << "\tABORT\t\t'NOANSWER'\t\t\\" << endl
+	gprsConf << "\tABORT\t\t'VOICE'\t\t\\" << endl; 
+	gprsConf << "\tABORT\t\t'NODIALTONE'\t\t\\" << endl; 
+	gprsConf << "\tABORT\t\t'NODIALTONE'\t\t\\" << endl; 
+	gprsConf << "\tABORT\t\t'DELAYED'\t\t\\" << endl; 
+	gprsConf << "\tABORT\t\t'ERROR'\t\t\\");
+	gprsConf << "\tABORT\t\t'+CMEERROR:100'\t\t\\" << endl; 
+	gprsConf << "\t''\t\t'AT'\t\t\\" << endl;
+	gprsConf << "\tTIMEOUT\t\t5\t\t\\" << endl;
+	gprsConf << "\tOK\t\t'ATE0V1'\t\t\\" << endl;
+	gprsConf << "\tOK\t\t'AT+QTUNBUF=2048,3584,500,500'\t\t\\" << endl;
+	gprsConf << "\tOK\t\t'AT'\t\t\\" << endl;
+	gprsConf << "\tOK\t\t'AT+CGDCONT=1,\"IP\",\"" << apn << "\"'\t\t\\" << endl;
+	gprsConf << "\tOK\t\t'ATS0=0'\t\t\\" << endl;
+	gprsConf << "\tOK\t\t'AT'\t\t\\" << endl;
+	gprsConf << "\tOK\t\t'AT'\t\t\\" << endl;
+	gprsConf << "\tOK-AT-OK\t\t'ATDT*99***1#'\t\t\\" << endl;
+	gprsConf << "\tCONNECT\t\t'\\d\\c'\t\t\\" << endl;
+	if( user.size() > 0)
+	{
+		gprsConf << "\togin:--ogin:\t\t'\"" << user << "\"'\t\t\\" << endl;
+	}
+	if(strlen((char *)g_param.pstParam.szPsw)>0)
+	{
+	gprsConf << "\tassword:\t\t'\"" << pasword << "\"'\t\t\\";
+	}
+
+	gprsConf.close();
+
+}
+
 void configControler::reloadConfig()
 {
 	delete(cf);

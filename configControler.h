@@ -36,6 +36,7 @@ private:
 public: 
 	configControler(bool conf); 
 	void reloadConfig(); 
+	void gprsConfigGenerator(string apn, string user, string password);
 	int getConfig(); 
 	int returnMenu(vector<string> &vec); 
 	int returnPrize(vector<string> &vec); 
