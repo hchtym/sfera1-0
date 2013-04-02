@@ -1617,6 +1617,69 @@ int masterControler::menuService()
 	}
 }
 
+int masterControler::gprsConfMenu()
+{
+	int state = serviceLogin();
+	int menuid[20];
+	int size = 0;
+	int usItem = 0;
+	string title = "Konfiguracja GRPS";
+	string items = "Ustaw. Orange;Ustaw. Plus;Ustaw. Tmobile;Ustaw. Play;Recznie wpisz ustaw.";
+	vector<string> menuItems;
+	Tokenize(items,menuItems, ";");
+
+	int k =0;
+	for(int i = 0; i < menuItems.size(); i++)
+	{
+		menuid[k] = i;
+		k++;
+	}
+
+	if (state == 1)
+	{
+		while(1)
+		{
+			usItem = menuScrOther(title, menuItems, menuItems.size(), usItem, menuid);
+			if (usItem == KEYCANCEL)
+			{
+				return 0;
+			}
+			switch(usItem)
+			{
+				case 0:
+					config->gprsConfigGenerator("internet", "internet", "internet";
+				break;
+				case 1:
+					config->gprsConfigGenerator("wap.plusgsm.pl", "", "";
+				break;
+				case 2:
+					config->gprsConfigGenerator("erainternet", "erainternet", "erainternet";
+				break;
+				case 3:
+					config->gprsConfigGenerator("internet", "", "";
+				break;
+				case 4:
+					// tu kiedys bedzie reczne ustawianie gprs :D
+				break;
+				case KEYCANCEL:
+					return 0;
+				break;
+				default:
+				break;
+			}
+
+
+
+		}
+
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+
 int masterControler::infoMSG(string &msg)
 {
 	string msg2 = msg;

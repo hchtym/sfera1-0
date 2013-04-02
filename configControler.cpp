@@ -31,7 +31,7 @@ configControler::configControler(bool conf)
 void configControler::gprsConfigGenerator(string apn, string user, string password)
 {
 
-	fstrem gprsConf;
+	fstream gprsConf;
 
 	gprsConf.open("ppp-on-dialer-m72", fstream::in | fstream::trunc | fstream::ate );
 
@@ -66,7 +66,6 @@ void configControler::gprsConfigGenerator(string apn, string user, string passwo
 	{
 	gprsConf << "\tassword:\t\t'\"" << pasword << "\"'\t\t\\";
 	}
-
 	gprsConf.close();
 
 }
