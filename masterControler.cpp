@@ -1572,7 +1572,7 @@ int masterControler::menuService()
 					device->rfidDisplay();
 				break;
 				case 2:
-					// Parametry GPRS
+					gprsConfMenu();
 				break;
 				case 3:
 					// Aktualizacja configa
@@ -1647,16 +1647,16 @@ int masterControler::gprsConfMenu()
 			switch(usItem)
 			{
 				case 0:
-					config->gprsConfigGenerator("internet", "internet", "internet";
+					config->gprsConfigGenerator("internet", "internet", "internet");
 				break;
 				case 1:
-					config->gprsConfigGenerator("wap.plusgsm.pl", "", "";
+					config->gprsConfigGenerator("wap.plusgsm.pl", "", "");
 				break;
 				case 2:
-					config->gprsConfigGenerator("erainternet", "erainternet", "erainternet";
+					config->gprsConfigGenerator("erainternet", "erainternet", "erainternet");
 				break;
 				case 3:
-					config->gprsConfigGenerator("internet", "", "";
+					config->gprsConfigGenerator("internet", "", "");
 				break;
 				case 4:
 					// tu kiedys bedzie reczne ustawianie gprs :D
