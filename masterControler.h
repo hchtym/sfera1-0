@@ -98,6 +98,7 @@ class masterControler{
 	int selling();
 	int returnSelling();
 	int menuService();
+	void gprsConfMenu();
 	string computeTrxNumber(string trxDate);
 	string trxTime();
 	
