@@ -1675,6 +1675,9 @@ void masterControler::gprsConfManual()
 					compose << temp;
 					gPass = compose.str();
 				break;
+				case 3:
+					config->gprsConfigGenerator(gApn, gUser, gPass);
+				break;
 				case KEYCANCEL:
 					return;
 				break;
