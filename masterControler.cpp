@@ -1695,7 +1695,6 @@ void masterControler::gprsConfManual()
 
 void masterControler::gprsConfMenu()
 {
-	int state = serviceLogin();
 	int menuid[20];
 	int size = 0;
 	int usItem = 0;
@@ -1716,43 +1715,37 @@ void masterControler::gprsConfMenu()
 		k++;
 	}
 
-	if (state == 1)
+
+	while(1)
 	{
-		while(1)
+		usItem = menuScrOther(title, menuItems, menuItems.size(), usItem, menuid);
+		if (usItem == KEYCANCEL)
 		{
-			usItem = menuScrOther(title, menuItems, menuItems.size(), usItem, menuid);
-			if (usItem == KEYCANCEL)
-			{
-				return;
-			}
-			switch(usItem)
-			{
-				case 0:
-					config->gprsConfigGenerator("internet", "internet", "internet");
-				break;
-				case 1:
-					config->gprsConfigGenerator("wap.plusgsm.pl", "", "");
-				break;
-				case 2:
-					config->gprsConfigGenerator("erainternet", "erainternet", "erainternet");
-				break;
-				case 3:
-					config->gprsConfigGenerator("internet", "", "");
-				break;
-				case 4:
-					gprsConfManual();
-				break;
-				case KEYCANCEL:
-					return;
-				break;
-				default:
-				break;
-			}
+			return;
 		}
-	}
-	else
-	{
-		return;
+		switch(usItem)
+		{
+			case 0:
+				config->gprsConfigGenerator("internet", "internet", "internet");
+			break;
+			case 1:
+				config->gprsConfigGenerator("wap.plusgsm.pl", "", "");
+			break;
+			case 2:
+				config->gprsConfigGenerator("erainternet", "erainternet", "erainternet");
+			break;
+			case 3:
+				config->gprsConfigGenerator("internet", "", "");
+			break;
+			case 4:
+				gprsConfManual();
+			break;
+			case KEYCANCEL:
+				return;
+			break;
+			default:
+			break;
+		}
 	}
 }
 
