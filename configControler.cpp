@@ -64,7 +64,7 @@ void configControler::gprsConfigGenerator(string apn, string user, string passwo
 	}
 	if( password.size() > 0)
 	{
-	gprsConf << "\tassword:\t\t'\"" << password << "\"'\t\t\\";
+	gprsConf << "\tassword:\t\t'\"" << password << "\"'\t\t\\" << endl;;
 	}
 	gprsConf.close();
 
