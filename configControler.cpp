@@ -40,12 +40,12 @@ void configControler::gprsConfigGenerator(string apn, string user, string passwo
 	gprsConf << "execchat-v" << endl;
 	gprsConf << "\tABORT\t\t'BUSY'\t\t\\" << endl;
 	gprsConf << "\tABORT\t\t'NOCARRIER'\t\t\\" << endl;
-	gprsConf << "\tABORT\t\t'NOANSWER'\t\t\\" << endl
+	gprsConf << "\tABORT\t\t'NOANSWER'\t\t\\" << endl;
 	gprsConf << "\tABORT\t\t'VOICE'\t\t\\" << endl; 
 	gprsConf << "\tABORT\t\t'NODIALTONE'\t\t\\" << endl; 
 	gprsConf << "\tABORT\t\t'NODIALTONE'\t\t\\" << endl; 
 	gprsConf << "\tABORT\t\t'DELAYED'\t\t\\" << endl; 
-	gprsConf << "\tABORT\t\t'ERROR'\t\t\\");
+	gprsConf << "\tABORT\t\t'ERROR'\t\t\\" << endl;
 	gprsConf << "\tABORT\t\t'+CMEERROR:100'\t\t\\" << endl; 
 	gprsConf << "\t''\t\t'AT'\t\t\\" << endl;
 	gprsConf << "\tTIMEOUT\t\t5\t\t\\" << endl;
@@ -62,7 +62,7 @@ void configControler::gprsConfigGenerator(string apn, string user, string passwo
 	{
 		gprsConf << "\togin:--ogin:\t\t'\"" << user << "\"'\t\t\\" << endl;
 	}
-	if(strlen((char *)g_param.pstParam.szPsw)>0)
+	if( password.size() > 0)
 	{
 	gprsConf << "\tassword:\t\t'\"" << pasword << "\"'\t\t\\";
 	}

@@ -1617,6 +1617,12 @@ int masterControler::menuService()
 	}
 }
 
+void masterControler::gprsConfManual()
+{
+
+	
+}
+
 int masterControler::gprsConfMenu()
 {
 	int state = serviceLogin();
@@ -1627,6 +1633,11 @@ int masterControler::gprsConfMenu()
 	string items = "Ustaw. Orange;Ustaw. Plus;Ustaw. Tmobile;Ustaw. Play;Recznie wpisz ustaw.";
 	vector<string> menuItems;
 	Tokenize(items,menuItems, ";");
+	string gApn;
+	string gUser;
+	string aPass;
+	stringstream compose;
+	char temp[50];
 
 	int k =0;
 	for(int i = 0; i < menuItems.size(); i++)
