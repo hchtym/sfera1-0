@@ -1619,7 +1619,6 @@ int masterControler::menuService()
 
 void masterControler::gprsConfManual()
 {
-	int state = serviceLogin();
 	int menuid[20];
 	int size = 0;
 	int usItem = 0;
@@ -1631,7 +1630,9 @@ void masterControler::gprsConfManual()
 	string gUser;
 	string gPass;
 	stringstream compose;
-	char temp[50];
+	char tempApn[50];
+	char tempUser[50];
+	char tempPass[50];
 
 	int k =0;
 	for(int i = 0; i < menuItems.size(); i++)
@@ -1640,55 +1641,48 @@ void masterControler::gprsConfManual()
 		k++;
 	}
 
-	if (state == 1)
+	while(1)
 	{
-		while(1)
+		usItem = menuScrOther(titlee, menuItems, menuItems.size(), usItem, menuid);
+		if (usItem == KEYCANCEL)
 		{
-			usItem = menuScrOther(titlee, menuItems, menuItems.size(), usItem, menuid);
-			if (usItem == KEYCANCEL)
-			{
-				return;
-			}
-			switch(usItem)
-			{
-				case 0:
-					clear();
-					title("APN");
-					Kb_GetStr(0, 32,(BYTE*) temp, 0, 40, ALPHA_IN,900);
-					compose.str("");
-					compose << temp;
-					gApn = compose.str();
-				break;
-				case 1:
-					clear();
-					title("User");
-					Kb_GetStr(0, 32,(BYTE*) temp, 0, 40, ALPHA_IN,900);
-					compose.str("");
-					compose << temp;
-					gUser = compose.str();
-				break;
-				case 2:
-					clear();
-					title("Password");
-					Kb_GetStr(0, 32,(BYTE*) temp, 0, 40, ALPHA_IN,900);
-					compose.str("");
-					compose << temp;
-					gPass = compose.str();
-				break;
-				case 3:
-					config->gprsConfigGenerator(gApn, gUser, gPass);
-				break;
-				case KEYCANCEL:
-					return;
-				break;
-				default:
-				break;
-			}
+			return;
 		}
-	}
-	else
-	{
-		return;
+		switch(usItem)
+		{
+			case 0:
+				clear();
+				title("APN");
+				Kb_GetStr(0, 32,(BYTE*) tempApn, 0, 40, ALPHA_IN,900);
+				compose.str("");
+				compose << temp;
+				gApn = compose.str();
+			break;
+			case 1:
+				clear();
+				title("User");
+				Kb_GetStr(0, 32,(BYTE*) tempUser, 0, 40, ALPHA_IN,900);
+				compose.str("");
+				compose << temp;
+				gUser = compose.str();
+			break;
+			case 2:
+				clear();
+				title("Password");
+				Kb_GetStr(0, 32,(BYTE*) tempPass, 0, 40, ALPHA_IN,900);
+				compose.str("");
+				compose << temp;
+				gPass = compose.str();
+			break;
+			case 3:
+				config->gprsConfigGenerator(gApn, gUser, gPass);
+			break;
+			case KEYCANCEL:
+				return;
+			break;
+			default:
+			break;
+		}
 	}
 
 }
