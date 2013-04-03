@@ -1623,7 +1623,7 @@ void masterControler::gprsConfManual()
 	int menuid[20];
 	int size = 0;
 	int usItem = 0;
-	string title = "Konfiguracja GRPS";
+	string titlee = "Konfiguracja GRPS";
 	string items = "APN;User;Password;Zapisz";
 	vector<string> menuItems;
 	Tokenize(items,menuItems, ";");
@@ -1647,7 +1647,7 @@ void masterControler::gprsConfManual()
 	{
 		while(1)
 		{
-			usItem = menuScrOther(title, menuItems, menuItems.size(), usItem, menuid);
+			usItem = menuScrOther(titlee, menuItems, menuItems.size(), usItem, menuid);
 			if (usItem == KEYCANCEL)
 			{
 				return;
