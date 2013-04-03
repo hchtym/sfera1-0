@@ -31,9 +31,9 @@ configControler::configControler(bool conf)
 void configControler::gprsConfigGenerator(string apn, string user, string password)
 {
 
-	fstream gprsConf;
+	ofstream gprsConf;
 
-	gprsConf.open("ppp-on-dialer-m72", fstream::in | fstream::trunc | fstream::ate );
+	gprsConf.open("ppp-on-dialer-m72", ios_base::in | ios_base::trunc | ios_base::ate );
 
 	cout << "gen_dialer_script" << endl;
 	gprsConf << "#!/bin/sh" << endl;
