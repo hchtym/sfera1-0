@@ -1654,7 +1654,7 @@ void masterControler::gprsConfManual()
 				case 0:
 					clear();
 					title("APN");
-					Kb_GetStr(0, 32,(BYTE) temp, 0, 40, ALPHA_IN,900);
+					Kb_GetStr(0, 32,(BYTE*) temp, 0, 40, ALPHA_IN,900);
 					compose.str("");
 					compose << temp;
 					gApn = compose.str();
@@ -1662,7 +1662,7 @@ void masterControler::gprsConfManual()
 				case 1:
 					clear();
 					title("User");
-					Kb_GetStr(0, 32,(BYTE) temp, 0, 40, ALPHA_IN,900);
+					Kb_GetStr(0, 32,(BYTE*) temp, 0, 40, ALPHA_IN,900);
 					compose.str("");
 					compose << temp;
 					gUser = compose.str();
@@ -1670,7 +1670,7 @@ void masterControler::gprsConfManual()
 				case 2:
 					clear();
 					title("Password");
-					Kb_GetStr(0, 32,(BYTE) temp, 0, 40, ALPHA_IN,900);
+					Kb_GetStr(0, 32,(BYTE*) temp, 0, 40, ALPHA_IN,900);
 					compose.str("");
 					compose << temp;
 					gPass = compose.str();
