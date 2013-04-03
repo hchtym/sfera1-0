@@ -1653,7 +1653,7 @@ void masterControler::gprsConfMenu()
 			usItem = menuScrOther(title, menuItems, menuItems.size(), usItem, menuid);
 			if (usItem == KEYCANCEL)
 			{
-				return 0;
+				return;
 			}
 			switch(usItem)
 			{
@@ -1673,7 +1673,7 @@ void masterControler::gprsConfMenu()
 					// tu kiedys bedzie reczne ustawianie gprs :D
 				break;
 				case KEYCANCEL:
-					return 0;
+					return;
 				break;
 				default:
 				break;
@@ -1686,7 +1686,7 @@ void masterControler::gprsConfMenu()
 	}
 	else
 	{
-		return 0;
+		return;
 	}
 }
 
