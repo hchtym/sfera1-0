@@ -1619,7 +1619,74 @@ int masterControler::menuService()
 
 void masterControler::gprsConfManual()
 {
+	int state = serviceLogin();
+	int menuid[20];
+	int size = 0;
+	int usItem = 0;
+	string title = "Konfiguracja GRPS";
+	string items = "APN;User;Password;Zapisz";
+	vector<string> menuItems;
+	Tokenize(items,menuItems, ";");
+	string gApn;
+	string gUser;
+	string gPass;
+	stringstream compose;
+	char temp[50];
 
+	int k =0;
+	for(int i = 0; i < menuItems.size(); i++)
+	{
+		menuid[k] = i;
+		k++;
+	}
+
+	if (state == 1)
+	{
+		while(1)
+		{
+			usItem = menuScrOther(title, menuItems, menuItems.size(), usItem, menuid);
+			if (usItem == KEYCANCEL)
+			{
+				return;
+			}
+			switch(usItem)
+			{
+				case 0:
+					clear();
+					title("APN");
+					Kb_GetStr(0, 32,(BYTE) temp, 0, 40, ALPHA_IN,900);
+					compose.str("");
+					compose << temp;
+					gApn = compose.str();
+				break;
+				case 1:
+					clear();
+					title("User");
+					Kb_GetStr(0, 32,(BYTE) temp, 0, 40, ALPHA_IN,900);
+					compose.str("");
+					compose << temp;
+					gUser = compose.str();
+				break;
+				case 2:
+					clear();
+					title("Password");
+					Kb_GetStr(0, 32,(BYTE) temp, 0, 40, ALPHA_IN,900);
+					compose.str("");
+					compose << temp;
+					gPass = compose.str();
+				break;
+				case KEYCANCEL:
+					return;
+				break;
+				default:
+				break;
+			}
+		}
+	}
+	else
+	{
+		return;
+	}
 
 }
 
@@ -1670,7 +1737,7 @@ void masterControler::gprsConfMenu()
 					config->gprsConfigGenerator("internet", "", "");
 				break;
 				case 4:
-					// tu kiedys bedzie reczne ustawianie gprs :D
+					gprsConfManual();
 				break;
 				case KEYCANCEL:
 					return;
@@ -1678,11 +1745,7 @@ void masterControler::gprsConfMenu()
 				default:
 				break;
 			}
-
-
-
 		}
-
 	}
 	else
 	{
