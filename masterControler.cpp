@@ -1653,8 +1653,8 @@ void masterControler::gprsConfManual()
 			{
 				case 0:
 					clear();
-					string apn = "APN";
-					title(apn);
+					string Xapn = "APN";
+					title(Xapn);
 					Kb_GetStr(0, 32,(BYTE*) temp, 0, 40, ALPHA_IN,900);
 					compose.str("");
 					compose << temp;
@@ -1662,8 +1662,8 @@ void masterControler::gprsConfManual()
 				break;
 				case 1:
 					clear();
-					string user = "User";
-					title(user);
+					string Xuser = "User";
+					title(Xuser);
 					Kb_GetStr(0, 32,(BYTE*) temp, 0, 40, ALPHA_IN,900);
 					compose.str("");
 					compose << temp;
@@ -1671,8 +1671,8 @@ void masterControler::gprsConfManual()
 				break;
 				case 2:
 					clear();
-					string password = "Password";
-					title(password);
+					string Xpassword = "Password";
+					title(Xpassword);
 					Kb_GetStr(0, 32,(BYTE*) temp, 0, 40, ALPHA_IN,900);
 					compose.str("");
 					compose << temp;
