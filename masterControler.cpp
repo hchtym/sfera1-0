@@ -1631,8 +1631,11 @@ void masterControler::gprsConfManual()
 	string gPass;
 	stringstream compose;
 	char tempApn[50];
+	memset(tempApn, 0, sizeof(tempApn));
 	char tempUser[50];
+	memset(tempUser, 0, sizeof(tempUser));
 	char tempPass[50];
+	memset(tempPass, 0, sizeof(tempPass));
 
 	int k =0;
 	for(int i = 0; i < menuItems.size(); i++)
