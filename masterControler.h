@@ -99,13 +99,13 @@ class masterControler{
 	int returnSelling();
 	int menuService();
 	void gprsConfMenu();
+	void gprsConfManual();
 	string computeTrxNumber(string trxDate);
 	string trxTime();
 	
 public:
 	masterControler(int *);
 	masterControler();
-	void gprsConfManual();
 	string returnBuildDate();
 	int checkVersion();
 	int reloadConfig();

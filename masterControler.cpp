@@ -1531,11 +1531,6 @@ int masterControler::reloadConfig()
 	network->reloadConfig();
 }
 
-void masterControler::gprsConfMenu()
-{
-	
-}
-
 int masterControler::menuService()
 {
 	int state = serviceLogin();
@@ -1628,7 +1623,7 @@ void masterControler::gprsConfManual()
 
 }
 
-int masterControler::gprsConfMenu()
+void masterControler::gprsConfMenu()
 {
 	int state = serviceLogin();
 	int menuid[20];
