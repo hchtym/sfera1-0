@@ -39,13 +39,11 @@ void configControler::gprsConfigGenerator(string apn, string user, string passwo
 	gprsConf << "#!/bin/sh" << endl;
 	gprsConf << "execchat-v" << endl;
 	gprsConf << "\tABORT\t\t'BUSY'\t\t\\" << endl;
-	gprsConf << "\tABORT\t\t'NOCARRIER'\t\t\\" << endl;
-	gprsConf << "\tABORT\t\t'NOANSWER'\t\t\\" << endl;
+	gprsConf << "\tABORT\t\t'NO ANSWER'\t\t\\" << endl;
 	gprsConf << "\tABORT\t\t'VOICE'\t\t\\" << endl; 
-	gprsConf << "\tABORT\t\t'NODIALTONE'\t\t\\" << endl; 
-	gprsConf << "\tABORT\t\t'NODIALTONE'\t\t\\" << endl; 
+	gprsConf << "\tABORT\t\t'NO DIALTONE'\t\t\\" << endl; 
+	gprsConf << "\tABORT\t\t'NO DIAL TONE'\t\t\\" << endl; 
 	gprsConf << "\tABORT\t\t'DELAYED'\t\t\\" << endl; 
-	gprsConf << "\tABORT\t\t'ERROR'\t\t\\" << endl;
 	gprsConf << "\tABORT\t\t'+CMEERROR:100'\t\t\\" << endl; 
 	gprsConf << "\t''\t\t'AT'\t\t\\" << endl;
 	gprsConf << "\tTIMEOUT\t\t5\t\t\\" << endl;
@@ -56,15 +54,15 @@ void configControler::gprsConfigGenerator(string apn, string user, string passwo
 	gprsConf << "\tOK\t\t'ATS0=0'\t\t\\" << endl;
 	gprsConf << "\tOK\t\t'AT'\t\t\\" << endl;
 	gprsConf << "\tOK\t\t'AT'\t\t\\" << endl;
-	gprsConf << "\tOK-AT-OK\t\t'ATDT*99***1#'\t\t\\" << endl;
+	gprsConf << "\tOK-AT-OK\t'ATDT*99***1#'\t\t\\" << endl;
 	gprsConf << "\tCONNECT\t\t'\\d\\c'\t\t\\" << endl;
 	if( user.size() > 0)
 	{
-		gprsConf << "\togin:--ogin:\t\t'\"" << user << "\"'\t\t\\" << endl;
+		gprsConf << "\togin:--ogin:\t'\"" << user << "\"'\t\t\\" << endl;
 	}
 	if( password.size() > 0)
 	{
-	gprsConf << "\tassword:\t\t'\"" << password << "\"'\t\t\\" << endl;;
+	gprsConf << "\tassword:\t'\"" << password << "\"'\t\t\\" << endl;;
 	}
 	gprsConf.close();
 
