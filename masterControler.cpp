@@ -1630,7 +1630,7 @@ void masterControler::gprsConfManual()
 	string gApn;
 	string gUser;
 	string gPass;
-	string Xapn = "APN";
+	//string Xapn = "APN";
 	string Xuser = "User";
 	string Xpassword = "Password";
 	stringstream compose;
@@ -1656,7 +1656,7 @@ void masterControler::gprsConfManual()
 			{
 				case 0:
 					clear();
-					title(Xapn);
+					title("APN");
 					Kb_GetStr(0, 32,(BYTE*) temp, 0, 40, ALPHA_IN,900);
 					compose.str("");
 					compose << temp;
