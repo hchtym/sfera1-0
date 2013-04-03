@@ -104,7 +104,7 @@ class masterControler{
 public:
 	masterControler(int *);
 	masterControler();
-	gprsConfManual();
+	void gprsConfManual();
 	string returnBuildDate();
 	int checkVersion();
 	int reloadConfig();
