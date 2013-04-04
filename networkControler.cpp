@@ -355,15 +355,6 @@ int networkControler::menuScrOther(const string &menuname,vector<string> &vect, 
 	    		key = Kb_GetKey();
 	    		if(key !=NOKEY)
 	    		{
-	    			if(timeoutFlag)
-	    			{
-		    		    string screenTimeout = config->returnScreenSaverTimeout();
-						int timeout = atoi(screenTimeout.c_str());
-						if (timeout != 0)
-						{
-							SetTimer(0, (timeout*1000));
-						}
-					}
 	    			break;
 	    		}
 
