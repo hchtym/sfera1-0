@@ -269,7 +269,7 @@ void networkControler::gprsConfManual()
 		switch(usItem)
 		{
 			case 0:
-				clear();
+				Lcd_Cls();
 				title("APN");
 				Kb_GetStr(0, 32,(BYTE*) tempApn, 0, 40, ALPHA_IN,900);
 				compose.str("");
@@ -278,7 +278,7 @@ void networkControler::gprsConfManual()
 				gApn = compose.str();
 			break;
 			case 1:
-				clear();
+				Lcd_Cls();
 				title("User");
 				Kb_GetStr(0, 32,(BYTE*) tempUser, 0, 40, ALPHA_IN,900);
 				compose.str("");
@@ -287,7 +287,7 @@ void networkControler::gprsConfManual()
 				gUser = compose.str();
 			break;
 			case 2:
-				clear();
+				Lcd_Cls();
 				title("Password");
 				Kb_GetStr(0, 32,(BYTE*) tempPass, 0, 40, ALPHA_IN,900);
 				compose.str("");
@@ -305,7 +305,21 @@ void networkControler::gprsConfManual()
 			break;
 		}
 	}
+}
 
+int networkControler::title(string str)
+{
+	int len = (21 - str.size());
+	stringstream compose;
+	compose.str("");
+	compose << str;
+	for(int i = 0; i < len; i++)
+	{
+		compose << " ";
+	}
+	str.clear();
+	str = compose.str();
+	Lcd_Printxy(0,0,1, const_cast<char *>(str.c_str()));
 }
 
 int networkControler::menuScrOther(const string &menuname,vector<string> &vect, int size, int index, int *menuid)
@@ -326,7 +340,7 @@ int networkControler::menuScrOther(const string &menuname,vector<string> &vect, 
 	if(index2 > visible -1 ) view = index2 - visible +1;
 	cout << "wchodze do while w menuscr" << endl;
 	while(1){
-		clear();
+		Lcd_Cls();
 	    title(menuname);
 
 		for(i=0; i < visible; i++){
@@ -369,16 +383,10 @@ int networkControler::menuScrOther(const string &menuname,vector<string> &vect, 
 	    		}
 
 	    	}
-
-	    	/*left = CheckTimer(0);
-	    	if(0 == left){
-	    		key = NOKEY;
-	    		break;
-	    	}*/
         }
+
 		switch(key){
 			case NOKEY:
-			   	screenSaver();
 				goto drawMenu;
 		    break;
 		    case KEYCANCEL:
@@ -403,10 +411,8 @@ int networkControler::menuScrOther(const string &menuname,vector<string> &vect, 
 		            if(index2 < view) view--;
 		        }else{
 		            index2 = size -1;
-		                        //      view = size -1;
 		        	if(index2 >= view + visible) view = index2 -  visible +1;
 		        }
-		//      goto drawMenu;
 		        break;
 		}
 		
