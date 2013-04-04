@@ -24,6 +24,7 @@ networkControler::networkControler(string &ipr, string &portr, string &apnr, str
 networkControler::~networkControler()
 {
 	delete(device);
+	delete(config);
 }
 
 int networkControler::connectAllQuiet()
@@ -211,8 +212,7 @@ int networkControler::title(string str)
 }
 
 int networkControler::softAck(string date)
-{
-	cout << "jestem w softAck" << endl;
+{	cout << "jestem w softAck" << endl;
 	Lcd_Cls();
 	title("Informacja");
 	Lcd_Printxy(0, 16, 0, "    Prosze czekac.");
@@ -1451,153 +1451,16 @@ int networkControler::gprsConnect()
 
 int networkControler::gprsCon()
 {
-	ofstream file("config.txt", ios_base::app);
-	ofstream loger("logs.txt", ios_base::app);
-	
-	loger << "start gprsCon" << endl;
-	// konfiguracja socketa !! 
-	char pCAPData[buffer];
-	char download[buffer];
-	//struct sockaddr_in dest_addr;
-
-	int len,bytes_sent,bytes_recv;
-	stringstream compose;
-	compose << "nr;" << serialN.c_str() << endl; 
-	string msg = compose.str();
-	len = msg.size();
-	bytes_sent = Wls_MTcpSend(socket0, (uchar *) msg.c_str(), len);
-	if(ERR_OK == bytes_sent){
-		loger << "send serial error" << endl;
-		perror("send"); // logowanie do pliku !
-		//exit(1);
+	if(Wls_CheckPPPLink(45))
+	{
+		Lcd_Cls();
+		Lcd_Printxy(0,8,0, "Brak połączenia z internetem.");
+		return 0;
 	}
-	sleep(1);
-	loger << "przedstawilem sie serwerowi" << endl;
-	string msg2 = "conf;000001030100397;2009-06-02 00:00\0";
-	len = msg2.size();
-	
-	bytes_sent = Wls_MTcpSend(socket0, (uchar *) msg2.c_str(), len);
-	if(ERR_OK != bytes_sent){
-		loger << "send problem" << endl;
-		perror("send");
-		Wls_MTcpClose(socket0);
+	else
+	{
+		return 1;
 	}
-	
-	bytes_recv = Wls_MTcpRecv(socket0,(uchar *) pCAPData, buffer, 0, 30000);
-	if(ERR_OK == bytes_recv){
-		loger << "recive error" << endl;
-		perror("recive"); // logowanie do pliku !!
-		//exit(1);
-	}
-	loger << "ok sendign" << endl;
-	if(strcmp((char*)pCAPData, "ok") != 0){
-		loger << "send ok error" << endl;
-		perror("nieudane polaczenie"); // logowanie do pliku !!
-		//exit(1);
-	}
-	loger << "entering for !" << endl;
-	for(int i =0; i<6; i++){
-		//sleep(1);
-	    char str[40];
-	    int dataLen;
-	    sprintf(str, "%s" ,configs[1][i]);
-	    char msg3[50];
-	    strcpy(msg3, configs[0][i]);
-	    len = msg2.size();
-		bytes_sent =  Wls_MTcpSend(socket0, (uchar *) str, strlen(str) );
-		if(ERR_OK == bytes_sent){
-			loger << "sending problem !" << endl;
-		    perror("send"); // logowanie do pliku !
-		 //   exit(1);
-    	}else{
-			loger << "Sendet request for data "  << configs[1][i] << endl;
-		}
-    	memset(pCAPData, 0, sizeof(pCAPData));
-		bytes_recv = Wls_MTcpRecv(socket0,(uchar *) pCAPData, buffer, 0, 30*1000);
-    	if(ERR_OK == bytes_recv ){
-			loger << "recive eror datalen" << endl;
-    		perror("reciv"); // logowanie do pliku !!
-    	//	exit(1);
-    	}
-        dataLen = atoi(pCAPData);
-		//cout << dataLen << endl;
-    	//cout << "Wysylam potwierdzenie." << endl;
-		loger << "wysylam potwierdzenie datalen" << endl;
-		
-		bytes_sent = Wls_MTcpSend(socket0, (uchar *) "ok", strlen("ok"));
-    	if(ERR_OK == bytes_sent){
-			loger << "error sending ok for data len" << endl;
-    		perror("send"); // logowanie do pliku !!
-    	//	exit(1);
-    	}
-    	memset(pCAPData, 0, sizeof(pCAPData));
-		memset(download, 0, sizeof(download));
-        bytes_recv = 0;
-
-		while(bytes_recv < dataLen){
-			int recive = 0;
-				bytes_recv = Wls_MTcpRecv(socket0,(uchar *) download, buffer, 0, 30*1000);
-				if(ERR_OK == bytes_recv){
-					loger << "error reciving data for: " << configs[1][i] << endl;
-		    		perror("Reciv"); // logowanie do pliku !!
-		    //		exit(1);
-		    	}
-				bytes_recv += recive;
-				//sleep(0.5);
-				strcat(pCAPData, download);
-				memset(download, 0, sizeof(download));		
-		}
-		// przekazuje pobrane dane to stringa 
-		loger << "copying pCAPData to dane" << endl;
-        string dane(pCAPData);
-		loger << "creatong vector for: " << configs[1][i] << endl;
-		// tworze vector
-        vector<string> tokens;
-		// prasuje ztringa i podaje go do vectora
-		loger << "tokenize data !" << endl;
-        Tokenize(dane, tokens, ";");
-		// iteruje vector i wrzucam dane do pliku !!
-		loger << "creating iterator" << endl;
-        std::vector<string>::iterator j;
-		int licz=0;
-		file << "[" << configs[1][i] << "]" << endl;
-		loger << "writing data to file" << endl;
-        for(j=tokens.begin(); j<tokens.end(); ++j){
-			if(configs[1][i]== "ok"){
-				file << *j;
-				file << endl;
-			}else{
-				file << "No" << licz << " = " << *j << endl;
-				licz++;
-			}
-        }
-		file << "[/" << configs[1][i] << "]" << endl;
-		file << endl;
-		loger << "data writen" << endl;
-       // cout << endl;
-		memset(pCAPData, 0, sizeof(pCAPData));
-	}
-	// potwierdzam zakonczenie pobierania danych !!
-	sleep(1);
-	loger << "sending ok that the data was reciver properly" << endl;
-	bytes_sent = Wls_MTcpSend(socket0, (uchar *)"ok", strlen("ok"));
-    if(ERR_OK == bytes_sent){
-        perror("send");
-        //exit(1);
-    }
-	// koncze polaczenie z serwerem !! 
-	sleep(1);
-	loger << "sendin 'bye' and ending connection !" << endl;
-	bytes_sent = Wls_MTcpSend(socket0, (uchar *) "bye", strlen("bye"));
-    if(ERR_OK == bytes_sent){
-        perror("send");
-        //exit(1);
-    }
-	// zamykam plik konfiguracyjny !
-    file.close();
-	loger.close();
-	// zamykam socket !
-	//close(sockfd);	
 }
 
 int networkControler::ethConf()
@@ -1860,27 +1723,10 @@ int networkControler::ethConf()
 	close(sockfd);
 }
 
-int networkControler::startConf(int type)
+int networkControler::startConf()
 {
-	int conf;
-	cout << "startConf pizda" << endl;
-	switch(type){
-		case 0:
-			gprsInit();
-			checkSignalStr();
-			gprsConnect();
-			gprsCon();
-		break;
-		case 1:
-			cout << "ethCon pizdacz !" << endl;
-			conf = ethConf();
-		break;
-		default:
-		return 0;
-			//zaloguj bledny typ;
-			cout << "bledny typ" << endl;
-		break;
-	}
+	conf = ethConf();
+	return 0;
 }
 
 void networkControler::Tokenize(const string& str, vector<string>& tokens, const string& delimiters = " ")

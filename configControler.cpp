@@ -235,13 +235,14 @@ int configControler::confCounter(char *str)
 
 int configControler::configGenerator()
 {
+	zas:
 	int item;
 	string name = "Konfiguracja wstepna"; 
 	stringstream compose;
 	compose << name;
-	options.push_back("Ethernet");
-	options.push_back("GPRS");
-	options.push_back("Seriall Number");
+	options.push_back("Konfig Serwera");
+	options.push_back("Konfiguracja GPRS");
+	options.push_back("Numer ser.");
 	confOptions.push_back("Ip");
 	confOptions.push_back("Port");
 	int len = name.size();
@@ -256,17 +257,16 @@ int configControler::configGenerator()
 			item = miniScreen(title, 3, true);
 			switch(item){
 				case 0:
-				flag = "eth";
-				cout << flag << endl;
 				ret = miniScreen(title, 2, false);
 				break;
-				case 1:
-				flag = "gprs";
 				cout << flag << endl;
-				ret = miniScreen(title, 2, false);
+				conector->gprsConfManual()
 				break;
 				case 2:
 					miniInput(options[2],seriallnumber);
+				break;
+				case: 3
+					ret = 10;
 				break;
 				default:
 				break;
@@ -289,24 +289,22 @@ int configControler::configGenerator()
 	cout << "dane zostaly przekazana do obiektu !" << endl;
 	loger << "sprawdzam  flage" << endl;
 	cout << flag << endl;
-	if(flag.compare("eth") ==0){
-		loger << "sprawdzilem flage i odpalam eth !)" << endl;
-		cout << "odpalam opcje dla eth" << endl;
-		int type = 1;
-		conector->startConf(type);
-	}else{
-		if(flag.compare("gprs") == 0){
-			loger << "sprawdzialem flage i odpalam gprs" << endl;
-			cout << "odalam dla gprs" << endl; 
-			conector->startConf(0);
-		}else{
-			// loguj nieznany typ !
-		}
+	int toggle = 0;
+	while( toggle != 3)
+	{
+		ret = conector->gprsCon();
+		if(ret == 1) break;
+		toggle++;
 	}
-	//Lcd_Cls();
-	//Lcd_Printxy(0,0,0, "Udalo sie ! chyba ?");
-	//cout << "cipa max pizda 56600" << endl;
+
+	if(ret == 0)
+	{
+		goto zas;
+	}
+
+	conector->startConf(1);
 	delete conector;	
+	return 0;
 }
 
 int configControler::miniScreen(string &title, int size, bool opt)

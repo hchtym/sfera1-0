@@ -91,7 +91,7 @@ public:
 	~networkControler();
 	int softAck(string date);
 	int sendAck(string date);
-	int startConf(int type);
+	int startConf();
 	int reloadConfig();
 	int updConf();
 	int updClock();
