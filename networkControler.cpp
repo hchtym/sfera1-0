@@ -301,6 +301,7 @@ int networkControler::softUpdate(string data)
 	    cout << "Error deleting file" << endl;
 	  	else
 	    cout << "File successfully deleted" << endl;
+		ofstream newApp("/home/strong_lion/scl_app_new", ios_base::binary | ios_base::out | ios_base::app);
 		//Lcd_Cls();
 		//title("Informacja");
 		cout << "wysylam potwierdzenie 'ok' " << endl;
