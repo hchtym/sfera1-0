@@ -1725,7 +1725,8 @@ int networkControler::ethConf()
 
 int networkControler::startConf()
 {
-	conf = ethConf();
+
+	ethConf();
 	return 0;
 }
 
