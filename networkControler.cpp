@@ -231,6 +231,244 @@ int networkControler::softAck(string date)
 	return 0;
 }
 
+
+void networkControler::gprsConfManual()
+{
+	int menuid[20];
+	int size = 0;
+	int usItem = 0;
+	string titlee = "Konfiguracja GRPS";
+	string items = "APN;User;Password;Zapisz";
+	vector<string> menuItems;
+	Tokenize(items,menuItems, ";");
+	string gApn;
+	string gUser;
+	string gPass;
+	stringstream compose;
+	char tempApn[50];
+	memset(tempApn, 0, sizeof(tempApn));
+	char tempUser[50];
+	memset(tempUser, 0, sizeof(tempUser));
+	char tempPass[50];
+	memset(tempPass, 0, sizeof(tempPass));
+
+	int k =0;
+	for(int i = 0; i < menuItems.size(); i++)
+	{
+		menuid[k] = i;
+		k++;
+	}
+
+	while(1)
+	{
+		usItem = menuScrOther(titlee, menuItems, menuItems.size(), usItem, menuid);
+		if (usItem == KEYCANCEL)
+		{
+			return;
+		}
+		switch(usItem)
+		{
+			case 0:
+				clear();
+				title("APN");
+				Kb_GetStr(0, 32,(BYTE*) tempApn, 0, 40, ALPHA_IN,900);
+				compose.str("");
+				compose << tempApn;
+				gApn.clear();
+				gApn = compose.str();
+			break;
+			case 1:
+				clear();
+				title("User");
+				Kb_GetStr(0, 32,(BYTE*) tempUser, 0, 40, ALPHA_IN,900);
+				compose.str("");
+				compose << tempUser;
+				gUser.clear();
+				gUser = compose.str();
+			break;
+			case 2:
+				clear();
+				title("Password");
+				Kb_GetStr(0, 32,(BYTE*) tempPass, 0, 40, ALPHA_IN,900);
+				compose.str("");
+				compose << tempPass;
+				gPass.clear();
+				gPass = compose.str();
+			break;
+			case 3:
+				config->gprsConfigGenerator(gApn, gUser, gPass);
+			break;
+			case KEYCANCEL:
+				return;
+			break;
+			default:
+			break;
+		}
+	}
+
+}
+
+int networkControler::menuScrOther(const string &menuname,vector<string> &vect, int size, int index, int *menuid)
+{
+	cout << "jestem w mnue scr" << endl;
+	const int visible = 6;
+    int i, view =0;
+    BYTE key;
+    int index2 = 0;
+	if(Mcr_Open()<0)
+	{
+		// zapis do pliku nie moge zainicjalizowac urzadzenia !!
+	}
+    //key=NOKEY;
+	cout << "jestem przed draw menu !" << endl;
+	drawMenu:
+	if(index2 < 0 || index2 > size -1) index2 =0;
+	if(index2 > visible -1 ) view = index2 - visible +1;
+	cout << "wchodze do while w menuscr" << endl;
+	while(1){
+		clear();
+	    title(menuname);
+
+		for(i=0; i < visible; i++){
+
+			if(view +i < size){
+				string str = vect[view +i];
+				int k,j=21;
+	            int len = str.size();
+	            for(k=0; k < j-len; k++){
+	            	str += " ";
+	            }
+				if(index2 == view +i){
+					Lcd_Printxy(1,8+(i*8),1,const_cast<char *>(str.c_str()) );
+	        	}else{
+	        		Lcd_Printxy(1,8+(i*8),0,const_cast<char *>(str.c_str()) );
+	        	}
+	        }else{
+	//                      Lcd_Printxy(1, i+3, 0, "                 ");
+	        }
+		}
+		//int left = -1;
+		cout << "wchodze do while odpowiedzialnego za wykrywanie guzikow timeout i inne" << endl;
+		Kb_Flush();
+	    while(1){
+
+	    	if(!Kb_Hit()){
+	    		key = Kb_GetKey();
+	    		if(key !=NOKEY)
+	    		{
+	    			if(timeoutFlag)
+	    			{
+		    		    string screenTimeout = config->returnScreenSaverTimeout();
+						int timeout = atoi(screenTimeout.c_str());
+						if (timeout != 0)
+						{
+							SetTimer(0, (timeout*1000));
+						}
+					}
+	    			break;
+	    		}
+
+	    	}
+
+	    	/*left = CheckTimer(0);
+	    	if(0 == left){
+	    		key = NOKEY;
+	    		break;
+	    	}*/
+        }
+		switch(key){
+			case NOKEY:
+			   	screenSaver();
+				goto drawMenu;
+		    break;
+		    case KEYCANCEL:
+		    case KEYBACKSPACE:
+		        return KEYCANCEL;
+			break;
+		    case KEYENTER: 
+				return menuid[index2];
+			break;
+		    case KEYDOWN:
+		        if(index2 < size -1){
+		        	index2++;
+		            if(index2 >= view + visible)view++;
+		        }else{
+		            index2 =0;
+		            view = 0;
+		        }
+		     break;
+		     case KEYUP:
+		     	if(index2 >0){
+		        	index2--;
+		            if(index2 < view) view--;
+		        }else{
+		            index2 = size -1;
+		                        //      view = size -1;
+		        	if(index2 >= view + visible) view = index2 -  visible +1;
+		        }
+		//      goto drawMenu;
+		        break;
+		}
+		
+	}
+}
+
+void networkControler::gprsConfMenu()
+{
+	int menuid[20];
+	int size = 0;
+	int usItem = 0;
+	string title = "Konfiguracja GRPS";
+	string items = "Ustaw. Orange;Ustaw. Plus;Ustaw. Tmobile;Ustaw. Play;Recznie wpisz ustaw.";
+	vector<string> menuItems;
+	Tokenize(items,menuItems, ";");
+	string gApn;
+	string gUser;
+	string aPass;
+	stringstream compose;
+	char temp[50];
+
+	int k =0;
+	for(int i = 0; i < menuItems.size(); i++)
+	{
+		menuid[k] = i;
+		k++;
+	}
+
+
+	while(1)
+	{
+		usItem = menuScrOther(title, menuItems, menuItems.size(), usItem, menuid);
+		if (usItem == KEYCANCEL)
+		{
+			return;
+		}
+		switch(usItem)
+		{
+			case 0:
+				config->gprsConfigGenerator("internet", "internet", "internet");
+			break;
+			case 1:
+				config->gprsConfigGenerator("wap.plusgsm.pl", "", "");
+			break;
+			case 2:
+				config->gprsConfigGenerator("erainternet", "erainternet", "erainternet");
+			break;
+			case 3:
+				config->gprsConfigGenerator("internet", "", "");
+			break;
+			case 4:
+				gprsConfManual();
+			break;
+			case KEYCANCEL:
+				return;
+			break;
+			default:
+			break;
+		}
+	}
+}
+
 int networkControler::softUpdate(string data)
 {
 	cout << "Jestem w softUpdate." << endl;
