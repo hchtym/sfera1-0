@@ -240,6 +240,9 @@ int configControler::configGenerator()
 	string name = "Konfiguracja wstepna"; 
 	stringstream compose;
 	compose << name;
+	string apnc = "internet";
+	string userc = "";
+	string passwordc = "";
 	options.push_back("Konfig Serwera");
 	options.push_back("Konfiguracja GPRS");
 	options.push_back("Numer ser.");
@@ -275,12 +278,8 @@ int configControler::configGenerator()
 			}
 	}
 	delete(conector);
-	string apnc = "internet";
-	string userc = "";
-	string passwordc = "";
 	ofstream loger("log.txt");
 	loger << "Tworze plik seriall.txt" << endl;
-	
 	ofstream file("seriall.txt");
 	file << "[seriall]" << endl;
 	file << "SN = " << seriallnumber.c_str() << endl;
@@ -306,7 +305,7 @@ int configControler::configGenerator()
 	}
 
 	conector->startConf();
-	delete conector;	
+	delete(conector);	
 	return 0;
 }
 
