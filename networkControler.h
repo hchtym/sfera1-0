@@ -63,7 +63,7 @@ private:
 	int sockfd;
 	void gprsConfManual();
 	void gprsConfMenu();
-	void menuScrOther(const string &menuname,vector<string> &vect, int size, int index, int *menuid);
+	int menuScrOther(const string &menuname,vector<string> &vect, int size, int index, int *menuid);
 
 	// inicjator karty sim, oraz kanalu
 	void gprsInit();
