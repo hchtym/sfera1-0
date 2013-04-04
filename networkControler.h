@@ -58,10 +58,8 @@ private:
 	static const char* const configs[2][6];
 	deviceControler *device;
 	// funkcje wykorzystywane tylko raz przy pierwszym pobieraniu konfiguracji 
-	int gprsCon();
 	int ethConf();
 	int sockfd;
-	void gprsConfManual();
 	void gprsConfMenu();
 	int menuScrOther(const string &menuname,vector<string> &vect, int size, int index, int *menuid);
 
@@ -91,11 +89,13 @@ public:
 	~networkControler();
 	int softAck(string date);
 	int sendAck(string date);
-	int startConf();
+	void gprsConfManual();
 	int reloadConfig();
-	int updConf();
+	int startConf();
 	int updClock();
 	int sendTrx();
+	int updConf();
+	int gprsCon();
 	int updClk();
 	int updSoft();
 	int sendLogs();
