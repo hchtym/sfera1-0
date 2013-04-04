@@ -243,6 +243,7 @@ int configControler::configGenerator()
 	options.push_back("Konfig Serwera");
 	options.push_back("Konfiguracja GPRS");
 	options.push_back("Numer ser.");
+	options.push_back("Zapisz i rozpocznij");
 	confOptions.push_back("Ip");
 	confOptions.push_back("Port");
 	int len = name.size();
@@ -251,16 +252,17 @@ int configControler::configGenerator()
 	}
 	string title = compose.str();
 	int ret;
+	networkControler* conector = new networkControler(ip, port, apnc, userc, passwordc, seriallnumber);
 	while(1){
 		if(ret == 10) break;
 		if(item == 10) break;
-			item = miniScreen(title, 3, true);
+			item = miniScreen(title, 4, true);
 			switch(item){
 				case 0:
 				ret = miniScreen(title, 2, false);
 				break;
 				cout << flag << endl;
-				conector->gprsConfManual()
+				conector->gprsConfManual();
 				break;
 				case 2:
 					miniInput(options[2],seriallnumber);
@@ -272,6 +274,7 @@ int configControler::configGenerator()
 				break;
 			}
 	}
+	delete(conector);
 	string apnc = "internet";
 	string userc = "";
 	string passwordc = "";
@@ -302,7 +305,7 @@ int configControler::configGenerator()
 		goto zas;
 	}
 
-	conector->startConf(1);
+	conector->startConf();
 	delete conector;	
 	return 0;
 }
