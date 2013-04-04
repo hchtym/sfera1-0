@@ -307,21 +307,6 @@ void networkControler::gprsConfManual()
 	}
 }
 
-int networkControler::title(string str)
-{
-	int len = (21 - str.size());
-	stringstream compose;
-	compose.str("");
-	compose << str;
-	for(int i = 0; i < len; i++)
-	{
-		compose << " ";
-	}
-	str.clear();
-	str = compose.str();
-	Lcd_Printxy(0,0,1, const_cast<char *>(str.c_str()));
-}
-
 int networkControler::menuScrOther(const string &menuname,vector<string> &vect, int size, int index, int *menuid)
 {
 	cout << "jestem w mnue scr" << endl;
