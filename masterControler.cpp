@@ -269,13 +269,13 @@ int masterControler::checkVersion()
 		string buildD = returnBuildDate();
 		if(buildD.compare(temp) != 0)
 		{
-			network->sendAck(buildD);
+			file.close();
 			remove("versionFlag.txt");
-			//wydrukuj ze soft zostal zaktualizowany :D !! 
-			//device->printSoftUpdConfirm();
+			network->sendAck(buildD);
 		}
 		else
 		{
+			file.close();
 			remove("versionFlag.txt");
 			return 0;
 		}
@@ -283,6 +283,7 @@ int masterControler::checkVersion()
 	}
 	else
 	{
+		file.close();
 		remove("versionFlag.txt");
 		return 0;
 

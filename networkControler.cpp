@@ -239,12 +239,8 @@ int networkControler::softUpdate(string data)
 	Lcd_Printxy(0, 16, 0, "    Prosze czekac.");
 	Lcd_Printxy(6, 24, 0, "Sprawdzam dostepnosc");
 	Lcd_Printxy(0, 32, 0, "    aktualizacji.");
-	if( remove( "/home/strong_lion/scl_app_new" ) != 0 )
-    cout << "Error deleting file" << endl;
-  	else
-    cout << "File successfully deleted" << endl;
 	sleep(1);
-	ofstream newApp("/home/strong_lion/scl_app_new", ios_base::binary | ios_base::out | ios_base::app);
+	
 	char pCAPData[buffer*10];
 	unsigned char downloader[buffer * 10];
 	memset(downloader, 0, sizeof(downloader));
@@ -301,6 +297,10 @@ int networkControler::softUpdate(string data)
 	cout << info << endl;
 	if(info.compare("ok") == 0)
 	{
+		if( remove( "/home/strong_lion/scl_app_new" ) != 0 )
+	    cout << "Error deleting file" << endl;
+	  	else
+	    cout << "File successfully deleted" << endl;
 		//Lcd_Cls();
 		//title("Informacja");
 		cout << "wysylam potwierdzenie 'ok' " << endl;
@@ -440,6 +440,10 @@ int networkControler::softUpdate(string data)
 			Lcd_Printxy(0, 24, 0, "     Dziekuje za");
 			Lcd_Printxy(0, 32, 0, "     cierpliwosc.");
 			sleep(3);
+			return 0;
+		}
+		else
+		{
 			return 0;
 		}
 	}
@@ -762,17 +766,28 @@ int networkControler::updConf()
 		string dane(pCAPData);
         vector<string> tokens;
         int extraRange = 0;
+        int position = 0;
         string token = "epc.range";
         Tokenize(dane, tokens, ";");
         for (int i = 0; i < tokens.size() ; i++)
-        {
-        	string finder = tokens[i];
-        	unsigned found = finder.find(token);
-        	if(found!=std::string::npos)
-        	{
-        		extraRange++;
-        	}
-        }
+	    {
+	    	string search = tokens[i];
+			for (int j = 0; j < search.size() ; j++)
+			{
+				if(search[j] == token[position])
+				{
+					position++;
+					if(position == token.size())
+					{
+						extraRange++;
+					}
+				}
+				else
+				{
+					position =0;
+				}
+			}	
+	    }	
 
 
         std::vector<string>::iterator j;
