@@ -69,6 +69,7 @@ int networkControler::connectAllQuiet()
 		{
 			loger << "connect socket error !!" << endl;
 			perror("connect"); // zamienic na logowanie do pliku !
+			return 1;
 			//exit(1);
 		}
 		loger << "otwarlem socket i polaczylem sie" << endl;
