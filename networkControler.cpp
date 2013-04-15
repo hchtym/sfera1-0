@@ -695,7 +695,7 @@ string networkControler::getPointStatus(string cid)
 	{
 	//loger << "send filetx; error" << endl;
 	perror("send"); // logowanie do pliku !
-	return 1;
+	return "";
 	//exit(1);
 	}
 
@@ -705,7 +705,7 @@ string networkControler::getPointStatus(string cid)
 	{
 		//loger << "recive error" << endl;
 		perror("recive"); // logowanie do pliku !!
-		return 1;
+		return "";
 		//exit(1);
 	}
 	temp.str("");
