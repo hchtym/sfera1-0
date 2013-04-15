@@ -1097,7 +1097,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 						if ( rfidState == 1)
 						{
 							string hexNum = device->rfidRetrunStringId();
-							if( (hexNum.size() != 8 ) || (hexNum.size() == 1) ) break;
+							if( hexNum.size() != 8 ) break;
 							transSelling(hexNum);
 						}
 						else
@@ -1115,7 +1115,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 					if(rfidState == 1)
 					{
 						string hexNum = device->rfidRetrunStringId();
-						if( (hexNum.size() != 8 ) || (hexNum.size() == 1) ) break;
+						if( hexNum.size() != 8 ) break;
 						transSelling(hexNum);
 					}
 					else
