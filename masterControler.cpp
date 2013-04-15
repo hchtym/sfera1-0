@@ -738,11 +738,10 @@ int masterControler::dispMenu()
 			}else{
 				sellerLogout = true;
 				selling();
-				//network->updConf();
 			}
 			break;
 			case 2:
-				// tu bede nagrody
+				// tu beda nagrody
 			break;
 			case 3:
 				if (!loginFlag)
@@ -1063,10 +1062,8 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	        		Lcd_Printxy(1,16+(i*8),0,const_cast<char *>(str.c_str()) );
 	        	}
 	        }else{
-	//                      Lcd_Printxy(1, i+3, 0, "                 ");
 	        }
 		}
-	    //SetTimer(0, 30000);
 	    int left = -1;
 		cout << "wchodze do while odpowiedzialnego za wykrywanie guzikow timeout i inne" << endl;
 		Kb_Flush();
@@ -1082,14 +1079,11 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 				SetTimer(14,2100);
 
 			}
-			//cout << "zawartosc ret: " << cardState << endl;
 			DelayMs(90);
 			if ( (cardState&0x80) || (rfidState == 1) ){
 				if((cardState - 128) == 1) state = 1;
 				if((cardState - 128) == 2) state = 2;
 				if((cardState - 123) == 3) state = 3;
-				//cout << "zawartosc ret: " << cardState << endl;
-				//cout << "zawartosc state: " << state  << endl;
 
 				cout << "wykrylem swipe w menu" << endl;
 				if(!loginFlag){
@@ -1266,11 +1260,6 @@ int masterControler::menuScrOther(const string &menuname,vector<string> &vect, i
 
 	    	}
 
-	    	/*left = CheckTimer(0);
-	    	if(0 == left){
-	    		key = NOKEY;
-	    		break;
-	    	}*/
         }
 		switch(key){
 			case NOKEY:
@@ -1404,7 +1393,6 @@ void masterControler::screenSaver()
 			actDate.clear();
 			actDate = compose.str();
 			Lcd_Printxy(20,55,0, const_cast<char *>( actDate.c_str()) );
-			//cout << "zawartosc actDate: " << actDate << endl;
 		}
 		else
 		{
@@ -1413,7 +1401,6 @@ void masterControler::screenSaver()
 			actDate.clear();
 			actDate = compose.str();
 			Lcd_Printxy(20,55,0, const_cast<char *>( actDate.c_str()) );
-			//cout << "zawartosc actDate: " << actDate << endl;
 		}
 		
 
@@ -1548,7 +1535,7 @@ int masterControler::menuService()
 	int size = 0;
 	int usItem = 0;
 	string title = "Menu serwisowe";
-	string items = "Zapisz do RFID;Zczytaj RFID;Konfiguracja GRPS;Aktualizuj konfig.;Aktualizuj oprog.";
+	string items = "Zapisz do RFID;Sczytaj RFID;Konfiguracja GRPS;Aktualizuj konfig.;Aktualizuj oprog.";
 	vector<string> menuItems;
 	Tokenize(items,menuItems, ";");
 
@@ -1585,12 +1572,10 @@ int masterControler::menuService()
 					gprsConfMenu();
 				break;
 				case 3:
-					// Aktualizacja configa
 					network->updConf();
 					reloadConfig();
 				break;
 				case 4:
-					// aktualizacja softu !!
 					softUpdAck();
 				break;
 				case 5:
