@@ -1080,20 +1080,24 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 
 			}
 			DelayMs(90);
-			if ( (cardState&0x80) || (rfidState == 1) ){
+			if ( (cardState&0x80) || (rfidState == 1)
+			{
 				if((cardState - 128) == 1) state = 1;
 				if((cardState - 128) == 2) state = 2;
 				if((cardState - 123) == 3) state = 3;
 
 				cout << "wykrylem swipe w menu" << endl;
-				if(!loginFlag){
+				if(!loginFlag)
+				{
 					cout << "niezalogowany !" << endl;
 					ret1 = loginScr();
-					if(ret1 == 1){
+					if(ret1 == 1)
+					{
 						loginFlag = true;
 						if ( rfidState == 1)
 						{
 							string hexNum = device->rfidRetrunStringId();
+							if( (hexNum.size() != 8 ) || (hexNum.size() == 1) ) break;
 							transSelling(hexNum);
 						}
 						else
@@ -1104,11 +1108,14 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 					}else{
 						loginFlag = false;
 					}
-				}else{
+				}
+				else
+				{
 					cout << "zalogowany sprawdzam pkt !!" << endl;
 					if(rfidState == 1)
 					{
 						string hexNum = device->rfidRetrunStringId();
+						if( (hexNum.size() != 8 ) || (hexNum.size() == 1) ) break;
 						transSelling(hexNum);
 					}
 					else
