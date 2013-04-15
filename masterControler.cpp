@@ -684,7 +684,8 @@ int masterControler::dispMenu()
 				if(!loginFlag)
 				{
 					ret = loginScr();
-					if(ret == 1){
+					if(ret == 1)
+					{
 						loginFlag = true;
 						string logoutTimeout = config->returnParam("logout.timeout");
 						int timeout = atoi(logoutTimeout.c_str());
@@ -692,7 +693,6 @@ int masterControler::dispMenu()
 						{
 							logoutTimer = -1;
 							sellerLogout = false;
-							seller.clear();
 							break;
 						}
 						else
@@ -716,9 +716,11 @@ int masterControler::dispMenu()
 				}
 			break;
 			case 1:
-			if(!loginFlag){
+			if(!loginFlag)
+			{
 				ret = loginScr();
-				if(ret == 1){
+				if(ret == 1)
+				{
 					loginFlag = true;
 					string logoutTimeout = config->returnParam("logout.timeout");
 					int timeout = atoi(logoutTimeout.c_str());
@@ -726,7 +728,6 @@ int masterControler::dispMenu()
 					{
 						logoutTimer = -1;
 						sellerLogout = false;
-						seller.clear();
 						break;
 					}
 					else
@@ -735,12 +736,16 @@ int masterControler::dispMenu()
 						SetTimer(15, timeout* 1000);
 					}
 					selling();
-				}else{
+				}
+				else
+				{
 					sellerLogout = false;
 					loginFlag = false;
 					seller.clear();
 				}
-			}else{
+			}
+			else
+			{
 				sellerLogout = true;
 				SetTimer(15,timeout* 1000);
 				selling();
@@ -762,7 +767,6 @@ int masterControler::dispMenu()
 						{
 							logoutTimer = -1;
 							sellerLogout = false;
-							seller.clear();
 							break;
 						}
 						else
@@ -1048,7 +1052,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	}
 
 	cout << "jestem przed draw menu !" << endl;
-	//drawMenu:
+	drawMenu:
 	if(index2 < 0 || index2 > size -1) index2 =0;
 	if(index2 > visible -1 ) view = index2 - visible +1;
 	cout << "wchodze do while w menuscr" << endl;
@@ -1176,6 +1180,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 		    		loginFlag = false;
 		    		sellerLogout = false;
 		    		seller.clear();
+		    		goto drawMenu;
 		    	}
 	    	}
 
@@ -1193,6 +1198,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 		switch(key){
 			case NOKEY:
 				screenSaver();
+				goto drawMenu;
 		    break;
 		    case KEYCANCEL:
 		    case KEYBACKSPACE:
@@ -1219,8 +1225,8 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 
 		        	if(index2 >= view + visible) view = index2 -  visible +1;
 		        }
-		//      goto drawMenu;
-		        break;
+		      	goto drawMenu;
+		    break;
 		}
 		
 	}	
@@ -1809,16 +1815,24 @@ int masterControler::masterTitle(string str)
 	title(str);
 	stringstream compose;
 	string newTitle;
+	if(!loginFlag)
+	{
+		seller.clear();
+	}
+
 	for (int i = 0; i < (21 - seller.size()); i++)
 	{
 		compose << "-";
 	}
+
 	if (seller.size() > 0)
 	{
 		compose << seller;
 	}
+
 	newTitle = compose.str();
 	Lcd_Printxy(0, 8, 0, const_cast<char *>(newTitle.c_str()));
+
 }
 
 int masterControler::clear()
