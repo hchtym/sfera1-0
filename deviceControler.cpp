@@ -688,7 +688,9 @@ string deviceControler::rfidRetrunStringId()
 		if(hexCid[i] != '0')
 		len2++; 
 	}
+	cout << "jestem za for'em" << endl;
 	if ( len2 != 0 ) return "0";
+	cout << "Jestem ze if'em" << endl;
 
 	hexDec(decimal, hexCid);
 	cout << "zawartosc decial: " << decimal << endl;
