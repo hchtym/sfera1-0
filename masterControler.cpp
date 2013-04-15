@@ -673,6 +673,7 @@ int masterControler::dispMenu()
 	int usItem;
 	cout << "wchodze do while !!" << endl;
 	while(1){
+	logoutJump:
 		if(!loginFlag){
 			usItem = menuScr(title, displayMenuOff, displayMenuOff.size(), usItem, menuIdOff);
 		}else{
@@ -706,6 +707,7 @@ int masterControler::dispMenu()
 						sellerLogout = false;
 						loginFlag = false;
 						seller.clear();
+						goto logoutJump;
 					}
 				}
 				else
@@ -713,6 +715,7 @@ int masterControler::dispMenu()
 					sellerLogout = false;
 					loginFlag = false;
 					seller.clear();
+					goto logoutJump;
 				}
 			break;
 			case 1:
@@ -742,6 +745,7 @@ int masterControler::dispMenu()
 					sellerLogout = false;
 					loginFlag = false;
 					seller.clear();
+					goto logoutJump;
 				}
 			}
 			else
@@ -781,6 +785,7 @@ int masterControler::dispMenu()
 						sellerLogout = false;
 						loginFlag = false;
 						seller.clear();
+						goto logoutJump;
 					}
 				}
 				else
@@ -1090,7 +1095,6 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 				device->rfidRead();
 				leftX = -1;
 				SetTimer(14,2100);
-
 			}
 			DelayMs(90);
 			if ( (cardState&0x80) || (rfidState == 1) )
@@ -1126,6 +1130,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 						break;
 					}else{
 						loginFlag = false;
+						seller.clear();
 					}
 				}
 				else
