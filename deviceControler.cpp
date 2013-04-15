@@ -690,7 +690,11 @@ string deviceControler::rfidRetrunStringId()
 	}
 	cout << "zawartosc len: " << len << " zawartosc len2: " << len2 << endl;
 	cout << "jestem za for'em" << endl;
-	if ( len2 == 0 ) return nullString;
+	if ( len2 == 0 )
+	{
+		cout << "Zwracam nullString: " << nullString << endl;
+ 		return nullString;
+	}
 	cout << "Jestem ze if'em" << endl;
 
 	hexDec(decimal, hexCid);
