@@ -751,7 +751,7 @@ int masterControler::dispMenu()
 			else
 			{
 				sellerLogout = true;
-				SetTimer(15,timeout* 1000);
+				SetTimer(15, timeout* 1000);
 				selling();
 			}
 			break;
