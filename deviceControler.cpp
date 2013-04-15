@@ -1109,6 +1109,9 @@ string deviceControler::magCardRfidScan(bool kbd)
 				{
 					rfidRead();
 					hexNum = rfidRetrunStringId();
+					cout << "Tutaj sie wydupcam :D joł" << endl;
+					if( hexNum.size() != 8 ) break;
+					cout << "jesli nic nie zdupilem to powinno dzialac :D" << endl;
 					return hexNum;
 				}
 				cout <<  "za sprawdzeniem rfid" << endl;
