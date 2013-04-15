@@ -1818,6 +1818,7 @@ int masterControler::title(string str)
 
 int masterControler::masterTitle(string str)
 {
+	cout << "RYSUJE NOWE MENU !!" << endl;
 	title(str);
 	stringstream compose;
 	string newTitle;
