@@ -96,10 +96,11 @@ int networkControler::connectAllQuiet()
 
 int networkControler::updClock()
 {
-	connectAllQuiet();
+	int ret;
+	ret = connectAllQuiet();
+	if (ret == 1) return 0;
 	// wysylam zapytanie o clocka :D 
 	char pCAPData[buffer*10];
-	int ret;
 	char bufer[50000];
 	memset(bufer, 0, sizeof(bufer));
 	char temp[730];
@@ -188,8 +189,10 @@ int networkControler::disconnectAllQuiet()
 
 int networkControler::sendTransaction()
 {
+	int ret;
 	cout << "jestem w send trx" << endl;
-	connectAllQuiet();
+	ret = connectAllQuiet();
+	if(ret == 1) return 0;
 	cout << "wchodze do sendtrx" << endl;
 	sendTrx();
 	cout << "rozlaczam sie" << endl;
@@ -219,9 +222,11 @@ int networkControler::softAck(string date)
 	Lcd_Printxy(0, 16, 0, "    Prosze czekac.");
 	Lcd_Printxy(6, 24, 0, "Sprawdzam dostepnosc");
 	Lcd_Printxy(0, 32, 0, "    aktualizacji.");
+	int ret;
 
-	connectAllQuiet();
-	int ret = softUpdate(date);
+	ret = connectAllQuiet();
+	if(ret ==1) return 1;
+	ret = softUpdate(date);
 	disconnectAllQuiet();
 	cout << "jestem za disconnectAllQuiet a ret wynosi: " << ret << endl;
 	if(ret == 1)
@@ -683,6 +688,7 @@ string networkControler::getPointStatus(string cid)
 	memset(recived, 0, sizeof(recived));
 	stringstream temp;
 	string msg;
+	int ret;
 	int bytes_recv,bytes_sent;
 
 	temp.str("");
@@ -690,7 +696,8 @@ string networkControler::getPointStatus(string cid)
 	msg.clear();
 	msg = temp.str();
 
-	connectAllQuiet();
+	ret = connectAllQuiet();
+	if(ret == 1) return "";
 
 	if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1)
 	{
@@ -723,7 +730,9 @@ string networkControler::getPointStatus(string cid)
 
 int networkControler::sendAck(string date)
 {
-	connectAllQuiet();
+	int ret;
+	ret = connectAllQuiet();
+	if(ret == 1) return 0;
 
 
 	char pCAPData[buffer*10];
@@ -813,7 +822,9 @@ int networkControler::updConf()
 	memset(download, 0, sizeof(download));
 	int len,bytes_sent,bytes_recv;
 	int dataLen;
-	connectAllQuiet();
+	int ret;
+	ret = connectAllQuiet();
+	if(ret == 1) return 0;
 
 	compose.str("");
 	compose << "conf;" << snumer << ";" << confVer << "\0";
@@ -824,7 +835,7 @@ int networkControler::updConf()
 	{
 		//loger << "send filetx; error" << endl;
 		perror("send"); // logowanie do pliku !
-		return 1;
+		return 0;
 	}
 	//sleep(1);
 
@@ -832,7 +843,7 @@ int networkControler::updConf()
 	{
 		//loger << "recive error" << endl;
 		perror("recive"); // logowanie do pliku !!
-		return 1;
+		return 0;
 	}
 
 	compose.str("");
@@ -864,7 +875,7 @@ int networkControler::updConf()
 		    if((bytes_sent = send(sockfd, str, strlen(str), 0)) == -1 )
 		    {
 			    perror("send"); // logowanie do pliku !
-				return 1;
+				return 0;
     		}
     		else
     		{
@@ -874,7 +885,7 @@ int networkControler::updConf()
     		if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1)
     		{
     			perror("reciv"); // logowanie do pliku !!
-    			return 1;
+    			return 0;
     		}
     		else
     		{
@@ -885,7 +896,7 @@ int networkControler::updConf()
     		if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))== -1)
     		{
     			perror("send"); // logowanie do pliku !!
-    			return 1;
+    			return 0;
     		}
     		else
     		{
@@ -945,7 +956,7 @@ int networkControler::updConf()
 		if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1)
 		{
 			perror("send"); // logowanie do pliku !
-			return 1;
+			return 0;
 		}
 
 		cout << "wyslalem potwierdzenie, czekam na rozmiar" << endl;
@@ -953,7 +964,7 @@ int networkControler::updConf()
 		if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1)
 		{
     		perror("reciv"); // logowanie do pliku !!
-    		return 1;
+    		return 0;
     		//	exit(1);
     	}
     	else
@@ -967,7 +978,7 @@ int networkControler::updConf()
 		if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1)
 		{
 			perror("send"); // logowanie do pliku !
-			return 1;
+			return 0;
 		}
 
 		cout << "wysłałem potwierdzenie sciagam ostatni part configa." << endl;
@@ -983,7 +994,7 @@ int networkControler::updConf()
 			int recive = 0;
 				if((recive = recv(sockfd, download, dataLen, 0))== -1){
 		    		perror("Reciv"); // logowanie do pliku !!
-		    		return 1;
+		    		return 0;
 		    	}
 		    	else
 		    	{
