@@ -692,6 +692,7 @@ int masterControler::dispMenu()
 						{
 							logoutTimer = -1;
 							sellerLogout = false;
+							seller.clear();
 							break;
 						}
 						else
@@ -704,12 +705,14 @@ int masterControler::dispMenu()
 					{
 						sellerLogout = false;
 						loginFlag = false;
+						seller.clear();
 					}
 				}
 				else
 				{
 					sellerLogout = false;
 					loginFlag = false;
+					seller.clear();
 				}
 			break;
 			case 1:
@@ -723,6 +726,7 @@ int masterControler::dispMenu()
 					{
 						logoutTimer = -1;
 						sellerLogout = false;
+						seller.clear();
 						break;
 					}
 					else
@@ -734,9 +738,11 @@ int masterControler::dispMenu()
 				}else{
 					sellerLogout = false;
 					loginFlag = false;
+					seller.clear();
 				}
 			}else{
 				sellerLogout = true;
+				SetTimer(15,timeout* 1000);
 				selling();
 			}
 			break;
@@ -756,6 +762,7 @@ int masterControler::dispMenu()
 						{
 							logoutTimer = -1;
 							sellerLogout = false;
+							seller.clear();
 							break;
 						}
 						else
@@ -769,6 +776,7 @@ int masterControler::dispMenu()
 					{
 						sellerLogout = false;
 						loginFlag = false;
+						seller.clear();
 					}
 				}
 				else
