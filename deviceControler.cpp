@@ -699,8 +699,9 @@ string deviceControler::rfidRetrunStringId()
 	cout << "Jestem ze if'em" << endl;
 
 	hexDec(decimal, hexCid);
-	cout << "zawartosc decial: " << decimal << endl;
-	compose << decimal;
+	int rfidValue = atoi(decimal);
+	cout << "zawartosc decial: " << rfidValue << endl;
+	compose << rfidValue;
 	cidRfid.clear();
 	cidRfid = compose.str();
 	cout << "cid z rfid: " << cidRfid << endl;
