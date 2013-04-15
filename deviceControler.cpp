@@ -665,6 +665,7 @@ string deviceControler::rfidRetrunStringId()
 {
 	cout << "ZNAJDUJE SIE W ZWRACANIU STRINGA !!" << endl;
 	stringstream compose;
+	string nullString = "0";
 	compose.str("");
 	string cid;
 	char buf[100];
@@ -689,7 +690,7 @@ string deviceControler::rfidRetrunStringId()
 		len2++; 
 	}
 	cout << "jestem za for'em" << endl;
-	if ( len2 != 0 ) return "0";
+	if ( len2 != 0 ) return nullString;
 	cout << "Jestem ze if'em" << endl;
 
 	hexDec(decimal, hexCid);
