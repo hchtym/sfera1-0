@@ -682,7 +682,7 @@ string deviceControler::rfidRetrunStringId()
 	cout << "zawartosc hexCid: " << hexCid << endl;
 
 	int len = strlen(hexCid);
-	int len2
+	int len2;
 	for(int i = 0; i < len; i++)
 	{
 		if(hexCid[i] != '0')
