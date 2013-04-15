@@ -1008,6 +1008,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	int rfidState = 0;
 	int state = 0;
 	int leftX = -1;
+	string hexNum;
 	SetTimer(14,2100);
 	int selLogout = -1;
 	int ret1 = 0;
@@ -1096,9 +1097,15 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 						loginFlag = true;
 						if ( rfidState == 1)
 						{
-							string hexNum = device->rfidRetrunStringId();
-							if( hexNum.size() != 10 ) break;
-							transSelling(hexNum);
+							hexNum = device->rfidRetrunStringId();
+							if( hexNum.size() != 10 )
+							{
+								break;
+							}
+							else
+							{
+								transSelling(hexNum);
+							}
 						}
 						else
 						{	
@@ -1114,9 +1121,15 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 					cout << "zalogowany sprawdzam pkt !!" << endl;
 					if(rfidState == 1)
 					{
-						string hexNum = device->rfidRetrunStringId();
-						if( hexNum.size() != 10 ) break;
-						transSelling(hexNum);
+						hexNum = device->rfidRetrunStringId();
+						if( hexNum.size() != 10 )
+						{
+							break;
+						}
+						else
+						{
+							transSelling(hexNum);
+						}
 					}
 					else
 					{
