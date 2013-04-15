@@ -1215,6 +1215,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 		            index2 =0;
 		            view = 0;
 		        }
+		        goto drawMenu;
 		     break;
 		     case KEYUP:
 		     	if(index2 >0){
@@ -1817,6 +1818,7 @@ int masterControler::masterTitle(string str)
 	string newTitle;
 	if(!loginFlag)
 	{
+		cout << "USER LOGOUT SUKO !" << endl;
 		seller.clear();
 	}
 
