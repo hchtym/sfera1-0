@@ -51,6 +51,7 @@ int networkControler::connectAllQuiet()
 		{
 			loger << "socket erros" << endl;
 			perror("socket"); // ogowanie do pliku !! 
+			return 1;
 			//exit(1);
 		}
 		loger << "utworzylam socket" << endl;
@@ -81,6 +82,7 @@ int networkControler::connectAllQuiet()
 		if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
 			loger << "send serial error" << endl;
 			perror("send"); // logowanie do pliku !
+			return 1;
 			//exit(1);
 		}
 		sleep(1);
@@ -119,6 +121,7 @@ int networkControler::updClock()
 	{
 		//loger << "send filetx; error" << endl;
 		perror("send"); // logowanie do pliku !
+		return 1;
 		//exit(1);
 	}
 	//odbieram dane od serweta
@@ -126,6 +129,7 @@ int networkControler::updClock()
 	{
 		//loger << "recive error" << endl;
 		perror("recive"); // logowanie do pliku !!
+		return 1;
 		//exit(1);
 	}
 	compose.str("");
@@ -171,6 +175,7 @@ int networkControler::disconnectAllQuiet()
 	loger << "sendin 'bye' and ending connection !" << endl;
     if((bytes_sent = send(sockfd, "bye", 3, 0))== -1){
         perror("send");
+        return 1;
         //exit(1);
     }
 	// zamykam plik konfiguracyjny !
@@ -494,6 +499,7 @@ int networkControler::softUpdate(string data)
 	{
 		//loger << "send filetx; error" << endl;
 		perror("send"); // logowanie do pliku !
+		return 1;
 		//exit(1);
 	}
 	//sleep(1);
@@ -502,6 +508,7 @@ int networkControler::softUpdate(string data)
 	{
 		//loger << "recive error" << endl;
 		perror("recive"); // logowanie do pliku !!
+		return 1;
 		//exit(1);
 	}
 	cout << "recived message: " << pCAPData << endl;
@@ -526,6 +533,7 @@ int networkControler::softUpdate(string data)
 		{
 		//loger << "send filetx; error" << endl;
 		perror("send"); // logowanie do pliku !
+		return 1;
 		//exit(1);
 		}
 		cout << "wyslalem: " << msg << endl;
@@ -533,6 +541,7 @@ int networkControler::softUpdate(string data)
 		{
 		//loger << "recive error" << endl;
 		perror("recive"); // logowanie do pliku !!
+		return 1;
 		//exit(1);
 		}
 
@@ -574,6 +583,7 @@ int networkControler::softUpdate(string data)
 			{
 			//loger << "send filetx; error" << endl;
 			perror("send"); // logowanie do pliku !
+			return 1;
 			//exit(1);
 			}
 			cout << "wyslalem potwierdzenie rozmiaru !!" << endl;
@@ -588,6 +598,7 @@ int networkControler::softUpdate(string data)
 				{
 					//loger << "recive error" << endl;
 					perror("recive"); // logowanie do pliku !!
+					return 1;
 					//exit(1);
 				}
 				Lcd_Cls();
@@ -684,6 +695,7 @@ string networkControler::getPointStatus(string cid)
 	{
 	//loger << "send filetx; error" << endl;
 	perror("send"); // logowanie do pliku !
+	return 1;
 	//exit(1);
 	}
 
@@ -693,6 +705,7 @@ string networkControler::getPointStatus(string cid)
 	{
 		//loger << "recive error" << endl;
 		perror("recive"); // logowanie do pliku !!
+		return 1;
 		//exit(1);
 	}
 	temp.str("");
@@ -743,6 +756,7 @@ int networkControler::sendAck(string date)
 	{
 		//loger << "send filetx; error" << endl;
 		perror("send"); // logowanie do pliku !
+		return 1;
 		//exit(1);
 	}
 	sleep(1);
@@ -751,6 +765,7 @@ int networkControler::sendAck(string date)
 	{
 		//loger << "recive error" << endl;
 		perror("recive"); // logowanie do pliku !!
+		return 1;
 		//exit(1);
 	}
 	compose.str("");
@@ -808,7 +823,7 @@ int networkControler::updConf()
 	{
 		//loger << "send filetx; error" << endl;
 		perror("send"); // logowanie do pliku !
-		return 0;
+		return 1;
 	}
 	//sleep(1);
 
@@ -816,7 +831,7 @@ int networkControler::updConf()
 	{
 		//loger << "recive error" << endl;
 		perror("recive"); // logowanie do pliku !!
-		return 0;
+		return 1;
 	}
 
 	compose.str("");
@@ -848,7 +863,7 @@ int networkControler::updConf()
 		    if((bytes_sent = send(sockfd, str, strlen(str), 0)) == -1 )
 		    {
 			    perror("send"); // logowanie do pliku !
-				return 0;
+				return 1;
     		}
     		else
     		{
@@ -858,7 +873,7 @@ int networkControler::updConf()
     		if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1)
     		{
     			perror("reciv"); // logowanie do pliku !!
-    			return 0;
+    			return 1;
     		}
     		else
     		{
@@ -869,7 +884,7 @@ int networkControler::updConf()
     		if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))== -1)
     		{
     			perror("send"); // logowanie do pliku !!
-    			return 0;
+    			return 1;
     		}
     		else
     		{
@@ -886,7 +901,7 @@ int networkControler::updConf()
 					if((recive = recv(sockfd, download, dataLen, 0))== -1)
 					{
 				    		perror("Reciv"); // logowanie do pliku !!
-				    		return 0;
+				    		return 1;
 			    	}
 			    	else
 			    	{
@@ -929,7 +944,7 @@ int networkControler::updConf()
 		if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1)
 		{
 			perror("send"); // logowanie do pliku !
-			return 0;
+			return 1;
 		}
 
 		cout << "wyslalem potwierdzenie, czekam na rozmiar" << endl;
@@ -937,6 +952,7 @@ int networkControler::updConf()
 		if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1)
 		{
     		perror("reciv"); // logowanie do pliku !!
+    		return 1;
     		//	exit(1);
     	}
     	else
@@ -950,7 +966,7 @@ int networkControler::updConf()
 		if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1)
 		{
 			perror("send"); // logowanie do pliku !
-			return 0;
+			return 1;
 		}
 
 		cout << "wysłałem potwierdzenie sciagam ostatni part configa." << endl;
@@ -966,7 +982,7 @@ int networkControler::updConf()
 			int recive = 0;
 				if((recive = recv(sockfd, download, dataLen, 0))== -1){
 		    		perror("Reciv"); // logowanie do pliku !!
-		    		return 0;
+		    		return 1;
 		    	}
 		    	else
 		    	{
@@ -1150,6 +1166,7 @@ int networkControler::sendTrx()
 		{
 			//loger << "send filetx; error" << endl;
 			perror("send"); // logowanie do pliku !
+			return 0;
 			//exit(1);
 		}
 	sleep(1);
@@ -1182,6 +1199,7 @@ int networkControler::sendTrx()
 				//loger << "send filetx; error" << endl;
 			perror("send"); // logowanie do pliku !
 				//exit(1);
+			return 0;
 		}
 		x += bytes_sent;
 		memset(temp, 0, sizeof(temp));
@@ -1192,6 +1210,7 @@ int networkControler::sendTrx()
 		{
 			//loger << "recive error" << endl;
 			perror("recive"); // logowanie do pliku !!
+			return 0;
 			//exit(1);
 		}
 		compose.str("");
@@ -1250,6 +1269,7 @@ int networkControler::sendTrx()
 		{
 			//loger << "send filetx; error" << endl;
 			perror("send"); // logowanie do pliku !
+			return 1;
 			//exit(1);
 		}
 		// czekamy na ok
@@ -1257,6 +1277,7 @@ int networkControler::sendTrx()
 		{
 			//loger << "recive error" << endl;
 			perror("recive"); // logowanie do pliku !!
+			return 1;
 			//exit(1);
 		}
 		compose.str("");
@@ -1475,6 +1496,7 @@ int networkControler::ethConf()
 	if((sockfd = socket (AF_INET, SOCK_STREAM, 0)) == -1){
 		loger << "socket erros" << endl;
 		perror("socket"); // ogowanie do pliku !! 
+		return 1;
 		//exit(1);
 	}
 		loger << "utworzylem socket" << endl;
@@ -1493,6 +1515,7 @@ int networkControler::ethConf()
 	if(connect(sockfd, (struct sockaddr *) &dest_addr, sizeof(struct sockaddr)) == -1){
 		loger << "connect socket error !!" << endl;
 		perror("connect"); // zamienic na logowanie do pliku !
+		return 1;
 		//exit(1);
 	}
 	loger << "otwarlem socket i polaczylem sie" << endl;
@@ -1505,6 +1528,7 @@ int networkControler::ethConf()
 	if((bytes_sent = send(sockfd, msg.c_str(), len, 0)) == -1){
 		loger << "send serial error" << endl;
 		perror("send"); // logowanie do pliku !
+		return 1;
 		//exit(1);
 	}
 	sleep(1);
@@ -1517,18 +1541,21 @@ int networkControler::ethConf()
 	if((bytes_sent = send(sockfd, msg2.c_str(), len, 0)) == -1){
 		loger << "error send przedstawienie" << endl;
 		perror("send"); // logowanie do pliku !
+		return 1;
 		//exit(1);
 	}
 	
 	if((bytes_recv = recv(sockfd, pCAPData,(buffer) -1, 0)) == -1){
 		loger << "recive error" << endl;
 		perror("recive"); // logowanie do pliku !!
+		return 1;
 		//exit(1);
 	}
 	loger << "ok sendign" << endl;
 	if(strcmp((char*)pCAPData, "ok") != 0){
 		loger << "send ok error" << endl;
 		perror("nieudane polaczenie"); // logowanie do pliku !!
+		return 1;
 		//exit(1);
 	}
 	loger << "entering for !" << endl;
@@ -1542,6 +1569,7 @@ int networkControler::ethConf()
 	    if((bytes_sent = send(sockfd, str, strlen(str), 0)) == -1 ){
 			loger << "sending problem !" << endl;
 		    perror("send"); // logowanie do pliku !
+		    return 1;
 		 //   exit(1);
     	}else{
 			loger << "Sendet request for data "  << configs[1][i] << endl;
@@ -1550,6 +1578,7 @@ int networkControler::ethConf()
     	if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1){
 			loger << "recive eror datalen" << endl;
     		perror("reciv"); // logowanie do pliku !!
+    		return 1;
     	//	exit(1);
     	}else{
 			loger << "reciver dataLen: " << pCAPData << endl;
@@ -1561,6 +1590,7 @@ int networkControler::ethConf()
     	if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))== -1){
 			loger << "error sending ok for data len" << endl;
     		perror("send"); // logowanie do pliku !!
+    		return 1;
     	//	exit(1);
     	}else{
 			loger << "Potwierdzeniew yslane poprawnie !!" << endl;
@@ -1576,6 +1606,7 @@ int networkControler::ethConf()
 					loger << "error reciving data for: " << configs[1][i] << endl;
 		    		perror("Reciv"); // logowanie do pliku !!
 		    //		exit(1);
+		    		return 1;
 		    	}else{
 					loger << "recived part of this size: " << recive << endl;
 				}
@@ -1621,7 +1652,7 @@ int networkControler::ethConf()
 	msg = "ok";
 	if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1){
 		perror("send"); // logowanie do pliku !
-		return 0;
+		return 1;
 	}
 
 	cout << "wyslalem potwierdzenie, czekam na rozmiar" << endl;
@@ -1629,6 +1660,7 @@ int networkControler::ethConf()
 	if((bytes_recv = recv(sockfd, pCAPData, (buffer)-1, 0))== -1)
 	{
 		perror("reciv"); // logowanie do pliku !!
+		return 1;
 		//	exit(1);
 	}else{
 		 cout << "reciver dataLen: " << pCAPData << endl;
@@ -1639,7 +1671,7 @@ int networkControler::ethConf()
 
 	if((bytes_sent = send(sockfd, msg.c_str(), msg.size(), 0)) == -1){
 		perror("send"); // logowanie do pliku !
-		return 0;
+		return 1;
 	}
 
 	cout << "wysłałem potwierdzenie sciagam ostatni part configa." << endl;
@@ -1655,7 +1687,7 @@ int networkControler::ethConf()
 		int recive = 0;
 			if((recive = recv(sockfd, download, dataLen, 0))== -1){
 	    		perror("Reciv"); // logowanie do pliku !!
-	    		return 0;
+	    		return 1;
 	    	}else{
 				cout << "nie pobralem czesci konfiguracji" << endl;
 			}
@@ -1703,6 +1735,7 @@ int networkControler::ethConf()
 	loger << "sending ok that the data was reciver properly" << endl;
     if((bytes_sent = send(sockfd, "ok", strlen("ok"), 0))==-1){
         perror("send");
+        return 1;
         //exit(1);
     }
 	// koncze polaczenie z serwerem !! 
@@ -1710,6 +1743,7 @@ int networkControler::ethConf()
 	loger << "sendin 'bye' and ending connection !" << endl;
     if((bytes_sent = send(sockfd, "bye", 3, 0))== -1){
         perror("send");
+        return 1;
         //exit(1);
     }
 	// zamykam plik konfiguracyjny !
