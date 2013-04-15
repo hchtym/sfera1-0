@@ -101,20 +101,15 @@ int networkControler::updClock()
 	memset(bufer, 0, sizeof(bufer));
 	char temp[730];
 	memset(temp, 0, sizeof(temp));
-	//int ulLen =0;
-	//int x =0;
-	//int ulHandle =0;
 	memset(pCAPData, 0, sizeof(pCAPData));
 	stringstream compose; 
 	string msg;
-	//int sent;
 	string serwTime;
 	compose.str("");
 	cout << "tworze stream" << endl;
 	compose << "clock"; //<< endl;
 	msg = compose.str();
 	int len,bytes_sent,bytes_recv;
-	//int resend = 0;
 	len = msg.size();
 	bytes_sent = 0;
 	bytes_recv = 0;
@@ -1725,7 +1720,6 @@ int networkControler::ethConf()
 
 int networkControler::startConf()
 {
-
 	ethConf();
 	return 0;
 }

@@ -1008,6 +1008,8 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	int cardState = 0;
 	int rfidState = 0;
 	int state = 0;
+	int leftX = -1;
+	SetTimer(14,1100);
 	int selLogout = -1;
 	int ret1 = 0;
 	int timeout =0;
@@ -1071,8 +1073,15 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	    while(1){
 			DelayMs(50);
 			cardState = Mcr_Read((BYTE *)track1, (BYTE *)track2, (BYTE *)track3);
-			//rfidState = device->rfidSilentScan();
-			//device->rfidRead();
+			leftX = CheckTimer(14);
+			if(leftX == 0)
+			{
+				rfidState = device->rfidSilentScan();
+				device->rfidRead();
+				leftX = -1;
+				SetTimer(14,1100);
+
+			}
 			//cout << "zawartosc ret: " << cardState << endl;
 			DelayMs(90);
 			if ( (cardState&0x80) || (rfidState == 1) ){
