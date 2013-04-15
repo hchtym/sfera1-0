@@ -616,6 +616,8 @@ int masterControler::dispMenu()
 	cout << "tworze vectory dusplay menu on/off" << endl;
 	vector<string> displayMenuOn;
 	vector<string> displayMenuOff;
+	string logoutTimeout = config->returnParam("logout.timeout");
+	int timeout = atoi(logoutTimeout.c_str());
 
 
 	cout << "parsuje pliki opcji i pliki pozycji menu dla zalogowania i niezalogowania" << endl;
@@ -725,8 +727,6 @@ int masterControler::dispMenu()
 				if(ret == 1)
 				{
 					loginFlag = true;
-					string logoutTimeout = config->returnParam("logout.timeout");
-					int timeout = atoi(logoutTimeout.c_str());
 					if (timeout == 0)
 					{
 						logoutTimer = -1;
