@@ -1209,7 +1209,11 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 		    case KEYBACKSPACE:
 		        return KEYCANCEL;
 			break;
-		    case KEYENTER: 
+		    case KEYENTER:
+		    	if(menuid[index2] == 0)
+		    	{
+		    		if(loginFlag == false) seller.clear();
+		    	}
 				return menuid[index2];
 			break;
 		    case KEYDOWN:
