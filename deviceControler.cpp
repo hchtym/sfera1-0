@@ -683,7 +683,7 @@ string deviceControler::rfidRetrunStringId()
 
 	int len = strlen(hexCid);
 	int len2
-	for (int i = 0; i < len; i++)
+	for(int i = 0; i < len; i++)
 	{
 		if(hexCid[i] != '0')
 		len2++; 
