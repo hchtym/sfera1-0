@@ -1063,6 +1063,10 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	cout << "wchodze do while w menuscr" << endl;
 	while(1){
 		clear();
+		if(loginFlag == false)
+		{
+			seller.clear();
+		}
 	    masterTitle(menuname);
 	    cout << "jestem za nowym menu." << endl;
 		for(i=0; i < visible; i++){
