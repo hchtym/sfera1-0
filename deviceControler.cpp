@@ -673,6 +673,7 @@ string deviceControler::rfidRetrunStringId()
 	memset(buf, 0, sizeof(0));
 	char hexCid[32];
 	memset(hexCid, 0, sizeof(hexCid));
+	memset(decimal, 0, sizeof(decimal));
 	compose << "00";
 
 	for(int i=0; i<16; i++)
@@ -1114,7 +1115,7 @@ string deviceControler::magCardRfidScan(bool kbd)
 					rfidRead();
 					hexNum = rfidRetrunStringId();
 					cout << "Tutaj sie wydupcam :D joł" << endl;
-					if( hexNum.size() != 8 ) break;
+					if( hexNum.size() != 10 ) break;
 					cout << "jesli nic nie zdupilem to powinno dzialac :D" << endl;
 					return hexNum;
 				}
