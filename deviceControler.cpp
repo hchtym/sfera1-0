@@ -667,7 +667,7 @@ string deviceControler::rfidRetrunStringId()
 	stringstream compose;
 	string nullString = "0";
 	compose.str("");
-	string cid;
+	string cidRfid;
 	char buf[100];
 	char decimal[100];
 	memset(buf, 0, sizeof(0));
@@ -701,11 +701,11 @@ string deviceControler::rfidRetrunStringId()
 	hexDec(decimal, hexCid);
 	cout << "zawartosc decial: " << decimal << endl;
 	compose << decimal;
-	cid.clear();
-	cid = compose.str();
-	cout << "cid z rfid: " << cid << endl;
-	cout << "ZWRACAM WARTOSC CID: " << cid << endl;
-	return cid;
+	cidRfid.clear();
+	cidRfid = compose.str();
+	cout << "cid z rfid: " << cidRfid << endl;
+	cout << "ZWRACAM WARTOSC CID: " << cidRfid << endl;
+	return cidRfid;
 }
 
 int deviceControler::rfidWrite(string input)
