@@ -20,6 +20,8 @@ using namespace std;
 
 int main()
 {
+	int rfidRet;
+
 	unsigned char lcdLogo[] = 
 	{
 		0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 
@@ -139,7 +141,32 @@ int main()
 
 	delete(config);
 	//RF_Close();
-	RF_Init();
+	rfidRet = RF_Init();
+	if(rfidRet == ERR_OK)
+	{
+		properRFID = true;
+	}
+	else
+	{
+		properRFID = false;
+	}
+	if(properRFID == false)
+	{
+		rfidRet = RF_Close();
+		sleep(5);
+		if (rfidRet == ERR_OK)
+		{
+			rfidRet = RF_Init();
+			if(rfidRet == ERR_OK)
+			{
+				properRFID = true;
+			}
+			else
+			{
+				properRFID = false;
+			}
+		}
+	}
 	char bufer[6];
 	pid_t pID = fork();
 	if(pID == 0) /* child */
