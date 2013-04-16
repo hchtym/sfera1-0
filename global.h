@@ -1,5 +1,5 @@
-#ifndef _DEVICE_CONTROLER_H
-#define _DEVICE_CONTROLER_H
+#ifndef _GLOBAL_H
+#define _GLOBAL_H
 
 extern bool properRFID;
 
