@@ -17,6 +17,8 @@ extern "C"{
 #include "all_headers.h"	
 }
 
+bool properRFID;
+
 using namespace std;
 
 class deviceControler{
