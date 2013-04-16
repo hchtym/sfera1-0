@@ -10,11 +10,9 @@
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
-//#include "global.h"
+#include "global.h"
 //#include <cstdlib.h>
 //#include "internal.h"
-
-bool properRFIDinit;
 
 extern "C"{
 #include "all_headers.h"	
