@@ -776,6 +776,7 @@ int deviceControler::rfidWrite(string input)
 
 int deviceControler::rfidDisplay()
 {
+	BYTE key;
 	Lcd_Cls();
 	char buf[100];
 	memset(buf, 0, sizeof(buf));
@@ -805,7 +806,19 @@ int deviceControler::rfidDisplay()
 	}
 
 	Lcd_Printxy(0,32,0, buf);
-	sleep(5);
+	while(1)
+	{
+		if(!Kb_Hit())
+    	{
+    		key = Kb_GetKey();
+    		if(key !=NOKEY)
+    		{
+    			if(key == KEYCANCEL) return 0;
+    			else Kb_Flush();
+    		}
+
+    	}
+	}
 }
 
 int deviceControler::rfidWrite()
