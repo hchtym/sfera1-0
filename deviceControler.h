@@ -14,6 +14,8 @@
 //#include <cstdlib.h>
 //#include "internal.h"
 
+bool properRFID;
+
 extern "C"{
 #include "all_headers.h"	
 }
