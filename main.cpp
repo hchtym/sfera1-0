@@ -11,7 +11,6 @@
 #include "masterControler.h"
 #include "networkControler.h"
 #include "configControler.h"
-#include "global.h"
 
 #define FIFO_NAME "fifo_file"
 
@@ -168,7 +167,6 @@ int main()
 			}
 		}
 	}
-	char bufer[6];
 	pid_t pID = fork();
 	if(pID == 0) /* child */
 	{
