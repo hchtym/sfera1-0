@@ -1135,14 +1135,14 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 							{
 								transSelling(hexNum);
 								loginFlag = true;
-								goto drawMenu;
+								return menuid[index2];
 							}
 						}
 						else
 						{	
 							transSelling(state, track1, track2, track3);
 							loginFlag = true;
-							goto drawMenu;
+							return menuid[index2];
 						}
 						break;
 					}
@@ -1150,7 +1150,6 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 					{
 						loginFlag = false;
 						seller.clear();
-						goto drawMenu;
 					}
 				}
 				else
@@ -1167,14 +1166,14 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 						{
 							transSelling(hexNum);
 							loginFlag = true;
-							goto drawMenu;
+							return menuid[index2];
 						}
 					}
 					else
 					{
 						transSelling(state, track1, track2, track3);
 						loginFlag = true;
-						goto drawMenu;
+						return menuid[index2];
 					}
 					break;
 				}
