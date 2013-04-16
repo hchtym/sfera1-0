@@ -703,6 +703,7 @@ int masterControler::dispMenu()
 						{
 							sellerLogout = true;
 							SetTimer(15, timeout* 1000);
+							goto logoutJump;
 						}
 					}
 					else
@@ -740,6 +741,7 @@ int masterControler::dispMenu()
 						SetTimer(15, timeout* 1000);
 					}
 					selling();
+					goto logoutJump;
 				}
 				else
 				{
@@ -754,6 +756,7 @@ int masterControler::dispMenu()
 				sellerLogout = true;
 				SetTimer(15, timeout* 1000);
 				selling();
+				goto logoutJump;
 			}
 			break;
 			case 2:
@@ -780,6 +783,7 @@ int masterControler::dispMenu()
 							SetTimer(15, timeout* 1000);
 						}
 						checkPoints();
+						goto logoutJump;
 					}
 					else
 					{
@@ -793,6 +797,7 @@ int masterControler::dispMenu()
 				{
 					sellerLogout = true;
 					checkPoints();
+					goto logoutJump;
 				}
 			break;
 			case 4:
@@ -1129,16 +1134,23 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 							else
 							{
 								transSelling(hexNum);
+								loginFlag = true;
+								goto drawMenu;
 							}
 						}
 						else
 						{	
 							transSelling(state, track1, track2, track3);
+							loginFlag = true;
+							goto drawMenu;
 						}
 						break;
-					}else{
+					}
+					else
+					{
 						loginFlag = false;
 						seller.clear();
+						goto drawMenu;
 					}
 				}
 				else
@@ -1154,11 +1166,15 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 						else
 						{
 							transSelling(hexNum);
+							loginFlag = true;
+							goto drawMenu;
 						}
 					}
 					else
 					{
-						transSelling(state, track1, track2, track3);	
+						transSelling(state, track1, track2, track3);
+						loginFlag = true;
+						goto drawMenu;
 					}
 					break;
 				}
