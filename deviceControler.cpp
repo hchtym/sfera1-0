@@ -668,10 +668,10 @@ string deviceControler::rfidRetrunStringId()
 	string nullString = "0";
 	compose.str("");
 	string cidRfid;
-	char buf[100];
-	char decimal[100];
+	char buf[105];
+	char decimal[105];
 	memset(buf, 0, sizeof(0));
-	char hexCid[32];
+	char hexCid[35];
 	memset(hexCid, 0, sizeof(hexCid));
 	memset(decimal, 0, sizeof(decimal));
 	compose << "00";
