@@ -10,15 +10,13 @@
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
+#include "global.h"
 //#include <cstdlib.h>
 //#include "internal.h"
 
 extern "C"{
 #include "all_headers.h"	
 }
-
-extern bool properRFID;
-
 using namespace std;
 
 class deviceControler{

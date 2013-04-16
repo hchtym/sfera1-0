@@ -11,6 +11,7 @@
 #include "masterControler.h"
 #include "networkControler.h"
 #include "configControler.h"
+#include "global.h"
 
 #define FIFO_NAME "fifo_file"
 
