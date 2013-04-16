@@ -1135,7 +1135,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 							hexNum = device->rfidRetrunStringId();
 							if( hexNum.size() != 10 )
 							{
-								break;
+								return 69;
 							}
 							else
 							{
