@@ -679,8 +679,10 @@ int masterControler::dispMenu()
 	logoutJump:
 		if(!loginFlag){
 			usItem = menuScr(title, displayMenuOff, displayMenuOff.size(), usItem, menuIdOff);
+			goto logoutJump;
 		}else{
 			usItem = menuScr(title, displayMenuOn, displayMenuOn.size(), usItem, menuIdOn);
+			goto logoutJump;
 		}
 		cout << usItem << endl;
 		switch(usItem){
@@ -1225,7 +1227,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 		switch(key){
 			case NOKEY:
 				screenSaver();
-				goto drawMenu;
+				//goto drawMenu;
 		    break;
 		    case KEYCANCEL:
 		    case KEYBACKSPACE:
