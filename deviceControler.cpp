@@ -2,6 +2,8 @@
 #include "masterControler.h"
 #include "configControler.h"
 
+extern bool properRFIDinit;
+
 using namespace std;
 
 BYTE baPrinterLogo2[] = { //width 50 height 252 
