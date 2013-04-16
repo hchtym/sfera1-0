@@ -1,6 +1,7 @@
 #include "masterControler.h"
 #include "configControler.h"
 #include "deviceControler.h"
+#include "global.h"
 #include <string>
 
 #define BUFSIZE 1024
@@ -1606,13 +1607,19 @@ int masterControler::menuService()
 			switch(usItem)
 			{
 				case 0:
-					device->rfidScan();
-					device->rfidWrite();
+					if (properRFIDinit == true)
+					{
+						device->rfidScan();
+						device->rfidWrite();
+					}
 				break;
 				case 1:
-					device->rfidScan();
-					device->rfidRead();
-					device->rfidDisplay();
+					if (properRFIDinit == true)
+					{
+						device->rfidScan();
+						device->rfidRead();
+						device->rfidDisplay();
+					}
 				break;
 				case 2:
 					gprsConfMenu();
