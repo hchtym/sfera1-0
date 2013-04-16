@@ -679,7 +679,11 @@ int masterControler::dispMenu()
 	logoutJump:
 		if(!loginFlag){
 			usItem = menuScr(title, displayMenuOff, displayMenuOff.size(), usItem, menuIdOff);
-			if(usItem == 69) goto logoutJump;
+			if(usItem == 69) 
+			{
+				loginFlag = true;
+				goto logoutJump;
+			}
 		}else{
 			usItem = menuScr(title, displayMenuOn, displayMenuOn.size(), usItem, menuIdOn);
 			if(usItem == 69) goto logoutJump;
