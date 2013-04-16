@@ -637,12 +637,12 @@ int deviceControler::rfidSilentScan()
 		memset(rfidIdBufer, 0, sizeof(rfidIdBufer));
 		memset(rfidSerialNo, 0, sizeof(rfidSerialNo));
 
-		cout << "jestem w rfid silen scan !" << endl;
+		//cout << "jestem w rfid silen scan !" << endl;
 
 		if(ERR_OK == RF_WaitCard_Timeout(RF_M1, rfidSerialNo, 3))
 		{
 			rfidType = "M1";
-			cout << "Zawartosc poczatkowego segmentu: " << rfidSerialNo << endl;
+			//cout << "Zawartosc poczatkowego segmentu: " << rfidSerialNo << endl;
 			cout << "M1" << endl;
 			if(rfidSerialNo[0] > 0)
 			{
@@ -653,7 +653,7 @@ int deviceControler::rfidSilentScan()
 
 		if(ERR_OK == RF_WaitCard_Timeout(RF_TYPE_A, rfidSerialNo, 3))
 		{
-			cout << "typeA" << endl;
+			//cout << "typeA" << endl;
 			rfidType = "typeA";
 			if(rfidSerialNo[0] > 0)
 			{
@@ -661,7 +661,7 @@ int deviceControler::rfidSilentScan()
 				return 1;
 			}
 		}
-		cout << "wychodze z rfid silentscan !" << endl;
+		//cout << "wychodze z rfid silentscan !" << endl;
 		return 0;
 	}
 	else
