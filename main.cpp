@@ -145,13 +145,13 @@ int main()
 	rfidRet = RF_Init();
 	if(rfidRet == ERR_OK)
 	{
-		properRFID = true;
+		properRFIDinit = true;
 	}
 	else
 	{
-		properRFID = false;
+		properRFIDinit = false;
 	}
-	if(properRFID == false)
+	if(properRFIDinit == false)
 	{
 		rfidRet = RF_Close();
 		sleep(5);
@@ -160,11 +160,11 @@ int main()
 			rfidRet = RF_Init();
 			if(rfidRet == ERR_OK)
 			{
-				properRFID = true;
+				properRFIDinit = true;
 			}
 			else
 			{
-				properRFID = false;
+				properRFIDinit = false;
 			}
 		}
 	}
