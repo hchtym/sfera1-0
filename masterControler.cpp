@@ -1026,7 +1026,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	int state = 0;
 	int leftX = -1;
 	string hexNum;
-	SetTimer(14,2100);
+	SetTimer(14,2500);
 	int selLogout = -1;
 	int ret1 = 0;
 	int timeout =0;
@@ -1100,7 +1100,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 				{
 					device->rfidRead();
 					leftX = -1;
-					SetTimer(14,2100);
+					SetTimer(14,2500);
 				}
 			}
 			DelayMs(90);
@@ -1192,7 +1192,6 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 		    		loginFlag = false;
 		    		sellerLogout = false;
 		    		seller.clear();
-		    		goto drawMenu;
 		    	}
 	    	}
 
@@ -1217,10 +1216,6 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 		        return KEYCANCEL;
 			break;
 		    case KEYENTER:
-		    	if(menuid[index2] == 0)
-		    	{
-		    		if(loginFlag == false) seller.clear();
-		    	}
 				return menuid[index2];
 			break;
 		    case KEYDOWN:
@@ -1231,7 +1226,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 		            index2 =0;
 		            view = 0;
 		        }
-		        goto drawMenu;
+		        //goto drawMenu;
 		     break;
 		     case KEYUP:
 		     	if(index2 >0){
@@ -1242,7 +1237,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 
 		        	if(index2 >= view + visible) view = index2 -  visible +1;
 		        }
-		      	goto drawMenu;
+		      	//goto drawMenu;
 		    break;
 		}
 		
