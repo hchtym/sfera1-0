@@ -631,36 +631,44 @@ int deviceControler::rfidScan()
 
 int deviceControler::rfidSilentScan()
 {
-	memset(rfidId, 0, sizeof(rfidId));
-	memset(rfidIdBufer, 0, sizeof(rfidIdBufer));
-	memset(rfidSerialNo, 0, sizeof(rfidSerialNo));
-
-	cout << "jestem w rfid silen scan !" << endl;
-
-	if(ERR_OK == RF_WaitCard_Timeout(RF_M1, rfidSerialNo, 3))
+	if (properRFIDinit == true)
 	{
-		rfidType = "M1";
-		cout << "Zawartosc poczatkowego segmentu: " << rfidSerialNo << endl;
-		cout << "M1" << endl;
-		if(rfidSerialNo[0] > 0)
+		memset(rfidId, 0, sizeof(rfidId));
+		memset(rfidIdBufer, 0, sizeof(rfidIdBufer));
+		memset(rfidSerialNo, 0, sizeof(rfidSerialNo));
+
+		cout << "jestem w rfid silen scan !" << endl;
+
+		if(ERR_OK == RF_WaitCard_Timeout(RF_M1, rfidSerialNo, 3))
 		{
-			hexToString(rfidId, rfidSerialNo + 1, rfidSerialNo[0]);
-			return 1;
+			rfidType = "M1";
+			cout << "Zawartosc poczatkowego segmentu: " << rfidSerialNo << endl;
+			cout << "M1" << endl;
+			if(rfidSerialNo[0] > 0)
+			{
+				hexToString(rfidId, rfidSerialNo + 1, rfidSerialNo[0]);
+				return 1;
+			}
 		}
+
+		if(ERR_OK == RF_WaitCard_Timeout(RF_TYPE_A, rfidSerialNo, 3))
+		{
+			cout << "typeA" << endl;
+			rfidType = "typeA";
+			if(rfidSerialNo[0] > 0)
+			{
+				hexToString(rfidId, rfidSerialNo + 1, rfidSerialNo[0]);
+				return 1;
+			}
+		}
+		cout << "wychodze z rfid silentscan !" << endl;
+		return 0;
+	}
+	else
+	{
+		return 0;
 	}
 
-	if(ERR_OK == RF_WaitCard_Timeout(RF_TYPE_A, rfidSerialNo, 3))
-	{
-		cout << "typeA" << endl;
-		rfidType = "typeA";
-		if(rfidSerialNo[0] > 0)
-		{
-			hexToString(rfidId, rfidSerialNo + 1, rfidSerialNo[0]);
-			return 1;
-		}
-	}
-	cout << "wychodze z rfid silentscan !" << endl;
-	return 0;
 }
 
 string deviceControler::rfidRetrunStringId()
@@ -1020,7 +1028,7 @@ string deviceControler::magCardRfidScan(bool kbd)
 	string temp;
 	int ret;
 	int left = -1;
-	SetTimer(19, 1001);
+	SetTimer(19, 2100);
 	bool presed = false;
 	bool readed = false;
 	memset(track1, 0, sizeof(track1));
@@ -1137,7 +1145,7 @@ string deviceControler::magCardRfidScan(bool kbd)
 				}
 				cout <<  "za sprawdzeniem rfid" << endl;
 				left = -1;
-				SetTimer(19, 1001);
+				SetTimer(19, 2100);
 			}
 		}
 

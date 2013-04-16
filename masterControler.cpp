@@ -1096,9 +1096,12 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 			if(leftX == 0)
 			{
 				rfidState = device->rfidSilentScan();
-				device->rfidRead();
-				leftX = -1;
-				SetTimer(14,2100);
+				if (rfidState == 1)
+				{
+					device->rfidRead();
+					leftX = -1;
+					SetTimer(14,2100);
+				}
 			}
 			DelayMs(90);
 			if ( (cardState&0x80) || (rfidState == 1) )
