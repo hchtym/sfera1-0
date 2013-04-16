@@ -17,7 +17,7 @@ extern "C"{
 #include "all_headers.h"	
 }
 
-bool properRFID;
+extern bool properRFID;
 
 using namespace std;
 
