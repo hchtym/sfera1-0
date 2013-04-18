@@ -2574,13 +2574,13 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 						if((payment.size()-2) > 1)
 						{
 							string interval = compos[3];
-							if(interval.size() == 4)
+							if( interval.size() == 4)
 							{
 								interval.erase(interval.size()-1);
 								interval.erase(interval.size()-1);
 							}
 							string minimum = compos[1];
-							if( minimum.size == 4)
+							if( minimum.size() == 4)
 							{
 								minimum.erase(minimum.size()-1);
 								minimum.erase(minimum.size()-1);
