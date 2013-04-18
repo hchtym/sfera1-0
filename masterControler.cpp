@@ -2574,7 +2574,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 						if((payment.size()-2) > 1)
 						{
 							string interval = compos[3];
-							if(interval.size == 4)
+							if(interval.size() == 4)
 							{
 								interval.erase(interval.size()-1);
 								interval.erase(interval.size()-1);
@@ -2585,7 +2585,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 								minimum.erase(minimum.size()-1);
 								minimum.erase(minimum.size()-1);
 							}
-							
+
 							sumary.erase(sumary.size()-1);
 							sumary.erase(sumary.size()-1);
 							int equation = atoi(sumary.c_str());
