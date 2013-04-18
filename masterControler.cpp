@@ -2526,10 +2526,9 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 		
 	}else{
 		cout << "obliczam automatycznie !!" << endl;
-		//string extraActive  = config->returnExtraActive();
+		string extraActive  = config->returnExtraActive();
 
-		//if (extraActive.compare("true") == 0)
-		if(true)
+		if (extraActive.compare("true") == 0)
 		{
 			cout << "obliczanie automatyczne odpalone !!" << endl;
 			string extraMode = config->returnExtraMode();
@@ -2575,11 +2574,18 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 						if((payment.size()-2) > 1)
 						{
 							string interval = compos[3];
-							interval.erase(interval.size()-1);
-							interval.erase(interval.size()-1);
+							if(interval.size == 4)
+							{
+								interval.erase(interval.size()-1);
+								interval.erase(interval.size()-1);
+							}
 							string minimum = compos[1];
-							minimum.erase(minimum.size()-1);
-							minimum.erase(minimum.size()-1);
+							if( minimum.size == 4)
+							{
+								minimum.erase(minimum.size()-1);
+								minimum.erase(minimum.size()-1);
+							}
+							
 							sumary.erase(sumary.size()-1);
 							sumary.erase(sumary.size()-1);
 							int equation = atoi(sumary.c_str());
