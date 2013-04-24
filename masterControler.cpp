@@ -1038,7 +1038,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 	int state = 0;
 	int leftX = -1;
 	string hexNum;
-	SetTimer(14,2500);
+	SetTimer(14,4500);
 	int selLogout = -1;
 	int ret1 = 0;
 	int timeout =0;
@@ -1112,7 +1112,7 @@ int masterControler::menuScr(const string &menuname,vector<string> &vect, int si
 				{
 					device->rfidRead();
 					leftX = -1;
-					SetTimer(14,2500);
+					SetTimer(14,4500);
 				}
 			}
 			DelayMs(90);
@@ -2758,7 +2758,7 @@ int masterControler::pointComp(string &id, string &payment, string &pnt, string 
 					cout << extra << endl;
 					int payParam = atoi(sumary.c_str());
 					cout << "zawartosc payParam: " << payParam << endl;
-					if( (payParam >= begin) && (payParam <= end))
+					if( (payParam >= begin) && (payParam < end))
 					{
 						sumapkt += extra;
 						stringstream temp;
